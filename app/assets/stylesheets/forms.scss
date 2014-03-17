@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+  font-family: georgia;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  border-radius: 4px;
+  display: block;
+  margin-bottom: 16px;
+  font-size: 18px;
+  background: #ddd;
+  color: #333;
+  line-height: 124%;
+  border: 1px solid #555;
+  padding: 6px 10px;
+}
+
+textarea {
+  min-height: 300px;
+  &#instructions { min-height: 100px; }
+}
+
+.form_block {
+  width: 400px;
+  float: left;
+  &.primary { margin-right: 20px; }
+}
+
+input[type="submit"] {
+  display: block;
+  width: 120px;
+  font-size: 18px;
+  margin-top: 7px;
+}

@@ -1,7 +1,17 @@
 <h1>create recipe</h1>
 
 <%= form_tag({controller: "recipes", action: "create"}, method: "post", class: "new-recipe-form") do %>
-  <%= text_field_tag :name, "", :placeholder => "name" %>
-  <%= text_area_tag :description, "", :placeholder => "description" %>
-  <%= submit_tag("create") %>
+  <div class="form_block primary">
+    <%= text_field_tag :name, "", :placeholder => "name" %>
+    <%= text_area_tag :recipe, "", :placeholder => "recipe" %>
+    <%= text_area_tag :instructions, "", :placeholder => "instructions" %>
+  </div>
+  <div class="form_block secondary">
+    <%= text_area_tag :description, "", :placeholder => "description" %>
+    <%= text_field_tag :image, "", :placeholder => "image url" %>
+    <%= text_field_tag :components, "", :placeholder => "component list" %>
+    <label>publish?</label>
+    <%= check_box_tag :published, "published?" %>
+    <%= submit_tag("create") %>
+  </div>
 <% end %>

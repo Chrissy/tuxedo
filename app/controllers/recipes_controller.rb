@@ -1,4 +1,6 @@
 class RecipesController < ActionController::Base
+  layout "application"
+
   def show
   end
 
@@ -15,6 +17,6 @@ class RecipesController < ActionController::Base
   private
 
   def recipe_params
-    params.permit(:name, :description)
+    params.permit :name, :recipe, :description, :image, :components, :published, :instructions
   end
 end
