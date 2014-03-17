@@ -2,6 +2,7 @@ class RecipesController < ActionController::Base
   layout "application"
 
   def show
+    @recipe = Recipe.find(params[:id])
   end
 
   def edit
@@ -11,7 +12,9 @@ class RecipesController < ActionController::Base
   end
 
   def create
-    Recipe.create(recipe_params)
+    recipe = Recipe.create(recipe_params)
+    recipe.update_attribute(:last_updated, DateTime.now)
+    redirect_to action: "show", id: recipe.id
   end
 
   private
