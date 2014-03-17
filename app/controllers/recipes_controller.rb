@@ -6,9 +6,18 @@ class RecipesController < ActionController::Base
   end
 
   def edit
+    @recipe = Recipe.find(params[:id])
   end
 
   def new
+    @song = false
+  end
+
+  def update
+    recipe = Recipe.find(params[:id])
+    recipe.update_attributes(recipe_params)
+    recipe.update_attribute(:last_updated, DateTime.now)
+    redirect_to action: "show", id: recipe.id
   end
 
   def create

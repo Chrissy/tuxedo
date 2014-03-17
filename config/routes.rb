@@ -10,7 +10,9 @@ Tuxno2::Application.routes.draw do
 
   get 'new' => 'recipes#new' 
   get ':id' => 'recipes#show', as: :recipe
-  resources :recipes
+  get 'edit/:id' => 'recipes#edit', as: :edit
+  post 'update/:id' => 'recipes#update', as: :update
+  post 'create' => 'recipes#create', as: :create
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

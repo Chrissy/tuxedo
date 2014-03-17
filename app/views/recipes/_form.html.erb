@@ -1,0 +1,15 @@
+<%= form_tag({controller: "recipes", action: form_action()}, method: "post") do %>
+  <div class="form_block primary">
+    <%= text_field_tag :name, default_text(:name), :placeholder => "name" %>
+    <%= text_area_tag :recipe, default_text(:recipe), :placeholder => "recipe" %>
+    <%= text_area_tag :instructions, default_text(:instructions), :placeholder => "instructions" %>
+  </div>
+  <div class="form_block secondary">
+    <%= text_area_tag :description, default_text(:description), :placeholder => "description" %>
+    <%= text_field_tag :image, default_text(:image), :placeholder => "image url" %>
+    <%= text_field_tag :components, default_text(:components), :placeholder => "component list" %>
+    <label>publish?</label>
+    <%= check_box_tag :published, default_text(:published) %>
+    <%= submit_tag(submit_text()) %>
+  </div>
+<% end %>
