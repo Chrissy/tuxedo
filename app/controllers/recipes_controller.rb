@@ -10,7 +10,6 @@ class RecipesController < ActionController::Base
   end
 
   def new
-    @song = false
   end
 
   def update
