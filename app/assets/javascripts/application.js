@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require bootstrap-typeahead
+//= require mention 
+//= require classes/form
+//= require events/forms_events

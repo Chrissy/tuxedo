@@ -14,6 +14,7 @@ Tuxno2::Application.routes.draw do
   post 'update/:id' => 'recipes#update', as: :update
   post 'create' => 'recipes#create', as: :create
 
+  get 'components/all' => 'components#all'
   get 'components/new' => 'components#new'
   get 'components/:id' => 'components#show'
   get 'components/edit/:id' => 'components#edit'

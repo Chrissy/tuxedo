@@ -23,6 +23,13 @@ class ComponentsController < ActionController::Base
     redirect_to action: "show", id: component.id
   end
 
+  def all
+    @components = Component.all
+    respond_to do |format|
+      format.json {}
+    end
+  end
+
   private
 
   def component_params

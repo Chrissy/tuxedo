@@ -33,3 +33,15 @@ input[type="submit"] {
   font-size: 18px;
   margin-top: 7px;
 }
+
+.mention_username{
+  font-size: 18px;
+  color: #999;
+}
+
+.active .mention_username{
+  color: #333;
+}
+
+ul, li { list-style-type: none; padding: 0; }
+a { text-decoration: none; }
