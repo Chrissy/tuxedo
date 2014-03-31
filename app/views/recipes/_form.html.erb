@@ -1,7 +1,7 @@
 <%= form_tag({controller: "recipes", action: form_action()}, method: "post") do %>
-  <div class="form_block primary">
+  <div id="prefetch" class="form_block primary">
     <%= text_field_tag :name, default_text(:name), :placeholder => "name" %>
-    <%= text_area_tag :recipe, default_text(:recipe), :placeholder => "recipe" %>
+    <%= text_area_tag :recipe, default_text(:recipe), :placeholder => "recipe", :class => "typeahead" %>
     <%= text_area_tag :instructions, default_text(:instructions), :placeholder => "instructions" %>
   </div>
   <div class="form_block secondary">

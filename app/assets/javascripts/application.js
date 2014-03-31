@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap-typeahead
-//= require mention 
+//= require typeahead.bundle.js
 //= require classes/form
 //= require events/forms_events

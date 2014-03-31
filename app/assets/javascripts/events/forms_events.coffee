@@ -1,3 +1,2 @@
 $ ->
-  form = new Form('#recipe')
-  form.setupMentions()
+  window.form = new Form('#recipe')
