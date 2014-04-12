@@ -17,8 +17,7 @@ class window.Form
     @autocomplete = $('#recipe').atwho({
       at: ":",
       data: data
-    })
-    @autocomplete.on("inserted.atwho", (event, flag, query) ->
+    }).on("inserted.atwho", (event, flag, query) ->
       self.swapWithComponentLink(query, flag)
     );
 
