@@ -5,7 +5,7 @@ def url
 end
 
 def link
-  "<a href='#{url}'>#{name}</a>"
+  "<a href='#{url}' class='component'>#{name}</a>"
 end
 
 end
