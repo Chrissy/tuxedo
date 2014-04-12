@@ -14,7 +14,7 @@ class window.Form
 
   setupAutoComplete: (data) ->
     self = @
-    @autocomplete = $('#recipe').atwho({
+    @autocomplete = @form.atwho({
       at: ":",
       data: data
     }).on("inserted.atwho", (event, flag, query) ->
