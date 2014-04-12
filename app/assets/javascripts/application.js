@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require typeahead.bundle.js
+//= require jquery.caret.js
+//= require jquery.atwho.min.js
 //= require classes/form
 //= require events/forms_events

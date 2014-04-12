@@ -24,7 +24,7 @@ class ComponentsController < ActionController::Base
   end
 
   def all
-    @components = Component.all
+    @components = Component.all.map(&:name)
     respond_to do |format|
       format.json {}
     end

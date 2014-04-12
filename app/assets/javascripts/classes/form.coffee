@@ -3,9 +3,7 @@ class window.Form
     @form = $(form)
     self = @
     @getAllComponents().promise().then( (data) ->
-      self.components = self.setupBloodhound(data)
-      self.components.initialize()
-      self.setupTypeahead(@components)
+      self.setupAutoComplete(data)
     )
 
   getAllComponents: ->
@@ -14,25 +12,22 @@ class window.Form
       -> return console.log("components request failed")
     )
 
-  setupBloodhound: (storedData) ->
-    return new Bloodhound(
-      name: "components"
-      local: storedData
-      datumTokenizer: (d) ->
-        return Bloodhound.tokenizers.whitespace(d.username);
-      queryTokenizer: Bloodhound.tokenizers.whitespace
-    )
-
-  setupTypeahead: ->
-    $('#prefetch .typeahead').typeahead(
-      hint: true,
-      highlight: true, 
-      minLength: 1
-    ,
-      name: 'components',
-      displayKey: 'username',
-      source: @components.ttAdapter()
+  setupAutoComplete: (data) ->
+    self = @
+    @autocomplete = $('#recipe').atwho({
+      at: ":",
+      data: data
+    })
+    @autocomplete.on("inserted.atwho", (event, flag, query) ->
+      self.swapWithComponentLink(query, flag)
     );
+
+  swapWithComponentLink: (query, flag) ->
+    text = flag.text()
+    pretext = @form.val().substring(0, query.pos)
+    aftertext = @form.val().substring(query.pos + text.length)
+    newstr = "#{pretext}[#{text}] #{aftertext}"
+    @form.val(newstr)
 
     
 
