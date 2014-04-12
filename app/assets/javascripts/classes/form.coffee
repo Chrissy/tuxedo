@@ -22,7 +22,7 @@ class window.Form
     );
 
   swapWithComponentLink: (query, flag) ->
-    text = flag.text()
+    text = flag.text().trim()
     pretext = @form.val().substring(0, query.pos)
     aftertext = @form.val().substring(query.pos + text.length)
     newstr = "#{pretext}[#{text}] #{aftertext}"
