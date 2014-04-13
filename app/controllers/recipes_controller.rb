@@ -28,6 +28,6 @@ class RecipesController < ActionController::Base
   private
 
   def recipe_params
-    params.permit :name, :recipe, :description, :image, :components, :published, :instructions
+    params.permit :name, :recipe, :description, :image, :published, :instructions
   end
 end

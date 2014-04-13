@@ -18,15 +18,20 @@ class window.Form
       at: ":",
       data: data
     }).on("inserted.atwho", (event, flag, query) ->
+      flag = flag.text().trim()
       self.swapWithComponentLink(query, flag)
+      self.addToComponentList(flag)
     );
 
   swapWithComponentLink: (query, flag) ->
-    text = flag.text().trim()
     pretext = @form.val().substring(0, query.pos)
-    aftertext = @form.val().substring(query.pos + text.length)
-    newstr = "#{pretext}[#{text}] #{aftertext}"
+    aftertext = @form.val().substring(query.pos + flag.length)
+    newstr = "#{pretext}[#{flag}] #{aftertext}"
     @form.val(newstr)
+
+  addToComponentList: (flag) ->
+    components = @form.siblings("#components")
+    components.val(components.text() << flag << ",")
 
     
 
