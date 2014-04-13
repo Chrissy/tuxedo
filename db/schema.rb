@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140318043146) do
+ActiveRecord::Schema.define(version: 20140413022351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20140318043146) do
     t.text     "recipe"
     t.text     "description"
     t.string   "image"
-    t.string   "components"
+    t.text     "components"
     t.boolean  "published"
     t.datetime "last_updated"
     t.text     "instructions"
