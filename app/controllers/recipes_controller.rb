@@ -24,6 +24,11 @@ class RecipesController < ApplicationController
     redirect_to action: "show", id: recipe.id
   end
 
+  def delete
+    Recipe.find(params[:id]).delete() if user_signed_in?
+    redirect_to "/"
+  end
+
   private
 
   def recipe_params
