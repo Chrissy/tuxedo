@@ -1,4 +1,4 @@
-class RecipesController < ActionController::Base
+class RecipesController < ApplicationController
   layout "application"
 
   def show

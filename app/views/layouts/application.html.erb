@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Tuxno2</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= filepicker_js_include_tag %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Tuxno2</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= filepicker_js_include_tag %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete if user_signed_in? %>
 
-<%= yield %>
+    <%= yield %>
 
-</body>
+  </body>
 </html>

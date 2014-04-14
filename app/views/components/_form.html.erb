@@ -2,9 +2,6 @@
   <div class="form_block primary">
     <%= text_field_tag :name, default_text(:name), :placeholder => "name" %>
     <%= text_area_tag :description, default_text(:description), :placeholder => "description" %>
-  </div>
-  <div class="form_block secondary">
-    <%= text_field_tag :components, default_text(:components), :placeholder => "component list" %>
     <%= submit_tag(submit_text()) %>
   </div>
 <% end %>

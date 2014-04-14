@@ -3,7 +3,7 @@
   font-family: georgia;
 }
 
-input[type="text"], textarea {
+input[type="text"], textarea, .textfield {
   width: 100%;
   border-radius: 4px;
   display: block;
@@ -44,6 +44,23 @@ button {
   font-size: 18px;
   color: #999;
 }
+
+.user-form, .alert, .notice {
+  width: 500px;
+  padding: 30px;
+  margin: 0 auto;
+  background-color: #f6f6f6;
+  border-radius: 4px;
+}
+
+.alert, .notice { 
+  padding: 10px 30px;
+  color: white;
+  background-color: #FF524D;
+  margin-bottom: 10px; 
+}
+
+.alert:empty, .notice:empty { display: none; }
 
 .active .mention_username{ color: #333; }
 ul, li { list-style-type: none; padding: 0; }

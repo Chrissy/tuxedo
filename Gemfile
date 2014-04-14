@@ -35,6 +35,7 @@ end
 
 gem 'redcarpet', '~> 3.1.1'
 gem 'filepicker-rails'
+gem 'devise'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
