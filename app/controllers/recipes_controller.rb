@@ -1,6 +1,4 @@
 class RecipesController < ApplicationController
-  layout "application"
-
   def show
     @recipe = Recipe.find(params[:id])
   end
