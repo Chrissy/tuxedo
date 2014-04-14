@@ -1,0 +1,18 @@
+html, body { font-family: "bookmania"; }
+h1, h2, h3 { font-weight: 900; }
+
+@mixin font-face($family, $filename, $font-weight: normal, $font-style: normal) {
+  @font-face { 
+    font-family: "#{$family}";
+    src: url("/webfonts/#{$filename}.eot?#iefix") format("embedded-opentype"), url("/webfonts/#{$filename}.woff") format("woff"), url("/webfonts/#{$filename}.ttf") format("truetype");
+    font-weight: $font-weight;
+    font-style: $font-style;
+  }  
+}
+
+@include font-face("bookmania", "bookmania-regular");
+@include font-face("bookmania", "bookmania-regular-italic", $font-style: italic);
+@include font-face("bookmania", "bookmania-bold", $font-weight: bold);
+@include font-face("bookmania", "bookmania-bold-italic", $font-style: italic, $font-weight: bold);
+@include font-face("bookmania", "bookmania-black", $font-weight: 900);
+@include font-face("bookmania", "bookmania-black-italic", $font-weight: 900, $font-style: italic);
