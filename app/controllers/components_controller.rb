@@ -30,6 +30,11 @@ class ComponentsController < ApplicationController
     end
   end
 
+  def delete
+    Component.find(params[:id]).delete() if user_signed_in?
+    redirect_to action: "home", controller: "indexes"
+  end
+
   private
 
   def component_params
