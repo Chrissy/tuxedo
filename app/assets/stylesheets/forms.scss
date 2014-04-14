@@ -27,11 +27,17 @@ textarea {
   &.primary { margin-right: 20px; }
 }
 
-input[type="submit"] {
+input[type="submit"], button {
   display: block;
-  width: 120px;
+  min-width: 120px;
   font-size: 18px;
   margin-top: 7px;
+}
+
+button {
+  font-size: 14px;
+  font-family: sans-serif;
+  margin-bottom: 7px;
 }
 
 .mention_username{

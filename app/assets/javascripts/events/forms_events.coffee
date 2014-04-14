@@ -1,2 +1,2 @@
 $ ->
-  window.form = new Form('#recipe')
+  window.form = new Form('#recipe_recipe')

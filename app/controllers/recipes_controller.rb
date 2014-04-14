@@ -10,6 +10,7 @@ class RecipesController < ActionController::Base
   end
 
   def new
+    @recipe = Recipe.new
   end
 
   def update
@@ -28,6 +29,6 @@ class RecipesController < ActionController::Base
   private
 
   def recipe_params
-    params.permit :name, :recipe, :description, :image, :published, :instructions
+    params.require(:recipe).permit(:name, :recipe, :description, :image, :published, :instructions)
   end
 end

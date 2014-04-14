@@ -1,7 +1,11 @@
 module RecipesHelper
 
+  def undefined
+    @recipe.id.nil?
+  end
+
   def form_action
-    @recipe.present? ? "update" : "create"
+    undefined ? "create" : "update"
   end
 
   def edit_url
@@ -9,10 +13,10 @@ module RecipesHelper
   end
 
   def default_text(text_for)
-    @recipe.present? ? @recipe[text_for] : ""
+    undefined ? "" : @recipe[text_for]
   end
 
   def submit_text
-    @recipe.present? ? "update" : "create"
+    undefined ? "create" : "update"
   end
 end

@@ -1,3 +1,5 @@
+require 'component.rb'
+
 class Recipe < ActiveRecord::Base
   serialize :components, Array
 
