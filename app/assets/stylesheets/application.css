@@ -9,6 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
  *= require jquery.atwho.css
+
+ *= require typography.css
+ *= require elements.scss
+ *= require layout.scss
+ *= require forms.scss
  */
