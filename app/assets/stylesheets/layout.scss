@@ -49,11 +49,11 @@ $components-bg-color: #54524E;
 
 @mixin natural_component_section($number, $percent) {
   &:nth-of-type(#{$number}) { 
-    &, & + p { 
+    &, & ~ p { 
       background-color: darken($components-bg-color, $percent);
       color: darken($components-text-color, $percent*0.2); 
     }
-    & + h1, & + li { border-bottom-color: darken($components-border-color, $percent); }
+    & ~ h1, & ~ li { border-bottom-color: darken($components-border-color, $percent); }
   }
 }
 
