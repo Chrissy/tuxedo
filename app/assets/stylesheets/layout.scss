@@ -1,3 +1,7 @@
+@import "compass/utilities/sprites";
+@import "sprite/*.png";
+@include all-sprite-sprites;
+
 $background-color: #ece7e6;
 $header-height: 540px;
 
@@ -10,6 +14,8 @@ a { text-decoration: none; }
 
 body {
   background: $background-color;
+  margin: 0;
+  padding: 0;
 }
 
 .header {
