@@ -22,7 +22,7 @@ textarea {
 }
 
 .form_block {
-  width: 400px;
+  width: 440px;
   float: left;
   &.primary { margin-right: 20px; }
 }
@@ -60,8 +60,13 @@ button {
   margin-bottom: 10px; 
 }
 
-.alert:empty, .notice:empty { display: none; }
+a[href="/users/sign_out"] {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 
+.alert:empty, .notice:empty { display: none; }
 .active .mention_username{ color: #333; }
 ul, li { list-style-type: none; padding: 0; }
 a { text-decoration: none; }
