@@ -134,4 +134,12 @@ $description-background-color: $background-color;
 
 .edit_panel {
   @extend %centered-content-box;
+  position: relative;
+  top: 60px;
+}
+
+.home-content {
+  @extend %centered-content-box;
+  position: relative;
+  top: 80px;
 }
