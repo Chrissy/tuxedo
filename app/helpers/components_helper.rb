@@ -5,7 +5,7 @@ module ComponentsHelper
   end
 
   def edit_url
-    "/components/edit/1"
+    "/components/edit/#{@component.id}"
   end
 
   def default_text(text_for)
