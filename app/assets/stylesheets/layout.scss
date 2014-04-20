@@ -1,15 +1,10 @@
 @import "compass/utilities/sprites";
 @import "sprite/*.png";
+@import "helpers";
 @include all-sprite-sprites;
 
 $background-color: #ece7e6;
 $header-height: 540px;
-
-%centered-content-box {
-  width: 940px;
-  margin: 0 auto;
-  position: relative;  
-}
 
 * {
   box-sizing: border-box;
