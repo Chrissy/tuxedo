@@ -1,3 +1,8 @@
-<h1><%= @component.name %></h1>
+<h1><%= @component.name.titleize %></h1>
 <p><%= @component.description %></p>
+<ul class="recipes">
+  <% @components.each do |recipe| %>
+    <li><%= link_to recipe.name, recipe %></li>
+  <% end %>
+</ul>
 <a href="<%= edit_url() %>">edit</a>

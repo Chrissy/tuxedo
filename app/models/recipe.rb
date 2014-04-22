@@ -15,16 +15,28 @@ class Recipe < ActiveRecord::Base
     markdown.render(description).html_safe
   end
 
+  def component_objects
+    components.map { |component_id| Component.find(component_id) }
+  end
+
+  def update_components
+    component_objects.each do |component|
+      component.recipes.push(self.id).uniq!
+      component.save
+    end
+  end
+
   private
 
   def markdown_to_html_with_components(md)
     component_list = []
     md.gsub!(/\:\[(.*?)\]/) do |*|
       component = Component.find_or_create_by(name: $1)
-      component_list << component
+      component_list << component.id
       component.link
     end
     self.update_attribute(:components, component_list)
+    update_components()
     markdown.render(md)
   end
 end

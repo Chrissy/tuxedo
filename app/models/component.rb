@@ -1,4 +1,7 @@
+require 'recipe.rb'
+
 class Component < ActiveRecord::Base
+  serialize :recipes, Array
 
   def url
     "/components/#{id}"
