@@ -1,7 +1,7 @@
 require 'component.rb'
 
 class Recipe < ActiveRecord::Base
-  serialize :components, Array
+  serialize :component_ids, Array
 
   def markdown
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
@@ -15,8 +15,8 @@ class Recipe < ActiveRecord::Base
     markdown.render(description).html_safe
   end
 
-  def component_objects
-    components.map { |component_id| Component.find(component_id) }
+  def components
+    component_ids.map { |component_id| Component.find(component_id) }
   end
 
   def update_components

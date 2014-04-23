@@ -3,6 +3,7 @@ class ComponentsController < ApplicationController
 
   def show
     @component = Component.find(params[:id])
+    @recipes = @component.recipes
   end
 
   def edit
