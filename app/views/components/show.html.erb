@@ -1,8 +1,19 @@
-<h1><%= @component.name.titleize %></h1>
-<p><%= @component.description %></p>
-<ul class="recipes">
-  <% @recipes.each do |recipe| %>
-    <li><%= link_to recipe.name, recipe %></li>
-  <% end %>
-</ul>
+<div class="header component">
+  <div class="header-content">
+  </div>
+</div>
+<div class="content component">
+  <div class="aside"> 
+    <ul class="recipes">
+      <h1>Recipes</h1>
+      <% @recipes.each do |recipe| %>
+        <li><%= link_to recipe.name, recipe %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="primary">
+    <h1 class="header-title"><%= @component.name.titleize %></h1>
+    <p><%= @component.description %></p>
+  </div>
+</div>
 <a href="<%= edit_url() %>">edit</a>
