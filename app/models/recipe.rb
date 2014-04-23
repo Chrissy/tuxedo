@@ -20,7 +20,7 @@ class Recipe < ActiveRecord::Base
   end
 
   def update_components
-    component_objects.each do |component|
+    components.each do |component|
       component.recipes.push(self.id).uniq!
       component.save
     end
@@ -35,7 +35,7 @@ class Recipe < ActiveRecord::Base
       component_list << component.id
       component.link
     end
-    self.update_attribute(:components, component_list)
+    self.update_attribute(:component_ids, component_list)
     update_components()
     markdown.render(md)
   end
