@@ -15,4 +15,11 @@ class Component < ActiveRecord::Base
     "<a href='#{url}' class='component'>#{name}</a>"
   end
 
+  def self.refresh_all
+    Component.all.each do |component|
+      component.update_attribute(:recipe_ids, [])
+    end
+    Recipe.update_all
+  end
+
 end
