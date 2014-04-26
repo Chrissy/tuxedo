@@ -4,6 +4,7 @@ class ComponentsController < ApplicationController
   def show
     @component = Component.find(params[:id])
     @recipes = @component.recipes
+    @image = @component.image ? @component.image : @recipes.first.image
   end
 
   def edit
@@ -40,5 +41,6 @@ class ComponentsController < ApplicationController
 
   def component_params
     params.permit :name, :description, :components
+    params.require(:component).permit(:name, :description, :image)
   end
 end

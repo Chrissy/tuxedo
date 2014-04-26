@@ -1,7 +1,10 @@
-<%= form_tag({controller: "components", action: form_action()}, method: "post") do %>
-  <div class="form_block primary">
-    <%= text_field_tag :name, default_text(:name), :placeholder => "name" %>
-    <%= text_area_tag :description, default_text(:description), :placeholder => "description" %>
-    <%= submit_tag(submit_text()) %>
-  </div>
+<%= form_for @component, url: {action: form_action()}, html: {method: "post"} do |f| %>
+<div class="form_block primary">
+  <%= f.text_field :name, :value => default_text(:name), :placeholder => "name" %>
+  <%= f.text_area :description, :value => default_text(:description), :placeholder => "description" %>
+</div>
+<div class="form_block secondary">
+  <%= f.filepicker_field :image, :button_text => "upload a cover photo"  %>
+  <%= f.submit(submit_text()) %>
+</div>
 <% end %>
