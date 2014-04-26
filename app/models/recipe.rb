@@ -21,8 +21,8 @@ class Recipe < ActiveRecord::Base
 
   def update_components
     components.each do |component|
-      component.recipe_ids.push(self.id).uniq!
-      component.save
+      recipe_ids = component.recipe_ids.push(self.id).uniq!
+      component.update_attribute(:recipe_ids, recipe_ids)
     end
   end
 
