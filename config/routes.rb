@@ -24,6 +24,13 @@ Tuxno2::Application.routes.draw do
   post 'components/create' => 'components#create'
   get 'components/delete/:id' => 'components#delete'
 
+  get 'list/new' => 'lists#new'
+  get 'list/:id' => 'lists#show'
+  get 'list/edit/:id' => 'lists#edit'
+  post 'list/update/:id' => 'lists#update'
+  post 'list/create' => 'lists#create'
+  get 'list/delete/:id' => 'lists#delete'
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
