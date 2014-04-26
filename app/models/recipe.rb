@@ -26,6 +26,13 @@ class Recipe < ActiveRecord::Base
     end
   end
 
+  def self.update_all
+    Recipe.all.each do |recipe|
+      recipe.recipe_to_html
+      recipe.update_components
+    end
+  end
+
   private
 
   def markdown_to_html_with_components(md)
