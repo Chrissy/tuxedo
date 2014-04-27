@@ -29,6 +29,13 @@ class RecipesController < ApplicationController
     redirect_to "/"
   end
 
+  def all
+    @recipes = Recipe.all.map(&:name)
+    respond_to do |format|
+      format.json {}
+    end
+  end
+
   private
 
   def recipe_params

@@ -10,6 +10,7 @@ Tuxno2::Application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
 
   get 'new' => 'recipes#new'
+  get 'all' => 'recipes#all'
   get ':id' => 'recipes#show', as: :recipe
   get 'edit/:id' => 'recipes#edit', as: :edit
   post 'update/:id' => 'recipes#update', as: :update

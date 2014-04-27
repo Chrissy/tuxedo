@@ -1,2 +1,3 @@
 $ ->
-  window.form = new Form('#recipe_recipe')
+  window.form = new Form('.autocomplete')
+

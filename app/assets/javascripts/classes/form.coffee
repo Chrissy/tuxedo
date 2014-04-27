@@ -1,9 +1,13 @@
 class window.Form
   constructor: (form) ->
-    @form = $(form)
+    @form = $(form).first()
     self = @
+    @autocomplete = []
     @getAllComponents().promise().then( (data) ->
-      self.setupAutoComplete(data)
+      self.setupAutoComplete(data, ":")
+    )
+    @getAllRecipes().promise().then( (data) ->
+      self.setupAutoComplete(data, "=")
     )
 
   getAllComponents: ->
@@ -12,26 +16,27 @@ class window.Form
       -> return console.log("components request failed")
     )
 
-  setupAutoComplete: (data) ->
+  getAllRecipes: ->
+    $.get("/all.json").then(
+      (recipes) -> return recipes
+      -> return console.log("recipes request failed")
+    )
+
+  setupAutoComplete: (data, flag) ->
     self = @
-    @autocomplete = @form.atwho({
-      at: ":",
+    @autocomplete[flag] = @form.atwho({
+      at: flag,
       data: data
     }).on("inserted.atwho", (event, flag, query) ->
       flag = flag.text().trim()
       self.swapWithComponentLink(query, flag)
-      self.addToComponentList(flag)
     );
 
   swapWithComponentLink: (query, flag) ->
     pretext = @form.val().substring(0, query.pos)
-    aftertext = @form.val().substring(query.pos + flag.length)
+    aftertext = @form.val().substring(query.pos + flag.length + 2)
     newstr = "#{pretext}[#{flag}] #{aftertext}"
     @form.val(newstr)
-
-  addToComponentList: (flag) ->
-    components = @form.siblings("#components")
-    components.val(components.text() << flag << ",")
 
     
 
