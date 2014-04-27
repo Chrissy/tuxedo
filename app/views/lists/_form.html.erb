@@ -1,7 +1,7 @@
 <%= form_for @list, url: {action: form_action()}, html: {method: "post"} do |f| %>
   <div class="form_block primary">
     <%= f.text_field :name, :value => default_text(:name), :placeholder => "name" %>
-    <%= f.text_area :content_as_markdown, :value => default_text(:content_as_markdown), :placeholder => "list content", :class => 'autocomplete' %>
+    <%= f.text_area :content_as_markdown, :value => default_text(:content_as_markdown), :placeholder => "list content", :class => 'autocomplete recipes components lists' %>
     <%= f.submit(submit_text()) %>
   </div>
 <% end %>

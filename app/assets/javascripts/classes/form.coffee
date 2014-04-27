@@ -3,9 +3,9 @@ class window.Form
     @form = $(form).first()
     self = @
     @autocomplete = []
-    @generateAutocomplete("/components/all.json", ":")
-    @generateAutocomplete("/all.json", "=")
-    @generateAutocomplete("/list/all.json", "#")
+    @generateAutocomplete("/components/all.json", ":") if @form.hasClass("components")
+    @generateAutocomplete("/all.json", "=") if @form.hasClass("recipes")
+    @generateAutocomplete("/list/all.json", "#") if @form.hasClass("lists")
 
   getElements: (url) ->
     $.get(url).then(
