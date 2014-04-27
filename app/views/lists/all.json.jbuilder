@@ -1,1 +1,1 @@
-json.array! @components
+json.array! @lists

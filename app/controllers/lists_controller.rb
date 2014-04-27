@@ -32,6 +32,13 @@ class ListsController < ApplicationController
     redirect_to "/"
   end
 
+  def all
+    @lists = List.all.map(&:name)
+    respond_to do |format|
+      format.json {}
+    end
+  end
+
   private
 
   def list_params

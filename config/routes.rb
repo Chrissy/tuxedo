@@ -26,6 +26,7 @@ Tuxno2::Application.routes.draw do
   get 'components/delete/:id' => 'components#delete'
 
   get 'list/new' => 'lists#new'
+  get 'list/all' => 'lists#all'
   get 'list/:id' => 'lists#show'
   get 'list/edit/:id' => 'lists#edit'
   post 'list/update/:id' => 'lists#update'

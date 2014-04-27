@@ -3,23 +3,20 @@ class window.Form
     @form = $(form).first()
     self = @
     @autocomplete = []
-    @getAllComponents().promise().then( (data) ->
-      self.setupAutoComplete(data, ":")
-    )
-    @getAllRecipes().promise().then( (data) ->
-      self.setupAutoComplete(data, "=")
+    @generateAutocomplete("/components/all.json", ":")
+    @generateAutocomplete("/all.json", "=")
+    @generateAutocomplete("/list/all.json", "#")
+
+  getElements: (url) ->
+    $.get(url).then(
+      (elements) -> return elements
+      -> return console.log("element request failed")
     )
 
-  getAllComponents: ->
-    $.get("/components/all.json").then(
-      (components) -> return components
-      -> return console.log("components request failed")
-    )
-
-  getAllRecipes: ->
-    $.get("/all.json").then(
-      (recipes) -> return recipes
-      -> return console.log("recipes request failed")
+  generateAutocomplete: (url, flag) ->
+    self = @
+    @getElements(url).promise().then( (data) ->
+      self.setupAutoComplete(data, flag)
     )
 
   setupAutoComplete: (data, flag) ->
