@@ -52,6 +52,10 @@ class List < ActiveRecord::Base
     end
   end
 
+  def image
+    elements.first.image || elements[1].image || ""
+  end
+
   def collect_list_elements(md)
     recipes = []
     md.gsub(/(\=|\:|\#)\[(.*?)\]/) do |*|

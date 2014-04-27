@@ -1,11 +1,19 @@
 <div class="header list">
   <div class="header-content">
+    <%= filepicker_image_tag @list.image, w: 1880, h: 1080, fit: 'crop', crop: "0,0,1880,1080", align: "center,center" %>
   </div>
 </div>
 <div class="content list">
   <div class="primary">
     <h1 class="header-title"><%= @list.name.titleize %></h1>
-    <p></p>
+    <ul class="list_elements">
+      <% @list.elements.each do |element| %>
+        <li class="list_element">
+          <%= filepicker_image_tag element.image, w: 275, h: 175, fit: 'crop', align: "center,center" %>
+          <h3><%= element.name %></h3>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>
 <a href="<%= edit_url() %>">edit</a>
