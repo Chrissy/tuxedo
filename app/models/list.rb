@@ -30,18 +30,25 @@ class List < ActiveRecord::Base
 
   def expand_list_code(list_code)
     first_word = list_code[/([^\s]+)/]
-    number = list_code[/\d+/].to_i
-    number = 10 if number.zero? 
-    type = list_code[/(\bDATE\b)/]
+    limit_number = list_code[/\d+/].to_i
+    sort_by = list_code[/(\bDATE\b)/]
     if first_word == "ALL" || first_word == "all"
-      Recipe.limit(number).order(type.nil? ? "name asc" : "last_updated desc").to_a
+      create_recipe_list(limit_number, sort_by)
     else
-      component = Component.find_by_name(first_word)
-      if type.nil?
-        component.recipes.sort_by!(&:name)
-      else 
-        component.recipes.sort { |a,b| a.last_updated <=> b.last_updated }
-      end
+      create_component_list(first_word, sort_by)
+    end
+  end
+
+  def create_recipe_list(limit_number, sort_by)
+    Recipe.limit(limit_number).order(sort_by.nil? ? "name asc" : "last_updated desc").to_a
+  end
+
+  def create_component_list(component_name, sort_by)
+    component = Component.find_by_name(component_name)
+    if sort_by.nil?
+      component.recipes.sort_by!(&:name)
+    else 
+      component.recipes.sort { |a,b| a.last_updated <=> b.last_updated }
     end
   end
 
