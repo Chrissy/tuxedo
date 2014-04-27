@@ -5,6 +5,11 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
   end
 
+  def home
+    @list = List.find_by_name("Home") || List.first || Recipe.last
+    render 'show'
+  end
+
   def edit
     @list = List.find(params[:id])
   end

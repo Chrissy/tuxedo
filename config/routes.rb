@@ -4,7 +4,7 @@ Tuxno2::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'indexes#home'
+  root 'lists#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
