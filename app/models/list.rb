@@ -10,7 +10,7 @@ class List < ActiveRecord::Base
       element_collection = expand_element_pair(element_pair)
       elements << element_collection
     end
-    elements.flatten.uniq!
+    elements.flatten.uniq
   end
 
   def compile_and_store_list_elements
@@ -29,14 +29,16 @@ class List < ActiveRecord::Base
   end
 
   def expand_list_code(list_code)
-    first_word = list_code[/([^\s]+)/]
+    first_word = list_code[/(?:(?!\d+).)*/].strip
     limit_number = list_code[/\d+/].to_i
     sort_by = list_code[/(\bDATE\b)/]
+    expanded_list = [] 
     if first_word == "ALL" || first_word == "all"
-      create_recipe_list(limit_number, sort_by)
+      expanded_list = create_recipe_list(limit_number, sort_by)
     else
-      create_component_list(first_word, sort_by)
+      expanded_list = create_component_list(first_word, sort_by)
     end
+    expanded_list
   end
 
   def create_recipe_list(limit_number, sort_by)
