@@ -3,3 +3,11 @@
   margin: 0 auto;
   position: relative;  
 }
+
+%swash {
+  &:first-letter { 
+    font-feature-settings: "swsh" 1; 
+    -moz-font-feature-settings:"swsh" 1;
+    -webkit-font-feature-settings: 'swsh' 1; 
+  }
+}

@@ -27,8 +27,13 @@
 .list_element {
   float: left;
   width: 295px;
-  height: 275px;
-  h3 { text-align: center; line-height: 0;}
+  height: 255px;
+  h3 { 
+    @extend %swash;
+    text-align: center; 
+    line-height: 0;
+  }
+  img { display: block; margin: 0 auto; }
 }
 
 .home .list_element:first-child { display: none; }

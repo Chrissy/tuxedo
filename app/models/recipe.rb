@@ -19,6 +19,10 @@ class Recipe < ActiveRecord::Base
     component_ids.map { |component_id| Component.find(component_id) }
   end
 
+  def url
+    "/#{id}"
+  end
+
   def update_components
     components.each do |component|
       recipe_ids = component.recipe_ids.push(self.id).uniq

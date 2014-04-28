@@ -9,8 +9,10 @@
     <ul class="list_elements">
       <% @list.elements.each do |element| %>
         <li class="list_element">
-          <%= filepicker_image_tag element.image, w: 275, h: 175, fit: 'crop', align: "center,center" %>
-          <h3><%= element.name %></h3>
+          <%= link_to element.url do %>
+            <%= filepicker_image_tag element.image, w: 275, h: 175, fit: 'crop', align: "center,center" %>
+            <h3><%= element.name %></h3>
+          <% end %>
         </li>
       <% end %>
     </ul>
