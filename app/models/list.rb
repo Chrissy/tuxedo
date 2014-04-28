@@ -10,7 +10,7 @@ class List < ActiveRecord::Base
       element_collection = expand_element_pair(element_pair)
       elements << element_collection
     end
-    elements.flatten
+    elements.flatten.uniq!
   end
 
   def compile_and_store_list_elements
@@ -54,6 +54,10 @@ class List < ActiveRecord::Base
 
   def image
     elements.first.image || elements[1].image || ""
+  end
+
+  def home?
+    name == "Home" || name == "home"
   end
 
   def collect_list_elements(md)

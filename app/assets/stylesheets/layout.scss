@@ -107,20 +107,11 @@ $description-text-color: #635c59;
 $description-border-color: darken($description-text-color, 15%);
 $description-background-color: $background-color; 
 
-.header-title {
-  font-size: 65px;
-  margin: 0;
-  border-bottom: 1px solid $description-border-color;
-  line-height: 130%;
-  margin-bottom: 15px;
-}
-
 .primary {
   width: 610px;
   float: left;
   font-size: 19px;
   padding: 20px 25px;
-  margin-top: -60px;
   margin-bottom: 40px;
   color: $description-text-color;
   background-color: $description-background-color;

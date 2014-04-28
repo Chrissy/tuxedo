@@ -1,4 +1,9 @@
 module ListsHelper
+
+  def title
+    @list.home? ? @list.elements.first.name : @list.name
+  end
+
   def undefined
     @list.id.nil?
   end

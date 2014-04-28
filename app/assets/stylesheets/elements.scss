@@ -1,3 +1,5 @@
+@import "layout";
+
 #logo {
   width: 300px;
   height: 100px;
@@ -9,9 +11,24 @@
   z-index: 2;
 }
 
+.header-title {
+  font-size: 85px;
+  margin: 0;
+  line-height: 130%;
+  margin-bottom: 15px;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: white;
+  bottom: 30%;
+  margin-bottom: -50px
+}
+
 .list_element {
   float: left;
   width: 295px;
   height: 275px;
   h3 { text-align: center; line-height: 0;}
 }
+
+.home .list_element:first-child { display: none; }
