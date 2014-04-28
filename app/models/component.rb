@@ -7,6 +7,10 @@ class Component < ActiveRecord::Base
     "/components/#{id}"
   end
 
+  def image
+    recipes.first.image
+  end
+
   def recipes
     recipe_ids.map { |recipe_id| Recipe.find(recipe_id) }
   end
