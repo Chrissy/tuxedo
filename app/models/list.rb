@@ -13,6 +13,10 @@ class List < ActiveRecord::Base
     elements.flatten.uniq
   end
 
+  def url
+    "/list/#{id}"
+  end
+
   def compile_and_store_list_elements
     elements = collect_list_elements(content_as_markdown)
     self.update_attribute(:element_ids, elements)
