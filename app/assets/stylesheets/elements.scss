@@ -36,7 +36,7 @@
   img { display: block; margin: 0 auto; }
 }
 
-.admin_element {
+.list_element_small {
   img { 
     max-width: 100px;
     min-height: 60px;
@@ -50,11 +50,9 @@
   }
 }
 
-.admin_create_link {
+.subtle_button {
   font-size: 18px;
   border: 1px solid #bbb;
   padding: 2px 8px 3px;
   border-radius: 3px;
 }
-
-.home .list_element:first-child { display: none; }
