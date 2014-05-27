@@ -3,3 +3,5 @@
   <%= render 'admin_element', :elements => @components %>
   <%= render 'admin_element', :elements => @lists %>
 </div>
+
+<%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => "logout-button" %>
