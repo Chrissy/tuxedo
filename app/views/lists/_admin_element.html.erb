@@ -11,7 +11,7 @@
         <td>
           <%= link_to element.name, element.url, :class => "admin_element_name" %>
           <%= link_to "edit", element.edit_url %> |
-          <%= link_to "delete", element.delete_url %> 
+          <%= link_to "delete", delete_link(element) %> 
         </td>
       </tr>
     <% end %>
