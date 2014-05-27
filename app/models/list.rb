@@ -70,10 +70,6 @@ class List < ActiveRecord::Base
     name == "Home" || name == "home"
   end
 
-  def delete_url
-    ""
-  end
-
   def collect_list_elements(md)
     recipes = []
     md.gsub(/(\=|\:|\#)\[(.*?)\]/) do |*|

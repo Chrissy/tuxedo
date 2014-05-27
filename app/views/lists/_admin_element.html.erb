@@ -1,5 +1,6 @@
 <div class="admin_widget">
   <h1 class="admin_element_label"><%= name_for_display(elements.first) %></h1>
+  <%= link_to "create", new_link(elements.first), :class => "admin_create_link" %>
   <table class="recipe_admin">
     <% elements.each do |element| %>
       <tr class="admin_element <%= admin_element_class_name(element) %>">

@@ -33,8 +33,8 @@ class ListsController < ApplicationController
   end
 
   def delete
-    @list.delete
-    redirect_to "/"
+    List.find(params[:id]).delete() if user_signed_in?
+    redirect_to "/admin"
   end
 
   def all
