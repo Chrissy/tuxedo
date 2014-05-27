@@ -7,8 +7,15 @@ class Component < ActiveRecord::Base
     "/components/#{id}"
   end
 
+  def edit_url
+    "/components/edit/#{id}"
+  end
+
+  def delete_url
+  end
+
   def image
-    recipes.first.image
+    recipes.first.image if recipes.first
   end
 
   def recipes

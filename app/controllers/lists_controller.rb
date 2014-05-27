@@ -33,7 +33,7 @@ class ListsController < ApplicationController
   end
 
   def delete
-    List.find(params[:id]).delete() if user_signed_in?
+    @list.delete
     redirect_to "/"
   end
 
@@ -42,6 +42,12 @@ class ListsController < ApplicationController
     respond_to do |format|
       format.json {}
     end
+  end
+
+  def admin
+    @recipes = Recipe.all.sort_by(&:name)
+    @components = Component.all.sort_by(&:name)
+    @lists = List.all.sort_by(&:name)
   end
 
   private

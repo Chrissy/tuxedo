@@ -17,6 +17,10 @@ class List < ActiveRecord::Base
     "/list/#{id}"
   end
 
+  def edit_url
+    "/list/edit/#{id}"
+  end
+
   def compile_and_store_list_elements
     elements = collect_list_elements(content_as_markdown)
     self.update_attribute(:element_ids, elements)
@@ -59,11 +63,15 @@ class List < ActiveRecord::Base
   end
 
   def image
-    elements.first.image || elements[1].image || ""
+    elements.first.image if elements.first
   end
 
   def home?
     name == "Home" || name == "home"
+  end
+
+  def delete_url
+    ""
   end
 
   def collect_list_elements(md)

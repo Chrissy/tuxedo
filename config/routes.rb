@@ -5,9 +5,7 @@ Tuxno2::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'lists#home'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  get 'admin' => 'lists#admin'
 
   get 'new' => 'recipes#new'
   get 'all' => 'recipes#all'

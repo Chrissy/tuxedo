@@ -49,6 +49,7 @@ body {
 
 .content {
   @extend %centered-content-box;
+  .global-header + & { top: 80px; }
 }
 
 $components-border-color: #777;
@@ -122,6 +123,15 @@ $description-background-color: $background-color;
   @extend %centered-content-box;
   position: relative;
   top: 60px;
+}
+
+.content.admin {
+  width: 1080px;
+  .admin_widget {
+    width: 30%;
+    float: left;
+    margin-right: 3.33333%;
+  }
 }
 
 .home-content {

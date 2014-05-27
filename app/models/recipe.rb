@@ -23,6 +23,14 @@ class Recipe < ActiveRecord::Base
     "/#{id}"
   end
 
+  def edit_url
+    "/edit/#{id}"
+  end
+
+  def delete_url
+    ""
+  end
+
   def update_components
     components.each do |component|
       recipe_ids = component.recipe_ids.push(self.id).uniq

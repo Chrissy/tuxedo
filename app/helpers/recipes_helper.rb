@@ -9,7 +9,7 @@ module RecipesHelper
   end
 
   def edit_url
-    "/edit/#{@recipe.id}"
+    @recipe.edit_url
   end
 
   def default_text(text_for)
