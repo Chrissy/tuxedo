@@ -26,7 +26,7 @@ class RecipesController < ApplicationController
 
   def delete
     Recipe.find(params[:id]).delete() if user_signed_in?
-    redirect_to "/"
+    redirect_to action: "admin", controller: "lists"
   end
 
   def all
