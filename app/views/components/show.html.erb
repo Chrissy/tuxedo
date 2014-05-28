@@ -3,6 +3,7 @@
     <%= filepicker_image_tag @component.image, w: 1880, h: 1080, fit: 'crop', crop: "0,0,1880,1080", align: "center,center" %>
     <h1 class="header-title"><%= @component.name.titleize %></h1>
   </div>
+  <%= render 'admin/user_links' %>
 </div>
 <div class="content component">
   <div class="aside"> 
@@ -17,4 +18,3 @@
     <p><%= @component.description %></p>
   </div>
 </div>
-<a href="<%= edit_url() %>">edit</a>

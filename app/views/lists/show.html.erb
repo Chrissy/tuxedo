@@ -3,6 +3,7 @@
     <%= filepicker_image_tag @list.image, w: 1880, h: 1080, fit: 'crop', crop: "0,0,1880,1080", align: "center,center" %>
     <h1 class="header-title"><%= title %></h1>
   </div>
+  <%= render 'admin/user_links' %>
 </div>
 <div class="content list<%= " home" if @list.home? %>">
   <div class="primary">
@@ -18,4 +19,3 @@
     </ul>
   </div>
 </div>
-<a href="<%= edit_url() %>">edit</a>

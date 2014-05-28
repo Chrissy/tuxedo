@@ -51,8 +51,13 @@
 }
 
 .subtle_button {
-  font-size: 18px;
-  border: 1px solid #bbb;
+  font-size: 16px;
+  border: 1px solid rgba(100,100,100,0.4);
   padding: 2px 8px 3px;
   border-radius: 3px;
+}
+
+.authenticate { 
+  display: none;
+  &.authenticated { display: block; }
 }
