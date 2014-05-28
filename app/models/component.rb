@@ -19,7 +19,7 @@ class Component < ActiveRecord::Base
   end
 
   def recipes
-    recipe_ids.map { |recipe_id| Recipe.find(recipe_id) }
+    recipe_ids.map { |recipe_id| Recipe.find_by_id(recipe_id) } - ["",nil]
   end
 
   def link
