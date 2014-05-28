@@ -10,7 +10,7 @@ class List < ActiveRecord::Base
       element_collection = expand_element_pair(element_pair)
       elements << element_collection
     end
-    elements.flatten.uniq
+    elements.flatten.uniq - ["",nil]
   end
 
   def url
