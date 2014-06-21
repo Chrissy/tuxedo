@@ -12,6 +12,7 @@
       <a href="/" id="logo" class="sprite-tuxno2-logo">
         Tuxedo Number Two: Cocktails, Spiritis, Drinks, Etc.
       </a>
+      <%= render 'lists/links', :list => List.find_by_name("Links") %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     </div>

@@ -24,6 +24,17 @@
   margin-bottom: -50px
 }
 
+.links {
+  position: absolute;
+  z-index: 5;
+  right: 15px;
+  top: 10px;
+  text-transform: uppercase;
+  font-size: 13px;
+  .link { color: #999;}
+  .link:not(:last-child):after { content: " • "}
+}
+
 .list_element {
   float: left;
   width: 295px;
