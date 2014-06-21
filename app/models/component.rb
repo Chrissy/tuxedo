@@ -21,6 +21,10 @@ class Component < ActiveRecord::Base
   def recipes
     recipe_ids.map { |recipe_id| Recipe.find_by_id(recipe_id) } - ["",nil]
   end
+  
+  def list_elements
+    list.nil? ? recipes : List.find(list).elements
+  end
 
   def link
     "<a href='#{url}' class='component'>#{name}</a>"

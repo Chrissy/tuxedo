@@ -3,7 +3,6 @@ class ComponentsController < ApplicationController
 
   def show
     @component = Component.find(params[:id])
-    @recipes = @component.recipes
     #@image = @component.image ? @component.image : @recipes.first.image
   end
 

@@ -9,8 +9,8 @@
   <div class="aside"> 
     <ul class="recipes">
       <h1>Recipes</h1>
-      <% @recipes.each do |recipe| %>
-        <li><%= link_to recipe.name, recipe %></li>
+      <% @component.list_elements.each do |list_element| %>
+        <li><%= link_to list_element.name, list_element.url %></li>
       <% end %>
     </ul>
   </div>
