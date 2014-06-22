@@ -20,9 +20,9 @@ class window.Search
   build_typeahead: (bloodhound_instance) ->
     $(@input).typeahead(null, {
       source: bloodhound_instance.ttAdapter()
-      highlight: true,
-      hint: true,
-      minLength: 3,
+      highlight: false,
+      hint: false,
+      minLength: 2,
       name: 'recipes',
       displayKey: 'val',
     });

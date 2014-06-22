@@ -24,7 +24,6 @@ body {
   @extend %centered-content-box;
   position: relative;
   .search-container {
-    width: 300px;
     position: absolute;
     z-index: 5;
     left: 230px;

@@ -31,6 +31,37 @@
   .link:not(:last-child):after { content: " • "}
 }
 
+.twitter-typeahead {
+  width: 400px;
+  color: #ccc;
+  .tt-dropdown-menu { 
+    background-color: rgba(50,50,50,0.8);
+    border: 1px solid #333; 
+    width: 100%;
+  }
+  .tt-suggestion {
+    border-bottom: 1px solid #333;
+    padding: 10px 20px;
+    margin: 0;
+    display: block;
+    line-height: 0;
+    float: left;
+    width: 100%;
+    cursor: pointer;
+    &.tt-cursor { background-color: rgba(70,70,70,0.8); color: white; }
+  }
+  .tt-input, .tt-hint { 
+    margin-bottom: 0;
+    background-color: rgba(50,50,50,0.8) !important; 
+    color: #ccc;
+  }
+  .tt-input:focus {
+    outline: 0;
+    border: 1px solid #999;
+  }
+  .tt-hint { background-color: transparent !important; }
+}
+
 .list_element {
   float: left;
   width: 295px;
