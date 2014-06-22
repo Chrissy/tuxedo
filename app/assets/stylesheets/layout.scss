@@ -23,21 +23,29 @@ body {
 .global-header {
   @extend %centered-content-box;
   position: relative;
-  .header-secondary {
-    position: absolute;
-    width: 200px;
-    top: 12px;
-    right: 10px;
-  }
-  .links {
-    float: right;
-    clear: both;
-    position: relative;
-    z-index: 4;
-    margin-top: 6px;
-    width: 300px;
-    text-align: right;
-  }
+}
+
+.header-primary, .header-secondary {
+  width: 100%;
+  position: absolute;
+  z-index: 5;
+}
+
+.header-primary {
+  top: 25px;
+}
+
+.search-wrapper {
+  position: relative;
+  right: 8px;
+  top: 8px;
+}
+
+.header-secondary {
+  height: 24px;
+  padding: 4px 10px;
+  border-bottom: 1px solid #333; 
+  .links { float: left; }
 }
 
 .header {

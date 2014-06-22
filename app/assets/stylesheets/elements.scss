@@ -24,14 +24,16 @@
   margin-bottom: -50px
 }
 
-.links {
+.links, .right-links {
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 12px;
   .link:not(:last-child):after { content: " • "}
 }
 
+.right-links { float: right; }
+
 .twitter-typeahead {
-  width: 400px;
+  width: 300px;
   color: #ccc;
   font-size: 20px;
   position: relative;
@@ -84,11 +86,10 @@
   color: #ccc;
   height: 27px;
   font-size: 16px;
-  width: 200px;
+  width: 300px;
   float: right;
   position: relative;
   opacity: 0.7;
-  &:focus { width: 100%; }
 }
 
 .list_element {
