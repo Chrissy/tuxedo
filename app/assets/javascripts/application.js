@@ -17,4 +17,5 @@
 //= require jquery.atwho.min.js
 //= require typeahead.bundle.js
 //= require classes/form
-//= require events/forms_events
+//= require classes/search
+//= require events/events
