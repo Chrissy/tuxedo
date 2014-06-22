@@ -1,11 +1,12 @@
 class window.Search
   constructor: (input) ->
     self = @
-    @input = input
+    @input = $(input)
     @get().promise().then((data) ->
       bloodhound_instance = self.build_bloodhound(data)
       bloodhound_instance.initialize()
       self.build_typeahead(bloodhound_instance)
+      self.listenForSelect()
     )
     
   build_bloodhound: (data) ->
@@ -18,7 +19,7 @@ class window.Search
       })
       
   build_typeahead: (bloodhound_instance) ->
-    $(@input).typeahead(null, {
+    @input.typeahead(null, {
       source: bloodhound_instance.ttAdapter()
       highlight: false,
       hint: false,
@@ -30,4 +31,9 @@ class window.Search
   get: ->
     $.get("/search.json").then( 
       (data) -> return $.makeArray(data)
+    )
+    
+  listenForSelect: ->
+    @input.on("typeahead:selected", (event, object, name) -> 
+      window.location = object.url
     )
