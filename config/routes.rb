@@ -10,11 +10,13 @@ Tuxno2::Application.routes.draw do
 
   get 'new' => 'recipes#new'
   get 'all' => 'recipes#all'
+  get 'search' => 'recipes#search'
   get ':id' => 'recipes#show', as: :recipe
   get 'edit/:id' => 'recipes#edit', as: :edit
   post 'update/:id' => 'recipes#update', as: :update
   post 'create' => 'recipes#create', as: :create
   get 'delete/:id' => 'recipes#delete'
+  
 
   get 'components/all' => 'components#all'
   get 'components/new' => 'components#new'

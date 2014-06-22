@@ -23,6 +23,20 @@ body {
 .global-header {
   @extend %centered-content-box;
   position: relative;
+  .search-container {
+    width: 300px;
+    position: absolute;
+    z-index: 5;
+    left: 230px;
+    top: 10px;
+    color: white;
+  }
+  .links {
+    position: absolute;
+    z-index: 5;
+    right: 15px;
+    top: 10px;
+  }
 }
 
 .header {

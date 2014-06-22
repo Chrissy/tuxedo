@@ -15,5 +15,6 @@
 //= require turbolinks
 //= require jquery.caret.js
 //= require jquery.atwho.min.js
+//= require typeahead.bundle.js
 //= require classes/form
 //= require events/forms_events

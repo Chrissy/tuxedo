@@ -35,6 +35,13 @@ class RecipesController < ApplicationController
       format.json {}
     end
   end
+  
+  def search
+    @recipes = Recipe.all
+    respond_to do |format|
+      format.json {}
+    end
+  end
 
   private
 
