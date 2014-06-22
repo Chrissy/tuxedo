@@ -1,4 +1,4 @@
-@import "compass/utilities/sprites";
+@import "compass/utilities/sprites/base";
 @import "sprite/*.png";
 @import "helpers";
 @include all-sprite-sprites;
@@ -23,18 +23,18 @@ body {
 .global-header {
   @extend %centered-content-box;
   position: relative;
-  .search-container {
+  .header-secondary {
     position: absolute;
-    z-index: 5;
-    left: 230px;
-    top: 10px;
-    color: white;
+    width: 70%;
+    top: 12px;
+    right: 10px;
   }
   .links {
-    position: absolute;
-    z-index: 5;
-    right: 15px;
-    top: 10px;
+    float: right;
+    clear: both;
+    position: relative;
+    z-index: 4;
+    margin-top: 6px;
   }
 }
 

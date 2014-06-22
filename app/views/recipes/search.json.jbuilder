@@ -1,4 +1,4 @@
-json.array! @recipes do |recipe|
-  json.val recipe.name
-  json.url recipe.url
+json.array! @elements do |element|
+  json.val element.name
+  json.url element.url
 end

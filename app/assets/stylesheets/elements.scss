@@ -1,8 +1,8 @@
 @import "layout";
 
 #logo {
-  width: 300px;
-  height: 100px;
+  width: 170px;
+  height: 30px;
   display: block;
   text-indent: -99999px;
   position: absolute;
@@ -27,13 +27,17 @@
 .links {
   text-transform: uppercase;
   font-size: 13px;
-  .link { color: #999;}
   .link:not(:last-child):after { content: " • "}
 }
 
 .twitter-typeahead {
   width: 400px;
   color: #ccc;
+  font-size: 20px;
+  position: relative;
+  z-index: 5;
+  color: white;
+  float: right;
   .tt-dropdown-menu { 
     background-color: rgba(50,50,50,0.8);
     border: 1px solid #333; 
@@ -54,10 +58,30 @@
     margin-bottom: 0;
     background-color: rgba(50,50,50,0.8) !important; 
     color: #ccc;
+    height: 27px;
+    font-size: 16px;
+    width: 200px;
+    float: right;
+    position: relative;
+    opacity: 0.7;
+    &:focus { width: 100%; }
+  }
+  &:before { 
+    @extend .sprite-search;
+    content: "";
+    float: left;
+    width: 20px;
+    height: 20px;
+    opacity: 0.3;
+    z-index: 6;
+    top: 3px;
+    right: 5px;
+    position: absolute; 
   }
   .tt-input:focus {
     outline: 0;
     border: 1px solid #999;
+    &:before { opacity: 1; }
   }
   .tt-hint { background-color: transparent !important; }
 }

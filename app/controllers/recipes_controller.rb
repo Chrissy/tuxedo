@@ -1,3 +1,6 @@
+require 'list.rb'
+require 'component.rb'
+
 class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
@@ -37,7 +40,8 @@ class RecipesController < ApplicationController
   end
   
   def search
-    @recipes = Recipe.all
+    @elements = []
+    @elements.concat(Recipe.all).concat(List.all).concat(Component.all)
     respond_to do |format|
       format.json {}
     end
