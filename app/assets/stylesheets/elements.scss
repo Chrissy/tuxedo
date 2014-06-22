@@ -54,18 +54,6 @@
     cursor: pointer;
     &.tt-cursor { background-color: rgba(70,70,70,0.8); color: white; }
   }
-  .tt-input, .tt-hint { 
-    margin-bottom: 0;
-    background-color: rgba(50,50,50,0.8) !important; 
-    color: #ccc;
-    height: 27px;
-    font-size: 16px;
-    width: 200px;
-    float: right;
-    position: relative;
-    opacity: 0.7;
-    &:focus { width: 100%; }
-  }
   &:before { 
     @extend .sprite-search;
     content: "";
@@ -83,7 +71,24 @@
     border: 1px solid #999;
     &:before { opacity: 1; }
   }
-  .tt-hint { background-color: transparent !important; }
+  .tt-hint { 
+    background-color: transparent !important;
+    right: 0 !important;
+    left: auto !important; 
+  }
+}
+
+.twitter-typeahead .tt-input, .twitter-typeahead .tt-hint, input.search { 
+  margin-bottom: 0;
+  background-color: rgba(50,50,50,0.8) !important; 
+  color: #ccc;
+  height: 27px;
+  font-size: 16px;
+  width: 200px;
+  float: right;
+  position: relative;
+  opacity: 0.7;
+  &:focus { width: 100%; }
 }
 
 .list_element {

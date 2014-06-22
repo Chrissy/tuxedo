@@ -25,7 +25,7 @@ body {
   position: relative;
   .header-secondary {
     position: absolute;
-    width: 70%;
+    width: 200px;
     top: 12px;
     right: 10px;
   }
@@ -35,6 +35,8 @@ body {
     position: relative;
     z-index: 4;
     margin-top: 6px;
+    width: 300px;
+    text-align: right;
   }
 }
 
