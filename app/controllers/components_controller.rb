@@ -16,11 +16,13 @@ class ComponentsController < ApplicationController
   def update
     component = Component.find(params[:id])
     component.update_attributes(component_params)
+    component.create_or_update_list(params[:component][:list_as_markdown])
     redirect_to action: "show", id: component.id
   end
 
   def create
     component = Component.create(component_params)
+    component.create_list(params[:component][:list_as_markdown])
     redirect_to action: "show", id: component.id
   end
 
@@ -39,6 +41,6 @@ class ComponentsController < ApplicationController
   private
 
   def component_params
-    params.require(:component).permit(:name, :description, :image, :list)
+    params.require(:component).permit(:name, :description, :image)
   end
 end

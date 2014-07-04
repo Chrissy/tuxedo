@@ -4,8 +4,9 @@
     <%= f.text_area :description, :value => default_text(:description), :placeholder => "description" %>
   </div>
   <div class="form_block secondary">
+    <%= f.label "component recipes" %>
+    <%= f.text_area :list_as_markdown, :value => @component.list_for_textarea %>
     <%= f.filepicker_field :image, :button_text => "upload a cover photo"  %>
-    <%= f.select :list, @component.options_for_select %>
     <%= f.submit(submit_text()) %>
   </div>
 <% end %>
