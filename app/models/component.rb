@@ -42,7 +42,7 @@ class Component < ActiveRecord::Base
   end
   
   def create_list(markdown)
-    list_element = List.new(content_as_markdown: markdown)
+    list_element = List.new(content_as_markdown: markdown, name: name)
     list_element.compile_and_store_list_elements
     update_attribute(:list, list_element.id)
   end
