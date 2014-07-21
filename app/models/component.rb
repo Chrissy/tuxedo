@@ -32,17 +32,17 @@ class Component < ActiveRecord::Base
   end
   
   def create_or_update_list(markdown)
-    has_list ? update_list(markdown) : create_list(markdown) 
+    has_list ? update_list(markdown) : create_list(markdown)
   end
   
   def update_list(markdown)
     list_element = List.find(list)
-    list_element.update_attributes(content_as_markdown: markdown)
+    list_element.update_attributes(content_as_markdown: markdown, component: id)
     list_element.compile_and_store_list_elements
   end
   
   def create_list(markdown)
-    list_element = List.new(content_as_markdown: markdown, name: name)
+    list_element = List.new(content_as_markdown: markdown, name: name, component: id)
     list_element.compile_and_store_list_elements
     update_attribute(:list, list_element.id)
   end
