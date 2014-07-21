@@ -41,7 +41,8 @@ class RecipesController < ApplicationController
   
   def search
     @elements = []
-    @elements.concat(Recipe.all).concat(List.all).concat(Component.all)
+    lists = List.all.keep_if { |list| list.component.nil? }
+    @elements.concat(Recipe.all).concat(lists).concat(Component.all)
     respond_to do |format|
       format.json {}
     end
