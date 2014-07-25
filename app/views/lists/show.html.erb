@@ -7,15 +7,6 @@
 </div>
 <div class="content list<%= " home" if @list.home? %>">
   <div class="primary">
-    <ul class="list_elements">
-      <% @list.elements.each do |element| %>
-        <li class="list_element">
-          <%= link_to element.url do %>
-            <%= filepicker_image_tag element.image, w: 275, h: 175, fit: 'crop', align: "center,center" %>
-            <h3><%= element.name.titleize %></h3>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+    <%= render "list_with_images", :list_elements => @list.elements %>
   </div>
 </div>

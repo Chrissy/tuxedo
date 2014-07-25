@@ -61,9 +61,4 @@ class Component < ActiveRecord::Base
     end
     Recipe.update_all
   end
-  
-  def options_for_select
-    List.all.map { |list| [list.name, list.id] }.unshift(["Associated List?",""])
-  end
-
 end

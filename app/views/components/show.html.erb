@@ -6,15 +6,7 @@
   <%= render 'admin/user_links' %>
 </div>
 <div class="content component">
-  <div class="aside"> 
-    <ul class="recipes">
-      <h1>Recipes</h1>
-      <% @component.list_elements.each do |list_element| %>
-        <li><%= link_to list_element.name, list_element.url %></li>
-      <% end %>
-    </ul>
-  </div>
   <div class="primary">
-    <p><%= @component.description %></p>
+    <%= render "/lists/list_with_images", :list_elements => @component.list_elements %>
   </div>
 </div>

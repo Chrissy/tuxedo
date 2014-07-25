@@ -38,7 +38,7 @@ class ListsController < ApplicationController
   end
 
   def all
-    @lists = List.all.map(&:name)
+    @lists = List.all_for_display.map(&:name)
     respond_to do |format|
       format.json {}
     end
@@ -47,7 +47,7 @@ class ListsController < ApplicationController
   def admin
     @recipes = Recipe.all.sort_by(&:name)
     @components = Component.all.sort_by(&:name)
-    @lists = List.all.sort_by(&:name)
+    @lists = List.all_for_display.sort_by(&:name)
   end
 
   private
