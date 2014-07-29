@@ -11,4 +11,8 @@ module ApplicationHelper
   def links
     List.find_by_name("Links") || List.new
   end
+  
+  def swash(text)
+    "<span class='swash-cap'>#{text[0]}</span>#{text[1..-1]}".html_safe
+  end
 end

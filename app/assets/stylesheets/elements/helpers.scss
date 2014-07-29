@@ -6,8 +6,8 @@
 
 %swash {
   &:first-letter, .swash-cap { 
-    font-feature-settings: "swsh" 1; 
-    -moz-font-feature-settings:"swsh" 1;
-    -webkit-font-feature-settings: 'swsh' 1; 
+    font-feature-settings: "swsh"; 
+    -moz-font-feature-settings:"swsh";
+    -webkit-font-feature-settings: "swsh";
   }
 }
