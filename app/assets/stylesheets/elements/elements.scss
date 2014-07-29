@@ -1,12 +1,10 @@
-#logo {
-  width: 170px;
-  height: 30px;
-  display: block;
-  text-indent: -99999px;
-  position: absolute;
-  left: 15px;
-  top: 10px;
-  z-index: 2;
+@import "../elements/helpers";
+
+.subtle_button {
+  font-size: 16px;
+  border: 1px solid rgba(100,100,100,0.4);
+  padding: 2px 8px 3px;
+  border-radius: 3px;
 }
 
 .header-title {
@@ -22,108 +20,7 @@
   margin-bottom: -50px
 }
 
-.links, .right-links {
-  text-transform: uppercase;
-  font-size: 12px;
-  .link:not(:last-child):after { content: " • "}
-}
-
-.right-links { float: right; }
-
-.twitter-typeahead {
-  width: 300px;
-  color: #ccc;
-  font-size: 20px;
-  position: relative;
-  z-index: 5;
-  color: white;
-  float: right;
-  .tt-dropdown-menu { 
-    background-color: rgba(50,50,50,0.8);
-    border: 1px solid #333; 
-    width: 100%;
-  }
-  .tt-suggestion {
-    border-bottom: 1px solid #333;
-    padding: 10px 20px;
-    margin: 0;
-    display: block;
-    line-height: 0;
-    float: left;
-    width: 100%;
-    cursor: pointer;
-    &.tt-cursor { background-color: rgba(70,70,70,0.8); color: white; }
-  }
-  &:before { 
-    @extend .sprite-search;
-    content: "";
-    float: left;
-    width: 20px;
-    height: 20px;
-    opacity: 0.3;
-    z-index: 6;
-    top: 3px;
-    right: 5px;
-    position: absolute; 
-  }
-  .tt-input:focus {
-    outline: 0;
-    border: 1px solid #999;
-    &:before { opacity: 1; }
-  }
-  .tt-hint { 
-    background-color: transparent !important;
-    right: 0 !important;
-    left: auto !important; 
-  }
-}
-
-.twitter-typeahead .tt-input, .twitter-typeahead .tt-hint, input.search { 
-  margin-bottom: 0;
-  background-color: rgba(50,50,50,0.8) !important; 
-  color: #ccc;
-  height: 27px;
-  font-size: 16px;
-  width: 300px;
-  float: right;
-  position: relative;
-  opacity: 0.7;
-}
-
-.list_element {
-  float: left;
-  width: 295px;
-  height: 255px;
-  h3 { 
-    @extend %swash;
-    text-align: center; 
-    line-height: 0;
-  }
-  img { display: block; margin: 0 auto; }
-}
-
-.list_element_small {
-  img { 
-    max-width: 100px;
-    min-height: 60px;
-    background: black;
-    margin-right: 10px; 
-  }
-  .admin_element_name { 
-    font-weight: bold;
-    display: block;
-    border-bottom: 1px solid #bbb; 
-  }
-}
-
-.subtle_button {
-  font-size: 16px;
-  border: 1px solid rgba(100,100,100,0.4);
-  padding: 2px 8px 3px;
-  border-radius: 3px;
-}
-
-.authenticate { 
-  display: none;
-  &.authenticated { display: block; }
+.content {
+  @extend %centered-content-box;
+  .global-header + & { top: 80px; }
 }

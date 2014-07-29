@@ -5,6 +5,25 @@
 
 $header-height: 540px;
 
+#logo {
+  width: 170px;
+  height: 30px;
+  display: block;
+  text-indent: -99999px;
+  position: absolute;
+  left: 15px;
+  top: 10px;
+  z-index: 2;
+}
+
+.links, .right-links {
+  text-transform: uppercase;
+  font-size: 12px;
+  .link:not(:last-child):after { content: " • "}
+}
+
+.right-links { float: right; }
+
 .global-header {
   @extend %centered-content-box;
   position: relative;

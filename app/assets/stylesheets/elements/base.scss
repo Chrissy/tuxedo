@@ -15,8 +15,3 @@ body {
   margin: 0;
   padding: 0;
 }
-
-.content {
-  @extend %centered-content-box;
-  .global-header + & { top: 80px; }
-}

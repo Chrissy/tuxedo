@@ -1,0 +1,25 @@
+.list_element {
+  float: left;
+  width: 295px;
+  height: 255px;
+  h3 { 
+    @extend %swash;
+    text-align: center; 
+    line-height: 0;
+  }
+  img { display: block; margin: 0 auto; }
+}
+
+.list_element_small {
+  img { 
+    max-width: 100px;
+    min-height: 60px;
+    background: black;
+    margin-right: 10px; 
+  }
+  .admin_element_name { 
+    font-weight: bold;
+    display: block;
+    border-bottom: 1px solid #bbb; 
+  }
+}

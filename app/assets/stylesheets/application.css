@@ -19,7 +19,8 @@
  
  *= require widgets/list.scss
  *= require widgets/recipe.scss
- *= require widgets/header.scss
+ *= require widgets/global-header.scss
+ *= require widgets/search.scss
  
  *= require pages/admin-page.scss
  *= require pages/list-page.scss
