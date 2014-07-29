@@ -1,0 +1,9 @@
+@import "../elements/helpers";
+
+.home-content {
+  @extend %centered-content-box;
+  position: relative;
+  top: 80px;
+}
+.home .list_element:first-child { display: none; }
+.list_elements, .list .primary, .component .primary { width: 100%; }

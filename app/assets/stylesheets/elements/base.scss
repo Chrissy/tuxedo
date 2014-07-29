@@ -1,0 +1,22 @@
+@import "../elements/helpers";
+
+$background-color: #ece7e6;
+
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+ul, li { list-style-type: none; padding: 0; margin: 0; }
+a { text-decoration: none; }
+
+body {
+  background: $background-color;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  @extend %centered-content-box;
+  .global-header + & { top: 80px; }
+}

@@ -11,8 +11,17 @@
  *= require_self
  *= require jquery.atwho.css
 
- *= require typography.css
- *= require elements.scss
- *= require layout.scss
- *= require forms.scss
+ *= require elements/base.scss
+ *= require elements/typography.css
+ *= require elements/elements.scss
+ *= require elements/forms.scss
+ *= require elements/helpers.scss
+ 
+ *= require widgets/list.scss
+ *= require widgets/recipe.scss
+ *= require widgets/header.scss
+ 
+ *= require pages/admin-page.scss
+ *= require pages/list-page.scss
+ *= require pages/recipe-page.scss
  */

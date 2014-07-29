@@ -1,0 +1,34 @@
+.edit_panel {
+  @extend %centered-content-box;
+  position: relative;
+  top: 60px;
+}
+
+.content.admin {
+  width: 1080px;
+  .admin_widget {
+    width: 30%;
+    float: left;
+    margin-right: 3.33333%;
+  }
+  .admin_create_link {
+    @extend .subtle_button;
+    position: relative;
+    top: -4px;
+  }
+  .admin_element { @extend .list_element_small; }
+  .admin_element_label { margin-bottom: 0px; }
+}
+
+.logout-button {
+  @extend .subtle_button;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.user_links {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}

@@ -1,0 +1,20 @@
+@import '../widgets/recipe';
+
+$description-text-color: #635c59;
+$description-border-color: darken($description-text-color, 15%);
+$description-background-color: $background-color; 
+
+.aside {
+  @extend %recipe;
+}
+
+.primary {
+  width: 610px;
+  float: left;
+  font-size: 19px;
+  padding: 20px 25px;
+  margin-bottom: 40px;
+  color: $description-text-color;
+  background-color: $description-background-color;
+  p { max-width: 550px; }
+}

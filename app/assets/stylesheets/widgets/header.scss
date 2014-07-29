@@ -1,0 +1,57 @@
+@import "compass/utilities/sprites/base";
+@import "sprite/*.png";
+@import "../elements/helpers";
+@include all-sprite-sprites;
+
+$header-height: 540px;
+
+.global-header {
+  @extend %centered-content-box;
+  position: relative;
+}
+
+.header-primary, .header-secondary {
+  width: 100%;
+  position: absolute;
+  z-index: 5;
+}
+
+.header-primary {
+  top: 25px;
+}
+
+.search-wrapper {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  width: 300px;
+}
+
+.header-secondary {
+  height: 24px;
+  padding: 4px 10px;
+  border-bottom: 1px solid #333; 
+  .links { float: left; }
+}
+
+.header {
+  width: 100%;
+  background: #030a0d;
+  min-height: $header-height;
+  overflow: hidden;
+}
+
+.header-content {
+  @extend %centered-content-box;
+  min-height: $header-height;
+  border: 1px solid #222;
+
+  & > img { 
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+  }
+}

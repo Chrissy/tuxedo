@@ -1,0 +1,53 @@
+@import '../elements/base.scss';
+
+$components-border-color: #777;
+$components-text-color: #d7d4d2;
+$components-bg-color: #54524E;
+
+@mixin natural_component_section($number, $percent) {
+  &:nth-of-type(#{$number}) { 
+    &, & ~ p { 
+      background-color: darken($components-bg-color, $percent);
+      color: darken($components-text-color, $percent*0.7); 
+    }
+    & ~ h1, & ~ li { border-bottom-color: darken($components-border-color, $percent); }
+  }
+}
+
+%recipe {
+  width: 330px;
+  float: left;
+  background-color: $components-bg-color;
+  color: $components-text-color;
+  margin-bottom: 40px;
+  a {
+    color: #aaa; 
+    border-bottom: 1px dotted $components-border-color; 
+  }
+  p, li, h1 {
+    margin: 0;
+    padding: 5px 10px;
+  }
+  ul li:last-child { border-bottom-width: 0; }
+  p { 
+    font-size: 14px;
+    padding-bottom: 7px; 
+  }
+  h1 {
+    color: lighten($components-text-color, 15%);
+    font-size: 20px;
+    border-bottom: 1px solid $components-border-color;
+    margin: 0;
+    font-weight: bold;
+    @include natural_component_section(2, 13%);
+    @include natural_component_section(3, 20%);
+    @include natural_component_section(4, 23%);
+    @include natural_component_section(5, 30%);
+
+  }
+  li {
+    border-bottom: 1px solid $components-border-color;
+    padding-bottom: 9px;
+    margin-top: 8px;
+  }
+}
