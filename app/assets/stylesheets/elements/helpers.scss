@@ -5,7 +5,7 @@
 }
 
 %swash {
-  &:first-letter { 
+  &:first-letter, .swash-cap { 
     font-feature-settings: "swsh" 1; 
     -moz-font-feature-settings:"swsh" 1;
     -webkit-font-feature-settings: 'swsh' 1; 
