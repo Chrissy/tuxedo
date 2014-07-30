@@ -1,4 +1,6 @@
 @import "../elements/helpers";
+@import "../elements/elements";
+@import "../widgets/list";
 
 .edit_panel {
   @extend %centered-content-box;
@@ -27,14 +29,4 @@
   position: absolute;
   right: 20px;
   top: 20px;
-}
-
-.user_links {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-}
-
-.authenticate { 
-  display: none;
 }
