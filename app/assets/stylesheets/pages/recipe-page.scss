@@ -1,6 +1,6 @@
 @import '../widgets/recipe';
 
-$description-text-color: #635c59;
+$description-text-color: #555;
 $description-border-color: darken($description-text-color, 15%);
 $description-background-color: $background-color; 
 
@@ -14,7 +14,17 @@ $description-background-color: $background-color;
   font-size: 19px;
   padding: 20px 25px;
   margin-bottom: 40px;
+  line-height: 130%;
   color: $description-text-color;
   background-color: $description-background-color;
   p { max-width: 550px; }
+  p:first-of-type { margin-top: 0; }
+  p:first-of-type:first-letter {
+    font-size: 51px;
+    float: left;
+    line-height: 0;
+    margin-top: 27px;
+    margin-right: 4px;
+    font-weight: 900;
+  }
 }
