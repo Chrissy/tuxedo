@@ -1,0 +1,13 @@
+<div class="header-content">
+  <%= filepicker_image_tag element.image, w: 1880, h: 1080, fit: 'crop', crop: "0,0,1880,1080", align: "center,center" %>
+  <h1 class="header-title">
+    <a href="<%= element.url %>">
+      <span class="display-number">
+        <span class="no">NO</span>
+        <%= element.try(:number) %>
+      </span>
+      <%= swash(element.name) %>
+    </a>
+  </h1>
+</div>
+<%= render 'admin/user_links' %>

@@ -32,7 +32,7 @@ class Recipe < ActiveRecord::Base
   end
   
   def number
-    Recipe.find(:all, :order => :id).find_index(self)
+    Recipe.find(:all, :order => :id).find_index(self) + 1
   end
 
   def update_components
