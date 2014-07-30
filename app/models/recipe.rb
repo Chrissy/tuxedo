@@ -30,6 +30,10 @@ class Recipe < ActiveRecord::Base
   def delete_url
     ""
   end
+  
+  def number
+    Recipe.find(:all, :order => :id).find_index(self)
+  end
 
   def update_components
     components.each do |component|
