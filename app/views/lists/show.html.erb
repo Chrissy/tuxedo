@@ -1,9 +1,5 @@
 <div class="header list<%= " home" if @list.home? %>">
-  <div class="header-content">
-    <%= filepicker_image_tag @list.image, w: 1880, h: 1080, fit: 'crop', crop: "0,0,1880,1080", align: "center,center" %>
-    <h1 class="header-title"><%= swash(title) %></h1>
-  </div>
-  <%= render 'admin/user_links' %>
+  <%= render "shared/header", :element => @list.header_element %> 
 </div>
 <div class="content list<%= " home" if @list.home? %>">
   <div class="primary">

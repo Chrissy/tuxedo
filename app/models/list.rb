@@ -73,6 +73,10 @@ class List < ActiveRecord::Base
   def home?
     name == "Home" || name == "home"
   end
+  
+  def header_element
+    home? ? elements.first : self
+  end
 
   def collect_list_elements(md)
     recipes = []
