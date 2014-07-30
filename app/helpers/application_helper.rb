@@ -13,6 +13,6 @@ module ApplicationHelper
   end
   
   def swash(text)
-    "<span class='swash-cap'>#{text[0]}</span>#{text[1..-1]}".html_safe
+    "<span class='swash-cap'>#{text[0].upcase}</span>#{text[1..-1]}".html_safe
   end
 end
