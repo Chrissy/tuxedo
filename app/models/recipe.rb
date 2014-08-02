@@ -60,6 +60,9 @@ class Recipe < ActiveRecord::Base
     end
     self.update_attribute(:component_ids, component_list)
     update_components()
-    markdown.render(md)
+    md.gsub!(/\* ([0-9].*?) +/) do |*|
+      "* <span class='amount'>#{$1}</span> "
+    end
+    markdown.render(md) 
   end
 end
