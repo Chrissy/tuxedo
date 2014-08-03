@@ -6,11 +6,11 @@ $components-bg-color: white;
 
 @mixin natural_component_section($number, $percent) {
   &:nth-of-type(#{$number}) { 
-    &, & ~ p { 
+    &, & ~ p, & ~ ul, & ~ ol { 
       background-color: darken($components-bg-color, $percent);
       color: darken($components-text-color, $percent*0.7);
     }
-    & ~ h1, & ~ li { border-bottom-color: darken($components-border-color, $percent); }
+    & ~ h1, & ~ ul li, & ~ ol li { border-bottom-color: darken($components-border-color, $percent); }
     &:after { background: darken($components-border-color, $percent); }
     & + p { padding-top: 10px; }
   }
@@ -26,9 +26,28 @@ $components-bg-color: white;
     color: #aaa; 
     border-bottom: 1px dotted $components-border-color; 
   }
-  ul, p {
+  ul, ol, p {
     padding: 0 13px 12px 13px;
     margin: 0;
+  }
+  ol {
+    counter-reset: li;
+    padding-bottom: 0;
+    li {
+      clear: both;
+      line-height: 130%;
+      padding-bottom: 16px;
+      &:before {
+        content: counter(li);
+        counter-increment: li;
+        float: left;
+        font-size: 29px;
+        font-weight: 900;
+        color: #f5f5f5;
+        margin-right: 8px;
+        line-height: 90%;
+      }
+    }
   }
   p { 
     font-size: 14px;
@@ -42,7 +61,7 @@ $components-bg-color: white;
     padding: 3px 0 0 13px;
     -webkit-font-feature-settings: "smcp";
     -moz-font-feature-settings: "smcp" ;
-    @include natural_component_section(2, 10%);
+    @include natural_component_section(2, 9%);
     @include natural_component_section(3, 15%);
     @include natural_component_section(4, 20%);
     @include natural_component_section(5, 25%);
@@ -57,12 +76,12 @@ $components-bg-color: white;
       bottom: 2px;
     }
   }
-  ul { padding-bottom: 0; }
-  ul li:last-child { border-bottom-width: 0; }
+  ul, ol { padding-bottom: 0; }
+  ul li:last-child, ol li:last-child { border-bottom-width: 0; }
   li {
     border-bottom: 1px solid $components-border-color;
     padding-bottom: 12px;
-    margin-top: 12px;
+    padding-top: 12px;
   }
   .amount {
     display: inline-block;
