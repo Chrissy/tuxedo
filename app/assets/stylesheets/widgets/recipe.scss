@@ -50,4 +50,12 @@ $components-bg-color: #54524E;
     padding-bottom: 9px;
     margin-top: 8px;
   }
+  .amount {
+    display: inline-block;
+    border-right: 1px solid #888;
+    width: 45px;
+    margin-right: 4px;
+    text-align: right;
+    padding-right: 7px;
+  }
 }

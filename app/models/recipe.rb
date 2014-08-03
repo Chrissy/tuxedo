@@ -48,7 +48,7 @@ class Recipe < ActiveRecord::Base
       recipe.update_components
     end
   end
-
+  
   private
 
   def markdown_to_html_with_components(md)
@@ -60,8 +60,11 @@ class Recipe < ActiveRecord::Base
     end
     self.update_attribute(:component_ids, component_list)
     update_components()
-    md.gsub!(/\* ([0-9].*?) +/) do |*|
+    md.gsub!(/\* ([0-9].*?|fill) +/) do |*|
       "* <span class='amount'>#{$1}</span> "
+    end
+    md.gsub!(/\# ([A-Z].*?)/) do |*|
+      "# " << ApplicationController.helpers.swash($1)
     end
     markdown.render(md) 
   end
