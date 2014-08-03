@@ -63,7 +63,7 @@ class Recipe < ActiveRecord::Base
     md.gsub!(/\* ([0-9].*?|fill) +/) do |*|
       "* <span class='amount'>#{$1}</span> "
     end
-    md.gsub!(/\# ([A-Z].*?)/) do |*|
+    md.gsub!(/\# ?([A-Z].*?)/) do |*|
       "# " << ApplicationController.helpers.swash($1)
     end
     markdown.render(md) 
