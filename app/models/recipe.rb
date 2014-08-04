@@ -64,7 +64,7 @@ class Recipe < ActiveRecord::Base
   end
   
   def wrap_units(md)
-    md.gsub(/([0-9])(oz|tsp|tbsp|Tbsp|dash)(\b)/) do |*|
+    md.gsub(/([0-9])(oz|tsp|tbsp|Tbsp|dash|dashes)(\b)/) do |*|
       "#{$1}<span class='unit'>#{$2}</span>#{$3}"
     end
   end
