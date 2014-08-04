@@ -57,13 +57,14 @@ class Recipe < ActiveRecord::Base
      when "0.75" then '¾'
      when "0.3" then '⅓'
      when "0.6" then '⅔'
+     when "0.125" then '⅛'
      else match
      end
    end.html_safe
   end
   
   def wrap_units(md)
-    md.gsub(/([0-9])(oz)(\b)/) do |*|
+    md.gsub(/([0-9])(oz|tsp|tbsp|Tbsp|dash)(\b)/) do |*|
       "#{$1}<span class='unit'>#{$2}</span>#{$3}"
     end
   end
