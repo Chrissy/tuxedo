@@ -22,13 +22,10 @@ $components-bg-color: white;
   background-color: $components-bg-color;
   color: $components-text-color;
   margin-bottom: 40px;
-  a {
-    color: #aaa; 
-    border-bottom: 1px dotted $components-border-color; 
-  }
   ul, ol, p {
     padding: 0 13px 12px 13px;
     margin: 0;
+    font-size: 18px;
   }
   ol {
     counter-reset: li;
@@ -80,7 +77,7 @@ $components-bg-color: white;
   ul li:last-child, ol li:last-child { border-bottom-width: 0; }
   li {
     border-bottom: 1px solid $components-border-color;
-    padding-bottom: 12px;
+    padding-bottom: 14px;
     padding-top: 12px;
   }
   .amount {
@@ -90,5 +87,12 @@ $components-bg-color: white;
     margin-right: 4px;
     text-align: right;
     padding-right: 7px;
+    font-weight: bold;
+  }
+  .unit {
+    font-weight: normal;
+    font-size: 13px;
+    margin-left: 1px;
+    color: lighten($components-text-color, 20%);
   }
 }

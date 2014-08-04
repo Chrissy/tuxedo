@@ -3,7 +3,6 @@
 html, body { font-family: "bookmania"; }
 h1, h2, h3 { font-weight: 900; }
 h1 { @extend %swash; }
-a { color: #635c59; }
 
 @mixin font-face($family, $filename, $font-weight: normal, $font-style: normal) {
   @font-face { 

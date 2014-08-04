@@ -53,7 +53,11 @@
   margin-bottom: -50px;
   z-index: 6;
   -webkit-font-smoothing: antialiased;
-  &, a { color: white; }
+  &, a { 
+    color: white;
+    border-bottom: 0;
+    &:hover { color: white; } 
+  }
 }
 
 .display-number {

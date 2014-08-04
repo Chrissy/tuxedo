@@ -49,6 +49,25 @@ class Recipe < ActiveRecord::Base
     end
   end
   
+  def convert_fractions(str)
+   str.gsub(/0\.[0-9]*.*?/) do |match|
+     case match
+     when "0.5" then '½'
+     when "0.25" then '¼'
+     when "0.75" then '¾'
+     when "0.3" then '⅓'
+     when "0.6" then '⅔'
+     else match
+     end
+   end.html_safe
+  end
+  
+  def wrap_units(md)
+    md.gsub(/([0-9])(oz)(\b)/) do |*|
+      "#{$1}<span class='unit'>#{$2}</span>#{$3}"
+    end
+  end
+  
   private
 
   def markdown_to_html_with_components(md)
@@ -61,7 +80,8 @@ class Recipe < ActiveRecord::Base
     self.update_attribute(:component_ids, component_list)
     update_components()
     md.gsub!(/\* ([0-9].*?|fill) +/) do |*|
-      "* <span class='amount'>#{$1}</span> "
+      modified_md = wrap_units($1)
+      "* <span class='amount'>#{convert_fractions(modified_md)}</span> "
     end
     md.gsub!(/\# ?([A-Z].*?)/) do |*|
       "# " << ApplicationController.helpers.swash($1)
