@@ -9,17 +9,14 @@
   </head>
   <body data-no-turbolink>
     <div class="global-header">
-      <div class="header-secondary">
-        <%= render 'lists/links', :list => links %>
-        <div class="right-links">
-          <a class="link" href="http://twitter.com/tuxno2">Twitter</a>
-          <a class="link" href="#">Pinterest</a>
-        </div>
-      </div>
       <div class="header-primary">
         <a href="/" id="logo" class="sprite-tuxno2-logo-small">
           Tuxedo Number Two: Cocktails, Spiritis, Drinks, Etc.
         </a>
+      </div>
+      <div class="header-secondary">
+        <%= render 'lists/links', :list => links %>
+        <%= render 'shared/social' %>
         <div class="search-wrapper">
           <input type="text" class="search" placeholder="search"></input>
         </div>

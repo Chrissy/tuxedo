@@ -1,28 +1,25 @@
-@import "compass/utilities/sprites/base";
-@import "sprite/*.png";
+@import "../elements/sprite";
 @import "../elements/helpers";
-@include all-sprite-sprites;
 
 $header-height: 540px;
 
 #logo {
   width: 170px;
-  height: 30px;
+  height: 35px;
   display: block;
   text-indent: -99999px;
   position: absolute;
   left: 15px;
-  top: 10px;
+  top: -13px;
   z-index: 2;
 }
 
-.links, .right-links {
+.links {
   text-transform: uppercase;
   font-size: 12px;
+  float: right;
   .link:not(:last-child):after { content: " • "}
 }
-
-.right-links { float: right; }
 
 .global-header {
   @extend %centered-content-box;
@@ -30,7 +27,6 @@ $header-height: 540px;
 }
 
 .header-primary, .header-secondary {
-  width: 100%;
   position: absolute;
   z-index: 5;
 }
@@ -40,17 +36,16 @@ $header-height: 540px;
 }
 
 .search-wrapper {
-  position: absolute;
-  right: 8px;
-  top: 8px;
+  position: relative;
+  top: 5px;
   width: 300px;
 }
 
 .header-secondary {
   height: 24px;
   padding: 4px 10px;
-  border-bottom: 1px solid #333; 
-  .links { float: left; }
+  right: 0;
+  top: 5px;
 }
 
 .header {
@@ -73,4 +68,27 @@ $header-height: 540px;
     left: 0;
     margin: 0;
   }
+}
+
+.user_links {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.social-links {
+  width: 30px;
+  position: absolute;
+  right: -42px;
+  top: 6px;
+}
+
+.social-link {
+  text-indent: -9999%;
+  display: block;
+  width: 25px;
+  height: 25px;
+  opacity: 0.6;
+  margin-bottom: 8px;
+  &:hover { opacity: 1; } 
 }

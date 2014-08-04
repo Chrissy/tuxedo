@@ -1,5 +1,9 @@
+@import "../elements/sprite";
+
+$search-width: 300px;
+
 .twitter-typeahead {
-  width: 300px;
+  width: $search-width;
   color: #ccc;
   font-size: 20px;
   position: relative;
@@ -48,11 +52,11 @@
 
 .twitter-typeahead .tt-input, .twitter-typeahead .tt-hint, input.search { 
   margin-bottom: 0;
-  background-color: rgba(50,50,50,0.8) !important; 
+  background-color: rgba(30,30,30,0.8) !important; 
   color: #ccc;
   height: 27px;
   font-size: 16px;
-  width: 300px;
+  width: $search-width;
   float: right;
   position: relative;
   opacity: 0.7;
