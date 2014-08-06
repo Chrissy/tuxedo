@@ -24,6 +24,9 @@ class List < ActiveRecord::Base
   def self.all_for_display
     List.all.keep_if { |list| list.component.nil? }
   end
+  
+  def subtext
+  end
 
   def compile_and_store_list_elements
     elements = collect_list_elements(content_as_markdown)

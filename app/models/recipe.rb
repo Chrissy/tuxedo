@@ -34,6 +34,10 @@ class Recipe < ActiveRecord::Base
   def number
     Recipe.find(:all, :order => :id).find_index(self) + 1
   end
+  
+  def subtext
+    "recipes/subtext"
+  end
 
   def update_components
     components.each do |component|

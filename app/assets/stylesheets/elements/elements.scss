@@ -92,3 +92,9 @@
   display: none;
   &.authenticated { display: block; }
 }
+
+$horizontal-stripes: linear-gradient(90deg, transparent 50%, rgba(50,50,50,.6) 50%);
+%horizontal_stripes {
+  background: $horizontal-stripes;
+  background-size: 4px 100%;
+}

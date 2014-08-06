@@ -2,9 +2,10 @@
   <% list_elements.each do |element| %>
     <li class="list_element">
       <%= link_to element.url do %>
-        <%= filepicker_image_tag element.image, w: 275, h: 175, fit: 'crop', align: "center,center" %>
-        <h3><%= element.name.titleize %></h3>
+        <%= filepicker_image_tag element.image, w: 275, h: 175, fit: 'crop', crop: '0,0,275,175', align: "center,center" %>
+        <h3><%= element.name %></h3> 
       <% end %>
+      <%= render element.subtext, :element => element if element.subtext.present? %>
     </li>
   <% end %>
 </ul>

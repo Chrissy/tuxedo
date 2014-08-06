@@ -1,5 +1,12 @@
 @import "../elements/helpers";
 
+.header.list {
+  &, .header-content { min-height: 460px;}
+  .header-title { bottom: 64px; }
+}
+
+.content.list .primary { padding: 20px 0; }
+
 .home-content {
   @extend %centered-content-box;
   position: relative;

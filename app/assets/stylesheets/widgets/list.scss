@@ -1,13 +1,24 @@
+@import '../elements/base';
+
 .list_element {
   float: left;
-  width: 295px;
-  height: 255px;
+  width: 300px;
+  height: auto;
+  margin-right: 20px;
+  &:nth-of-type(3n+1) { margin-right: 0; }
   h3 { 
     @extend %swash;
-    text-align: center; 
-    line-height: 0;
+    text-align: center;
+    line-height: 110%; 
+    margin: 10px 0 4px 0;
   }
-  img { display: block; margin: 0 auto; }
+  img { 
+    display: block; 
+    margin: 0 auto;
+    width: 100%;
+    height: auto; 
+  }
+  a { color: #444; }
 }
 
 .list_element_small {
@@ -22,4 +33,28 @@
     display: block;
     border-bottom: 1px solid #bbb; 
   }
+}
+
+.subtext {
+  font-size: 16px;
+  text-align: center;
+  font-weight: normal;
+  margin: 0 0 20px 0;
+  padding-top: 3px;
+  position: relative;
+  a { 
+    color: #666; 
+    &:after { content: " , "; }
+    &:last-child:after { content: ""; } 
+  }
+  &:after {
+    @extend %horizontal_stripes;
+    content: "";
+    width: 80%;
+    height: 1px;
+    top: 0;
+    left: 10%;
+    display: block;
+    position: absolute;
+  } 
 }

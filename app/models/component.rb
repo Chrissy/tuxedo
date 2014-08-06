@@ -22,6 +22,9 @@ class Component < ActiveRecord::Base
     recipe_ids.map { |recipe_id| Recipe.find_by_id(recipe_id) } - ["",nil]
   end
   
+  def subtext
+  end
+  
   def has_list
     !list.nil?
   end
