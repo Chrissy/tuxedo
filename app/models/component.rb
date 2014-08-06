@@ -25,6 +25,10 @@ class Component < ActiveRecord::Base
   def subtext
   end
   
+  def nickname
+    nick ? nick : name
+  end
+  
   def has_list
     !list.nil?
   end
