@@ -15,4 +15,8 @@ module ApplicationHelper
   def swash(text)
     "<span class='swash-cap'>#{text[0].upcase}</span>#{text[1..-1]}".html_safe
   end
+  
+  def image_with_backup(image)
+    image.present? ? image : Recipe.first.image #probably should come up with a default image lol
+  end
 end
