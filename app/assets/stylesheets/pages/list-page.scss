@@ -5,7 +5,10 @@
   .header-title { bottom: 64px; }
 }
 
-.content.list .primary { padding: 20px 0; }
+.content.list .primary { 
+  padding: 20px 0; 
+  width: 101%;
+}
 
 .home-content {
   @extend %centered-content-box;

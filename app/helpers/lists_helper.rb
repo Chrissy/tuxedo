@@ -27,6 +27,10 @@ module ListsHelper
   def name_for_code(element)
     element.class.to_s.downcase
   end
+  
+  def list_image(element)
+    filepicker_image_tag(image_with_backup(element.image), w: 950, h: 650, fit: 'crop', align: "center,center")
+  end
 
   def admin_element_class_name(element)
     "#{name_for_code(element)}_admin_element"
