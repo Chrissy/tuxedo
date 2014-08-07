@@ -23,6 +23,11 @@ class Component < ActiveRecord::Base
   end
   
   def subtext
+    "components/subtext"
+  end
+  
+  def count_for_display
+    "#{recipes.count} cocktails"
   end
   
   def nickname

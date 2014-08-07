@@ -26,6 +26,11 @@ class List < ActiveRecord::Base
   end
   
   def subtext
+    "components/subtext"
+  end
+
+  def count_for_display
+    "#{elements.count} components"
   end
 
   def compile_and_store_list_elements

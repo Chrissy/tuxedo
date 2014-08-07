@@ -44,7 +44,7 @@
   position: relative;
   a { 
     color: #666; 
-    &:after { content: " , "; }
+    &:after { content: ", "; }
     &:last-child:after { content: ""; } 
   }
   &:after {
