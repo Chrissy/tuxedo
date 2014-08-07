@@ -5,18 +5,19 @@
   width: 300px;
   height: auto;
   margin-right: 20px;
-  &:nth-of-type(3n+1) { margin-right: 0; }
+  &:nth-of-type(3n) { margin-right: 0; }
   h3 { 
     @extend %swash;
     text-align: center;
     line-height: 110%; 
-    margin: 10px 0 4px 0;
+    margin: 10px 0 5px 0;
   }
   img { 
     display: block; 
     margin: 0 auto;
     width: 100%;
-    height: auto; 
+    height: auto;
+    border: 6px solid white;
   }
   a { color: #444; }
 }
@@ -33,6 +34,10 @@
     display: block;
     border-bottom: 1px solid #bbb; 
   }
+}
+
+.list_element:first-child {
+  //height: 300px;
 }
 
 .subtext {

@@ -3,6 +3,6 @@
 </div>
 <div class="content list<%= " home" if @list.home? %>">
   <div class="primary">
-    <%= render "list_with_images", :list_elements => @list.elements %>
+    <%= render "list_with_images", :list_elements => @list.elements[1..-1] %>
   </div>
 </div>
