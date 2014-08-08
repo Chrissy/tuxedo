@@ -13,6 +13,7 @@ $image-resize: 10%;
 
 .list-element {
   height: auto;
+  position: relative;
   h3 { 
     @extend %swash;
     text-align: center;
@@ -26,6 +27,7 @@ $image-resize: 10%;
     overflow: hidden;
     display: block;
     border: 6px solid white;
+    background: black;
   }
   img { 
     display: block; 
@@ -59,6 +61,17 @@ $image-resize: 10%;
       position: absolute;
     } 
   }
+  .list-element-number {
+    float: left;
+    position: absolute;
+    left: 0;
+    top: 68px;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    display: none;
+  }
   a { color: #444; }
 }
 
@@ -87,6 +100,12 @@ $image-resize: 10%;
     width: auto;
     top: 0;
     left: -177px;
+    opacity: 0.8;
+  }
+  .display-number { @extend .large; }
+  .list-element-number {
+    display: block; 
+    top: 208px; 
   }
 }
 
