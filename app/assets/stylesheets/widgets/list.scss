@@ -2,13 +2,17 @@
 
 $element-width: 306px;
 $image-height: 195px;
-$image-resize: 10%; 
+$image-resize: 10%;
 
-.list-element {
+.sawhorse, .list-element {
   float: left;
   width: $element-width;
-  height: auto;
+  min-height: 268px;
   margin-right: 10px;
+}
+
+.list-element {
+  height: auto;
   h3 { 
     @extend %swash;
     text-align: center;
@@ -17,7 +21,7 @@ $image-resize: 10%;
     font-size: 21px;
   }
   .list-image-wrapper {
-    width: 100%;
+    width: $element-width;
     height: $image-height;
     overflow: hidden;
     display: block;
@@ -86,14 +90,13 @@ $image-resize: 10%;
   }
 }
 
+.sawhorse { display: none; }
+
 .list-element {
-  &:nth-of-type(8), &:nth-of-type(12), &:nth-of-type(22), &:nth-of-type(28),
-  &:nth-of-type(38), &:nth-of-type(42) {
+  &:nth-of-type(1), &:nth-of-type(8), &:nth-of-type(12), &:nth-of-type(16),
+  &:nth-of-type(22), &:nth-of-type(28), &:nth-of-type(31), &:nth-of-type(38), 
+  &:nth-of-type(42), &:nth-of-type(46) {
     @extend .expanded-list-element;
-    & + li + li { margin-right: $element-width + 21; }
-  }
-  &:nth-of-type(1), &:nth-of-type(16), &:nth-of-type(31), &:nth-of-type(46) {
-    @extend .expanded-list-element;
-    & + li + li + li { margin-left: $element-width + 11; }
+    & + span + li + span + li + span { display: block; }
   }
 }
