@@ -19,4 +19,8 @@ module ApplicationHelper
   def image_with_backup(image)
     image.present? ? image : Recipe.first.image #probably should come up with a default image lol
   end
+  
+  def list_image(element)
+    filepicker_image_tag(image_with_backup(element.image), w: 950, h: 650, fit: 'crop', align: "center,center")
+  end
 end
