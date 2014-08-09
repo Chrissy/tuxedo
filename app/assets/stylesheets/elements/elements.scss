@@ -97,6 +97,19 @@
   &.authenticated { display: block; }
 }
 
+.teaser-bg {
+  &, &:after {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+  }
+  background-size: cover !important;
+  &:after {
+    content: ""; 
+    background-color: rgba(0,0,0,0.6); 
+  }
+}
+
 $horizontal-stripes: linear-gradient(90deg, transparent 50%, rgba(50,50,50,.6) 50%);
 %horizontal_stripes {
   background: $horizontal-stripes;
