@@ -92,3 +92,44 @@ $header-height: 540px;
   margin-bottom: 8px;
   &:hover { opacity: 1; } 
 }
+
+@media (max-width: 1000px) {
+  .global-header, .header-primary { width: 100%; }
+  .user_links {
+    right: 10px;
+    top: 70px;
+  }
+}
+
+@media (max-width: 600px) {
+  #logo {
+    margin: 0 auto;
+    left: 0;
+    position: relative;
+  }
+  .header-secondary {
+    width: 100%;
+    position: relative;
+    top: 50px;
+  }
+  .links {
+    text-align: center;
+    width: 100%;
+    left: 4px;
+    position: relative;
+  }
+  .search-wrapper {
+    margin: 0 auto;
+    width: 300px;
+  }
+  .social-links {
+    width: 30px;
+    position: absolute;
+    right: 5px;
+    top: -5px;
+  }
+  .user_links { 
+    top: 10px;
+  }
+  .global-header { position: absolute; }
+}
