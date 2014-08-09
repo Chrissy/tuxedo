@@ -95,9 +95,24 @@ $header-height: 540px;
 
 @media (max-width: 1000px) {
   .global-header, .header-primary { width: 100%; }
+  .header, .header-content { height: 360px; min-height: 480px; }
   .user_links {
     right: 10px;
     top: 70px;
+  }
+  .header-content {
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    height: 460px;
+    position: relative;
+    img {
+      position: absolute;
+      height: auto;
+      width: 800px;
+      margin-left: 50%;
+      left: -396px;
+    }
   }
 }
 
@@ -118,18 +133,18 @@ $header-height: 540px;
     left: 4px;
     position: relative;
   }
-  .search-wrapper {
-    margin: 0 auto;
-    width: 300px;
-  }
   .social-links {
     width: 30px;
     position: absolute;
-    right: 5px;
-    top: -5px;
+    left: 10px;
+    top: 125px;
   }
-  .user_links { 
-    top: 10px;
+  .display-number {
+    font-size: 28px;
+    margin-bottom: 10px;
   }
+  html body .header .user_links { display: none; }
+  html body .header .header-title { font-size: 45px; }
   .global-header { position: absolute; }
+  .links a { color: white; }
 }
