@@ -1,9 +1,16 @@
 @import "../elements/sprite";
+@import "../elements/helpers";
 
 $search-width: 300px;
+$compact-search-width: 300px - 20px;
+$search-elements: '.search-wrapper, .twitter-typeahead, .twitter-typeahead .tt-input, .twitter-typeahead .tt-hint, input.search';
+
+.search-wrapper {
+  position: relative;
+  top: 5px;
+}
 
 .twitter-typeahead {
-  width: $search-width;
   color: #ccc;
   font-size: 20px;
   position: relative;
@@ -56,8 +63,24 @@ $search-width: 300px;
   color: #ccc;
   height: 27px;
   font-size: 16px;
-  width: $search-width;
   float: right;
   position: relative;
   opacity: 0.7;
+}
+
+#{$search-elements} { 
+  width: $search-width;
+  @include transition(0.2s top);
+}
+@media (max-width: 650px) {
+  #{$search-elements} { width: $compact-search-width; }
+  .header-primary, .header-image, .links { @include transition(0.2s opacity); }
+  body.focused {
+    .search-wrapper { top: -57px }
+    .header-primary, .header-content > img, .links { opacity: 0.2; }
+  }
+  .twitter-typeahead .tt-suggestion {
+    padding: 0px 20px;
+    &, a { font-size: 18px; }
+  }
 }

@@ -8,3 +8,11 @@ $ ->
       $this.addClass("authenticated") if Boolean(data)
     )
   )
+  
+  $("[bubble-on-focus]").not("focused").focus(->
+    $target = $(this).closest($(this).attr("bubble-on-focus"))
+    $target.addClass("focused")
+    $(this).blur(->
+      $target.removeClass("focused")
+    )
+  )

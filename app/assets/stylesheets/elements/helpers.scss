@@ -36,3 +36,11 @@
 @mixin vgradient ($startcolor: #555, $endcolor: #333) {
   @include gradient($startcolor, $endcolor, "vertical");
 }
+
+@mixin transition($props...) {
+  -moz-transition: $props;
+  -webkit-transition: $props;
+  -o-transition: $props;
+  transition: $props;
+  -webkit-transform: translate3d(0,0,0);
+}

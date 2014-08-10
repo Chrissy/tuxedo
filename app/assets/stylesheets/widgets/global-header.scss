@@ -35,12 +35,6 @@ $header-height: 540px;
   top: 25px;
 }
 
-.search-wrapper {
-  position: relative;
-  top: 5px;
-  width: 300px;
-}
-
 .header-secondary {
   height: 24px;
   padding: 4px 10px;
@@ -116,7 +110,7 @@ $header-height: 540px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   #logo {
     margin: 0 auto;
     left: 0;
@@ -143,6 +137,7 @@ $header-height: 540px;
     font-size: 28px;
     margin-bottom: 10px;
   }
+  .search-wrapper { margin: 0 auto; }
   html body .header .user_links { display: none; }
   html body .header .header-title { font-size: 45px; }
   .global-header { position: absolute; }
