@@ -82,7 +82,10 @@ $header-height: 540px;
   height: 25px;
   opacity: 0.6;
   margin-bottom: 8px;
-  &:hover { opacity: 1; } 
+  &:hover { opacity: 1; }
+  &.twitter { @include hires_background("twitter-2x"); }
+  &.pinterest { @include hires_background("pinterest-2x"); }
+  &.insta { @include hires_background("insta-2x"); }
 }
 
 @media (max-width: 960px) {
