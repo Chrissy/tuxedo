@@ -1,11 +1,9 @@
-@import "../elements/sprite";
 @import "../elements/helpers";
 
 $header-height: 540px;
 
 #logo {
-  width: 170px;
-  height: 35px;
+  @include hires_background("tuxno2-logo-2x");
   display: block;
   text-indent: -99999px;
   position: absolute;
