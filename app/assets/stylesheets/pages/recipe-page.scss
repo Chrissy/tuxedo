@@ -28,3 +28,15 @@ $description-background-color: $background-color;
     font-weight: 900;
   }
 }
+
+@media (max-width: 650px) {
+  .primary, .content { width: 100%; }
+  .aside {
+      width: 96%;
+      margin: 2%;
+      h1:after {
+        width: 97%;
+        left: 0;
+      }
+  }
+}
