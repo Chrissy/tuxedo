@@ -87,7 +87,7 @@ $header-height: 540px;
   &:hover { opacity: 1; } 
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 960px) {
   .global-header, .header-primary { width: 100%; }
   .header, .header-content { height: 360px; min-height: 480px; }
   .user_links {
@@ -108,6 +108,12 @@ $header-height: 540px;
       left: -396px;
     }
   }
+  .social-links {
+    width: 30px;
+    position: absolute;
+    right: 10px;
+    top: 145px;
+  }
 }
 
 @media (max-width: 650px) {
@@ -126,12 +132,6 @@ $header-height: 540px;
     width: 100%;
     left: 4px;
     position: relative;
-  }
-  .social-links {
-    width: 30px;
-    position: absolute;
-    left: 10px;
-    top: 125px;
   }
   .display-number {
     font-size: 28px;
