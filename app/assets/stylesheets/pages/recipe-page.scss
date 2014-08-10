@@ -29,14 +29,26 @@ $description-background-color: $background-color;
   }
 }
 
+@media (max-width: 950px) {
+  .content { width: 100%; }
+  .primary { 
+    width: 60%; 
+    font-size: 18px;
+  }
+  .aside { 
+    width: 40%;
+    ul, ol { font-size: 16px; } 
+    h1:after {
+      width: 97%;
+      left: 0;
+    }
+  }
+}
+
 @media (max-width: 650px) {
   .primary, .content { width: 100%; }
   .aside {
       width: 96%;
       margin: 2%;
-      h1:after {
-        width: 97%;
-        left: 0;
-      }
   }
 }
