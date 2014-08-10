@@ -61,3 +61,12 @@ button {
 
 .alert:empty, .notice:empty { display: none; }
 .active .mention_username{ color: #333; }
+
+@media (max-width: 650px) {
+  .user-form, .alert, .notice { 
+    width: 90%; 
+    margin: 0 auto; 
+    top: 75px; 
+    background-color: rgba(250,250,250,0.8);
+  }
+}
