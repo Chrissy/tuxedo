@@ -45,6 +45,10 @@
   -webkit-transition: $props;
   -o-transition: $props;
   transition: $props;
+}
+
+@mixin accelerated_transition($props...) {
+  @include transition($props...);
   -webkit-transform: translate3d(0,0,0);
 }
 

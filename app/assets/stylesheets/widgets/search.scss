@@ -65,11 +65,10 @@ $search-elements: '.search-wrapper, .twitter-typeahead, .twitter-typeahead .tt-i
 
 #{$search-elements} { 
   width: $search-width;
-  @include transition(0.2s -webkit-transform);
 }
 @media (max-width: 650px) {
   #{$search-elements} { width: $compact-search-width; }
-  .header-primary, .header-image, .links { @include transition(0.2s opacity); }
+  .search-wrapper { @include transition(0.2s -webkit-transform); }
   body.focused {
     .search-wrapper { -webkit-transform: translate3d(0, -57px, 0); }
     .header-primary, .header-content > img, .links { opacity: 0.2; }
