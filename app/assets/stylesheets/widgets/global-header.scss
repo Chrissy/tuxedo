@@ -3,7 +3,7 @@
 $header-height: 540px;
 
 #logo {
-  @include hires_background("tuxno2-logo-2x");
+  @include hires-background("tuxno2-logo-2x");
   display: block;
   text-indent: -99999px;
   position: absolute;
@@ -83,9 +83,9 @@ $header-height: 540px;
   opacity: 0.6;
   margin-bottom: 8px;
   &:hover { opacity: 1; }
-  &.twitter { @include hires_background("twitter-2x"); }
-  &.pinterest { @include hires_background("pinterest-2x"); }
-  &.insta { @include hires_background("insta-2x"); }
+  &.twitter { @include hires-background("twitter-2x"); }
+  &.pinterest { @include hires-background("pinterest-2x"); }
+  &.insta { @include hires-background("insta-2x"); }
 }
 
 @media (max-width: 960px) {

@@ -73,6 +73,61 @@
     color: #777;
     font-weight: normal;
 }
+/* line 114, sprite/*.png */
+.sprite-sprite, .sprite-insta-2x, .sprite-insta, .sprite-pinterest-2x, .sprite-pinterest, .sprite-search-2x, .sprite-search, .sprite-tuxno2-logo-2x, .sprite-tuxno2-logo, .sprite-twitter-2x, .sprite-twitter {
+  background: url(/assets/sprite-sd809180d7f.png) no-repeat;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta-2x {
+  background-position: 0 -202px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta {
+  background-position: 0 -342px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest-2x {
+  background-position: 0 -102px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest {
+  background-position: 0 -252px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search-2x {
+  background-position: 0 -277px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search {
+  background-position: 0 -367px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo-2x {
+  background-position: 0 0;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo {
+  background-position: 0 -68px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter-2x {
+  background-position: 0 -152px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter {
+  background-position: 0 -317px;
+}
+
 /* line 6, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/base.scss */
 * {
   box-sizing: border-box;
@@ -107,7 +162,62 @@ body {
   margin: 0;
   padding: 0;
 }
-/* line 8, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
+/* line 114, sprite/*.png */
+.sprite-sprite, .sprite-insta-2x, .sprite-insta, .sprite-pinterest-2x, .sprite-pinterest, .sprite-search-2x, .sprite-search, .sprite-tuxno2-logo-2x, .sprite-tuxno2-logo, .sprite-twitter-2x, .sprite-twitter {
+  background: url(/assets/sprite-sd809180d7f.png) no-repeat;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta-2x {
+  background-position: 0 -202px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta {
+  background-position: 0 -342px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest-2x {
+  background-position: 0 -102px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest {
+  background-position: 0 -252px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search-2x {
+  background-position: 0 -277px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search {
+  background-position: 0 -367px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo-2x {
+  background-position: 0 0;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo {
+  background-position: 0 -68px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter-2x {
+  background-position: 0 -152px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter {
+  background-position: 0 -317px;
+}
+
+/* line 11, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
 h1:first-letter, h1 .swash-cap {
   font-feature-settings: "swsh";
   -moz-font-feature-settings: "swsh";
@@ -165,7 +275,62 @@ h1, h2, h3 {
   font-weight: 900;
   font-style: italic;
 }
-/* line 1, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
+/* line 114, sprite/*.png */
+.sprite-sprite, .sprite-insta-2x, .sprite-insta, .sprite-pinterest-2x, .sprite-pinterest, .sprite-search-2x, .sprite-search, .sprite-tuxno2-logo-2x, .sprite-tuxno2-logo, .sprite-twitter-2x, .sprite-twitter {
+  background: url(/assets/sprite-sd809180d7f.png) no-repeat;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta-2x {
+  background-position: 0 -202px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta {
+  background-position: 0 -342px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest-2x {
+  background-position: 0 -102px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest {
+  background-position: 0 -252px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search-2x {
+  background-position: 0 -277px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search {
+  background-position: 0 -367px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo-2x {
+  background-position: 0 0;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo {
+  background-position: 0 -68px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter-2x {
+  background-position: 0 -152px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter {
+  background-position: 0 -317px;
+}
+
+/* line 4, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
 .content {
   width: 940px;
   margin: 0 auto;
@@ -395,7 +560,126 @@ button {
 .active .mention_username {
   color: #333;
 }
-/* line 8, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
+
+@media (max-width: 650px) {
+  /* line 66, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/forms.scss */
+  .user-form, .alert, .notice {
+    width: 90%;
+    margin: 0 auto;
+    top: 75px;
+    background-color: rgba(250, 250, 250, 0.8);
+  }
+}
+/* line 114, sprite/*.png */
+.sprite-sprite, .sprite-insta-2x, .sprite-insta, .sprite-pinterest-2x, .sprite-pinterest, .sprite-search-2x, .sprite-search, .sprite-tuxno2-logo-2x, .sprite-tuxno2-logo, .sprite-twitter-2x, .sprite-twitter {
+  background: url(/assets/sprite-sd809180d7f.png) no-repeat;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta-2x {
+  background-position: 0 -202px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta {
+  background-position: 0 -342px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest-2x {
+  background-position: 0 -102px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest {
+  background-position: 0 -252px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search-2x {
+  background-position: 0 -277px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search {
+  background-position: 0 -367px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo-2x {
+  background-position: 0 0;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo {
+  background-position: 0 -68px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter-2x {
+  background-position: 0 -152px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter {
+  background-position: 0 -317px;
+}
+/* line 114, sprite/*.png */
+.sprite-sprite, .sprite-insta-2x, .sprite-insta, .sprite-pinterest-2x, .sprite-pinterest, .sprite-search-2x, .sprite-search, .sprite-tuxno2-logo-2x, .sprite-tuxno2-logo, .sprite-twitter-2x, .sprite-twitter {
+  background: url(/assets/sprite-sd809180d7f.png) no-repeat;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta-2x {
+  background-position: 0 -202px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta {
+  background-position: 0 -342px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest-2x {
+  background-position: 0 -102px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest {
+  background-position: 0 -252px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search-2x {
+  background-position: 0 -277px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search {
+  background-position: 0 -367px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo-2x {
+  background-position: 0 0;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo {
+  background-position: 0 -68px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter-2x {
+  background-position: 0 -152px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter {
+  background-position: 0 -317px;
+}
+
+/* line 11, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
 .list-element h3:first-letter, .list-element h3 .swash-cap {
   font-feature-settings: "swsh";
   -moz-font-feature-settings: "swsh";
@@ -650,6 +934,61 @@ body {
     height: auto;
   }
 }
+/* line 114, sprite/*.png */
+.sprite-sprite, .sprite-insta-2x, .sprite-insta, .sprite-pinterest-2x, .sprite-pinterest, .sprite-search-2x, .sprite-search, .sprite-tuxno2-logo-2x, .sprite-tuxno2-logo, .sprite-twitter-2x, .sprite-twitter {
+  background: url(/assets/sprite-sd809180d7f.png) no-repeat;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta-2x {
+  background-position: 0 -202px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta {
+  background-position: 0 -342px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest-2x {
+  background-position: 0 -102px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest {
+  background-position: 0 -252px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search-2x {
+  background-position: 0 -277px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search {
+  background-position: 0 -367px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo-2x {
+  background-position: 0 0;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo {
+  background-position: 0 -68px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter-2x {
+  background-position: 0 -152px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter {
+  background-position: 0 -317px;
+}
+
 /* line 6, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/base.scss */
 * {
   box-sizing: border-box;
@@ -685,52 +1024,73 @@ body {
   padding: 0;
 }
 
-/* line 82, sprite/*.png */
-.sprite-sprite, .sprite-insta, .sprite-pinterest, .sprite-search, .sprite-tuxno2-logo-small, .sprite-tuxno2-logo, .sprite-twitter {
-  background: url(/assets/sprite-s321e9d79fd.png) no-repeat;
+/* line 114, sprite/*.png */
+.sprite-sprite, .sprite-insta-2x, .social-link.insta:before, .sprite-insta, .sprite-pinterest-2x, .social-link.pinterest:before, .sprite-pinterest, .sprite-search-2x, .sprite-search, .sprite-tuxno2-logo-2x, #logo:before, .sprite-tuxno2-logo, .sprite-twitter-2x, .social-link.twitter:before, .sprite-twitter {
+  background: url(/assets/sprite-sd809180d7f.png) no-repeat;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta-2x, .social-link.insta:before {
+  background-position: 0 -202px;
 }
 
 /* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .sprite-insta {
-  background-position: 0 -122px;
+  background-position: 0 -342px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest-2x, .social-link.pinterest:before {
+  background-position: 0 -102px;
 }
 
 /* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .sprite-pinterest {
-  background-position: 0 -72px;
+  background-position: 0 -252px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search-2x {
+  background-position: 0 -277px;
 }
 
 /* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .sprite-search {
-  background-position: 0 -147px;
+  background-position: 0 -367px;
 }
 
 /* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.sprite-tuxno2-logo-small {
-  background-position: 0 -38px;
-}
-
-/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.sprite-tuxno2-logo {
+.sprite-tuxno2-logo-2x, #logo:before {
   background-position: 0 0;
 }
 
 /* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.sprite-twitter {
-  background-position: 0 -97px;
+.sprite-tuxno2-logo {
+  background-position: 0 -68px;
 }
 
-/* line 1, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter-2x, .social-link.twitter:before {
+  background-position: 0 -152px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter {
+  background-position: 0 -317px;
+}
+
+/* line 4, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
 .global-header, .header-content {
   width: 940px;
   margin: 0 auto;
   position: relative;
 }
 
-/* line 6, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+/* line 5, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
 #logo {
-  width: 170px;
-  height: 35px;
+  height: 34px;
+  width: 173px;
+  position: relative;
   display: block;
   text-indent: -99999px;
   position: absolute;
@@ -738,35 +1098,54 @@ body {
   top: -13px;
   z-index: 2;
 }
+/* line 58, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
+#logo:before {
+  content: "";
+  height: 68px;
+  width: 346px;
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scale(0.5, 0.5);
+  -moz-transform: scale(0.5, 0.5);
+  -ms-transform: scale(0.5, 0.5);
+  -o-transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
-/* line 17, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+/* line 15, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
 .links {
   text-transform: uppercase;
   font-size: 12px;
   float: right;
 }
-/* line 21, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+/* line 19, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
 .links .link:not(:last-child):after {
   content: " • ";
 }
 
-/* line 24, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+/* line 22, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
 .global-header {
   position: relative;
 }
 
-/* line 29, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+/* line 27, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
 .header-primary, .header-secondary {
   position: absolute;
   z-index: 5;
 }
 
-/* line 34, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+/* line 32, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
 .header-primary {
   top: 25px;
 }
 
-/* line 38, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+/* line 36, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
 .header-secondary {
   height: 24px;
   padding: 4px 10px;
@@ -774,7 +1153,7 @@ body {
   top: 5px;
 }
 
-/* line 45, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+/* line 43, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
 .header {
   width: 100%;
   background: #030a0d;
@@ -782,12 +1161,12 @@ body {
   overflow: hidden;
 }
 
-/* line 52, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+/* line 50, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
 .header-content {
   min-height: 540px;
   border: 1px solid #222;
 }
-/* line 57, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+/* line 55, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
 .header-content > img {
   width: 100%;
   height: auto;
@@ -797,14 +1176,14 @@ body {
   margin: 0;
 }
 
-/* line 67, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+/* line 65, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
 .user_links {
   position: absolute;
   top: 10px;
   right: 20px;
 }
 
-/* line 73, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+/* line 71, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
 .social-links {
   width: 30px;
   position: absolute;
@@ -812,7 +1191,7 @@ body {
   top: 6px;
 }
 
-/* line 80, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+/* line 78, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
 .social-link {
   text-indent: -9999%;
   display: block;
@@ -821,30 +1200,105 @@ body {
   opacity: 0.6;
   margin-bottom: 8px;
 }
-/* line 87, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+/* line 85, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
 .social-link:hover {
   opacity: 1;
 }
+/* line 86, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+.social-link.twitter {
+  height: 25px;
+  width: 25px;
+  position: relative;
+}
+/* line 58, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
+.social-link.twitter:before {
+  content: "";
+  height: 50px;
+  width: 50px;
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scale(0.5, 0.5);
+  -moz-transform: scale(0.5, 0.5);
+  -ms-transform: scale(0.5, 0.5);
+  -o-transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 87, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+.social-link.pinterest {
+  height: 25px;
+  width: 25px;
+  position: relative;
+}
+/* line 58, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
+.social-link.pinterest:before {
+  content: "";
+  height: 50px;
+  width: 50px;
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scale(0.5, 0.5);
+  -moz-transform: scale(0.5, 0.5);
+  -ms-transform: scale(0.5, 0.5);
+  -o-transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 88, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+.social-link.insta {
+  height: 25px;
+  width: 25px;
+  position: relative;
+}
+/* line 58, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
+.social-link.insta:before {
+  content: "";
+  height: 50px;
+  width: 50px;
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scale(0.5, 0.5);
+  -moz-transform: scale(0.5, 0.5);
+  -ms-transform: scale(0.5, 0.5);
+  -o-transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
-@media (max-width: 1000px) {
-  /* line 91, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+@media (max-width: 960px) {
+  /* line 92, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
   .global-header, .header-primary {
     width: 100%;
   }
 
-  /* line 92, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+  /* line 93, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
   .header, .header-content {
     height: 360px;
     min-height: 480px;
   }
 
-  /* line 93, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+  /* line 94, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
   .user_links {
     right: 10px;
     top: 70px;
   }
 
-  /* line 97, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+  /* line 98, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
   .header-content {
     width: 100%;
     text-align: center;
@@ -852,7 +1306,7 @@ body {
     height: 460px;
     position: relative;
   }
-  /* line 103, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+  /* line 104, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
   .header-content img {
     position: absolute;
     height: auto;
@@ -860,23 +1314,31 @@ body {
     margin-left: 50%;
     left: -396px;
   }
+
+  /* line 112, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+  .social-links {
+    width: 30px;
+    position: absolute;
+    right: 10px;
+    top: 145px;
+  }
 }
 @media (max-width: 650px) {
-  /* line 114, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+  /* line 121, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
   #logo {
     margin: 0 auto;
     left: 0;
     position: relative;
   }
 
-  /* line 119, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+  /* line 126, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
   .header-secondary {
     width: 100%;
     position: relative;
     top: 50px;
   }
 
-  /* line 124, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+  /* line 131, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
   .links {
     text-align: center;
     width: 100%;
@@ -884,87 +1346,99 @@ body {
     position: relative;
   }
 
-  /* line 130, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
-  .social-links {
-    width: 30px;
-    position: absolute;
-    left: 10px;
-    top: 125px;
-  }
-
-  /* line 136, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+  /* line 137, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
   .display-number {
     font-size: 28px;
     margin-bottom: 10px;
   }
 
-  /* line 140, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+  /* line 141, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
   .search-wrapper {
     margin: 0 auto;
   }
 
-  /* line 141, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+  /* line 142, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
   html body .header .user_links {
     display: none;
   }
 
-  /* line 142, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+  /* line 143, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
   html body .header .header-title {
     font-size: 45px;
   }
 
-  /* line 143, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+  /* line 144, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
   .global-header {
     position: absolute;
   }
 
-  /* line 144, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
+  /* line 145, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/global-header.scss */
   .links a {
     color: white;
   }
 }
-/* line 82, sprite/*.png */
-.sprite-sprite, .sprite-insta, .sprite-pinterest, .sprite-search, .twitter-typeahead:before, .sprite-tuxno2-logo-small, .sprite-tuxno2-logo, .sprite-twitter {
-  background: url(/assets/sprite-s321e9d79fd.png) no-repeat;
+/* line 114, sprite/*.png */
+.sprite-sprite, .sprite-insta-2x, .sprite-insta, .sprite-pinterest-2x, .sprite-pinterest, .sprite-search-2x, .twitter-typeahead:before, .sprite-search, .sprite-tuxno2-logo-2x, .sprite-tuxno2-logo, .sprite-twitter-2x, .sprite-twitter {
+  background: url(/assets/sprite-sd809180d7f.png) no-repeat;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta-2x {
+  background-position: 0 -202px;
 }
 
 /* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .sprite-insta {
-  background-position: 0 -122px;
+  background-position: 0 -342px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest-2x {
+  background-position: 0 -102px;
 }
 
 /* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .sprite-pinterest {
-  background-position: 0 -72px;
+  background-position: 0 -252px;
 }
 
 /* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.sprite-search, .twitter-typeahead:before {
-  background-position: 0 -147px;
+.sprite-search-2x, .twitter-typeahead:before {
+  background-position: 0 -277px;
 }
 
 /* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.sprite-tuxno2-logo-small {
-  background-position: 0 -38px;
+.sprite-search {
+  background-position: 0 -367px;
 }
 
 /* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.sprite-tuxno2-logo {
+.sprite-tuxno2-logo-2x {
   background-position: 0 0;
 }
 
 /* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.sprite-twitter {
-  background-position: 0 -97px;
+.sprite-tuxno2-logo {
+  background-position: 0 -68px;
 }
 
-/* line 8, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter-2x {
+  background-position: 0 -152px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter {
+  background-position: 0 -317px;
+}
+
+/* line 7, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
 .search-wrapper {
   position: relative;
   top: 5px;
 }
 
-/* line 13, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
+/* line 12, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
 .twitter-typeahead {
   color: #ccc;
   font-size: 20px;
@@ -972,14 +1446,17 @@ body {
   z-index: 5;
   color: white;
   float: right;
+  height: 20px;
+  width: 20px;
+  position: relative;
 }
-/* line 20, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
+/* line 19, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
 .twitter-typeahead .tt-dropdown-menu {
   background-color: rgba(50, 50, 50, 0.8);
   border: 1px solid #333;
   width: 100%;
 }
-/* line 25, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
+/* line 24, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
 .twitter-typeahead .tt-suggestion {
   border-bottom: 1px solid #333;
   padding: 10px 20px;
@@ -990,40 +1467,55 @@ body {
   width: 100%;
   cursor: pointer;
 }
-/* line 34, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
+/* line 33, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
 .twitter-typeahead .tt-suggestion.tt-cursor {
   background-color: rgba(70, 70, 70, 0.8);
   color: white;
 }
-/* line 36, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
+/* line 58, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
 .twitter-typeahead:before {
   content: "";
-  float: left;
-  width: 20px;
-  height: 20px;
+  height: 40px;
+  width: 40px;
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scale(0.5, 0.5);
+  -moz-transform: scale(0.5, 0.5);
+  -ms-transform: scale(0.5, 0.5);
+  -o-transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 36, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
+.twitter-typeahead:before {
   opacity: 0.3;
   z-index: 6;
-  top: 3px;
-  right: 5px;
-  position: absolute;
+  top: 4px;
+  right: -16px;
+  left: auto;
 }
-/* line 48, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
+/* line 43, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
 .twitter-typeahead .tt-input:focus {
   outline: 0;
   border: 1px solid #999;
 }
-/* line 51, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
+/* line 46, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
 .twitter-typeahead .tt-input:focus:before {
   opacity: 1;
 }
-/* line 53, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
+/* line 48, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
 .twitter-typeahead .tt-hint {
   background-color: transparent !important;
   right: 0 !important;
   left: auto !important;
 }
 
-/* line 60, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
+/* line 55, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
 .twitter-typeahead .tt-input, .twitter-typeahead .tt-hint, input.search {
   margin-bottom: 0;
   background-color: rgba(30, 30, 30, 0.8) !important;
@@ -1035,23 +1527,23 @@ body {
   opacity: 0.7;
 }
 
-/* line 71, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
+/* line 66, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
 .search-wrapper, .twitter-typeahead, .twitter-typeahead .tt-input, .twitter-typeahead .tt-hint, input.search {
   width: 300px;
-  -moz-transition: 0.2s top;
-  -webkit-transition: 0.2s top;
-  -o-transition: 0.2s top;
-  transition: 0.2s top;
+  -moz-transition: 0.2s -webkit-transform;
+  -webkit-transition: 0.2s -webkit-transform;
+  -o-transition: 0.2s -webkit-transform;
+  transition: 0.2s -webkit-transform;
   -webkit-transform: translate3d(0, 0, 0);
 }
 
 @media (max-width: 650px) {
-  /* line 76, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
+  /* line 71, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
   .search-wrapper, .twitter-typeahead, .twitter-typeahead .tt-input, .twitter-typeahead .tt-hint, input.search {
     width: 280px;
   }
 
-  /* line 77, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
+  /* line 72, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
   .header-primary, .header-image, .links {
     -moz-transition: 0.2s opacity;
     -webkit-transition: 0.2s opacity;
@@ -1060,46 +1552,156 @@ body {
     -webkit-transform: translate3d(0, 0, 0);
   }
 
-  /* line 79, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
+  /* line 74, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
   body.focused .search-wrapper {
-    top: -57px;
+    -webkit-transform: translate3d(0, -57px, 0);
   }
-  /* line 80, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
+  /* line 75, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
   body.focused .header-primary, body.focused .header-content > img, body.focused .links {
     opacity: 0.2;
   }
 
-  /* line 82, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
+  /* line 77, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
   .twitter-typeahead .tt-suggestion {
     padding: 0px 20px;
   }
-  /* line 84, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
+  /* line 79, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/widgets/search.scss */
   .twitter-typeahead .tt-suggestion, .twitter-typeahead .tt-suggestion a {
     font-size: 18px;
   }
 }
-/* line 1, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
+/* line 114, sprite/*.png */
+.sprite-sprite, .sprite-insta-2x, .sprite-insta, .sprite-pinterest-2x, .sprite-pinterest, .sprite-search-2x, .sprite-search, .sprite-tuxno2-logo-2x, .sprite-tuxno2-logo, .sprite-twitter-2x, .sprite-twitter {
+  background: url(/assets/sprite-sd809180d7f.png) no-repeat;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta-2x {
+  background-position: 0 -202px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta {
+  background-position: 0 -342px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest-2x {
+  background-position: 0 -102px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest {
+  background-position: 0 -252px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search-2x {
+  background-position: 0 -277px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search {
+  background-position: 0 -367px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo-2x {
+  background-position: 0 0;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo {
+  background-position: 0 -68px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter-2x {
+  background-position: 0 -152px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter {
+  background-position: 0 -317px;
+}
+
+/* line 4, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
 .content, .edit_panel {
   width: 940px;
   margin: 0 auto;
   position: relative;
 }
 
-/* line 8, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
+/* line 11, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
 .list-element h3:first-letter, .list-element h3 .swash-cap {
   font-feature-settings: "swsh";
   -moz-font-feature-settings: "swsh";
   -webkit-font-feature-settings: "swsh";
 }
 
-/* line 1, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
+/* line 114, sprite/*.png */
+.sprite-sprite, .sprite-insta-2x, .sprite-insta, .sprite-pinterest-2x, .sprite-pinterest, .sprite-search-2x, .sprite-search, .sprite-tuxno2-logo-2x, .sprite-tuxno2-logo, .sprite-twitter-2x, .sprite-twitter {
+  background: url(/assets/sprite-sd809180d7f.png) no-repeat;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta-2x {
+  background-position: 0 -202px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta {
+  background-position: 0 -342px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest-2x {
+  background-position: 0 -102px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest {
+  background-position: 0 -252px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search-2x {
+  background-position: 0 -277px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search {
+  background-position: 0 -367px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo-2x {
+  background-position: 0 0;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo {
+  background-position: 0 -68px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter-2x {
+  background-position: 0 -152px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter {
+  background-position: 0 -317px;
+}
+
+/* line 4, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
 .content, .edit_panel {
   width: 940px;
   margin: 0 auto;
   position: relative;
 }
 
-/* line 8, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
+/* line 11, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
 .list-element h3:first-letter, .list-element h3 .swash-cap {
   font-feature-settings: "swsh";
   -moz-font-feature-settings: "swsh";
@@ -1252,14 +1854,69 @@ body {
   background-size: 4px 100%;
 }
 
-/* line 1, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
+/* line 114, sprite/*.png */
+.sprite-sprite, .sprite-insta-2x, .sprite-insta, .sprite-pinterest-2x, .sprite-pinterest, .sprite-search-2x, .sprite-search, .sprite-tuxno2-logo-2x, .sprite-tuxno2-logo, .sprite-twitter-2x, .sprite-twitter {
+  background: url(/assets/sprite-sd809180d7f.png) no-repeat;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta-2x {
+  background-position: 0 -202px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta {
+  background-position: 0 -342px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest-2x {
+  background-position: 0 -102px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest {
+  background-position: 0 -252px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search-2x {
+  background-position: 0 -277px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search {
+  background-position: 0 -367px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo-2x {
+  background-position: 0 0;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo {
+  background-position: 0 -68px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter-2x {
+  background-position: 0 -152px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter {
+  background-position: 0 -317px;
+}
+
+/* line 4, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
 .content, .edit_panel {
   width: 940px;
   margin: 0 auto;
   position: relative;
 }
 
-/* line 8, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
+/* line 11, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
 .list-element h3:first-letter, .list-element h3 .swash-cap {
   font-feature-settings: "swsh";
   -moz-font-feature-settings: "swsh";
@@ -1546,7 +2203,62 @@ body {
   right: 20px;
   top: 20px;
 }
-/* line 1, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
+/* line 114, sprite/*.png */
+.sprite-sprite, .sprite-insta-2x, .sprite-insta, .sprite-pinterest-2x, .sprite-pinterest, .sprite-search-2x, .sprite-search, .sprite-tuxno2-logo-2x, .sprite-tuxno2-logo, .sprite-twitter-2x, .sprite-twitter {
+  background: url(/assets/sprite-sd809180d7f.png) no-repeat;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta-2x {
+  background-position: 0 -202px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta {
+  background-position: 0 -342px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest-2x {
+  background-position: 0 -102px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest {
+  background-position: 0 -252px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search-2x {
+  background-position: 0 -277px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search {
+  background-position: 0 -367px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo-2x {
+  background-position: 0 0;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo {
+  background-position: 0 -68px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter-2x {
+  background-position: 0 -152px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter {
+  background-position: 0 -317px;
+}
+
+/* line 4, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/helpers.scss */
 .home-content {
   width: 940px;
   margin: 0 auto;
@@ -1578,6 +2290,61 @@ body {
 .list_elements, .list .primary, .component .primary {
   width: 100%;
 }
+/* line 114, sprite/*.png */
+.sprite-sprite, .sprite-insta-2x, .sprite-insta, .sprite-pinterest-2x, .sprite-pinterest, .sprite-search-2x, .sprite-search, .sprite-tuxno2-logo-2x, .sprite-tuxno2-logo, .sprite-twitter-2x, .sprite-twitter {
+  background: url(/assets/sprite-sd809180d7f.png) no-repeat;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta-2x {
+  background-position: 0 -202px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-insta {
+  background-position: 0 -342px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest-2x {
+  background-position: 0 -102px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-pinterest {
+  background-position: 0 -252px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search-2x {
+  background-position: 0 -277px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-search {
+  background-position: 0 -367px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo-2x {
+  background-position: 0 0;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-tuxno2-logo {
+  background-position: 0 -68px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter-2x {
+  background-position: 0 -152px;
+}
+
+/* line 60, /opt/boxen/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.sprite-twitter {
+  background-position: 0 -317px;
+}
+
 /* line 6, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/elements/base.scss */
 * {
   box-sizing: border-box;
@@ -1802,4 +2569,43 @@ body {
   margin-top: 27px;
   margin-right: 4px;
   font-weight: 900;
+}
+
+@media (max-width: 950px) {
+  /* line 33, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/pages/recipe-page.scss */
+  .content {
+    width: 100%;
+  }
+
+  /* line 34, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/pages/recipe-page.scss */
+  .primary {
+    width: 60%;
+    font-size: 18px;
+  }
+
+  /* line 38, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/pages/recipe-page.scss */
+  .aside {
+    width: 40%;
+  }
+  /* line 40, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/pages/recipe-page.scss */
+  .aside ul, .aside ol {
+    font-size: 16px;
+  }
+  /* line 41, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/pages/recipe-page.scss */
+  .aside h1:after {
+    width: 97%;
+    left: 0;
+  }
+}
+@media (max-width: 650px) {
+  /* line 49, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/pages/recipe-page.scss */
+  .primary, .content {
+    width: 100%;
+  }
+
+  /* line 50, /Users/chrissy/cocktails/Tuxedo/app/assets/stylesheets/pages/recipe-page.scss */
+  .aside {
+    width: 96%;
+    margin: 2%;
+  }
 }

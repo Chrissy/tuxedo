@@ -48,7 +48,7 @@
   -webkit-transform: translate3d(0,0,0);
 }
 
-@mixin hires_background($image-name) {
+@mixin hires-background($image-name) {
   $height: sprite-sprite-height($image-name);
   $width: sprite-sprite-width($image-name);
   

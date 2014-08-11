@@ -1,4 +1,3 @@
-@import "../elements/sprite";
 @import "../elements/helpers";
 
 $search-width: 300px;
@@ -9,7 +8,7 @@ $search-elements: '.search-wrapper, .twitter-typeahead, .twitter-typeahead .tt-i
   position: relative;
   top: 5px;
 }
-
+ 
 .twitter-typeahead {
   color: #ccc;
   font-size: 20px;
@@ -33,17 +32,13 @@ $search-elements: '.search-wrapper, .twitter-typeahead, .twitter-typeahead .tt-i
     cursor: pointer;
     &.tt-cursor { background-color: rgba(70,70,70,0.8); color: white; }
   }
+  @include hires-background('search-2x');
   &:before { 
-    @extend .sprite-search;
-    content: "";
-    float: left;
-    width: 20px;
-    height: 20px;
     opacity: 0.3;
     z-index: 6;
-    top: 3px;
-    right: 5px;
-    position: absolute; 
+    top: 4px;
+    right: -16px;
+    left: auto;
   }
   .tt-input:focus {
     outline: 0;
