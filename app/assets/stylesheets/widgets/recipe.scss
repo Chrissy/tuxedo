@@ -80,10 +80,18 @@ $components-bg-color: white;
     padding-bottom: 14px;
     padding-top: 12px;
     margin-left: 60px;
+    &:before {
+      content: "";
+      height: 28px;
+      width: 1px;
+      background-color: #ddd;
+      position: absolute;
+      display: block;
+      left: 59px;
+    }
   }
   .amount {
     display: inline-block;
-    border-right: 1px solid $components-border-color;
     min-width: 60px;
     margin-right: 4px;
     text-align: right;
