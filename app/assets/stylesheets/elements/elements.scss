@@ -70,9 +70,9 @@
     left: 50%;
   }
   &:before {
+    @include rotate(45deg);
     width: 6px;
     height: 6px;
-    -webkit-transform: rotate(45deg);
     margin-left: -3px;
     bottom: -4px;
   }
