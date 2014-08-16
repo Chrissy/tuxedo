@@ -20,6 +20,8 @@ $search-elements: '.search-wrapper, .twitter-typeahead, .twitter-typeahead .tt-i
     background-color: rgba(50,50,50,0.8);
     border: 1px solid #333; 
     width: 100%;
+    border-radius: 0 0 5px 5px;
+    margin-top: 5px;
   }
   .tt-suggestion {
     border-bottom: 1px solid #333;
@@ -41,6 +43,7 @@ $search-elements: '.search-wrapper, .twitter-typeahead, .twitter-typeahead .tt-i
     left: auto;
   }
   .tt-input:focus {
+    z-index: 99999;
     outline: 0;
     border: 1px solid #999;
     &:before { opacity: 1; }
