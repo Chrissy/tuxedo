@@ -123,7 +123,7 @@ $image-resize: 10%;
   }
 }
 
-@media (max-width: 1275px) and (min-width: 1024px) {
+@media (max-width: 1275px) and (min-width: 950px) {
   .list-element {
     &:nth-of-type(1), &:nth-of-type(8), &:nth-of-type(12), &:nth-of-type(16),
     &:nth-of-type(22), &:nth-of-type(28), &:nth-of-type(31), &:nth-of-type(38), 
@@ -134,7 +134,7 @@ $image-resize: 10%;
   }
 }
 
-@media (max-width: 900px) and (min-width: 650px) {
+@media (max-width: 950px) and (min-width: 650px) {
   .content.list, .content.component { width: 628px; }
   .list-element {
     &:nth-of-type(4n+1) {
