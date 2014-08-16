@@ -68,7 +68,6 @@ $search-elements: '.search-wrapper, .twitter-typeahead, .twitter-typeahead .tt-i
 }
 @media (max-width: 650px) {
   #{$search-elements} { width: $compact-search-width; }
-  .search-wrapper { @include transition(0.2s -webkit-transform); }
   body.focused {
     .search-wrapper { -webkit-transform: translate3d(0, -57px, 0); }
     .header-primary, .header-content > img, .links { opacity: 0.2; }
