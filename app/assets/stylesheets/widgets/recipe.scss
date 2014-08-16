@@ -79,6 +79,7 @@ $components-bg-color: white;
     border-bottom: 1px solid $components-border-color;
     padding-bottom: 14px;
     padding-top: 12px;
+    margin-left: 60px;
   }
   .amount {
     display: inline-block;
@@ -88,6 +89,8 @@ $components-bg-color: white;
     text-align: right;
     padding-right: 7px;
     font-weight: bold;
+    position: absolute;
+    left: 0;
   }
   .unit {
     font-weight: normal;
