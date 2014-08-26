@@ -1,5 +1,5 @@
 <div class="header-content">
-  <%= filepicker_image_tag element.image, w: 1880, h: 1080, fit: 'crop', crop: "0,0,1880,1080", align: "center,center" %>
+  <%= header_image(element) %>
   <h1 class="header-title">
     <a href="<%= element.url %>">
       <%= render "shared/display_number", :number => element.number if element.respond_to?(:number) %>

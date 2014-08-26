@@ -20,6 +20,15 @@ module ApplicationHelper
     image.present? ? image : Recipe.first.image #probably should come up with a default image lol
   end
   
+  def header_image(element)
+    opts = {
+      w: 705, 
+      h: 405, 
+      fit: 'crop'
+    }
+    filepicker_image_tag(image_with_backup(element.image), opts, class: "header-image", :"data-resize"=>"2.5")
+  end
+  
   def list_image(element)
     filepicker_image_tag(image_with_backup(element.image), w: 950, h: 650, fit: 'crop', align: "center,center")
   end
