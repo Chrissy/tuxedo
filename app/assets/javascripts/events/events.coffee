@@ -1,4 +1,6 @@
 $ ->
+  helpers = new Helpers
+  
   window.form = new Form('.autocomplete')
   window.search = new Search('.search')
 
@@ -17,14 +19,4 @@ $ ->
     )
   )
     
-  $("[data-resize]").each(->
-    $this = $(this)
-    url = $this.attr("src").match(/\/file\/(.*?)\//)[1]
-    upscale = parseFloat($this.attr("data-resize"))
-    width = parseInt($this.attr("src").match(/\&w\=(.*?)(\&|$)/)[1] * upscale)
-    height = parseInt($this.attr("src").match(/\&h\=(.*?)(\&|$)/)[1] * upscale)
-    filepicker_url = "https://www.filepicker.io/api/file/#{url}/convert?fit=crop&h=#{height}&w=#{width}"
-    img = $("<img/>").attr("src", filepicker_url).load( ->
-      $this.replaceWith(img)
-    )
-  )
+  helpers.setup_lazy_images()

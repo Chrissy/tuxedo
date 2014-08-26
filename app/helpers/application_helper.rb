@@ -22,11 +22,11 @@ module ApplicationHelper
   
   def header_image(element)
     opts = {
-      w: 705, 
-      h: 405, 
+      w: 500, 
+      h: 287, 
       fit: 'crop'
     }
-    filepicker_image_tag(image_with_backup(element.image), opts, class: "header-image", :"data-resize"=>"2.5")
+    filepicker_image_tag(image_with_backup(element.image), opts, class: "header-image", :"data-resize"=>"3")
   end
   
   def list_image(element)
