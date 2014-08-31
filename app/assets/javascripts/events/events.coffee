@@ -1,6 +1,10 @@
 $ ->
   window.form = new Form('.autocomplete')
   window.search = new Search('.search')
+    
+  $("[data-resize]").each(->
+    new Image($(this)).upscale()
+  )
 
   $(".authenticate").each(->
     $this = $(this)
@@ -15,8 +19,4 @@ $ ->
     $(this).blur(->
       $target.removeClass("focused")
     )
-  )
-    
-  $("[data-resize]").each(->
-    new Image($(this)).upscale()
   )

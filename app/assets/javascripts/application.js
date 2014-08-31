@@ -16,7 +16,7 @@
 //= require jquery.caret.js
 //= require jquery.atwho.min.js
 //= require typeahead.bundle.js
-//= require classes/helpers
+//= require classes/image
 //= require classes/form
 //= require classes/search
 //= require events/events

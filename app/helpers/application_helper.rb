@@ -24,12 +24,13 @@ module ApplicationHelper
     opts = {
       w: 500, 
       h: 287, 
-      fit: 'crop'
+      fit: 'crop',
+      cache: 'true'
     }
     filepicker_image_tag(image_with_backup(element.image), opts, class: "header-image", :"data-resize"=>"3")
   end
   
   def list_image(element)
-    filepicker_image_tag(image_with_backup(element.image), w: 950, h: 650, fit: 'crop', align: "center,center")
+    filepicker_image_tag(image_with_backup(element.image), w: 950, h: 650, fit: 'crop', align: "center,center", cache: true)
   end
 end
