@@ -1,20 +1,36 @@
 class window.Helpers
-  
-  find_param: (name, string) ->
-    return string.match(///\&#{name}\=(.*?)(\&|$)///)[1]
-      
   setup_lazy_images: ->
     self = @
     $("[data-resize]").each(->
-      $this = $(this)
-      src = $this.attr("src")
-      upscale = parseFloat($this.attr("data-resize"))
-      url = $this.attr("src").match(/\/file\/(.*?)\//)[1]
-      width = parseInt(self.find_param("w", src) * upscale)
-      height = parseInt(self.find_param("h", src) * upscale)
-      filepicker_url = "https://www.filepicker.io/api/file/#{url}/convert?fit=crop&h=#{height}&w=#{width}"
-      img = $("<img/>").attr("src", filepicker_url).load( ->
-        $this.replaceWith(img)
-      )
+      new Image($(this))
     )
     
+class window.Image
+  constructor: ($image) ->
+    @image = $image
+    @src = $image.attr("src")
+    @load_image()
+    
+  dimension: (name) ->
+    upscale = parseFloat(@image.attr("data-resize"))
+    d = @src.match(///\&#{name}\=(.*?)(\&|$)///)[1]
+    increment: ->
+      parseInt( d * upscale)
+        
+  increment_dimensions: ->
+    @w = @dimension("w").increment()
+    @h = @dimension("h").increment()
+    
+  filepicker_url: ->
+    url = @image.attr("src").match(/\/file\/(.*?)\//)[1]
+    d = @increment_dimensions()
+    "https://www.filepicker.io/api/file/#{url}/convert?fit=crop&h=#{@h}&w=#{@w}"
+      
+  load_image: ->
+    self = @
+    img = $("<img/>").attr("src", @filepicker_url()).load( ->
+      self.image.replaceWith(img)
+    )
+
+    
+  

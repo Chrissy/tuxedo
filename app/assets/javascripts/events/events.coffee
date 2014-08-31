@@ -1,6 +1,5 @@
 $ ->
   helpers = new Helpers
-  
   window.form = new Form('.autocomplete')
   window.search = new Search('.search')
 
