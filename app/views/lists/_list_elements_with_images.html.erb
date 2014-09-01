@@ -1,0 +1,12 @@
+<% list_elements.each do |element| %>
+  <li class="list-element">
+    <%= link_to element.url, class: "list-image-wrapper" do %>
+      <%= list_image(element) %>
+    <% end %>
+    <div class="list-details">
+      <h3><%= link_to swash(element.name), element.url %></h3> 
+      <%= render element.subtext, :element => element if element.subtext.present? %>
+    </div>
+  </li>
+  <span class="sawhorse"></span>
+<% end %>

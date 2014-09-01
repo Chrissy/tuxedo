@@ -12,7 +12,7 @@ class List < ActiveRecord::Base
     end
     elements.flatten.uniq - ["",nil]
   end
-
+  
   def url
     "/list/#{id}"
   end

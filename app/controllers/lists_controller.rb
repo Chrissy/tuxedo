@@ -43,6 +43,15 @@ class ListsController < ApplicationController
       format.json {}
     end
   end
+  
+  def get
+    @list = List.find(params[:id])
+    @count_start = params[:start].to_i + 2
+    @count_end = -1
+    respond_to do |format|
+      format.html {render :layout => false}
+    end
+  end
 
   def admin
     @recipes = Recipe.all.sort_by(&:name)

@@ -29,6 +29,7 @@ Tuxno2::Application.routes.draw do
   get 'list/new' => 'lists#new'
   get 'list/all' => 'lists#all'
   get 'list/:id' => 'lists#show'
+  get 'list/get/:id' => 'lists#get'
   get 'list/edit/:id' => 'lists#edit'
   post 'list/update/:id' => 'lists#update'
   post 'list/create' => 'lists#create'

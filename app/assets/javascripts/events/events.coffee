@@ -20,3 +20,11 @@ $ ->
       $target.removeClass("focused")
     )
   )
+  
+  $("[data-lazy-load]").each(->
+    $.ajax(
+      url: "/list/get/#{$(@).attr("data-lazy-load")}?start=#{$(this).find(".list-element").length}"
+      success: (data) =>
+        $(@).append(data)
+    )
+  )
