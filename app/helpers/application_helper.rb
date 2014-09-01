@@ -39,4 +39,8 @@ module ApplicationHelper
     }
     filepicker_image_tag(image_with_backup(element.image), opts, :"data-resize" => "3")
   end
+  
+  def list_id
+    @list.id if defined? @list
+  end
 end

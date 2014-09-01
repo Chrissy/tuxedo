@@ -31,8 +31,4 @@ module ListsHelper
   def admin_element_class_name(element)
     "#{name_for_code(element)}_admin_element"
   end
-  
-  def list_id
-    @list.id if defined? @list
-  end
 end
