@@ -2,9 +2,11 @@ $ ->
   window.form = new Form('.autocomplete')
   window.search = new Search('.search')
     
-  $("[data-resize]").each(->
-    new Image($(this)).upscale()
-  )
+  upscale_all_images = ->    
+    $("[data-resize]").each(->
+      new Image($(this)).upscale()
+    )
+  upscale_all_images()
 
   $(".authenticate").each(->
     $this = $(this)
@@ -26,5 +28,6 @@ $ ->
       url: "/list/get/#{$(@).attr("data-lazy-load")}?start=#{$(this).find(".list-element").length}"
       success: (data) =>
         $(@).append(data)
+        upscale_all_images()
     )
   )
