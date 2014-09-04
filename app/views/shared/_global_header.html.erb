@@ -1,0 +1,16 @@
+<% cache(global_header_cache_key) do %>
+  <div class="global-header">
+    <div class="header-primary">
+      <a href="/" id="logo">
+        Tuxedo Number Two: Cocktails, Spiritis, Drinks, Etc.
+      </a>
+    </div>
+    <div class="header-secondary">
+      <%= render 'lists/links', :list => links %>
+      <%= render 'shared/social' %>
+      <div class="search-wrapper">
+        <input type="text" class="search" bubble-on-focus="body" placeholder="search"></input>
+      </div>
+    </div>
+  </div>
+<% end %>

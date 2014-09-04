@@ -48,4 +48,8 @@ module ApplicationHelper
     updated_at = object.try(:updated_at).try(:to_s, :number)
     "#{object.class.to_s.pluralize.downcase}/#{view}-#{updated_at}"
   end
+  
+  def global_header_cache_key
+    generic_cache_key(links, "global-header")
+  end
 end

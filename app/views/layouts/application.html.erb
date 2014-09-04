@@ -2,29 +2,14 @@
 <html>
   <head>
     <title>Tuxno2</title>
-    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= filepicker_js_include_tag %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1;">
   </head>
   <body data-no-turbolink>
-    <div class="global-header">
-      <div class="header-primary">
-        <a href="/" id="logo">
-          Tuxedo Number Two: Cocktails, Spiritis, Drinks, Etc.
-        </a>
-      </div>
-      <div class="header-secondary">
-        <%= render 'lists/links', :list => links %>
-        <%= render 'shared/social' %>
-        <div class="search-wrapper">
-          <input type="text" class="search" bubble-on-focus="body" placeholder="search"></input>
-        </div>
-      </div>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </div>
+    <%= render 'shared/global_header' %>
 
     <%= yield %>
 
