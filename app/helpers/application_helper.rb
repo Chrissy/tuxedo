@@ -43,4 +43,9 @@ module ApplicationHelper
   def list_id
     @list.id if defined? @list
   end
+  
+  def generic_cache_key(object, view)
+    updated_at = object.try(:updated_at).try(:to_s, :number)
+    "#{object.class.to_s.pluralize.downcase}/#{view}-#{updated_at}"
+  end
 end

@@ -32,8 +32,7 @@ module ListsHelper
     "#{name_for_code(element)}_admin_element"
   end
   
-  def cache_key_for_lists
-    updated_at = List.first.try(:updated_at).try(:to_s, :number)
-    "lists/show-#{updated_at}"
-  end
+  def cache_key_for_lists(view)
+    generic_cache_key(@list, view)
+  end 
 end
