@@ -1,12 +1,14 @@
-<div class="header recipe">
-  <%= render "shared/header", :element => @recipe %> 
-</div>
+<% cache(recipes_cache_key) do %>
+  <div class="header recipe">
+    <%= render "shared/header", :element => @recipe %> 
+  </div>
 
-<div class="content recipe">
-  <div class="aside">
-    <%= @recipe.recipe_to_html %>
+  <div class="content recipe">
+    <div class="aside">
+      <%= @recipe.recipe_to_html %>
+    </div>
+    <div class="primary">
+      <%= @recipe.description_to_html %>
+    </div>
   </div>
-  <div class="primary">
-    <%= @recipe.description_to_html %>
-  </div>
-</div>
+<% end %>

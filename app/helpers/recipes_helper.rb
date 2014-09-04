@@ -19,4 +19,8 @@ module RecipesHelper
   def submit_text
     undefined ? "create" : "update"
   end
+  
+  def recipes_cache_key
+    generic_cache_key(@recipe, "show")
+  end
 end
