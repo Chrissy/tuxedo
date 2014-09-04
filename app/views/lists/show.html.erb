@@ -1,8 +1,10 @@
-<div class="header list<%= " home" if @list.home? %>">
-  <%= render "shared/header", :element => @list.header_element %> 
-</div>
-<div class="content list<%= " home" if @list.home? %>">
-  <div class="primary">
-    <%= render "list_with_images", :list_elements => @list.elements[1..-1] %>
+<% cache(cache_key_for_lists) do %>
+  <div class="header list<%= " home" if @list.home? %>">
+    <%= render "shared/header", :element => @list.header_element %> 
   </div>
-</div>
+  <div class="content list<%= " home" if @list.home? %>">
+    <div class="primary">
+      <%= render "list_with_images", :list_elements => @list.elements[1..-1] %>
+    </div>
+  </div>
+<% end %>
