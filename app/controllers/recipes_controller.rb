@@ -40,8 +40,6 @@ class RecipesController < ApplicationController
   end
   
   def search
-    @elements = []
-    @elements.concat(Recipe.all).concat(List.all_for_display).concat(Component.all)
     respond_to do |format|
       format.json {}
     end
