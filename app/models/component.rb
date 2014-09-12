@@ -1,10 +1,13 @@
 require 'recipe.rb'
 
 class Component < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  
   serialize :recipe_ids, Array
 
   def url
-    "/components/#{id}"
+    "/components/#{slug}"
   end
 
   def edit_url

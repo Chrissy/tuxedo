@@ -2,7 +2,7 @@ class ComponentsController < ApplicationController
   layout "application"
 
   def show
-    @component = Component.find(params[:id])
+    @component = Component.friendly.find(params[:id])
     #@image = @component.image ? @component.image : @recipes.first.image
   end
 

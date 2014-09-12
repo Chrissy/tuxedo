@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   layout "application"
 
   def show
-    @list = List.find(params[:id])
+    @list = List.friendly.find(params[:id])
   end
 
   def home
