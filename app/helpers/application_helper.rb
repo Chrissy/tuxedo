@@ -52,8 +52,4 @@ module ApplicationHelper
   def global_header_cache_key
     cache_key(links, "global-header")
   end
-  
-  def search_cache_key
-    cache_key(Recipe.last, "search")
-  end
 end
