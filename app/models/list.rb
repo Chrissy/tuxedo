@@ -40,7 +40,7 @@ class List < ActiveRecord::Base
   
   def tell_recipes_about_me
     recipes.each do |recipe|
-      recipe.list_ids << recipe.id
+      recipe.list_ids << self.id
       recipe.list_ids = recipe.list_ids.uniq
       recipe.save
     end

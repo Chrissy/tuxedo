@@ -3,6 +3,7 @@ require 'component.rb'
 class Recipe < ActiveRecord::Base
   serialize :component_ids, Array
   serialize :list_ids, Array
+  before_save :touch_associated_lists
 
   def markdown
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
@@ -30,6 +31,10 @@ class Recipe < ActiveRecord::Base
 
   def delete_url
     ""
+  end
+  
+  def lists
+    list_ids.map { |list_id| List.find(list_id) }
   end
   
   def number
@@ -75,6 +80,12 @@ class Recipe < ActiveRecord::Base
   end
   
   private
+  
+  def touch_associated_lists
+    lists.each do |list| 
+      list.touch
+    end  
+  end
 
   def markdown_to_html_with_components(md)
     component_list = []
