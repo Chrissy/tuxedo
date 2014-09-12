@@ -3,6 +3,7 @@ require 'component.rb'
 
 class List < ActiveRecord::Base
   serialize :element_ids, Array
+  after_save :tell_recipes_about_me
 
   def elements
     elements = []
@@ -32,10 +33,17 @@ class List < ActiveRecord::Base
   def count_for_display
     "#{elements.count} components"
   end
-
-  def compile_and_store_list_elements
-    elements = collect_list_elements(content_as_markdown)
-    self.update_attribute(:element_ids, elements)
+  
+  def recipes
+    element_ids.select{ |pair| pair[0] == "Recipe" }.map{ |pair| Recipe.find_by_name(pair[1])}
+  end
+  
+  def tell_recipes_about_me
+    recipes.each do |recipe|
+      recipe.list_ids << recipe.id
+      recipe.list_ids = recipe.list_ids.uniq
+      recipe.save
+    end
   end
 
   def expand_element_pair(element_pair)
@@ -86,18 +94,18 @@ class List < ActiveRecord::Base
     home? ? elements.first : self
   end
 
-  def collect_list_elements(md)
-    recipes = []
-    md.gsub(/(\=|\:|\#)\[(.*?)\]/) do |*|
+  def collect_and_save_list_elements
+    elements = []
+    content_as_markdown.gsub(/(\=|\:|\#)\[(.*?)\]/) do |*|
       case $1
         when ":" 
-          recipes.push([Component.to_s, $2])
+          elements.push([Component.to_s, $2])
         when "#" 
-          recipes.push([List.to_s, $2])
+          elements.push([List.to_s, $2])
         when "=" 
-          recipes.push([Recipe.to_s, $2])
+          elements.push([Recipe.to_s, $2])
       end
     end
-    return recipes
+    self.update_attribute(:element_ids, elements)
   end
 end

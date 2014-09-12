@@ -21,7 +21,7 @@ class ListsController < ApplicationController
   def update
     list = List.find(params[:id])
     list.update_attributes(list_params)
-    list.compile_and_store_list_elements
+    list.collect_and_save_list_elements
     redirect_to action: "show", id: list.id
   end
 

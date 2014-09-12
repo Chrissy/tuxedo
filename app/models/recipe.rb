@@ -2,6 +2,7 @@ require 'component.rb'
 
 class Recipe < ActiveRecord::Base
   serialize :component_ids, Array
+  serialize :list_ids, Array
 
   def markdown
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
