@@ -3,7 +3,7 @@ require 'component.rb'
 
 class RecipesController < ApplicationController
   def show
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.friendly.find(params[:id])
   end
 
   def edit

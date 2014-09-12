@@ -1,6 +1,9 @@
 require 'component.rb'
 
 class Recipe < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  
   serialize :component_ids, Array
   serialize :list_ids, Array
   before_save :touch_associated_lists
@@ -22,7 +25,7 @@ class Recipe < ActiveRecord::Base
   end
 
   def url
-    "/#{id}"
+    "/#{slug}"
   end
 
   def edit_url
