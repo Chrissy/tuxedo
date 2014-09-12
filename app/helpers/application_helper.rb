@@ -44,16 +44,16 @@ module ApplicationHelper
     @list.id if defined? @list
   end
   
-  def generic_cache_key(object, view)
+  def cache_key(object, view)
     updated_at = object.try(:updated_at).try(:to_s, :number)
     "#{object.class.to_s.pluralize.downcase}/#{view}-#{object.id}-#{updated_at}"
   end
   
   def global_header_cache_key
-    generic_cache_key(links, "global-header")
+    cache_key(links, "global-header")
   end
   
   def search_cache_key
-    generic_cache_key(Recipe.last, "search")
+    cache_key(Recipe.last, "search")
   end
 end

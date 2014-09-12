@@ -1,4 +1,4 @@
-<% cache(cache_key_for_lists(@list)) do %>
+<% cache(cache_key(@list, "show")) do %>
   <div class="header list<%= " home" if @list.home? %>">
     <%= render "shared/header", :element => @list.header_element %> 
   </div>

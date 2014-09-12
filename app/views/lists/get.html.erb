@@ -1,3 +1,3 @@
-<% cache(cache_key_for_lists('get')) do %>
+<% cache(cache_key(@list, "get")) do %>
   <%= render "list_elements_with_images", :list_elements => @list.elements[@count_start..@count_end] %>
 <% end %>

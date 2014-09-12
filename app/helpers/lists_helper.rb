@@ -31,8 +31,4 @@ module ListsHelper
   def admin_element_class_name(element)
     "#{name_for_code(element)}_admin_element"
   end
-  
-  def cache_key_for_lists(list)
-    generic_cache_key(list, "list")
-  end 
 end
