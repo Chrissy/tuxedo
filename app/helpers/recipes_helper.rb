@@ -25,7 +25,7 @@ module RecipesHelper
     undefined ? "create" : "update"
   end
   
-  def recipes_cache_key
-    generic_cache_key(@recipe, "show")
+  def recipes_cache_key(recipe)
+    generic_cache_key(recipe, "show")
   end
 end

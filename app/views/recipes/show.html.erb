@@ -1,4 +1,4 @@
-<% cache(recipes_cache_key) do %>
+<% cache(recipes_cache_key(@recipe)) do %>
   <div class="header recipe">
     <%= render "shared/header", :element => @recipe %> 
   </div>

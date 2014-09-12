@@ -32,7 +32,7 @@ module ListsHelper
     "#{name_for_code(element)}_admin_element"
   end
   
-  def cache_key_for_lists(view)
-    generic_cache_key(@list, view)
+  def cache_key_for_lists(list)
+    generic_cache_key(list, "list")
   end 
 end
