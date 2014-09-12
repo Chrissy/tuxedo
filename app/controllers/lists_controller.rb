@@ -28,7 +28,7 @@ class ListsController < ApplicationController
   def create
     list = List.create(list_params)
     list.update_attributes(list_params)
-    list.compile_and_store_list_elements
+    list.collect_and_save_list_elements
     redirect_to action: "show", id: list.id
   end
 

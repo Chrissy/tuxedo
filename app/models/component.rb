@@ -50,12 +50,12 @@ class Component < ActiveRecord::Base
   def update_list(markdown)
     list_element = List.find(list)
     list_element.update_attributes(content_as_markdown: markdown, component: id)
-    list_element.compile_and_store_list_elements
+    list_element.collect_and_save_list_elements
   end
   
   def create_list(markdown)
     list_element = List.new(content_as_markdown: markdown, name: name, component: id)
-    list_element.compile_and_store_list_elements
+    list_element.collect_and_save_list_elements
     update_attribute(:list, list_element.id)
   end
   
