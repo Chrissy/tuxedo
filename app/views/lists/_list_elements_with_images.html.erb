@@ -1,4 +1,4 @@
-<% list_elements.each do |element| %>
+<% list_elements.try(:each) do |element| %>
   <li class="list-element">
     <%= link_to element.url, class: "list-image-wrapper" do %>
       <%= list_image(element) %>
