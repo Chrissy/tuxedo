@@ -15,4 +15,8 @@ module ComponentsHelper
   def submit_text
     @component.present? ? "update" : "create"
   end
+  
+  def components_cache_key(component)
+    generic_cache_key(component, "component")
+  end 
 end
