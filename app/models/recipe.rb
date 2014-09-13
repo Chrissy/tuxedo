@@ -21,7 +21,7 @@ class Recipe < ActiveRecord::Base
   end
 
   def components
-    component_ids.map { |component_id| Component.find(component_id) }
+    component_ids.map { |component_id| Component.find_by_id(component_id) }.compact
   end
 
   def url
