@@ -44,6 +44,14 @@ module ApplicationHelper
     @list.id if defined? @list
   end
   
+  def display_number_with_fallback(element)
+    if element.try(:number)
+      render "shared/display_number", :number => element.number
+    else
+      "<div class='decoration'></div>".html_safe
+    end
+  end
+  
   def cache_key(object, view)
     updated_at = object.try(:updated_at).try(:to_s, :number)
     "#{object.class.to_s.pluralize.downcase}/#{view}-#{object.id}-#{updated_at}"

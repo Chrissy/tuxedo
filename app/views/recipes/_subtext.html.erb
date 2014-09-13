@@ -1,5 +1,5 @@
 <%= link_to element.url, class: "list-element-number" do %>
-  <%= render "shared/display_number", :number => element.number if element.respond_to?(:number) %>
+  <%= display_number_with_fallback(element) %>
 <% end %>
 <h4 class="subtext">
   <% element.components[0..2].each do |component| %>
