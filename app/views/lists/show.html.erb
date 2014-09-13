@@ -4,7 +4,7 @@
   </div>
   <div class="content list<%= " home" if @list.home? %>">
     <div class="primary">
-      <%= render "list_with_images", :list_elements => @list.elements[1..-1] %>
+      <%= render "list_with_images", :list_elements => elements_for_list(@list) %>
     </div>
   </div>
 <% end %>

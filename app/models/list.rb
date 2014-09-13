@@ -86,7 +86,7 @@ class List < ActiveRecord::Base
   end
 
   def image
-    elements.first.image if elements.first
+    elements.last.image if elements.last
   end
 
   def home?

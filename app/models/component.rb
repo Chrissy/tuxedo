@@ -18,7 +18,7 @@ class Component < ActiveRecord::Base
   end
 
   def image
-    recipes.first.image if recipes.first
+    recipes.last.image if recipes.last
   end
 
   def recipes
