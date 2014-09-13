@@ -38,7 +38,7 @@ class List < ActiveRecord::Base
   end
   
   def recipes
-    element_ids.select{ |pair| pair[0] == "Recipe" }.map{ |pair| Recipe.find_by_name(pair[1])}
+    element_ids.select{ |pair| pair[0] == "Recipe" }.map{ |pair| Recipe.find_by_name(pair[1])}.compact
   end
   
   def tell_recipes_about_me
