@@ -78,6 +78,7 @@ class List < ActiveRecord::Base
 
   def create_component_list(component_name, sort_by)
     component = Component.find_by_name(component_name)
+    return if component.nil?
     if sort_by.nil?
       component.recipes.sort_by!(&:name)
     else 
