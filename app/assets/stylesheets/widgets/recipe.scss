@@ -34,15 +34,17 @@ $components-bg-color: white;
       clear: both;
       line-height: 130%;
       padding-bottom: 13px;
+      margin-left: 32px;
       &:before {
         content: counter(li);
         counter-increment: li;
         float: left;
-        font-size: 26px;
+        font-size: 30px;
         font-weight: 900;
         color: white;
-        margin-right: 8px;
         line-height: 90%;
+        left: 18px;
+        background: none;
       }
     }
   }
