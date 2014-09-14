@@ -29,6 +29,10 @@ class List < ActiveRecord::Base
     List.all.keep_if { |list| list.component.nil? }
   end
   
+  def tagline
+    "#{name} | Tuxedo no.2"
+  end
+  
   def subtext
     "components/subtext"
   end

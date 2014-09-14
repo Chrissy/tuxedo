@@ -4,6 +4,7 @@ require 'component.rb'
 class RecipesController < ApplicationController
   def show
     @recipe = Recipe.friendly.find(params[:id])
+    @layout_object = @recipe
   end
 
   def edit

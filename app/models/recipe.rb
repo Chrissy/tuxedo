@@ -44,6 +44,10 @@ class Recipe < ActiveRecord::Base
     Recipe.find(:all, :order => :id).find_index(self) + 1
   end
   
+  def tagline
+    "#{name} Cocktail | Tuxedo no.2"
+  end
+  
   def subtext
     "recipes/subtext"
   end

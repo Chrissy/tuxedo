@@ -1,4 +1,8 @@
 module ApplicationHelper
+  
+  def site_title
+    @layout_object.try(:tagline) || "Tuxedo No.2 | Your Guide to Making Cocktails" 
+  end
 
   def delete_link(object)
     url_for controller: object.class.to_s.pluralize.downcase, action: "delete", id: object.id

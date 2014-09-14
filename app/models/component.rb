@@ -14,15 +14,16 @@ class Component < ActiveRecord::Base
     "/components/edit/#{id}"
   end
 
-  def delete_url
-  end
-
   def image
     recipes.last.image if recipes.last
   end
 
   def recipes
     recipe_ids.map { |recipe_id| Recipe.find_by_id(recipe_id) } - ["",nil]
+  end
+    
+  def tagline
+    "#{name.titleize} Cocktail Recipes | Tuxedo no.2"
   end
   
   def subtext
