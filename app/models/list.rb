@@ -3,7 +3,7 @@ require 'component.rb'
 
 class List < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :custom_name, use: :slugged
   
   serialize :element_ids, Array
   after_save :tell_recipes_about_me
@@ -19,6 +19,10 @@ class List < ActiveRecord::Base
   
   def url
     "/list/#{slug}"
+  end
+  
+  def custom_name
+    name + " cocktail recipes"
   end
 
   def edit_url
