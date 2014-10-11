@@ -79,6 +79,7 @@ module ApplicationHelper
   end
   
   def all_recipes_link
-    link_to "All Cocktails", "/"
+    everything_link = List.find_by_name("Everything").try(:url) || "/" 
+    link_to "All Cocktails", everything_link
   end
 end
