@@ -27,7 +27,7 @@ module ApplicationHelper
       fit: 'crop',
       cache: 'true'
     }
-    filepicker_image_tag(image_with_backup(element.image), opts, class: "header-image", :"data-resize"=>"3")
+    filepicker_image_tag(image_with_backup(element.image), opts, class: "header-image", :"data-resize"=>"3", :itemprop => "image")
   end
   
   def list_image(element)
@@ -68,9 +68,21 @@ module ApplicationHelper
   def meta_title
     "Tuxedo No.2 | A Stately Cocktail Companion"
   end
-  
+      
   def meta_description
+    markdown_as_text(@layout_object.try(:description_to_html).try(:truncate, 250) || default_description)
+  end
+  
+  def markdown_as_text(markdown)
+    raw(strip_tags(markdown))
+  end
+  
+  def default_description
     "Your drinking guide with cocktail recipes by spirit, ingredient, and season"
+  end
+  
+  def meta_image
+    image_with_backup(@layout_oject.try(:image))
   end
   
   def similar_recipes_link(recipe)

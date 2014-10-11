@@ -8,8 +8,11 @@
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1;">
     <meta name="description" content="<%= meta_description %>">
+    <meta property="og:title" content="<%= site_title %>" />
+    <meta property="og:image" content="<%= meta_image %>" />
+    <meta property="og:description" content="<%= meta_description %>" />
   </head>
-  <body data-no-turbolink>
+  <body data-no-turbolink itemscope itemtype="http://schema.org/Product">
     <%= render 'shared/global_header' %>
 
     <%= yield %>
