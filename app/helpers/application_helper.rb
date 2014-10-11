@@ -70,7 +70,7 @@ module ApplicationHelper
   end
   
   def meta_description
-    "Your drinking companion: featuring cocktail recipes by spirit, mood, and season"
+    "Your drinking guide with cocktail recipes by spirit, ingredient, and season"
   end
   
   def similar_recipes_link(recipe)
