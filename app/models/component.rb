@@ -2,12 +2,16 @@ require 'recipe.rb'
 
 class Component < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :custom_name, use: :slugged
   
   serialize :recipe_ids, Array
 
   def url
     "/components/#{slug}"
+  end
+  
+  def custom_name
+    name + " cocktail recipes"
   end
 
   def edit_url
