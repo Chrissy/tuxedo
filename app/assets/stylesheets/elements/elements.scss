@@ -116,6 +116,17 @@
   }
 }
 
+.map {
+  clear: both;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  color: #999;
+  background: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 $horizontal-stripes: linear-gradient(90deg, transparent 50%, rgba(50,50,50,.6) 50%);
 %horizontal_stripes {
   background: $horizontal-stripes;

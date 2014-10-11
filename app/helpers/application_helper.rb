@@ -72,4 +72,13 @@ module ApplicationHelper
   def meta_description
     "Your drinking companion: featuring cocktail recipes by spirit, mood, and season"
   end
+  
+  def similar_recipes_link(recipe)
+    first_component = recipe.components.first
+    link_to "other #{first_component.nick} drinks".titleize, first_component.url 
+  end
+  
+  def all_recipes_link
+    link_to "All Cocktails", "/"
+  end
 end
