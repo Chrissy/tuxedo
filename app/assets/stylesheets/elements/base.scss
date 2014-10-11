@@ -1,4 +1,5 @@
 @import "../elements/helpers";
+@import "compass/utilities/general/clearfix";
 
 $background-color: #F1F1F1;
 $link-color: #8B5300;
@@ -23,3 +24,5 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.content, .primary { @include pie-clearfix; }
