@@ -11,9 +11,13 @@ class Recipe < ActiveRecord::Base
   def markdown
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
   end
-
+  
   def recipe_to_html
-    markdown_to_html_with_components(recipe).html_safe
+    convert_recipe_to_html(recipe)
+  end
+
+  def recipe_as_html
+    (stored_recipe_as_html || recipe_to_html).html_safe
   end
 
   def description_to_html
@@ -98,7 +102,7 @@ class Recipe < ActiveRecord::Base
     end  
   end
 
-  def markdown_to_html_with_components(md)
+  def convert_recipe_to_html(md)
     component_list = []
     md.gsub!(/\:\[(.*?)\]/) do |*|
       component = Component.find_or_create_by(name: $1)
@@ -114,6 +118,8 @@ class Recipe < ActiveRecord::Base
     md.gsub!(/\# ?([A-Z].*?)/) do |*|
       "# " << ApplicationController.helpers.swash($1)
     end
-    markdown.render(md) 
+    html = markdown.render(md)
+    update_attribute(:stored_recipe_as_html, html)
+    html
   end
 end

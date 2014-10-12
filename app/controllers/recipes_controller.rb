@@ -19,6 +19,7 @@ class RecipesController < ApplicationController
     recipe = Recipe.find(params[:id])
     recipe.update_attributes(recipe_params)
     recipe.update_attribute(:last_updated, DateTime.now)
+    recipe.recipe_to_html
     redirect_to action: "show", id: recipe.id
   end
 
