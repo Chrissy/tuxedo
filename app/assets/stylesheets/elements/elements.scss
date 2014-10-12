@@ -31,7 +31,7 @@
 }
 
 .decoration {
-  @include hires-background("decoration-2x");
+  @include hires-background("decoration-2x"); 
   margin: 0 auto;
   top: 5px;
 }
