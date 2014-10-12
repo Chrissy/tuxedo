@@ -82,7 +82,7 @@ module ApplicationHelper
   end
   
   def meta_image
-    image_with_backup(@layout_oject.try(:image))
+    image_with_backup(@layout_object.try(:image))
   end
   
   def similar_recipes_link(recipe)
