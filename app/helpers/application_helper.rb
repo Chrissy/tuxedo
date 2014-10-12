@@ -16,10 +16,6 @@ module ApplicationHelper
     "<span class='swash-cap'>#{text[0].upcase}</span>#{text[1..-1]}".html_safe
   end
   
-  def image_with_backup(image)
-    image.present? ? image : Recipe.first.image #probably should come up with a default image lol
-  end
-  
   def header_image(element)
     opts = {
       w: 500, 
@@ -27,7 +23,7 @@ module ApplicationHelper
       fit: 'crop',
       cache: 'true'
     }
-    filepicker_image_tag(image_with_backup(element.image), opts, class: "header-image", :"data-resize"=>"3", :itemprop => "image")
+    filepicker_image_tag(element.image_with_backup, opts, class: "header-image", :"data-resize"=>"3", :itemprop => "image")
   end
   
   def list_image(element)
@@ -37,7 +33,7 @@ module ApplicationHelper
       fit: 'crop',
       cache: 'true'
     }
-    filepicker_image_tag(image_with_backup(element.image), opts, :"data-resize" => "3")
+    filepicker_image_tag(element.image_with_backup, opts, :"data-resize" => "3")
   end
   
   def list_id
@@ -82,7 +78,7 @@ module ApplicationHelper
   end
   
   def meta_image
-    image_with_backup(@layout_object.try(:image))
+    @layout_object.try(:image_with_backup)
   end
   
   def similar_recipes_link(recipe)

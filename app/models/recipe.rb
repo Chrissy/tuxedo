@@ -23,6 +23,10 @@ class Recipe < ActiveRecord::Base
   def description_to_html
     markdown.render(description).html_safe
   end
+  
+  def image_with_backup
+    image.present? ? image : Recipe.first.try(:image) #probably should come up with a default image lol
+  end
 
   def components
     component_ids.map { |component_id| Component.find_by_id(component_id) }.compact

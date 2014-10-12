@@ -17,9 +17,15 @@ class Component < ActiveRecord::Base
   def edit_url
     "/components/edit/#{id}"
   end
-
-  def image
-    recipes.last.image if recipes.last
+  
+  def image_with_backup
+    if image.present?
+      image
+    elsif recipes.last
+      recipes.last.try(:image)
+    else
+      Recipe.first.try(:image)
+    end
   end
 
   def recipes

@@ -93,9 +93,15 @@ class List < ActiveRecord::Base
       component.recipes.sort { |a,b| a.last_updated <=> b.last_updated }
     end
   end
-
-  def image
-    elements.last.image if elements.last
+  
+  def image_with_backup
+    if image.present?
+      image
+    elsif elements.last
+      elements.last.try(:image)
+    else
+      Recipe.first.try(:image)
+    end
   end
 
   def home?
