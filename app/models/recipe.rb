@@ -24,8 +24,12 @@ class Recipe < ActiveRecord::Base
     markdown.render(description).html_safe
   end
   
+  def backup_image_url
+    "https://www.filepicker.io/api/file/drOikI0sTqG2xjWn2WSQ/convert?fit=crop&amp;h=861&amp;w=1500&amp"
+  end
+  
   def image_with_backup
-    image.present? ? image : Recipe.first.try(:image) #probably should come up with a default image lol
+    image.present? ? image : backup_image_url
   end
 
   def components

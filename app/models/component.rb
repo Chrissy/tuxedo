@@ -18,13 +18,17 @@ class Component < ActiveRecord::Base
     "/components/edit/#{id}"
   end
   
+  def backup_image_url
+    "https://www.filepicker.io/api/file/drOikI0sTqG2xjWn2WSQ/convert?fit=crop&amp;h=861&amp;w=1500&amp"
+  end
+  
   def image_with_backup
     if image.present?
       image
-    elsif recipes.last
-      recipes.last.try(:image)
+    elsif recipes.last.image.present?
+      recipes.last.image
     else
-      Recipe.first.try(:image)
+      backup_image_url
     end
   end
 

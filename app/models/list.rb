@@ -94,13 +94,17 @@ class List < ActiveRecord::Base
     end
   end
   
+  def backup_image_url
+    "https://www.filepicker.io/api/file/drOikI0sTqG2xjWn2WSQ/convert?fit=crop&amp;h=861&amp;w=1500&amp"
+  end
+  
   def image_with_backup
     if image.present?
       image
-    elsif elements.last
-      elements.last.try(:image)
+    elsif elements.last.image.present?
+      elements.last.image
     else
-      Recipe.first.try(:image)
+      backup_image_url
     end
   end
 
