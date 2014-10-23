@@ -14,7 +14,8 @@ class List < ActiveRecord::Base
       element_collection = expand_element_pair(element_pair)
       elements << element_collection
     end
-    elements.flatten.uniq - ["",nil]
+    elements = elements.flatten.uniq - ["",nil]
+    elements.keep_if { |element| element.published? }
   end
   
   def url
@@ -27,6 +28,10 @@ class List < ActiveRecord::Base
 
   def edit_url
     "/list/edit/#{id}"
+  end
+  
+  def published?
+    true
   end
   
   def self.all_for_display

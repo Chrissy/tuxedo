@@ -22,6 +22,10 @@ class Component < ActiveRecord::Base
     "https://www.filepicker.io/api/file/drOikI0sTqG2xjWn2WSQ/convert?fit=crop&amp;h=861&amp;w=1500&amp"
   end
   
+  def published?
+    true
+  end
+  
   def image_with_backup
     if image.present?
       image
