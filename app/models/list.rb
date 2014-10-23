@@ -101,7 +101,7 @@ class List < ActiveRecord::Base
   def image_with_backup
     if image.present?
       image
-    elsif elements.last.image.present?
+    elsif elements.last && elements.last.image.present?
       elements.last.image
     else
       backup_image_url
