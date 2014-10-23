@@ -49,7 +49,7 @@ class Component < ActiveRecord::Base
   end
   
   def nickname
-    nick ? nick : name
+    nick.present? ? nick : name
   end
   
   def has_list
