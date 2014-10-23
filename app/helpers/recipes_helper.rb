@@ -7,6 +7,7 @@ module RecipesHelper
   def all_elements_for_search
     elements = []
     elements.concat(Recipe.all).concat(List.all_for_display).concat(Component.all)
+    elements.keep_if { |x| x.published? }
   end
 
   def form_action
