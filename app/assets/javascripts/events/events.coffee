@@ -31,3 +31,8 @@ $ ->
         upscale_all_images()
     )
   )
+  
+  $(".clear_image").on("click", ->
+    $(this).addClass("cleared").parent().find('[type="filepicker"]').attr("value", "")
+    return false
+  )

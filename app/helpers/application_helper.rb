@@ -90,4 +90,8 @@ module ApplicationHelper
     everything_link = List.find_by_name("Everything").try(:url) || "/" 
     link_to "All Cocktails", everything_link
   end
+  
+  def clear_image_button(element)
+    link_to '(clear)', "#", :class => 'clear_image' if element.image.present?
+  end
 end

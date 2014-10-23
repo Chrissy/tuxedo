@@ -5,7 +5,10 @@
   </div>
   <div class="form_block secondary">
     <%= f.text_area :description, :value => default_text(:description), :placeholder => "description" %>
-    <%= f.filepicker_field :image, :button_text => "upload a cover photo"  %>
+    <div class="image-options">
+      <%= f.filepicker_field :image, :button_text => "upload a cover photo", :class => "image-picker" %>
+      <%= clear_image_button(@recipe) %>
+    </div>
     <label>publish?</label>
     <%= f.check_box :published, :value => default_text(:published) %>
     <%= f.submit(submit_text()) %>

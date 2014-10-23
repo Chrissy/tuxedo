@@ -1,3 +1,5 @@
+@import "../elements/base";
+
 input[type="text"], textarea, .textfield {
   width: 100%;
   border-radius: 4px;
@@ -38,6 +40,16 @@ button {
 .mention_username{
   font-size: 18px;
   color: #999;
+}
+
+.image-picker {
+  display: inline-block;
+}
+
+.clear_image { 
+  display: inline-block;
+  color: $link-color;
+  &.cleared { color: #999; }
 }
 
 .user-form, .alert, .notice {
