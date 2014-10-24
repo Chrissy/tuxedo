@@ -1,7 +1,5 @@
 @import "../elements/helpers";
 
-$header-height: 540px;
-
 #logo {
   @include hires-background("tuxno2-logo-2x");
   display: block;
@@ -40,25 +38,33 @@ $header-height: 540px;
   top: 5px;
 }
 
+.header, .header-content {
+  height: 540px;
+  height: 75vh;
+  max-height: 580px;
+  min-height: 400px
+}
+
 .header {
   width: 100%;
   background: #030a0d;
-  min-height: $header-height;
   overflow: hidden;
 }
 
 .header-content {
   @extend %centered-content-box;
-  min-height: $header-height;
   border: 1px solid #222;
+  position: relative;
+  overflow: hidden;
 
   & > img { 
-    width: 100%;
-    height: auto;
+    height: 100%;
     position: absolute;
-    top: 0;
-    left: 0;
-    margin: 0;
+    top: -9999px;
+    left: -9999px;
+    right: -9999px;
+    bottom: -9999px;
+    margin: auto;
   }
 }
 
@@ -90,7 +96,6 @@ $header-height: 540px;
 
 @media (max-width: 960px) {
   .global-header, .header-primary { width: 100%; }
-  .header, .header-content { height: 360px; min-height: 480px; }
   .user_links {
     right: 10px;
     top: 70px;
@@ -99,15 +104,7 @@ $header-height: 540px;
     width: 100%;
     text-align: center;
     overflow: hidden;
-    height: 460px;
     position: relative;
-    img {
-      position: absolute;
-      height: auto;
-      width: 800px;
-      margin-left: 50%;
-      left: -396px;
-    }
   }
   .social-links {
     width: 30px;
@@ -118,6 +115,12 @@ $header-height: 540px;
 }
 
 @media (max-width: 650px) {
+  html .header, html .header-content, html .header.list, html .header.list .header-content { 
+    height: 360px;
+    height: 100vh;
+    min-height: 360px; 
+    max-height: 540px; 
+  }
   #logo {
     margin: 0 auto;
     left: 0;

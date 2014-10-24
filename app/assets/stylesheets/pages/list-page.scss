@@ -1,7 +1,11 @@
 @import "../elements/helpers";
 
 .header.list {
-  &, .header-content { min-height: 460px;}
+  &, .header-content { 
+    height: 460px;
+    height: 65vh;
+    max-height: 500px;
+  }
   .header-title { bottom: 64px; }
 }
 
