@@ -64,8 +64,9 @@ class List < ActiveRecord::Base
 
   def expand_element_pair(element_pair)
     element_collection = []
-    if element_pair[1][/(\bALL\b|\bALPH\b|\bDATE\b|\d+)/]
-      element_collection = expand_list_code(element_pair[1])
+    try_pair = expand_list_code(element_pair[1])
+    if try_pair
+      element_collection = try_pair
     else
       element_collection = element_pair[0].singularize.classify.constantize.find_by_name(element_pair[1])
     end
@@ -76,6 +77,7 @@ class List < ActiveRecord::Base
     first_word = list_code[/(?:(?!\d+).)*/].strip
     limit_number = list_code[/\d+/].to_i
     sort_by = list_code[/(\bDATE\b)/]
+    return false unless first_word && limit_number
     expanded_list = [] 
     if first_word == "ALL" || first_word == "all"
       expanded_list = create_recipe_list(limit_number, sort_by)
