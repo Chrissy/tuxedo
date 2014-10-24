@@ -60,10 +60,10 @@
   & > img { 
     height: 100%;
     position: absolute;
-    top: -9999px;
+    top: 0;
     left: -9999px;
     right: -9999px;
-    bottom: -9999px;
+    bottom: auto;
     margin: auto;
   }
 }
