@@ -14,7 +14,8 @@
         <td>
           <%= link_to element.name, element.url, :class => "admin_element_name" %>
           <%= link_to "edit", element.edit_url %> |
-          <%= link_to "delete", delete_link(element) %> 
+          <%= link_to "delete", delete_link(element) %> |
+          <%= publish_status(element) %>
         </td>
       </tr>
     <% end %>

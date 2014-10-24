@@ -8,6 +8,10 @@ module ApplicationHelper
     url_for controller: object.class.to_s.pluralize.downcase, action: "new", id: object.id
   end
   
+  def publish_status(element)
+    "✓" if element.published?
+  end
+  
   def links
     List.find_by_name("Links") || List.new
   end
