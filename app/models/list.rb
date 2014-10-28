@@ -77,7 +77,7 @@ class List < ActiveRecord::Base
     first_word = list_code[/(?:(?!\d+).)*/].strip
     limit_number = list_code[/\d+/].to_i
     sort_by = list_code[/(\bDATE\b)/]
-    return false unless first_word && limit_number
+    return false if first_word.blank? || limit_number.zero?
     expanded_list = [] 
     if first_word == "ALL" || first_word == "all"
       expanded_list = create_recipe_list(limit_number, sort_by)
