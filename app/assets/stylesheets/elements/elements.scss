@@ -95,6 +95,7 @@
 
 .content {
   @extend %centered-content-box;
+  min-height: 200px;
   .global-header + & { top: 80px; }
 }
 
