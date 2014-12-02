@@ -47,7 +47,7 @@ class List < ActiveRecord::Base
   end
 
   def count_for_display
-    "#{elements.count} components"
+    "#{elements.count} cocktails"
   end
   
   def recipes
