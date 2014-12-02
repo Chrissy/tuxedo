@@ -30,12 +30,6 @@
   }
 }
 
-.decoration {
-  @include hires-background("decoration-2x"); 
-  margin: 0 auto;
-  top: 5px;
-}
-
 .header-content:after {
   @include vgradient(rgba(0,0,0,0), rgba(0,0,0,0.7));
   content: "";
