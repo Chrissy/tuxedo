@@ -46,7 +46,7 @@ module ApplicationHelper
   
   def display_number_with_fallback(element)
     if element.try(:number)
-      render "shared/display_number", :number => element.number
+      render "shared/display_number", :number => element.number + 1
     else
       "<div class='decoration'></div>".html_safe
     end

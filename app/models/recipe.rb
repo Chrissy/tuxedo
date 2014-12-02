@@ -57,7 +57,7 @@ class Recipe < ActiveRecord::Base
   end
   
   def number
-    Recipe.find(:all, :order => :id).find_index(self) + 1
+    Recipe.where(:published => true).order(:id).find_index(self)
   end
   
   def tagline
