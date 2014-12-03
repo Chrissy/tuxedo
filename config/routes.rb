@@ -18,13 +18,13 @@ Tuxno2::Application.routes.draw do
   get 'delete/:id' => 'recipes#delete'
   
 
-  get 'components/all' => 'components#all'
-  get 'components/new' => 'components#new'
-  get 'components/:id' => 'components#show'
-  get 'components/edit/:id' => 'components#edit'
-  post 'components/update/:id' => 'components#update'
-  post 'components/create' => 'components#create'
-  get 'components/delete/:id' => 'components#delete'
+  get 'ingredients/all' => 'components#all'
+  get 'ingredients/new' => 'components#new'
+  get 'ingredients/:id' => 'components#show'
+  get 'ingredients/edit/:id' => 'components#edit'
+  post 'ingredients/update/:id' => 'components#update'
+  post 'ingredients/create' => 'components#create'
+  get 'ingredients/delete/:id' => 'components#delete'
 
   get 'list/new' => 'lists#new'
   get 'list/all' => 'lists#all'

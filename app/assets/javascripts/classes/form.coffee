@@ -3,7 +3,7 @@ class window.Form
     @form = $(form).first()
     self = @
     @autocomplete = []
-    @generateAutocomplete("/components/all.json", ":") if @form.hasClass("components")
+    @generateAutocomplete("/ingredients/all.json", ":") if @form.hasClass("components")
     @generateAutocomplete("/all.json", "=") if @form.hasClass("recipes")
     @generateAutocomplete("/list/all.json", "#") if @form.hasClass("lists")
 

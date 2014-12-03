@@ -7,7 +7,7 @@ class Component < ActiveRecord::Base
   serialize :recipe_ids, Array
 
   def url
-    "/components/#{slug}"
+    "/ingredients/#{slug}"
   end
   
   def custom_name
@@ -15,7 +15,7 @@ class Component < ActiveRecord::Base
   end
 
   def edit_url
-    "/components/edit/#{id}"
+    "/ingredients/edit/#{id}"
   end
   
   def backup_image_url
