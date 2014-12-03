@@ -66,7 +66,7 @@ module ApplicationHelper
   end
   
   def meta_title
-    "Tuxedo No.2 | A Stately Cocktail Companion"
+    "Tuxedo No.2 | A Cocktail Companion"
   end
       
   def meta_description
