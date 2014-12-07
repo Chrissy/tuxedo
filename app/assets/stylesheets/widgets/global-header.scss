@@ -109,6 +109,7 @@ $social-prompt-size: 7px;
   border-radius: 2px;
   opacity: 0;
   right: 43px;
+  display: none;
   &.active { opacity: 1; right: 53px; }
   &:before {
     content: "";
@@ -122,7 +123,7 @@ $social-prompt-size: 7px;
     top: $social-prompt-size; 
   }
 }
-
+html[data-share-alert="1"] .social-prompt{ display: block; }
 @media (max-width: 960px) {
   .global-header, .header-primary { width: 100%; }
   .user_links {

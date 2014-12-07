@@ -97,12 +97,5 @@ module ApplicationHelper
   
   def clear_image_button(element)
     link_to '(clear)', "#", :class => 'clear_image' if element.image.present?
-  end
-  
-  def show_social_popup?
-    if cookies[:show_social_popup].blank?
-      cookies.permanent[:show_social_popup] = { value: "true", expires: 1.days.from_now }
-      true
-    end
-  end
+  end  
 end
