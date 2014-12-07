@@ -36,3 +36,8 @@ $ ->
     $(this).addClass("cleared").parent().find('[type="filepicker"]').attr("value", "")
     return false
   )
+  
+  toggleSocialPrompt = => $(".social-prompt").toggleClass("active")
+  window.setTimeout(toggleSocialPrompt, 1000)
+  window.setTimeout(toggleSocialPrompt, 4000)
+  

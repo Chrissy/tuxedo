@@ -1,4 +1,5 @@
 @import "../elements/helpers";
+@import "../elements/base";
 
 #logo {
   @include hires-background("tuxno2-logo-2x");
@@ -86,12 +87,40 @@
   display: block;
   width: 25px;
   height: 25px;
-  opacity: 0.6;
+  opacity: 0.8;
   margin-bottom: 8px;
   &:hover { opacity: 1; }
   &.twitter { @include hires-background("twitter-2x"); }
   &.pinterest { @include hires-background("pinterest-2x"); }
   &.insta { @include hires-background("insta-2x"); }
+}
+
+$social-prompt-color: #777;
+$social-prompt-size: 7px;
+.social-prompt {
+  @include transition(0.15s opacity ease-in, 0.15s right ease-in);
+  position: absolute;
+  background: $social-prompt-color;
+  color: white;
+  padding: 3px 10px 1px;
+  font-size: 15px;
+  width: 224px;
+  bottom: 7px;
+  border-radius: 2px;
+  opacity: 0;
+  right: 43px;
+  &.active { opacity: 1; right: 53px; }
+  &:before {
+    content: "";
+    width: 0; 
+    height: 0; 
+    border-top: $social-prompt-size solid transparent;
+    border-bottom: $social-prompt-size solid transparent; 
+    border-left: $social-prompt-size solid $social-prompt-color;
+    position: absolute;
+    right: $social-prompt-size*-1;
+    top: $social-prompt-size; 
+  }
 }
 
 @media (max-width: 960px) {
