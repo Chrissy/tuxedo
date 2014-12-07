@@ -34,6 +34,12 @@ Tuxno2::Application.routes.draw do
   post 'list/update/:id' => 'lists#update'
   post 'list/create' => 'lists#create'
   get 'list/delete/:id' => 'lists#delete'
+  
+  if Rails.env.production?
+    get '/404', :to => 'lists#home'
+    get '/422', :to => 'lists#home'
+    get '/500', :to => 'lists#home'
+  end
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

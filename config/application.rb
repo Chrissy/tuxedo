@@ -21,5 +21,6 @@ module Tuxno2
     # config.i18n.default_locale = :de
 
     config.filepicker_rails.api_key = "AyifTsBOcRAy8xh2B96Vyz"
+    config.exceptions_app = self.routes
   end
 end
