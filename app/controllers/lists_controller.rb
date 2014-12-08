@@ -1,6 +1,11 @@
 class ListsController < ApplicationController
   layout "application"
 
+  def not_found
+    @list = List.find_by_name("Home") || List.first || Recipe.last
+    render 'show', :status => :not_found
+  end
+
   def show
     @list = List.friendly.find(params[:id])
     @layout_object = @list

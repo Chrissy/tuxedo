@@ -11,12 +11,11 @@ Tuxno2::Application.routes.draw do
   get 'new' => 'recipes#new'
   get 'all' => 'recipes#all'
   get 'search' => 'recipes#search'
-  get ':id' => 'recipes#show', as: :recipe
+  
   get 'edit/:id' => 'recipes#edit', as: :edit
   post 'update/:id' => 'recipes#update', as: :update
   post 'create' => 'recipes#create', as: :create
   get 'delete/:id' => 'recipes#delete'
-  
 
   get 'ingredients/all' => 'components#all'
   get 'ingredients/new' => 'components#new'
@@ -35,11 +34,11 @@ Tuxno2::Application.routes.draw do
   post 'list/create' => 'lists#create'
   get 'list/delete/:id' => 'lists#delete'
   
-  if Rails.env.production?
-    get '/404', :to => 'lists#home'
-    get '/422', :to => 'lists#home'
-    get '/500', :to => 'lists#home'
-  end
+  get '404', :to => 'lists#not_found'
+  get '422', :to => 'lists#not_found'
+  get '500', :to => 'lists#not_found'
+  
+  get ':id' => 'recipes#show', as: :recipe
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
