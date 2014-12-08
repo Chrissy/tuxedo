@@ -1,0 +1,16 @@
+<% cache("error", :expires_in => 12.hours) do %>
+  <div class="header list<%= " home" if @list.home? %>">
+    <div class="header-content">
+      <%= header_image(Recipe.last) %>
+      <h1 class="header-title error-title" itemprop="name">
+        By Jove!<br/>
+        <span class="error-subhead">You've missed the washroom! Hopefully one of the options below will do.</span>
+      </h1>
+    </div>
+  </div>
+  <div class="content list">
+    <div class="primary">
+      <%= render "list_with_images", :list_elements => elements_for_list(@list) %>
+    </div>
+  </div>
+<% end %>
