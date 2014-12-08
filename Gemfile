@@ -37,7 +37,7 @@ gem 'redcarpet', '~> 3.1.1'
 gem 'filepicker-rails'
 gem 'devise'
 gem 'friendly_id', '~> 5.0.0'
-
+gem 'newrelic_rpm'
 gem 'rails_12factor', group: :production
 
 ruby "2.1.0"
