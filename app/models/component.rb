@@ -49,7 +49,7 @@ class Component < ActiveRecord::Base
   end
   
   def count_for_display
-    "#{recipes.count} cocktails"
+    "#{list_elements.count} cocktails"
   end
   
   def nickname
