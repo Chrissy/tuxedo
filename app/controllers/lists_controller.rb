@@ -53,7 +53,7 @@ class ListsController < ApplicationController
   def get
     @list = List.find(params[:id])
     @count_start = params[:start].to_i + 2
-    @count_end = -1
+    @count_end = @list.elements.count
     respond_to do |format|
       format.html {render :layout => false}
     end
