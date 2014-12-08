@@ -11,6 +11,7 @@ $components-bg-color: white;
       color: darken($components-text-color, $percent*0.7);
     }
     & ~ h1, & ~ ul li, & ~ ol li { border-bottom-color: darken($components-border-color, $percent); }
+    & ~ ul li:before { background-color: darken(#ddd, $percent); } 
     &:after { background: darken($components-border-color, $percent); }
     & + p { padding-top: 10px; }
   }
