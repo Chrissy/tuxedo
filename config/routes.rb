@@ -6,7 +6,6 @@ Tuxno2::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'lists#home'
   get 'admin' => 'lists#admin'
-  get 'authenticate_before_render' => 'application#authenticate_before_render'
 
   get 'new' => 'recipes#new'
   get 'all' => 'recipes#all'

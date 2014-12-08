@@ -7,13 +7,6 @@ $ ->
       new Image($(this)).upscale()
     )
   upscale_all_images()
-
-  $(".authenticate").each(->
-    $this = $(this)
-    $.get('/authenticate_before_render').promise().then((data) ->
-      $this.addClass("authenticated") if Boolean(data)
-    )
-  )
   
   $("[bubble-on-focus]").not("focused").focus(->
     $target = $(this).closest($(this).attr("bubble-on-focus"))

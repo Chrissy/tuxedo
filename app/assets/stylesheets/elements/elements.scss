@@ -95,7 +95,7 @@
 
 .authenticate { 
   display: none;
-  &.authenticated { display: block; }
+  html[logged-in="true"] & { display: block; }
 }
 
 .teaser-bg {
