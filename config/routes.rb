@@ -10,6 +10,7 @@ Tuxno2::Application.routes.draw do
   get 'new' => 'recipes#new'
   get 'all' => 'recipes#all'
   get 'search' => 'recipes#search'
+  get ':id' => 'recipes#show', as: :recipe
   
   get 'edit/:id' => 'recipes#edit', as: :edit
   post 'update/:id' => 'recipes#update', as: :update
@@ -19,6 +20,7 @@ Tuxno2::Application.routes.draw do
   get 'ingredients/all' => 'components#all'
   get 'ingredients/new' => 'components#new'
   get 'ingredients/:id' => 'components#show'
+  
   get 'ingredients/edit/:id' => 'components#edit'
   post 'ingredients/update/:id' => 'components#update'
   post 'ingredients/create' => 'components#create'
@@ -27,6 +29,7 @@ Tuxno2::Application.routes.draw do
   get 'list/new' => 'lists#new'
   get 'list/all' => 'lists#all'
   get 'list/:id' => 'lists#show'
+  
   get 'list/get/:id' => 'lists#get'
   get 'list/edit/:id' => 'lists#edit'
   post 'list/update/:id' => 'lists#update'
@@ -36,8 +39,6 @@ Tuxno2::Application.routes.draw do
   get '404', :to => 'lists#not_found'
   get '422', :to => 'lists#not_found'
   get '500', :to => 'lists#not_found'
-  
-  get ':id' => 'recipes#show', as: :recipe
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
