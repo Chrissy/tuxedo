@@ -2,6 +2,9 @@ require 'list.rb'
 require 'component.rb'
 
 class RecipesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show, :search]
+  layout "application"
+  
   def show
     @recipe = Recipe.friendly.find(params[:id])
     @layout_object = @recipe

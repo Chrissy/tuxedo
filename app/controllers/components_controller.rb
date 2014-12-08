@@ -1,4 +1,5 @@
 class ComponentsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show]
   layout "application"
 
   def show
