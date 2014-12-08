@@ -35,10 +35,6 @@ Tuxno2::Application.routes.draw do
   post 'list/update/:id' => 'lists#update'
   post 'list/create' => 'lists#create'
   get 'list/delete/:id' => 'lists#delete'
-  
-  get '404', :to => 'lists#not_found'
-  get '422', :to => 'lists#not_found'
-  get '500', :to => 'lists#not_found'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
