@@ -28,6 +28,7 @@
     margin-left: 2px;
     margin-top: 1px;
   }
+  .win & { top: 18px; }
 }
 
 .header-content:after {
@@ -84,6 +85,10 @@
   &.large {
     font-size: 55px;
     .no { left: 12px; }
+  }
+  .win & {
+    line-height: 150%; 
+    top: 16px;
   }
 }
 
