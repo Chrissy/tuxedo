@@ -33,6 +33,7 @@ module ListsHelper
   end
   
   def elements_for_list(list)
-    list.home? ? list.elements[1..10] : list.elements
+    #list.home? ? list.elements[1..10] : list.elements
+    list.elements
   end
 end

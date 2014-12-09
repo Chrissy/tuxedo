@@ -16,14 +16,14 @@ $ ->
     )
   )
   
-  $("[data-lazy-load]").each(->
-    $.ajax(
-      url: "/list/get/#{$(@).attr("data-lazy-load")}?start=#{$(this).find(".list-element").length}"
-      success: (data) =>
-        $(@).append(data)
-        upscale_all_images()
-    )
-  )
+  # $("[data-lazy-load]").each(->
+  #   $.ajax(
+  #     url: "/list/get/#{$(@).attr("data-lazy-load")}?start=#{$(this).find(".list-element").length}"
+  #     success: (data) =>
+  #       $(@).append(data)
+  #       upscale_all_images()
+  #   )
+  # )
   
   $(".clear_image").on("click", ->
     $(this).addClass("cleared").parent().find('[type="filepicker"]').attr("value", "")
