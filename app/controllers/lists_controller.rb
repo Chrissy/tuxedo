@@ -2,11 +2,6 @@ class ListsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:not_found, :show, :home, :get]
   layout "application"
 
-  def not_found
-    @list = List.find_by_name("Home") || List.first
-    render 'shared/not_found', :status => :not_found
-  end
-
   def show
     @list = List.friendly.find(params[:id])
     @layout_object = @list
