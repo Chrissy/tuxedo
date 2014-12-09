@@ -125,6 +125,10 @@ $social-prompt-size: 7px;
     right: $social-prompt-size*-1;
     top: $social-prompt-size; 
   }
+  .win & {
+    line-height: 110%;
+    padding-bottom: 8px;
+  }
 }
 html[data-share-alert="3"] .social-prompt{ display: block; }
 @media (max-width: 960px) {

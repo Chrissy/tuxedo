@@ -46,6 +46,7 @@ $components-bg-color: white;
         line-height: 90%;
         left: 18px;
         background: none;
+        .win & { line-height: 60%; }
       }
     }
   }
