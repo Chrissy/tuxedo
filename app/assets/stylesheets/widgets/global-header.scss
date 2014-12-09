@@ -15,6 +15,7 @@
   text-transform: uppercase;
   font-size: 12px;
   float: right;
+  margin-bottom: 6px;
   a { color: #666; }
   .link:not(:last-child):after { content: " • "}
 }

@@ -3,11 +3,6 @@
 $search-width: 300px;
 $compact-search-width: 300px - 20px;
 $search-elements: '.search-wrapper, .twitter-typeahead, .twitter-typeahead .tt-input, .twitter-typeahead .tt-hint, input.search';
-
-.search-wrapper {
-  position: relative;
-  top: 5px;
-}
  
 .twitter-typeahead {
   color: #ccc;
@@ -16,12 +11,13 @@ $search-elements: '.search-wrapper, .twitter-typeahead, .twitter-typeahead .tt-i
   z-index: 5;
   color: white;
   float: right;
+  height: 30px !important;
   .tt-dropdown-menu { 
     background-color: rgba(50,50,50,0.8);
     border: 1px solid #333; 
     width: 100%;
     border-radius: 0 0 5px 5px;
-    margin-top: 5px;
+    margin-top: -5px;
   }
   .tt-suggestion {
     border-bottom: 1px solid #333;
@@ -59,7 +55,7 @@ $search-elements: '.search-wrapper, .twitter-typeahead, .twitter-typeahead .tt-i
   margin-bottom: 0;
   background-color: rgba(70,70,70,0.7) !important; 
   color: #fff;
-  height: 27px;
+  height: 30px;
   font-size: 16px;
   float: right;
   position: relative;
