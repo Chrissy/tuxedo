@@ -13,6 +13,8 @@
     -moz-font-feature-settings:"swsh";
     -webkit-font-feature-settings: "swsh";
   }
+  .swash-cap.letter-t { margin-right: -.13em; }
+  .swash-cap.letter-z { margin-right: -.14em; }
 }
 
 @mixin gradient($startcolor: #555, $endcolor: #333, $direction: "horizontal") {

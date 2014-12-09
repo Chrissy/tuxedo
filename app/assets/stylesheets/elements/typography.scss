@@ -1,7 +1,12 @@
 @import "../elements/helpers";
 
 html, body { font-family: "bookmania"; }
-h1, h2, h3 { font-weight: 900; }
+h1, h2, h3 { 
+  font-weight: 900;
+  font-feature-settings: "kern" 1; 
+  -moz-font-feature-settings:"kern" 1;
+  -webkit-font-feature-settings: "kern" 1; 
+}
 h1 { @extend %swash; }
 .win p, .win li { font-family: georgia, sans-serif; }
 
