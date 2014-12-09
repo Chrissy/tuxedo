@@ -19,7 +19,7 @@ $description-background-color: $background-color;
   background-color: $description-background-color;
   p { max-width: 550px; }
   p:first-of-type { margin-top: 0; }
-  p:first-of-type:first-letter {
+  html:not(.win) & p:first-of-type:first-letter {
     font-size: 51px;
     float: left;
     line-height: 0;
