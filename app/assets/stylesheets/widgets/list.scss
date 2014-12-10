@@ -32,10 +32,10 @@ $image-resize: 10%;
   img { 
     display: block; 
     margin: 0 auto;
-    width: 100% + $image-resize;
+    width: 100%;
     position: relative;
-    top: ($image-resize / -2) - 7%;
-    left: $image-resize / -2;
+    top: -9%;
+    left: 0;
     height: auto;
   }
   .subtext {
