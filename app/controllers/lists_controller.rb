@@ -8,7 +8,7 @@ class ListsController < ApplicationController
   end
 
   def home
-    @list = List.find_by_name("Home") || List.first || Recipe.last
+    @list = List.find(1)
     render 'show'
   end
 
