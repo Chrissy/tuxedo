@@ -3,12 +3,12 @@ class ListsController < ApplicationController
   layout "application"
 
   def show
-    @list = List.friendly.find(params[:id])
+    @list ||= List.friendly.find(params[:id])
     @layout_object = @list
   end
 
   def home
-    @list = List.find(1)
+    @list ||= List.find(1)
     render 'show'
   end
 
