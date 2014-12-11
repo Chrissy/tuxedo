@@ -57,7 +57,7 @@ class Recipe < ActiveRecord::Base
   end
   
   def number
-    Recipe.where(:published => true).order(:id).find_index(self)
+    Recipe.where(:published => true).order('created_at DESC').find_index(self)
   end
   
   def tagline
