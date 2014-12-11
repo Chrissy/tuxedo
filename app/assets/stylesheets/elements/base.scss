@@ -19,10 +19,17 @@ p a, li a {
   &:hover { color: saturate($link-color, 25%); } 
 }
 
+html, body { height: 100%; }
+
 body {
   background: $background-color;
   margin: 0;
   padding: 0;
+}
+
+.site-container {
+  position: relative;
+  min-height: 100%;
 }
 
 .content, .primary { @include pie-clearfix; }

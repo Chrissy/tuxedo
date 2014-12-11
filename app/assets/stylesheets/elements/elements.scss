@@ -95,6 +95,7 @@
 .content {
   @extend %centered-content-box;
   min-height: 200px;
+  padding-bottom: 50px;
   .global-header + & { top: 80px; }
 }
 
@@ -125,6 +126,10 @@
   background: white;
   font-size: 16px;
   font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 $horizontal-stripes: linear-gradient(90deg, transparent 50%, rgba(50,50,50,.6) 50%);

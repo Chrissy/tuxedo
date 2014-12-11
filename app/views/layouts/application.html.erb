@@ -9,10 +9,10 @@
     <%= render "shared/meta_tags" %>
   </head>
   <body data-no-turbolink itemscope itemtype="http://schema.org/Product">
-    <%= render 'shared/global_header' %>
-
-    <%= yield %>
-
-    <%= render "shared/analytics" %>
+    <div class="site-container">
+      <%= render 'shared/global_header' %>
+      <%= yield %>
+      <%= render "shared/analytics" %>
+    </div>
   </body>
 </html>
