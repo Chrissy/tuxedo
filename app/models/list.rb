@@ -109,7 +109,7 @@ class List < ActiveRecord::Base
     if image.present?
       image
     elsif elements.last.try(:image).try(:present?)
-      elements.last.image
+      elements.first.image
     else
       backup_image_url
     end

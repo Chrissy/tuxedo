@@ -62,6 +62,11 @@ module ApplicationHelper
     cache_key(links, "global-header")
   end
   
+  def meta_cache_key
+    layout_object = @layout_object.present? ? @layout_object : List.find(1) 
+    cache_key(layout_object, "meta")
+  end
+  
   def site_title
     @layout_object.try(:tagline) || meta_title
   end
@@ -73,7 +78,7 @@ module ApplicationHelper
   def meta_description
     markdown_as_text(@layout_object.try(:description_to_html).try(:truncate, 250) || default_description)
   end
-  
+    
   def markdown_as_text(markdown)
     raw(strip_tags(markdown))
   end

@@ -1,4 +1,4 @@
-<% cache("meta", :expires_in => 2.hours) do %>
+<% cache(meta_cache_key) do %>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1;">
   <meta name="description" content="<%= meta_description %>">

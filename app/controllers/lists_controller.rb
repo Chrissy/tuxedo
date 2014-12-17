@@ -9,6 +9,7 @@ class ListsController < ApplicationController
 
   def home
     @list ||= List.find(1)
+    @layout_object = @list
     render 'show'
   end
 
