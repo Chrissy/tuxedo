@@ -14,7 +14,7 @@ class window.Image
     
   filepicker_url: ->
     url = @src.match(/\/file\/(.*?)\//)[1]
-    "https://www.filepicker.io/api/file/#{url}/convert?fit=crop&format=jpg&quality=100&h=#{@dimension("h").increment()}&w=#{@dimension("w").increment()}&cache=true"
+    "https://www.filepicker.io/api/file/#{url}/convert?fit=crop&format=jpg&quality=80&h=#{@dimension("h").increment()}&w=#{@dimension("w").increment()}&cache=true"
       
   upscale: ->
     self = @
