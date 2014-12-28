@@ -52,12 +52,22 @@ class Recipe < ActiveRecord::Base
     ""
   end
   
+  def make_my_number_last!
+    update_attribute(:created_at, Time.now)
+  end
+  
   def lists
     list_ids.map { |list_id| List.find(list_id) }
   end
-  
+    
   def number
-    Recipe.where(:published => true).order('created_at DESC').find_index(self)
+    Recipe.where(:published => true).order('created_at ASC').find_index(self)
+  end
+  
+  def self.compile_numbers_based_on_home
+    List.find(1).elements.keep_if{|x|x.is_a?(Recipe)}.each do |recipe|
+      recipe.update_attribute(:created_at, Time.now)
+    end
   end
   
   def tagline

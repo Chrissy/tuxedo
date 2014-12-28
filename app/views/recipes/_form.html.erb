@@ -8,6 +8,8 @@
     <%= render "shared/image_options", :element => @recipe, :f => f %>
     <label>publish?</label>
     <%= f.check_box :published, :value => default_text(:published) %>
+    <label>Make my number last!</label>
+    <%= check_box_tag :make_my_number_last %>
     <%= f.submit(submit_text()) %>
   </div>
 <% end %>
