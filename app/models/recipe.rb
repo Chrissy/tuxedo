@@ -6,6 +6,7 @@ class Recipe < ActiveRecord::Base
   
   serialize :component_ids, Array
   serialize :list_ids, Array
+  serialize :recommends, Array
   before_save :touch_associated_lists
 
   def markdown
@@ -68,6 +69,13 @@ class Recipe < ActiveRecord::Base
     List.find(1).elements.keep_if{|x|x.is_a?(Recipe)}.each do |recipe|
       recipe.update_attribute(:created_at, Time.now)
     end
+  end
+  
+  def store_recommends
+    recs = (components.first.recipes - [self]).sort_by{ |recipe|
+      (components & recipe.components).length
+    }.reverse.first(3)
+    update_attribute(:recommends, recs)
   end
   
   def tagline
