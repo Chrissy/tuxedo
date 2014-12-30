@@ -9,6 +9,10 @@
     </div>
     <div class="primary" itemprop="description">
       <%= @recipe.description_to_html %>
+      <ul class="recommends">
+        <h3 class="recommends-label">Try a similar cocktail:</h3>
+        <%= render "lists/list_elements_with_images", :list_elements => @recipe.recommends %>
+      </ul>
     </div>
   </div>
   
