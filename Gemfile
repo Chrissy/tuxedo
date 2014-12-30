@@ -38,6 +38,7 @@ gem 'filepicker-rails'
 gem 'devise'
 gem 'friendly_id', '~> 5.0.0'
 gem 'newrelic_rpm'
+gem 'delayed_job_active_record'
 gem 'rails_12factor', group: :production
 
 ruby "2.1.0"
