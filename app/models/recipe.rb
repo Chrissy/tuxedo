@@ -77,6 +77,7 @@ class Recipe < ActiveRecord::Base
     }.reverse.first(3)
     update_attribute(:recommends, recs)
   end
+  handle_asynchronously :store_recommends
   
   def tagline
     "#{name} Cocktail | Tuxedo no.2"
