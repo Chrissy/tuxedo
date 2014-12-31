@@ -29,7 +29,6 @@ $description-background-color: $background-color;
   }
   
   .recommends {
-    display: none;
     .recommends-label {
       border-top: 1px solid #ccc;
       margin-bottom: 8px;
@@ -38,6 +37,7 @@ $description-background-color: $background-color;
     }
     .list-element {
       width: 177px;
+      min-height: 190px;
       margin-right: 14px;
       &:last-of-type { margin-right: 0; }
     }
@@ -68,6 +68,15 @@ $description-background-color: $background-color;
       width: 97%;
       left: 0;
     }
+  }
+  .recommends .list-element:nth-of-type(3) { display: none; }
+}
+
+@media (max-width: 750px) {
+  .primary .recommends .list-element {
+    width: 100%;
+    .list-image-wrapper { height: auto; }
+    &:nth-of-type(3) { display: block; }
   }
 }
 
