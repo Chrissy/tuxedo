@@ -45,7 +45,7 @@
   height: 540px;
   height: 75vh;
   max-height: 560px;
-  min-height: 400px
+  min-height: 460px
 }
 
 .header {
@@ -61,8 +61,8 @@
   overflow: hidden;
 
   & > img { 
-    height: 104%;
-    width: auto;
+    height: auto;
+    width: 102%;
     position: absolute;
     top: -5px;
     left: -9999px;
