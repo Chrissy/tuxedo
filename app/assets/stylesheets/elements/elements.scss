@@ -132,11 +132,21 @@
   width: 100%;
   text-align: center;
   color: #999;
+  background: white;
   font-size: 16px;
   font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 10px;
 }
 
-.recommends .list-elements { width: 101%; }
+.recommends {
+  @include pie-clearfix;
+  padding-bottom: 100px;
+  .list-elements { width: 101%; }
+}
 .recommends-label { 
   position: relative;
   margin-bottom: 20px; 

@@ -1,6 +1,6 @@
 <h1 class="map">
   <%= render 'recommends', :recommends => recipe.recommends if recipe.recommends.present? %>
-  <div class="site-footer">  
+  <h1 class="site-footer">  
     How to make a <%= link_to recipe.name, recipe.url %> | <%= similar_recipes_link(recipe) %> | <%= all_recipes_link %>
-  </div>
+  </h1>
 </h1>
