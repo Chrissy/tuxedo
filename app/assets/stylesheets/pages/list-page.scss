@@ -1,14 +1,5 @@
 @import "../elements/helpers";
 
-.header.list {
-  &, .header-content { 
-    height: 460px;
-    height: 65vh;
-    max-height: 530px;
-  }
-  .header-title { bottom: 64px; }
-}
-
 .content.list .primary, .content.component .primary { 
   padding: 20px 0; 
   width: 101%;
