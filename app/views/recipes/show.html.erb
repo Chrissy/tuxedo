@@ -9,9 +9,8 @@
     </div>
     <div class="primary" itemprop="description">
       <%= @recipe.description_to_html %>
-      <%= render 'recommends', :recommends => @recipe.recommends if @recipe.recommends.present? %>
     </div>
   </div>
-  
+
   <%= render 'footer', :recipe => @recipe %>
 <% end %>
