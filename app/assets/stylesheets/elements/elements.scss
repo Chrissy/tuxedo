@@ -143,6 +143,7 @@
 }
 
 .recommends {
+  display: none; //hide for now!
   @include pie-clearfix;
   padding-bottom: 100px;
   .list-elements { width: 101%; }
