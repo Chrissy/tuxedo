@@ -142,6 +142,10 @@ html[data-share-alert="3"] .social-prompt{ display: block; }
     text-align: center;
     overflow: hidden;
     position: relative;
+    & > img { 
+      height: 100%;
+      width: auto;
+    }
   }
   .social-links {
     width: 30px;
