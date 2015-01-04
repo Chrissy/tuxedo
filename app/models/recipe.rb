@@ -66,8 +66,9 @@ class Recipe < ActiveRecord::Base
   end
   
   def self.compile_numbers_based_on_home
-    List.find(1).elements.keep_if{|x|x.is_a?(Recipe)}.each do |recipe|
-      recipe.update_attribute(:created_at, Time.now)
+    time = Time.now
+    List.find(1).elements.keep_if{|x|x.is_a?(Recipe)}.reverse.each_with_index do |recipe, x|
+      recipe.update_attribute(:created_at, time + x)
     end
   end
   
