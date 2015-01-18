@@ -37,9 +37,9 @@ ActiveRecord::Schema.define(version: 20150118222917) do
     t.datetime "updated_at"
     t.string   "slug"
     t.text     "aliases_as_markdown"
+    t.string   "akas_as_markdown"
     t.text     "akas"
     t.string   "aka_id"
-    t.string   "akas_as_markdown"
   end
 
   create_table "delayed_jobs", force: true do |t|
