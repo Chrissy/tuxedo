@@ -5,6 +5,23 @@ class Component < ActiveRecord::Base
   friendly_id :custom_name, use: :slugged
   
   serialize :recipe_ids, Array
+  serialize :akas, Array
+  
+  def recipe_ids_with_aka
+    if is_an_aka?
+      aka.recipe_ids
+    else
+      recipe_ids
+    end
+  end
+  
+  def list_with_aka
+    if is_an_aka?
+      aka.list
+    else
+      list
+    end
+  end
 
   def url
     "/ingredients/#{slug}"
@@ -29,6 +46,8 @@ class Component < ActiveRecord::Base
   def image_with_backup
     if image.present?
       image
+    elsif aka.image.present?
+      aka.image
     elsif recipes.last.try(:image).try(:present?)
       recipes.last.image
     else
@@ -37,7 +56,7 @@ class Component < ActiveRecord::Base
   end
 
   def recipes
-    recipe_ids.map { |recipe_id| Recipe.find_by_id(recipe_id) } - ["",nil]
+    recipe_ids_with_aka.map { |recipe_id| Recipe.find_by_id(recipe_id) } - ["",nil]
   end
     
   def tagline
@@ -54,6 +73,14 @@ class Component < ActiveRecord::Base
   
   def nickname
     nick.present? ? nick : name
+  end
+  
+  def aka
+    Component.find_by_id(aka_id)
+  end
+  
+  def is_an_aka?
+    aka_id.present?
   end
   
   def has_list
@@ -82,7 +109,7 @@ class Component < ActiveRecord::Base
   end
   
   def list_elements
-    list.nil? ? recipes : List.find(list).elements
+    list_with_aka.nil? ? recipes : List.find(list_with_aka).elements
   end
 
   def link
