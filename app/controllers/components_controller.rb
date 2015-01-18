@@ -19,6 +19,7 @@ class ComponentsController < ApplicationController
     component = Component.find(params[:id])
     component.update_attributes(component_params)
     component.create_or_update_list(params[:component][:list_as_markdown])
+    component.compile_akas if params[:component][:akas_as_markdown].present?
     redirect_to action: "show", id: component.id
   end
 
@@ -43,6 +44,6 @@ class ComponentsController < ApplicationController
   private
 
   def component_params
-    params.require(:component).permit(:name, :description, :image, :nick, :aka_id)
+    params.require(:component).permit(:name, :description, :image, :nick, :akas_as_markdown)
   end
 end

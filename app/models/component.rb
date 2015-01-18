@@ -32,7 +32,11 @@ class Component < ActiveRecord::Base
   end
 
   def edit_url
-    "/ingredients/edit/#{id}"
+    if is_an_aka?
+      "/ingredients/edit/#{aka.id}"
+    else
+      "/ingredients/edit/#{id}"
+    end
   end
   
   def backup_image_url
@@ -82,6 +86,17 @@ class Component < ActiveRecord::Base
   def is_an_aka?
     aka_id.present?
   end
+  
+  def compile_akas
+    aka_list = []
+    akas_as_markdown.split(",").each do |aka_name|
+      new_aka = Component.find_or_create_by_name(aka_name.strip.downcase)
+      new_aka.update_attribute(:aka_id, id)
+      aka_list.push(new_aka)
+    end
+    (akas - aka_list).map(&:destroy)
+    update_attribute(:akas, aka_list)
+  end  
   
   def has_list
     !list.nil?
