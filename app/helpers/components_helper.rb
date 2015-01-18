@@ -1,11 +1,15 @@
 module ComponentsHelper
+  
+  def undefined
+    @component.id.nil?
+  end
 
   def form_action
-    @component.present? ? "update" : "create"
+    undefined ? "create" : "update"
   end
   
   def aka_options
-    Component.all.sort_by!(&:name).map{|c|[c.name,c.id]}.unshift(["none","0"])
+    Component.all.sort_by(&:name).map{|c|[c.name,c.id]}.unshift(["none",""])
   end
 
   def edit_url
@@ -17,6 +21,6 @@ module ComponentsHelper
   end
 
   def submit_text
-    @component.present? ? "update" : "create"
+    undefined ? "create" : "update"
   end
 end
