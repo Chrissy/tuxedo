@@ -9,7 +9,7 @@ module ApplicationHelper
   end
   
   def publish_status(element)
-    "✓" if element.published?
+    "| ✓" if element.published? && element.is_a?(Recipe)
   end
   
   def links

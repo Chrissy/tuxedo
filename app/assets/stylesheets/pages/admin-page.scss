@@ -22,6 +22,10 @@
   }
   .admin_element { @extend .list_element_small; }
   .admin_element_label { margin-bottom: 0px; }
+  .component_admin_element {
+    .admin_element_name { display: inline; }
+    img { display: none; }
+  }
 }
 
 .logout-button {
