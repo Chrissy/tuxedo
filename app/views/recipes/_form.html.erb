@@ -9,7 +9,9 @@
     <label>publish?</label>
     <%= f.check_box :published, :value => default_text(:published) %>
     <label>Make my number last!</label>
-    <%= check_box_tag :make_my_number_last %>
+    <%= check_box_tag :make_my_number_last %><br/>
+    <label>Never make me tall!</label>
+    <%= f.check_box :never_make_me_tall %>
     <%= f.submit(submit_text()) %>
   </div>
 <% end %>

@@ -44,6 +44,6 @@ class ComponentsController < ApplicationController
   private
 
   def component_params
-    params.require(:component).permit(:name, :description, :image, :nick, :akas_as_markdown)
+    params.require(:component).permit(:name, :description, :image, :nick, :akas_as_markdown, :never_make_me_tall)
   end
 end

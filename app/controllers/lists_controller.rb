@@ -65,6 +65,6 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:name, :content_as_markdown, :image)
+    params.require(:list).permit(:name, :content_as_markdown, :image, :never_make_me_tall)
   end
 end
