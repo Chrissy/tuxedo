@@ -31,5 +31,6 @@ body {
   position: relative;
   min-height: 100%;
 }
+.hidden { display: none; }
 
 .content, .primary { @include pie-clearfix; }

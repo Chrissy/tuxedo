@@ -4,7 +4,8 @@
     <%= f.text_area :content_as_markdown, :value => default_text(:content_as_markdown), :placeholder => "list content", :class => 'autocomplete recipes components lists' %>
     <%= render "shared/image_options", :element => @list, :f => f %>
     <label>Never make me tall!</label>
-    <%= f.check_box :never_make_me_tall, :value => default_text(:never_make_me_tall); %>
+    <%= f.check_box :never_make_me_tall, :value => default_text(:never_make_me_tall); %><br/>
     <%= f.submit(submit_text()) %>
+    <%= link_to "delete", action: "delete" %>
   </div>
 <% end %>

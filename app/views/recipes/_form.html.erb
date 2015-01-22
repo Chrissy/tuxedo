@@ -8,10 +8,17 @@
     <%= render "shared/image_options", :element => @recipe, :f => f %>
     <label>publish?</label>
     <%= f.check_box :published, :value => default_text(:published) %>
-    <label>Make my number last!</label>
-    <%= check_box_tag :make_my_number_last %><br/>
-    <label>Never make me tall!</label>
-    <%= f.check_box :never_make_me_tall %>
+    <a class="show-extra-options">extra options</a>
+    <div class="extra-options hidden">
+      <label>Make my number last!</label>
+      <%= check_box_tag :make_my_number_last %><br/>
+      <label>Never make me tall!</label>
+      <%= f.check_box :never_make_me_tall %><br/>
+      <label>Don't compress my image</label>
+      <%= f.check_box :dont_compress_image %>
+    </div>
+    <br/>
     <%= f.submit(submit_text()) %>
+    <%= link_to "delete", action: "delete" %>
   </div>
 <% end %>

@@ -28,7 +28,7 @@ module ApplicationHelper
       fit: 'crop',
       cache: 'true'
     }
-    filepicker_image_tag(element.image_with_backup, opts, class: "header-image", :"data-resize"=>"3", :itemprop => "image")
+    filepicker_image_tag(element.image_with_backup, opts, class: "header-image", :"data-resize"=>"3", :itemprop => "image", :"data-dont-compress" => element.try(:dont_compress_image))
   end
   
   def list_image(element)

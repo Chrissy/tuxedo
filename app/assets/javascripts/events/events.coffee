@@ -30,6 +30,10 @@ $ ->
     return false
   )
   
+  $(".show-extra-options").on("click", ->
+    $(this).siblings(".extra-options").toggle()
+  )
+  
   toggleSocialPrompt = => $(".social-prompt").toggleClass("active")
   window.setTimeout(toggleSocialPrompt, 1000)
   window.setTimeout(toggleSocialPrompt, 4000)
