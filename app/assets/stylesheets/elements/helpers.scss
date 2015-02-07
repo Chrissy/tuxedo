@@ -7,6 +7,12 @@
   position: relative;  
 }
 
+%centered-content-box-large {
+  @extend %centered-content-box;
+  width: 100%;
+  max-width: 1140px;
+}
+
 %swash {
   &:first-letter, .swash-cap { 
     font-feature-settings: "swsh"; 

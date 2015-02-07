@@ -20,10 +20,7 @@
   .link:not(:last-child):after { content: " • "}
 }
 
-.global-header {
-  @extend %centered-content-box;
-  position: relative;
-}
+.global-header { @extend %centered-content-box-large; }
 
 .header-primary, .header-secondary {
   position: absolute;
@@ -43,8 +40,8 @@
 
 .header, .header-content {
   height: 460px;
-  height: 75vh;
-  max-height: 540px;
+  height: 80vh;
+  max-height: 650px;
   min-height: 460px
 }
 
@@ -55,7 +52,7 @@
 }
 
 .header-content {
-  @extend %centered-content-box;
+  @extend %centered-content-box-large;
   border: 1px solid #222;
   position: relative;
   overflow: hidden;
