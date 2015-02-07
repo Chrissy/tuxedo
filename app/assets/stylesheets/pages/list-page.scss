@@ -14,3 +14,10 @@
 .list_elements, .list .primary, .component .primary { width: 100%; }
 .error-subhead { font-size: 24px; color: white; }
 .header-title.error-title { line-height: 70%; }
+
+.content.list.about {
+  width: 500px;
+  text-align: center;
+  li { margin-bottom: 10px; }
+  img { width: 100%; }
+}

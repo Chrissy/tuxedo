@@ -6,6 +6,7 @@ Tuxno2::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'lists#home'
   get 'admin' => 'lists#admin'
+  get 'about' => 'lists#about'
 
   get 'new' => 'recipes#new'
   get 'all' => 'recipes#all'
@@ -35,7 +36,7 @@ Tuxno2::Application.routes.draw do
   post 'list/update/:id' => 'lists#update'
   post 'list/create' => 'lists#create'
   get 'list/delete/:id' => 'lists#delete'
-
+  
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

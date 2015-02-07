@@ -61,6 +61,10 @@ class ListsController < ApplicationController
     @components = Component.all.sort_by(&:name).delete_if { |c| c.is_an_aka? }
     @lists = List.all_for_display.sort_by(&:name)
   end
+  
+  def about
+    render 'shared/about'
+  end
 
   private
 
