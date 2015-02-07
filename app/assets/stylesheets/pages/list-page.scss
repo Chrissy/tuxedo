@@ -16,8 +16,10 @@
 .header-title.error-title { line-height: 70%; }
 
 .content.list.about {
-  width: 550px;
+  max-width: 550px;
+  width: 80%;
+  margin: 0 auto;
   text-align: center;
-  li { margin-bottom: 10px; }
+  li { margin-bottom: 15px; }
   img { width: 100%; }
 }
