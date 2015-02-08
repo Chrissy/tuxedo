@@ -41,8 +41,8 @@
 .header, .header-content {
   height: 460px;
   height: 80vh;
-  max-height: 650px;
-  min-height: 460px
+  max-height: 750px;
+  min-height: 600px
 }
 
 .header {
@@ -128,6 +128,11 @@ $social-prompt-size: 7px;
   }
 }
 html[data-share-alert="3"] .social-prompt{ display: block; }
+
+@media (max-height: 700px) {
+  .header-content, .global-header { width: 1024px; }
+}
+
 @media (max-width: 960px) {
   .global-header, .header-primary { width: 100%; }
   .user_links {

@@ -8,7 +8,8 @@
 }
 
 %centered-content-box-large {
-  @extend %centered-content-box;
+  margin: 0 auto;
+  position: relative;
   width: 100%;
   max-width: 1140px;
 }
