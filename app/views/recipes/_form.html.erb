@@ -19,6 +19,6 @@
     </div>
     <br/>
     <%= f.submit(submit_text()) %>
-    <%= link_to "delete", action: "delete" %>
+    <%= link_to "delete", action: "delete" if @recipe.id %>
   </div>
 <% end %>

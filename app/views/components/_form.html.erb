@@ -12,6 +12,6 @@
     <label>Never make me tall!</label>
     <%= f.check_box :never_make_me_tall, :value => default_text(:never_make_me_tall) %></br>
     <%= f.submit(submit_text()) %>
-    <%= link_to "delete", action: "delete" %>
+    <%= link_to "delete", action: "delete" if @component.id %>
   </div>
 <% end %>
