@@ -34,6 +34,10 @@ $ ->
     $(this).siblings(".extra-options").toggle()
   )
   
+  $("div[href]").on("click", ->
+    window.location = $(this).attr("href")
+  )
+  
   toggleSocialPrompt = => $(".social-prompt").toggleClass("active")
   window.setTimeout(toggleSocialPrompt, 1000)
   window.setTimeout(toggleSocialPrompt, 4000)
