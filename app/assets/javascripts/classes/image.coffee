@@ -19,7 +19,7 @@ class window.Image
       
   upscale: ->
     self = @
-    img = $("<img/>").attr("src", @filepicker_url()).load( ->
+    img = self.image.clone().attr("src", @filepicker_url()).load( ->
       self.image.replaceWith(img)
     )
 

@@ -28,7 +28,15 @@ module ApplicationHelper
       fit: 'crop',
       cache: 'true'
     }
-    filepicker_image_tag(element.image_with_backup, opts, class: "header-image", :"data-resize"=>"3", :itemprop => "image", :"data-dont-compress" => element.try(:dont_compress_image))
+    filepicker_image_tag(
+                        element.image_with_backup, 
+                        opts, 
+                        class: "header-image", 
+                        :"data-resize"=>"3", 
+                        :itemprop => "image", 
+                        :"data-dont-compress" => element.try(:dont_compress_image),
+                        :"data-pin-media" => pinnable_image_url(element),
+                        :"data-pin-description" => element.name)
   end
   
   def list_image(element)
@@ -39,6 +47,16 @@ module ApplicationHelper
       cache: 'true'
     }
     filepicker_image_tag(element.image_with_backup, opts, :"data-resize" => "3")
+  end
+  
+  def pinnable_image_url(element)
+    opts = {
+      w: 476,
+      h: 666,
+      fit: 'crop',
+      cache: 'true'
+    }
+    filepicker_image_url(element.image_with_backup, opts)
   end
   
   def list_id
