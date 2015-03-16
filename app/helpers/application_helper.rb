@@ -63,7 +63,7 @@ module ApplicationHelper
       fit: 'crop',
       cache: 'true'
     }
-    filepicker_image_url(element.image_with_backup, opts)
+    filepicker_image_url(element.try(:image_with_backup), opts)
   end
   
   def pin_url(element)
@@ -117,7 +117,7 @@ module ApplicationHelper
   end
   
   def meta_image
-    @layout_object.try(:image_with_backup)
+    pinnable_image_url(@layout_object)
   end
   
   def similar_recipes_link(recipe)
