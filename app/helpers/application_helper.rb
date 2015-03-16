@@ -46,7 +46,12 @@ module ApplicationHelper
       fit: 'crop',
       cache: 'true'
     }
-    filepicker_image_tag(element.image_with_backup, opts, :"data-resize" => "3")
+    filepicker_image_tag(
+                        element.image_with_backup, 
+                        opts, 
+                        :"data-resize" => "3",
+                        :"data-pin-media" => pinnable_image_url(element),
+                        :"data-pin-description" => element.name)
   end
   
   def pinnable_image_url(element)
