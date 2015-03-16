@@ -36,6 +36,7 @@ module ApplicationHelper
                         :itemprop => "image", 
                         :"data-dont-compress" => element.try(:dont_compress_image),
                         :"data-pin-media" => pinnable_image_url(element),
+                        :"data-pin-url" => pin_url(element),
                         :"data-pin-description" => element.name)
   end
   
@@ -51,6 +52,7 @@ module ApplicationHelper
                         opts, 
                         :"data-resize" => "3",
                         :"data-pin-media" => pinnable_image_url(element),
+                        :"data-pin-url" => pin_url(element),
                         :"data-pin-description" => element.name)
   end
   
@@ -62,6 +64,10 @@ module ApplicationHelper
       cache: 'true'
     }
     filepicker_image_url(element.image_with_backup, opts)
+  end
+  
+  def pin_url(element)
+    request.protocol + request.host_with_port + element.url
   end
   
   def list_id
