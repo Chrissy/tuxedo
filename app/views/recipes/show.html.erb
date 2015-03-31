@@ -6,11 +6,6 @@
   <div class="content recipe">
     <div class="aside">
       <%= @recipe.recipe_as_html %>
-      <div class='list-element never-make-me-tall saveur-meme'>
-        <%= link_to "http://www.saveur.com/content/blog-awards-2015-vote?dom=spiritscocktail&src=2015blogbadge", class: "list-image-wrapper saveur-meme-link" do %>
-          <%= image_tag('saveur-meme.png') %>
-        <% end %>
-      </div>
     </div>
     <div class="primary" itemprop="description">
       <%= @recipe.description_to_html %>

@@ -1,6 +1,6 @@
-<% list_elements.try(:each_with_index) do |element| %>
-  <% if element.name == "Lime" && @list.try(:home?) %>
-    <%= render 'saveur_meme' %>
+<% list_elements.try(:each_with_index) do |element, index| %>
+  <% if index == 2 %>
+    <%= render 'lists/saveur_meme' %>
   <% else %>
     <li class='list-element <%= "never-make-me-tall" if element.try(:never_make_me_tall) %>'>
       <%= link_to element.url, class: "list-image-wrapper" do %>

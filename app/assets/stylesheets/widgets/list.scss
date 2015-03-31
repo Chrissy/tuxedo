@@ -112,10 +112,9 @@ $image-resize: 10%;
 .sawhorse { display: none; }
 
 .list-element .saveur-meme-link {
-  height: 255px;
   img {
-    width: 200px;
-    top: 20px;  
+    width: 150px;
+    top: 16px;  
   }  
 }
 
@@ -161,7 +160,12 @@ $image-resize: 10%;
     width: 100%;
     height: auto; 
   }
-  .list-element .saveur-meme-link { 
-    height: 255px;
+  .list-element .saveur-meme-link {
+    height: 264px;
+    img {
+      width: 200px;
+      top: 15px;
+      top: 24px;
+    } 
   }
 }
