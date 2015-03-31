@@ -111,6 +111,14 @@ $image-resize: 10%;
 
 .sawhorse { display: none; }
 
+.list-element .saveur-meme {
+  height: 255px;
+  img {
+    width: 200px;
+    top: 20px;  
+  }  
+}
+
 @media (min-width: 1275px) {
   .content.list, .content.component { width: 1254px; }
   .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall) {
@@ -152,5 +160,8 @@ $image-resize: 10%;
   .list-element, .list-element .list-image-wrapper { 
     width: 100%;
     height: auto; 
+  }
+  .list-element .saveur-meme { 
+    height: 255px;
   }
 }
