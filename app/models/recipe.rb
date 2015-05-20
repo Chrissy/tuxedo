@@ -1,4 +1,5 @@
 require 'component.rb'
+require 'custom_markdown.rb'
 
 class Recipe < ActiveRecord::Base
   extend FriendlyId
@@ -22,7 +23,7 @@ class Recipe < ActiveRecord::Base
   end
 
   def description_to_html
-    converted_description = attempt_to_convert_custom_markdown_to_links(description)
+    converted_description = CustomMarkdown.convert_links(description)
     markdown.render(converted_description).html_safe
   end
 
@@ -133,24 +134,6 @@ class Recipe < ActiveRecord::Base
     lists.each do |list|
       list.touch
     end
-  end
-
-  def attempt_to_convert_custom_markdown_to_links(markdown)
-    def convert_name_to_link_or_just_skip_it(model, name)
-      model.find_by_name(name).try(:link) || name
-    end
-
-    markdown.gsub!(/(\=|\:|\#)\[(.*?)\]/) do |*|
-      case $1
-        when ":"
-          convert_name_to_link_or_just_skip_it(Component, $2)
-        when "#"
-          convert_name_to_link_or_just_skip_it(List, $2)
-        when "="
-          convert_name_to_link_or_just_skip_it(Recipe, $2)
-      end
-    end
-    markdown
   end
 
   def convert_recipe_to_html(md)
