@@ -4,7 +4,7 @@ require 'component.rb'
 class List < ActiveRecord::Base
   extend FriendlyId
   friendly_id :custom_name, use: :slugged
-  
+
   serialize :element_ids, Array
   after_save :tell_recipes_about_me
 
@@ -17,11 +17,11 @@ class List < ActiveRecord::Base
     elements = elements.flatten.uniq - ["",nil]
     elements.keep_if { |element| element.published? }
   end
-  
+
   def url
     "/list/#{slug}"
   end
-  
+
   def custom_name
     name + " cocktail recipes"
   end
@@ -29,19 +29,19 @@ class List < ActiveRecord::Base
   def edit_url
     "/list/edit/#{id}"
   end
-  
+
   def published?
     true
   end
-  
+
   def self.all_for_display
     List.all.keep_if { |list| list.component.nil? }
   end
-  
+
   def tagline
     "#{name} | Tuxedo no.2"
   end
-  
+
   def subtext
     "components/subtext"
   end
@@ -49,11 +49,15 @@ class List < ActiveRecord::Base
   def count_for_display
     "#{elements.count} cocktails"
   end
-  
+
   def recipes
     element_ids.select{ |pair| pair[0] == "Recipe" }.map{ |pair| Recipe.find_by_name(pair[1])}.compact
   end
-  
+
+  def link
+    "<a href='#{url}' class='list'>#{name}</a>"
+  end
+
   def tell_recipes_about_me
     recipes.each do |recipe|
       recipe.list_ids << self.id
@@ -78,7 +82,7 @@ class List < ActiveRecord::Base
     limit_number = list_code[/\d+/].to_i
     sort_by = list_code[/(\bDATE\b)/]
     return false if first_word.blank? || limit_number.zero?
-    expanded_list = [] 
+    expanded_list = []
     if first_word == "ALL" || first_word == "all"
       expanded_list = create_recipe_list(limit_number, sort_by)
     else
@@ -96,15 +100,15 @@ class List < ActiveRecord::Base
     return if component.nil?
     if sort_by.nil?
       component.recipes.sort_by!(&:name)
-    else 
+    else
       component.recipes.sort { |a,b| a.last_updated <=> b.last_updated }
     end
   end
-  
+
   def backup_image_url
     "https://www.filepicker.io/api/file/drOikI0sTqG2xjWn2WSQ/convert?fit=crop&amp;h=861&amp;w=1500&amp"
   end
-  
+
   def image_with_backup
     if image.present?
       image
@@ -118,7 +122,7 @@ class List < ActiveRecord::Base
   def home?
     name == "Home" || name == "home"
   end
-  
+
   def header_element
     home? ? elements.first : self
   end
@@ -127,11 +131,11 @@ class List < ActiveRecord::Base
     elements = []
     content_as_markdown.gsub(/(\=|\:|\#)\[(.*?)\]/) do |*|
       case $1
-        when ":" 
+        when ":"
           elements.push([Component.to_s, $2])
-        when "#" 
+        when "#"
           elements.push([List.to_s, $2])
-        when "=" 
+        when "="
           elements.push([Recipe.to_s, $2])
       end
     end

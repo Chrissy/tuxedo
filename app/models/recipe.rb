@@ -3,7 +3,7 @@ require 'component.rb'
 class Recipe < ActiveRecord::Base
   extend FriendlyId
   friendly_id :custom_name, use: :slugged
-  
+
   serialize :component_ids, Array
   serialize :list_ids, Array
   serialize :recommends, Array
@@ -12,7 +12,7 @@ class Recipe < ActiveRecord::Base
   def markdown
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
   end
-  
+
   def recipe_to_html
     convert_recipe_to_html(recipe)
   end
@@ -22,13 +22,14 @@ class Recipe < ActiveRecord::Base
   end
 
   def description_to_html
-    markdown.render(description).html_safe
+    converted_description = attempt_to_convert_custom_markdown_to_links(description)
+    markdown.render(converted_description).html_safe
   end
-  
+
   def backup_image_url
     "https://www.filepicker.io/api/file/drOikI0sTqG2xjWn2WSQ/convert?fit=crop&amp;h=861&amp;w=1500&amp"
   end
-  
+
   def image_with_backup
     image.present? ? image : backup_image_url
   end
@@ -40,7 +41,7 @@ class Recipe < ActiveRecord::Base
   def url
     "/#{slug}"
   end
-  
+
   def custom_name
     name + " cocktail recipe"
   end
@@ -52,26 +53,26 @@ class Recipe < ActiveRecord::Base
   def delete_url
     ""
   end
-  
+
   def make_my_number_last!
     update_attribute(:created_at, Time.now)
   end
-  
+
   def lists
     list_ids.map { |list_id| List.find(list_id) }
   end
-    
+
   def number
     Recipe.where(:published => true).order('created_at ASC').find_index(self)
   end
-  
+
   def self.compile_numbers_based_on_home
     time = Time.now
     List.find(1).elements.keep_if{|x|x.is_a?(Recipe)}.reverse.each_with_index do |recipe, x|
       recipe.update_attribute(:created_at, time + x)
     end
   end
-  
+
   def store_recommends
     recs = (components.first.recipes.keep_if(&:published?) - [self]).sort_by{ |recipe|
       (components & recipe.components).length
@@ -79,13 +80,17 @@ class Recipe < ActiveRecord::Base
     update_attribute(:recommends, recs)
   end
   handle_asynchronously :store_recommends
-  
+
   def tagline
     "#{name} Cocktail | Tuxedo no.2"
   end
-  
+
   def subtext
     "recipes/subtext"
+  end
+
+  def link
+    "<a href='#{url}' class='recipe'>#{name}</a>"
   end
 
   def update_components
@@ -101,7 +106,7 @@ class Recipe < ActiveRecord::Base
       recipe.update_components
     end
   end
-  
+
   def convert_fractions(str)
    str.gsub(/0\.[0-9]*.*?/) do |match|
      case match
@@ -115,19 +120,37 @@ class Recipe < ActiveRecord::Base
      end
    end.html_safe
   end
-  
+
   def wrap_units(md)
     md.gsub(/([0-9])(oz|tsp|tbsp|Tbsp|dash|dashes|lb|lbs|cup|cups)(\b)/) do |*|
       "#{$1}<span class='unit'>#{$2}</span>#{$3}"
     end
   end
-  
+
   private
-  
+
   def touch_associated_lists
-    lists.each do |list| 
+    lists.each do |list|
       list.touch
-    end  
+    end
+  end
+
+  def attempt_to_convert_custom_markdown_to_links(markdown)
+    def convert_name_to_link_or_just_skip_it(model, name)
+      model.find_by_name(name).try(:link) || name
+    end
+
+    markdown.gsub!(/(\=|\:|\#)\[(.*?)\]/) do |*|
+      case $1
+        when ":"
+          convert_name_to_link_or_just_skip_it(Component, $2)
+        when "#"
+          convert_name_to_link_or_just_skip_it(List, $2)
+        when "="
+          convert_name_to_link_or_just_skip_it(Recipe, $2)
+      end
+    end
+    markdown
   end
 
   def convert_recipe_to_html(md)
