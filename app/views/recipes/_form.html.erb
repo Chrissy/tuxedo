@@ -4,7 +4,7 @@
     <%= f.text_area :recipe, :value => default_text(:recipe), :placeholder => "recipe", :class => 'autocomplete components' %>
   </div>
   <div class="form_block secondary">
-    <%= f.text_area :description, :value => default_text(:description), :placeholder => "description" %>
+    <%= f.text_area :description, :value => default_text(:description), :placeholder => "description", :class => "autocomplete components lists recipes" %>
     <%= render "shared/image_options", :element => @recipe, :f => f %>
     <label>publish?</label>
     <%= f.check_box :published, :value => default_text(:published) %>

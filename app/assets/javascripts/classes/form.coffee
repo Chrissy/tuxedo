@@ -1,6 +1,6 @@
 class window.Form
   constructor: (form) ->
-    @form = $(form).first()
+    @form = $(form)
     self = @
     @autocomplete = []
     @generateAutocomplete("/ingredients/all.json", ":") if @form.hasClass("components")
@@ -34,6 +34,3 @@ class window.Form
     aftertext = @form.val().substring(query.pos + flag.length + 2)
     newstr = "#{pretext}[#{flag}] #{aftertext}"
     @form.val(newstr)
-
-    
-
