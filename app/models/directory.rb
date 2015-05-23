@@ -32,7 +32,7 @@ class Directory
   end
 
   def shorthand_to_recipes(limit_number, sort_by)
-    #Recipe.limit(limit_number).order(sort_by.nil? ? "name asc" : "last_updated desc").to_a
+    Recipe.limit(limit_number).order(sort_by.nil? ? "name asc" : "last_updated desc").to_a
   end
 
   def shorthand_to_components(component_name, sort_by)
