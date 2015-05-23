@@ -88,6 +88,6 @@ class List < ActiveRecord::Base
   end
 
   def collect_and_save_list_elements
-    self.update_attribute(:element_ids, CustomMarkdown.links_to_directory_code(content_as_markdown))
+    update_attribute(:element_ids, CustomMarkdown.links_to_directory_code(content_as_markdown))
   end
 end

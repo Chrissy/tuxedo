@@ -24,7 +24,10 @@ class CustomMarkdown
   def self.links_to_directory_code(md)
     elements = []
     md.gsub(/(\=|\:|\#)\[(.*?)\]/) do |*|
-      elements.push([model_for_symbol($1).to_s, $2, "list_content"])
+      elements << [model_for_symbol($1).to_s, $2, "list_content"]
     end
+    elements
   end
+
+
 end
