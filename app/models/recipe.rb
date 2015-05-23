@@ -22,7 +22,7 @@ class Recipe < ActiveRecord::Base
     (stored_recipe_as_html || recipe_to_html).html_safe
   end
 
-  def description_to_html
+  def description_to_html #MARKDOWN
     converted_description = CustomMarkdown.convert_links(description)
     markdown.render(converted_description).html_safe
   end
@@ -35,7 +35,7 @@ class Recipe < ActiveRecord::Base
     image.present? ? image : backup_image_url
   end
 
-  def components
+  def components #ROLODEX
     component_ids.map { |component_id| Component.find_by_id(component_id) }.compact
   end
 
@@ -59,7 +59,7 @@ class Recipe < ActiveRecord::Base
     update_attribute(:created_at, Time.now)
   end
 
-  def lists
+  def lists #ROLODEX
     list_ids.map { |list_id| List.find(list_id) }
   end
 
@@ -94,7 +94,7 @@ class Recipe < ActiveRecord::Base
     "<a href='#{url}' class='recipe'>#{name}</a>"
   end
 
-  def update_components
+  def update_components #ROLODEX
     components.each do |component|
       recipe_ids = component.recipe_ids.push(self.id).uniq
       component.update_attribute(:recipe_ids, recipe_ids)
@@ -130,13 +130,13 @@ class Recipe < ActiveRecord::Base
 
   private
 
-  def touch_associated_lists
+  def touch_associated_lists #ROLODEX
     lists.each do |list|
       list.touch
     end
   end
 
-  def convert_recipe_to_html(md)
+  def convert_recipe_to_html(md) #MARKDOWN
     component_list = []
     md.gsub!(/\:\[(.*?)\]/) do |*|
       component = Component.find_or_create_by(name: $1)

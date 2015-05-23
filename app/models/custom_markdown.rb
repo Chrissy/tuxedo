@@ -1,4 +1,5 @@
 class CustomMarkdown
+  include ActiveModel::Model
 
   def self.model_for_symbol(symbol)
     return {
@@ -8,7 +9,7 @@ class CustomMarkdown
     }[symbol]
   end
 
-  def self.convert_links(md)
+  def self.convert_links_in_place(md)
     md.gsub!(/(\=|\:|\#)\[(.*?)\]/) do |*|
       element = model_for_symbol($1).find(:first, :conditions => ["lower(name) = ?", $2.downcase])
       if element
@@ -18,5 +19,12 @@ class CustomMarkdown
       end
     end
     md
+  end
+
+  def self.links_to_rolodex_code(md)
+    elements = []
+    md.gsub(/(\=|\:|\#)\[(.*?)\]/) do |*|
+      elements.push([model_for_symbol($1).to_s, $2, "list_content"])
+    end
   end
 end
