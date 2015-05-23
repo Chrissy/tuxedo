@@ -1,5 +1,6 @@
 require 'recipe.rb'
 require 'component.rb'
+require 'custom_markdown.rb'
 
 class List < ActiveRecord::Base
   extend FriendlyId
@@ -8,12 +9,12 @@ class List < ActiveRecord::Base
   serialize :element_ids, Array
   after_save :tell_recipes_about_me
 
-  def rolodex
-    @rolodex ||= Rolodex.new(:element_codes => element_ids)
+  def directory
+    @directory ||= Directory.new(:element_codes => element_ids)
   end
 
   def elements
-    rolodex.to_elements
+    directory.to_elements
   end
 
   def url
@@ -87,6 +88,6 @@ class List < ActiveRecord::Base
   end
 
   def collect_and_save_list_elements
-    self.update_attribute(:element_ids, CustomMarkdown.links_to_rolodex_code(content_as_markdown))
+    self.update_attribute(:element_ids, CustomMarkdown.links_to_directory_code(content_as_markdown))
   end
 end

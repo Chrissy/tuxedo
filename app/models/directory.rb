@@ -1,7 +1,7 @@
 require 'recipe.rb'
 require 'component.rb'
 
-class Rolodex
+class Directory
   include ActiveModel::Model
   attr_accessor :element_codes
 
