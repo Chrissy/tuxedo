@@ -7,6 +7,15 @@ class Component < ActiveRecord::Base
   serialize :recipe_ids, Array
   serialize :akas, Array
 
+  def directory
+    recipes = recipe_ids_with_aka.map{ |id| ["Recipe", id, "component_recipes"]}
+    @directory ||= Directory.new(:parent_element_codes => recipes)
+  end
+
+  def recipes
+    directory.recipes
+  end
+
   def recipe_ids_with_aka
     if is_an_aka?
       aka.recipe_ids
@@ -57,10 +66,6 @@ class Component < ActiveRecord::Base
     else
       backup_image_url
     end
-  end
-
-  def recipes #ROLODEX
-    recipe_ids_with_aka.map { |recipe_id| Recipe.find_by_id(recipe_id) } - ["",nil]
   end
 
   def tagline
