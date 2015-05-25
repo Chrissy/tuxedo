@@ -50,7 +50,7 @@ class List < ActiveRecord::Base
   end
 
   def recipes
-    directory.recipes
+    directory.child_recipes
   end
 
   def link
