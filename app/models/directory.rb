@@ -10,44 +10,67 @@ class Directory
   end
 
   def child_recipes
-    find_by_model(Recipe)
+    find_children_by_model(Recipe)
   end
 
   def child_components
-    find_by_model(Component)
+    find_children_by_model(Component)
   end
 
   def child_lists
-    find_by_model(List)
+    find_children_by_model(List)
   end
 
   def parents
+    to_elements(parent_element_codes)
   end
 
   def parent_lists
+    find_parents_by_model(List)
   end
 
   def parent_recipes
+    find_parents_by_model(Recipe)
   end
 
   private
 
+  def to_model(model_code)
+    model_code.singularize.classify.constantize
+  end
+
+  def find_element_by_name(code)
+    to_model(code[0]).find_by_name(code[1])
+  end
+
+  def find_element_by_id(code)
+    to_model(code[0]).find_by_id(code[1])
+  end
+
   def to_elements(codes)
     elements = []
     codes.each do |element_code|
-      elements << (collection_code_to_elements(element_code[1]) || element_code_to_element(element_code))
+      if element_code[1].is_a?(Integer)
+        elements << find_element_by_id(element_code)
+      else
+        elements << (collection_code_to_elements(element_code[1]) || find_element_by_name(element_code))
+      end
     end
     elements = elements.flatten.uniq - ["",nil]
     elements.keep_if { |element| element.published? }
   end
 
-  def find_by_model(filtering_model)
-    filtered_codes = element_codes.select{|code| code[0] == filtering_model.to_s }
+  def filter_by_model(filtering_model, codes)
+    filtered_codes = codes.select{|code| code[0] == filtering_model.to_s }
     to_elements(filtered_codes)
   end
 
-  def element_code_to_element(element_code)
-    element_code[0].singularize.classify.constantize.find_by_name(element_code[1])
+  def find_children_by_model(filtering_model)
+    filter_by_model(filtering_model, element_codes)
+  end
+
+  def find_parents_by_model(filtering_model)
+    filter_by_model(filtering_model, parent_element_codes)
   end
 
   def collection_code_to_elements(collection_code)

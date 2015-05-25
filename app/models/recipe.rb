@@ -14,6 +14,12 @@ class Recipe < ActiveRecord::Base
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
   end
 
+  def directory
+    components = component_ids.map{ |id| ["Component", id, "recipe_content"]}
+    lists = list_ids.map{ |id| ["List", id, "parent_list"]}
+    @directory ||= Directory.new(:element_codes => components, :parent_element_codes => lists)
+  end
+
   def recipe_to_html
     convert_recipe_to_html(recipe)
   end
@@ -35,8 +41,12 @@ class Recipe < ActiveRecord::Base
     image.present? ? image : backup_image_url
   end
 
-  def components #ROLODEX
-    component_ids.map { |component_id| Component.find_by_id(component_id) }.compact
+  def components
+    directory.child_components
+  end
+
+  def lists
+    directory.parent_lists
   end
 
   def url
@@ -57,10 +67,6 @@ class Recipe < ActiveRecord::Base
 
   def make_my_number_last!
     update_attribute(:created_at, Time.now)
-  end
-
-  def lists #ROLODEX
-    list_ids.map { |list_id| List.find(list_id) }
   end
 
   def number
