@@ -3,16 +3,47 @@ require 'component.rb'
 
 class Directory
   include ActiveModel::Model
-  attr_accessor :element_codes
+  attr_accessor :element_codes, :parent_element_codes
 
-  def to_elements
-    first = element_codes.first
+  def children
+    to_elements(element_codes)
+  end
+
+  def child_recipes
+    find_by_model(Recipe)
+  end
+
+  def child_components
+    find_by_model(Component)
+  end
+
+  def child_lists
+    find_by_model(List)
+  end
+
+  def parents
+  end
+
+  def parent_lists
+  end
+
+  def parent_recipes
+  end
+
+  private
+
+  def to_elements(codes)
     elements = []
-    element_codes.each do |element_code|
+    codes.each do |element_code|
       elements << (collection_code_to_elements(element_code[1]) || element_code_to_element(element_code))
     end
     elements = elements.flatten.uniq - ["",nil]
     elements.keep_if { |element| element.published? }
+  end
+
+  def find_by_model(filtering_model)
+    filtered_codes = element_codes.select{|code| code[0] == filtering_model.to_s }
+    to_elements(filtered_codes)
   end
 
   def element_code_to_element(element_code)

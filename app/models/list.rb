@@ -14,7 +14,7 @@ class List < ActiveRecord::Base
   end
 
   def elements
-    directory.to_elements
+    directory.children
   end
 
   def url
@@ -49,8 +49,8 @@ class List < ActiveRecord::Base
     "#{elements.count} cocktails"
   end
 
-  def recipes #ROLODEX
-    element_ids.select{ |pair| pair[0] == "Recipe" }.map{ |pair| Recipe.find_by_name(pair[1])}.compact
+  def recipes
+    directory.recipes
   end
 
   def link
