@@ -10,14 +10,10 @@ class Recipe < ActiveRecord::Base
   serialize :recommends, Array
   before_save :touch_associated_lists
 
+  has_many :relationships, as: :relatable, dependent: :destroy
+
   def markdown
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
-  end
-
-  def directory
-    components = component_ids.map{ |id| ["Component", id, "recipe_content"]}
-    lists = list_ids.map{ |id| ["List", id, "parent_list"]}
-    @directory ||= Directory.new(:element_codes => components, :parent_element_codes => lists)
   end
 
   def recipe_to_html
@@ -42,11 +38,15 @@ class Recipe < ActiveRecord::Base
   end
 
   def components
-    directory.child_components
+    component_relationships.map(&:child)
+  end
+
+  def component_relationships
+    relationships.select{ |rel| rel.child_type == "Component" }
   end
 
   def lists
-    directory.parent_lists
+    Relationship.find_parents_by_type(self, List)
   end
 
   def url
@@ -100,13 +100,6 @@ class Recipe < ActiveRecord::Base
     "<a href='#{url}' class='recipe'>#{name}</a>"
   end
 
-  def update_components #ROLODEX
-    components.each do |component|
-      recipe_ids = component.recipe_ids.push(self.id).uniq
-      component.update_attribute(:recipe_ids, recipe_ids)
-    end
-  end
-
   def self.update_all
     Recipe.all.each do |recipe|
       recipe.recipe_to_html
@@ -136,12 +129,6 @@ class Recipe < ActiveRecord::Base
 
   private
 
-  def touch_associated_lists #ROLODEX
-    lists.each do |list|
-      list.touch
-    end
-  end
-
   def convert_recipe_to_html(md) #MARKDOWN
     component_list = []
     md.gsub!(/\:\[(.*?)\]/) do |*|
@@ -149,8 +136,7 @@ class Recipe < ActiveRecord::Base
       component_list << component.id
       component.link
     end
-    self.update_attribute(:component_ids, component_list)
-    update_components()
+    create_relationships(component_list)
     md.gsub!(/\* ([0-9].*?|fill) +/) do |*|
       modified_md = wrap_units($1)
       "* <span class='amount'>#{convert_fractions(modified_md)}</span> "
@@ -161,5 +147,20 @@ class Recipe < ActiveRecord::Base
     html = markdown.render(md)
     update_attribute(:stored_recipe_as_html, html)
     html
+  end
+
+  def create_relationships(ids)
+    component_relationships.delete_all
+
+    to_create = ids.map do |id|
+      {
+        relatable: self,
+        child_id: id,
+        child_type: "Component",
+        why: "in_recipe_content"
+      }
+    end
+
+    Relationship.create(to_create)
   end
 end

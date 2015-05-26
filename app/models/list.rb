@@ -7,14 +7,12 @@ class List < ActiveRecord::Base
   friendly_id :custom_name, use: :slugged
 
   serialize :element_ids, Array
-  after_save :tell_recipes_about_me
 
-  def directory
-    @directory ||= Directory.new(:element_codes => element_ids)
-  end
+  has_many :relationships, as: :relatable, dependent: :destroy
 
   def elements
-    directory.children
+    relationships.map(&:child).keep_if { |element| element.published? }
+
   end
 
   def url
@@ -50,19 +48,11 @@ class List < ActiveRecord::Base
   end
 
   def recipes
-    directory.child_recipes
+    relationships.select{ |rel| rel.child_type == "Recipe" }.map(&:child).keep_if { |element| element.published? }
   end
 
   def link
     "<a href='#{url}' class='list'>#{name}</a>"
-  end
-
-  def tell_recipes_about_me #ROLODEX
-    recipes.each do |recipe|
-      recipe.list_ids << self.id
-      recipe.list_ids = recipe.list_ids.uniq
-      recipe.save
-    end
   end
 
   def backup_image_url
@@ -87,7 +77,23 @@ class List < ActiveRecord::Base
     home? ? elements.first : self
   end
 
-  def collect_and_save_list_elements
-    update_attribute(:element_ids, CustomMarkdown.links_to_directory_code(content_as_markdown))
+  def create_relationships
+    code_array = CustomMarkdown.links_to_code_array(content_as_markdown)
+
+    to_create = code_array.map do |code|
+      element = code[0].constantize.find_by_name(code[1])
+
+      return unless element
+
+      {
+        relatable: self,
+        child_id: element.id,
+        child_type: code[0],
+        why: "in_list_content"
+      }
+    end
+
+    relationships.delete_all
+    Relationship.create(to_create)
   end
 end

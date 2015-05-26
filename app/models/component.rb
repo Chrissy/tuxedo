@@ -7,20 +7,15 @@ class Component < ActiveRecord::Base
   serialize :recipe_ids, Array
   serialize :akas, Array
 
-  def directory
-    recipes = recipe_ids_with_aka.map{ |id| ["Recipe", id, "component_recipes"]}
-    @directory ||= Directory.new(:parent_element_codes => recipes)
-  end
-
   def recipes
-    directory.recipes
+    Relationship.find_parents_by_type(self_or_aka, Recipe)
   end
 
-  def recipe_ids_with_aka
+  def self_or_aka
     if is_an_aka?
-      aka.recipe_ids
+      aka
     else
-      recipe_ids
+      self
     end
   end
 
@@ -119,12 +114,12 @@ class Component < ActiveRecord::Base
   def update_list(markdown)
     list_element = List.find(list)
     list_element.update_attributes(content_as_markdown: markdown, component: id)
-    list_element.collect_and_save_list_elements
+    list_element.create_relationships
   end
 
   def create_list(markdown)
     list_element = List.new(content_as_markdown: markdown, name: name, component: id)
-    list_element.collect_and_save_list_elements
+    list_element.create_relationships
     update_attribute(:list, list_element.id)
   end
 
@@ -134,12 +129,5 @@ class Component < ActiveRecord::Base
 
   def link
     "<a href='#{url}' class='component'>#{name}</a>"
-  end
-
-  def self.refresh_all #ROLODEX
-    Component.all.each do |component|
-      component.update_attribute(:recipe_ids, [])
-    end
-    Recipe.update_all
   end
 end
