@@ -8,7 +8,7 @@ class Recipe < ActiveRecord::Base
   serialize :component_ids, Array
   serialize :list_ids, Array
   serialize :recommends, Array
-  before_save :touch_associated_lists
+  #before_save :touch_associated_lists
 
   has_many :relationships, as: :relatable, dependent: :destroy
 
@@ -25,7 +25,7 @@ class Recipe < ActiveRecord::Base
   end
 
   def description_to_html #MARKDOWN
-    converted_description = CustomMarkdown.convert_links(description)
+    converted_description = CustomMarkdown.convert_links_in_place(description)
     markdown.render(converted_description).html_safe
   end
 
@@ -38,11 +38,11 @@ class Recipe < ActiveRecord::Base
   end
 
   def components
-    component_relationships.map(&:child)
+    recipe_relationships.map(&:child)
   end
 
-  def component_relationships
-    relationships.select{ |rel| rel.child_type == "Component" }
+  def recipe_relationships
+    relationships.where(:why => :in_recipe_content)
   end
 
   def lists
@@ -150,14 +150,14 @@ class Recipe < ActiveRecord::Base
   end
 
   def create_relationships(ids)
-    component_relationships.delete_all
+    recipe_relationships.delete_all
 
     to_create = ids.map do |id|
       {
         relatable: self,
         child_id: id,
         child_type: "Component",
-        why: "in_recipe_content"
+        why: :in_recipe_content
       }
     end
 

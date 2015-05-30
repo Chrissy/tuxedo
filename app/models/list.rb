@@ -90,7 +90,7 @@ class List < ActiveRecord::Base
         relatable: self,
         child_id: element.id,
         child_type: code[0],
-        why: "in_list_content"
+        why: :in_list_content
       }
     end
 

@@ -122,7 +122,7 @@ module ApplicationHelper
   
   def similar_recipes_link(recipe)
     first_component = recipe.components.first
-    link_to "other #{first_component.nick} drinks".titleize, first_component.url if first_component
+    link_to "other #{first_component.nickname} drinks".titleize, first_component.url if first_component
   end
   
   def all_recipes_link

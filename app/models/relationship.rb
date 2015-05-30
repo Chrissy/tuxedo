@@ -11,6 +11,10 @@ class Relationship < ActiveRecord::Base
   def child
     child_type.constantize.find(child_id)
   end
+  
+  def parent
+    parent_type.constantize.find(parent_id)
+  end
 
   def generate_key
     self.key = "#{relatable.class.to_s}_#{relatable.id}_#{child.class.to_s}_#{child.id}_#{why}"

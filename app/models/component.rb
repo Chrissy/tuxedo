@@ -8,7 +8,11 @@ class Component < ActiveRecord::Base
   serialize :akas, Array
 
   def recipes
-    Relationship.find_parents_by_type(self_or_aka, Recipe)
+    recipe.relationships.map(&:parent)
+  end
+  
+  def recipe_relationships
+    Relationship.where(child_type: child.class.to_s, child_id: child.id, why: :in_recipe_content)
   end
 
   def self_or_aka
