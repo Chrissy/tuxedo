@@ -21,7 +21,7 @@ class Relationship < ActiveRecord::Base
     relationships = where(child_type: child.class.to_s, child_id: child.id)
     relationships.map{|relationship| relationship.relatable}
   end
-
+  
   def self.find_parents_by_type(child, type)
     relationships = where(child_type: child.class.to_s, child_id: child.id, relatable_type: type.to_s)
     relationships.map{|relationship| relationship.relatable}

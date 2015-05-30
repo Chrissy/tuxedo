@@ -24,9 +24,9 @@ class CustomMarkdown
   def self.links_to_code_array(md)
     elements = []
     md.gsub(/(\=|\:|\#)\[(.*?)\]/) do |*|
-      elements << attempt_to_expand_code($2) || [model_for_symbol($1).to_s, $2]
+      elements << (attempt_to_expand_code($2) || [model_for_symbol($1).to_s, $2])
     end
-    elements.flatten.uniq - ["",nil]
+    elements.uniq - ["",nil]
   end
 
   def self.attempt_to_expand_code(collection_code)
@@ -35,15 +35,15 @@ class CustomMarkdown
     sort_by = collection_code[/(\bDATE\b)/]
     return false if first_word.blank? || limit_number.zero?
     if first_word == "ALL" || first_word == "all"
-      elements = shorthand_to_recipe_codes(limit_number, sort_by)
+      elements = shorthand_to_recipes(limit_number, sort_by)
     else
-      elements = shorthand_to_component_codes(first_word, sort_by)
+      elements = shorthand_to_components(first_word, sort_by)
     end
-    elements.map{ |el| [el.class.to_s, el.id]}
+    elements.map{ |el| [el.class.to_s, el.id]} if elements
   end
 
   def self.shorthand_to_recipes(limit_number, sort_by)
-    recipes = Recipe.limit(limit_number).order(sort_by.nil? ? "name asc" : "last_updated desc").to_a
+    Recipe.limit(limit_number).order(sort_by.nil? ? "name asc" : "last_updated desc").to_a
   end
 
   def self.shorthand_to_components(component_name, sort_by)

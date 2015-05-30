@@ -5,6 +5,8 @@ require 'custom_markdown.rb'
 class List < ActiveRecord::Base
   extend FriendlyId
   friendly_id :custom_name, use: :slugged
+  
+  before_save :create_relationships
 
   serialize :element_ids, Array
 
@@ -12,7 +14,6 @@ class List < ActiveRecord::Base
 
   def elements
     relationships.map(&:child).keep_if { |element| element.published? }
-
   end
 
   def url
