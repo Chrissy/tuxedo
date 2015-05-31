@@ -82,7 +82,7 @@ class List < ActiveRecord::Base
     code_array = CustomMarkdown.links_to_code_array(content_as_markdown)
 
     to_create = code_array.map do |code|
-      element = code[0].constantize.find_by_name(code[1])
+      element = code[0].constantize.find_by_name(code[1].to_s) || code[0].constantize.find_by_id(code[1].to_s)
 
       return unless element
 

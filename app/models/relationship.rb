@@ -13,7 +13,7 @@ class Relationship < ActiveRecord::Base
   end
   
   def parent
-    parent_type.constantize.find(parent_id)
+    relatable
   end
 
   def generate_key

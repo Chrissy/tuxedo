@@ -8,11 +8,11 @@ class Component < ActiveRecord::Base
   serialize :akas, Array
 
   def recipes
-    recipe.relationships.map(&:parent)
+    recipe_relationships.map(&:parent)
   end
   
   def recipe_relationships
-    Relationship.where(child_type: child.class.to_s, child_id: child.id, why: :in_recipe_content)
+    Relationship.where(child_type: self.class.to_s, child_id: id, why: :in_recipe_content)
   end
 
   def self_or_aka
