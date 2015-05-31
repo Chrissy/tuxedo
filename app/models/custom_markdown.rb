@@ -24,7 +24,12 @@ class CustomMarkdown
   def self.links_to_code_array(md)
     elements = []
     md.gsub(/(\=|\:|\#)\[(.*?)\]/) do |*|
-      elements.concat(attempt_to_expand_code($2) || [model_for_symbol($1).to_s, $2])
+      attempted_expansion = attempt_to_expand_code($2)
+      if attempted_expansion
+        elements.concat(attempted_expansion)
+      else
+        elements << [model_for_symbol($1).to_s, $2]
+      end
     end
     elements.uniq - ["",nil]
   end

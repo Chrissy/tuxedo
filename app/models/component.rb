@@ -6,6 +6,8 @@ class Component < ActiveRecord::Base
 
   serialize :recipe_ids, Array
   serialize :akas, Array
+  
+  before_save :touch_list
 
   def recipes
     recipe_relationships.map(&:parent)
@@ -112,7 +114,11 @@ class Component < ActiveRecord::Base
   end
 
   def create_or_update_list(markdown)
-    has_list ? update_list(markdown) : create_list(markdown)
+    if has_list
+      update_list(markdown)
+    else 
+      create_list(markdown)
+    end
   end
 
   def update_list(markdown)
@@ -125,6 +131,11 @@ class Component < ActiveRecord::Base
     list_element = List.new(content_as_markdown: markdown, name: name, component: id)
     list_element.create_relationships
     update_attribute(:list, list_element.id)
+  end
+  
+  def touch_list
+    list_element = List.find_by_id(list)
+    list_element.save! if list_element
   end
 
   def list_elements

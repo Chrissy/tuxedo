@@ -8,7 +8,6 @@ class Recipe < ActiveRecord::Base
   serialize :component_ids, Array
   serialize :list_ids, Array
   serialize :recommends, Array
-  #before_save :touch_associated_lists
 
   has_many :relationships, as: :relatable, dependent: :destroy
 

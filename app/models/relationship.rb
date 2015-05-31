@@ -6,12 +6,12 @@ require 'custom_markdown.rb'
 class Relationship < ActiveRecord::Base
 
   belongs_to :relatable, :polymorphic => true
-  before_save :generate_key
+  before_save :generate_key, :save_child
 
   def child
     child_type.constantize.find(child_id)
   end
-  
+    
   def parent
     relatable
   end
@@ -19,6 +19,10 @@ class Relationship < ActiveRecord::Base
   def generate_key
     self.key = "#{relatable.class.to_s}_#{relatable.id}_#{child.class.to_s}_#{child.id}_#{why}"
     return false if self.class.exists?(:key => key)
+  end
+  
+  def save_child      
+    child.save!
   end
 
   def self.find_parents(child)
