@@ -10,7 +10,7 @@ class Recipe < ActiveRecord::Base
   serialize :recommends, Array
 
   has_many :relationships, as: :relatable, dependent: :destroy
-  before_save :convert_recipe_to_html, :update_children
+  before_save :recipe_to_html, :update_children
 
   def markdown
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
@@ -18,7 +18,7 @@ class Recipe < ActiveRecord::Base
 
   def recipe_to_html
     if recipe_changed?
-      convert_recipe_to_html(recipe)
+      self.stored_recipe_as_html = convert_recipe_to_html
     end
   end
 
@@ -26,7 +26,7 @@ class Recipe < ActiveRecord::Base
     (stored_recipe_as_html || recipe_to_html).html_safe
   end
 
-  def description_to_html #MARKDOWN
+  def description_to_html
     converted_description = CustomMarkdown.convert_links_in_place(description)
     markdown.render(converted_description).html_safe
   end
@@ -150,9 +150,7 @@ class Recipe < ActiveRecord::Base
     html.gsub!(/\# ?([A-Z].*?)/) do |*|
       "# " << ApplicationController.helpers.swash($1)
     end
-    html = markdown.render(html)
-    stored_recipe_as_html = html
-    html
+    markdown.render(html)
   end
 
   def create_relationships(ids)

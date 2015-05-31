@@ -120,11 +120,6 @@ class Component < ActiveRecord::Base
       list = list_element.id
     end
   end
-  
-  def touch_list
-    list_element = List.find_by_id(list)
-    list_element.save! if list_element
-  end
 
   def list_elements
     list_with_aka.nil? ? recipes : List.find(list_with_aka).elements
