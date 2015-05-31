@@ -10,13 +10,16 @@ class Recipe < ActiveRecord::Base
   serialize :recommends, Array
 
   has_many :relationships, as: :relatable, dependent: :destroy
+  before_save :convert_recipe_to_html, :update_children
 
   def markdown
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
   end
 
   def recipe_to_html
-    convert_recipe_to_html(recipe)
+    if recipe_changed?
+      convert_recipe_to_html(recipe)
+    end
   end
 
   def recipe_as_html
@@ -125,26 +128,30 @@ class Recipe < ActiveRecord::Base
       "#{$1}<span class='unit'>#{$2}</span>#{$3}"
     end
   end
+  
+  def update_children
+    relationships.map(&:child).each(&:save!)
+  end
 
   private
 
-  def convert_recipe_to_html(md) #MARKDOWN
+  def convert_recipe_to_html
     component_list = []
-    md.gsub!(/\:\[(.*?)\]/) do |*|
+    html = recipe.gsub(/\:\[(.*?)\]/) do |*|
       component = Component.find_or_create_by(name: $1)
       component_list << component.id
       component.link
     end
     create_relationships(component_list)
-    md.gsub!(/\* ([0-9].*?|fill) +/) do |*|
+    html.gsub!(/\* ([0-9].*?|fill) +/) do |*|
       modified_md = wrap_units($1)
       "* <span class='amount'>#{convert_fractions(modified_md)}</span> "
     end
-    md.gsub!(/\# ?([A-Z].*?)/) do |*|
+    html.gsub!(/\# ?([A-Z].*?)/) do |*|
       "# " << ApplicationController.helpers.swash($1)
     end
-    html = markdown.render(md)
-    update_attribute(:stored_recipe_as_html, html)
+    html = markdown.render(html)
+    stored_recipe_as_html = html
     html
   end
 

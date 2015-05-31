@@ -78,7 +78,7 @@ class List < ActiveRecord::Base
     home? ? elements.first : self
   end
 
-  def create_relationships
+  def create_relationships    
     code_array = CustomMarkdown.links_to_code_array(content_as_markdown)
 
     to_create = code_array.map do |code|

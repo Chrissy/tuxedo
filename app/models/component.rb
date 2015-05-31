@@ -7,7 +7,7 @@ class Component < ActiveRecord::Base
   serialize :recipe_ids, Array
   serialize :akas, Array
   
-  before_save :touch_list
+  before_save :create_or_update_list
 
   def recipes
     recipe_relationships.map(&:parent)
@@ -108,29 +108,17 @@ class Component < ActiveRecord::Base
     !list.nil?
   end
 
-  def list_for_textarea #MARKDOWN
-    list_for = List.find_by_id(list)
-    list_for ? list_for.content_as_markdown : ":[#{name} 100]"
+  def list_for_textarea
+    list_as_markdown ? list_as_markdown : ":[#{name} 100]"
   end
 
-  def create_or_update_list(markdown)
+  def create_or_update_list
     if has_list
-      update_list(markdown)
+      List.find(list).update_attributes(content_as_markdown: list_for_textarea, component: id)
     else 
-      create_list(markdown)
+      list_element = List.new(content_as_markdown: list_for_textarea, name: name, component: id)
+      list = list_element.id
     end
-  end
-
-  def update_list(markdown)
-    list_element = List.find(list)
-    list_element.update_attributes(content_as_markdown: markdown, component: id)
-    list_element.create_relationships
-  end
-
-  def create_list(markdown)
-    list_element = List.new(content_as_markdown: markdown, name: name, component: id)
-    list_element.create_relationships
-    update_attribute(:list, list_element.id)
   end
   
   def touch_list
