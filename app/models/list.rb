@@ -15,7 +15,7 @@ class List < ActiveRecord::Base
   def elements
     relationships.map do |rel|
       rel.expand || rel.child
-    end.flatten.keep_if { |element| element.try(:published?) }
+    end.flatten.uniq.keep_if { |element| element.try(:published?) }
   end
 
   def url
@@ -100,6 +100,7 @@ class List < ActiveRecord::Base
   end
   
   def create_relationships
+    relationships.delete_all
     relationships = Relationship.create(relationships_from_markdown) 
   end
 end
