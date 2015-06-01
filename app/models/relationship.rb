@@ -11,7 +11,15 @@ class Relationship < ActiveRecord::Base
   def child
     child_type.constantize.find(child_id)
   end
-    
+  
+  def expand #tries to expand a relationship based on custom "why" types
+    if why == "expandable_list_content"
+      Component.find_by_id(List.find_by_id(relatable_id).component).recipes
+    else
+      return nil
+    end
+  end
+  
   def parent
     relatable
   end
@@ -20,7 +28,7 @@ class Relationship < ActiveRecord::Base
     self.key = "#{relatable.class.to_s}_#{relatable.id}_#{child.class.to_s}_#{child.id}_#{why}"
     return false if self.class.exists?(:key => key)
   end
-
+  
   def self.find_parents(child)
     relationships = where(child_type: child.class.to_s, child_id: child.id)
     relationships.map{|relationship| relationship.relatable}

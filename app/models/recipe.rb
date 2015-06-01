@@ -155,7 +155,7 @@ class Recipe < ActiveRecord::Base
 
   def create_relationships(ids)
     recipe_relationships.delete_all
-
+    
     to_create = ids.map do |id|
       {
         relatable: self,
@@ -164,7 +164,7 @@ class Recipe < ActiveRecord::Base
         why: :in_recipe_content
       }
     end
-
+    
     Relationship.create(to_create)
   end
 end

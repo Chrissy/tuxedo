@@ -44,20 +44,14 @@ class CustomMarkdown
     else
       elements = shorthand_to_component_recipes(first_word, sort_by)
     end
-    elements.map{ |el| [el.class.to_s, el.id]} if elements
   end
 
   def self.shorthand_to_recipes(limit_number, sort_by)
-    Recipe.limit(limit_number).order(sort_by.nil? ? "name asc" : "last_updated desc").to_a
+    Recipe.limit(limit_number).order(sort_by.nil? ? "name asc" : "last_updated desc").map{ |el| [el.class.to_s, el.id]}    
   end
 
   def self.shorthand_to_component_recipes(component_name, sort_by)
     component = Component.find_by_name(component_name)
-    return if component.nil?
-    if sort_by.nil?
-      component.recipes.sort_by!(&:name)
-    else
-      component.recipes.sort { |a,b| a.last_updated <=> b.last_updated }
-    end
+    [["Component", component.id, :expandable_list_content]]
   end
 end

@@ -13,7 +13,9 @@ class List < ActiveRecord::Base
   has_many :relationships, as: :relatable, dependent: :destroy
 
   def elements
-    relationships.map(&:child).keep_if { |element| element.published? }
+    relationships.map do |rel|
+      rel.expand || rel.child
+    end.flatten.keep_if { |element| element.try(:published?) }
   end
 
   def url
@@ -77,11 +79,13 @@ class List < ActiveRecord::Base
   def header_element
     home? ? elements.first : self
   end
+  
+  def markdown_to_codes
+    code_array = CustomMarkdown.links_to_code_array(content_as_markdown)    
+  end
 
-  def create_relationships    
-    code_array = CustomMarkdown.links_to_code_array(content_as_markdown)
-
-    to_create = code_array.map do |code|
+  def relationships_from_markdown    
+    markdown_to_codes.map do |code|
       element = code[0].constantize.find_by_name(code[1].to_s) || code[0].constantize.find_by_id(code[1].to_s)
 
       return unless element
@@ -90,11 +94,12 @@ class List < ActiveRecord::Base
         relatable: self,
         child_id: element.id,
         child_type: code[0],
-        why: :in_list_content
+        why: code[2] || :in_list_content
       }
-    end
-
-    relationships.delete_all
-    Relationship.create(to_create)
+    end   
+  end
+  
+  def create_relationships
+    relationships = Relationship.create(relationships_from_markdown) 
   end
 end
