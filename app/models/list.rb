@@ -17,6 +17,13 @@ class List < ActiveRecord::Base
       rel.expand || rel.child
     end.flatten.uniq.keep_if { |element| element.try(:published?) }
   end
+  
+  def create_relationships
+    if content_as_markdown_changed?
+      relationships.delete_all
+      relationships = Relationship.create(relationships_from_markdown)
+    end 
+  end
 
   def url
     "/list/#{slug}"
@@ -97,10 +104,5 @@ class List < ActiveRecord::Base
         why: code[2] || :in_list_content
       }
     end   
-  end
-  
-  def create_relationships
-    relationships.delete_all
-    relationships = Relationship.create(relationships_from_markdown) 
   end
 end

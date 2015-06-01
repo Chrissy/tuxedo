@@ -18,7 +18,6 @@ class ComponentsController < ApplicationController
   def update
     component = Component.find(params[:id])
     component.update_attributes(component_params)
-    component.compile_akas if params[:component][:akas_as_markdown].present?
     redirect_to action: "show", id: component.id
   end
 

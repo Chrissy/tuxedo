@@ -10,7 +10,7 @@ class Component < ActiveRecord::Base
   before_save :create_or_update_list
 
   def recipes
-    recipe_relationships.map(&:parent)
+    recipe_relationships.map(&:relatable)
   end
   
   def recipe_relationships
@@ -94,6 +94,8 @@ class Component < ActiveRecord::Base
   end
 
   def compile_akas
+    return unless akas_as_markdown.present?
+    
     aka_list = []
     akas_as_markdown.split(",").each do |aka_name|
       new_aka = Component.find_or_create_by_name(aka_name.strip.downcase)
@@ -101,11 +103,11 @@ class Component < ActiveRecord::Base
       aka_list.push(new_aka)
     end
     (akas - aka_list).map(&:destroy)
-    update_attribute(:akas, aka_list)
+    akas = aka_list
   end
 
   def has_list
-    !list.nil?
+    !!list
   end
 
   def list_for_textarea
@@ -116,8 +118,8 @@ class Component < ActiveRecord::Base
     if has_list
       List.find(list).update_attributes(content_as_markdown: list_for_textarea, component: id)
     else 
-      list_element = List.new(content_as_markdown: list_for_textarea, name: name, component: id)
-      self.list = list_element.id
+      list_element = List.create(content_as_markdown: list_for_textarea, name: name, component: id)
+      list = list_element.id
     end
   end
 

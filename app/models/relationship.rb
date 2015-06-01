@@ -7,6 +7,8 @@ class Relationship < ActiveRecord::Base
 
   belongs_to :relatable, :polymorphic => true
   before_save :generate_key
+  after_save :update_cache
+  after_destroy :update_cache
 
   def child
     child_type.constantize.find(child_id)
@@ -14,19 +16,19 @@ class Relationship < ActiveRecord::Base
   
   def expand #tries to expand a relationship based on custom "why" types
     if why == "expandable_list_content"
-      Component.find_by_id(List.find_by_id(relatable_id).component).recipes
+      child_type.constantize.find_by_id(child_id).try(:recipes) || []
     else
       return nil
     end
-  end
-  
-  def parent
-    relatable
   end
 
   def generate_key
     self.key = "#{relatable.class.to_s}_#{relatable.id}_#{child.class.to_s}_#{child.id}_#{why}"
     return false if self.class.exists?(:key => key)
+  end
+  
+  def update_cache
+    child.touch
   end
   
   def self.find_parents(child)

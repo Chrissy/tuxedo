@@ -10,7 +10,7 @@ class Recipe < ActiveRecord::Base
   serialize :recommends, Array
 
   has_many :relationships, as: :relatable, dependent: :destroy
-  before_save :recipe_to_html, :update_children
+  before_save :recipe_to_html
 
   def markdown
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
@@ -127,10 +127,6 @@ class Recipe < ActiveRecord::Base
     md.gsub(/([0-9])(oz|tsp|tbsp|Tbsp|dash|dashes|lb|lbs|cup|cups)(\b)/) do |*|
       "#{$1}<span class='unit'>#{$2}</span>#{$3}"
     end
-  end
-  
-  def update_children
-    relationships.map(&:child).each(&:save!)
   end
 
   private
