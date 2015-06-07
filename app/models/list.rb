@@ -19,10 +19,14 @@ class List < ActiveRecord::Base
   end
   
   def create_relationships
-    if content_as_markdown_changed?
+    delete_and_save_relationships if content_as_markdown_changed?
+  end
+  
+  def delete_and_save_relationships
+    if relationships_from_markdown.present?
       relationships.delete_all
       relationships = Relationship.create(relationships_from_markdown)
-    end 
+    end
   end
 
   def url
@@ -95,7 +99,7 @@ class List < ActiveRecord::Base
     markdown_to_codes.map do |code|
       element = code[0].constantize.find_by_name(code[1].to_s) || code[0].constantize.find_by_id(code[1].to_s)
 
-      return unless element
+      next unless element
 
       {
         relatable: self,
@@ -103,6 +107,6 @@ class List < ActiveRecord::Base
         child_type: code[0],
         why: code[2] || :in_list_content
       }
-    end   
+    end.compact!  
   end
 end
