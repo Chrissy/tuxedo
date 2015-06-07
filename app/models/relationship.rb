@@ -7,7 +7,7 @@ class Relationship < ActiveRecord::Base
 
   belongs_to :relatable, :polymorphic => true
   before_save :generate_key
-  after_save :update_cache
+  after_create :update_cache
   after_destroy :update_cache
 
   def child
