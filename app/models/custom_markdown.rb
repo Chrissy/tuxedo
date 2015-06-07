@@ -24,7 +24,7 @@ class CustomMarkdown
   def self.links_to_code_array(md)
     elements = []
     md.gsub(/(\=|\:|\#)\[(.*?)\]/) do |*|
-      attempted_expansion = attempt_to_expand_code($2)
+      attempted_expansion = attempt_to_expand_code($2, $1)
       if attempted_expansion
         elements.concat(attempted_expansion)
       else
@@ -34,11 +34,11 @@ class CustomMarkdown
     elements.uniq - ["",nil]
   end
 
-  def self.attempt_to_expand_code(collection_code)
+  def self.attempt_to_expand_code(collection_code, symbol)
     first_word = collection_code[/(?:(?!\d+).)*/].strip
     limit_number = collection_code[/\d+/].to_i
     sort_by = collection_code[/(\bDATE\b)/]
-    return false if first_word.blank? || limit_number.zero?
+    return false if first_word.blank? || limit_number.zero? || symbol == "="
     if first_word == "ALL" || first_word == "all"
       elements = shorthand_to_recipes(limit_number, sort_by)
     else
