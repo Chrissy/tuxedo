@@ -23,9 +23,9 @@ class List < ActiveRecord::Base
   end
   
   def delete_and_save_relationships
-    if relationships_from_markdown.present?
+    if relationships_from_markdown.present? && self.id
       relationships.delete_all
-      relationships = Relationship.create(relationships_from_markdown)
+      Relationship.create(relationships_from_markdown)
     end
   end
 
@@ -107,6 +107,6 @@ class List < ActiveRecord::Base
         child_type: code[0],
         why: code[2] || :in_list_content
       }
-    end.compact!  
+    end.compact  
   end
 end
