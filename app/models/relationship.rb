@@ -24,7 +24,7 @@ class Relationship < ActiveRecord::Base
 
   def generate_key
     self.key = "#{relatable.class.to_s}_#{relatable.id}_#{child.class.to_s}_#{child.id}_#{why}"
-    return false if self.class.exists?(:key => key)
+    return Relationship.find_by_key(key) if Relationship.exists?(:key => key)
   end
   
   def update_cache
