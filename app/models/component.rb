@@ -119,12 +119,12 @@ class Component < ActiveRecord::Base
       List.find(list).update_attributes(content_as_markdown: list_for_textarea, component: id)
     else 
       list_element = List.create(content_as_markdown: list_for_textarea, name: name, component: id)
-      list = list_element.id
+      self.list = list_element.id
     end
   end
 
   def list_elements
-    list_with_aka.nil? ? recipes : List.find(list_with_aka).elements
+    list_with_aka.nil? ? {} : List.find(list_with_aka).elements
   end
 
   def link
