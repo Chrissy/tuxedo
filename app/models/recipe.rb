@@ -10,20 +10,21 @@ class Recipe < ActiveRecord::Base
   serialize :recommends, Array
 
   has_many :relationships, as: :relatable, dependent: :destroy
-  before_save :recipe_to_html
+  before_save :convert_recipe_to_html_and_create_relationships
 
   def markdown
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
   end
 
-  def recipe_to_html
+  def convert_recipe_to_html_and_create_relationships
     if recipe_changed?
       self.stored_recipe_as_html = convert_recipe_to_html
+      delete_and_save_relationships
     end
   end
 
   def recipe_as_html
-    (stored_recipe_as_html || recipe_to_html).html_safe
+    (stored_recipe_as_html || convert_recipe_to_html).html_safe
   end
 
   def description_to_html
@@ -102,13 +103,6 @@ class Recipe < ActiveRecord::Base
     "<a href='#{url}' class='recipe'>#{name}</a>"
   end
 
-  def self.update_all
-    Recipe.all.each do |recipe|
-      recipe.recipe_to_html
-      recipe.update_components
-    end
-  end
-
   def convert_fractions(str)
    str.gsub(/0\.[0-9]*.*?/) do |match|
      case match
@@ -128,17 +122,36 @@ class Recipe < ActiveRecord::Base
       "#{$1}<span class='unit'>#{$2}</span>#{$3}"
     end
   end
-
-  private
-
-  def convert_recipe_to_html
-    component_list = []
-    html = recipe.gsub(/\:\[(.*?)\]/) do |*|
-      component = Component.find_or_create_by(name: $1)
-      component_list << component.id
-      component.link
+  
+  def delete_and_save_relationships
+    if relationships_from_markdown.present?
+      relationships.delete_all
+      Relationship.create(relationships_from_markdown)
     end
-    create_relationships(component_list)
+  end
+  
+  def relationships_from_markdown
+    markdown_to_codes.map do |code|        
+      element = code[0].constantize.find_by_name(code[1].to_s) || code[0].constantize.find_by_id(code[1].to_s)
+      
+      next unless element
+      
+      {
+        relatable: self,
+        child_id: element.id,
+        child_type: code[0],
+        why: :in_recipe_content
+      }
+    end.compact
+  end
+  
+  def markdown_to_codes
+    CustomMarkdown.links_to_code_array(recipe.dup) 
+  end
+  
+  def convert_recipe_to_html
+    html = CustomMarkdown.convert_links_in_place(recipe.dup)
+    
     html.gsub!(/\* ([0-9].*?|fill) +/) do |*|
       modified_md = wrap_units($1)
       "* <span class='amount'>#{convert_fractions(modified_md)}</span> "
@@ -147,20 +160,5 @@ class Recipe < ActiveRecord::Base
       "# " << ApplicationController.helpers.swash($1)
     end
     markdown.render(html)
-  end
-
-  def create_relationships(ids)
-    recipe_relationships.delete_all
-    
-    to_create = ids.map do |id|
-      {
-        relatable: self,
-        child_id: id,
-        child_type: "Component",
-        why: :in_recipe_content
-      }
-    end
-    
-    Relationship.create(to_create)
   end
 end
