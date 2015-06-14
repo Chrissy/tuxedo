@@ -6,7 +6,7 @@ class List < ActiveRecord::Base
   extend FriendlyId
   friendly_id :custom_name, use: :slugged
   
-  before_save :create_relationships
+  after_save :create_relationships
 
   serialize :element_ids, Array
 
