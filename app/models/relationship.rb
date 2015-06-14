@@ -11,7 +11,7 @@ class Relationship < ActiveRecord::Base
   after_destroy :update_cache
 
   def child
-    child_type.constantize.find(child_id)
+    child_type.constantize.find_by_id(child_id)
   end
   
   def expand #tries to expand a relationship based on custom "why" types
