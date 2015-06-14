@@ -28,7 +28,7 @@ class Relationship < ActiveRecord::Base
   end
   
   def update_cache
-    child.touch
+    child.touch if child
   end
   
   def self.find_parents(child)
