@@ -28,6 +28,10 @@ class List < ActiveRecord::Base
       Relationship.create(relationships_from_markdown)
     end
   end
+  
+  def relationships_from_markdown    
+    CustomMarkdown.relationships_from_markdown(self, content_as_markdown, :in_list_content)
+  end
 
   def url
     "/list/#{slug}"
@@ -89,24 +93,5 @@ class List < ActiveRecord::Base
 
   def header_element
     home? ? elements.first : self
-  end
-  
-  def markdown_to_codes
-    code_array = CustomMarkdown.links_to_code_array(content_as_markdown)    
-  end
-
-  def relationships_from_markdown    
-    markdown_to_codes.map do |code|
-      element = code[0].constantize.find_by_name(code[1].to_s) || code[0].constantize.find_by_id(code[1].to_s)
-
-      next unless element
-
-      {
-        relatable: self,
-        child_id: element.id,
-        child_type: code[0],
-        why: code[2] || :in_list_content
-      }
-    end.compact  
   end
 end

@@ -131,24 +131,9 @@ class Recipe < ActiveRecord::Base
   end
   
   def relationships_from_markdown
-    markdown_to_codes.map do |code|        
-      element = code[0].constantize.find_by_name(code[1].to_s) || code[0].constantize.find_by_id(code[1].to_s)
-      
-      next unless element
-      
-      {
-        relatable: self,
-        child_id: element.id,
-        child_type: code[0],
-        why: :in_recipe_content
-      }
-    end.compact
+    CustomMarkdown.relationships_from_markdown(self, recipe, :in_recipe_content)
   end
-  
-  def markdown_to_codes
-    CustomMarkdown.links_to_code_array(recipe.dup) 
-  end
-  
+    
   def convert_recipe_to_html
     html = CustomMarkdown.convert_links_in_place(recipe.dup)
     
