@@ -54,12 +54,15 @@ class CustomMarkdown
     component = Component.find_by_name(component_name)
     [["Component", component.id, :expandable_list_content]]
   end
-  
-  
+    
   def self.relationships_from_markdown(instance, md, why)   
     self.links_to_code_array(md.dup).map do |code|
-      element = code[0].constantize.find_by_name(code[1].to_s) || code[0].constantize.find_by_id(code[1].to_s)
-
+      type = code[0].constantize
+      element = 
+                type.find_by_name(code[1].to_s) || 
+                type.find_by_id(code[1].to_s) || 
+                (type.create(:name => code[1]) if why == :in_recipe_content)
+      
       next unless element
 
       {

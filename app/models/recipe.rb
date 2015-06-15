@@ -18,8 +18,8 @@ class Recipe < ActiveRecord::Base
 
   def convert_recipe_to_html_and_create_relationships
     if recipe_changed?
-      self.stored_recipe_as_html = convert_recipe_to_html
       delete_and_save_relationships
+      self.stored_recipe_as_html = convert_recipe_to_html
     end
   end
 
