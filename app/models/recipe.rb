@@ -10,17 +10,14 @@ class Recipe < ActiveRecord::Base
   serialize :recommends, Array
 
   has_many :relationships, as: :relatable, dependent: :destroy
-  before_save :convert_recipe_to_html_and_create_relationships
 
   def markdown
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
   end
 
   def convert_recipe_to_html_and_create_relationships
-    if recipe_changed?
-      delete_and_save_relationships
-      self.stored_recipe_as_html = convert_recipe_to_html
-    end
+    delete_and_save_relationships
+    update_attribute(:stored_recipe_as_html, convert_recipe_to_html)
   end
 
   def recipe_as_html
