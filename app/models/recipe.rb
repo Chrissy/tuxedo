@@ -8,22 +8,24 @@ class Recipe < ActiveRecord::Base
   serialize :component_ids, Array
   serialize :list_ids, Array
   serialize :recommends, Array
-  before_save :touch_associated_lists
+
+  has_many :relationships, as: :relatable, dependent: :destroy
 
   def markdown
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
   end
 
-  def recipe_to_html
-    convert_recipe_to_html(recipe)
+  def convert_recipe_to_html_and_create_relationships
+    delete_and_save_relationships
+    update_attribute(:stored_recipe_as_html, convert_recipe_to_html)
   end
 
   def recipe_as_html
-    (stored_recipe_as_html || recipe_to_html).html_safe
+    (stored_recipe_as_html || convert_recipe_to_html).html_safe
   end
 
   def description_to_html
-    converted_description = CustomMarkdown.convert_links(description)
+    converted_description = CustomMarkdown.convert_links_in_place(description)
     markdown.render(converted_description).html_safe
   end
 
@@ -36,7 +38,15 @@ class Recipe < ActiveRecord::Base
   end
 
   def components
-    component_ids.map { |component_id| Component.find_by_id(component_id) }.compact
+    recipe_relationships.map(&:child)
+  end
+
+  def recipe_relationships
+    relationships.where(:why => :in_recipe_content)
+  end
+
+  def lists
+    Relationship.find_parents_by_type(self, List)
   end
 
   def url
@@ -57,10 +67,6 @@ class Recipe < ActiveRecord::Base
 
   def make_my_number_last!
     update_attribute(:created_at, Time.now)
-  end
-
-  def lists
-    list_ids.map { |list_id| List.find(list_id) }
   end
 
   def number
@@ -94,20 +100,6 @@ class Recipe < ActiveRecord::Base
     "<a href='#{url}' class='recipe'>#{name}</a>"
   end
 
-  def update_components
-    components.each do |component|
-      recipe_ids = component.recipe_ids.push(self.id).uniq
-      component.update_attribute(:recipe_ids, recipe_ids)
-    end
-  end
-
-  def self.update_all
-    Recipe.all.each do |recipe|
-      recipe.recipe_to_html
-      recipe.update_components
-    end
-  end
-
   def convert_fractions(str)
    str.gsub(/0\.[0-9]*.*?/) do |match|
      case match
@@ -127,33 +119,28 @@ class Recipe < ActiveRecord::Base
       "#{$1}<span class='unit'>#{$2}</span>#{$3}"
     end
   end
-
-  private
-
-  def touch_associated_lists
-    lists.each do |list|
-      list.touch
+  
+  def delete_and_save_relationships
+    if relationships_from_markdown.present?
+      relationships.delete_all
+      Relationship.create(relationships_from_markdown)
     end
   end
-
-  def convert_recipe_to_html(md)
-    component_list = []
-    md.gsub!(/\:\[(.*?)\]/) do |*|
-      component = Component.find_or_create_by(name: $1)
-      component_list << component.id
-      component.link
-    end
-    self.update_attribute(:component_ids, component_list)
-    update_components()
-    md.gsub!(/\* ([0-9].*?|fill) +/) do |*|
+  
+  def relationships_from_markdown
+    CustomMarkdown.relationships_from_markdown(self, recipe, :in_recipe_content)
+  end
+    
+  def convert_recipe_to_html
+    html = CustomMarkdown.convert_links_in_place(recipe.dup)
+    
+    html.gsub!(/\* ([0-9].*?|fill) +/) do |*|
       modified_md = wrap_units($1)
       "* <span class='amount'>#{convert_fractions(modified_md)}</span> "
     end
-    md.gsub!(/\# ?([A-Z].*?)/) do |*|
+    html.gsub!(/\# ?([A-Z].*?)/) do |*|
       "# " << ApplicationController.helpers.swash($1)
     end
-    html = markdown.render(md)
-    update_attribute(:stored_recipe_as_html, html)
-    html
+    markdown.render(html)
   end
 end

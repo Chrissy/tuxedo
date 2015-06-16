@@ -11,19 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150122005110) do
+ActiveRecord::Schema.define(version: 20150531174644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "aliases", force: true do |t|
-    t.integer  "component_id"
-    t.text     "name"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  add_index "aliases", ["component_id"], name: "index_aliases_on_component_id", using: :btree
 
   create_table "components", force: true do |t|
     t.string   "name"
@@ -40,6 +31,7 @@ ActiveRecord::Schema.define(version: 20150122005110) do
     t.string   "aka_id"
     t.string   "akas_as_markdown"
     t.boolean  "never_make_me_tall"
+    t.text     "list_as_markdown"
   end
 
   create_table "delayed_jobs", force: true do |t|
@@ -89,6 +81,19 @@ ActiveRecord::Schema.define(version: 20150122005110) do
     t.boolean  "never_make_me_tall"
     t.boolean  "dont_compress_image"
   end
+
+  create_table "relationships", force: true do |t|
+    t.integer  "relatable_id"
+    t.string   "relatable_type"
+    t.integer  "child_id"
+    t.string   "child_type"
+    t.string   "why"
+    t.string   "key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "relationships", ["relatable_id", "relatable_type"], name: "index_relationships_on_relatable_id_and_relatable_type", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

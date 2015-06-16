@@ -5,7 +5,7 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
-  database: tuxedo
+  database: tuxedo_2
   host: localhost
   encoding: unicode
 

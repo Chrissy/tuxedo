@@ -3,18 +3,26 @@ require 'recipe.rb'
 class Component < ActiveRecord::Base
   extend FriendlyId
   friendly_id :custom_name, use: :slugged
-  
+
   serialize :recipe_ids, Array
   serialize :akas, Array
   
-  def recipe_ids_with_aka
-    if is_an_aka?
-      aka.recipe_ids
-    else
-      recipe_ids
-    end
+  def recipes
+    recipe_relationships.map(&:relatable)
   end
   
+  def recipe_relationships
+    Relationship.where(child_type: self.class.to_s, child_id: id, why: :in_recipe_content)
+  end
+
+  def self_or_aka
+    if is_an_aka?
+      aka
+    else
+      self
+    end
+  end
+
   def list_with_aka
     if is_an_aka?
       aka.list
@@ -26,7 +34,7 @@ class Component < ActiveRecord::Base
   def url
     "/ingredients/#{slug}"
   end
-  
+
   def custom_name
     name + " cocktail recipes"
   end
@@ -38,15 +46,15 @@ class Component < ActiveRecord::Base
       "/ingredients/edit/#{id}"
     end
   end
-  
+
   def backup_image_url
     "https://www.filepicker.io/api/file/drOikI0sTqG2xjWn2WSQ/convert?fit=crop&amp;h=861&amp;w=1500&amp"
   end
-  
+
   def published?
     true
   end
-  
+
   def image_with_backup
     if image.present?
       image
@@ -59,35 +67,33 @@ class Component < ActiveRecord::Base
     end
   end
 
-  def recipes
-    recipe_ids_with_aka.map { |recipe_id| Recipe.find_by_id(recipe_id) } - ["",nil]
-  end
-    
   def tagline
     "#{name.titleize} Cocktail Recipes | Tuxedo no.2"
   end
-  
+
   def subtext
     "components/subtext"
   end
-  
+
   def count_for_display
     "#{list_elements.count} cocktails"
   end
-  
+
   def nickname
     nick.present? ? nick : name
   end
-  
+
   def aka
     Component.find_by_id(aka_id)
   end
-  
+
   def is_an_aka?
     aka_id.present?
   end
-  
+
   def compile_akas
+    return unless akas_as_markdown.present?
+    
     aka_list = []
     akas_as_markdown.split(",").each do |aka_name|
       new_aka = Component.find_or_create_by_name(aka_name.strip.downcase)
@@ -95,46 +101,31 @@ class Component < ActiveRecord::Base
       aka_list.push(new_aka)
     end
     (akas - aka_list).map(&:destroy)
-    update_attribute(:akas, aka_list)
-  end  
-  
+    akas = aka_list
+  end
+
   def has_list
-    !list.nil?
+    !!list
   end
-  
+
   def list_for_textarea
-    list_for = List.find_by_id(list)
-    list_for ? list_for.content_as_markdown : ":[#{name} 100]"
+    list_as_markdown ? list_as_markdown : ":[#{name} 100]"
   end
-  
-  def create_or_update_list(markdown)
-    has_list ? update_list(markdown) : create_list(markdown)
+
+  def create_or_update_list
+    if has_list
+      List.find(list).update_attributes(content_as_markdown: list_for_textarea, component: id)
+    else 
+      list_element = List.create(content_as_markdown: list_for_textarea, name: name, component: id)
+      update_attribute(:list, list_element.id)
+    end
   end
-  
-  def update_list(markdown)
-    list_element = List.find(list)
-    list_element.update_attributes(content_as_markdown: markdown, component: id)
-    list_element.collect_and_save_list_elements
-  end
-  
-  def create_list(markdown)
-    list_element = List.new(content_as_markdown: markdown, name: name, component: id)
-    list_element.collect_and_save_list_elements
-    update_attribute(:list, list_element.id)
-  end
-  
+
   def list_elements
     list_with_aka.nil? ? recipes : List.find(list_with_aka).elements
   end
 
   def link
     "<a href='#{url}' class='component'>#{name}</a>"
-  end
-
-  def self.refresh_all
-    Component.all.each do |component|
-      component.update_attribute(:recipe_ids, [])
-    end
-    Recipe.update_all
   end
 end

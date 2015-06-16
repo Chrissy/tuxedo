@@ -1,21 +1,36 @@
 require 'recipe.rb'
 require 'component.rb'
+require 'custom_markdown.rb'
 
 class List < ActiveRecord::Base
   extend FriendlyId
   friendly_id :custom_name, use: :slugged
+  
+  after_save :create_relationships
 
   serialize :element_ids, Array
-  after_save :tell_recipes_about_me
+
+  has_many :relationships, as: :relatable, dependent: :destroy
 
   def elements
-    elements = []
-    element_ids.each do |element_pair|
-      element_collection = expand_element_pair(element_pair)
-      elements << element_collection
+    relationships.map do |rel|
+      rel.expand || rel.child
+    end.flatten.uniq.keep_if { |element| element.try(:published?) }
+  end
+  
+  def create_relationships
+    delete_and_save_relationships if content_as_markdown_changed?
+  end
+  
+  def delete_and_save_relationships
+    if relationships_from_markdown.present? && self.id
+      relationships.delete_all
+      Relationship.create(relationships_from_markdown)
     end
-    elements = elements.flatten.uniq - ["",nil]
-    elements.keep_if { |element| element.published? }
+  end
+  
+  def relationships_from_markdown    
+    CustomMarkdown.relationships_from_markdown(self, content_as_markdown, :in_list_content)
   end
 
   def url
@@ -51,58 +66,11 @@ class List < ActiveRecord::Base
   end
 
   def recipes
-    element_ids.select{ |pair| pair[0] == "Recipe" }.map{ |pair| Recipe.find_by_name(pair[1])}.compact
+    relationships.select{ |rel| rel.child_type == "Recipe" }.map(&:child).keep_if { |element| element.published? }
   end
 
   def link
     "<a href='#{url}' class='list'>#{name}</a>"
-  end
-
-  def tell_recipes_about_me
-    recipes.each do |recipe|
-      recipe.list_ids << self.id
-      recipe.list_ids = recipe.list_ids.uniq
-      recipe.save
-    end
-  end
-
-  def expand_element_pair(element_pair)
-    element_collection = []
-    try_pair = expand_list_code(element_pair[1])
-    if try_pair
-      element_collection = try_pair
-    else
-      element_collection = element_pair[0].singularize.classify.constantize.find_by_name(element_pair[1])
-    end
-    element_collection
-  end
-
-  def expand_list_code(list_code)
-    first_word = list_code[/(?:(?!\d+).)*/].strip
-    limit_number = list_code[/\d+/].to_i
-    sort_by = list_code[/(\bDATE\b)/]
-    return false if first_word.blank? || limit_number.zero?
-    expanded_list = []
-    if first_word == "ALL" || first_word == "all"
-      expanded_list = create_recipe_list(limit_number, sort_by)
-    else
-      expanded_list = create_component_list(first_word, sort_by)
-    end
-    expanded_list
-  end
-
-  def create_recipe_list(limit_number, sort_by)
-    Recipe.limit(limit_number).order(sort_by.nil? ? "name asc" : "last_updated desc").to_a
-  end
-
-  def create_component_list(component_name, sort_by)
-    component = Component.find_by_name(component_name)
-    return if component.nil?
-    if sort_by.nil?
-      component.recipes.sort_by!(&:name)
-    else
-      component.recipes.sort { |a,b| a.last_updated <=> b.last_updated }
-    end
   end
 
   def backup_image_url
@@ -125,20 +93,5 @@ class List < ActiveRecord::Base
 
   def header_element
     home? ? elements.first : self
-  end
-
-  def collect_and_save_list_elements
-    elements = []
-    content_as_markdown.gsub(/(\=|\:|\#)\[(.*?)\]/) do |*|
-      case $1
-        when ":"
-          elements.push([Component.to_s, $2])
-        when "#"
-          elements.push([List.to_s, $2])
-        when "="
-          elements.push([Recipe.to_s, $2])
-      end
-    end
-    self.update_attribute(:element_ids, elements)
   end
 end
