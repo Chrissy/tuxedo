@@ -40,4 +40,8 @@ class Relationship < ActiveRecord::Base
     relationships = where(child_type: child.class.to_s, child_id: child.id, relatable_type: type.to_s)
     relationships.map{|relationship| relationship.relatable}
   end
+  
+  def self.touch_all_parents_of(child_element)
+    self.find_parents(child_element).map(&:touch)
+  end
 end
