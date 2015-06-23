@@ -101,13 +101,16 @@ class Recipe < ActiveRecord::Base
   end
 
   def convert_fractions(str)
-   str.gsub(/0\.[0-9]*.*?/) do |match|
+   str.gsub(/\d+.(\d+)/) do |match|
      case match
+     when "1.75" then '1¾'
+     when "1.5" then '1½'
+     when "1.25" then '1¼'
+     when "0.75" then '¾'
+     when "0.6" then '⅔'
+     when "0.3" then '⅓'
      when "0.5" then '½'
      when "0.25" then '¼'
-     when "0.75" then '¾'
-     when "0.3" then '⅓'
-     when "0.6" then '⅔'
      when "0.125" then '⅛'
      else match
      end
