@@ -70,11 +70,13 @@ class Component < ActiveRecord::Base
     pseudonyms_as_markdown.split(",").map(&:strip).map(&:downcase)
   end
 
+  def create_pseudonyms_if_changed
+    create_pseudonyms if pseudonyms_as_markdown && pseudonyms_as_markdown_changed?
+  end
+
   def create_pseudonyms
-    if pseudonyms_as_markdown && pseudonyms_as_markdown_changed?
-      pseudonyms_as_array.each do |name|
-        Pseudonym.create({pseudonymable: self, name: name})
-      end
+    pseudonyms_as_array.each do |name|
+      Pseudonym.create({pseudonymable: self, name: name})
     end
   end
 
