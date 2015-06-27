@@ -67,7 +67,7 @@ class Component < ActiveRecord::Base
   end
 
   def pseudonyms_as_array
-    psuedonyms_as_markdown.split(",").map(&:strip).map(&:downcase)
+    pseudonyms_as_markdown.split(",").map(&:strip).map(&:downcase)
   end
 
   def create_pseudonyms
