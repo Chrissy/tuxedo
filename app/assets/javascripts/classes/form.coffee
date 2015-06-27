@@ -10,7 +10,6 @@ class window.Form
   getElements: (url) ->
     $.get(url).then(
       (elements) -> return elements
-      -> return console.log("element request failed")
     )
 
   generateAutocomplete: (url, flag) ->
