@@ -5,30 +5,15 @@ class Component < ActiveRecord::Base
   friendly_id :custom_name, use: :slugged
 
   serialize :recipe_ids, Array
-  serialize :akas, Array
-  
+  has_many :psuedonyms, as: :pseudonymable, dependent: :destroy
+  before_save :create_pseudonyms
+
   def recipes
     recipe_relationships.map(&:relatable)
   end
-  
+
   def recipe_relationships
     Relationship.where(child_type: self.class.to_s, child_id: id, why: :in_recipe_content)
-  end
-
-  def self_or_aka
-    if is_an_aka?
-      aka
-    else
-      self
-    end
-  end
-
-  def list_with_aka
-    if is_an_aka?
-      aka.list
-    else
-      list
-    end
   end
 
   def url
@@ -40,11 +25,7 @@ class Component < ActiveRecord::Base
   end
 
   def edit_url
-    if is_an_aka?
-      "/ingredients/edit/#{aka.id}"
-    else
-      "/ingredients/edit/#{id}"
-    end
+    "/ingredients/edit/#{id}"
   end
 
   def backup_image_url
@@ -58,8 +39,6 @@ class Component < ActiveRecord::Base
   def image_with_backup
     if image.present?
       image
-    elsif aka && aka.image.present?
-      aka.image
     elsif recipes.last.try(:image).try(:present?)
       recipes.last.image
     else
@@ -83,46 +62,33 @@ class Component < ActiveRecord::Base
     nick.present? ? nick : name
   end
 
-  def aka
-    Component.find_by_id(aka_id)
-  end
-
-  def is_an_aka?
-    aka_id.present?
-  end
-
-  def compile_akas
-    return unless akas_as_markdown.present?
-    
-    aka_list = []
-    akas_as_markdown.split(",").each do |aka_name|
-      new_aka = Component.find_or_create_by_name(aka_name.strip.downcase)
-      new_aka.update_attribute(:aka_id, id)
-      aka_list.push(new_aka)
-    end
-    (akas - aka_list).map(&:destroy)
-    akas = aka_list
-  end
-
-  def has_list
-    !!list
-  end
-
   def list_for_textarea
     list_as_markdown ? list_as_markdown : ":[#{name} 100]"
   end
 
+  def pseudonyms_as_array
+    pseudonyms_as_markdown.split(",").map(&:strip).map(&:downcase)
+  end
+
+  def create_pseudonyms
+    if pseudonyms_as_markdown && pseudonyms_as_markdown_changed?
+      pseudonyms_as_array.each do |name|
+        Pseudonym.create({pseudonymable: self, name: name})
+      end
+    end
+  end
+
   def create_or_update_list
-    if has_list
+    if list
       List.find(list).update_attributes(content_as_markdown: list_for_textarea, component: id)
-    else 
+    else
       list_element = List.create(content_as_markdown: list_for_textarea, name: name, component: id)
       update_attribute(:list, list_element.id)
     end
   end
 
   def list_elements
-    list_with_aka.nil? ? recipes : List.find(list_with_aka).elements
+    recipes
   end
 
   def link

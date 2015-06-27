@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531174644) do
+ActiveRecord::Schema.define(version: 20150627175639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,9 +27,7 @@ ActiveRecord::Schema.define(version: 20150531174644) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
-    t.text     "akas"
-    t.string   "aka_id"
-    t.string   "akas_as_markdown"
+    t.string   "pseudonyms_as_markdown"
     t.boolean  "never_make_me_tall"
     t.text     "list_as_markdown"
   end
@@ -60,6 +58,14 @@ ActiveRecord::Schema.define(version: 20150531174644) do
     t.string   "slug"
     t.string   "image"
     t.boolean  "never_make_me_tall"
+  end
+
+  create_table "pseudonyms", force: true do |t|
+    t.integer  "pseudonymable_id"
+    t.string   "pseudonymable_type"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "recipes", force: true do |t|

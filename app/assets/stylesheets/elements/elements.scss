@@ -59,12 +59,28 @@
   &, a { color: white; text-decoration: none; }
 }
 
+.header-sub-title {
+  font-size: 18px;
+  color: white;
+  height: 30px;
+  display: block;
+  font-weight: normal;
+  line-height: 230%;
+}
+
+.header-sub-title-inner {
+  display: inline-block;
+  line-height: 100%;
+  padding: 10px 20px;
+  border-top: 1px solid white;
+}
+
 .display-number {
   display: block;
   font-size: 36px;
   position: relative;
   line-height: 130%;
-  
+
   &:before, &:after {
     content: "";
     display: block;
@@ -89,7 +105,7 @@
     .no { left: 12px; }
   }
   .win & {
-    line-height: 150%; 
+    line-height: 150%;
     top: 16px;
   }
 }
@@ -101,7 +117,7 @@
   .global-header + & { top: 80px; }
 }
 
-.authenticate { 
+.authenticate {
   display: none;
   html[logged-in="true"] & { display: block; }
 }
@@ -114,8 +130,8 @@
   }
   background-size: cover !important;
   &:after {
-    content: ""; 
-    background-color: rgba(0,0,0,0.6); 
+    content: "";
+    background-color: rgba(0,0,0,0.6);
   }
 }
 
@@ -146,9 +162,9 @@
   padding-bottom: 100px;
   .list-elements { width: 101%; }
 }
-.recommends-label { 
+.recommends-label {
   position: relative;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 .recommends-label-text {
   font-size: 18px;
