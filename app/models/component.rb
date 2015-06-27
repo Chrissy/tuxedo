@@ -71,8 +71,10 @@ class Component < ActiveRecord::Base
   end
 
   def create_pseudonyms
-    pseudonyms_as_array.each do |name|
-      Pseudonym.create({pseudonymable: self, name: name})
+    if pseudonyms_as_markdown && pseudonyms_as_markdown_changed?
+      pseudonyms_as_array.each do |name|
+        Pseudonym.create({pseudonymable: self, name: name})
+      end
     end
   end
 
