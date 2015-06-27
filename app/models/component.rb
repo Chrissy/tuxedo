@@ -5,8 +5,8 @@ class Component < ActiveRecord::Base
   friendly_id :custom_name, use: :slugged
 
   serialize :recipe_ids, Array
-  has_many :psuedonyms, as: :pseudonymable, dependent: :destroy
-  before_save :create_pseudonyms
+  has_many :pseudonyms, as: :pseudonymable, dependent: :destroy
+  before_save :create_pseudonyms_if_changed
 
   def recipes
     recipe_relationships.map(&:relatable)
@@ -75,6 +75,7 @@ class Component < ActiveRecord::Base
   end
 
   def create_pseudonyms
+    pseudonyms.delete_all
     pseudonyms_as_array.each do |name|
       Pseudonym.create({pseudonymable: self, name: name})
     end
