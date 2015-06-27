@@ -45,7 +45,7 @@ class ListsController < ApplicationController
       format.json {}
     end
   end
-  
+
   def get
     @list = List.find(params[:id])
     @count_start = params[:start].to_i + 1
@@ -57,10 +57,10 @@ class ListsController < ApplicationController
 
   def admin
     @recipes = Recipe.all.sort_by(&:name)
-    @components = Component.all.sort_by(&:name).delete_if { |c| c.is_an_aka? }
+    @components = Component.all.sort_by(&:name)
     @lists = List.all_for_display.sort_by(&:name)
   end
-  
+
   def about
     render 'shared/about'
   end
