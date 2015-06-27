@@ -5,6 +5,8 @@ class Component < ActiveRecord::Base
   friendly_id :custom_name, use: :slugged
 
   serialize :recipe_ids, Array
+  has_many :psuedonyms, as: :pseudonymable, dependent: :destroy
+  before_save :create_pseudonyms
 
   def recipes
     recipe_relationships.map(&:relatable)
@@ -60,16 +62,22 @@ class Component < ActiveRecord::Base
     nick.present? ? nick : name
   end
 
-  def has_list
-    !!list
-  end
-
   def list_for_textarea
     list_as_markdown ? list_as_markdown : ":[#{name} 100]"
   end
 
+  def pseudonyms_as_array
+    psuedonyms_as_markdown.split(",").map(&:strip).map(&:downcase)
+  end
+
+  def create_pseudonyms
+    pseudonyms_as_array.each do |name|
+      Pseudonym.create({pseudonymable: self, name: name})
+    end
+  end
+
   def create_or_update_list
-    if has_list
+    if list
       List.find(list).update_attributes(content_as_markdown: list_for_textarea, component: id)
     else
       list_element = List.create(content_as_markdown: list_for_textarea, name: name, component: id)
