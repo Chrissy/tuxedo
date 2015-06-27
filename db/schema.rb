@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150627175639) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
-    t.string   "psuedonyms_as_markdown"
+    t.string   "pseudonyms_as_markdown"
     t.boolean  "never_make_me_tall"
     t.text     "list_as_markdown"
   end
