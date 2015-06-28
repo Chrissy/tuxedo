@@ -9,7 +9,7 @@ class Component < ActiveRecord::Base
   before_save :create_pseudonyms_if_changed
 
   def recipes
-    recipe_relationships.map(&:relatable)
+    recipe_relationships.map(&:relatable).keep_if(&:published?)
   end
 
   def recipe_relationships
