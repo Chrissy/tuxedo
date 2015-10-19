@@ -1,35 +1,38 @@
 require 'recipe.rb'
 require 'component.rb'
 require 'custom_markdown.rb'
+require 'acts_as_markdown_list.rb'
 
 class List < ActiveRecord::Base
   extend FriendlyId
+  extend ActsAsMarkdownList::ActsAsMethods
+
   friendly_id :custom_name, use: :slugged
-  
+
   after_save :create_relationships
 
   serialize :element_ids, Array
 
-  has_many :relationships, as: :relatable, dependent: :destroy
+  acts_as_markdown_list
 
   def elements
     relationships.map do |rel|
       rel.expand || rel.child
     end.flatten.uniq.keep_if { |element| element.try(:published?) }
   end
-  
+
   def create_relationships
     delete_and_save_relationships if content_as_markdown_changed?
   end
-  
+
   def delete_and_save_relationships
     if relationships_from_markdown.present? && self.id
       relationships.delete_all
       Relationship.create(relationships_from_markdown)
     end
   end
-  
-  def relationships_from_markdown    
+
+  def relationships_from_markdown
     CustomMarkdown.relationships_from_markdown(self, content_as_markdown, :in_list_content)
   end
 
