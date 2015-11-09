@@ -9,7 +9,7 @@ class List < ActiveRecord::Base
 
   friendly_id :custom_name, use: :slugged
 
-  acts_as_markdown_list
+  acts_as_markdown_list :content_as_markdown
 
   def url
     "/list/#{slug}"

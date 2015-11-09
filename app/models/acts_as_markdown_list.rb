@@ -1,9 +1,13 @@
 module ActsAsMarkdownList
   module ActsAsMethods
 
-    def acts_as_markdown_list(options = {})
+    def acts_as_markdown_list(markdown_field)
       has_many :relationships, as: :relatable, dependent: :destroy
       after_save :create_relationships
+
+      define_method(:markdown) do
+        send(markdown_field)
+      end
 
       define_method(:elements) do
         relationships.map do |rel|
@@ -16,7 +20,7 @@ module ActsAsMarkdownList
       end
 
       define_method(:create_relationships) do
-        delete_and_save_relationships if content_as_markdown_changed?
+        delete_and_save_relationships if send("#{markdown_field}_changed?")
       end
 
       define_method(:delete_and_save_relationships) do
@@ -27,7 +31,7 @@ module ActsAsMarkdownList
       end
 
       define_method(:relationships_from_markdown) do
-        CustomMarkdown.relationships_from_markdown(self, content_as_markdown, :in_list_content)
+        CustomMarkdown.relationships_from_markdown(self, markdown, :in_list_content)
       end
 
     end
