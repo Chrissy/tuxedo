@@ -1,15 +1,15 @@
 module ActsAsMarkdownList
   module ActsAsMethods
 
-    def acts_as_markdown_list(markdown_field)
+    def acts_as_markdown_list(markdown_field, options = {})
       has_many :relationships, as: :relatable, dependent: :destroy
       after_save :create_relationships
 
       define_method(:markdown) do
-        send(markdown_field)
+        send(markdown_field) || options[:default]
       end
 
-      define_method(:elements) do
+      define_method(:list_elements) do
         relationships.map do |rel|
           rel.expand || rel.child
         end.flatten.uniq.keep_if { |element| element.try(:published?) }

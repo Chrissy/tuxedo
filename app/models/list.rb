@@ -11,6 +11,10 @@ class List < ActiveRecord::Base
 
   acts_as_markdown_list :content_as_markdown
 
+  def elements
+    list_elements
+  end
+
   def url
     "/list/#{slug}"
   end
