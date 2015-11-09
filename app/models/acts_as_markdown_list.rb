@@ -6,7 +6,7 @@ module ActsAsMarkdownList
       after_save :create_relationships
 
       define_method(:markdown) do
-        send(markdown_field) || options[:default]
+        send(markdown_field) || (send(options[:default]) if options[:default].present?) || ""
       end
 
       define_method(:list_elements) do

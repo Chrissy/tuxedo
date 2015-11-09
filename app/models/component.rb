@@ -6,7 +6,7 @@ class Component < ActiveRecord::Base
 
   friendly_id :custom_name, use: :slugged
 
-  acts_as_markdown_list :list_as_markdown, :default => ":[#{name} 100]"
+  acts_as_markdown_list :list_as_markdown, :default => :default_list_markdown
 
   serialize :recipe_ids, Array
   has_many :pseudonyms, as: :pseudonymable, dependent: :destroy
