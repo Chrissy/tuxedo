@@ -18,13 +18,12 @@ class ComponentsController < ApplicationController
   def update
     component = Component.find(params[:id])
     component.update_attributes(component_params)
-    component.create_or_update_list
+    Relationship.touch_all_parents_of(component)
     redirect_to action: "show", id: component.id
   end
 
   def create
     component = Component.create(component_params)
-    component.create_or_update_list
     redirect_to action: "show", id: component.id
   end
 

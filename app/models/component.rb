@@ -2,7 +2,11 @@ require 'recipe.rb'
 
 class Component < ActiveRecord::Base
   extend FriendlyId
+  extend ActsAsMarkdownList::ActsAsMethods
+
   friendly_id :custom_name, use: :slugged
+
+  acts_as_markdown_list :list_as_markdown, :default => ":[#{name} 100]"
 
   serialize :recipe_ids, Array
   has_many :pseudonyms, as: :pseudonymable, dependent: :destroy
@@ -62,10 +66,6 @@ class Component < ActiveRecord::Base
     nick.present? ? nick : name
   end
 
-  def list_for_textarea
-    list_as_markdown ? list_as_markdown : ":[#{name} 100]"
-  end
-
   def pseudonyms_as_array
     pseudonyms_as_markdown.split(",").map(&:strip).map(&:downcase)
   end
@@ -81,17 +81,12 @@ class Component < ActiveRecord::Base
     end
   end
 
-  def create_or_update_list
-    if list
-      List.find(list).update_attributes(content_as_markdown: list_for_textarea, component: id)
-    else
-      list_element = List.create(content_as_markdown: list_for_textarea, name: name, component: id)
-      update_attribute(:list, list_element.id)
-    end
+  def list_for_textarea_with_default
+    list_as_markdown || default_list_markdown
   end
 
-  def list_elements
-    recipes
+  def default_list_markdown
+    name.present? ? ":[#{name} 100]" : ""
   end
 
   def link
