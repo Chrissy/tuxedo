@@ -86,7 +86,7 @@ class Component < ActiveRecord::Base
   end
 
   def default_list_markdown
-    ":[#{name} 100]"
+    name.present? ? ":[#{name} 100]" : ""
   end
 
   def link
