@@ -51,3 +51,5 @@ ruby "2.1.7"
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
+
+gem 'byebug'
