@@ -1,7 +1,6 @@
 require 'recipe.rb'
 require 'component.rb'
 require 'custom_markdown.rb'
-require 'acts_as_markdown_list.rb'
 
 class List < ActiveRecord::Base
   extend FriendlyId
