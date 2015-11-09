@@ -30,6 +30,6 @@ class window.Form
 
   swapWithComponentLink: (query, flag) ->
     pretext = @form.val().substring(0, query.pos)
-    aftertext = @form.val().substring(query.pos + flag.length + 2)
+    aftertext = @form.val().substring(query.pos + flag.length + 1)
     newstr = "#{pretext}[#{flag}] #{aftertext}"
     @form.val(newstr)
