@@ -7,6 +7,11 @@ class window.Form
     @generateAutocomplete("/all.json", "=") if @form.hasClass("recipes")
     @generateAutocomplete("/list/all.json", "#") if @form.hasClass("lists")
 
+    @form.on("inserted.atwho", (event, flag, query) ->
+      flag = flag.text().trim()
+      self.swapWithComponentLink(query, flag)
+    );
+
   getElements: (url) ->
     $.get(url).then(
       (elements) -> return elements
@@ -23,13 +28,10 @@ class window.Form
     @autocomplete[flag] = @form.atwho({
       at: flag,
       data: data
-    }).on("inserted.atwho", (event, flag, query) ->
-      flag = flag.text().trim()
-      self.swapWithComponentLink(query, flag)
-    );
+    })
 
   swapWithComponentLink: (query, flag) ->
     pretext = @form.val().substring(0, query.pos)
     aftertext = @form.val().substring(query.pos + flag.length + 1)
-    newstr = "#{pretext}[#{flag}] #{aftertext}"
+    newstr = "#{pretext}[#{flag}]#{aftertext}"
     @form.val(newstr)
