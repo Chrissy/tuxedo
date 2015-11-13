@@ -17,7 +17,7 @@ class Component < ActiveRecord::Base
   end
 
   def recipe_relationships
-    Relationship.where(child_type: self.class.to_s, child_id: id, why: :in_recipe_content)
+    Relationship.where(child_type: self.class.to_s, child_id: id, why: :recipe)
   end
 
   def url
