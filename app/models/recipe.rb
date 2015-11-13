@@ -3,20 +3,17 @@ require 'custom_markdown.rb'
 
 class Recipe < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :custom_name, use: :slugged
+  extend ActsAsMarkdownList::ActsAsMethods
 
-  serialize :component_ids, Array
-  serialize :list_ids, Array
+  friendly_id :custom_name, use: :slugged
+  acts_as_markdown_list :recipe
   serialize :recommends, Array
 
-  has_many :relationships, as: :relatable, dependent: :destroy
-
-  def markdown
+  def markdown_renderer
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
   end
 
-  def convert_recipe_to_html_and_create_relationships
-    delete_and_save_relationships
+  def convert_recipe_to_html_and_store
     update_attribute(:stored_recipe_as_html, convert_recipe_to_html)
   end
 
@@ -26,7 +23,7 @@ class Recipe < ActiveRecord::Base
 
   def description_to_html
     converted_description = CustomMarkdown.convert_links_in_place(description)
-    markdown.render(converted_description).html_safe
+    markdown_renderer.render(converted_description).html_safe
   end
 
   def backup_image_url
@@ -35,14 +32,6 @@ class Recipe < ActiveRecord::Base
 
   def image_with_backup
     image.present? ? image : backup_image_url
-  end
-
-  def components
-    recipe_relationships.map(&:child)
-  end
-
-  def recipe_relationships
-    relationships.where(:why => :in_recipe_content)
   end
 
   def lists
@@ -122,21 +111,10 @@ class Recipe < ActiveRecord::Base
       "#{$1}<span class='unit'>#{$2}</span>#{$3}"
     end
   end
-  
-  def delete_and_save_relationships
-    if relationships_from_markdown.present?
-      relationships.delete_all
-      Relationship.create(relationships_from_markdown)
-    end
-  end
-  
-  def relationships_from_markdown
-    CustomMarkdown.relationships_from_markdown(self, recipe, :in_recipe_content)
-  end
-    
+
   def convert_recipe_to_html
     html = CustomMarkdown.convert_links_in_place(recipe.dup)
-    
+
     html.gsub!(/\* ([0-9].*?|fill) +/) do |*|
       modified_md = wrap_units($1)
       "* <span class='amount'>#{convert_fractions(modified_md)}</span> "
@@ -144,6 +122,6 @@ class Recipe < ActiveRecord::Base
     html.gsub!(/\# ?([A-Z].*?)/) do |*|
       "# " << ApplicationController.helpers.swash($1)
     end
-    markdown.render(html)
+    markdown_renderer.render(html)
   end
 end

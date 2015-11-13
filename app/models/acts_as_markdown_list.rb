@@ -19,6 +19,10 @@ module ActsAsMarkdownList
         relationships.select{ |rel| rel.child_type == "Recipe" }.map(&:child).keep_if { |element| element.published? }
       end
 
+      define_method(:components) do
+        relationships.select{ |rel| rel.child_type == "Component" }.map(&:child)
+      end
+
       define_method(:create_relationships) do
         delete_and_save_relationships if send("#{markdown_field}_changed?")
       end
@@ -31,7 +35,7 @@ module ActsAsMarkdownList
       end
 
       define_method(:relationships_from_markdown) do
-        CustomMarkdown.relationships_from_markdown(self, markdown, :in_list_content)
+        CustomMarkdown.relationships_from_markdown(self, markdown, markdown_field)
       end
 
     end
