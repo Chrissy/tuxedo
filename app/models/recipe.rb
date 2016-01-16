@@ -70,7 +70,7 @@ class Recipe < ActiveRecord::Base
   end
 
   def store_recommends
-    recs = (components.first.recipes.keep_if(&:published?) - [self]).sort_by{ |recipe|
+    recs = (components.first.list_elements.keep_if(&:published?) - [self]).sort_by{ |recipe|
       (components & recipe.components).length
     }.reverse.first(3)
     update_attribute(:recommends, recs)

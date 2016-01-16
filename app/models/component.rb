@@ -6,19 +6,11 @@ class Component < ActiveRecord::Base
 
   friendly_id :custom_name, use: :slugged
 
-  acts_as_markdown_list :list_as_markdown, :default => :default_list_markdown
+  acts_as_markdown_list :list_as_markdown
 
   serialize :recipe_ids, Array
   has_many :pseudonyms, as: :pseudonymable, dependent: :destroy
   before_save :create_pseudonyms_if_changed
-
-  def recipes
-    recipe_relationships.map(&:relatable).keep_if(&:published?)
-  end
-
-  def recipe_relationships
-    Relationship.where(child_type: self.class.to_s, child_id: id, field: :recipe)
-  end
 
   def url
     "/ingredients/#{slug}"
