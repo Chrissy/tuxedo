@@ -24,7 +24,6 @@ class ListsController < ApplicationController
   def update
     list = List.find(params[:id])
     list.update_attributes(list_params)
-    Relationship.touch_all_parents_of(list)
     redirect_to action: "show", id: list.id
   end
 
