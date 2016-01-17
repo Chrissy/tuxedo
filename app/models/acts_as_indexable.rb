@@ -3,6 +3,10 @@ module ActsAsIndexable
 
     def acts_as_indexable
       extend IndexableClassMethods
+
+      define_method(:indexable_letter) do
+        self.name[0].downcase
+      end
     end
 
     module IndexableClassMethods
