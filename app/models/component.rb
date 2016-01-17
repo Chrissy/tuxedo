@@ -12,17 +12,15 @@ class Component < ActiveRecord::Base
   has_many :pseudonyms, as: :pseudonymable, dependent: :destroy
   before_save :create_pseudonyms_if_changed
 
-  alias_method :list_elements_without_backup, :list_elements
-
   def url
     "/ingredients/#{slug}"
   end
 
-  def list_elements
-    if list_elements_without_backup.empty?
+  def list_elements_for_display
+    if list_elements.empty?
       parent_recipes
     else
-      list_elements_without_backup
+      list_elements
     end
   end
 
