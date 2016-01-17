@@ -35,7 +35,7 @@ class RecipesController < ApplicationController
   end
 
   def delete
-    Recipe.find(params[:id]).delete() if user_signed_in?
+    Recipe.find(params[:id]).destroy if user_signed_in?
     redirect_to action: "admin", controller: "lists"
   end
 

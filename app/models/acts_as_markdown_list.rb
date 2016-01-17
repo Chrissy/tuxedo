@@ -4,6 +4,7 @@ module ActsAsMarkdownList
     def acts_as_markdown_list(markdown_field)
       has_many :relationships, as: :relatable, dependent: :destroy
       after_save :create_relationships
+      before_destroy :destroy_relationships
 
       define_method(:markdown) do
         send(markdown_field) || ""
@@ -27,9 +28,13 @@ module ActsAsMarkdownList
         delete_and_save_relationships if send("#{markdown_field}_changed?")
       end
 
+      define_method(:destroy_relationships) do
+        relationships.destroy_all
+      end
+
       define_method(:delete_and_save_relationships) do
         if relationships_from_markdown.present? && self.id
-          relationships.delete_all
+          relationships.destroy_all
           Relationship.create(relationships_from_markdown)
         end
       end
