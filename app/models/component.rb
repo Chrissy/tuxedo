@@ -49,8 +49,8 @@ class Component < ActiveRecord::Base
   def image_with_backup
     if image.present?
       image
-    elsif recipes.last.try(:image).try(:present?)
-      recipes.last.image
+    elsif list_elements.last.try(:image).try(:present?)
+      list_elements.last.image
     else
       backup_image_url
     end
