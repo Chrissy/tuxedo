@@ -23,7 +23,6 @@ class RecipesController < ApplicationController
     recipe.update_attributes(recipe_params)
     recipe.convert_recipe_to_html_and_store
     recipe.make_my_number_last! if params[:make_my_number_last]
-    Relationship.touch_all_parents_of(recipe)
     recipe.store_recommends
     redirect_to action: "show", id: recipe.id
   end

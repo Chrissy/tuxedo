@@ -16,7 +16,7 @@ class Relationship < ActiveRecord::Base
 
   def expand #tries to expand a relationship based on custom "field" type
     if field == "expandable_list_content"
-      child_type.constantize.find_by_id(child_id).try(:recipes) || []
+      child_type.constantize.find_by_id(child_id).try(:parent_elements) || []
     else
       return nil
     end
