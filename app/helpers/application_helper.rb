@@ -38,6 +38,7 @@ module ApplicationHelper
                         element.image_with_backup,
                         opts,
                         class: "header-image",
+                        alt: "#{element.name} cocktail photo",
                         :"data-resize"=>"3",
                         :itemprop => "image",
                         :"data-dont-compress" => element.try(:dont_compress_image),
@@ -56,6 +57,7 @@ module ApplicationHelper
     filepicker_image_tag(
                         element.image_with_backup,
                         opts,
+                        alt: "#{element.name} cocktail photo",
                         :"data-resize" => "3",
                         :"data-pin-media" => pinnable_image_url(element),
                         :"data-pin-url" => pin_url(element),
