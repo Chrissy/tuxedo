@@ -4,19 +4,19 @@
 %centered-content-box {
   width: 940px;
   margin: 0 auto;
-  position: relative;  
+  position: relative;
 }
 
 %centered-content-box-large {
   margin: 0 auto;
   position: relative;
   width: 100%;
-  max-width: 1140px;
+  max-width: 1040px;
 }
 
 %swash {
-  &:first-letter, .swash-cap { 
-    font-feature-settings: "swsh"; 
+  &:first-letter, .swash-cap {
+    font-feature-settings: "swsh";
     -moz-font-feature-settings:"swsh";
     -webkit-font-feature-settings: "swsh";
   }
@@ -26,7 +26,7 @@
 
 @mixin gradient($startcolor: #555, $endcolor: #333, $direction: "horizontal") {
     $direction_key_1: left; $direction_key_2: left top; $direction_key_3: right top;
-    @if $direction == "vertical" { 
+    @if $direction == "vertical" {
        $direction_key_1: top; $direction_key_2: left top; $direction_key_3: left bottom;
     } @else if $direction == "diagonal" {
       $direction_key_1: bottom right; $direction_key_2: right bottom; $direction_key_3: left top;
@@ -64,7 +64,7 @@
 @mixin hires-background($image-name) {
   $height: sprite-sprite-height($image-name);
   $width: sprite-sprite-width($image-name);
-  
+
   height: $height/2;
   width: $width/2;
   position: relative;

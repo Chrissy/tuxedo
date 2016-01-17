@@ -39,10 +39,7 @@
 }
 
 .header, .header-content {
-  height: 460px;
-  height: 80vh;
-  max-height: 660px;
-  min-height: 600px
+  height: 600px;
 }
 
 .header {
@@ -57,7 +54,7 @@
   position: relative;
   overflow: hidden;
 
-  & > img { 
+  & > img {
     height: auto;
     width: 102%;
     position: absolute;
@@ -113,14 +110,14 @@ $social-prompt-size: 7px;
   &.active { opacity: 1; right: 53px; }
   &:before {
     content: "";
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-top: $social-prompt-size solid transparent;
-    border-bottom: $social-prompt-size solid transparent; 
+    border-bottom: $social-prompt-size solid transparent;
     border-left: $social-prompt-size solid $social-prompt-color;
     position: absolute;
     right: $social-prompt-size*-1;
-    top: $social-prompt-size; 
+    top: $social-prompt-size;
   }
   .win & {
     line-height: 110%;
@@ -128,10 +125,6 @@ $social-prompt-size: 7px;
   }
 }
 html[data-share-alert="3"] .social-prompt{ display: block; }
-
-@media (max-height: 700px) {
-  .header-content, .global-header { width: 1040px; }
-}
 
 @media (max-width: 1150px) {
   .global-header, .header-primary { width: 100%; }
@@ -144,7 +137,7 @@ html[data-share-alert="3"] .social-prompt{ display: block; }
     text-align: center;
     overflow: hidden;
     position: relative;
-    & > img { 
+    & > img {
       height: 102%;
       width: auto;
     }
@@ -158,11 +151,11 @@ html[data-share-alert="3"] .social-prompt{ display: block; }
 }
 
 @media (max-width: 650px) {
-  html .header, html .header-content, html .header.list, html .header.list .header-content { 
+  html .header, html .header-content, html .header.list, html .header.list .header-content {
     height: 360px;
     height: 100vh;
-    min-height: 360px; 
-    max-height: 560px; 
+    min-height: 360px;
+    max-height: 560px;
   }
   #logo {
     margin: 0 auto;
