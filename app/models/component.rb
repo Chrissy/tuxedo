@@ -12,8 +12,22 @@ class Component < ActiveRecord::Base
   has_many :pseudonyms, as: :pseudonymable, dependent: :destroy
   before_save :create_pseudonyms_if_changed
 
+  alias_method :list_elements_without_backup, :list_elements
+
   def url
     "/ingredients/#{slug}"
+  end
+
+  def list_elements
+    if list_elements_without_backup.empty?
+      parent_recipes
+    else
+      list_elements_without_backup
+    end
+  end
+
+  def parent_recipes
+    Relationship.where(child_type: self.class.to_s, child_id: id, field: :recipe).map(&:relatable).keep_if(&:published?)
   end
 
   def custom_name
