@@ -1,0 +1,13 @@
+<tr class="admin_element <%= admin_element_class_name(element) %>">
+  <td>
+    <%= link_to element.url do %>
+      <%= filepicker_image_tag(element.image, w: 100, h: 60, fit: 'crop', align: "center,center") %>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to element.name, element.url, :class => "admin_element_name" %>
+    <%= link_to "edit", element.edit_url %> |
+    <%= link_to "delete", delete_link(element) %>
+    <%= publish_status(element) %>
+  </td>
+</tr>
