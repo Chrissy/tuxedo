@@ -64,6 +64,14 @@ class ListsController < ApplicationController
     render 'shared/about'
   end
 
+  def index
+    @elements = List.all.sort_by(&:name)
+  end
+
+  def letter_index
+    @elements = List.get_by_letter(params[:letter])
+  end
+
   private
 
   def list_params

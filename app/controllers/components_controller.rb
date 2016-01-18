@@ -39,6 +39,14 @@ class ComponentsController < ApplicationController
     redirect_to action: "admin", controller: "lists"
   end
 
+  def index
+    @elements = Component.all.sort_by(&:name)
+  end
+
+  def letter_index
+    @elements = Component.get_by_letter(params[:letter])
+  end
+
   private
 
   def component_params

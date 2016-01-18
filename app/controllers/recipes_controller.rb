@@ -52,6 +52,14 @@ class RecipesController < ApplicationController
     end
   end
 
+  def index
+    @elements = Recipe.all.sort_by(&:name)
+  end
+
+  def letter_index
+    @elements = Recipe.get_by_letter(params[:letter])
+  end
+
   private
 
   def recipe_params

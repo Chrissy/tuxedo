@@ -32,7 +32,6 @@ module ApplicationHelper
       w: 500,
       h: 287,
       fit: 'crop',
-      cache: 'true'
     }
     filepicker_image_tag(
                         element.image_with_backup,
@@ -52,7 +51,6 @@ module ApplicationHelper
       w: 320,
       h: 225,
       fit: 'crop',
-      cache: 'true'
     }
     filepicker_image_tag(
                         element.image_with_backup,
@@ -62,6 +60,20 @@ module ApplicationHelper
                         :"data-pin-media" => pinnable_image_url(element),
                         :"data-pin-url" => pin_url(element),
                         :"data-pin-description" => element.name)
+  end
+
+  def index_image(element)
+    opts = {
+      w: 100,
+      h: 60,
+      fit: 'crop',
+    }
+    filepicker_image_tag(
+                        element.image_with_backup,
+                        opts,
+                        class: "element-image small",
+                        alt: "#{element.name} cocktail photo",
+                        :"data-resize" => "2")
   end
 
   def pinnable_image_url(element)
@@ -140,5 +152,9 @@ module ApplicationHelper
 
   def clear_image_button(element)
     link_to '(clear)', "#", :class => 'clear_image' if element.image.present?
+  end
+
+  def index_item_class_name(element)
+    "#{element.class.to_s.downcase}_admin_element"
   end
 end
