@@ -39,6 +39,16 @@ class ComponentsController < ApplicationController
     redirect_to action: "admin", controller: "lists"
   end
 
+  def index
+    @type = Component.indexable_type
+    render 'shared/index'
+  end
+
+  def letter_index
+    @letter = params[:letter]
+    render 'shared/letter_index'
+  end
+
   private
 
   def component_params

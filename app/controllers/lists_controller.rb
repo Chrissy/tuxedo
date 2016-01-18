@@ -64,6 +64,16 @@ class ListsController < ApplicationController
     render 'shared/about'
   end
 
+  def index
+    @type = List.indexable_type
+    render 'shared/index'
+  end
+
+  def letter_index
+    @letter = params[:letter]
+    render 'shared/letter_index'
+  end
+
   private
 
   def list_params

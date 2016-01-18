@@ -52,6 +52,16 @@ class RecipesController < ApplicationController
     end
   end
 
+  def index
+    @type = Recipe.indexable_type
+    render 'shared/index'
+  end
+
+  def letter_index
+    @letter = params[:letter]
+    render 'shared/letter_index'
+  end
+
   private
 
   def recipe_params
