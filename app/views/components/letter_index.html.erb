@@ -1,2 +1,2 @@
-<h1>Cocktail Ingredients Index by the Letter <%= params[:letter] %></h1>
+<h1>Cocktail Ingredients Index: <%= params[:letter].upcase %></h1>
 <%= render 'shared/letter_index', elements: @elements %>
