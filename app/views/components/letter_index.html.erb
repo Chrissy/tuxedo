@@ -1,2 +1,10 @@
-<h1>Cocktail Ingredients Index: <%= params[:letter].upcase %></h1>
-<%= render 'shared/letter_index', elements: @elements %>
+<div class="header short">
+  <div class="header-content">
+    <%= index_header_image %>
+    <h1 class="header-title small">Cocktail Ingredients Index: <%= params[:letter].upcase %></h1>
+  </div>
+</div>
+
+<div class="content">
+  <%= render 'shared/index', elements: @elements %>
+</div>
