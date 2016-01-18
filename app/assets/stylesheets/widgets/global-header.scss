@@ -42,6 +42,10 @@
   height: 600px;
 }
 
+.header.short, .header.short .header-content {
+  height: 300px;
+}
+
 .header {
   width: 100%;
   background: #030a0d;

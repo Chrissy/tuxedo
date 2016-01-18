@@ -45,7 +45,7 @@
 }
 
 .header-title {
-  font-size: 85px;
+  font-size: 75px;
   margin: 0;
   line-height: 130%;
   margin-bottom: 15px;
@@ -57,6 +57,8 @@
   z-index: 6;
   -webkit-font-smoothing: antialiased;
   &, a { color: white; text-decoration: none; }
+
+  &.small { font-size: 65px; }
 }
 
 .header-sub-title {

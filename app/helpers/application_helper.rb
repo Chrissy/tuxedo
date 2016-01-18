@@ -79,6 +79,10 @@ module ApplicationHelper
                         :"data-resize" => "2")
   end
 
+  def index_header_image
+    image_tag 'index-image.png', class: "header-image", alt: "cocktail index image"
+  end
+
   def pinnable_image_url(element)
     opts = {
       w: 476,
