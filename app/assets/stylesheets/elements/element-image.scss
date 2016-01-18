@@ -1,0 +1,8 @@
+.element-image {
+  display: block;
+
+  &.small {
+    width: 100px;
+    height: 60px;
+  }
+}
