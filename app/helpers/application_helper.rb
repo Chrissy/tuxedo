@@ -32,6 +32,7 @@ module ApplicationHelper
       w: 500,
       h: 287,
       fit: 'crop',
+      cache: true
     }
     filepicker_image_tag(
                         element.image_with_backup,
@@ -51,6 +52,7 @@ module ApplicationHelper
       w: 320,
       h: 225,
       fit: 'crop',
+      cache: true
     }
     filepicker_image_tag(
                         element.image_with_backup,
@@ -67,6 +69,7 @@ module ApplicationHelper
       w: 100,
       h: 60,
       fit: 'crop',
+      cache: true
     }
     filepicker_image_tag(
                         element.image_with_backup,
