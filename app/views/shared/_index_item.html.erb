@@ -1,13 +1,15 @@
-<tr class="admin_element <%= index_item_class_name(element) %>">
-  <td>
+<div class="index_element <%= index_item_class_name(element) %>">
+  <div class="index_element_image">
     <%= link_to element.url do %>
       <%= index_image(element) %>
     <% end %>
-  </td>
-  <td>
+  </div>
+  <div class="index_element_text">
     <%= link_to element.name, element.url, :class => "admin_element_name" %>
-    <%= link_to "edit", element.edit_url %> |
-    <%= link_to "delete", delete_link(element) %>
-    <%= publish_status(element) %>
-  </td>
-</tr>
+    <% if user_signed_in? %>
+      <%= link_to "edit", element.edit_url %> |
+      <%= link_to "delete", delete_link(element) %>
+      <%= publish_status(element) %>
+    <% end %>
+  </div>
+</div>
