@@ -141,4 +141,8 @@ module ApplicationHelper
   def clear_image_button(element)
     link_to '(clear)', "#", :class => 'clear_image' if element.image.present?
   end
+
+  def index_item_class_name(element)
+    "#{element.class.to_s.downcase}_admin_element"
+  end
 end

@@ -24,14 +24,6 @@ module ListsHelper
     element.class.to_s.pluralize
   end
 
-  def name_for_code(element)
-    element.class.to_s.downcase
-  end
-
-  def admin_element_class_name(element)
-    "#{name_for_code(element)}_admin_element"
-  end
-  
   def elements_for_list(list)
     elements = list.elements
     list.home? ? elements[1..elements.count] : list.elements

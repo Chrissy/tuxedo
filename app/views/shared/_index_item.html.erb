@@ -1,4 +1,4 @@
-<tr class="admin_element <%= admin_element_class_name(element) %>">
+<tr class="admin_element <%= index_item_class_name(element) %>">
   <td>
     <%= link_to element.url do %>
       <%= filepicker_image_tag(element.image, w: 100, h: 60, fit: 'crop', align: "center,center") %>
