@@ -65,13 +65,11 @@ class ListsController < ApplicationController
   end
 
   def index
-    @type = List.indexable_type
-    render 'shared/index'
+    @elements = List.all.sort_by(&:name)
   end
 
   def letter_index
-    @letter = params[:letter]
-    render 'shared/letter_index'
+    @elements = List.get_by_letter(params[:letter])
   end
 
   private

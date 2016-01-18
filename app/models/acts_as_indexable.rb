@@ -13,10 +13,6 @@ module ActsAsIndexable
       def get_by_letter(letter)
         self.where("lower(name) LIKE :prefix", prefix: "#{letter}%")
       end
-
-      def indexable_type
-        self.to_s
-      end
     end
 
   end

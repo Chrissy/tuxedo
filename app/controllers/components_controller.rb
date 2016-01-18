@@ -40,13 +40,11 @@ class ComponentsController < ApplicationController
   end
 
   def index
-    @type = Component.indexable_type
-    render 'shared/index'
+    @elements = Component.all.sort_by(&:name)
   end
 
   def letter_index
-    @letter = params[:letter]
-    render 'shared/letter_index'
+    @elements = Component.get_by_letter(params[:letter])
   end
 
   private
