@@ -1,6 +1,7 @@
 .index-element {
   display: flex;
   width: 30%;
+  margin: 0 1.515%;
   margin-bottom: 2em;
 
   .index-element-image {
@@ -33,5 +34,8 @@
     font-weight: normal;
     font-size: .7em;
     text-transform: uppercase;
+    a:not(:last-child):after { content: ", "}
   }
+
+  .list-element-number { display: none; }
 }

@@ -54,10 +54,14 @@ class RecipesController < ApplicationController
 
   def index
     @elements = Recipe.all.sort_by(&:name)
+    @type = "Recipes"
+    render 'shared/index'
   end
 
   def letter_index
     @elements = Recipe.get_by_letter(params[:letter])
+    @type = "Recipes"
+    render 'shared/letter_index'
   end
 
   private

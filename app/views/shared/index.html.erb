@@ -1,0 +1,10 @@
+<div class="header short">
+  <div class="header-content">
+    <%= index_header_image %>
+    <h1 class="header-title small">Cocktail <%= @type %> Index</h1>
+  </div>
+</div>
+
+<div class="content grid">
+  <%= render partial: 'shared/index_item', collection: @elements, as: :element %>
+</div>
