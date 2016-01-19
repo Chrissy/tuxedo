@@ -3,12 +3,10 @@ require 'recipe.rb'
 class Component < ActiveRecord::Base
   extend FriendlyId
   extend ActsAsMarkdownList::ActsAsMethods
-  extend ActsAsIndexable::ActsAsMethods
 
   friendly_id :custom_name, use: :slugged
 
   acts_as_markdown_list :list_as_markdown
-  acts_as_indexable
 
   serialize :recipe_ids, Array
   has_many :pseudonyms, as: :pseudonymable, dependent: :destroy
@@ -99,5 +97,13 @@ class Component < ActiveRecord::Base
 
   def link
     "<a href='#{url}' class='component'>#{name}</a>"
+  end
+
+  def self.all_for_display
+    all(order: "lower(name)")
+  end
+
+  def self.get_by_letter(letter)
+    all(conditions: "lower(name) LIKE '#{letter}%'")
   end
 end

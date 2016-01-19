@@ -4,13 +4,11 @@ require 'custom_markdown.rb'
 class Recipe < ActiveRecord::Base
   extend FriendlyId
   extend ActsAsMarkdownList::ActsAsMethods
-  extend ActsAsIndexable::ActsAsMethods
 
   friendly_id :custom_name, use: :slugged
   serialize :recommends, Array
 
   acts_as_markdown_list :recipe
-  acts_as_indexable
 
   def markdown_renderer
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
@@ -70,6 +68,14 @@ class Recipe < ActiveRecord::Base
     List.find(1).elements.keep_if{|x|x.is_a?(Recipe)}.reverse.each_with_index do |recipe, x|
       recipe.update_attribute(:created_at, time + x)
     end
+  end
+
+  def self.all_for_display
+    all(conditions: {published: true}, order: "lower(name)")
+  end
+
+  def self.get_by_letter(letter)
+    all(conditions: "lower(name) LIKE '#{letter}%' AND published = 't'")
   end
 
   def store_recommends

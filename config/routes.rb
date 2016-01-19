@@ -5,6 +5,7 @@ Tuxno2::Application.routes.draw do
 
   get 'admin' => 'lists#admin'
   get 'about' => 'lists#about'
+  get 'index' => 'lists#full_index'
 
   get 'ingredients/all' => 'components#all'
   get 'ingredients/new' => 'components#new'

@@ -5,12 +5,10 @@ require 'custom_markdown.rb'
 class List < ActiveRecord::Base
   extend FriendlyId
   extend ActsAsMarkdownList::ActsAsMethods
-  extend ActsAsIndexable::ActsAsMethods
 
   friendly_id :custom_name, use: :slugged
 
   acts_as_markdown_list :content_as_markdown
-  acts_as_indexable
 
   def elements
     list_elements
@@ -33,7 +31,11 @@ class List < ActiveRecord::Base
   end
 
   def self.all_for_display
-    List.all.keep_if { |list| list.component.nil? }
+    all(conditions: "component IS NULL", order: "lower(name)")
+  end
+
+  def self.get_by_letter(letter)
+    all(conditions: "lower(name) LIKE '#{letter}%' AND component IS NULL")
   end
 
   def tagline
