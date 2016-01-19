@@ -15,17 +15,18 @@
     float: left;
     margin-right: 3.33333%;
   }
-  .admin_create_link {
-    @extend .subtle_button;
-    position: relative;
-    top: -4px;
-  }
   .admin_element { @extend .list_element_small; }
   .admin_element_label { margin-bottom: 0px; }
   .component_admin_element {
     .admin_element_name { display: inline; }
     img { display: none; }
   }
+}
+
+.admin_create_link {
+  @extend .subtle_button;
+  position: relative;
+  top: -4px;
 }
 
 .logout-button {

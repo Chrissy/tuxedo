@@ -55,9 +55,11 @@ class ListsController < ApplicationController
   end
 
   def admin
-    @recipes = Recipe.all.sort_by(&:name)
-    @components = Component.all.sort_by(&:name)
-    @lists = List.all_for_display.sort_by(&:name)
+    @elements = {
+      "Recipes" => Recipe.all.sort_by(&:name),
+      "Components" => Component.all.sort_by(&:name),
+      "Lists" => List.all_for_display
+    }
   end
 
   def about
