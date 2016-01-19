@@ -6,5 +6,8 @@
 </div>
 
 <div class="content grid">
-  <%= render partial: 'shared/index_item', collection: @elements, as: :element %>
+  <% @elements_grouped_by_letter.each do |letter, elements| %>
+    <h1 class="index-letter-label"><%= letter %></h1>
+    <%= render partial: 'shared/index_item', collection: elements, as: :element if elements %>
+  <% end %>
 </div>

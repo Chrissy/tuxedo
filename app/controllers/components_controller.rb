@@ -40,7 +40,7 @@ class ComponentsController < ApplicationController
   end
 
   def index
-    @elements = Component.all.sort_by(&:name)
+    @elements_grouped_by_letter = Component.all_grouped_by_letter
     @type = "Ingredients"
     render 'shared/index'
   end
