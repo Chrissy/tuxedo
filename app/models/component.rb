@@ -16,10 +16,6 @@ class Component < ActiveRecord::Base
 
   alias_method :list_elements_from_markdown, :list_elements
 
-  def self.all_for_display
-    all(order: "lower(name)")
-  end
-
   def url
     "/ingredients/#{slug}"
   end
@@ -103,5 +99,13 @@ class Component < ActiveRecord::Base
 
   def link
     "<a href='#{url}' class='component'>#{name}</a>"
+  end
+
+  def self.all_for_display
+    all(order: "lower(name)")
+  end
+
+  def self.get_by_letter(letter)
+    all(conditions: "lower(name) LIKE '#{letter}%'")
   end
 end

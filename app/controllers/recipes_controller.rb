@@ -53,7 +53,7 @@ class RecipesController < ApplicationController
   end
 
   def index
-    @elements_grouped_by_letter = Recipe.all_grouped_by_letter
+    @elements = Recipe.all_for_display
     @type = "Recipes"
     render 'shared/index'
   end

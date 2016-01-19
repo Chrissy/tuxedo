@@ -36,6 +36,10 @@ class List < ActiveRecord::Base
     all(conditions: "component IS NULL", order: "lower(name)")
   end
 
+  def self.get_by_letter(letter)
+    all(conditions: "lower(name) LIKE '#{letter}%' AND component IS NULL")
+  end
+
   def tagline
     "#{name} | Tuxedo no.2"
   end
