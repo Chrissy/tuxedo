@@ -12,9 +12,9 @@ Tuxno2::Application.routes.draw do
   post 'ingredients/update/:id' => 'components#update'
   post 'ingredients/create' => 'components#create'
   get 'ingredients/delete/:id' => 'components#delete'
-  get 'ingredients/:letter' => 'components#letter_index'
-  get 'ingredients' => 'components#index'
   get 'ingredients/:id' => 'components#show'
+  get 'ingredients-index/:letter' => 'components#letter_index'
+  get 'ingredients' => 'components#index'
 
   get 'list/new' => 'lists#new'
   get 'list/all' => 'lists#all'
