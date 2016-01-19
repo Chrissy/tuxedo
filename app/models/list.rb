@@ -5,12 +5,10 @@ require 'custom_markdown.rb'
 class List < ActiveRecord::Base
   extend FriendlyId
   extend ActsAsMarkdownList::ActsAsMethods
-  extend ActsAsIndexable::ActsAsMethods
 
   friendly_id :custom_name, use: :slugged
 
   acts_as_markdown_list :content_as_markdown
-  acts_as_indexable
 
   def elements
     list_elements

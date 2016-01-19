@@ -4,13 +4,11 @@ require 'custom_markdown.rb'
 class Recipe < ActiveRecord::Base
   extend FriendlyId
   extend ActsAsMarkdownList::ActsAsMethods
-  extend ActsAsIndexable::ActsAsMethods
 
   friendly_id :custom_name, use: :slugged
   serialize :recommends, Array
 
   acts_as_markdown_list :recipe
-  acts_as_indexable
 
   def markdown_renderer
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
