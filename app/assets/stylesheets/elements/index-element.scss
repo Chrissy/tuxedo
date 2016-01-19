@@ -9,6 +9,8 @@
     height: 50px;
     overflow: hidden;
     border-radius: 50%;
+    min-width: 50px;
+    min-height: 50px;
   }
 
   .index-element-text {
@@ -38,4 +40,12 @@
   }
 
   .list-element-number { display: none; }
+}
+
+@media (max-width: 900px) {
+  .index-element { width: 46%; }
+}
+
+@media (max-width: 600px) {
+  .index-element { width: 98%; }
 }
