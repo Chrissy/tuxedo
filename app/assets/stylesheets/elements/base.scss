@@ -10,13 +10,13 @@ $link-color: #8B5300;
 }
 
 ul, li { list-style-type: none; padding: 0; margin: 0; }
-a { 
+a {
   text-decoration: none;
   color: #444;
 }
 p a, li a {
   color: $link-color;
-  &:hover { color: saturate($link-color, 25%); } 
+  &:hover { color: saturate($link-color, 25%); }
 }
 
 html, body { height: 100%; }
@@ -33,4 +33,4 @@ body {
 }
 .hidden { display: none; }
 
-.content, .primary { @include pie-clearfix; }
+.primary { @include pie-clearfix; }

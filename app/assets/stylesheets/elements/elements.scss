@@ -112,13 +112,6 @@
   }
 }
 
-.content, .recommends {
-  @extend %centered-content-box;
-  min-height: 200px;
-  padding-bottom: 50px;
-  .global-header + & { top: 80px; }
-}
-
 .authenticate {
   display: none;
   html[logged-in="true"] & { display: block; }

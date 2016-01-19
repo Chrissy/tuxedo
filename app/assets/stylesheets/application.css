@@ -17,6 +17,8 @@
  *= require elements/forms.scss
  *= require elements/helpers.scss
  *= require elements/element-image.scss
+ *= require elements/index-element.scss
+ *= require elements/content.scss
 
  *= require widgets/list.scss
  *= require widgets/recipe.scss
