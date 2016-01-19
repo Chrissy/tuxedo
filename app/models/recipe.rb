@@ -12,6 +12,10 @@ class Recipe < ActiveRecord::Base
   acts_as_markdown_list :recipe
   acts_as_indexable
 
+  def self.all_for_display
+    all(conditions: {published: true}, order: "lower(name)")
+  end
+
   def markdown_renderer
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
   end

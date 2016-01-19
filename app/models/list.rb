@@ -33,7 +33,7 @@ class List < ActiveRecord::Base
   end
 
   def self.all_for_display
-    List.all.keep_if { |list| list.component.nil? }
+    all(conditions: "component IS NULL", order: "lower(name)")
   end
 
   def tagline

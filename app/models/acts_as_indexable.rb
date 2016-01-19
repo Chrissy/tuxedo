@@ -11,7 +11,7 @@ module ActsAsIndexable
       end
 
       def all_grouped_by_letter
-        self.find(:all, :order => "name ASC").group_by { |element| element.name[0].upcase }
+        self.all_for_display.group_by { |element| element.name[0].upcase }
       end
     end
 

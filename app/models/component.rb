@@ -16,6 +16,10 @@ class Component < ActiveRecord::Base
 
   alias_method :list_elements_from_markdown, :list_elements
 
+  def self.all_for_display
+    all(order: "lower(name)")
+  end
+
   def url
     "/ingredients/#{slug}"
   end

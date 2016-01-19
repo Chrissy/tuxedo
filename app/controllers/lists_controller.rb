@@ -77,7 +77,7 @@ class ListsController < ApplicationController
   end
 
   def full_index
-    @elements_grouped_by_letter = List.all.concat(Recipe.all).concat(Component.all).sort_by(&:name).group_by { |element| element.name[0].upcase }
+    @elements_grouped_by_letter = List.all_for_display.concat(Recipe.all_for_display).concat(Component.all_for_display).sort_by(&:name).group_by { |element| element.name[0].upcase }
     @type = "Full"
     render 'shared/index'
   end
