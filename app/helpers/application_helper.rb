@@ -66,8 +66,8 @@ module ApplicationHelper
 
   def index_image(element)
     opts = {
-      w: 100,
-      h: 60,
+      w: 50,
+      h: 50,
       fit: 'crop',
       cache: true
     }
@@ -77,6 +77,10 @@ module ApplicationHelper
                         class: "element-image small",
                         alt: "#{element.name} cocktail photo",
                         :"data-resize" => "2")
+  end
+
+  def index_header_image
+    image_tag 'index-image.png', class: "header-image", alt: "cocktail index image"
   end
 
   def pinnable_image_url(element)
