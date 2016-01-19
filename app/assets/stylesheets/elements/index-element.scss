@@ -1,18 +1,37 @@
 .index-element {
   display: flex;
   width: 30%;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
+
+  .index-element-image {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
 
   .index-element-text {
     flex-grow: 1;
-    margin-left: .5em;
+    margin-right: .5em;
   }
 
   .index-element-name {
     font-size: 1.25em;
     border-bottom: 1px dotted #aaa;
-    padding-bottom: .2em;
+    padding-bottom: .3em;
     display: block;
     line-height: 1;
+    font-weight: bold;
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  .subtext {
+    padding: .5em 0 0 0;
+    margin: 0;
+    font-weight: normal;
+    font-size: .7em;
+    text-transform: uppercase;
   }
 }

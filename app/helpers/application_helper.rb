@@ -66,8 +66,8 @@ module ApplicationHelper
 
   def index_image(element)
     opts = {
-      w: 100,
-      h: 60,
+      w: 50,
+      h: 50,
       fit: 'crop',
       cache: true
     }

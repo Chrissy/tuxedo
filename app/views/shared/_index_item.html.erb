@@ -1,17 +1,18 @@
 <% show_admin_controls ||= false %>
 
 <div class="index-element <%= index_item_class_name(element) %>">
-  <div class="index-element-image">
-    <%= link_to element.url do %>
-      <%= index_image(element) %>
-    <% end %>
-  </div>
   <div class="index-element-text">
     <%= link_to element.name, element.url, :class => "index-element-name" %>
+    <%= render element.subtext, :element => element if element.subtext.present? %>
     <% if user_signed_in? && show_admin_controls %>
       <%= link_to "edit", element.edit_url %> |
       <%= link_to "delete", delete_link(element) %>
       <%= publish_status(element) %>
+    <% end %>
+  </div>
+  <div class="index-element-image">
+    <%= link_to element.url do %>
+      <%= index_image(element) %>
     <% end %>
   </div>
 </div>
