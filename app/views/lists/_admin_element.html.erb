@@ -1,9 +1,0 @@
-<div class="admin_widget">
-  <h1 class="admin_element_label">
-    <%= name_for_display(elements.first) %>
-    <%= link_to "create", new_link(elements.first), :class => "admin_create_link" %>
-  </h1>
-  <table class="recipe_admin">
-    <%= render partial: 'shared/index_item', collection: elements, as: :element %>
-  </table>
-</div>

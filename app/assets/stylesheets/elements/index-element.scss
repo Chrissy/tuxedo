@@ -36,11 +36,14 @@
     font-weight: normal;
     font-size: .7em;
     text-transform: uppercase;
+    min-height: 3em;
     a:not(:last-child):after { content: ", "}
   }
 
   .list-element-number { display: none; }
 }
+
+.admin-controls { margin-top: .25em; }
 
 @media (max-width: 900px) {
   .index-element { width: 46%; }
