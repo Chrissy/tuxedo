@@ -5,13 +5,16 @@
   flex-wrap: wrap;
   background-color: #ddd;
   text-align: center;
+  padding: 0 15%;
 }
 
 .index-menu-item {
   padding: .25em .5em;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
+  .index-menu { padding: 0; }
+
   .index-menu-item {
     width: 100%;
     border-bottom: 1px solid #bbb;
