@@ -2,7 +2,7 @@ require 'list.rb'
 require 'component.rb'
 
 class RecipesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :search]
+  skip_before_action :authenticate_user!, only: [:show, :search, :index, :letter_index]
   layout "application"
 
   def show

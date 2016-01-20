@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:not_found, :show, :home, :get, :about]
+  skip_before_action :authenticate_user!, only: [:not_found, :show, :home, :get, :about, :index, :letter_index, :full_index]
   layout "application"
 
   def show
