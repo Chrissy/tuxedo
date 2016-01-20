@@ -5,6 +5,8 @@
   </div>
 </div>
 
+<%= render 'shared/index_menu' %>
+
 <div class="content grid">
   <% @elements.group_by { |element| element.name[0].upcase }.each do |letter, elements| %>
     <h1 class="index-letter-label"><%= letter %></h1>

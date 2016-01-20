@@ -1,0 +1,19 @@
+.index-menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: #ddd;
+  text-align: center;
+}
+
+.index-menu-item {
+  padding: .25em .5em;
+}
+
+@media (max-width: 600px) {
+  .index-menu-item {
+    width: 100%;
+    border-bottom: 1px solid #bbb;
+  }
+}
