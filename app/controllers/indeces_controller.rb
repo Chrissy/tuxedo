@@ -4,7 +4,6 @@ class IndecesController < ApplicationController
 
   def index
     @elements = List.all_for_display.concat(Recipe.all_for_display).concat(Component.all_for_display).sort_by(&:name)
-    render 'index'
   end
 
   def letter_index
