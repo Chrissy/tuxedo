@@ -41,14 +41,11 @@ class ComponentsController < ApplicationController
 
   def index
     @elements = Component.all_for_display
-    @type = "Ingredients"
-    render 'shared/index'
   end
 
   def letter_index
     @elements = Component.get_by_letter(params[:letter])
-    @type = "Ingredients"
-    render 'shared/letter_index'
+    render 'index'
   end
 
   private

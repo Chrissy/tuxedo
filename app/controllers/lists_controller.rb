@@ -68,20 +68,11 @@ class ListsController < ApplicationController
 
   def index
     @elements = List.all_for_display
-    @type = "Lists"
-    render 'shared/index'
   end
 
   def letter_index
     @elements = List.get_by_letter(params[:letter])
-    @type = "Lists"
-    render 'shared/letter_index'
-  end
-
-  def full_index
-    @elements = List.all_for_display.concat(Recipe.all_for_display).concat(Component.all_for_display).sort_by(&:name)
-    @type = "Full"
-    render 'shared/index'
+    render 'index'
   end
 
   private

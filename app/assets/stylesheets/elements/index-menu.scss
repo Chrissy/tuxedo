@@ -1,22 +1,12 @@
 .index-menu {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
   background-color: #ddd;
   text-align: center;
-  padding: 0 15%;
 }
 
-.index-menu-item {
-  padding: .25em .5em;
-}
+.index-menu-item { padding: .25em .5em; }
 
-@media (max-width: 700px) {
-  .index-menu { padding: 0; }
-
-  .index-menu-item {
-    width: 100%;
-    border-bottom: 1px solid #bbb;
-  }
-}
+.index-menu-item.alphabet { padding: .25em; }
