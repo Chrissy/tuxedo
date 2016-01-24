@@ -1,0 +1,6 @@
+<div class="content grid">
+  <% elements.group_by { |element| element.name[0].upcase }.each do |letter, elements| %>
+    <h1 class="index-letter-label"><%= link_to letter, {:controller => controller, :action => :letter_index, :letter => letter.downcase} %></h1>
+    <%= render partial: 'shared/index_item', collection: elements, as: :element if elements %>
+  <% end %>
+</div>

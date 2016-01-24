@@ -1,0 +1,6 @@
+<div class="index-menu alphabet">
+  <span class="index-menu-item title"><%= title %>:</span>
+  <% ('A'..'Z').each do |letter| %>
+    <%= link_to letter, {:controller => controller, :action => :letter_index, :letter => letter.downcase}, :class => "index-menu-item alphabet" %>
+  <% end %>
+</div>

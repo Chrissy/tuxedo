@@ -19,6 +19,7 @@
  *= require elements/element-image.scss
  *= require elements/index-element.scss
  *= require elements/index-letter-label.scss
+ *= require elements/index-menu.scss
  *= require elements/content.scss
 
  *= require widgets/list.scss

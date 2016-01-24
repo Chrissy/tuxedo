@@ -2,7 +2,7 @@ require 'list.rb'
 require 'component.rb'
 
 class RecipesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :search]
+  skip_before_action :authenticate_user!, only: [:show, :search, :index, :letter_index]
   layout "application"
 
   def show
@@ -54,14 +54,11 @@ class RecipesController < ApplicationController
 
   def index
     @elements = Recipe.all_for_display
-    @type = "Recipes"
-    render 'shared/index'
   end
 
   def letter_index
     @elements = Recipe.get_by_letter(params[:letter])
-    @type = "Recipes"
-    render 'shared/letter_index'
+    render 'index'
   end
 
   private

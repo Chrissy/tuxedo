@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:not_found, :show, :home, :get, :about]
+  skip_before_action :authenticate_user!, only: [:not_found, :show, :home, :get, :about, :index, :letter_index, :full_index]
   layout "application"
 
   def show
@@ -68,20 +68,11 @@ class ListsController < ApplicationController
 
   def index
     @elements = List.all_for_display
-    @type = "Lists"
-    render 'shared/index'
   end
 
   def letter_index
     @elements = List.get_by_letter(params[:letter])
-    @type = "Lists"
-    render 'shared/letter_index'
-  end
-
-  def full_index
-    @elements = List.all_for_display.concat(Recipe.all_for_display).concat(Component.all_for_display).sort_by(&:name)
-    @type = "Full"
-    render 'shared/index'
+    render 'index'
   end
 
   private
