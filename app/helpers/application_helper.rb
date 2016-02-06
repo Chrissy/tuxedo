@@ -122,6 +122,19 @@ module ApplicationHelper
     cache_key(layout_object, "meta")
   end
 
+  def index_cache_key(model)
+    count = model.count
+    max_updated_at = model.maximum(:updated_at).try(:utc).try(:to_s, :number)
+    "#{model.to_s.pluralize.downcase}/index-#{max_updated_at}"
+  end
+
+  def index_letter_cache_key(model, letter)
+    elements = model.get_by_letter(letter.downcase)
+    count = elements.count
+    max_updated_at = elements.max_by(&:updated_at).updated_at.try(:utc).try(:to_s, :number)
+    "#{model.to_s.pluralize.downcase}/index-#{max_updated_at}"
+  end
+
   def site_title
     @layout_object.try(:tagline) || meta_title
   end
