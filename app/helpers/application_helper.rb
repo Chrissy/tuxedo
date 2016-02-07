@@ -121,22 +121,24 @@ module ApplicationHelper
     cache_key(layout_object, "meta")
   end
 
-  def index_cache_key(model)
-    count = model.count
-    max_updated_at = model.all_for_display.max_by(&:updated_at).updated_at.try(:utc).try(:to_s, :number)
-    "#{model.to_s.pluralize.downcase}/index-#{max_updated_at}"
+  def index_key_from_set(elements)
+    if elements.empty?
+      "empty"
+    else
+      elements.max_by(&:updated_at).updated_at.try(:utc).try(:to_s, :number)
+    end
   end
 
-  def index_letter_cache_key(model, letter)
-    elements = model.get_by_letter(letter.downcase)
-    count = elements.count
-    max_updated_at = elements.max_by(&:updated_at).updated_at.try(:utc).try(:to_s, :number)
-    "#{model.to_s.pluralize.downcase}/#{letter}-index-#{max_updated_at}"
+  def index_cache_key(elements, model)
+    "#{model.to_s.pluralize.downcase}/index-#{index_key_from_set(elements)}"
   end
 
-  def global_index_cache_key
-    max_updated_at = List.all_for_display.concat(Recipe.all_for_display).concat(Component.all_for_display).max_by(&:updated_at).updated_at.try(:utc).try(:to_s, :number)
-    "index-#{max_updated_at}"
+  def index_letter_cache_key(elements, model, letter)
+    "#{model.to_s.pluralize.downcase}/#{letter}-index-#{index_key_from_set(elements)}"
+  end
+
+  def global_index_cache_key(elements)
+    "index-#{index_key_from_set(elements)}"
   end
 
   def site_title

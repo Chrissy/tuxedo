@@ -1,4 +1,4 @@
-<% cache(index_cache_key(List)) do %>
+<% cache(index_cache_key(@elements, List)) do %>
   <%= render 'shared/index_header', :title => 'Cocktail Lists Index' %>
   <%= render 'shared/index_menu' %>
   <%= render 'shared/index_body', :controller => :lists, :elements => @elements %>
