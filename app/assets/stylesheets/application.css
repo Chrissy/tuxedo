@@ -21,6 +21,7 @@
  *= require elements/index-letter-label.scss
  *= require elements/index-menu.scss
  *= require elements/content.scss
+ *= require elements/breadcrumbs.scss
 
  *= require widgets/list.scss
  *= require widgets/recipe.scss
