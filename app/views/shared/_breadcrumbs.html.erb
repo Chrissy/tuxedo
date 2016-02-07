@@ -1,9 +1,9 @@
 <div class="index-menu breadcrumbs">
-  <%= link_to "Home", {controller: "lists", action: "home"}, class: "breadcrumbs-crumb" %>
+  <%= link_to "Home", {controller: "lists", action: "home"}, class: "index-menu-item breadcrumbs-crumb" %>
   <span class="breadcrumbs-seperator">></span>
-  <%= link_to element.type_for_display.titleize.pluralize, {controller: element.class.to_s.tableize, action: "index"}, class: "breadcrumbs-crumb" %>
+  <%= link_to element.type_for_display.titleize.pluralize, {controller: element.class.to_s.tableize, action: "index"}, class: "index-menu-item breadcrumbs-crumb" %>
   <span class="breadcrumbs-seperator">></span>
-  <%= link_to element.name[0], {controller: element.class.to_s.tableize, action: "letter_index", letter: element.name[0].downcase}, class: "breadcrumbs-crumb" %>
+  <%= link_to element.name[0].upcase, {controller: element.class.to_s.tableize, action: "letter_index", letter: element.name[0].downcase}, class: "index-menu-item breadcrumbs-crumb" %>
   <span class="breadcrumbs-seperator">></span>
-  <%= link_to element.name, element.url, class: "breadcrumbs-crumb" %>
+  <%= link_to element.name.titleize, element.url, class: "index-menu-item breadcrumbs-crumb" %>
 </div>
