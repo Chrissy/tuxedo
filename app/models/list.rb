@@ -55,7 +55,7 @@ class List < ActiveRecord::Base
   end
 
   def backup_image_url
-    "https://www.filepicker.io/api/file/drOikI0sTqG2xjWn2WSQ/convert?fit=crop&amp;h=861&amp;w=1500&amp"
+    "https://www.filepicker.io/api/file/drOikI0sTqG2xjWn2WSQ"
   end
 
   def image_with_backup

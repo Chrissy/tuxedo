@@ -65,8 +65,8 @@ module ApplicationHelper
 
   def index_image(element)
     opts = {
-      w: 50,
-      h: 50,
+      w: 100,
+      h: 100,
       fit: 'crop',
       cache: true
     }
@@ -74,8 +74,7 @@ module ApplicationHelper
                         element.image_with_backup,
                         opts,
                         class: "element-image small",
-                        alt: "#{element.name} cocktail photo",
-                        :"data-resize" => "2")
+                        alt: "#{element.name} cocktail photo")
   end
 
   def index_header_image
