@@ -22,6 +22,10 @@ class List < ActiveRecord::Base
     name + " cocktail recipes"
   end
 
+  def type_for_display
+    "list"
+  end
+
   def edit_url
     "/list/edit/#{id}"
   end

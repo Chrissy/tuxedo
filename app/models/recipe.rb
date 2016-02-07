@@ -47,6 +47,10 @@ class Recipe < ActiveRecord::Base
     name + " cocktail recipe"
   end
 
+  def type_for_display
+    "recipe"
+  end
+
   def edit_url
     "/edit/#{id}"
   end
