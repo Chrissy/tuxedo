@@ -58,7 +58,6 @@ class RecipesController < ApplicationController
 
   def letter_index
     @elements = Recipe.get_by_letter(params[:letter])
-    render 'index'
   end
 
   private

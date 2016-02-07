@@ -1,0 +1,6 @@
+<% cache(index_letter_cache_key(Component, params[:letter])) do %>
+  <%= render 'shared/index_header', :title => "Cocktail Ingredients Index: #{params[:letter].upcase}" %>
+  <%= render 'shared/index_menu' %>
+  <%= render 'shared/index_body', :controller => :components, :elements => @elements %>
+  <%= render 'shared/index_alphabet_menu', :controller => :components, :title => 'Ingredients A-Z' %>
+<% end %>

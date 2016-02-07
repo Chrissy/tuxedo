@@ -72,7 +72,6 @@ class ListsController < ApplicationController
 
   def letter_index
     @elements = List.get_by_letter(params[:letter])
-    render 'index'
   end
 
   private
