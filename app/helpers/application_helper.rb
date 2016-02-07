@@ -132,7 +132,12 @@ module ApplicationHelper
     elements = model.get_by_letter(letter.downcase)
     count = elements.count
     max_updated_at = elements.max_by(&:updated_at).updated_at.try(:utc).try(:to_s, :number)
-    "#{model.to_s.pluralize.downcase}/index-#{max_updated_at}"
+    "#{model.to_s.pluralize.downcase}/#{letter}-index-#{max_updated_at}"
+  end
+
+  def global_index_cache_key
+    max_updated_at = List.all_for_display.concat(Recipe.all_for_display).concat(Component.all_for_display).max_by(&:updated_at).updated_at.try(:utc).try(:to_s, :number)
+    "index-#{max_updated_at}"
   end
 
   def site_title
