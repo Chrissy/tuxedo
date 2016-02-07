@@ -45,7 +45,6 @@ class ComponentsController < ApplicationController
 
   def letter_index
     @elements = Component.get_by_letter(params[:letter])
-    render 'index'
   end
 
   private

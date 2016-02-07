@@ -65,8 +65,8 @@ module ApplicationHelper
 
   def index_image(element)
     opts = {
-      w: 50,
-      h: 50,
+      w: 100,
+      h: 100,
       fit: 'crop',
       cache: true
     }
@@ -74,8 +74,7 @@ module ApplicationHelper
                         element.image_with_backup,
                         opts,
                         class: "element-image small",
-                        alt: "#{element.name} cocktail photo",
-                        :"data-resize" => "2")
+                        alt: "#{element.name} cocktail photo")
   end
 
   def index_header_image
@@ -120,6 +119,24 @@ module ApplicationHelper
   def meta_cache_key
     layout_object = @layout_object.present? ? @layout_object : List.find(1)
     cache_key(layout_object, "meta")
+  end
+
+  def index_cache_key(model)
+    count = model.count
+    max_updated_at = model.all_for_display.max_by(&:updated_at).updated_at.try(:utc).try(:to_s, :number)
+    "#{model.to_s.pluralize.downcase}/index-#{max_updated_at}"
+  end
+
+  def index_letter_cache_key(model, letter)
+    elements = model.get_by_letter(letter.downcase)
+    count = elements.count
+    max_updated_at = elements.max_by(&:updated_at).updated_at.try(:utc).try(:to_s, :number)
+    "#{model.to_s.pluralize.downcase}/#{letter}-index-#{max_updated_at}"
+  end
+
+  def global_index_cache_key
+    max_updated_at = List.all_for_display.concat(Recipe.all_for_display).concat(Component.all_for_display).max_by(&:updated_at).updated_at.try(:utc).try(:to_s, :number)
+    "index-#{max_updated_at}"
   end
 
   def site_title
