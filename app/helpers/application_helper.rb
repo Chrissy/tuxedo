@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def application_domain
+    "http://tuxedono2.com"
+  end
+
   def delete_link(object)
     url_for controller: object.class.to_s.pluralize.downcase, action: "delete", id: object.id
   end
