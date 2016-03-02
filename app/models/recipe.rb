@@ -105,6 +105,9 @@ class Recipe < ActiveRecord::Base
   def convert_fractions(str)
    str.gsub(/\d+.(\d+)/) do |match|
      case match
+     when "2.75" then '2¾'
+     when "2.5" then '2½'
+     when "2.25" then '2¼'
      when "1.75" then '1¾'
      when "1.5" then '1½'
      when "1.25" then '1¼'
