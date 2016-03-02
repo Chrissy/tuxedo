@@ -20,8 +20,8 @@
     "@type": "ListItem",
     "position": 3,
     "item": {
-      "@id": "/recipes/a",
-      "name": "A"
+      "@id": "<%= url_for controller: element.class.to_s.tableize, action: 'letter_index', letter: element.name[0].downcase, :only_path => false %>",
+      "name": "<%= element.name[0].upcase %>"
     }
   },{
     "@type": "ListItem",
