@@ -28,7 +28,7 @@
   <span class="breadcrumbs-seperator">></span>
 
   <li property="itemListElement" typeof="ListItem">
-    <%= link_to element.url, only_path: false, html: {class: "index-menu-item breadcrumbs-crumb", property: "item", typeof: "WebPage"} do %>
+    <%= link_to(root_url + element.url[1..-1], {class: "index-menu-item breadcrumbs-crumb", property: "item", typeof: "WebPage"}) do %>
       <span property="name"><%= element.name.titleize %></span>
       <meta property="position" content="4">
     <% end %>
