@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html data-share-alert="<%= cookies[:visit_count] %>" logged-in="<%= user_signed_in?.to_s %>" class="<%= 'win' if windows? %>">
-  <head>
-    <title><%= site_title %></title>
+  <head itemscope itemtype="http://schema.org/WebSite">
+    <title itemprop='name'><%= site_title %></title>
+    <link rel="canonical" href="http://tuxedono2.com" itemprop="url">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= filepicker_js_include_tag %>

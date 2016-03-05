@@ -91,7 +91,7 @@ class Recipe < ActiveRecord::Base
   handle_asynchronously :store_recommends
 
   def tagline
-    "#{name} Cocktail | Tuxedo no.2"
+    "#{name} Cocktail | Tuxedo No.2"
   end
 
   def subtext
