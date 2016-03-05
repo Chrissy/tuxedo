@@ -1,2 +1,6 @@
-<%= render 'shared/index_alphabet_menu', :controller => :lists, :title => 'Cocktail Lists A-Z' %>
-<%= render 'shared/breadcrumbs', :element => list %>
+<% if list.home? %>
+  <%= render 'shared/index_alphabet_menu', :controller => :recipes, :title => 'Cocktails A-Z' %>
+<% else %>
+  <%= render 'shared/index_alphabet_menu', :controller => :lists, :title => 'Cocktail Lists A-Z' %>
+  <%= render 'shared/breadcrumbs', :element => list %>
+<% end %>
