@@ -34,6 +34,10 @@ class Component < ActiveRecord::Base
     name + " cocktail recipes"
   end
 
+  def type_for_display
+    "ingredient"
+  end
+
   def edit_url
     "/ingredients/edit/#{id}"
   end

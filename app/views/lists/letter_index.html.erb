@@ -3,4 +3,5 @@
   <%= render 'shared/index_menu' %>
   <%= render 'shared/index_body', :controller => :lists, :elements => @elements %>
   <%= render 'shared/index_alphabet_menu', :controller => :lists, :title => 'Lists A-Z' %>
+  <%= render 'shared/breadcrumbs_for_letter', :element => List.new, :letter => params[:letter] %>
 <% end %>

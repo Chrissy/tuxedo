@@ -1,3 +1,6 @@
-<h1 class="site-footer">
-  <%= link_to "Tuxedo No2 – ", "/" %> how to make classic and modern drinks | <%= all_recipes_link %>
-</h1>
+<% if list.home? %>
+  <%= render 'shared/index_alphabet_menu', :controller => :recipes, :title => 'Cocktails A-Z' %>
+<% else %>
+  <%= render 'shared/index_alphabet_menu', :controller => :lists, :title => 'Cocktail Lists A-Z' %>
+  <%= render 'shared/breadcrumbs', :element => list %>
+<% end %>

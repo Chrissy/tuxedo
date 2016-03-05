@@ -3,8 +3,10 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  background-color: #ddd;
+  background-color: white;
   text-align: center;
+
+  li { display: inline-flex; }
 }
 
 .index-menu-item { padding: .25em .5em; }

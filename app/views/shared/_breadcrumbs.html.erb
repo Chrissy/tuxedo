@@ -1,0 +1,36 @@
+<ul class="index-menu breadcrumbs" vocab="http://schema.org/" typeof="BreadcrumbList">
+
+  <li property="itemListElement" typeof="ListItem">
+    <%= link_to root_url, class: "index-menu-item breadcrumbs-crumb", property: "item", typeof: "WebPage" do %>
+      <span property="name">Home</span>
+      <meta property="position" content="1">
+    <% end %>
+  </li>
+
+  <span class="breadcrumbs-seperator">></span>
+
+  <li property="itemListElement" typeof="ListItem">
+    <%= link_to({controller: element.class.to_s.tableize, action: "index", only_path: false}, {class: "index-menu-item breadcrumbs-crumb", property: "item", typeof: "WebPage"}) do %>
+      <span property="name"><%= element.type_for_display.titleize.pluralize %></span>
+      <meta property="position" content="2">
+    <% end %>
+  </li>
+
+  <span class="breadcrumbs-seperator">></span>
+
+  <li property="itemListElement" typeof="ListItem">
+    <%= link_to({controller: element.class.to_s.tableize, action: "letter_index", letter: element.name[0].downcase, only_path: false}, {class: "index-menu-item breadcrumbs-crumb", property: "item", typeof: "WebPage"}) do %>
+      <span property="name"><%= element.name[0].upcase %></span>
+      <meta property="position" content="3">
+    <% end %>
+  </li>
+
+  <span class="breadcrumbs-seperator">></span>
+
+  <li property="itemListElement" typeof="ListItem">
+    <%= link_to(root_url + element.url[1..-1], {class: "index-menu-item breadcrumbs-crumb", property: "item", typeof: "WebPage"}) do %>
+      <span property="name"><%= element.name.titleize %></span>
+      <meta property="position" content="4">
+    <% end %>
+  </li>
+</ul>
