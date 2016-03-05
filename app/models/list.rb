@@ -43,7 +43,11 @@ class List < ActiveRecord::Base
   end
 
   def tagline
-    "#{name} | Tuxedo no.2"
+    if home?
+      "Tuxedo No.2"
+    else
+      "#{name} | Tuxedo No.2"
+    end
   end
 
   def subtext

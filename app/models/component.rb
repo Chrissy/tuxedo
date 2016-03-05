@@ -61,7 +61,7 @@ class Component < ActiveRecord::Base
   end
 
   def tagline
-    "#{name.titleize} Cocktail Recipes | Tuxedo no.2"
+    "#{name.titleize} Cocktail Recipes | Tuxedo No.2"
   end
 
   def subtext
