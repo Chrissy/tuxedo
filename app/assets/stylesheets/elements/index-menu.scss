@@ -5,6 +5,8 @@
   flex-wrap: wrap;
   background-color: white;
   text-align: center;
+
+  li { display: inline-flex; }
 }
 
 .index-menu-item { padding: .25em .5em; }
