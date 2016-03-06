@@ -1,10 +1,10 @@
 <% list_elements.try(:each_with_index) do |element, index| %>
-  <li class='list-element <%= "never-make-me-tall" if element.try(:never_make_me_tall) %>'>
+  <li class='list-element <%= "never-make-me-tall" if element.try(:never_make_me_tall) %>' itemprop="itemListElement" itemscope itemtype="http://schema.org/Recipe">
     <%= link_to element.url, class: "list-image-wrapper" do %>
       <%= list_image(element) %>
     <% end %>
     <div class="list-details">
-      <h3><%= link_to swash(element.name), element.url %></h3>
+      <h3 itemprop="name"><%= link_to swash(element.name), element.url %></h3>
       <%= render element.subtext, :element => element if element.subtext.present? %>
     </div>
   </li>
