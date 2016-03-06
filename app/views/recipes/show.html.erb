@@ -1,16 +1,18 @@
 <% cache(cache_key(@recipe, "show")) do %>
-  <div class="header recipe">
-    <%= render "shared/header", :element => @recipe %> 
-  </div>
-
-  <div class="content recipe">
-    <div class="aside">
-      <%= @recipe.recipe_as_html %>
+  <div itemscope itemtype="http://schema.org/Recipe">
+    <div class="header recipe">
+      <%= render "shared/header", :element => @recipe %>
     </div>
-    <div class="primary" itemprop="description">
-      <%= @recipe.description_to_html %>
-    </div>
-  </div>
 
-  <%= render 'footer', :recipe => @recipe %>
+    <div class="content recipe">
+      <div class="aside">
+        <%= @recipe.recipe_as_html %>
+      </div>
+      <div class="primary" itemprop="description">
+        <%= @recipe.description_to_html %>
+      </div>
+    </div>
+
+    <%= render 'footer', :recipe => @recipe %>
+  </div>
 <% end %>
