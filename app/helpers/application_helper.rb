@@ -93,6 +93,16 @@ module ApplicationHelper
     filepicker_image_url(element.try(:image_with_backup), opts)
   end
 
+  def landscape_social_image_url(element)
+    opts = {
+      w: 600,
+      h: 400,
+      fit: 'crop',
+      cache: 'true'
+    }
+    filepicker_image_url(element.try(:image_with_backup), opts)
+  end
+
   def pin_url(element)
     request.protocol + request.host_with_port + element.url
   end
@@ -165,6 +175,10 @@ module ApplicationHelper
 
   def meta_image
     pinnable_image_url(@layout_object)
+  end
+
+  def twitter_image
+    landscape_social_image_url(@layout_object)
   end
 
   def similar_recipes_link(recipe)
