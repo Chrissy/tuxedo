@@ -58,6 +58,7 @@ module ApplicationHelper
                         opts,
                         alt: "#{element.name} cocktail photo",
                         :"data-resize" => "3",
+                        :itemprop => "image",
                         :"data-pin-media" => pinnable_image_url(element),
                         :"data-pin-url" => pin_url(element),
                         :"data-pin-description" => element.name)
@@ -74,7 +75,8 @@ module ApplicationHelper
                         element.image_with_backup,
                         opts,
                         class: "element-image small",
-                        alt: "#{element.name} cocktail photo")
+                        alt: "#{element.name} cocktail photo",
+                        itemprop: "image")
   end
 
   def index_header_image

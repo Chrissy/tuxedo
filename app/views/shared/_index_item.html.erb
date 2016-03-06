@@ -1,8 +1,8 @@
 <% show_admin_controls ||= false %>
 
-<div class="index-element <%= index_item_class_name(element) %>">
+<div class="index-element <%= index_item_class_name(element) %>" itemprop="itemListElement" itemscope itemtype="http://schema.org/Recipe">
   <div class="index-element-text">
-    <%= link_to element.name, element.url, :class => "index-element-name" %>
+    <%= link_to element.name, element.url, :class => "index-element-name", :itemprop => "name" %>
     <% if user_signed_in? && show_admin_controls %>
       <div class="admin-controls">
         <%= link_to "edit", element.edit_url %> |
