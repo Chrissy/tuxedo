@@ -14,10 +14,10 @@ $image-resize: 10%;
 .list-element {
   height: auto;
   position: relative;
-  h3 { 
+  h3 {
     @extend %swash;
     text-align: center;
-    line-height: 110%; 
+    line-height: 110%;
     margin: 8px 0 5px 0;
     font-size: 21px;
   }
@@ -29,8 +29,8 @@ $image-resize: 10%;
     border: 6px solid white;
     background: black;
   }
-  img { 
-    display: block; 
+  img {
+    display: block;
     margin: 0 auto;
     width: 100%;
     position: relative;
@@ -45,10 +45,10 @@ $image-resize: 10%;
     margin: 0 0 8px 0;
     padding-top: 3px;
     position: relative;
-    a { 
-      color: #666; 
+    a {
+      color: #666;
       &:after { content: ", "; }
-      &:last-child:after { content: ""; } 
+      &:last-child:after { content: ""; }
     }
     &:after {
       @extend %horizontal_stripes;
@@ -59,7 +59,7 @@ $image-resize: 10%;
       left: 10%;
       display: block;
       position: absolute;
-    } 
+    }
   }
   .list-element-number {
     float: left;
@@ -76,17 +76,17 @@ $image-resize: 10%;
 }
 
 .list_element_small {
-  img { 
+  img {
     max-width: 100px;
     min-height: 60px;
     background: black;
     margin-right: 10px;
-    text-indent: -9999px; 
+    text-indent: -9999px;
   }
-  .admin_element_name { 
+  .admin_element_name {
     font-weight: bold;
     display: block;
-    border-bottom: 1px solid #bbb; 
+    border-bottom: 1px solid #bbb;
   }
 }
 
@@ -104,8 +104,8 @@ $image-resize: 10%;
   }
   .display-number { @extend .large; }
   .list-element-number {
-    display: block; 
-    top: 208px; 
+    display: block;
+    top: 208px;
   }
 }
 
@@ -114,16 +114,14 @@ $image-resize: 10%;
 .list-element .saveur-meme-link {
   img {
     width: 150px;
-    top: 16px;  
-  }  
+    top: 16px;
+  }
 }
 
 @media (min-width: 1275px) {
   .content.list, .content.component { width: 1254px; }
   .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall) {
-    &:nth-of-type(1), &:nth-of-type(6), &:nth-of-type(12), &:nth-of-type(17),
-    &:nth-of-type(21), &:nth-of-type(26), &:nth-of-type(32), &:nth-of-type(37), 
-    &:nth-of-type(41), &:nth-of-type(46) {
+    &:nth-of-type(20n+1), &:nth-of-type(20n+6), &:nth-of-type(20n+12), &:nth-of-type(20n+17) {
       @include expanded-list-element;
       & + span + li + span + li + span + li + span { display: block; }
     }
@@ -132,9 +130,7 @@ $image-resize: 10%;
 
 @media (max-width: 1275px) and (min-width: 950px) {
   .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall) {
-    &:nth-of-type(1), &:nth-of-type(8), &:nth-of-type(12), &:nth-of-type(16),
-    &:nth-of-type(22), &:nth-of-type(28), &:nth-of-type(31), &:nth-of-type(38), 
-    &:nth-of-type(42), &:nth-of-type(46) {
+    &:nth-of-type(21n+1), &:nth-of-type(21n+5), &:nth-of-type(21n+9), &:nth-of-type(21n+13), &:nth-of-type(21n+19) {
       @include expanded-list-element;
       & + span + li + span + li + span { display: block; }
     }
@@ -152,13 +148,13 @@ $image-resize: 10%;
 }
 
 @media (max-width: 650px) {
-  .content.list, .content.component, .recommends { 
+  .content.list, .content.component, .recommends {
     width: 90%;
-    max-width: 500px 
+    max-width: 500px
   }
-  .list-element, .list-element .list-image-wrapper { 
+  .list-element, .list-element .list-image-wrapper {
     width: 100%;
-    height: auto; 
+    height: auto;
   }
   .list-element .saveur-meme-link {
     height: 264px;
@@ -166,6 +162,6 @@ $image-resize: 10%;
       width: 200px;
       top: 15px;
       top: 24px;
-    } 
+    }
   }
 }
