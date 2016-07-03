@@ -82,13 +82,15 @@ class Recipe < ActiveRecord::Base
     all(conditions: "lower(name) LIKE '#{letter}%' AND published = 't'")
   end
 
-  def store_recommends
-    recs = (components.first.list_elements.keep_if(&:published?) - [self]).sort_by{ |recipe|
-      (components & recipe.components).length
-    }.reverse.first(3)
-    update_attribute(:recommends, recs)
+  def new_recommends
+    return unless components
+
+    other_recipes = (components.first.list_elements.keep_if(&:published?) - [self])
+    other_recipes.sort_by!{ |recipe| (components & recipe.components).length }
+    other_recipes.reverse!.first(3)
   end
-  handle_asynchronously :store_recommends
+
+  alias_method :recommends, :new_recommends
 
   def tagline
     "#{name} Cocktail | Tuxedo No.2"
