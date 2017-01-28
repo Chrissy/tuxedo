@@ -1,22 +1,42 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
-// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
-// about supported directives.
-//
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require jquery.caret.js
-//= require jquery.atwho.min.js
-//= require typeahead.bundle.js
-//= require classes/image
-//= require classes/form
-//= require classes/search
-//= require events/events
+import $ from 'jquery';
+import Search from './classes/search.js';
+import Image from './classes/image.js';
+import Form from './classes/form.js';
+
+$(() => {
+  const search = new Search('.search');
+  const forms = [];
+
+  $('.autocomplete').each(function() {
+    let form = new Form(this);
+    window.forms.push(form);
+  });
+
+  $("[data-resize]").each(function() {
+    let img = new Image($(this));
+    img.upscale();
+  });
+
+  $("[bubble-on-focus]").not("focused").focus(function() {
+    const $target = $(this).closest($(this).attr("bubble-on-focus"));
+    $target.addClass("focused");
+    $(this).blur(() => $target.removeClass("focused"));
+  });
+
+  $(".clear_image").on("click", function() {
+    $(this).addClass("cleared").parent().find('[type="filepicker"]').attr("value", "");
+    return false;
+  });
+
+  $(".show-extra-options").on("click", function() {
+    $(this).siblings(".extra-options").toggle();
+  });
+
+  $("div[href]").on("click", function() {
+    window.location = $(this).attr("href");
+  });
+
+  const toggleSocialPrompt = () => $(".social-prompt").toggleClass("active");
+  window.setTimeout(toggleSocialPrompt, 1000);
+  window.setTimeout(toggleSocialPrompt, 4000);
+});
