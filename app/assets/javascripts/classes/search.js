@@ -1,38 +1,24 @@
 import $ from 'jquery';
-import Bloodhound from 'bloodhound-js';
-import Typeahead from 'typeahead';
+import Awesomplete from 'awesomplete';
 
 export default class Search {
   constructor(input) {
     const self = this;
     this.input = $(input);
     this.get().then((data) => {
-      self.build_bloodhound(data);
-      self.bloodhound.initialize();
-      self.build_typeahead();
-
+      self.build_autocomplete(data);
       //self.listenForSelect();
     });
   }
 
-  build_bloodhound(data) {
-    this.bloodhound = new Bloodhound({
-      name: 'recipes',
-      local: data,
-      datumTokenizer: Bloodhound.tokenizers.whitespace,
-      queryTokenizer: Bloodhound.tokenizers.whitespace
-    });
-  }
-
-  build_typeahead(bloodhound_instance) {
-    this.typeahead = Typeahead(this.input[0], {
-      source: this.bloodhound.ttAdapter(),
-      highlight: false,
-      hint: false,
-      minLength: 2,
-      name: 'recipes',
-      displayKey: 'val',
-    });
+  build_autocomplete(data) {
+    const options = {
+      list: data,
+      autofirst: true,
+      filter: Awesomplete.FILTER_STARTSWITH,
+      minChars: 1
+    };
+    this.autocomplete = new Awesomplete(this.input[0], options);
   }
 
   get() {
