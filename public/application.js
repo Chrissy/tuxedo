@@ -232,10 +232,10 @@ var Search = function () {
     (0, _classCallCheck3.default)(this, Search);
 
     var self = this;
-    this.input = (0, _jquery2.default)(input);
+    this.input = document.querySelector(input);
     this.get().then(function (data) {
       self.build_autocomplete(data);
-      //self.listenForSelect();
+      self.listenForSelect();
     });
   }
 
@@ -248,22 +248,21 @@ var Search = function () {
         filter: _awesomplete2.default.FILTER_STARTSWITH,
         minChars: 1
       };
-      this.autocomplete = new _awesomplete2.default(this.input[0], options);
+      this.autocomplete = new _awesomplete2.default(this.input, options);
     }
   }, {
     key: 'get',
     value: function get() {
       return _jquery2.default.get("/search.json").then(function (data) {
-        return data.map(function (d) {
-          return d.val;
-        });
+        return data;
       });
     }
   }, {
     key: 'listenForSelect',
     value: function listenForSelect() {
-      this.input.on("typeahead:selected", function (event, object, name) {
-        window.location = object.url;
+      this.input.addEventListener("awesomplete-select", function (event) {
+        event.preventDefault();
+        window.location = event.text.value;
       });
     }
   }]);
