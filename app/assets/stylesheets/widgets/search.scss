@@ -59,7 +59,7 @@ $search-elements: '.search-wrapper, .awesomplete, input.search';
   }
 }
 
-.awesomplete input {
+.awesomplete input, input.search {
   margin-bottom: 0;
   background-color: rgba(70,70,70,0.7) !important;
   color: #fff;
