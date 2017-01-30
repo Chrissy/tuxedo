@@ -28,8 +28,17 @@ export default class Form {
     });
   }
 
+  textUntilCursor(input) {
+    return input.value.slice(0, input.selectionStart);
+  }
+
   lastIndexOfWhiteSpace(string) {
     return Math.max(string.lastIndexOf(" "), string.lastIndexOf("\n"));
+  }
+
+  cursorToFirstPriorSpace(input) {
+    var untilCursor = this.textUntilCursor(input)
+    return untilCursor.slice(this.lastIndexOfWhiteSpace(untilCursor)).trim();
   }
 
   setupAutoComplete(data, flag) {
@@ -40,12 +49,9 @@ export default class Form {
       minChars: 1,
       autoFirst: true,
       filter: function(text, input) {
-        var untilCursor = input.slice(0, this.form[0].selectionStart);
-        var cursorToFirstPriorSpace = untilCursor.slice(this.lastIndexOfWhiteSpace(untilCursor)).trim();
-        console.log(cursorToFirstPriorSpace);
-        if (cursorToFirstPriorSpace.indexOf(":") !== 0) return false;
-        var stringToTestAgainstEntries = cursorToFirstPriorSpace.trim().slice(1);
-        return RegExp("^" + escapeStringRegexp(stringToTestAgainstEntries), "i").test(text);
+        var cursorToFirstPriorSpace = this.cursorToFirstPriorSpace(this.form[0]);
+        return cursorToFirstPriorSpace.indexOf(":") === 0 &&
+          RegExp("^" + escapeStringRegexp(cursorToFirstPriorSpace.slice(1)), "i").test(text);
       }.bind(this),
       replace: function(text) {
         var selectionStart = this.form[0].selectionStart;
