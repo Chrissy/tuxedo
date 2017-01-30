@@ -25,7 +25,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
   (0, _jquery2.default)('.autocomplete').each(function () {
     var form = new _form2.default(this);
-    window.forms.push(form);
+    forms.push(form);
   });
 
   (0, _jquery2.default)("[data-resize]").each(function () {
@@ -61,24 +61,32 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   window.setTimeout(toggleSocialPrompt, 4000);
 });
 
-},{"./classes/form.js":2,"./classes/image.js":3,"./classes/search.js":4,"jquery":26}],2:[function(require,module,exports){
-"use strict";
+},{"./classes/form.js":2,"./classes/image.js":3,"./classes/search.js":4,"jquery":27}],2:[function(require,module,exports){
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = require("babel-runtime/helpers/createClass");
+var _createClass2 = require('babel-runtime/helpers/createClass');
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _jquery = require("jquery");
+var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
+
+var _escapeStringRegexp = require('escape-string-regexp');
+
+var _escapeStringRegexp2 = _interopRequireDefault(_escapeStringRegexp);
+
+var _awesomplete = require('awesomplete');
+
+var _awesomplete2 = _interopRequireDefault(_awesomplete);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -93,21 +101,21 @@ var Form = function () {
     if (this.form.hasClass("recipes")) this.generateAutocomplete("/all.json", "=");
     if (this.form.hasClass("lists")) this.generateAutocomplete("/list/all.json", "#");
 
-    this.form.on("inserted.atwho", function (event, flag, query) {
-      var flag = flag.text().trim();
-      self.swapWithComponentLink(query, flag);
-    });
+    // this.form.on("inserted.atwho", (event, flag, query) => {
+    //   var flag = flag.text().trim();
+    //   self.swapWithComponentLink(query, flag);
+    // });
   }
 
   (0, _createClass3.default)(Form, [{
-    key: "getElements",
+    key: 'getElements',
     value: function getElements(url) {
-      _jquery2.default.get(url).then(function (elements) {
+      return _jquery2.default.get(url).then(function (elements) {
         return elements;
       });
     }
   }, {
-    key: "generateAutocomplete",
+    key: 'generateAutocomplete',
     value: function generateAutocomplete(url, flag) {
       var self = this;
       this.getElements(url).promise().then(function (data) {
@@ -115,16 +123,40 @@ var Form = function () {
       });
     }
   }, {
-    key: "setupAutoComplete",
+    key: 'lastIndexOfWhiteSpace',
+    value: function lastIndexOfWhiteSpace(string) {
+      return string.lastIndexOf(" ");
+    }
+  }, {
+    key: 'setupAutoComplete',
     value: function setupAutoComplete(data, flag) {
-      var self = this;
-      this.autocomplete[flag] = this.form.atwho({
-        at: flag,
-        data: data
+      var form = this.form[0];
+      var data = data;
+      new _awesomplete2.default(form, {
+        list: data,
+        minChars: 1,
+        autoFirst: true,
+        filter: function (text, input) {
+          var untilCursor = input.slice(0, this.form[0].selectionStart);
+          var cursorToFirstPriorSpace = untilCursor.slice(this.lastIndexOfWhiteSpace(untilCursor)).trim();
+          console.log(cursorToFirstPriorSpace);
+          if (cursorToFirstPriorSpace.indexOf(":") !== 0) return false;
+          var stringToTestAgainstEntries = cursorToFirstPriorSpace.trim().slice(1);
+          return RegExp("^" + (0, _escapeStringRegexp2.default)(stringToTestAgainstEntries), "i").test(text);
+        }.bind(this),
+        replace: function (text) {
+          var selectionStart = this.form[0].selectionStart;
+          var untilCursor = this.form[0].value.slice(0, selectionStart);
+          var initialText = untilCursor.slice(0, untilCursor.lastIndexOf(":"));
+          var afterText = this.form[0].value.slice(this.form[0].selectionStart);
+          this.form[0].value = initialText + ":[" + text.value + "] " + afterText;
+          var newSelectionStart = selectionStart + text.value.length + 3 - untilCursor.slice(untilCursor.lastIndexOf(" ")).trim().length;
+          this.form[0].setSelectionRange(newSelectionStart, newSelectionStart);
+        }.bind(this)
       });
     }
   }, {
-    key: "swapWithComponentLink",
+    key: 'swapWithComponentLink',
     value: function swapWithComponentLink(query, flag) {
       var pretext = this.form.val().substring(0, query.pos);
       var aftertext = this.form.val().substring(query.pos + flag.length + 1);
@@ -137,7 +169,7 @@ var Form = function () {
 
 exports.default = Form;
 
-},{"babel-runtime/helpers/classCallCheck":7,"babel-runtime/helpers/createClass":8,"jquery":26}],3:[function(require,module,exports){
+},{"awesomplete":5,"babel-runtime/helpers/classCallCheck":7,"babel-runtime/helpers/createClass":8,"escape-string-regexp":26,"jquery":27}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -202,7 +234,7 @@ var Image = function () {
 
 exports.default = Image;
 
-},{"babel-runtime/helpers/classCallCheck":7,"babel-runtime/helpers/createClass":8,"jquery":26}],4:[function(require,module,exports){
+},{"babel-runtime/helpers/classCallCheck":7,"babel-runtime/helpers/createClass":8,"jquery":27}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -271,7 +303,7 @@ var Search = function () {
 
 exports.default = Search;
 
-},{"awesomplete":5,"babel-runtime/helpers/classCallCheck":7,"babel-runtime/helpers/createClass":8,"jquery":26}],5:[function(require,module,exports){
+},{"awesomplete":5,"babel-runtime/helpers/classCallCheck":7,"babel-runtime/helpers/createClass":8,"jquery":27}],5:[function(require,module,exports){
 /**
  * Simple, lightweight, usable local autocomplete library for modern browsers
  * Because there weren’t enough autocomplete scripts in the world? Because I’m completely insane and have NIH syndrome? Probably both. :P
@@ -946,6 +978,19 @@ var $export = require('./_export');
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
 $export($export.S + $export.F * !require('./_descriptors'), 'Object', {defineProperty: require('./_object-dp').f});
 },{"./_descriptors":14,"./_export":16,"./_object-dp":22}],26:[function(require,module,exports){
+'use strict';
+
+var matchOperatorsRe = /[|\\{}()[\]^$+*?.]/g;
+
+module.exports = function (str) {
+	if (typeof str !== 'string') {
+		throw new TypeError('Expected a string');
+	}
+
+	return str.replace(matchOperatorsRe, '\\$&');
+};
+
+},{}],27:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.1.1
  * https://jquery.com/

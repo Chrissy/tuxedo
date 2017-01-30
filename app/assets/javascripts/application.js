@@ -9,7 +9,7 @@ $(() => {
 
   $('.autocomplete').each(function() {
     let form = new Form(this);
-    window.forms.push(form);
+    forms.push(form);
   });
 
   $("[data-resize]").each(function() {
