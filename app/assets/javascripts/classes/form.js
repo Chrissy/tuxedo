@@ -29,7 +29,7 @@ export default class Form {
   }
 
   lastIndexOfWhiteSpace(string) {
-    return string.lastIndexOf(" ");
+    return Math.max(string.lastIndexOf(" "), string.lastIndexOf("\n"));
   }
 
   setupAutoComplete(data, flag) {
@@ -53,7 +53,7 @@ export default class Form {
         var initialText = untilCursor.slice(0, untilCursor.lastIndexOf(":"));
         var afterText = this.form[0].value.slice(this.form[0].selectionStart);
         this.form[0].value = initialText + ":[" + text.value + "] " + afterText;
-        var newSelectionStart = selectionStart + text.value.length + 3 - untilCursor.slice(untilCursor.lastIndexOf(" ")).trim().length;
+        var newSelectionStart = selectionStart + text.value.length + 3 - untilCursor.slice(this.lastIndexOfWhiteSpace(untilCursor)).trim().length;
         this.form[0].setSelectionRange(newSelectionStart, newSelectionStart)
       }.bind(this)
     });
