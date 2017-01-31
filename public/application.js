@@ -100,11 +100,6 @@ var Form = function () {
     if (this.form.hasClass("components")) this.generateAutocomplete("/ingredients/all.json", ":");
     if (this.form.hasClass("recipes")) this.generateAutocomplete("/all.json", "=");
     if (this.form.hasClass("lists")) this.generateAutocomplete("/list/all.json", "#");
-
-    // this.form.on("inserted.atwho", (event, flag, query) => {
-    //   var flag = flag.text().trim();
-    //   self.swapWithComponentLink(query, flag);
-    // });
   }
 
   (0, _createClass3.default)(Form, [{
@@ -123,20 +118,40 @@ var Form = function () {
       });
     }
   }, {
-    key: 'textUntilCursor',
-    value: function textUntilCursor(input) {
-      return input.value.slice(0, input.selectionStart);
-    }
-  }, {
     key: 'lastIndexOfWhiteSpace',
     value: function lastIndexOfWhiteSpace(string) {
       return Math.max(string.lastIndexOf(" "), string.lastIndexOf("\n"));
     }
   }, {
-    key: 'cursorToFirstPriorSpace',
-    value: function cursorToFirstPriorSpace(input) {
+    key: 'textUntilCursor',
+    value: function textUntilCursor(input) {
+      return input.value.slice(0, input.selectionStart);
+    }
+  }, {
+    key: 'textUntilFlag',
+    value: function textUntilFlag(input, flag) {
+      var untilCursor = this.textUntilCursor(input);
+      return untilCursor.slice(0, untilCursor.lastIndexOf(flag));
+    }
+  }, {
+    key: 'textAfterCursor',
+    value: function textAfterCursor(input) {
+      return input.value.slice(input.selectionStart);
+    }
+  }, {
+    key: 'queryText',
+    value: function queryText(input) {
       var untilCursor = this.textUntilCursor(input);
       return untilCursor.slice(this.lastIndexOfWhiteSpace(untilCursor)).trim();
+    }
+  }, {
+    key: 'swapWithComponentLink',
+    value: function swapWithComponentLink(form, text, flag) {
+      var replacementText = flag + '[' + text + ']';
+      var newSelectionStart = form.selectionStart + replacementText.length - this.queryText(form).length;
+
+      form.value = this.textUntilFlag(form, flag) + replacementText + this.textAfterCursor(form);
+      form.setSelectionRange(newSelectionStart, newSelectionStart);
     }
   }, {
     key: 'setupAutoComplete',
@@ -148,27 +163,13 @@ var Form = function () {
         minChars: 1,
         autoFirst: true,
         filter: function (text, input) {
-          var cursorToFirstPriorSpace = this.cursorToFirstPriorSpace(this.form[0]);
-          return cursorToFirstPriorSpace.indexOf(":") === 0 && RegExp("^" + (0, _escapeStringRegexp2.default)(cursorToFirstPriorSpace.slice(1)), "i").test(text);
+          var queryText = this.queryText(this.form[0]);
+          return queryText.indexOf(flag) === 0 && RegExp("^" + (0, _escapeStringRegexp2.default)(queryText.slice(1)), "i").test(text);
         }.bind(this),
         replace: function (text) {
-          var selectionStart = this.form[0].selectionStart;
-          var untilCursor = this.form[0].value.slice(0, selectionStart);
-          var initialText = untilCursor.slice(0, untilCursor.lastIndexOf(":"));
-          var afterText = this.form[0].value.slice(this.form[0].selectionStart);
-          this.form[0].value = initialText + ":[" + text.value + "] " + afterText;
-          var newSelectionStart = selectionStart + text.value.length + 3 - untilCursor.slice(this.lastIndexOfWhiteSpace(untilCursor)).trim().length;
-          this.form[0].setSelectionRange(newSelectionStart, newSelectionStart);
+          this.swapWithComponentLink(this.form[0], text.value, flag);
         }.bind(this)
       });
-    }
-  }, {
-    key: 'swapWithComponentLink',
-    value: function swapWithComponentLink(query, flag) {
-      var pretext = this.form.val().substring(0, query.pos);
-      var aftertext = this.form.val().substring(query.pos + flag.length + 1);
-      var newstr = "#{pretext}[#{flag}]#{aftertext}";
-      this.form.val(newstr);
     }
   }]);
   return Form;
