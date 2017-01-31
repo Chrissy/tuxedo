@@ -53,6 +53,7 @@ capybara-*.html
 /db/*.sqlite3
 /public/system/*
 /coverage/
+/node_modules
 /spec/tmp/*
 **.orig
 rerun.txt
