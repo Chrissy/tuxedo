@@ -120,7 +120,9 @@ var Form = function () {
   }, {
     key: 'lastIndexOfWhiteSpace',
     value: function lastIndexOfWhiteSpace(string) {
-      return Math.max(string.lastIndexOf(" "), string.lastIndexOf("\n"));
+      var lastIndex = Math.max(string.lastIndexOf(" "), string.lastIndexOf("\n"));
+      if (lastIndex === -1) return 0;
+      return lastIndex;
     }
   }, {
     key: 'textUntilCursor',
@@ -142,6 +144,7 @@ var Form = function () {
     key: 'queryText',
     value: function queryText(input) {
       var untilCursor = this.textUntilCursor(input);
+
       return untilCursor.slice(this.lastIndexOfWhiteSpace(untilCursor)).trim();
     }
   }, {

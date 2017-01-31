@@ -2,11 +2,10 @@
 
 $search-width: 300px;
 $compact-search-width: 300px - 20px;
-$search-elements: '.search-wrapper, .awesomplete, input.search';
 
 .search-wrapper { position: relative;}
 
-.awesomplete {
+.search-wrapper .awesomplete {
   color: #ccc;
   font-size: 20px;
   position: relative;
@@ -14,6 +13,10 @@ $search-elements: '.search-wrapper, .awesomplete, input.search';
   color: white;
   float: right;
   height: 30px;
+}
+
+.awesomplete {
+  color: #fff;
 
   ul {
     background-color: rgba(50,50,50,0.8);
@@ -59,7 +62,7 @@ $search-elements: '.search-wrapper, .awesomplete, input.search';
   }
 }
 
-.awesomplete input, input.search {
+.search-wrapper .awesomplete input, input.search {
   margin-bottom: 0;
   background-color: rgba(70,70,70,0.7) !important;
   color: #fff;
@@ -77,11 +80,12 @@ $search-elements: '.search-wrapper, .awesomplete, input.search';
   }
 }
 
-#{$search-elements} {
+.search-wrapper, .search-wrapper .awesomplete, input.search {
   width: $search-width;
 }
+
 @media (max-width: 650px) {
-  #{$search-elements} { width: $compact-search-width; }
+  .search-wrapper, .search-wrapper .awesomplete, input.search { width: $compact-search-width; }
   body.focused {
     .search-wrapper { -webkit-transform: translate3d(0, -57px, 0); }
     .header-primary, .header-content > img, .links { opacity: 0.2; }

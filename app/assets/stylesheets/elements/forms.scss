@@ -24,6 +24,15 @@ textarea {
   &.primary { margin-right: 20px; }
 }
 
+.form_block .awesomplete {
+  position: relative;
+  
+  ul {
+    position: absolute;
+    margin-top: -16px;
+  }
+}
+
 input[type="submit"], button {
   min-width: 120px;
   font-size: 18px;
@@ -45,7 +54,7 @@ button {
   display: inline-block;
 }
 
-.clear_image { 
+.clear_image {
   display: inline-block;
   color: $link-color;
   &.cleared { color: #999; }
@@ -62,7 +71,7 @@ button {
   top: 200px;
 }
 
-.alert, .notice { 
+.alert, .notice {
   padding: 10px 30px;
   color: white;
   background-color: #FF524D;
@@ -91,10 +100,10 @@ button {
 .active .mention_username{ color: #333; }
 
 @media (max-width: 650px) {
-  .user-form, .alert, .notice { 
-    width: 90%; 
-    margin: 0 auto; 
-    top: 75px; 
+  .user-form, .alert, .notice {
+    width: 90%;
+    margin: 0 auto;
+    top: 75px;
     background-color: rgba(250,250,250,0.8);
   }
 }

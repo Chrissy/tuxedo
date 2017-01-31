@@ -24,7 +24,9 @@ export default class Form {
   }
 
   lastIndexOfWhiteSpace(string) {
-    return Math.max(string.lastIndexOf(" "), string.lastIndexOf("\n"));
+    var lastIndex = Math.max(string.lastIndexOf(" "), string.lastIndexOf("\n"));
+    if (lastIndex === -1) return 0;
+    return lastIndex;
   }
 
   textUntilCursor(input) {
@@ -41,7 +43,8 @@ export default class Form {
   }
 
   queryText(input) {
-    var untilCursor = this.textUntilCursor(input)
+    var untilCursor = this.textUntilCursor(input);
+
     return untilCursor.slice(this.lastIndexOfWhiteSpace(untilCursor)).trim();
   }
 
