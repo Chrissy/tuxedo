@@ -97,9 +97,9 @@ var Form = function () {
     var self = this;
     this.form = form;
     this.autocomplete = [];
-    if ((0, _jquery2.default)(form).hasClass("components")) this.generateAutocomplete("/ingredients/all.json", ":");
-    if ((0, _jquery2.default)(form).hasClass("recipes")) this.generateAutocomplete("/all.json", "=");
-    if ((0, _jquery2.default)(form).hasClass("lists")) this.generateAutocomplete("/list/all.json", "#");
+    if (form.classList.contains("components")) this.generateAutocomplete("/ingredients/all.json", ":");
+    if (form.classList.contains("recipes")) this.generateAutocomplete("/all.json", "=");
+    if (form.classList.contains("lists")) this.generateAutocomplete("/list/all.json", "#");
   }
 
   (0, _createClass3.default)(Form, [{

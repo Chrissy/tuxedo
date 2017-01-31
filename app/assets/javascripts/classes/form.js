@@ -7,9 +7,9 @@ export default class Form {
     const self = this;
     this.form = form;
     this.autocomplete = [];
-    if ($(form).hasClass("components")) this.generateAutocomplete("/ingredients/all.json", ":");
-    if ($(form).hasClass("recipes")) this.generateAutocomplete("/all.json", "=");
-    if ($(form).hasClass("lists")) this.generateAutocomplete("/list/all.json", "#");
+    if (form.classList.contains("components")) this.generateAutocomplete("/ingredients/all.json", ":");
+    if (form.classList.contains("recipes")) this.generateAutocomplete("/all.json", "=");
+    if (form.classList.contains("lists")) this.generateAutocomplete("/list/all.json", "#");
   }
 
   getElements(url) {
