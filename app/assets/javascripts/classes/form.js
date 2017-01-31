@@ -62,8 +62,7 @@ export default class Form {
       autoFirst: true,
       filter: function(text, input) {
         var queryText = this.queryText(this.form[0]);
-        return queryText.indexOf(flag) === 0 &&
-          RegExp("^" + escapeStringRegexp(queryText.slice(1)), "i").test(text);
+        return queryText.indexOf(flag) === 0 && RegExp("^" + escapeStringRegexp(queryText.slice(1)), "i").test(text);
       }.bind(this),
       replace: function(text) {
         this.swapWithComponentLink(this.form[0], text.value, flag);
