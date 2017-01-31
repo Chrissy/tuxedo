@@ -5,11 +5,11 @@ import Awesomplete from 'awesomplete';
 export default class Form {
   constructor(form) {
     const self = this;
-    this.form = $(form);
+    this.form = form;
     this.autocomplete = [];
-    if (this.form.hasClass("components")) this.generateAutocomplete("/ingredients/all.json", ":");
-    if (this.form.hasClass("recipes")) this.generateAutocomplete("/all.json", "=");
-    if (this.form.hasClass("lists")) this.generateAutocomplete("/list/all.json", "#");
+    if ($(form).hasClass("components")) this.generateAutocomplete("/ingredients/all.json", ":");
+    if ($(form).hasClass("recipes")) this.generateAutocomplete("/all.json", "=");
+    if ($(form).hasClass("lists")) this.generateAutocomplete("/list/all.json", "#");
   }
 
   getElements(url) {
@@ -57,18 +57,18 @@ export default class Form {
   }
 
   setupAutoComplete(data, flag) {
-    const form = this.form[0];
+    const form = this.form;
     var data = data;
     new Awesomplete(form, {
       list: data,
       minChars: 1,
       autoFirst: true,
       filter: function(text, input) {
-        var queryText = this.queryText(this.form[0]);
+        var queryText = this.queryText(this.form);
         return queryText.indexOf(flag) === 0 && RegExp("^" + escapeStringRegexp(queryText.slice(1)), "i").test(text);
       }.bind(this),
       replace: function(text) {
-        this.swapWithComponentLink(this.form[0], text.value, flag);
+        this.swapWithComponentLink(this.form, text.value, flag);
       }.bind(this)
     });
   }

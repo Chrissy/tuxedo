@@ -95,11 +95,11 @@ var Form = function () {
     (0, _classCallCheck3.default)(this, Form);
 
     var self = this;
-    this.form = (0, _jquery2.default)(form);
+    this.form = form;
     this.autocomplete = [];
-    if (this.form.hasClass("components")) this.generateAutocomplete("/ingredients/all.json", ":");
-    if (this.form.hasClass("recipes")) this.generateAutocomplete("/all.json", "=");
-    if (this.form.hasClass("lists")) this.generateAutocomplete("/list/all.json", "#");
+    if ((0, _jquery2.default)(form).hasClass("components")) this.generateAutocomplete("/ingredients/all.json", ":");
+    if ((0, _jquery2.default)(form).hasClass("recipes")) this.generateAutocomplete("/all.json", "=");
+    if ((0, _jquery2.default)(form).hasClass("lists")) this.generateAutocomplete("/list/all.json", "#");
   }
 
   (0, _createClass3.default)(Form, [{
@@ -159,18 +159,18 @@ var Form = function () {
   }, {
     key: 'setupAutoComplete',
     value: function setupAutoComplete(data, flag) {
-      var form = this.form[0];
+      var form = this.form;
       var data = data;
       new _awesomplete2.default(form, {
         list: data,
         minChars: 1,
         autoFirst: true,
         filter: function (text, input) {
-          var queryText = this.queryText(this.form[0]);
+          var queryText = this.queryText(this.form);
           return queryText.indexOf(flag) === 0 && RegExp("^" + (0, _escapeStringRegexp2.default)(queryText.slice(1)), "i").test(text);
         }.bind(this),
         replace: function (text) {
-          this.swapWithComponentLink(this.form[0], text.value, flag);
+          this.swapWithComponentLink(this.form, text.value, flag);
         }.bind(this)
       });
     }
