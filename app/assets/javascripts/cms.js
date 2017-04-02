@@ -16,7 +16,7 @@ const uploadImage = function(file) {
   FB.login(function(response){
     bucket.config.credentials = new AWS.WebIdentityCredentials({
       ProviderId: 'graph.facebook.com',
-      RoleArn: 'arn:aws:iam::707718423679:role/tuxuploader',
+      RoleArn: 'arn:aws:iam::707718423679:role/TuxImageUploaderRole',
       WebIdentityToken: response.authResponse.accessToken
     });
 
