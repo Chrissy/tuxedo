@@ -153,7 +153,7 @@ var uploadImage = function uploadImage(file) {
     });
 
     var params = {
-      Key: 'facebook-' + response.authResponse.userID + '/' + file.name,
+      Key: file.name,
       ContentType: file.type,
       Body: file,
       ACL: 'public-read'
@@ -161,10 +161,6 @@ var uploadImage = function uploadImage(file) {
 
     bucket.putObject(params, function (err, data) {
       console.log(data);
-      bucket.listObjects({ Prefix: 'facebook-' + response.authResponse.userID }, function (err, data) {
-        if (err) console.log(err);
-        console.log(data.Contents);
-      });
     });
   });
 };
