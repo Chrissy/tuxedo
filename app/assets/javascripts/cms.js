@@ -3,6 +3,10 @@ import Form from './classes/form.js';
 import aws from 'aws-sdk';
 aws.config.region = 'us-east-2';
 
+const bucket = new AWS.S3({
+  params: { Bucket: 'chrissy-tuxedo-no2' }
+});
+
 const authorizePerson = () => new Promise((resolve, reject) => {
   FB.getLoginStatus((response) => {
     if (response.status === 'connected') return resolve(response.authResponse.accessToken);
@@ -11,12 +15,6 @@ const authorizePerson = () => new Promise((resolve, reject) => {
 });
 
 const uploadImage = (file, token) => new Promise((resolve, reject) => {
-  const bucket = new AWS.S3({
-    params: {
-      Bucket: 'chrissy-tuxedo-no2'
-    }
-  });
-
   bucket.config.credentials = new AWS.WebIdentityCredentials({
     ProviderId: 'graph.facebook.com',
     RoleArn: 'arn:aws:iam::707718423679:role/TuxImageUploaderRole',

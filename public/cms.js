@@ -140,6 +140,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _awsSdk2.default.config.region = 'us-east-2';
 
+var bucket = new AWS.S3({
+  params: { Bucket: 'chrissy-tuxedo-no2' }
+});
+
 var authorizePerson = function authorizePerson() {
   return new _promise2.default(function (resolve, reject) {
     FB.getLoginStatus(function (response) {
@@ -153,12 +157,6 @@ var authorizePerson = function authorizePerson() {
 
 var uploadImage = function uploadImage(file, token) {
   return new _promise2.default(function (resolve, reject) {
-    var bucket = new AWS.S3({
-      params: {
-        Bucket: 'chrissy-tuxedo-no2'
-      }
-    });
-
     bucket.config.credentials = new AWS.WebIdentityCredentials({
       ProviderId: 'graph.facebook.com',
       RoleArn: 'arn:aws:iam::707718423679:role/TuxImageUploaderRole',
