@@ -1,4 +1,6 @@
-<div class="image-options">
-  <%= f.filepicker_field :image, :button_text => "upload a cover photo", :class => "image-picker" %>
+<div class="image-options s-bottom_margin">
+  <%#= f.filepicker_field :image, :button_text => "upload a cover photo", :class => "image-picker" %>
+  <label for="upload-cover-photo">Upload a cover photo</label>
+  <input id="upload-cover-photo" type="file" placeholder="upload a cover photo">
   <%= clear_image_button(element) %>
 </div>
