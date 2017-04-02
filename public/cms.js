@@ -144,7 +144,7 @@ var bucket = new AWS.S3({
   }
 });
 
-var uploadImage = function uploadImage(file) {
+var uploadImage = function uploadImage(file, cb) {
   FB.login(function (response) {
     bucket.config.credentials = new AWS.WebIdentityCredentials({
       ProviderId: 'graph.facebook.com',
@@ -160,7 +160,7 @@ var uploadImage = function uploadImage(file) {
     };
 
     bucket.putObject(params, function (err, data) {
-      console.log(data);
+      cb();
     });
   });
 };
@@ -194,7 +194,10 @@ window.fbAsyncInit = function () {
 
   (0, _jquery2.default)("#upload-cover-photo").on("change", function () {
     var file = (0, _jquery2.default)(this).get(0).files[0];
-    uploadImage(file);
+    (0, _jquery2.default)("input[type='submit']").attr("disabled", true);
+    uploadImage(file, function () {
+      (0, _jquery2.default)("input[type='submit']").attr("disabled", false);
+    });
   });
 
   // $(".clear_image").on("click", function() {
