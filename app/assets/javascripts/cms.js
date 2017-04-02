@@ -1,37 +1,35 @@
 import $ from 'jquery';
 import Form from './classes/form.js';
 import aws from 'aws-sdk';
-
-var bucketName = 'chrissy-tuxedo-no2';
 aws.config.region = 'us-east-2';
 
-var fbUserId;
-var bucket = new AWS.S3({
-  params: {
-    Bucket: bucketName
-  }
+const authorizePerson = () => new Promise((resolve, reject) => {
+  FB.getLoginStatus((response) => {
+    if (response.status === 'connected') return resolve(response.authResponse.accessToken);
+    FB.login((response) => resolve(response.authResponse.accessToken));
+  });
 });
 
-const uploadImage = function(file, cb) {
-  FB.login(function(response){
-    bucket.config.credentials = new AWS.WebIdentityCredentials({
-      ProviderId: 'graph.facebook.com',
-      RoleArn: 'arn:aws:iam::707718423679:role/TuxImageUploaderRole',
-      WebIdentityToken: response.authResponse.accessToken
-    });
-
-    const params = {
-      Key: file.name,
-      ContentType: file.type,
-      Body: file,
-      ACL: 'public-read'
+const uploadImage = (file, token) => new Promise((resolve, reject) => {
+  const bucket = new AWS.S3({
+    params: {
+      Bucket: 'chrissy-tuxedo-no2'
     }
-
-    bucket.putObject(params, function (err, data) {
-      cb();
-    });
   });
-}
+
+  bucket.config.credentials = new AWS.WebIdentityCredentials({
+    ProviderId: 'graph.facebook.com',
+    RoleArn: 'arn:aws:iam::707718423679:role/TuxImageUploaderRole',
+    WebIdentityToken: token
+  });
+
+  bucket.putObject({
+    Key: file.name,
+    ContentType: file.type,
+    Body: file,
+    ACL: 'public-read'
+  }, (err, data) => resolve(file.name));
+});
 
 window.fbAsyncInit = function() {
    FB.init({
@@ -58,12 +56,14 @@ $(() => {
   });
 
   $("#upload-cover-photo").on("change", function(){
-    const file = $(this).get(0).files[0];
-    $("input[type='submit']").attr("disabled", true)
-    uploadImage(file, function(){
-      $("input[type='submit']").attr("disabled", false)
+    $("input[type='submit']").attr("disabled", true);
+
+    authorizePerson().then(token => {
+      uploadImage($(this).get(0).files[0], token).then(fileName => {
+        $("input[type='submit']").attr("disabled", false)
+      });
     });
-  })
+  });
 
   // $(".clear_image").on("click", function() {
   //   $(this).addClass("cleared").parent().find('[type="filepicker"]').attr("value", "");
