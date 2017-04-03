@@ -23,7 +23,7 @@ class Recipe < ActiveRecord::Base
     newImage.combine_options do |i|
       i.resize("100x100^")
       i.gravity("Center")
-      i.crop("100x100+0+0")
+      i.extent("100x100")
     end
     s3.put_object(bucket: 'chrissy-tuxedo-no2', body: newImage.to_blob, key: '100x100' + image)
   end
