@@ -236,6 +236,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
     new _imageUploader2.default().upload((0, _jquery2.default)(this).get(0).files[0], function (fileName) {
       (0, _jquery2.default)("input[type='submit']").attr("disabled", false);
+      (0, _jquery2.default)("#image-filename").val(fileName);
     });
   });
 

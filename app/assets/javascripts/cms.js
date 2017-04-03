@@ -15,6 +15,7 @@ $(() => {
 
     new ImageUploader().upload($(this).get(0).files[0], (fileName) => {
       $("input[type='submit']").attr("disabled", false);
+      $("#image-filename").val(fileName);
     })
   });
 

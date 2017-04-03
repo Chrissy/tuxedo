@@ -1,5 +1,8 @@
 require 'component.rb'
 require 'custom_markdown.rb'
+require 'aws-sdk'
+require 'json'
+require 'mini_magick'
 
 class Recipe < ActiveRecord::Base
   extend FriendlyId
@@ -9,6 +12,17 @@ class Recipe < ActiveRecord::Base
   serialize :recommends, Array
 
   acts_as_markdown_list :recipe
+
+  after_save :create_image_sizes
+
+  def create_image_sizes
+    creds = JSON.load(File.read('secrets.json'))
+    credentials = Aws::Credentials.new(creds['AccessKeyId'], creds['SecretAccessKey'])
+    s3 = Aws::S3::Client.new(region: 'us-east-2', credentials: credentials)
+    newImage = MiniMagick::Image.open("https://s3.us-east-2.amazonaws.com/chrissy-tuxedo-no2/" + image)
+    newImage.resize("100x100")
+    s3.put_object(bucket: 'chrissy-tuxedo-no2', body: newImage.to_blob, key: '100x100' + image)
+  end
 
   def markdown_renderer
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
