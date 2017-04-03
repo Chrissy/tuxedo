@@ -1,8 +1,6 @@
 require 'component.rb'
 require 'custom_markdown.rb'
-require 'aws-sdk'
-require 'json'
-require 'mini_magick'
+require 'image_uploader.rb'
 
 class Recipe < ActiveRecord::Base
   extend FriendlyId
@@ -12,24 +10,6 @@ class Recipe < ActiveRecord::Base
   serialize :recommends, Array
 
   acts_as_markdown_list :recipe
-
-  def create_image_sizes
-    sizes = ['1500x861', '500x287', '320x225', '100x100', '476x666', '600x400']
-    creds = JSON.load(File.read('secrets.json'))
-    credentials = Aws::Credentials.new(creds['AccessKeyId'], creds['SecretAccessKey'])
-    s3 = Aws::S3::Client.new(region: 'us-east-2', credentials: credentials)
-    newImage = MiniMagick::Image.open("https://s3.us-east-2.amazonaws.com/chrissy-tuxedo-no2/" + image)
-    sizes.each do |size|
-      puts newImage.path
-      alteredImage = MiniMagick::Image.open(newImage.path)
-      alteredImage.combine_options do |i|
-        i.resize(size + "^")
-        i.gravity("Center")
-        i.extent(size)
-      end
-      s3.put_object(bucket: 'chrissy-tuxedo-no2', body: alteredImage.to_blob, key: size + image)
-    end
-  end
 
   def markdown_renderer
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
@@ -46,6 +26,10 @@ class Recipe < ActiveRecord::Base
   def description_to_html
     converted_description = CustomMarkdown.convert_links_in_place(description)
     markdown_renderer.render(converted_description).html_safe
+  end
+
+  def create_images
+    ImageUploader.new(image).upload
   end
 
   def backup_image_url

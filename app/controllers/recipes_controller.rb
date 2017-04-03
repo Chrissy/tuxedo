@@ -24,7 +24,7 @@ class RecipesController < ApplicationController
     recipe.update_attributes(recipe_params)
     recipe.convert_recipe_to_html_and_store
     recipe.make_my_number_last! if params[:make_my_number_last]
-    recipe.create_image_sizes if params[:recipe][:image] && params[:recipe][:image] != previous_image
+    recipe.create_images if params[:recipe][:image] && params[:recipe][:image] != previous_image
     redirect_to action: "show", id: recipe.id
   end
 
