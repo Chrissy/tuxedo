@@ -15,12 +15,10 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find(params[:id])
-    @layout_object = @list
   end
 
   def new
     @list = List.new
-    @layout_object = @list
   end
 
   def update

@@ -145,11 +145,11 @@ module ApplicationHelper
   end
 
   def meta_image
-    pinnable_image_url(@layout_object)
+    pinnable_image_url(@layout_object) if @layout_object
   end
 
   def twitter_image
-    landscape_social_image_url(@layout_object)
+    landscape_social_image_url(@layout_object) if @layout_object
   end
 
   def similar_recipes_link(recipe)
