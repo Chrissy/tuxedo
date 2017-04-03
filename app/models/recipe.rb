@@ -16,16 +16,20 @@ class Recipe < ActiveRecord::Base
   after_save :create_image_sizes
 
   def create_image_sizes
+    sizes = ['1500x861', '500x287', '320x225', '100x100', '476x666', '600x400']
     creds = JSON.load(File.read('secrets.json'))
     credentials = Aws::Credentials.new(creds['AccessKeyId'], creds['SecretAccessKey'])
     s3 = Aws::S3::Client.new(region: 'us-east-2', credentials: credentials)
     newImage = MiniMagick::Image.open("https://s3.us-east-2.amazonaws.com/chrissy-tuxedo-no2/" + image)
-    newImage.combine_options do |i|
-      i.resize("100x100^")
-      i.gravity("Center")
-      i.extent("100x100")
+    sizes.each do |size|
+      imageCopy = newImage
+      imageCopy.combine_options do |i|
+        i.resize(size + "^")
+        i.gravity("Center")
+        i.extent(size)
+      end
+      s3.put_object(bucket: 'chrissy-tuxedo-no2', body: imageCopy.to_blob, key: size + image)
     end
-    s3.put_object(bucket: 'chrissy-tuxedo-no2', body: newImage.to_blob, key: '100x100' + image)
   end
 
   def markdown_renderer
