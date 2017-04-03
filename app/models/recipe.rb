@@ -34,7 +34,7 @@ class Recipe < ActiveRecord::Base
   end
 
   def backup_image_url
-    "https://www.filepicker.io/api/file/drOikI0sTqG2xjWn2WSQ"
+    ""
   end
 
   def image_with_backup

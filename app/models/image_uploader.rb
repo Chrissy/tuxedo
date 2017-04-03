@@ -5,11 +5,12 @@ require 'mini_magick'
 class ImageUploader
   def initialize(image)
     creds = JSON.load(File.read('secrets.json'))
-    @sizes = JSON.load(File.read('images.json'))
+    image_env = JSON.load(File.read('images.json'))
     credentials = Aws::Credentials.new(creds['AccessKeyId'], creds['SecretAccessKey'])
     @path = image
     @s3 = Aws::S3::Client.new(region: 'us-east-2', credentials: credentials)
-    @newImage = MiniMagick::Image.open("https://s3.us-east-2.amazonaws.com/chrissy-tuxedo-no2/" + image)
+    @newImage = MiniMagick::Image.open(image_env["bucket"] + image)
+    @sizes = image_env["sizes"]
   end
 
   def upload()

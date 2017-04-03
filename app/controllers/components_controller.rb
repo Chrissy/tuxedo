@@ -9,10 +9,12 @@ class ComponentsController < ApplicationController
 
   def edit
     @component = Component.find(params[:id])
+    @layout_object = @component
   end
 
   def new
     @component = Component.new
+    @layout_object = @component
   end
 
   def update

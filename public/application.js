@@ -18,7 +18,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (0, _jquery2.default)(function () {
   var search = new _search2.default('.search');
 
-  (0, _jquery2.default)("[data-resize]").each(function () {
+  (0, _jquery2.default)("[data-lazy-load]").each(function () {
     var img = new _image2.default((0, _jquery2.default)(this));
     img.upscale();
   });
@@ -68,35 +68,14 @@ var Image = function () {
     (0, _classCallCheck3.default)(this, Image);
 
     this.image = $image;
-    this.src = $image.attr("src");
+    this.src = $image.attr("data-lazy-load");
   }
 
   (0, _createClass3.default)(Image, [{
-    key: "resize",
-    value: function resize() {
-      return this.rez = this.rez || parseFloat(this.image.attr("data-resize"));
-    }
-  }, {
-    key: "dimension",
-    value: function dimension(name) {
-      var dimension = this.src.match(new RegExp("&" + name + "=(.*?)(&|$)"))[1];
-      var self = this;
-      return function () {
-        return parseInt(dimension * self.resize());
-      };
-    }
-  }, {
-    key: "filepicker_url",
-    value: function filepicker_url() {
-      var url = this.src.match(/\/file\/(.*?)\//)[1];
-      var compression = this.image.attr("data-dont-compress") ? "100" : "60";
-      return "https://www.filepicker.io/api/file/" + url + "/convert?fit=crop&format=jpg&quality=" + compression + "&h=" + this.dimension("h")() + "&w=" + this.dimension("w")() + "&cache=true";
-    }
-  }, {
     key: "upscale",
     value: function upscale() {
       var self = this;
-      var img = self.image.clone().attr("src", this.filepicker_url());
+      var img = self.image.clone().attr("src", this.src);
       img.on("load", function () {
         return self.image.replaceWith(img);
       });

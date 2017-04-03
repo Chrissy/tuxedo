@@ -12,10 +12,12 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+    @layout_object = @recipe
   end
 
   def new
     @recipe = Recipe.new
+    @layout_object = @recipe
   end
 
   def update

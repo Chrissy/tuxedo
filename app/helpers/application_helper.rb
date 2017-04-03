@@ -26,81 +26,52 @@ module ApplicationHelper
     "<span class='swash-cap letter-#{letter.downcase}'>#{letter.upcase}</span>#{text[1..-1]}".html_safe
   end
 
+  def image_url(element, size)
+    image_env = JSON.load(File.read('images.json'))
+    return image_env["bucket"] + image_env["sizes"][size.to_s] + element.image_with_backup
+  end
+
   def header_image(element)
-    opts = {
-      w: 500,
-      h: 287,
-      fit: 'crop',
-      cache: true
-    }
-    filepicker_image_tag(
-                        element.image_with_backup,
-                        opts,
-                        class: "header-image",
-                        alt: "#{element.name} cocktail photo",
-                        :"data-resize"=>"3",
-                        :itemprop => "image",
-                        :"data-dont-compress" => element.try(:dont_compress_image),
-                        :"data-pin-media" => pinnable_image_url(element),
-                        :"data-pin-url" => pin_url(element),
-                        :"data-pin-description" => element.name)
+    image_tag(
+      image_url(element, :mediumCover),
+      class: "header-image",
+      alt: "#{element.name} cocktail photo",
+      :"data-lazy-load"=> image_url(element, :largeCover),
+      :itemprop => "image",
+      :"data-dont-compress" => element.try(:dont_compress_image),
+      :"data-pin-media" => pinnable_image_url(element),
+      :"data-pin-url" => pin_url(element),
+      :"data-pin-description" => element.name)
   end
 
   def list_image(element)
-    opts = {
-      w: 320,
-      h: 225,
-      fit: 'crop',
-      cache: true
-    }
-    filepicker_image_tag(
-                        element.image_with_backup,
-                        opts,
-                        alt: "#{element.name} cocktail photo",
-                        :"data-resize" => "3",
-                        :itemprop => "image",
-                        :"data-pin-media" => pinnable_image_url(element),
-                        :"data-pin-url" => pin_url(element),
-                        :"data-pin-description" => element.name)
+    image_tag(
+      image_url(element, :list),
+      alt: "#{element.name} cocktail photo",
+      :itemprop => "image",
+      :"data-pin-media" => pinnable_image_url(element),
+      :"data-pin-url" => pin_url(element),
+      :"data-pin-description" => element.name)
   end
 
   def index_image(element)
-    opts = {
-      w: 100,
-      h: 100,
-      fit: 'crop',
-      cache: true
-    }
-    filepicker_image_tag(
-                        element.image_with_backup,
-                        opts,
-                        class: "element-image small",
-                        alt: "#{element.name} cocktail photo",
-                        itemprop: "image")
+    image_tag(
+      image_url(element, :thumb),
+      class: "element-image small",
+      alt: "#{element.name} cocktail photo",
+      itemprop: "image")
+  end
+
+  def pinnable_image_url(element)
+    image_url(element, :pinterest)
+  end
+
+  def landscape_social_image_url(element)
+    image_url(element, :list)
   end
 
   def index_header_image
     image_tag 'index-image.png', class: "header-image", alt: "cocktail index image"
-  end
-
-  def pinnable_image_url(element)
-    opts = {
-      w: 476,
-      h: 666,
-      fit: 'crop',
-      cache: 'true'
-    }
-    filepicker_image_url(element.try(:image_with_backup), opts)
-  end
-
-  def landscape_social_image_url(element)
-    opts = {
-      w: 600,
-      h: 400,
-      fit: 'crop',
-      cache: 'true'
-    }
-    filepicker_image_url(element.try(:image_with_backup), opts)
   end
 
   def pin_url(element)
