@@ -10,6 +10,7 @@ class Recipe < ActiveRecord::Base
   serialize :recommends, Array
 
   acts_as_markdown_list :recipe
+  after_save :create_images
 
   def markdown_renderer
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
@@ -29,7 +30,7 @@ class Recipe < ActiveRecord::Base
   end
 
   def create_images
-    ImageUploader.new(image).upload
+    ImageUploader.new(image).upload if image_changed?
   end
 
   def backup_image_url

@@ -1,4 +1,5 @@
 require 'recipe.rb'
+require 'image_uploader.rb'
 
 class Component < ActiveRecord::Base
   extend FriendlyId
@@ -11,6 +12,7 @@ class Component < ActiveRecord::Base
   serialize :recipe_ids, Array
   has_many :pseudonyms, as: :pseudonymable, dependent: :destroy
   before_save :create_pseudonyms_if_changed
+  after_save :create_images
 
   alias_method :list_elements_from_markdown, :list_elements
 
@@ -40,6 +42,10 @@ class Component < ActiveRecord::Base
 
   def edit_url
     "/ingredients/edit/#{id}"
+  end
+
+  def create_images
+    ImageUploader.new(image).upload if image_changed?
   end
 
   def backup_image_url
