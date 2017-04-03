@@ -20,14 +20,16 @@ class Recipe < ActiveRecord::Base
     creds = JSON.load(File.read('secrets.json'))
     credentials = Aws::Credentials.new(creds['AccessKeyId'], creds['SecretAccessKey'])
     s3 = Aws::S3::Client.new(region: 'us-east-2', credentials: credentials)
+    newImage = MiniMagick::Image.open("https://s3.us-east-2.amazonaws.com/chrissy-tuxedo-no2/" + image)
     sizes.each do |size|
-      newImage = MiniMagick::Image.open("https://s3.us-east-2.amazonaws.com/chrissy-tuxedo-no2/" + image)
-      newImage.combine_options do |i|
+      puts newImage.path
+      alteredImage = MiniMagick::Image.open(newImage.path)
+      alteredImage.combine_options do |i|
         i.resize(size + "^")
         i.gravity("Center")
         i.extent(size)
       end
-      s3.put_object(bucket: 'chrissy-tuxedo-no2', body: newImage.to_blob, key: size + image)
+      s3.put_object(bucket: 'chrissy-tuxedo-no2', body: alteredImage.to_blob, key: size + image)
     end
   end
 
