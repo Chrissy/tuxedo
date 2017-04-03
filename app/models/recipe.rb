@@ -20,7 +20,11 @@ class Recipe < ActiveRecord::Base
     credentials = Aws::Credentials.new(creds['AccessKeyId'], creds['SecretAccessKey'])
     s3 = Aws::S3::Client.new(region: 'us-east-2', credentials: credentials)
     newImage = MiniMagick::Image.open("https://s3.us-east-2.amazonaws.com/chrissy-tuxedo-no2/" + image)
-    newImage.resize("100x100")
+    newImage.combine_options do |i|
+      i.resize("100x100^")
+      i.gravity("Center")
+      i.crop("100x100+0+0")
+    end
     s3.put_object(bucket: 'chrissy-tuxedo-no2', body: newImage.to_blob, key: '100x100' + image)
   end
 
