@@ -13,8 +13,6 @@ class Recipe < ActiveRecord::Base
 
   acts_as_markdown_list :recipe
 
-  after_save :create_image_sizes
-
   def create_image_sizes
     sizes = ['1500x861', '500x287', '320x225', '100x100', '476x666', '600x400']
     creds = JSON.load(File.read('secrets.json'))
