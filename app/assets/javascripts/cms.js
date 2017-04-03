@@ -19,10 +19,10 @@ $(() => {
     })
   });
 
-  // $(".clear_image").on("click", function() {
-  //   $(this).addClass("cleared").parent().find('[type="filepicker"]').attr("value", "");
-  //   return false;
-  // });
+  $(".clear_image").on("click", function() {
+    $(this).addClass("cleared").parent().find('#image-filename').attr("value", "");
+    return false;
+  });
 
   $(".show-extra-options").on("click", function() {
     $(this).siblings(".extra-options").toggle();

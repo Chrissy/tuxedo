@@ -65,11 +65,11 @@ class List < ActiveRecord::Base
   end
 
   def backup_image_url
-    ""
+    "shaker.jpg"
   end
 
   def create_images
-    ImageUploader.new(image).upload if image_changed?
+    ImageUploader.new(image).upload if image.present? && image_changed?
   end
 
   def image_with_backup

@@ -240,10 +240,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     });
   });
 
-  // $(".clear_image").on("click", function() {
-  //   $(this).addClass("cleared").parent().find('[type="filepicker"]').attr("value", "");
-  //   return false;
-  // });
+  (0, _jquery2.default)(".clear_image").on("click", function () {
+    (0, _jquery2.default)(this).addClass("cleared").parent().find('#image-filename').attr("value", "");
+    return false;
+  });
 
   (0, _jquery2.default)(".show-extra-options").on("click", function () {
     (0, _jquery2.default)(this).siblings(".extra-options").toggle();
