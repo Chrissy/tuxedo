@@ -61,8 +61,6 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.0.2)
-    filepicker-rails (1.1.0)
-      rails (>= 3.2)
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
     fssm (0.2.10)
@@ -155,7 +153,6 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   compass-rails
   devise
-  filepicker-rails
   friendly_id (~> 5.0.0)
   jbuilder (~> 1.2)
   jquery-rails
