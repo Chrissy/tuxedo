@@ -13,22 +13,12 @@ var _image = require('./classes/image.js');
 
 var _image2 = _interopRequireDefault(_image);
 
-var _form = require('./classes/form.js');
-
-var _form2 = _interopRequireDefault(_form);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _jquery2.default)(function () {
   var search = new _search2.default('.search');
-  var forms = [];
 
-  (0, _jquery2.default)('.autocomplete').each(function () {
-    var form = new _form2.default(this);
-    forms.push(form);
-  });
-
-  (0, _jquery2.default)("[data-resize]").each(function () {
+  (0, _jquery2.default)("[data-lazy-load]").each(function () {
     var img = new _image2.default((0, _jquery2.default)(this));
     img.upscale();
   });
@@ -39,15 +29,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     (0, _jquery2.default)(this).blur(function () {
       return $target.removeClass("focused");
     });
-  });
-
-  (0, _jquery2.default)(".clear_image").on("click", function () {
-    (0, _jquery2.default)(this).addClass("cleared").parent().find('[type="filepicker"]').attr("value", "");
-    return false;
-  });
-
-  (0, _jquery2.default)(".show-extra-options").on("click", function () {
-    (0, _jquery2.default)(this).siblings(".extra-options").toggle();
   });
 
   (0, _jquery2.default)("div[href]").on("click", function () {
@@ -61,126 +42,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   window.setTimeout(toggleSocialPrompt, 4000);
 });
 
-},{"./classes/form.js":2,"./classes/image.js":3,"./classes/search.js":4,"jquery":27}],2:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = require('babel-runtime/helpers/createClass');
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _jquery = require('jquery');
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
-var _escapeStringRegexp = require('escape-string-regexp');
-
-var _escapeStringRegexp2 = _interopRequireDefault(_escapeStringRegexp);
-
-var _awesomplete = require('awesomplete');
-
-var _awesomplete2 = _interopRequireDefault(_awesomplete);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Form = function () {
-  function Form(form) {
-    (0, _classCallCheck3.default)(this, Form);
-
-    var self = this;
-    this.form = form;
-    this.autocomplete = [];
-    if (form.classList.contains("components")) this.generateAutocomplete("/ingredients/all.json", ":");
-    if (form.classList.contains("recipes")) this.generateAutocomplete("/all.json", "=");
-    if (form.classList.contains("lists")) this.generateAutocomplete("/list/all.json", "#");
-  }
-
-  (0, _createClass3.default)(Form, [{
-    key: 'getElements',
-    value: function getElements(url) {
-      return _jquery2.default.get(url).then(function (elements) {
-        return elements;
-      });
-    }
-  }, {
-    key: 'generateAutocomplete',
-    value: function generateAutocomplete(url, flag) {
-      var self = this;
-      this.getElements(url).promise().then(function (data) {
-        self.setupAutoComplete(data, flag);
-      });
-    }
-  }, {
-    key: 'lastIndexOfWhiteSpace',
-    value: function lastIndexOfWhiteSpace(string) {
-      var lastIndex = Math.max(string.lastIndexOf(" "), string.lastIndexOf("\n"));
-      if (lastIndex === -1) return 0;
-      return lastIndex;
-    }
-  }, {
-    key: 'textUntilCursor',
-    value: function textUntilCursor(input) {
-      return input.value.slice(0, input.selectionStart);
-    }
-  }, {
-    key: 'textUntilFlag',
-    value: function textUntilFlag(input, flag) {
-      var untilCursor = this.textUntilCursor(input);
-      return untilCursor.slice(0, untilCursor.lastIndexOf(flag));
-    }
-  }, {
-    key: 'textAfterCursor',
-    value: function textAfterCursor(input) {
-      return input.value.slice(input.selectionStart);
-    }
-  }, {
-    key: 'queryText',
-    value: function queryText(input) {
-      var untilCursor = this.textUntilCursor(input);
-
-      return untilCursor.slice(this.lastIndexOfWhiteSpace(untilCursor)).trim();
-    }
-  }, {
-    key: 'swapWithComponentLink',
-    value: function swapWithComponentLink(form, text, flag) {
-      var replacementText = flag + '[' + text + ']';
-      var newSelectionStart = form.selectionStart + replacementText.length - this.queryText(form).length;
-
-      form.value = this.textUntilFlag(form, flag) + replacementText + this.textAfterCursor(form);
-      form.setSelectionRange(newSelectionStart, newSelectionStart);
-    }
-  }, {
-    key: 'setupAutoComplete',
-    value: function setupAutoComplete(data, flag) {
-      var form = this.form;
-      var data = data;
-      new _awesomplete2.default(form, {
-        list: data,
-        minChars: 1,
-        autoFirst: true,
-        filter: function (text, input) {
-          var queryText = this.queryText(this.form);
-          return queryText.indexOf(flag) === 0 && RegExp("^" + (0, _escapeStringRegexp2.default)(queryText.slice(1)), "i").test(text);
-        }.bind(this),
-        replace: function (text) {
-          this.swapWithComponentLink(this.form, text.value, flag);
-        }.bind(this)
-      });
-    }
-  }]);
-  return Form;
-}();
-
-exports.default = Form;
-
-},{"awesomplete":5,"babel-runtime/helpers/classCallCheck":7,"babel-runtime/helpers/createClass":8,"escape-string-regexp":26,"jquery":27}],3:[function(require,module,exports){
+},{"./classes/image.js":2,"./classes/search.js":3,"jquery":25}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -206,35 +68,14 @@ var Image = function () {
     (0, _classCallCheck3.default)(this, Image);
 
     this.image = $image;
-    this.src = $image.attr("src");
+    this.src = $image.attr("data-lazy-load");
   }
 
   (0, _createClass3.default)(Image, [{
-    key: "resize",
-    value: function resize() {
-      return this.rez = this.rez || parseFloat(this.image.attr("data-resize"));
-    }
-  }, {
-    key: "dimension",
-    value: function dimension(name) {
-      var dimension = this.src.match(new RegExp("&" + name + "=(.*?)(&|$)"))[1];
-      var self = this;
-      return function () {
-        return parseInt(dimension * self.resize());
-      };
-    }
-  }, {
-    key: "filepicker_url",
-    value: function filepicker_url() {
-      var url = this.src.match(/\/file\/(.*?)\//)[1];
-      var compression = this.image.attr("data-dont-compress") ? "100" : "60";
-      return "https://www.filepicker.io/api/file/" + url + "/convert?fit=crop&format=jpg&quality=" + compression + "&h=" + this.dimension("h")() + "&w=" + this.dimension("w")() + "&cache=true";
-    }
-  }, {
     key: "upscale",
     value: function upscale() {
       var self = this;
-      var img = self.image.clone().attr("src", this.filepicker_url());
+      var img = self.image.clone().attr("src", this.src);
       img.on("load", function () {
         return self.image.replaceWith(img);
       });
@@ -245,7 +86,7 @@ var Image = function () {
 
 exports.default = Image;
 
-},{"babel-runtime/helpers/classCallCheck":7,"babel-runtime/helpers/createClass":8,"jquery":27}],4:[function(require,module,exports){
+},{"babel-runtime/helpers/classCallCheck":6,"babel-runtime/helpers/createClass":7,"jquery":25}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -314,7 +155,7 @@ var Search = function () {
 
 exports.default = Search;
 
-},{"awesomplete":5,"babel-runtime/helpers/classCallCheck":7,"babel-runtime/helpers/createClass":8,"jquery":27}],5:[function(require,module,exports){
+},{"awesomplete":4,"babel-runtime/helpers/classCallCheck":6,"babel-runtime/helpers/createClass":7,"jquery":25}],4:[function(require,module,exports){
 /**
  * Simple, lightweight, usable local autocomplete library for modern browsers
  * Because there weren’t enough autocomplete scripts in the world? Because I’m completely insane and have NIH syndrome? Probably both. :P
@@ -759,9 +600,9 @@ return _;
 
 }());
 
-},{}],6:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 module.exports = { "default": require("core-js/library/fn/object/define-property"), __esModule: true };
-},{"core-js/library/fn/object/define-property":9}],7:[function(require,module,exports){
+},{"core-js/library/fn/object/define-property":8}],6:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -771,7 +612,7 @@ exports.default = function (instance, Constructor) {
     throw new TypeError("Cannot call a class as a function");
   }
 };
-},{}],8:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -799,27 +640,27 @@ exports.default = function () {
     return Constructor;
   };
 }();
-},{"../core-js/object/define-property":6}],9:[function(require,module,exports){
+},{"../core-js/object/define-property":5}],8:[function(require,module,exports){
 require('../../modules/es6.object.define-property');
 var $Object = require('../../modules/_core').Object;
 module.exports = function defineProperty(it, key, desc){
   return $Object.defineProperty(it, key, desc);
 };
-},{"../../modules/_core":12,"../../modules/es6.object.define-property":25}],10:[function(require,module,exports){
+},{"../../modules/_core":11,"../../modules/es6.object.define-property":24}],9:[function(require,module,exports){
 module.exports = function(it){
   if(typeof it != 'function')throw TypeError(it + ' is not a function!');
   return it;
 };
-},{}],11:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 var isObject = require('./_is-object');
 module.exports = function(it){
   if(!isObject(it))throw TypeError(it + ' is not an object!');
   return it;
 };
-},{"./_is-object":21}],12:[function(require,module,exports){
+},{"./_is-object":20}],11:[function(require,module,exports){
 var core = module.exports = {version: '2.4.0'};
 if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-},{}],13:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 // optional / simple context binding
 var aFunction = require('./_a-function');
 module.exports = function(fn, that, length){
@@ -840,12 +681,12 @@ module.exports = function(fn, that, length){
     return fn.apply(that, arguments);
   };
 };
-},{"./_a-function":10}],14:[function(require,module,exports){
+},{"./_a-function":9}],13:[function(require,module,exports){
 // Thank's IE8 for his funny defineProperty
 module.exports = !require('./_fails')(function(){
   return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
 });
-},{"./_fails":17}],15:[function(require,module,exports){
+},{"./_fails":16}],14:[function(require,module,exports){
 var isObject = require('./_is-object')
   , document = require('./_global').document
   // in old IE typeof document.createElement is 'object'
@@ -853,7 +694,7 @@ var isObject = require('./_is-object')
 module.exports = function(it){
   return is ? document.createElement(it) : {};
 };
-},{"./_global":18,"./_is-object":21}],16:[function(require,module,exports){
+},{"./_global":17,"./_is-object":20}],15:[function(require,module,exports){
 var global    = require('./_global')
   , core      = require('./_core')
   , ctx       = require('./_ctx')
@@ -915,7 +756,7 @@ $export.W = 32;  // wrap
 $export.U = 64;  // safe
 $export.R = 128; // real proto method for `library` 
 module.exports = $export;
-},{"./_core":12,"./_ctx":13,"./_global":18,"./_hide":19}],17:[function(require,module,exports){
+},{"./_core":11,"./_ctx":12,"./_global":17,"./_hide":18}],16:[function(require,module,exports){
 module.exports = function(exec){
   try {
     return !!exec();
@@ -923,12 +764,12 @@ module.exports = function(exec){
     return true;
   }
 };
-},{}],18:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 var global = module.exports = typeof window != 'undefined' && window.Math == Math
   ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
 if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
-},{}],19:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 var dP         = require('./_object-dp')
   , createDesc = require('./_property-desc');
 module.exports = require('./_descriptors') ? function(object, key, value){
@@ -937,15 +778,15 @@ module.exports = require('./_descriptors') ? function(object, key, value){
   object[key] = value;
   return object;
 };
-},{"./_descriptors":14,"./_object-dp":22,"./_property-desc":23}],20:[function(require,module,exports){
+},{"./_descriptors":13,"./_object-dp":21,"./_property-desc":22}],19:[function(require,module,exports){
 module.exports = !require('./_descriptors') && !require('./_fails')(function(){
   return Object.defineProperty(require('./_dom-create')('div'), 'a', {get: function(){ return 7; }}).a != 7;
 });
-},{"./_descriptors":14,"./_dom-create":15,"./_fails":17}],21:[function(require,module,exports){
+},{"./_descriptors":13,"./_dom-create":14,"./_fails":16}],20:[function(require,module,exports){
 module.exports = function(it){
   return typeof it === 'object' ? it !== null : typeof it === 'function';
 };
-},{}],22:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 var anObject       = require('./_an-object')
   , IE8_DOM_DEFINE = require('./_ie8-dom-define')
   , toPrimitive    = require('./_to-primitive')
@@ -962,7 +803,7 @@ exports.f = require('./_descriptors') ? Object.defineProperty : function defineP
   if('value' in Attributes)O[P] = Attributes.value;
   return O;
 };
-},{"./_an-object":11,"./_descriptors":14,"./_ie8-dom-define":20,"./_to-primitive":24}],23:[function(require,module,exports){
+},{"./_an-object":10,"./_descriptors":13,"./_ie8-dom-define":19,"./_to-primitive":23}],22:[function(require,module,exports){
 module.exports = function(bitmap, value){
   return {
     enumerable  : !(bitmap & 1),
@@ -971,7 +812,7 @@ module.exports = function(bitmap, value){
     value       : value
   };
 };
-},{}],24:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 // 7.1.1 ToPrimitive(input [, PreferredType])
 var isObject = require('./_is-object');
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
@@ -984,24 +825,11 @@ module.exports = function(it, S){
   if(!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
   throw TypeError("Can't convert object to primitive value");
 };
-},{"./_is-object":21}],25:[function(require,module,exports){
+},{"./_is-object":20}],24:[function(require,module,exports){
 var $export = require('./_export');
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
 $export($export.S + $export.F * !require('./_descriptors'), 'Object', {defineProperty: require('./_object-dp').f});
-},{"./_descriptors":14,"./_export":16,"./_object-dp":22}],26:[function(require,module,exports){
-'use strict';
-
-var matchOperatorsRe = /[|\\{}()[\]^$+*?.]/g;
-
-module.exports = function (str) {
-	if (typeof str !== 'string') {
-		throw new TypeError('Expected a string');
-	}
-
-	return str.replace(matchOperatorsRe, '\\$&');
-};
-
-},{}],27:[function(require,module,exports){
+},{"./_descriptors":13,"./_export":15,"./_object-dp":21}],25:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.1.1
  * https://jquery.com/

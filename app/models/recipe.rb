@@ -1,5 +1,6 @@
 require 'component.rb'
 require 'custom_markdown.rb'
+require 'image_uploader.rb'
 
 class Recipe < ActiveRecord::Base
   extend FriendlyId
@@ -9,6 +10,7 @@ class Recipe < ActiveRecord::Base
   serialize :recommends, Array
 
   acts_as_markdown_list :recipe
+  after_save :create_images
 
   def markdown_renderer
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
@@ -27,8 +29,12 @@ class Recipe < ActiveRecord::Base
     markdown_renderer.render(converted_description).html_safe
   end
 
+  def create_images
+    ImageUploader.new(image).upload if image.present? && image_changed?
+  end
+
   def backup_image_url
-    "https://www.filepicker.io/api/file/drOikI0sTqG2xjWn2WSQ"
+    "shaker.jpg"
   end
 
   def image_with_backup

@@ -22,6 +22,7 @@
  *= require elements/index-menu.scss
  *= require elements/content.scss
  *= require elements/breadcrumbs.scss
+ *= require utilities/spacing.scss
 
  *= require widgets/list.scss
  *= require widgets/recipe.scss

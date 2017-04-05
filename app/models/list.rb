@@ -1,6 +1,7 @@
 require 'recipe.rb'
 require 'component.rb'
 require 'custom_markdown.rb'
+require 'image_uploader.rb'
 
 class List < ActiveRecord::Base
   extend FriendlyId
@@ -9,6 +10,7 @@ class List < ActiveRecord::Base
   friendly_id :custom_name, use: :slugged
 
   acts_as_markdown_list :content_as_markdown
+  after_save :create_images
 
   def elements
     list_elements
@@ -63,7 +65,11 @@ class List < ActiveRecord::Base
   end
 
   def backup_image_url
-    "https://www.filepicker.io/api/file/drOikI0sTqG2xjWn2WSQ"
+    "shaker.jpg"
+  end
+
+  def create_images
+    ImageUploader.new(image).upload if image.present? && image_changed?
   end
 
   def image_with_backup

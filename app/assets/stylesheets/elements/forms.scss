@@ -26,16 +26,16 @@ textarea {
 
 .form_block .awesomplete {
   position: relative;
-  
+
   ul {
     position: absolute;
     margin-top: -16px;
   }
 }
 
-input[type="submit"], button {
+input[type="submit"], input[type="file"], button {
   min-width: 120px;
-  font-size: 18px;
+  font-size: 16px;
   margin-top: 7px;
 }
 
@@ -89,7 +89,7 @@ button {
   &:hover { background: #aaa; }
 }
 
-.extra-options {
+.extra-options, .image-options {
   border: 1px solid #ccc;
   background: white;
   padding: 10px;
