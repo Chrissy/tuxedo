@@ -5,10 +5,7 @@ import Image from './classes/image.js';
 $(() => {
   const search = new Search('.search');
 
-  console.log("loading...")
-
   $("[data-lazy-load]").each(function() {
-    console.log("imges...")
     let img = new Image($(this));
     img.upscale();
   });
