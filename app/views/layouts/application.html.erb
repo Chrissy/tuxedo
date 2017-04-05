@@ -4,7 +4,7 @@
     <title itemprop='name'><%= site_title %></title>
     <link rel="canonical" href="http://tuxedono2.com" itemprop="url">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-    <script src="/application.js">
+    <script src="/application.js"></script>
     <%= javascript_include_tag "/cms.js" if user_signed_in? %>
     <%= csrf_meta_tags %>
     <%= render "shared/meta_tags" %>
