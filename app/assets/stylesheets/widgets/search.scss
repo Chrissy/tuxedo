@@ -1,5 +1,3 @@
-@import "../elements/helpers";
-
 $search-width: 300px;
 $compact-search-width: 300px - 20px;
 
@@ -48,7 +46,7 @@ $compact-search-width: 300px - 20px;
 }
 
 .search-icon {
-  @include hires-background('search-2x');
+  @include hires-background(20px, 20px, 0, -408px);
   position: absolute;
   top: 27px;
   right: 0;

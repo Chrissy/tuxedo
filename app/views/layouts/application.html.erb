@@ -3,9 +3,11 @@
   <head itemscope itemtype="http://schema.org/WebSite">
     <title itemprop='name'><%= site_title %></title>
     <link rel="canonical" href="http://tuxedono2.com" itemprop="url">
-    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <link href="/dist/application.css" rel="stylesheet" media="all">
     <script src="/dist/application.js"></script>
-    <%= javascript_include_tag "/dist/cms.js" if user_signed_in? %>
+    <% if user_signed_in? %>
+      <script src="/dist/cms.js"></script>
+    <% end %>
     <%= csrf_meta_tags %>
     <%= render "shared/meta_tags" %>
   </head>

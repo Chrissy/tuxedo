@@ -91,7 +91,7 @@
     left: 50%;
   }
   &:before {
-    @include rotate(45deg);
+    transform: rotate(45deg);
     width: 6px;
     height: 6px;
     margin-left: -3px;
@@ -103,8 +103,8 @@
     margin-left: -17px;
   }
   &.large {
-    font-size: 55px;
-    .no { left: 12px; }
+    font-size: 36px;
+    .no { left: 10px; }
   }
   .win & {
     line-height: 150%;

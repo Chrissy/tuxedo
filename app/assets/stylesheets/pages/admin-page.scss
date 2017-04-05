@@ -1,7 +1,3 @@
-@import "../elements/helpers";
-@import "../elements/elements";
-@import "../widgets/list";
-
 .edit_panel {
   @extend %centered-content-box;
   position: relative;

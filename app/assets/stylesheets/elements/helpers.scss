@@ -1,6 +1,3 @@
-@import "../elements/sprite";
-@import "compass/css3/transform";
-
 %centered-content-box {
   width: 940px;
   margin: 0 auto;
@@ -61,20 +58,18 @@
   -webkit-transform: translate3d(0,0,0);
 }
 
-@mixin hires-background($image-name) {
-  $height: sprite-sprite-height($image-name);
-  $width: sprite-sprite-width($image-name);
-
-  height: $height/2;
-  width: $width/2;
+@mixin hires-background($width, $height, $position-x, $position-y) {
+  height: $height;
+  width: $width;
   position: relative;
   &:before {
-    @extend .sprite-#{$image-name};
+    background-image: url('/dist/site-sprite.png');
+    background-position: $position-x $position-y;
     content: "";
-    height: $height;
-    width: $width;
-    @include transform-origin(0,0);
-    @include scale(0.5);
+    height: $height * 2;
+    width: $width * 2;
+    transform-origin: 0 0;
+    transform: scale(0.5);
     position: absolute;
     top: 0;
     left: 0;
