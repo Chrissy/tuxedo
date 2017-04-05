@@ -1,17 +1,15 @@
-@import '../elements/base.scss';
-
 $components-border-color: #e1e1e1;
 $components-text-color: #666;
 $components-bg-color: white;
 
 @mixin natural_component_section($number, $percent) {
-  &:nth-of-type(#{$number}) { 
-    &, & ~ p, & ~ ul, & ~ ol { 
+  &:nth-of-type(#{$number}) {
+    &, & ~ p, & ~ ul, & ~ ol {
       background-color: darken($components-bg-color, $percent);
       color: darken($components-text-color, $percent*0.7);
     }
     & ~ h1, & ~ ul li, & ~ ol li { border-bottom-color: darken($components-border-color, $percent); }
-    & ~ ul li:before { background-color: darken(#ddd, $percent); } 
+    & ~ ul li:before { background-color: darken(#ddd, $percent); }
     &:after { background: darken($components-border-color, $percent); }
     & + p { padding-top: 10px; }
   }
@@ -50,7 +48,7 @@ $components-bg-color: white;
       }
     }
   }
-  p { 
+  p {
     font-size: 14px;
     line-height: 140%;
   }

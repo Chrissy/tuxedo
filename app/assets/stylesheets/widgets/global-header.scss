@@ -1,8 +1,5 @@
-@import "../elements/helpers";
-@import "../elements/base";
-
 #logo {
-  @include hires-background("tuxno2-logo-2x");
+  @include hires-background(173px, 34px, 0, 0);
   display: block;
   text-indent: -99999px;
   position: absolute;
@@ -91,9 +88,9 @@
   opacity: 0.8;
   margin-bottom: 8px;
   &:hover { opacity: 1; }
-  &.twitter { @include hires-background("twitter-2x"); }
-  &.pinterest { @include hires-background("pinterest-2x"); }
-  &.insta { @include hires-background("insta-2x"); }
+  &.pinterest { @include hires-background(25px, 25px, 0, -202px); }
+  &.insta { @include hires-background(25px, 25px, 0, -333px); }
+  &.twitter { @include hires-background(25px, 25px, 0, -283px); }
 }
 
 $social-prompt-color: #777;

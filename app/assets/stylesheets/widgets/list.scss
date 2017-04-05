@@ -1,5 +1,3 @@
-@import '../elements/base';
-
 $element-width: 306px;
 $image-height: 195px;
 $image-resize: 10%;
@@ -102,7 +100,10 @@ $image-resize: 10%;
     top: 0;
     left: -171px;
   }
-  .display-number { @extend .large; }
+  .display-number {
+    font-size: 36px;
+    .no { left: 10px; }
+  }
   .list-element-number {
     display: block;
     top: 208px;

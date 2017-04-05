@@ -1,22 +1,22 @@
 @import "../elements/helpers";
 
 html, body { font-family: "bookmania"; }
-h1, h2, h3 { 
+h1, h2, h3 {
   font-weight: 900;
-  font-feature-settings: "kern" 1; 
+  font-feature-settings: "kern" 1;
   -moz-font-feature-settings:"kern" 1;
-  -webkit-font-feature-settings: "kern" 1; 
+  -webkit-font-feature-settings: "kern" 1;
 }
 h1 { @extend %swash; }
 .win p, .win li { font-family: georgia, sans-serif; }
 
 @mixin font-face($family, $filename, $font-weight: normal, $font-style: normal) {
-  @font-face { 
+  @font-face {
     font-family: "#{$family}";
     src: url("/webfonts/#{$filename}.eot?#iefix") format("embedded-opentype"), url("/webfonts/#{$filename}.woff") format("woff"), url("/webfonts/#{$filename}.ttf") format("truetype");
     font-weight: $font-weight;
     font-style: $font-style;
-  }  
+  }
 }
 
 @include font-face("bookmania", "bookmania-regular");
