@@ -18,7 +18,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (0, _jquery2.default)(function () {
   var search = new _search2.default('.search');
 
+  console.log("loading...");
+
   (0, _jquery2.default)("[data-lazy-load]").each(function () {
+    console.log("imges...");
     var img = new _image2.default((0, _jquery2.default)(this));
     img.upscale();
   });
@@ -68,6 +71,7 @@ var Image = function () {
     (0, _classCallCheck3.default)(this, Image);
 
     this.image = $image;
+    console.log(src);
     this.src = $image.attr("data-lazy-load");
   }
 
@@ -76,6 +80,7 @@ var Image = function () {
     value: function upscale() {
       var self = this;
       var img = self.image.clone().attr("src", this.src);
+      console.log(img);
       img.on("load", function () {
         return self.image.replaceWith(img);
       });
