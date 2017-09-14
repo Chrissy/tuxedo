@@ -6,6 +6,10 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
+Raven.configure do |config|
+  config.dsn = 'https://a5811884433a43aa91cbc963277db5f2:6ac6fe50473142a6bbf4cb62717ee0aa@sentry.io/217312'
+end
+
 module Tuxno2
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

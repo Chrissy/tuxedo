@@ -40,6 +40,7 @@ gem 'newrelic_rpm'
 gem 'mini_magick'
 gem 'aws-sdk', '~> 2'
 gem 'rails_12factor', group: :production
+gem "sentry-raven"
 
 ruby "2.1.7"
 
