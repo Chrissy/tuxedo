@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,111 +10,108 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703192824) do
+ActiveRecord::Schema.define(version: 2016_07_03_192824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "components", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "components"
-    t.text     "recipe_ids"
-    t.text     "image"
-    t.integer  "list"
-    t.string   "nick"
+  create_table "components", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255
+    t.text "description"
+    t.string "components", limit: 255
+    t.text "recipe_ids"
+    t.text "image"
+    t.integer "list"
+    t.string "nick", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
-    t.string   "pseudonyms_as_markdown"
-    t.boolean  "never_make_me_tall"
-    t.text     "list_as_markdown"
+    t.string "slug", limit: 255
+    t.string "pseudonyms_as_markdown", limit: 255
+    t.boolean "never_make_me_tall"
+    t.text "list_as_markdown"
   end
 
-  create_table "delayed_jobs", force: true do |t|
-    t.integer  "priority",   default: 0, null: false
-    t.integer  "attempts",   default: 0, null: false
-    t.text     "handler",                null: false
-    t.text     "last_error"
+  create_table "delayed_jobs", id: :serial, force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
     t.datetime "run_at"
     t.datetime "locked_at"
     t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue"
+    t.string "locked_by", limit: 255
+    t.string "queue", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "lists", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255
+    t.text "content_as_markdown"
+    t.text "element_ids"
+    t.integer "component"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "slug", limit: 255
+    t.string "image", limit: 255
+    t.boolean "never_make_me_tall"
+  end
+
+  create_table "pseudonyms", id: :serial, force: :cascade do |t|
+    t.integer "pseudonymable_id"
+    t.string "pseudonymable_type", limit: 255
+    t.string "name", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
-
-  create_table "lists", force: true do |t|
-    t.string   "name"
-    t.text     "content_as_markdown"
-    t.text     "element_ids"
-    t.integer  "component"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "slug"
-    t.string   "image"
-    t.boolean  "never_make_me_tall"
-  end
-
-  create_table "pseudonyms", force: true do |t|
-    t.integer  "pseudonymable_id"
-    t.string   "pseudonymable_type"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "recipes", force: true do |t|
-    t.string   "name"
-    t.text     "recipe"
-    t.text     "description"
-    t.string   "image"
-    t.text     "component_ids"
-    t.boolean  "published"
+  create_table "recipes", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255
+    t.text "recipe"
+    t.text "description"
+    t.string "image", limit: 255
+    t.text "component_ids"
+    t.boolean "published"
     t.datetime "last_updated"
-    t.text     "instructions"
-    t.string   "list_ids"
+    t.text "instructions"
+    t.string "list_ids", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
-    t.text     "stored_recipe_as_html"
-    t.boolean  "featured"
-    t.boolean  "never_make_me_tall"
-    t.boolean  "dont_compress_image"
+    t.string "slug", limit: 255
+    t.text "stored_recipe_as_html"
+    t.boolean "featured"
+    t.boolean "never_make_me_tall"
+    t.boolean "dont_compress_image"
   end
 
-  create_table "relationships", force: true do |t|
-    t.integer  "relatable_id"
-    t.string   "relatable_type"
-    t.integer  "child_id"
-    t.string   "child_type"
-    t.string   "field"
-    t.string   "key"
+  create_table "relationships", id: :serial, force: :cascade do |t|
+    t.integer "relatable_id"
+    t.string "relatable_type", limit: 255
+    t.integer "child_id"
+    t.string "child_type", limit: 255
+    t.string "field", limit: 255
+    t.string "key", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["relatable_id", "relatable_type"], name: "index_relationships_on_relatable_id_and_relatable_type"
   end
 
-  add_index "relationships", ["relatable_id", "relatable_type"], name: "index_relationships_on_relatable_id_and_relatable_type", using: :btree
-
-  create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "email", limit: 255, default: "", null: false
+    t.string "encrypted_password", limit: 255, default: "", null: false
+    t.string "reset_password_token", limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string "current_sign_in_ip", limit: 255
+    t.string "last_sign_in_ip", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

@@ -25,7 +25,7 @@ module ActsAsMarkdownList
       end
 
       define_method(:create_relationships) do
-        delete_and_save_relationships if send("#{markdown_field}_changed?")
+        delete_and_save_relationships if send("saved_changes").keys.include?(markdown_field.to_s)
       end
 
       define_method(:destroy_relationships) do

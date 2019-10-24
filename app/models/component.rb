@@ -110,10 +110,10 @@ class Component < ActiveRecord::Base
   end
 
   def self.all_for_display
-    all(order: "lower(name)")
+    order("lower(name)")
   end
 
   def self.get_by_letter(letter)
-    all(conditions: "lower(name) LIKE '#{letter}%'")
+    where("lower(name) LIKE '#{letter}%'")
   end
 end

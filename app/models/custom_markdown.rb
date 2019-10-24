@@ -11,7 +11,7 @@ class CustomMarkdown
 
   def self.convert_links_in_place(md)
     md.gsub!(/(\=|\:|\#)\[(.*?)\]/) do |*|
-      element = model_for_symbol($1).find(:first, :conditions => ["lower(name) = ?", $2.downcase])
+      element = model_for_symbol($1).where("lower(name) = ?", $2.downcase).first
       if element
         "<a href='#{element.url}'>#{$2}</a>"
       else
