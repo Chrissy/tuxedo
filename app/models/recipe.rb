@@ -3,8 +3,10 @@ require 'custom_markdown.rb'
 require 'image_uploader.rb'
 
 class Recipe < ActiveRecord::Base
+  searchkick
   extend FriendlyId
   extend ActsAsMarkdownList::ActsAsMethods
+  
 
   friendly_id :custom_name, use: :slugged
   serialize :recommends, Array

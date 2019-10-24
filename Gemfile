@@ -45,3 +45,5 @@ ruby "2.2.6"
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
+
+gem 'searchkick'

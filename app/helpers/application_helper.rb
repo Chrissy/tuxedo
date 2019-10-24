@@ -17,8 +17,8 @@ module ApplicationHelper
   end
 
   def all_elements_for_search
-    elements = []
-    elements.concat(Recipe.all_for_display).concat(List.all_for_display).concat(Component.all_for_display)
+    #Recipe.reindex
+    Recipe.search('martini')
   end
 
   def swash(text)
