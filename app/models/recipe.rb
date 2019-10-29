@@ -81,11 +81,11 @@ class Recipe < ActiveRecord::Base
   end
 
   def self.all_for_display
-    all(conditions: {published: true}, order: "lower(name)")
+    where(published: true).order("lower(name)")
   end
 
   def self.get_by_letter(letter)
-    all(conditions: "lower(name) LIKE '#{letter}%' AND published = 't'")
+    where("lower(name) LIKE '#{letter}%' AND published = 't'")
   end
 
   def recommends

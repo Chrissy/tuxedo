@@ -37,11 +37,11 @@ class List < ActiveRecord::Base
   end
 
   def self.all_for_display
-    all(conditions: "component IS NULL", order: "lower(name)")
+    where("component IS NULL", order: "lower(name)")
   end
 
   def self.get_by_letter(letter)
-    all(conditions: "lower(name) LIKE '#{letter}%' AND component IS NULL")
+    where("lower(name) LIKE '#{letter}%' AND component IS NULL")
   end
 
   def tagline
