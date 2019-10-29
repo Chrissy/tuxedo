@@ -35,7 +35,7 @@ gem 'aws-sdk', '~> 2'
 gem 'rails_12factor', group: :production
 gem "sentry-raven"
 
-ruby "2.2.6"
+ruby "2.5.3"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
