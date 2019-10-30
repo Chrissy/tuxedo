@@ -1,0 +1,14 @@
+<%= render 'shared/index_header', :title => 'Search' %>
+<% all_elements_for_search.each do |element, highlight| %>
+<div>
+  <h1><%= element.name %></h1>
+  <% if highlight.has_key?(:recipe) %>
+    <p><%= highlight[:recipe].html_safe %></p>
+  <% end %>
+  <% if highlight.has_key?(:description) %>
+    <p><%= highlight[:description].html_safe %></p>
+  <% end %>
+</div>
+<% end %>
+<%= render 'shared/index_menu' %>
+<%= render 'shared/index_alphabet_menu', :controller => :recipes, :title => 'Cocktails A-Z' %>

@@ -6,8 +6,8 @@
   },
   "scripts": {
     "start": "",
-    "assets": "watchify -t [ babelify ] app/assets/javascripts/application.js -o public/application.js",
-    "cms": "watchify -t [ babelify ] app/assets/javascripts/cms.js -o public/cms.js",
+    "assets": "watchify -t [ babelify ] app/assets/javascripts/application.js -o public/dist/application.js",
+    "cms": "watchify -t [ babelify ] app/assets/javascripts/cms.js -o public/dist/cms.js",
     "styles": "node-sass app/assets/stylesheets/application.scss public/dist/application.css"
   },
   "license": "ISC",

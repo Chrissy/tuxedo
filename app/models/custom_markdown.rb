@@ -21,6 +21,13 @@ class CustomMarkdown
     md
   end
 
+  def self.remove_custom_links(md)
+    md.gsub!(/(\=|\:|\#)\[(.*?)\]/) do |*|
+      $2
+    end
+    md
+  end
+
   def self.links_to_code_array(md)
     elements = []
     md.gsub(/(\=|\:|\#)\[(.*?)\]/) do |*|

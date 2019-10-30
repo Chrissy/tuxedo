@@ -1,12 +1,14 @@
+require 'redcarpet'
+require 'redcarpet/render_strip'
 require 'component.rb'
 require 'custom_markdown.rb'
 require 'image_uploader.rb'
 
+
 class Recipe < ActiveRecord::Base
-  searchkick
+  searchkick highlight: [:description_as_plain_text, :recipe_as_plain_text]
   extend FriendlyId
   extend ActsAsMarkdownList::ActsAsMethods
-  
 
   friendly_id :custom_name, use: :slugged
   serialize :recommends, Array
@@ -14,8 +16,25 @@ class Recipe < ActiveRecord::Base
   acts_as_markdown_list :recipe
   after_save :create_images
 
+  def search_data
+    {
+      name: name,
+      description: description_as_plain_text,
+      recipe: recipe_as_plain_text
+    }
+  end
+
+  def self.text_search
+    Recipe.reindex
+    Recipe.search "gin", fields: [:description, :recipe], highlight: {fields: {description: {fragment_size: 200}, recipe: {fragment_size: 50}}}
+  end
+
   def markdown_renderer
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
+  end
+
+  def plaintext_renderer
+    Redcarpet::Markdown.new(Redcarpet::Render::StripDown)
   end
 
   def convert_recipe_to_html_and_store
@@ -29,6 +48,15 @@ class Recipe < ActiveRecord::Base
   def description_to_html
     converted_description = CustomMarkdown.convert_links_in_place(description)
     markdown_renderer.render(converted_description).html_safe
+  end
+
+  def description_as_plain_text
+    converted_description = CustomMarkdown.remove_custom_links(description)
+    plaintext_renderer.render(converted_description)
+  end
+
+  def recipe_as_plain_text
+    components.map(&:name).join(", ")
   end
 
   def create_images

@@ -137,7 +137,7 @@ var Search = function () {
   }, {
     key: 'get',
     value: function get() {
-      return _jquery2.default.get("/search.json").then(function (data) {
+      return _jquery2.default.get("/autocomplete.json").then(function (data) {
         return data;
       });
     }

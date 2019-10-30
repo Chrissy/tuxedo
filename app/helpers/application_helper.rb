@@ -16,9 +16,13 @@ module ApplicationHelper
     List.find_by_name("Links") || List.new
   end
 
+  def all_elements_for_autocomplete
+    elements = []
+    elements.concat(Recipe.all_for_display).concat(List.all_for_display).concat(Component.all_for_display)
+  end
+
   def all_elements_for_search
-    #Recipe.reindex
-    Recipe.search('martini')
+    Recipe.text_search.with_highlights
   end
 
   def swash(text)

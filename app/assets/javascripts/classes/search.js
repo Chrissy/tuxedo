@@ -22,7 +22,7 @@ export default class Search {
   }
 
   get() {
-    return $.get("/search.json").then(data => data);
+    return $.get("/autocomplete.json").then(data => data);
   }
 
   listenForSelect() {
