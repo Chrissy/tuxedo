@@ -1,17 +1,13 @@
 <%= render 'shared/index_header', :title => 'Search' %>
-<% all_elements_for_search.each do |element, highlight| %>
-<div>
-  <h1><%= element.name %></h1>
-  <% if highlight.has_key?(:recipe) %>
-    <p><%= highlight[:recipe].html_safe %></p>
-  <% end %>
-  <% if highlight.has_key?(:description) %>
-    <p><%= highlight[:description].html_safe %></p>
-  <% end %>
-  <% if element.class.name == 'Component' && element.respond_to?(:list_elements) %>
-    <p><%= element.list_elements.count %> recipes</p>
+<div class="search-results">
+  <% all_elements_for_search.each do |element, highlight| %>
+  <% 
+  subtext = ''
+  subtext += highlight[:recipe].html_safe if highlight.has_key?(:recipe)
+  subtext += highlight[:description].html_safe if highlight.has_key?(:description)
+  %>
+  <%= render 'shared/index_item', element: element, for_search: true, search_result: subtext %>
   <% end %>
 </div>
-<% end %>
 <%= render 'shared/index_menu' %>
 <%= render 'shared/index_alphabet_menu', :controller => :recipes, :title => 'Cocktails A-Z' %>
