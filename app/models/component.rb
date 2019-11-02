@@ -2,7 +2,7 @@ require 'recipe.rb'
 require 'image_uploader.rb'
 
 class Component < ActiveRecord::Base
-  searchkick highlight: [:description_as_plain_text]
+  searchkick
   extend FriendlyId
   extend ActsAsMarkdownList::ActsAsMethods
 
@@ -20,8 +20,6 @@ class Component < ActiveRecord::Base
   def search_data
     {
       name: name,
-      ## enable this once descrptions are meaningful
-      #description: description_as_plain_text,
     }
   end
 
@@ -39,12 +37,6 @@ class Component < ActiveRecord::Base
 
   def plaintext_renderer
     Redcarpet::Markdown.new(Redcarpet::Render::StripDown)
-  end
-
-  def description_as_plain_text
-    return '' if !list_as_markdown
-    converted_description = CustomMarkdown.remove_custom_links(list_as_markdown)
-    plaintext_renderer.render(converted_description)
   end
 
   def parent_elements

@@ -8,8 +8,8 @@
   <% if highlight.has_key?(:description) %>
     <p><%= highlight[:description].html_safe %></p>
   <% end %>
-  <% if element.respond_to?(:list_items) %>
-    <p><%= elelment[:list_items].length %>recipes</p>
+  <% if element.class.name == 'Component' && element.respond_to?(:list_elements) %>
+    <p><%= element.list_elements.count %> recipes</p>
   <% end %>
 </div>
 <% end %>
