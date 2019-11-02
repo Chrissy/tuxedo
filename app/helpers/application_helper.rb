@@ -21,8 +21,14 @@ module ApplicationHelper
     elements.concat(Recipe.all_for_display).concat(List.all_for_display).concat(Component.all_for_display)
   end
 
+  def text_search(query)
+    Recipe.reindex
+    Component.reindex
+    Searchkick.search query, fields: ["name^10", :description, :recipe], highlight: {fields: {description: {fragment_size: 200}, recipe: {fragment_size: 50}}}
+  end
+
   def all_elements_for_search
-    Recipe.text_search.with_highlights
+    text_search("rum").with_highlights
   end
 
   def swash(text)

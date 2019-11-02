@@ -24,11 +24,6 @@ class Recipe < ActiveRecord::Base
     }
   end
 
-  def self.text_search
-    Recipe.reindex
-    Recipe.search "gin", fields: [:description, :recipe], highlight: {fields: {description: {fragment_size: 200}, recipe: {fragment_size: 50}}}
-  end
-
   def markdown_renderer
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
   end

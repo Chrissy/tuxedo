@@ -8,6 +8,9 @@
   <% if highlight.has_key?(:description) %>
     <p><%= highlight[:description].html_safe %></p>
   <% end %>
+  <% if element.respond_to?(:list_items) %>
+    <p><%= elelment[:list_items].length %>recipes</p>
+  <% end %>
 </div>
 <% end %>
 <%= render 'shared/index_menu' %>
