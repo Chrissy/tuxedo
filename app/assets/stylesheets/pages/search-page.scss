@@ -4,3 +4,11 @@
     padding: 2em 1em;
     flex-direction: column;
 }
+
+.no-results-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* crappy height filling until we can switch to flex layout */
+    height: calc(100vh - 384px);
+}
