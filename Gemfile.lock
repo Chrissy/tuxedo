@@ -208,7 +208,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk (~> 2)
+  aws-sdk
   compass-rails
   devise
   friendly_id
@@ -219,7 +219,7 @@ DEPENDENCIES
   pg
   rails (= 5.2.3)
   rails_12factor
-  redcarpet (~> 3.1.1)
+  redcarpet
   sdoc
   searchkick
   sentry-raven

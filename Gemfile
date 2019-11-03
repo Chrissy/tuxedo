@@ -26,12 +26,12 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'redcarpet', '~> 3.1.1'
+gem 'redcarpet'
 gem 'devise'
 gem 'friendly_id'
 gem 'newrelic_rpm'
 gem 'mini_magick'
-gem 'aws-sdk', '~> 2'
+gem 'aws-sdk'
 gem 'rails_12factor', group: :production
 gem "sentry-raven"
 
