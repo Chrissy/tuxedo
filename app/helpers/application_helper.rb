@@ -22,9 +22,6 @@ module ApplicationHelper
   end
 
   def text_search(query)
-    Recipe.reindex
-    Component.reindex
-    List.reindex
     Searchkick.search params[:query], fields: ["name^10", :description, :recipe], highlight: {fields: {description: {fragment_size: 100}, recipe: {fragment_size: 50}}}
   end
 
