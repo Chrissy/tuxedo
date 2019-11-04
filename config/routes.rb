@@ -32,6 +32,8 @@ Tuxno2::Application.routes.draw do
   get 'new' => 'recipes#new'
   get 'all' => 'recipes#all'
   get 'search' => 'recipes#search'
+  get 'autocomplete' => 'recipes#autocomplete'
+
   get 'recipes/:letter' => 'recipes#letter_index'
   get 'recipes' => 'recipes#index'
   get 'edit/:id' => 'recipes#edit', as: :edit

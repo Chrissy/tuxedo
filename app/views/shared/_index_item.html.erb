@@ -1,6 +1,6 @@
 <% show_admin_controls ||= false %>
 
-<div class="index-element <%= index_item_class_name(element) %>" itemprop="itemListElement" itemscope itemtype="http://schema.org/Recipe">
+<div class="index-element <%= index_item_class_name(element) %> <%= 'for-search' if for_search %>" itemprop="itemListElement" itemscope itemtype="http://schema.org/Recipe">
   <div class="index-element-text">
     <%= link_to element.name, element.url, :class => "index-element-name", :itemprop => "name" %>
     <% if user_signed_in? && show_admin_controls %>
@@ -10,7 +10,13 @@
         <%= publish_status(element) %>
       </div>
     <% else %>
-      <%= render element.subtext, :element => element if element.subtext.present? %>
+      <% if search_result.present? && !search_result.blank? %>
+        <h4 class="subtext search">
+          <%= search_result.html_safe %>
+        </h4>
+      <% else %>
+        <%= render element.subtext, :element => element if element.subtext.present? %>
+      <% end %>
     <% end %>
 
   </div>

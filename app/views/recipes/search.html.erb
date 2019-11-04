@@ -1,0 +1,19 @@
+<%= render 'shared/index_header', :title => "Results: " << (params[:query] || '') %>
+<div class="search-results">
+  <% if all_elements_for_search.length > 0 %>
+    <% all_elements_for_search.each do |element, highlight| %>
+    <% 
+    subtext = ''
+    subtext += highlight[:recipe].html_safe if highlight.has_key?(:recipe)
+    subtext += highlight[:description].html_safe if highlight.has_key?(:description)
+    %>
+    <%= render 'shared/index_item', element: element, for_search: true, search_result: subtext %>
+    <% end %>
+  <% else %>
+    <div class="no-results-container">
+     <h3>No Results</h3>
+    </div>
+  <% end %>
+</div>
+<%= render 'shared/index_menu' %>
+<%= render 'shared/index_alphabet_menu', :controller => :recipes, :title => 'Cocktails A-Z' %>

@@ -16,9 +16,17 @@ module ApplicationHelper
     List.find_by_name("Links") || List.new
   end
 
-  def all_elements_for_search
+  def all_elements_for_autocomplete
     elements = []
     elements.concat(Recipe.all_for_display).concat(List.all_for_display).concat(Component.all_for_display)
+  end
+
+  def text_search(query)
+    Searchkick.search query, fields: ["name^10", :description, :recipe], highlight: {fields: {description: {fragment_size: 100}, recipe: {fragment_size: 50}}}
+  end
+
+  def all_elements_for_search
+    text_search(params[:query]).with_highlights
   end
 
   def swash(text)

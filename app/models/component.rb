@@ -2,6 +2,7 @@ require 'recipe.rb'
 require 'image_uploader.rb'
 
 class Component < ActiveRecord::Base
+  searchkick
   extend FriendlyId
   extend ActsAsMarkdownList::ActsAsMethods
 
@@ -15,6 +16,12 @@ class Component < ActiveRecord::Base
   after_save :create_images
 
   alias_method :list_elements_from_markdown, :list_elements
+
+  def search_data
+    {
+      name: name,
+    }
+  end
 
   def url
     "/ingredients/#{slug}"

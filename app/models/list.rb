@@ -4,6 +4,7 @@ require 'custom_markdown.rb'
 require 'image_uploader.rb'
 
 class List < ActiveRecord::Base
+  searchkick
   extend FriendlyId
   extend ActsAsMarkdownList::ActsAsMethods
 
@@ -11,6 +12,12 @@ class List < ActiveRecord::Base
 
   acts_as_markdown_list :content_as_markdown
   after_save :create_images
+
+  def search_data
+    {
+      name: name,
+    }
+  end
 
   def elements
     list_elements
