@@ -34,6 +34,7 @@ gem 'mini_magick'
 gem 'aws-sdk'
 gem 'rails_12factor', group: :production
 gem "sentry-raven"
+gem 'faraday_middleware-aws-sigv4'
 
 ruby "2.2.6"
 
