@@ -2,7 +2,7 @@ require 'list.rb'
 require 'component.rb'
 
 class RecipesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :search, :index, :letter_index]
+  skip_before_action :authenticate_user!, only: [:show, :search, :autocomplete, :index, :letter_index]
   layout "application"
 
   def show
@@ -44,7 +44,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  def search
+  def autocomplete
     respond_to do |format|
       format.json {}
     end

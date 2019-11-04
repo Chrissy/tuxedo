@@ -30,14 +30,28 @@
     }
   }
 
+  &.for-search {
+    width: 100%;
+    max-width: 800px;
+  }
+
   .subtext {
     padding: .5em 0 0 0;
     margin: 0;
     font-weight: normal;
-    font-size: .7em;
-    text-transform: uppercase;
+    font-size: .875em;
     min-height: 3em;
     a:not(:last-child):after { content: ", "}
+  }
+
+  .subtext.search em {
+    display: inline-block;
+    background: hsla(0, 0%, 30%, 0.15);
+    padding: 0.33em 0.25em;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 0.75;
+    border-radius: 3px;
   }
 
   .list-element-number { display: none; }

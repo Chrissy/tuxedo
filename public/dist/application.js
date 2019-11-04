@@ -137,17 +137,31 @@ var Search = function () {
   }, {
     key: 'get',
     value: function get() {
-      return _jquery2.default.get("/search.json").then(function (data) {
+      return _jquery2.default.get("/autocomplete.json").then(function (data) {
         return data;
       });
     }
   }, {
     key: 'listenForSelect',
     value: function listenForSelect() {
-      this.input.addEventListener("awesomplete-select", function (event) {
+      /*
+      we are using jquery listeners because they bind in order.
+      when we switch off awesomeplete, lets stop this
+      */
+
+      (0, _jquery2.default)(this.input).on("awesomplete-select", function (event) {
         event.preventDefault();
-        window.location = event.text.value;
-      });
+        this.autoCompleteSelected = true;
+        window.location = event.originalEvent.text.value;
+      }.bind(this));
+
+      (0, _jquery2.default)(this.input).on("keydown", function (event) {
+        if (event.isComposing) return;
+        if (event.keyCode === 13 && !this.autoCompleteSelected) {
+          event.preventDefault();
+          window.location = '/search?query=' + event.originalEvent.target.value;
+        }
+      }.bind(this));
     }
   }]);
   return Search;

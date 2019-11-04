@@ -22,13 +22,27 @@ export default class Search {
   }
 
   get() {
-    return $.get("/search.json").then(data => data);
+    return $.get("/autocomplete.json").then(data => data);
   }
 
   listenForSelect() {
-    this.input.addEventListener("awesomplete-select", function(event) {
+    /*
+    we are using jquery listeners because they bind in order.
+    when we switch off awesomeplete, lets stop this
+    */
+
+    $(this.input).on("awesomplete-select", function(event) {
       event.preventDefault();
-      window.location = event.text.value;
-    });
+      this.autoCompleteSelected = true;
+      window.location = event.originalEvent.text.value;
+    }.bind(this));
+
+    $(this.input).on("keydown", function(event) {
+      if (event.isComposing) return;
+      if (event.keyCode === 13 && !this.autoCompleteSelected) {
+        event.preventDefault();
+        window.location = `/search?query=${event.originalEvent.target.value}`;
+      }
+    }.bind(this));
   }
 }
