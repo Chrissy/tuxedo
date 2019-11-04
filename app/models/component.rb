@@ -35,10 +35,6 @@ class Component < ActiveRecord::Base
     end
   end
 
-  def plaintext_renderer
-    Redcarpet::Markdown.new(Redcarpet::Render::StripDown)
-  end
-
   def parent_elements
     Relationship.where(child_type: self.class.to_s, child_id: id, field: :recipe).map(&:relatable).keep_if(&:published?)
   end

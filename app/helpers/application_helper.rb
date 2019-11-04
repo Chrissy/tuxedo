@@ -25,10 +25,6 @@ module ApplicationHelper
     Searchkick.search params[:query], fields: ["name^10", :description, :recipe], highlight: {fields: {description: {fragment_size: 100}, recipe: {fragment_size: 50}}}
   end
 
-  def all_elements_for_search
-    text_search("holidays").with_highlights
-  end
-
   def swash(text)
     letter = text[0]
     "<span class='swash-cap letter-#{letter.downcase}'>#{letter.upcase}</span>#{text[1..-1]}".html_safe
