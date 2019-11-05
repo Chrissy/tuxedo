@@ -1,6 +1,7 @@
 <% show_admin_controls ||= false %>
+<% search_result ||= false %>
 
-<div class="index-element <%= index_item_class_name(element) %> <%= 'for-search' if for_search %>" itemprop="itemListElement" itemscope itemtype="http://schema.org/Recipe">
+<div class="index-element <%= index_item_class_name(element) %> <%= 'for-search' if defined?(for_search) %>" itemprop="itemListElement" itemscope itemtype="http://schema.org/Recipe">
   <div class="index-element-text">
     <%= link_to element.name, element.url, :class => "index-element-name", :itemprop => "name" %>
     <% if user_signed_in? && show_admin_controls %>
