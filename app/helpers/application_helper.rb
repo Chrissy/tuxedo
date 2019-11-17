@@ -1,3 +1,5 @@
+require 'image_uploader.rb'
+
 module ApplicationHelper
 
   def delete_link(object)
@@ -35,8 +37,7 @@ module ApplicationHelper
   end
 
   def image_url(element, size)
-    image_env = JSON.load(File.read('images.json'))
-    return image_env["bucket"] + image_env["sizes"][size.to_s] + element.image_with_backup
+    return ImageUploader.bucket + ImageUploader.sizes(size.to_s) + element.image_with_backup
   end
 
   def header_image(element)
