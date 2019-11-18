@@ -1,6 +1,8 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
 
+const path = require('path');
+
 module.exports = {
   entry: {
     application: './app/assets/javascripts/application.js',
