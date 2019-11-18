@@ -6,8 +6,10 @@
   },
   "scripts": {
     "start": "",
-    "assets": "heroku local",
-    "develop": "heroku local npx webpack-dev-server"
+    "scripts": "npx webpack --config webpack.config.js",
+    "styles": "node-sass app/assets/stylesheets/application.scss public/dist/application.css",
+    "develop": "npx webpack --config webpack.config.js --watch && node-sass app/assets/stylesheets/application.scss public/dist/application.css -w",
+    "build": "npm run scripts && npm run styles"
   },
   "license": "ISC",
   "dependencies": {
