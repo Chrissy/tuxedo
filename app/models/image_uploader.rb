@@ -23,14 +23,18 @@ class ImageUploader
     @s3.head_object(bucket: 'chrissy-tuxedo-no2', key: key)
   end
 
-  def self.sizes(size)
+  def self.all_sizes
     {
       "largeCover" => "1500x861",
       "mediumCover" => "500x287",
       "thumb" => "100x100",
       "pinterest" => "476x666",
       "list" => "600x400"
-    }[size]
+    }
+  end
+
+  def self.sizes(size)
+    all_sizes[size]
   end
 
   def self.bucket
@@ -38,7 +42,7 @@ class ImageUploader
   end
 
   def upload()
-    self.class.sizes.values.each do |size|
+    self.class.all_sizes.values.each do |size|
       putImageWithSize(size)
     end
   end
@@ -58,6 +62,6 @@ class ImageUploader
   def putImageWithSize(size)
     resized_image = resize_image(size)
 
-    @s3.put_object(bucket: 'chrissy-tuxedo-no2', body: resized_image.to_blob, key: key)
+    @s3.put_object(bucket: 'chrissy-tuxedo-no2', body: resized_image.to_blob, key: key(size))
   end
 end
