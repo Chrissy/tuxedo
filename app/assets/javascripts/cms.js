@@ -21,12 +21,12 @@ $(() => {
 
   fetch('/image-upload-token').then(response => response.json()).then((response, reject) => {
     if (reject) console.log("something went wrong", reject);
-    const token = response;
+    const uploader = new ImageUploader(response);
 
     $("#upload-cover-photo").on("change", function(){
       $("input[type='submit']").attr("disabled", true);
 
-      new ImageUploader(token).upload($(this).get(0).files[0], (fileName) => {
+      uploader.upload($(this).get(0).files[0], (fileName) => {
         $("input[type='submit']").attr("disabled", false);
         $("#image-filename").val(fileName);
       })
