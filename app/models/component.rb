@@ -52,7 +52,7 @@ class Component < ActiveRecord::Base
   end
 
   def create_images
-    ImageUploader.new(image).upload if image.present? && image_changed?
+    ImageUploader.new(image).upload if image.present? && saved_changes.keys.include?(:image)
   end
 
   def backup_image_url
@@ -94,7 +94,8 @@ class Component < ActiveRecord::Base
   end
 
   def create_pseudonyms_if_changed
-    create_pseudonyms if pseudonyms_as_markdown && pseudonyms_as_markdown_changed?
+    create_pseudonyms if pseudonyms_as_markdown && saved_changes.keys.include?(:pseudonyms_as_markdown)
+    
   end
 
   def create_pseudonyms
