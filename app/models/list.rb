@@ -76,7 +76,7 @@ class List < ActiveRecord::Base
   end
 
   def create_images
-    ImageUploader.new(image).upload if image.present? && saved_changes.keys.include?(image)
+    ImageUploader.new(image).upload if image.present? && saved_changes.keys.include?(:image)
   end
 
   def image_with_backup
