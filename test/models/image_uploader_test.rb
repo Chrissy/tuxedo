@@ -1,4 +1,4 @@
-require "minitest/autorun"
+require 'minitest/autorun'
 require 'test_helper.rb'
 require 'image_uploader'
 require 'recipe.rb'

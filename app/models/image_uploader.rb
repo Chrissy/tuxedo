@@ -11,12 +11,7 @@ class ImageUploader
   end
 
   def get_credentials()
-    if ENV['RAILS_ENV'] == 'development' || ENV['RAILS_ENV'] == 'test'
-      creds = JSON.load(File.read('secrets.json'))
-      return Aws::Credentials.new(creds['AccessKeyId'], creds['SecretAccessKey'])
-    else
-      return Aws::Credentials.new(ENV['S3_KEY'], ENV['S3_SECRET'])
-    end
+    return Aws::Credentials.new(ENV['S3_KEY'], ENV['S3_SECRET'])
   end
 
 

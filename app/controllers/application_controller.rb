@@ -8,6 +8,13 @@ class ApplicationController < ActionController::Base
   def windows?
     request.user_agent =~ /.*Windows/
   end
+
+  def token
+    render json: {
+      :key => ENV["S3_KEY"],
+      :secret => ENV["S3_SECRET"]
+    } if user_signed_in?
+  end
   
   def set_sharing_cookie
     current_count = cookies[:visit_count].to_i

@@ -58,4 +58,5 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
-secrets.json
+.env
+/public/dist

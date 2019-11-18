@@ -4,9 +4,9 @@
     <title itemprop='name'><%= site_title %></title>
     <link rel="canonical" href="http://tuxedono2.com" itemprop="url">
     <link href="/dist/application.css" rel="stylesheet" media="all">
-    <script src="/dist/application.js"></script>
+    <script src="/dist/application.bundle.js"></script>
     <% if user_signed_in? %>
-      <script src="/dist/cms.js"></script>
+      <script src="/dist/cms.bundle.js"></script>
     <% end %>
     <%= csrf_meta_tags %>
     <%= render "shared/meta_tags" %>
