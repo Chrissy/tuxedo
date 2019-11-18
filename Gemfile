@@ -35,6 +35,7 @@ gem 'aws-sdk'
 gem 'rails_12factor', group: :production
 gem "sentry-raven"
 gem 'faraday_middleware-aws-sigv4'
+gem 'dotenv-rails', groups: [:development, :test]
 
 ruby "2.5.3"
 

@@ -10,15 +10,6 @@ $(() => {
     forms.push(form);
   });
 
-  $("#upload-cover-photo").on("change", function(){
-    $("input[type='submit']").attr("disabled", true);
-
-    new ImageUploader().upload($(this).get(0).files[0], (fileName) => {
-      $("input[type='submit']").attr("disabled", false);
-      $("#image-filename").val(fileName);
-    })
-  });
-
   $(".clear_image").on("click", function() {
     $(this).addClass("cleared").parent().find('#image-filename').attr("value", "");
     return false;
@@ -27,4 +18,19 @@ $(() => {
   $(".show-extra-options").on("click", function() {
     $(this).siblings(".extra-options").toggle();
   });
+
+  fetch('/image-upload-token').then(response => response.json()).then((response, reject) => {
+    if (reject) console.log("something went wrong", reject);
+    const uploader = new ImageUploader(response);
+
+    $("#upload-cover-photo").on("change", function(){
+      $("input[type='submit']").attr("disabled", true);
+
+      uploader.upload($(this).get(0).files[0], (fileName) => {
+        $("input[type='submit']").attr("disabled", false);
+        $("#image-filename").val(fileName);
+      })
+    });
+  })
+
 });

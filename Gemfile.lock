@@ -880,6 +880,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.7.5)
+    dotenv-rails (2.7.5)
+      dotenv (= 2.7.5)
+      railties (>= 3.2, < 6.1)
     elasticsearch (7.4.0)
       elasticsearch-api (= 7.4.0)
       elasticsearch-transport (= 7.4.0)
@@ -1014,6 +1018,7 @@ DEPENDENCIES
   aws-sdk
   compass-rails
   devise
+  dotenv-rails
   faraday_middleware-aws-sigv4
   friendly_id
   jbuilder
