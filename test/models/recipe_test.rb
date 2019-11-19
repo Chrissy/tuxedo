@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'custom_markdown'
  
-class ArticleTest < ActiveSupport::TestCase
+class RecipeTest < ActiveSupport::TestCase
   def test_converts_markdown_in_place
     sample_markdown = "two dashes of :[rye], one dash of :[gin]"
     converted_description = CustomMarkdown.convert_links_in_place(sample_markdown)
