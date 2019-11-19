@@ -1,0 +1,8 @@
+gin:
+  id: 1
+  name: gin
+  slug: gin
+rye:
+  id: 2
+  name: rye
+  slug: gin
