@@ -1,0 +1,8 @@
+fooblesniff:
+  id: 1
+  name: fooblesniff
+  slug: fooblesniff
+  description: two dashes of :[rye], one dash of :[gin]
+  recipe: 10oz :[rye]
+  published: true
+  
