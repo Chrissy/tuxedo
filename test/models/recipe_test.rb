@@ -5,13 +5,13 @@ class RecipeTest < ActiveSupport::TestCase
   def test_converts_markdown_in_place
     sample_markdown = "two dashes of :[rye], one dash of :[gin]"
     converted_description = CustomMarkdown.convert_links_in_place(sample_markdown)
-    assert converted_description == "two dashes of <a href='/ingredients/gin'>rye</a>, one dash of <a href='/ingredients/gin'>gin</a>"
+    assert converted_description == "two dashes of <a href='/ingredients/rye'>rye</a>, one dash of <a href='/ingredients/gin'>gin</a>"
   end
 
   def test_description_to_html
     testRecipe = Recipe.find(1)
     description = testRecipe.description_to_html 
-    assert description == "<p>two dashes of <a href='/ingredients/gin'>rye</a>, one dash of <a href='/ingredients/gin'>gin</a></p>\n"
+    assert description == "<p>two dashes of <a href='/ingredients/rye'>rye</a>, one dash of <a href='/ingredients/gin'>gin</a></p>\n"
   end
 
   def test_description_updates
