@@ -7,7 +7,7 @@ class ImageUploader
     credentials = get_credentials()
     @path = image
     @s3 = Aws::S3::Client.new(region: 'us-east-2', credentials: credentials)
-    @newImage = MiniMagick::Image.open(self.class.bucket + image)
+    @baseImage = MiniMagick::Image.open(self.class.bucket + image)
   end
 
   def get_credentials()
@@ -48,7 +48,7 @@ class ImageUploader
   end
 
   def resize_image(size)
-    @newImage.combine_options do |i|
+    MiniMagick::Image.open(@baseImage.tempfile.path).combine_options do |i|
       i.resize(size + "^")
       i.gravity("Center")
       i.extent(size)
