@@ -24,7 +24,7 @@ module ApplicationHelper
   end
 
   def text_search(query)
-    Searchkick.search query, fields: ["name^10", :description, :recipe], highlight: {fields: {description: {fragment_size: 100}, recipe: {fragment_size: 50}}}
+    Searchkick.search query, models: [Recipe, Component, List], fields: ["name^10", :description], highlight: {fields: {description: {fragment_size: 100}, recipe: {fragment_size: 50}}}
   end
 
   def all_elements_for_search
