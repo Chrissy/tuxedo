@@ -101,12 +101,12 @@ export default class Search {
     });
 
     this.input.addEventListener("blur", event => {
-      if (!this.isOpen) return;
+      // if (!this.isOpen) return;
 
-      this.results = [];
-      this.arrowIndex = null;
-      this.isOpen = false;
-      //this.render();
+      // this.results = [];
+      // this.arrowIndex = null;
+      // this.isOpen = false;
+      // this.render();
     })
   }
 }
