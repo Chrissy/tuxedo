@@ -42,7 +42,7 @@ export default class Search {
   }
 
   renderLine(result, active) {
-    return `<a class="autocomplete-line ${active && 'active'}" href=${result.value} data-prevent-search-reset>${result.label}</a>`
+    return `<a class="autocomplete-line ${active && 'active'}" href=${result.value}>${result.label}</a>`
   }
 
   getFullTextSearchUrl() {
@@ -55,7 +55,7 @@ export default class Search {
         ${this.results.reduce((accumulator, currentValue, index) => {
           return accumulator + this.renderLine(currentValue, index === this.arrowIndex);
         }, "")}
-        <a class="autocomplete-line full-text-search" href="${this.getFullTextSearchUrl()}" data-prevent-search-reset>See More Results »</a>
+        <a class="autocomplete-line full-text-search" href="${this.getFullTextSearchUrl()}">See More Results »</a>
       </div>`
     ) : '';
 
@@ -102,8 +102,6 @@ export default class Search {
 
     this.input.addEventListener("blur", event => {
       if (!this.isOpen) return;
-
-      if (event.relatedTarget && event.relatedTarget.hasAttribute('data-prevent-search-reset')) return;
 
       this.results = [];
       this.arrowIndex = null;
