@@ -1391,14 +1391,18 @@ input.search {
 .search-wrapper, input.search {
   width: 300px; }
 
+.autocomplete-line.full-text-search {
+  color: #777; }
+
 @media (max-width: 650px) {
-  .search-wrapper, input.search {
+  .search-wrapper, input.search, .autocomplete-container {
     width: 280px; }
   body.focused .search-wrapper {
     -webkit-transform: translate3d(0, -57px, 0); }
   body.focused .header-primary, body.focused .header-content > img, body.focused .links {
     opacity: 0.2; } }
 
+/* legacy awesomeplete stuff */
 .awesomplete {
   color: #fff; }
 

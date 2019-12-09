@@ -68,14 +68,20 @@ input.search {
   width: $search-width;
 }
 
+.autocomplete-line.full-text-search {
+  color: #777;
+}
+
 @media (max-width: 650px) {
-  .search-wrapper, input.search { width: $compact-search-width; }
+  .search-wrapper, input.search, .autocomplete-container { width: $compact-search-width; }
   
   body.focused {
     .search-wrapper { -webkit-transform: translate3d(0, -57px, 0); }
     .header-primary, .header-content > img, .links { opacity: 0.2; }
   }
 }
+
+/* legacy awesomeplete stuff */
 
 .awesomplete {
   color: #fff; 
