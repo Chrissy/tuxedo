@@ -106,7 +106,7 @@ export default class Search {
       this.results = [];
       this.arrowIndex = null;
       this.isOpen = false;
-      this.render();
+      //this.render();
     })
   }
 }
