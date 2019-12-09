@@ -10,12 +10,6 @@ $(() => {
     img.upscale();
   });
 
-  $("[bubble-on-focus]").not("focused").focus(function() {
-    const $target = $(this).closest($(this).attr("bubble-on-focus"));
-    $target.addClass("focused");
-    $(this).blur(() => $target.removeClass("focused"));
-  });
-
   $("div[href]").on("click", function() {
     window.location = $(this).attr("href");
   });

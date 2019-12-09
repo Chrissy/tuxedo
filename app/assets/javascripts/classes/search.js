@@ -102,6 +102,7 @@ export default class Search {
       if (!this.isOpen) return;
 
       if (event.relatedTarget && event.relatedTarget.hasAttribute('data-prevent-search-reset')) return;
+
       this.results = [];
       this.arrowIndex = null;
       this.isOpen = false;
