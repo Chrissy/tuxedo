@@ -55,6 +55,13 @@ export default class Search {
       const { value } = event.target;
       const results = this.autocomplete.search(value);
       this.resultsContainer.innerHTML = this.render(results);
+    });
+
+    this.input.addEventListener("keydown", event => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        window.location = `/search?query=${event.target.value}`;
+      }
     })
   }
 }
