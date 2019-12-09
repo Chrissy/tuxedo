@@ -29,7 +29,6 @@ end
 gem 'redcarpet'
 gem 'devise'
 gem 'friendly_id'
-gem 'newrelic_rpm'
 gem 'mini_magick'
 gem 'aws-sdk'
 gem 'rails_12factor', group: :production
