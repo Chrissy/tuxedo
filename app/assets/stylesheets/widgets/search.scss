@@ -1,48 +1,34 @@
 $search-width: 300px;
 $compact-search-width: 300px - 20px;
 
-.search-wrapper { position: relative;}
-
-.search-wrapper .awesomplete {
-  color: #ccc;
-  font-size: 20px;
+.search-wrapper {
   position: relative;
-  z-index: 5;
-  color: white;
-  float: right;
-  height: 30px;
+  z-index: 99;
 }
 
-.awesomplete {
-  color: #fff;
+.autocomplete-container {
+  background: rgba(0,0,0,0.8);
+  position: absolute;
+  top: 100%;
+  border-radius: 0 0 4px 4px;
+  width: 300px;
+}
 
-  ul {
-    background-color: rgba(50,50,50,0.8);
-    border: 1px solid #333;
-    width: 100%;
-    border-radius: 0 0 5px 5px;
-    margin-top: 30px;
-  }
+.autocomplete-line {
+  display: block;
+  cursor: pointer;
+  padding: 10px 15px;
+  color: #ccc;
+  width: 100%;
 
-  li {
+  &:not(:last-child) {
     border-bottom: 1px solid #333;
-    padding: 10px 20px;
-    display: block;
-    width: 100%;
-    cursor: pointer;
-
-    &[aria-selected="true"] {
-      background-color: rgba(70,70,70,0.8);
-      color: white;
-    }
-
-    mark {
-      background-color: #555;
-      color: white;
-    }
   }
 
-  .visually-hidden { display: none; }
+  &:hover, &:active, &.active {
+    background: rgba(50, 50, 50, 0.8);
+    color: #fff;
+  }
 }
 
 .search-icon {
@@ -60,15 +46,15 @@ $compact-search-width: 300px - 20px;
   }
 }
 
-.search-wrapper .awesomplete input, input.search {
+input.search {
   margin-bottom: 0;
   background-color: rgba(70,70,70,0.7) !important;
   color: #fff;
   height: 30px;
   font-size: 16px;
-  float: right;
   position: relative;
   opacity: 0.7;
+  width: 300px;
 
   &:focus {
     z-index: 99999;
@@ -78,18 +64,15 @@ $compact-search-width: 300px - 20px;
   }
 }
 
-.search-wrapper, .search-wrapper .awesomplete, input.search {
+.search-wrapper, input.search {
   width: $search-width;
 }
 
 @media (max-width: 650px) {
-  .search-wrapper, .search-wrapper .awesomplete, input.search { width: $compact-search-width; }
+  .search-wrapper, input.search { width: $compact-search-width; }
+  
   body.focused {
     .search-wrapper { -webkit-transform: translate3d(0, -57px, 0); }
     .header-primary, .header-content > img, .links { opacity: 0.2; }
-  }
-  .awesomplete li {
-    padding: 0px 20px;
-    &, a { font-size: 18px; }
   }
 }
