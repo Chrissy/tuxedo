@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import Awesomplete from 'awesomplete';
 import Fuse from 'fuse.js';
 
 export default class Search {
@@ -52,9 +51,9 @@ export default class Search {
   }
 
   listenForSelect() {
-    this.input.addEventListener("keydown", event => {
-      const query = event.target.value + event.key;
-      const results = this.autocomplete.search(query);
+    this.input.addEventListener("input", event => {
+      const { value } = event.target;
+      const results = this.autocomplete.search(value);
       this.resultsContainer.innerHTML = this.render(results);
     })
   }
