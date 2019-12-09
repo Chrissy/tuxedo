@@ -1398,7 +1398,7 @@ input.search {
   .search-wrapper, input.search, .autocomplete-container {
     width: 280px; }
   body.focused .search-wrapper {
-    -webkit-transform: translateY(-57px); }
+    top: -57px; }
   body.focused .header-primary, body.focused .header-content > img, body.focused .links {
     opacity: 0.2; } }
 
