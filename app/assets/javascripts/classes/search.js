@@ -1,10 +1,15 @@
 import $ from 'jquery';
 import Awesomplete from 'awesomplete';
+import Fuse from 'fuse.js';
 
 export default class Search {
-  constructor(input) {
-    const self = this;
+  constructor(input) {    
     this.input = document.querySelector(input);
+    this.resultsContainer = document.createElement("div");
+    this.input.parentElement.append(this.resultsContainer);
+
+    const self = this;
+
     this.get().then((data) => {
       self.build_autocomplete(data);
       self.listenForSelect();
@@ -12,37 +17,45 @@ export default class Search {
   }
 
   build_autocomplete(data) {
-    const options = {
-      list: data,
-      autofirst: true,
-      filter: Awesomplete.FILTER_STARTSWITH,
-      minChars: 1
+    var options = {
+      shouldSort: true,
+      threshold: 0.6,
+      location: 0,
+      distance: 100,
+      maxPatternLength: 32,
+      minMatchCharLength: 1,
+      keys: [
+        "label",
+      ]
     };
-    this.autocomplete = new Awesomplete(this.input, options);
+    this.autocomplete = new Fuse(data, options);
   }
 
-  get() {
-    return $.get("/autocomplete.json").then(data => data);
+  async get() {
+    const response = await fetch("/autocomplete.json");
+    const json = await response.json();
+    return json;
+  }
+
+  renderLine(result) {
+    return `<a className="autocomplete-line" href=${result.value}>${result.label}</a>`
+  }
+
+  render(results) {
+    return (
+      `<div className="autocomplete-container">
+        ${results.reduce((accumulator, currentValue) => {
+          return accumulator + this.renderLine(currentValue);
+        }, "")}
+      </div>`
+    );
   }
 
   listenForSelect() {
-    /*
-    we are using jquery listeners because they bind in order.
-    when we switch off awesomeplete, lets stop this
-    */
-
-    $(this.input).on("awesomplete-select", function(event) {
-      event.preventDefault();
-      this.autoCompleteSelected = true;
-      window.location = event.originalEvent.text.value;
-    }.bind(this));
-
-    $(this.input).on("keydown", function(event) {
-      if (event.isComposing) return;
-      if (event.keyCode === 13 && !this.autoCompleteSelected) {
-        event.preventDefault();
-        window.location = `/search?query=${event.originalEvent.target.value}`;
-      }
-    }.bind(this));
+    this.input.addEventListener("keydown", event => {
+      const query = event.target.value + event.key;
+      const results = this.autocomplete.search(query);
+      this.resultsContainer.innerHTML = this.render(results);
+    })
   }
 }
