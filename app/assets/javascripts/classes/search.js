@@ -50,7 +50,7 @@ export default class Search {
   }
 
   render() {
-    this.resultsContainer.innerHTML = this.isOpen ? (
+    const r = () => this.resultsContainer.innerHTML = this.isOpen ? (
       `<div class="autocomplete-container">
         ${this.results.reduce((accumulator, currentValue, index) => {
           return accumulator + this.renderLine(currentValue, index === this.arrowIndex);
@@ -58,6 +58,8 @@ export default class Search {
         <a class="autocomplete-line full-text-search" href="${this.getFullTextSearchUrl()}" data-prevent-search-reset>See More Results »</a>
       </div>`
     ) : '';
+
+    window.requestAnimationFrame(r);
   }
 
   setArrowIndex(direction) {

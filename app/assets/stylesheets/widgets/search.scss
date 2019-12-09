@@ -74,6 +74,11 @@ input.search {
 
 @media (max-width: 650px) {
   .search-wrapper, input.search, .autocomplete-container { width: $compact-search-width; }
+  
+  body.focused {
+    .search-wrapper { top: -57px; }
+    .header-primary, .header-content > img, .links { opacity: 0.2; }
+  }
 }
 
 /* legacy awesomeplete stuff */
