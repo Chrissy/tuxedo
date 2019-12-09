@@ -9,6 +9,7 @@ export default class Search {
     this.input.parentElement.append(this.resultsContainer);
     this.arrowIndex = null;
     this.results = [];
+    this.isOpen = false;
 
     const self = this;
 
@@ -41,17 +42,22 @@ export default class Search {
   }
 
   renderLine(result, active) {
-    return `<a class="autocomplete-line ${active && 'active'}" href=${result.value}>${result.label}</a>`
+    return `<a class="autocomplete-line ${active && 'active'}" href=${result.value} data-prevent-search-reset>${result.label}</a>`
+  }
+
+  getFullTextSearchUrl() {
+    return `/search?query=${this.inputValue}`;
   }
 
   render() {
-    return this.resultsContainer.innerHTML = (
+    this.resultsContainer.innerHTML = this.isOpen ? (
       `<div class="autocomplete-container">
         ${this.results.reduce((accumulator, currentValue, index) => {
           return accumulator + this.renderLine(currentValue, index === this.arrowIndex);
         }, "")}
+        <a class="autocomplete-line full-text-search" href="${this.getFullTextSearchUrl()}" data-prevent-search-reset>See More Results »</a>
       </div>`
-    );
+    ) : '';
   }
 
   setArrowIndex(direction) {
@@ -63,18 +69,22 @@ export default class Search {
 
   listenForSelect() {
     this.input.addEventListener("input", event => {
+      if (!this.isOpen) this.isOpen = true;
       const { value } = event.target;
-      this.results = this.autocomplete.search(value);
+      this.inputValue = value;
+      this.results = this.autocomplete.search(this.inputValue, {limit: 6});
       this.render();
     });
 
     this.input.addEventListener("keydown", event => {
+      if (!this.isOpen) return;
+
       if (event.key === 'Enter') {
         event.preventDefault();
         if (this.arrowIndex && this.results) {
           return window.location = this.results[this.arrowIndex].value;
         }
-        return window.location = `/search?query=${event.target.value}`;
+        return window.location = this.getFullTextSearchUrl();
       }
 
       if (event.key === 'ArrowUp') {
@@ -89,8 +99,12 @@ export default class Search {
     });
 
     this.input.addEventListener("blur", event => {
+      if (!this.isOpen) return;
+
+      if (event.relatedTarget && event.relatedTarget.hasAttribute('data-prevent-search-reset')) return;
       this.results = [];
       this.arrowIndex = null;
+      this.isOpen = false;
       this.render();
     })
   }
