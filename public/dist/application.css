@@ -1133,7 +1133,7 @@ body {
 
 .header-primary, .header-secondary {
   position: absolute;
-  z-index: 5; }
+  z-index: 7; }
 
 .header-primary {
   top: 25px; }
@@ -1398,6 +1398,34 @@ input.search {
     -webkit-transform: translate3d(0, -57px, 0); }
   body.focused .header-primary, body.focused .header-content > img, body.focused .links {
     opacity: 0.2; } }
+
+.awesomplete {
+  color: #fff; }
+
+.awesomplete ul {
+  background-color: rgba(50, 50, 50, 0.8);
+  border: 1px solid #333;
+  width: 100%;
+  border-radius: 0 0 5px 5px;
+  margin-top: 30px; }
+
+.awesomplete li {
+  border-bottom: 1px solid #333;
+  padding: 10px 20px;
+  display: block;
+  width: 100%;
+  cursor: pointer; }
+
+.awesomplete li[aria-selected="true"] {
+  background-color: rgba(70, 70, 70, 0.8);
+  color: white; }
+
+.awesomplete li mark {
+  background-color: #555;
+  color: white; }
+
+.awesomplete .visually-hidden {
+  display: none; }
 
 .edit_panel {
   position: relative;
