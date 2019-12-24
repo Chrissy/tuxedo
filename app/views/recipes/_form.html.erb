@@ -2,6 +2,9 @@
   <div class="form_block primary">
     <%= f.text_field :name, :value => default_text(:name), :placeholder => "name" %>
     <%= f.text_area :recipe, :value => default_text(:recipe), :placeholder => "recipe", :class => 'autocomplete components' %>
+    <%= f.text_field :adapted_from, :value => default_text(:adapted_from), :placeholder => "adapted from" %>
+    <label>Rating (SEO only): </label>
+    <%= f.select :rating, [0,1,2,3,4,5], value: @recipe.rating  %>
   </div>
   <div class="form_block secondary">
     <%= f.text_area :description, :value => default_text(:description), :placeholder => "description", :class => "autocomplete components lists recipes" %>
@@ -14,8 +17,6 @@
       <%= check_box_tag :make_my_number_last %><br/>
       <label>Never make me tall!</label>
       <%= f.check_box :never_make_me_tall %><br/>
-      <label>Don't compress my image</label>
-      <%= f.check_box :dont_compress_image %>
     </div>
     <br/>
     <%= f.submit(submit_text()) %>

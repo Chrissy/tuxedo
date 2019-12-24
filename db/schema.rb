@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2016_07_03_192824) do
+ActiveRecord::Schema.define(version: 2019_12_24_060126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,7 +82,8 @@ ActiveRecord::Schema.define(version: 2016_07_03_192824) do
     t.text "stored_recipe_as_html"
     t.boolean "featured"
     t.boolean "never_make_me_tall"
-    t.boolean "dont_compress_image"
+    t.integer "rating"
+    t.text "adapted_from"
   end
 
   create_table "relationships", id: :serial, force: :cascade do |t|
