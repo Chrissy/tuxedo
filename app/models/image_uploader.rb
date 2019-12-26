@@ -14,9 +14,8 @@ class ImageUploader
     return Aws::Credentials.new(ENV['S3_KEY'], ENV['S3_SECRET'])
   end
 
-
   def source_image
-    @newImage
+    @baseImage
   end
 
   def file_head(key)

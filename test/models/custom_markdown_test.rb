@@ -22,4 +22,22 @@ class CustomMarkdownTest < Minitest::Test
     markdown = CustomMarkdown.remove_custom_links(sample_markdown)
     assert markdown = "two dashes of rye, one dash of gin"
   end
+
+  def test_subcomponents_from_markdown
+    sample_markdown = "
+    here is some text.
+    ::[old tom]
+    more fun for :[you]
+    ::[london dry]
+    even more :[fun]
+    ::[old tom]
+    even more :[fun]
+    "
+    ingredient = Component.find(1)
+    subcomponents = CustomMarkdown.subcomponents_from_markdown(ingredient, sample_markdown)
+    assert subcomponents.length == 2
+    assert subcomponents.map(&:name).include?("old tom")
+    assert subcomponents.map(&:component).include?(ingredient)
+    assert subcomponents[0].component.subcomponents.include?(subcomponents[0])
+  end
 end

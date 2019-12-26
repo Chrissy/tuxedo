@@ -1,4 +1,5 @@
 require 'recipe.rb'
+require 'subcomponent.rb'
 require 'image_uploader.rb'
 
 class Component < ActiveRecord::Base
@@ -12,6 +13,7 @@ class Component < ActiveRecord::Base
 
   serialize :recipe_ids, Array
   has_many :pseudonyms, as: :pseudonymable, dependent: :destroy
+  has_many :subcomponents, dependent: :destroy
   before_save :create_pseudonyms_if_changed
   after_save :create_images
 
@@ -95,7 +97,17 @@ class Component < ActiveRecord::Base
 
   def create_pseudonyms_if_changed
     create_pseudonyms if pseudonyms_as_markdown && saved_changes.keys.include?(:pseudonyms_as_markdown)
-    
+  end
+
+  def create_subcomponents
+    if description.present?
+      subcomponents.destroy_all
+      CustomMarkdown.subcomponents_from_markdown(self, description)
+    end
+  end
+
+  define_method(:relationships_from_markdown) do
+    CustomMarkdown.relationships_from_markdown(self, markdown, markdown_field)
   end
 
   def create_pseudonyms

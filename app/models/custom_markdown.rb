@@ -5,7 +5,8 @@ class CustomMarkdown
     return {
       ":" => Component,
       "#" => List,
-      "=" => Recipe
+      "=" => Recipe,
+      "::" => Subcomponent,
     }[symbol]
   end
 
@@ -55,6 +56,17 @@ class CustomMarkdown
 
   def self.shorthand_to_recipes(limit_number, sort_by)
     Recipe.limit(limit_number).order(sort_by.nil? ? "name asc" : "last_updated desc").map{ |el| [el.class.to_s, el.id]}
+  end
+
+  def self.subcomponents_from_markdown(instance, md)
+    elements = []
+    md.scan(/\:\:\[(.*?)\]/) do
+      element = 
+        Subcomponent.find_by_name($1) ||
+        Subcomponent.create({ name: $1, component_id: instance.id })
+      elements << element
+    end
+    elements.uniq - ["",nil]
   end
 
   def self.shorthand_to_component_recipes(component_name, sort_by)

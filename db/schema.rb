@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_24_060126) do
+ActiveRecord::Schema.define(version: 2019_12_24_231107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,14 @@ ActiveRecord::Schema.define(version: 2019_12_24_060126) do
     t.index ["relatable_id", "relatable_type"], name: "index_relationships_on_relatable_id_and_relatable_type"
   end
 
+  create_table "subcomponents", force: :cascade do |t|
+    t.bigint "component_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["component_id"], name: "index_subcomponents_on_component_id"
+  end
+
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "email", limit: 255, default: "", null: false
     t.string "encrypted_password", limit: 255, default: "", null: false
@@ -115,4 +123,5 @@ ActiveRecord::Schema.define(version: 2019_12_24_060126) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "subcomponents", "components"
 end
