@@ -15,7 +15,7 @@ class Component < ActiveRecord::Base
   has_many :pseudonyms, as: :pseudonymable, dependent: :destroy
   has_many :subcomponents, dependent: :destroy
   before_save :create_pseudonyms_if_changed
-  after_save :create_images
+  after_save :create_images, :delete_and_save_subcomponents
 
   alias_method :list_elements_from_markdown, :list_elements
 
@@ -96,18 +96,14 @@ class Component < ActiveRecord::Base
   end
 
   def create_pseudonyms_if_changed
-    create_pseudonyms if pseudonyms_as_markdown && saved_changes.keys.include?(:pseudonyms_as_markdown)
+    create_pseudonyms if pseudonyms_as_markdown && saved_changes.keys.include?("pseudonyms_as_markdown")
   end
 
-  def create_subcomponents
-    if description.present?
+  def delete_and_save_subcomponents
+    if list_as_markdown.present? && saved_changes.keys.include?("description")
       subcomponents.destroy_all
       CustomMarkdown.subcomponents_from_markdown(self, description)
     end
-  end
-
-  define_method(:relationships_from_markdown) do
-    CustomMarkdown.relationships_from_markdown(self, markdown, markdown_field)
   end
 
   def create_pseudonyms
