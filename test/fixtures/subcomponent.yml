@@ -1,0 +1,12 @@
+dry_rye:
+  id: 1
+  component_id: 2
+  name: "dry rye"
+old_tom:
+  id: 2
+  component_id: 1
+  name: "old tom"
+london_dry:
+  id: 3
+  component_id: 1
+  name: "london dry"

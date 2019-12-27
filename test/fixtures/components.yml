@@ -2,7 +2,9 @@ gin:
   id: 1
   name: gin
   slug: gin
+  description: "has subcomponent ::[old tom] with some :[rye]"
 rye:
   id: 2
   name: rye
   slug: rye
+  description: "has subcomponent ::[old tom] with some :[rye]"

@@ -106,6 +106,24 @@ class Component < ActiveRecord::Base
     end
   end
 
+  def markdown_renderer
+    Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
+  end
+
+  def plaintext_renderer
+    Redcarpet::Markdown.new(Redcarpet::Render::StripDown)
+  end
+
+  def description_to_html
+    converted_description = CustomMarkdown.convert_links_in_place(description)
+    markdown_renderer.render(converted_description).html_safe
+  end
+
+  def description_as_plain_text
+    converted_description = CustomMarkdown.remove_custom_links(description)
+    plaintext_renderer.render(converted_description)
+  end
+
   def create_pseudonyms
     pseudonyms.delete_all
     pseudonyms_as_array.each do |name|

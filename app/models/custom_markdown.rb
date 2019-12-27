@@ -11,9 +11,11 @@ class CustomMarkdown
   end
 
   def self.convert_links_in_place(md)
-    newMd = md.gsub(/(\=|\:|\#)\[(.*?)\]/) do |*|
+    newMd = md.gsub(/(\=|\:\:|\:|\#)\[(.*?)\]/) do |*|
       element = model_for_symbol($1).where("lower(name) = ?", $2.downcase).first
-      if element
+      if element && element.class.to_s == "Subcomponent"
+        "<h2><a href='#{element.url}'>#{$2}</a></h2>"
+      elsif element
         "<a href='#{element.url}'>#{$2}</a>"
       else
         $2
@@ -23,7 +25,7 @@ class CustomMarkdown
   end
 
   def self.remove_custom_links(md)
-    newMd = md.gsub(/(\=|\:|\#)\[(.*?)\]/) do |*|
+    newMd = md.gsub(/(\=|\:|\:\:|\#)\[(.*?)\]/) do |*|
       $2
     end
     newMd

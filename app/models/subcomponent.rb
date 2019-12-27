@@ -1,7 +1,6 @@
 require 'recipe.rb'
 
 class Subcomponent < ActiveRecord::Base
-  #searchkick
   belongs_to :component, :foreign_key => true
 
   def search_data
@@ -15,7 +14,7 @@ class Subcomponent < ActiveRecord::Base
   end
 
   def url
-    parent.url
+    component.url
   end
 
   def list_for_textarea_with_default
