@@ -20,4 +20,27 @@ class ComponentTest < ActiveSupport::TestCase
     testComponent.save!
     assert testComponent.description == "this is some :[gin]"
   end
+
+  def test_deletes_and_saves_components
+    testComponent = Component.find(1)
+    testComponent.update_attribute(:description, "only just ::[old tom]")
+    assert testComponent.subcomponents.length == 1
+  end
+
+  def test_creates_psuedonyms
+    testComponent = Component.find(1)
+    testComponent.update_attribute(:pseudonyms_as_markdown, "funny money, Fanny, slock bock")
+    assert testComponent.pseudonyms.length == 3
+    assert testComponent.pseudonyms.map(&:name).include?("fanny")
+    assert testComponent.pseudonyms.map(&:name).include?("funny money")
+    assert testComponent.pseudonyms.map(&:name).include?("slock bock")
+  end
+
+  def test_recipes
+    testRecipe = Recipe.find(1)
+    testRecipe.update_attribute(:recipe, "one dash :[gin]")
+    testComponent = Component.find(1)
+    assert testComponent.list_elements.length == 1
+    assert testComponent.list_elements.map(&:name).include?("fooblesniff")
+  end
 end

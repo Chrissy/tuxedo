@@ -31,7 +31,6 @@ class RecipeTest < ActiveSupport::TestCase
   def test_creates_relationships
     testRecipe = Recipe.find(1)
     testRecipe.update_attribute(:recipe, "one dash :[gin]")
-    testRecipe.delete_and_save_relationships
     assert Relationship.first.child.id == Component.find_by_name("gin").id
   end
 

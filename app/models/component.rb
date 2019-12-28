@@ -13,9 +13,8 @@ class Component < ActiveRecord::Base
 
   serialize :recipe_ids, Array
   has_many :pseudonyms, as: :pseudonymable, dependent: :destroy
-  has_many :subcomponents, dependent: :destroy
-  before_save :create_pseudonyms_if_changed
-  after_save :create_images, :delete_and_save_subcomponents
+  has_many :subcomponents, as: :subcomponent, dependent: :destroy
+  after_save :create_images, :delete_and_save_subcomponents, :create_pseudonyms_if_changed
 
   alias_method :list_elements_from_markdown, :list_elements
 
@@ -35,6 +34,10 @@ class Component < ActiveRecord::Base
     else
       list_elements_from_markdown
     end
+  end
+
+  def subcomponents
+    Subcomponent.where(component_id: id)
   end
 
   def parent_elements
@@ -91,6 +94,10 @@ class Component < ActiveRecord::Base
     nick.present? ? nick : name
   end
 
+  def pseudonyms
+    Pseudonym.where(pseudonymable_id: id)
+  end
+
   def pseudonyms_as_array
     pseudonyms_as_markdown.split(",").map(&:strip).map(&:downcase)
   end
@@ -100,8 +107,8 @@ class Component < ActiveRecord::Base
   end
 
   def delete_and_save_subcomponents
-    if list_as_markdown.present? && saved_changes.keys.include?("description")
-      subcomponents.destroy_all
+    if description.present? && saved_changes.keys.include?("description")
+      subcomponents.delete_all
       CustomMarkdown.subcomponents_from_markdown(self, description)
     end
   end
