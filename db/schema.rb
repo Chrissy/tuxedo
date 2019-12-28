@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_054236) do
+ActiveRecord::Schema.define(version: 2019_12_28_061315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,8 @@ ActiveRecord::Schema.define(version: 2019_12_28_054236) do
     t.integer "rating"
     t.text "adapted_from"
     t.string "tags_as_text"
+    t.text "image2"
+    t.text "image3"
   end
 
   create_table "relationships", id: :serial, force: :cascade do |t|
