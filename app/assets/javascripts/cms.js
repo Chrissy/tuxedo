@@ -22,13 +22,15 @@ $(() => {
   fetch('/image-upload-token').then(response => response.json()).then((response, reject) => {
     if (reject) console.log("something went wrong", reject);
     const uploader = new ImageUploader(response);
+    const uploads = [];
 
-    $("#upload-cover-photo").on("change", function(){
+    $(".upload-cover-photo").on("change", function(){
       $("input[type='submit']").attr("disabled", true);
-
-      uploader.upload($(this).get(0).files[0], (fileName) => {
+      uploads.push(uploader.upload($(this).get(0).files[0]).then((file) => {
+        $(this).siblings(".image-filename").val(file.name);
+      }));
+      Promise.all(uploads).then(() => {
         $("input[type='submit']").attr("disabled", false);
-        $("#image-filename").val(fileName);
       })
     });
   })
