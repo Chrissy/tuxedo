@@ -7,6 +7,7 @@ require 'image_uploader.rb'
 
 class Recipe < ActiveRecord::Base
   searchkick highlight: [:description_as_plain_text, :recipe_as_plain_text]
+  acts_as_taggable
   extend FriendlyId
   extend ActsAsMarkdownList::ActsAsMethods
 
@@ -14,7 +15,7 @@ class Recipe < ActiveRecord::Base
   serialize :recommends, Array
 
   acts_as_markdown_list :recipe
-  after_save :create_images
+  after_save :create_images, :delete_and_save_tags
 
   def search_data
     {
@@ -48,6 +49,12 @@ class Recipe < ActiveRecord::Base
   def description_as_plain_text
     converted_description = CustomMarkdown.remove_custom_links(description)
     plaintext_renderer.render(converted_description)
+  end
+
+  def delete_and_save_tags
+    if tags_as_text.present? && saved_changes.keys.include?("tags_as_text")
+      tag_list.add(tags_as_text.split(",").map(&:strip).map(&:downcase))
+    end
   end
 
   def recipe_as_plain_text

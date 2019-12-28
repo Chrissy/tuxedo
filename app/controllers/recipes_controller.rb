@@ -70,7 +70,9 @@ class RecipesController < ApplicationController
       :instructions, 
       :never_make_me_tall,
       :rating,
-      :adapted_from
+      :adapted_from,
+      :tag_list,
+      :tags_as_text, 
     )
   end
 end

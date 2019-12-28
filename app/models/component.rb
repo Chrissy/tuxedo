@@ -4,6 +4,7 @@ require 'image_uploader.rb'
 
 class Component < ActiveRecord::Base
   searchkick
+  acts_as_taggable
   extend FriendlyId
   extend ActsAsMarkdownList::ActsAsMethods
 
@@ -14,7 +15,7 @@ class Component < ActiveRecord::Base
   serialize :recipe_ids, Array
   has_many :pseudonyms, as: :pseudonymable, dependent: :destroy
   has_many :subcomponents, as: :subcomponent, dependent: :destroy
-  after_save :create_images, :delete_and_save_subcomponents, :create_pseudonyms_if_changed
+  after_save :create_images, :delete_and_save_subcomponents, :create_pseudonyms_if_changed, :delete_and_save_tags
 
   alias_method :list_elements_from_markdown, :list_elements
 
@@ -135,6 +136,12 @@ class Component < ActiveRecord::Base
     pseudonyms.delete_all
     pseudonyms_as_array.each do |name|
       Pseudonym.create({pseudonymable: self, name: name})
+    end
+  end
+
+  def delete_and_save_tags
+    if tags_as_text.present? && saved_changes.keys.include?("tags_as_text")
+      tag_list.add(tags_as_text.split(",").map(&:strip).map(&:downcase))
     end
   end
 

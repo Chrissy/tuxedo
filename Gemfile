@@ -35,6 +35,7 @@ gem 'rails_12factor', group: :production
 gem "sentry-raven"
 gem 'faraday_middleware-aws-sigv4'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'acts-as-taggable-on'
 
 ruby "2.5.3"
 

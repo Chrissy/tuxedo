@@ -43,4 +43,13 @@ class ComponentTest < ActiveSupport::TestCase
     assert testComponent.list_elements.length == 1
     assert testComponent.list_elements.map(&:name).include?("fooblesniff")
   end
+
+  def test_adds_tags
+    testComponent = Component.find(1)
+    testComponent.update_attribute(:tags_as_text, "classic, Coupe, cracked ice")
+    assert testComponent.tag_list.length == 3
+    assert testComponent.tag_list.include?("classic")
+    assert testComponent.tag_list.include?("coupe")
+    assert testComponent.tag_list.include?("cracked ice")
+  end
 end

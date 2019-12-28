@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_24_231107) do
+ActiveRecord::Schema.define(version: 2019_12_28_054236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2019_12_24_231107) do
     t.string "pseudonyms_as_markdown", limit: 255
     t.boolean "never_make_me_tall"
     t.text "list_as_markdown"
+    t.string "tags_as_text"
   end
 
   create_table "delayed_jobs", id: :serial, force: :cascade do |t|
@@ -84,6 +85,7 @@ ActiveRecord::Schema.define(version: 2019_12_24_231107) do
     t.boolean "never_make_me_tall"
     t.integer "rating"
     t.text "adapted_from"
+    t.string "tags_as_text"
   end
 
   create_table "relationships", id: :serial, force: :cascade do |t|
@@ -106,6 +108,33 @@ ActiveRecord::Schema.define(version: 2019_12_24_231107) do
     t.index ["component_id"], name: "index_subcomponents_on_component_id"
   end
 
+  create_table "taggings", id: :serial, force: :cascade do |t|
+    t.integer "tag_id"
+    t.string "taggable_type"
+    t.integer "taggable_id"
+    t.string "tagger_type"
+    t.integer "tagger_id"
+    t.string "context", limit: 128
+    t.datetime "created_at"
+    t.index ["context"], name: "index_taggings_on_context"
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
+    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
+    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
+    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
+    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
+    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
+  end
+
+  create_table "tags", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "email", limit: 255, default: "", null: false
     t.string "encrypted_password", limit: 255, default: "", null: false
@@ -124,4 +153,5 @@ ActiveRecord::Schema.define(version: 2019_12_24_231107) do
   end
 
   add_foreign_key "subcomponents", "components"
+  add_foreign_key "taggings", "tags"
 end
