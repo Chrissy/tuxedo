@@ -448,7 +448,7 @@ body {
   display: table;
   clear: both; }
 
-input[type="text"], textarea, .textfield {
+input[type="text"]:not(.choices__input), textarea:not(.choices__input), .textfield:not(.choices__input) {
   width: 100%;
   border-radius: 4px;
   display: block;
@@ -470,6 +470,9 @@ textarea {
   float: left; }
   .edit_panel .form_block.primary {
     margin-right: 20px; }
+
+.form_block.secondary {
+  padding: 20px 0; }
 
 .form_block .awesomplete {
   position: relative; }
@@ -531,7 +534,7 @@ button {
   border: 1px solid #ccc;
   background: white;
   padding: 10px;
-  margin: 10px 0; }
+  margin: 6px 0; }
 
 .alert:empty, .notice:empty {
   display: none; }
@@ -1324,21 +1327,28 @@ html[data-share-alert="3"] .social-prompt {
   .links a {
     color: white; } }
 
-.search-wrapper {
+.autocomplete-wrapper {
   position: relative;
   z-index: 99; }
+
+.autocomplete-results-container {
+  position: top;
+  width: 100%;
+  top: 100%; }
 
 .autocomplete-container {
   background: rgba(0, 0, 0, 0.8);
   position: absolute;
   top: 100%;
   border-radius: 0 0 4px 4px;
-  width: 300px; }
+  width: 100%;
+  max-height: 300px;
+  overflow: auto; }
 
 .autocomplete-line {
   display: block;
   cursor: pointer;
-  padding: 10px 15px;
+  padding: 7px 10px;
   color: #ccc;
   width: 100%; }
   .autocomplete-line:not(:last-child) {
@@ -1352,8 +1362,8 @@ html[data-share-alert="3"] .social-prompt {
   width: 20px;
   position: relative;
   position: absolute;
-  top: 27px;
-  right: 0; }
+  top: 30px;
+  right: 10px; }
   .search-icon:before {
     background-image: url("/dist/site-sprite.png");
     background-position: 0 -408px;
@@ -1383,6 +1393,7 @@ input.search {
   width: 300px; }
   input.search:focus {
     z-index: 99999;
+    color: #fff;
     outline: 0;
     border: 1px solid #999; }
     input.search:focus:before {

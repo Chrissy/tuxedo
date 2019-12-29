@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import TagSelect from './classes/tagSelect.js';
 import Form from './classes/form.js';
 import ImageUploader from './classes/imageUploader';
 
@@ -18,6 +19,10 @@ $(() => {
   $(".show-extra-options").on("click", function() {
     $(this).siblings(".extra-options").toggle();
   });
+
+  document.querySelectorAll(".tag-select").forEach(element => {
+    new TagSelect(element);
+  })
 
   fetch('/image-upload-token').then(response => response.json()).then((response, reject) => {
     if (reject) console.log("something went wrong", reject);
