@@ -3,13 +3,13 @@ $compact-search-width: 300px - 20px;
 
 .autocomplete-wrapper {
   position: relative;
-  z-index: 99;
 }
 
 .autocomplete-results-container {
-  position: top;
+  position: absolute;
   width: 100%;
   top: 100%;
+  z-index: 99;
 }
 
 .autocomplete-container {

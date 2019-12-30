@@ -12,14 +12,17 @@ export default class Autocomplete {
     onSelect,
     /* fires when the enter key is pressed but nothing is selected */
     onReturnWithNoSelection,
-    /* used for mentions and comma delimited lists */
+    /* used for in-text mentions and comma delimited lists */
     delimiter,
     /* show some random results automatically */
     showResultsOnFocus,
     /* result limit */
-    limit
+    limit,
+    /* allow submit on tab as well as enter (useful for in-text mentions) */
+    allowSubmitOnTab,
   }) {    
-    Object.assign(this, { input, options, footer, onSelect, onReturnWithNoSelection, delimiter, limit, showResultsOnFocus });
+    Object.assign(this, { input, options, footer, onReturnWithNoSelection, delimiter, limit, showResultsOnFocus, allowSubmitOnTab });
+    this.onSelect = this.handleSelect(onSelect);
     this.resultsContainer = document.createElement("div");
     const wrapper = document.createElement("div")
     wrapper.setAttribute("class", "autocomplete-wrapper");
@@ -49,6 +52,11 @@ export default class Autocomplete {
     };
 
     this.autocomplete = new Fuse(data, options);
+  }
+
+  handleSelect = (selectFunc) => (result, target) => {
+    selectFunc(result, target);
+    this.reset();
   }
 
   renderLine(result, active, index) {
@@ -84,13 +92,39 @@ export default class Autocomplete {
   }
 
   getInputValue(rawInput) {
-    const { delimiter } = this;
+    const { delimiter, input } = this;
 
     if (delimiter) {
-      return rawInput.slice(rawInput.lastIndexOf(delimiter) + 1).trim();
+      return this.getQueryText(rawInput, this.input.selectionStart);
     } else {
       return rawInput;
     }
+  }
+
+  sliceFromLastTerminatingCharacter(string) {
+    /* 
+    a terminating character creates context. we use that context to 
+    determine is a user wants to begin a search, rather than already
+    having completed one. If we simply look for the last index of
+    the flag, that might include previous markdown elements. we use
+    spaces, newlines, and another delimiter as indicators of context. 
+    */
+    
+    var lastIndex = Math.max(
+      string.lastIndexOf("]"), 
+      string.lastIndexOf("\n"), 
+      string.lastIndexOf(this.delimiter)
+    );
+    if (lastIndex === -1) return string;
+    return string.slice(lastIndex).trim()
+  }
+
+  getQueryText(text, selectionStart) {
+    const untilCursor = text.slice(0, selectionStart);
+    const fromTerminatingChar = this.sliceFromLastTerminatingCharacter(untilCursor);
+    const delimiterPosition = fromTerminatingChar.lastIndexOf(this.delimiter);
+    if (delimiterPosition === -1) return '';
+    return fromTerminatingChar.slice(delimiterPosition + 1);
   }
 
   getDefaultOptions() {
@@ -100,6 +134,13 @@ export default class Autocomplete {
   search(value) {
     const results = this.autocomplete.search(this.inputValue, {limit: this.limit || 10});
     this.results = (this.showResultsOnFocus && !results.length) ? this.getDefaultOptions() : results;
+  }
+
+  reset() {
+    this.results = [];
+    this.arrowIndex = null;
+    this.isOpen = false;
+    this.render();
   }
 
   listenForSelect() {
@@ -112,23 +153,26 @@ export default class Autocomplete {
     });
 
     this.input.addEventListener("keydown", event => {
-      if (!this.isOpen) return;
+      if (!this.isOpen || !this.results || !this.results.length) return;
 
-      if (event.key === 'Enter') {
-        event.preventDefault();
-        if (this.arrowIndex && this.results) {
+      if (event.key === 'Enter' || (this.allowSubmitOnTab && event.key === 'Tab')) {
+        if ((this.arrowIndex || this.arrowIndex === 0) && this.results) {
+          event.preventDefault();
           this.onSelect(this.results[this.arrowIndex]);
         } else if (this.onReturnWithNoSelection) {
+          event.preventDefault();
           this.onReturnWithNoSelection(this.inputValue);
         }
       }
 
       if (event.key === 'ArrowUp') {
+        event.preventDefault();
         this.setArrowIndex(-1);
         this.render();
       }
 
       if (event.key === 'ArrowDown') {
+        event.preventDefault();
         this.setArrowIndex(1);
         this.render();
       }
@@ -149,15 +193,9 @@ export default class Autocomplete {
         const attribute = event.relatedTarget.getAttribute("data-list-element");
         if (attribute || attribute === '') {
           event.preventDefault();
-          if (attribute) this.onSelect(this.results[parseInt(attribute)]);
-          return
+          if (attribute) this.onSelect(this.results[parseInt(attribute)], event.relatedTarget);
         }
       };
-
-      this.results = [];
-      this.arrowIndex = null;
-      this.isOpen = false;
-      this.render();
-    })
-  }
-}
+    });
+  };
+};

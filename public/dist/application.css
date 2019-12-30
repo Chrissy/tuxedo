@@ -448,7 +448,7 @@ body {
   display: table;
   clear: both; }
 
-input[type="text"]:not(.choices__input), textarea:not(.choices__input), .textfield:not(.choices__input) {
+input[type="text"], textarea, .textfield {
   width: 100%;
   border-radius: 4px;
   display: block;
@@ -1328,13 +1328,13 @@ html[data-share-alert="3"] .social-prompt {
     color: white; } }
 
 .autocomplete-wrapper {
-  position: relative;
-  z-index: 99; }
+  position: relative; }
 
 .autocomplete-results-container {
-  position: top;
+  position: absolute;
   width: 100%;
-  top: 100%; }
+  top: 100%;
+  z-index: 99; }
 
 .autocomplete-container {
   background: rgba(0, 0, 0, 0.8);

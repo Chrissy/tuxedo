@@ -15,6 +15,7 @@
   "dependencies": {
     "@babel/core": "^7.7.7",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-transform-async-to-generator": "^7.7.4",
     "@babel/plugin-transform-destructuring": "^7.7.4",
     "@babel/preset-env": "^7.7.7",
     "awesomplete": "^1.1.1",

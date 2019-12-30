@@ -2,10 +2,12 @@ import "regenerator-runtime/runtime";
 import Autocomplete from "./autocomplete";
 
 export default class Search {
-  constructor(input) {    
+  constructor(input) {   
+    this.input = document.querySelector(input);
+
     this.get("/autocomplete.json").then((data) => {
       this.autocomplete = new Autocomplete({
-        input: document.querySelector(input),
+        input: this.input,
         options: data.map(option => ({...option, href: option.value})),
         footer: this.getFooter,
         onSelect: this.onSelect,
@@ -21,24 +23,24 @@ export default class Search {
     return json;
   }
 
-  getFullTextSearchUrl(inputValue) {
-    return `/search?query=${inputValue}`;
+  getFullTextSearchUrl() {
+    return `/search?query=${this.input.value}`;
   }
 
-  onReturnWithNoSelection = (inputValue) => {
-    window.location = this.getFullTextSearchUrl(inputValue);
+  onReturnWithNoSelection = () => {
+    window.location = this.getFullTextSearchUrl();
   }
 
-  onSelect(option) {
+  onSelect(option, target) {
     window.location = option.href;
   }
 
-  getFooter = (inputValue) => {
+  getFooter = () => {
     return `
       <a
       data-list-element
       class="autocomplete-line full-text-search" 
-      href="${this.getFullTextSearchUrl(inputValue)}"
+      href="${this.getFullTextSearchUrl()}"
     >
       See More Results »
     </a>`

@@ -2,7 +2,7 @@ import Autocomplete from "./autocomplete";
 
 const tags = [
   'classic',
-  'orginal',
+  'original',
   'stirred',
   'shaken',
   'built in glass',
@@ -29,8 +29,9 @@ export default class TagSelect {
       input: this.input,
       options: tags.map(option => ({ label: option })),
       onSelect: this.onSelect,
-      delimiter: ", ",
+      delimiter: ",",
       showResultsOnFocus: true,
+      allowSubmitOnTab: true,
       limit: 100,
     });
   }
