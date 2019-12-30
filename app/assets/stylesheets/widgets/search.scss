@@ -89,39 +89,3 @@ input.search {
     .header-primary, .header-content > img, .links { opacity: 0.2; }
   }
 }
-
-/* legacy awesomeplete stuff */
-
-.awesomplete {
-  color: #fff; 
-}
-
-.awesomplete ul {
-  background-color: rgba(50, 50, 50, 0.8);
-  border: 1px solid #333;
-  width: 100%;
-  border-radius: 0 0 5px 5px;
-  margin-top: 30px; 
-}
-  
-.awesomplete li {
-  border-bottom: 1px solid #333;
-  padding: 10px 20px;
-  display: block;
-  width: 100%;
-  cursor: pointer; 
-}
-    
-.awesomplete li[aria-selected="true"] {
-  background-color: rgba(70, 70, 70, 0.8);
-  color: white; 
-}
-    
-.awesomplete li mark {
-  background-color: #555;
-  color: white; 
-}
-  
-.awesomplete .visually-hidden {
-  display: none; 
-}
