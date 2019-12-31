@@ -11,9 +11,17 @@ class CustomMarkdown
   end
 
   def self.convert_links_in_place(md)
+    return "" if !md.present?
+
     newMd = md.gsub(/(\=|\:\:|\:|\#)\[(.*?)\]/) do |*|
       element = model_for_symbol($1).where("lower(name) = ?", $2.downcase).first
-      if element && element.class.to_s == "Subcomponent"
+      # for in-recipe subcomponents (:)
+      if !element && $1 == ":"
+        element = Subcomponent.where("lower(name) = ?", $2.downcase).first
+      end
+
+      # for in-component subcomponents (::)
+      if element && element.class.to_s == "Subcomponent" && $1 == "::"
         "<h2><a href='#{element.url}'>#{$2}</a></h2>"
       elsif element
         "<a href='#{element.url}'>#{$2}</a>"
@@ -81,15 +89,17 @@ class CustomMarkdown
       type = code[0].constantize
       element =
                 type.find_by_name(code[1].to_s) ||
-                type.find_by_id(code[1].to_s) ||
-                (type.create(:name => code[1]) if field == :recipe)
+                type.find_by_id(code[1].to_s)
+
+      element = Subcomponent.find_by_name(code[1].to_s) if field == :recipe && !element && code[0] === "Component"           
+      element = type.create(:name => code[1]) if field == :recipe && !element
 
       next unless element
 
       {
         relatable: instance,
         child_id: element.id,
-        child_type: code[0],
+        child_type: element.class.to_s,
         field: code[2] || field
       }
     end.compact

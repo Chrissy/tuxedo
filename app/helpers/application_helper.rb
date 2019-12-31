@@ -20,7 +20,11 @@ module ApplicationHelper
 
   def all_elements_for_autocomplete
     elements = []
-    elements.concat(Recipe.all_for_display).concat(List.all_for_display).concat(Component.all_for_display)
+    elements
+      .concat(Recipe.all_for_display)
+      .concat(List.all_for_display)
+      .concat(Component.all_for_display)
+      .concat(Subcomponent.all_for_display)
   end
 
   def text_search(query)

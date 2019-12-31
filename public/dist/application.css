@@ -1127,7 +1127,7 @@ body {
 .links {
   text-transform: uppercase;
   font-size: 12px;
-  float: right;
+  text-align: right;
   margin-bottom: 6px; }
   .links a {
     color: #666; }

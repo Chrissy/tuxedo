@@ -28,7 +28,7 @@ class ComponentsController < ApplicationController
   end
 
   def all
-    @components = Component.all.map(&:name)
+    @components = Component.all.map(&:name).concat(Subcomponent.all.map(&:name))
     respond_to do |format|
       format.json {}
     end
