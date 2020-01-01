@@ -31,6 +31,10 @@ module ApplicationHelper
     Searchkick.search query, models: [Recipe, Component, List], fields: ["name^10", :description], highlight: {fields: {description: {fragment_size: 100}, recipe: {fragment_size: 50}}}
   end
 
+  def no_index
+   @recipe && !@recipe.published?
+  end
+
   def all_elements_for_search
     text_search(params[:query]).with_highlights
   end
