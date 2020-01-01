@@ -123,7 +123,9 @@ class Component < ActiveRecord::Base
   end
 
   def description_to_html
-    converted_description = CustomMarkdown.convert_links_in_place(description)
+    converted_description = CustomMarkdown.convert_recommended_bottles_in_place(
+      CustomMarkdown.convert_links_in_place(description)
+    )
     markdown_renderer.render(converted_description).html_safe
   end
 

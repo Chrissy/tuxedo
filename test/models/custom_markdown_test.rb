@@ -17,10 +17,16 @@ class CustomMarkdownTest < Minitest::Test
     assert markdown = "two dashes of rye, one dash of gin"
   end
 
+  def test_converts_recommended_bottles
+    sample_markdown = "here is some &[gin, campari, and nonino]"
+    markdown = CustomMarkdown.convert_recommended_bottles_in_place(sample_markdown)
+    assert markdown = "here is some <div class='recommended-bottles'>gin, campari, and nonino</div>"
+  end
+
   def test_remove_custom_links
-    sample_markdown = "two dashes of :[rye], one dash of :[gin]"
+    sample_markdown = "two dashes of :[rye], one dash of =[gin], one more &[fun], one =[even]"
     markdown = CustomMarkdown.remove_custom_links(sample_markdown)
-    assert markdown = "two dashes of rye, one dash of gin"
+    assert markdown = "two dashes of rye, one dash of gin, one more fun, one even"
   end
 
   def test_subcomponents_from_markdown

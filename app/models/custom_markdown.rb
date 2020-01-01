@@ -6,7 +6,7 @@ class CustomMarkdown
       ":" => Component,
       "#" => List,
       "=" => Recipe,
-      "::" => Subcomponent,
+      "::" => Subcomponent
     }[symbol]
   end
 
@@ -32,8 +32,16 @@ class CustomMarkdown
     newMd
   end
 
+  def self.convert_recommended_bottles_in_place(md)
+    return "" if !md.present?
+    newMd = md.gsub(/(\&)\[(.*?)\]/) do |*|
+      "<div class='recommended-bottles'>#{$2}</div>"
+    end
+    newMd
+  end
+
   def self.remove_custom_links(md)
-    newMd = md.gsub(/(\=|\:|\:\:|\#)\[(.*?)\]/) do |*|
+    newMd = md.gsub(/(\=|\:|\:\:|\#|\&)\[(.*?)\]/) do |*|
       $2
     end
     newMd
