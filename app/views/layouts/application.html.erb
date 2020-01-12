@@ -10,6 +10,9 @@
     <% end %>
     <%= csrf_meta_tags %>
     <%= render "shared/meta_tags" %>
+    <% if no_index %>
+      <meta name="robots" content="noindex">
+    <% end %>
   </head>
   <body data-no-turbolink itemscope itemtype="http://schema.org/Product">
     <div class="site-container">

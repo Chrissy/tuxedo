@@ -1,7 +1,9 @@
 <%= render 'shared/index_header', :title => "Results: " << (params[:query] || '') %>
+<% all_elements = all_elements_for_search.reject { |element| element.class.to_s == "Recipe" && !element.published? } %>
 <div class="search-results">
-  <% if all_elements_for_search.length > 0 %>
-    <% all_elements_for_search.each do |element, highlight| %>
+  <% if all_elements.length > 0 %>
+    <% all_elements.each do |element, highlight| %>
+    <% next if element.class.to_s == "Recipe" && !element.published? %>
     <% 
     subtext = ''
     subtext += highlight[:recipe].html_safe if highlight.has_key?(:recipe)

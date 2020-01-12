@@ -21,7 +21,7 @@ module ActsAsMarkdownList
       end
 
       define_method(:components) do
-        relationships.select{ |rel| rel.child_type == "Component" }.map(&:child)
+        relationships.select{ |rel| rel.child_type == "Component" || rel.child_type == "Subcomponent" }.map(&:child)
       end
 
       define_method(:create_relationships) do

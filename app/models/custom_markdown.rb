@@ -5,14 +5,25 @@ class CustomMarkdown
     return {
       ":" => Component,
       "#" => List,
-      "=" => Recipe
+      "=" => Recipe,
+      "::" => Subcomponent
     }[symbol]
   end
 
   def self.convert_links_in_place(md)
-    newMd = md.gsub(/(\=|\:|\#)\[(.*?)\]/) do |*|
+    return "" if !md.present?
+
+    newMd = md.gsub(/(\=|\:\:|\:|\#)\[(.*?)\]/) do |*|
       element = model_for_symbol($1).where("lower(name) = ?", $2.downcase).first
-      if element
+      # for in-recipe subcomponents (:)
+      if !element && $1 == ":"
+        element = Subcomponent.where("lower(name) = ?", $2.downcase).first
+      end
+
+      # for in-component subcomponents (::)
+      if element && element.class.to_s == "Subcomponent" && $1 == "::"
+        "<h2><a href='#{element.url}'>#{$2}</a></h2>"
+      elsif element
         "<a href='#{element.url}'>#{$2}</a>"
       else
         $2
@@ -21,8 +32,16 @@ class CustomMarkdown
     newMd
   end
 
+  def self.convert_recommended_bottles_in_place(md)
+    return "" if !md.present?
+    newMd = md.gsub(/(\&)\[(.*?)\]/) do |*|
+      "<div class='recommended-bottles'>#{$2}</div>"
+    end
+    newMd
+  end
+
   def self.remove_custom_links(md)
-    newMd = md.gsub(/(\=|\:|\#)\[(.*?)\]/) do |*|
+    newMd = md.gsub(/(\=|\:|\:\:|\#|\&)\[(.*?)\]/) do |*|
       $2
     end
     newMd
@@ -57,6 +76,17 @@ class CustomMarkdown
     Recipe.limit(limit_number).order(sort_by.nil? ? "name asc" : "last_updated desc").map{ |el| [el.class.to_s, el.id]}
   end
 
+  def self.subcomponents_from_markdown(instance, md)
+    elements = []
+    md.scan(/\:\:\[(.*?)\]/) do
+      element = 
+        Subcomponent.find_by_name($1) ||
+        Subcomponent.create({ name: $1, component_id: instance.id })
+      elements << element
+    end
+    elements.uniq - ["",nil]
+  end
+
   def self.shorthand_to_component_recipes(component_name, sort_by)
     component = Component.find_by_name(component_name)
     [["Component", component.id, :expandable_list_content]]
@@ -67,15 +97,17 @@ class CustomMarkdown
       type = code[0].constantize
       element =
                 type.find_by_name(code[1].to_s) ||
-                type.find_by_id(code[1].to_s) ||
-                (type.create(:name => code[1]) if field == :recipe)
+                type.find_by_id(code[1].to_s)
+
+      element = Subcomponent.find_by_name(code[1].to_s) if field == :recipe && !element && code[0] === "Component"           
+      element = type.create(:name => code[1]) if field == :recipe && !element
 
       next unless element
 
       {
         relatable: instance,
         child_id: element.id,
-        child_type: code[0],
+        child_type: element.class.to_s,
         field: code[2] || field
       }
     end.compact

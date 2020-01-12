@@ -1,8 +1,10 @@
 require 'recipe.rb'
+require 'subcomponent.rb'
 require 'image_uploader.rb'
 
 class Component < ActiveRecord::Base
   searchkick
+  acts_as_taggable
   extend FriendlyId
   extend ActsAsMarkdownList::ActsAsMethods
 
@@ -12,8 +14,8 @@ class Component < ActiveRecord::Base
 
   serialize :recipe_ids, Array
   has_many :pseudonyms, as: :pseudonymable, dependent: :destroy
-  before_save :create_pseudonyms_if_changed
-  after_save :create_images
+  has_many :subcomponents, as: :subcomponent, dependent: :destroy
+  after_save :create_images, :delete_and_save_subcomponents, :create_pseudonyms_if_changed, :delete_and_save_tags
 
   alias_method :list_elements_from_markdown, :list_elements
 
@@ -33,6 +35,10 @@ class Component < ActiveRecord::Base
     else
       list_elements_from_markdown
     end
+  end
+
+  def subcomponents
+    Subcomponent.where(component_id: id)
   end
 
   def parent_elements
@@ -89,19 +95,55 @@ class Component < ActiveRecord::Base
     nick.present? ? nick : name
   end
 
+  def pseudonyms
+    Pseudonym.where(pseudonymable_id: id)
+  end
+
   def pseudonyms_as_array
     pseudonyms_as_markdown.split(",").map(&:strip).map(&:downcase)
   end
 
   def create_pseudonyms_if_changed
-    create_pseudonyms if pseudonyms_as_markdown && saved_changes.keys.include?(:pseudonyms_as_markdown)
-    
+    create_pseudonyms if pseudonyms_as_markdown && saved_changes.keys.include?("pseudonyms_as_markdown")
+  end
+
+  def delete_and_save_subcomponents
+    if description.present? && saved_changes.keys.include?("description")
+      subcomponents.delete_all
+      CustomMarkdown.subcomponents_from_markdown(self, description)
+    end
+  end
+
+  def markdown_renderer
+    Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, extensions = {})
+  end
+
+  def plaintext_renderer
+    Redcarpet::Markdown.new(Redcarpet::Render::StripDown)
+  end
+
+  def description_to_html
+    converted_description = CustomMarkdown.convert_recommended_bottles_in_place(
+      CustomMarkdown.convert_links_in_place(description)
+    )
+    markdown_renderer.render(converted_description).html_safe
+  end
+
+  def description_as_plain_text
+    converted_description = CustomMarkdown.remove_custom_links(description)
+    plaintext_renderer.render(converted_description)
   end
 
   def create_pseudonyms
     pseudonyms.delete_all
     pseudonyms_as_array.each do |name|
       Pseudonym.create({pseudonymable: self, name: name})
+    end
+  end
+
+  def delete_and_save_tags
+    if tags_as_text.present? && saved_changes.keys.include?("tags_as_text")
+      tag_list.add(tags_as_text.split(",").map(&:strip).map(&:downcase))
     end
   end
 

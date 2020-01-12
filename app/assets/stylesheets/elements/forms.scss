@@ -24,6 +24,10 @@ textarea {
   &.primary { margin-right: 20px; }
 }
 
+.form_block.secondary {
+  padding: 20px 0;
+}
+
 .form_block .awesomplete {
   position: relative;
 
@@ -93,7 +97,7 @@ button {
   border: 1px solid #ccc;
   background: white;
   padding: 10px;
-  margin: 10px 0;
+  margin: 6px 0;
 }
 
 .alert:empty, .notice:empty { display: none; }

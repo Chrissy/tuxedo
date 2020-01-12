@@ -28,7 +28,7 @@ class ComponentsController < ApplicationController
   end
 
   def all
-    @components = Component.all.map(&:name)
+    @components = Component.all.map(&:name).concat(Subcomponent.all.map(&:name))
     respond_to do |format|
       format.json {}
     end
@@ -50,6 +50,16 @@ class ComponentsController < ApplicationController
   private
 
   def component_params
-    params.require(:component).permit(:name, :image, :nick, :pseudonyms_as_markdown, :never_make_me_tall, :list_as_markdown)
+    params.require(:component).permit(
+      :name, 
+      :image, 
+      :nick, 
+      :pseudonyms_as_markdown, 
+      :never_make_me_tall, 
+      :list_as_markdown,
+      :tags_as_text, 
+      :description,
+      :tag_list
+    )
   end
 end

@@ -31,7 +31,6 @@ class RecipeTest < ActiveSupport::TestCase
   def test_creates_relationships
     testRecipe = Recipe.find(1)
     testRecipe.update_attribute(:recipe, "one dash :[gin]")
-    testRecipe.delete_and_save_relationships
     assert Relationship.first.child.id == Component.find_by_name("gin").id
   end
 
@@ -39,5 +38,14 @@ class RecipeTest < ActiveSupport::TestCase
     testRecipe = Recipe.find(1)
     testRecipe.update_attribute(:recipe, "one dash :[gin]")
     assert testRecipe.convert_recipe_to_html == "<p>one dash <a href='/ingredients/gin'>gin</a></p>\n"
+  end
+
+  def test_adds_tags
+    testRecipe = Recipe.find(1)
+    testRecipe.update_attribute(:tags_as_text, "classic, Coupe, cracked ice")
+    assert testRecipe.tag_list.length == 3
+    assert testRecipe.tag_list.include?("classic")
+    assert testRecipe.tag_list.include?("coupe")
+    assert testRecipe.tag_list.include?("cracked ice")
   end
 end

@@ -18,7 +18,7 @@ class Relationship < ActiveRecord::Base
     if field == "expandable_list_content"
       child_type.constantize.find_by_id(child_id).try(:parent_elements) || []
     else
-      return nil
+      return nil  
     end
   end
 

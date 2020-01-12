@@ -25,6 +25,10 @@ export default class ImageUploader {
   }
 
   upload(file, cb) {
-    this.uploadImage(file).then(() => cb(file.name));
+    return new Promise((resolve) => {
+      this.uploadImage(file).then(() => {
+        resolve(file);
+      });
+    })
   }
 }

@@ -20,11 +20,19 @@ module ApplicationHelper
 
   def all_elements_for_autocomplete
     elements = []
-    elements.concat(Recipe.all_for_display).concat(List.all_for_display).concat(Component.all_for_display)
+    elements
+      .concat(Recipe.all_for_display)
+      .concat(List.all_for_display)
+      .concat(Component.all_for_display)
+      .concat(Subcomponent.all_for_display)
   end
 
   def text_search(query)
     Searchkick.search query, models: [Recipe, Component, List], fields: ["name^10", :description], highlight: {fields: {description: {fragment_size: 100}, recipe: {fragment_size: 50}}}
+  end
+
+  def no_index
+   @recipe && !@recipe.published?
   end
 
   def all_elements_for_search
