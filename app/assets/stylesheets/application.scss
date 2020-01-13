@@ -1,5 +1,6 @@
 @import "elements/base.scss";
 @import "elements/typography.scss";
+@import "elements/svg.scss";
 @import "elements/elements.scss";
 @import "elements/forms.scss";
 @import "elements/helpers.scss";
@@ -11,12 +12,16 @@
 @import "elements/breadcrumbs.scss";
 @import "elements/modal.scss";
 
+@import "widgets/list.scss";
+@import "widgets/recipe.scss";
+@import "widgets/global-header.scss";
+
 @import "utilities/spacing.scss";
 
 @import "widgets/list.scss";
 @import "widgets/recipe.scss";
 @import "widgets/global-header.scss";
-@import "widgets/search.scss";
+@import "widgets/autocomplete.scss";
 
 @import "pages/admin-page.scss";
 @import "pages/list-page.scss";

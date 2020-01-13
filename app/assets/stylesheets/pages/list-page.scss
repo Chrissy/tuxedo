@@ -5,7 +5,7 @@
 }
 
 .home-content {
-  @extend %centered-content-box;
+  @extend .centered-content-box;
   position: relative;
   top: 80px;
 }

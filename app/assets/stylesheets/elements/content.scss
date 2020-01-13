@@ -1,11 +1,11 @@
 @import "../elements/base";
 
-.content, .recommends {
+.content,
+.recommends {
   @include pie-clearfix;
-  @extend %centered-content-box;
+  @extend .centered-content-box;
   min-height: 200px;
   padding-bottom: 50px;
-  .global-header + & { top: 80px; }
 }
 
 .content.grid {

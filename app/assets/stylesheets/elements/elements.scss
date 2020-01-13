@@ -33,50 +33,6 @@
   .win & { top: 18px; }
 }
 
-.header-content:after {
-  @include vgradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
-  content: "";
-  width: 100%;
-  height: 200px;
-  display: block;
-  bottom: 0;
-  z-index: 5;
-  position: absolute;
-}
-
-.header-title {
-  font-size: 75px;
-  margin: 0;
-  line-height: 130%;
-  margin-bottom: 15px;
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  bottom: 64px;
-  margin-bottom: -50px;
-  z-index: 6;
-  -webkit-font-smoothing: antialiased;
-  &, a { color: white; text-decoration: none; }
-
-  &.small { font-size: 65px; }
-}
-
-.header-sub-title {
-  font-size: 18px;
-  color: white;
-  height: 30px;
-  display: block;
-  font-weight: normal;
-  line-height: 230%;
-}
-
-.header-sub-title-inner {
-  display: inline-block;
-  line-height: 100%;
-  padding: 10px 20px;
-  border-top: 1px solid white;
-}
-
 .display-number {
   display: block;
   font-size: 36px;

@@ -1,16 +1,16 @@
 <% cache(global_header_cache_key) do %>
   <div class="global-header">
-    <div class="header-primary">
-      <a href="/" id="logo">
-        Tuxedo Number Two: Cocktails, Spiritis, Drinks, Etc.
-      </a>
-    </div>
-    <div class="header-secondary">
-      <%= render 'shared/links' %>
-      <%= render 'shared/social' %>
-      <div class="search-wrapper">
-        <input type="text" class="search" placeholder="search" />
-        <div class="search-icon"></div>
+    <a href="/" class="global-header__logo">
+      <%= render 'shared/svg', id: "logo" %>
+    </a>
+    <div class="global-header__secondary-content">
+      <div class="global-header__search-wrapper">
+        <input type="text" class="global-header__search-input" data-role="search"/>
+        <%= render 'shared/svg', id: "search", className: "global-header__search-icon" %>
+      </div>
+      <div class="global-header__user-links authenticate">
+        <a href="/admin" class="subtle_button">Admin</a>
+        <a class="subtle_button" href="<%= edit_url() %>">Edit</a>
       </div>
     </div>
   </div>

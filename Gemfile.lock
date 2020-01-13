@@ -896,9 +896,6 @@ GEM
     execjs (2.7.0)
     faraday (0.17.0)
       multipart-post (>= 1.2, < 3)
-    faraday_middleware-aws-sigv4 (0.3.0)
-      aws-sigv4 (~> 1.0)
-      faraday (>= 0.15)
     ffi (1.11.2)
     friendly_id (5.3.0)
       activerecord (>= 4.0.0)
@@ -1017,7 +1014,6 @@ DEPENDENCIES
   compass-rails
   devise
   dotenv-rails
-  faraday_middleware-aws-sigv4
   friendly_id
   jbuilder
   jquery-rails

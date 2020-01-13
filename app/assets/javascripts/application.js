@@ -3,14 +3,14 @@ import Search from './classes/search.js';
 import Image from './classes/image.js';
 
 $(() => {
-  const search = new Search('.search');
+  const search = new Search('[data-role="search"]');
 
-  $("[data-lazy-load]").each(function() {
+  $("[data-lazy-load]").each(function () {
     let img = new Image($(this));
     img.upscale();
   });
 
-  $("div[href]").on("click", function() {
+  $("div[href]").on("click", function () {
     window.location = $(this).attr("href");
   });
 
