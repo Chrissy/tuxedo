@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'list.rb'
 require 'component.rb'
 
 class RecipesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :search, :autocomplete, :index, :letter_index]
-  layout "application"
+  skip_before_action :authenticate_user!, only: %i[show search autocomplete index letter_index]
+  layout 'application'
 
   def show
     @recipe = Recipe.friendly.find(params[:id])
@@ -23,18 +25,18 @@ class RecipesController < ApplicationController
     recipe.update_attributes(recipe_params)
     recipe.convert_recipe_to_html_and_store
     recipe.make_my_number_last! if params[:make_my_number_last]
-    redirect_to action: "show", id: recipe.id
+    redirect_to action: 'show', id: recipe.id
   end
 
   def create
     recipe = Recipe.create(recipe_params)
     recipe.convert_recipe_to_html_and_store
-    redirect_to action: "show", id: recipe.id
+    redirect_to action: 'show', id: recipe.id
   end
 
   def delete
     Recipe.find(params[:id]).destroy if user_signed_in?
-    redirect_to action: "admin", controller: "lists"
+    redirect_to action: 'admin', controller: 'lists'
   end
 
   def all
@@ -62,19 +64,20 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(
-      :name, 
-      :recipe, 
-      :description, 
+      :name,
+      :recipe,
+      :description,
       :image,
       :image2,
-      :image3, 
-      :published, 
-      :instructions, 
+      :image3,
+      :published,
+      :instructions,
       :never_make_me_tall,
       :rating,
       :adapted_from,
       :tag_list,
-      :tags_as_text, 
+      :tags_as_text,
+      :subtitle
     )
   end
 end

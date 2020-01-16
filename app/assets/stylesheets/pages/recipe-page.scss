@@ -1,9 +1,107 @@
-$description-text-color: #555;
-$description-border-color: darken($description-text-color, 15%);
-$description-background-color: $background-color;
+@import "../utilities/colors.scss";
 
 .aside {
-  @extend %recipe;
+  //@extend %recipe;
+}
+
+$description-cutout: 150px;
+$space-between-description-and-header: 26px;
+$image-width: 520px;
+$image-offset: 30px;
+
+.recipe {
+  @extend .centered-content-box-large;
+  display: flex;
+
+  &__sidebar {
+    width: 282px;
+    padding-right: 20px;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__header {
+    display: flex;
+    color: $text-color-dark;
+  }
+
+  &__header-title {
+    font-size: 44px;
+    line-height: 60px;
+    margin: 0 0 10px 0;
+
+    a {
+      color: $text-color-dark;
+    }
+  }
+
+  &__header-subtitle {
+    font-family: "mr-eaves";
+    font-weight: 400;
+    font-size: 22px;
+    margin: 0 0 10px 0;
+  }
+
+  &__header-content {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 20px ($space-between-description-and-header + $description-cutout) 0px;
+  }
+
+  &__primary-image {
+    height: 568px;
+    width: $image-width;
+    margin-right: -$image-offset;
+    object-fit: cover;
+  }
+
+  &__display-number {
+    top: 16%;
+    right: 0px;
+    transform: translate(50%, 50%);
+    position: absolute;
+  }
+
+  &__cutout {
+    background-color: transparent;
+    width: $image-width - $image-offset;
+    height: $description-cutout;
+    float: right;
+    box-sizing: content-box;
+    padding-left: 40px;
+  }
+
+  &__description {
+    font-size: 15px;
+    margin-top: -$description-cutout - 0px;
+  }
+
+  &__tag-icons {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__tag-icon {
+    width: 22px;
+    margin-right: 6px;
+    height: 22px;
+  }
+
+  &__description::first-letter {
+    font-family: "mr-eaves";
+    font-size: 94px;
+    font-weight: 800;
+    float: left;
+    line-height: 0.75;
+    display: inline-block;
+    padding: 0 10px 0 0;
+  }
 }
 
 .primary {
@@ -15,8 +113,12 @@ $description-background-color: $background-color;
   line-height: 135%;
   color: $description-text-color;
   background-color: $description-background-color;
-  p { max-width: 550px; }
-  p:first-of-type { margin-top: 0; }
+  p {
+    max-width: 550px;
+  }
+  p:first-of-type {
+    margin-top: 0;
+  }
   html:not(.win) & p:first-of-type:first-letter {
     font-size: 51px;
     float: left;
@@ -28,14 +130,19 @@ $description-background-color: $background-color;
 }
 
 @media (max-width: 950px) {
-  .content { width: 100%; }
+  .content {
+    width: 100%;
+  }
   .primary {
     width: 60%;
     font-size: 18px;
   }
   .aside {
     width: 40%;
-    ul, ol { font-size: 16px; }
+    ul,
+    ol {
+      font-size: 16px;
+    }
     h1:after {
       width: 97%;
       left: 0;
@@ -44,9 +151,12 @@ $description-background-color: $background-color;
 }
 
 @media (max-width: 650px) {
-  .primary, .content { width: 100%; }
+  .primary,
+  .content {
+    width: 100%;
+  }
   .aside {
-      width: 96%;
-      margin: 2%;
+    width: 96%;
+    margin: 2%;
   }
 }

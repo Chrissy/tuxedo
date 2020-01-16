@@ -58,6 +58,10 @@ class Recipe < ActiveRecord::Base
     end
   end
 
+  def subtitle_with_fallback
+    subtitle.present? ? subtitle : description_as_plain_text.split('. ')[0]
+  end
+
   def recipe_as_plain_text
     components.map(&:name).join(', ')
   end
@@ -176,9 +180,7 @@ class Recipe < ActiveRecord::Base
       modified_md = wrap_units(Regexp.last_match(1))
       "* <span class='amount'>#{convert_fractions(modified_md)}</span> "
     end
-    html.gsub!(/\# ?([A-Z].*?)/) do |*|
-      "#  #{ApplicationController.helpers.swash(Regexp.last_match(1))}"
-    end
+
     markdown_renderer.render(html)
   end
 

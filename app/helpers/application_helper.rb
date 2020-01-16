@@ -41,18 +41,19 @@ module ApplicationHelper
     "<span class='swash-cap letter-#{letter.downcase}'>#{letter.upcase}</span>#{text[1..-1]}".html_safe
   end
 
-  def image_url(element, size)
-    ImageUploader.bucket + ImageUploader.sizes(size.to_s) + element.image_with_backup
+  def image_url(element, size, res = nil)
+    url = ImageUploader.bucket + ImageUploader.sizes(size.to_s) + element.image_with_backup
+    url = url + ' ' + res if res
+    url
   end
 
-  def header_image(element)
+  def header_image(element, class_name)
     image_tag(
       image_url(element, :mediumCover),
-      class: 'header-image',
+      srcset: [image_url(element, :mediumCover), image_url(element, :largeCover, '2x')].join(', '),
+      class: class_name,
       alt: "#{element.name} cocktail photo",
-      "data-lazy-load": image_url(element, :largeCover),
       itemprop: 'image',
-      "data-dont-compress": element.try(:dont_compress_image),
       "data-pin-media": pinnable_image_url(element),
       "data-pin-url": pin_url(element),
       "data-pin-description": element.name
@@ -99,11 +100,11 @@ module ApplicationHelper
     @list.id if defined? @list
   end
 
-  def display_number_with_fallback(element)
+  def display_number_with_fallback(element, class_name = '')
     if element.try(:number)
-      render 'shared/display_number', number: element.number + 1
+      render 'shared/display_number', number: element.number + 1, class_name: class_name
     else
-      "<div class='decoration'></div>".html_safe
+      ''
     end
   end
 

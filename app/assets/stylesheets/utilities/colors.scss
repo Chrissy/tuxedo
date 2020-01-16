@@ -1,5 +1,15 @@
+@import "../elements/base.scss";
+
 $gray-1: #f0f0f0;
 $gray-2: #ccc;
 $gray-3: #555;
 
 $text-color: #454545;
+$text-color-dark: #24222a;
+$text-color-darkest: #000;
+
+/* legacy */
+
+$description-text-color: #555;
+$description-border-color: darken($description-text-color, 15%);
+$description-background-color: $background-color;

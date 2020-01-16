@@ -1,25 +1,34 @@
 <% cache(cache_key(@recipe, "show")) do %>
   <div itemscope itemtype="http://schema.org/Recipe" class="recipe">
-    <div class="recipe__header">
-      <div class="header-content" href="<%= @recipe.url %>">
-        <%= header_image(@recipe) %>
-        <h1 class="header-title" itemprop="name">
-          <a href="<%= @recipe.url %>">
-            <%= display_number_with_fallback(@recipe) %>
-            <%= swash(@recipe.name) %>
-          </a>
-          <%= render 'shared/pseudonyms' if @recipe.try(:pseudonyms_as_markdown).present? %>
-        </h1>
-      </div>
+    <div class="recipe__sidebar">
+      <%= @recipe.recipe_as_html %>
     </div>
     <div class="recipe__content">
-      <div class="recipe__recipe">
-        <%= @recipe.recipe_as_html %>
+      <div class="recipe__header">
+        <div class="recipe__header-content" href="<%= @recipe.url %>">
+          <h1 class="recipe__header-title" itemprop="name">
+            <a href="<%= @recipe.url %>">
+              <%= swash(@recipe.name) %>
+            </a>
+            <%= render 'shared/pseudonyms' if @recipe.try(:pseudonyms_as_markdown).present? %>
+          </h1>
+          <h2 class="recipe__header-subtitle">
+            <%= @recipe.subtitle %>
+          </h2>
+          <div class="recipe__tag-icons">
+            <% @recipe.tags.each do |tag| %>
+              <%= render 'shared/svg', id: "tag-" + tag.name.gsub(' ', '-'), className: "recipe__tag-icon" %>
+            <% end %>
+          </div>
+          <%= display_number_with_fallback(@recipe, "recipe__display-number") %>
+        </div>
+        <%= header_image(@recipe, "recipe__primary-image recipe__primary-image-1") %>
       </div>
-      <div class="recipe__decription" itemprop="description">
+      <div class="recipe__description" itemprop="description">
+        <div class="recipe__cutout"></div>
         <%= @recipe.description_to_html %>
       </div>
     </div>
-    <%= render 'footer', :recipe => @recipe %>
   </div>
+  <%= render 'footer', :recipe => @recipe %>
 <% end %>
