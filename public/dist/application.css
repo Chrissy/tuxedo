@@ -1071,6 +1071,61 @@ body {
       top: 15px;
       top: 24px; } }
 
+.recipe__sidebar {
+  width: 330px;
+  margin-bottom: 40px; }
+  .recipe__sidebar ul,
+  .recipe__sidebar ol,
+  .recipe__sidebar p {
+    padding: 0 13px 12px 13px;
+    margin: 0; }
+  
+  .recipe__sidebar ol {
+    counter-reset: li;
+    padding-bottom: 0; }
+    .recipe__sidebar ol li {
+      display: flex;
+      align-items: center; }
+      .recipe__sidebar ol li:before {
+        content: counter(li);
+        counter-increment: li; }
+  
+  .recipe__sidebar p {
+    font-size: 14px;
+    line-height: 140%; }
+  .recipe__sidebar h1 {
+    font-size: 20px;
+    margin: 0;
+    font-weight: 900;
+    padding: 3px 0 0 13px; }
+  .recipe__sidebar ul,
+  .recipe__sidebar ol {
+    padding-bottom: 0; }
+  .recipe__sidebar ul li:last-child,
+  .recipe__sidebar ol li:last-child {
+    border-bottom-width: 0; }
+  .recipe__sidebar li {
+    margin: 8px 0 10px 0;
+    display: flex; }
+    .recipe__sidebar li:before {
+      content: "";
+      height: 28px;
+      width: 1px;
+      background-color: #ddd;
+      position: absolute;
+      display: block;
+      left: 59px; }
+  .recipe__sidebar .amount {
+    min-width: 40px;
+    margin-right: 4px;
+    padding-right: 7px;
+    font-weight: 500; }
+  .recipe__sidebar .unit {
+    font-weight: normal;
+    font-size: 13px;
+    margin-left: 1px;
+    color: #999999; }
+
 .centered-content-box, .content,
 .recommends, .edit_panel, .home-content {
   width: 940px;

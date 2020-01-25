@@ -1,9 +1,5 @@
 @import "../utilities/colors.scss";
 
-.aside {
-  //@extend %recipe;
-}
-
 $description-cutout: 150px;
 $space-between-description-and-header: 26px;
 $image-width: 520px;
@@ -14,6 +10,7 @@ $image-offset: 30px;
   display: flex;
 
   &__sidebar {
+    @extend %recipe;
     width: 282px;
     padding-right: 20px;
   }

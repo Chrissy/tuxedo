@@ -182,7 +182,6 @@ class Recipe < ActiveRecord::Base
     html = CustomMarkdown.convert_links_in_place(recipe.dup)
 
     html.gsub!(/^\* (.*?\n)/) do |*|
-      puts wrap_units(Regexp.last_match(1))
       wrap_units(Regexp.last_match(1))
     end
 
