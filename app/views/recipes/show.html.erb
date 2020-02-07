@@ -4,7 +4,7 @@
       <div class="recipe__recipe">
         <%= @recipe.recipe_as_html %>
       </div>
-      <%= render 'shared/instagram_card' %>
+      <%= render 'shared/mail_card' %>
     </div>
     <div class="recipe__content">
       <div class="recipe__header">
@@ -28,9 +28,12 @@
         <%= header_image(@recipe, "recipe__primary-image recipe__primary-image-1") %>
       </div>
       <div class="recipe__primary" itemprop="description">
-        <div class="recipe__cutout"></div>
         <div class="recipe__description">
-          <%= @recipe.description_to_html %>
+          <div class="recipe__cutout"></div>
+          <div><%= @recipe.description_to_html %></div>
+        </div>
+        <div class="recipe__primary-sidebar">
+          <%= render 'shared/instagram_card' %>
         </div>
       </div>
     </div>

@@ -76,11 +76,11 @@ $image-offset: 30px;
 
   &__cutout {
     background-color: transparent;
-    width: $image-width - $image-offset;
+    width: 42%;
     height: $description-cutout;
     float: right;
     box-sizing: content-box;
-    padding-left: 20px;
+    padding-left: 24px;
   }
 
   &__tag-icons {
@@ -100,6 +100,7 @@ $image-offset: 30px;
     margin-top: -$description-cutout - 0px;
     position: relative;
     z-index: 1;
+    display: flex;
   }
 
   &__description {
@@ -110,6 +111,7 @@ $image-offset: 30px;
     color: $text-color;
     font-weight: 300;
     max-width: 580px;
+    flex: 1;
   }
 
   &__description::first-letter {
@@ -122,6 +124,16 @@ $image-offset: 30px;
     display: inline-block;
     padding: 0 12px 0 0;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  }
+
+  &__primary-sidebar {
+    width: 260px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+    min-height: 100%;
   }
 }
 

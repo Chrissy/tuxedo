@@ -751,7 +751,8 @@ body {
   display: grid;
   grid-template-areas: "head head" "one two";
   grid-template-rows: 30px 1fr;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: 16px;
   margin-bottom: 10px;
   font-family: "mr-eaves"; }
 
@@ -763,6 +764,7 @@ body {
 .card__content {
   height: 100%;
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: space-between; }
 
@@ -1703,11 +1705,11 @@ body {
     position: absolute; }
   .recipe__cutout {
     background-color: transparent;
-    width: 524px;
+    width: 42%;
     height: 146px;
     float: right;
     box-sizing: content-box;
-    padding-left: 20px; }
+    padding-left: 24px; }
   .recipe__tag-icons {
     margin-top: 8px;
     display: flex;
@@ -1720,7 +1722,8 @@ body {
   .recipe__primary {
     margin-top: -146px;
     position: relative;
-    z-index: 1; }
+    z-index: 1;
+    display: flex; }
   .recipe__description {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -1728,7 +1731,8 @@ body {
     line-height: 1.5;
     color: #353535;
     font-weight: 300;
-    max-width: 580px; }
+    max-width: 580px;
+    flex: 1; }
   .recipe__description::first-letter {
     color: #000;
     font-family: "mr-eaves";
@@ -1739,6 +1743,14 @@ body {
     display: inline-block;
     padding: 0 12px 0 0;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; }
+  .recipe__primary-sidebar {
+    width: 260px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+    min-height: 100%; }
 
 .primary {
   width: 610px;
