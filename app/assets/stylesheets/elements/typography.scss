@@ -12,9 +12,7 @@ h3 {
   -moz-font-feature-settings: "kern" 1;
   -webkit-font-feature-settings: "kern" 1;
 }
-h1 {
-  @extend %swash;
-}
+
 .win p,
 .win li {
   font-family: georgia, sans-serif;

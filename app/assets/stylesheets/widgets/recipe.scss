@@ -3,13 +3,13 @@ $components-text-color: #666;
 $components-bg-color: white;
 
 %recipe {
-  width: 330px;
-  margin-bottom: 40px;
+  font-family: "mr-eaves";
+  font-size: 18px;
 
   ul,
   ol,
   p {
-    padding: 0 13px 12px 13px;
+    padding: 0;
     margin: 0;
   }
 
@@ -24,6 +24,10 @@ $components-bg-color: white;
       &:before {
         content: counter(li);
         counter-increment: li;
+        font-size: 28px;
+        font-family: "bookmania";
+        font-weight: 700;
+        padding: 0 10px 4px 0;
       }
     }
   }
@@ -33,16 +37,20 @@ $components-bg-color: white;
     line-height: 140%;
   }
 
-  h1 {
+  h1,
+  h2,
+  h3 {
+    font-family: "bookmania";
     font-size: 20px;
     margin: 0;
     font-weight: 900;
-    padding: 3px 0 0 13px;
+    padding: 0;
   }
 
   ul,
   ol {
     padding-bottom: 0;
+    margin-bottom: 40px;
   }
 
   ul li:last-child,
@@ -53,29 +61,41 @@ $components-bg-color: white;
   li {
     margin: 8px 0 10px 0;
     display: flex;
-
-    &:before {
-      content: "";
-      height: 28px;
-      width: 1px;
-      background-color: #ddd;
-      position: absolute;
-      display: block;
-      left: 59px;
-    }
+    position: relative;
   }
 
   .amount {
+    display: inline-flex;
     min-width: 40px;
-    margin-right: 4px;
-    padding-right: 7px;
+    margin-left: -20px;
     font-weight: 500;
+    max-height: 1.25em;
+    margin-right: 8px;
+    position: relative;
+    justify-content: flex-end;
+    align-items: baseline;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .divider {
+    height: 13px;
+    width: 1px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: block;
+    top: 6px;
+    position: relative;
   }
 
   .unit {
     font-weight: normal;
-    font-size: 13px;
+    font-size: 11px;
     margin-left: 1px;
-    color: lighten($components-text-color, 20%);
+  }
+
+  .ingredient {
+    flex: 1;
+    padding-left: 10px;
+    display: block;
+    text-align: left;
   }
 }

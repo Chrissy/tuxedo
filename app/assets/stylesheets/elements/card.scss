@@ -1,0 +1,52 @@
+.card {
+  display: grid;
+  grid-template-areas: "head head" "one two";
+  grid-template-rows: 30px 1fr;
+  grid-template-columns: 100px 1fr;
+  margin-bottom: 10px;
+  font-family: "mr-eaves";
+}
+
+.card__label {
+  grid-area: head;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.card__image {
+}
+
+.card__content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card__text {
+  font-size: 15px;
+  line-height: 1.1;
+  margin: 0 0 16px 0;
+}
+
+.card__actions {
+  display: flex;
+  align-items: center;
+}
+
+.card__action-subtext {
+  color: #656565;
+  font-size: 13px;
+  margin-left: 6px;
+}
+
+.card__action {
+  padding: 4px 16px;
+  border: 1px solid currentColor;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 10px;
+  text-decoration: none;
+  letter-spacing: 0.075em;
+}

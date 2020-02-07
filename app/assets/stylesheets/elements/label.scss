@@ -1,0 +1,16 @@
+.label {
+  font-family: "mr-eaves";
+  font-weight: bold;
+  letter-spacing: 0.075em;
+  font-size: 10px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+.label:after {
+  content: "";
+  height: 1px;
+  background: currentColor;
+  flex: 1;
+}

@@ -167,22 +167,21 @@ class Recipe < ActiveRecord::Base
     end.html_safe
   end
 
-  def wrap_units(md)
-    search = md.scan(/([0-9])(oz|tsp|tbsp|Tbsp|dash|dashes|lb|lbs|cup|cups)(.*?)$/)
+  def consruct_recipe_line(md)
+    regex = /([0-9]*\.?[0-9]*)(oz|tsp|tbsp|Tbsp|dash|dashes|lb|lbs|cup|cups)(.*?)$/
+    search = md.match(regex).to_a.drop(1) # first is complete match
 
-    return "* <span class='amount'></span>#{md}" unless search[0]
+    return "* <span class='amount'></span><span class='ingredient'>#{md}</span>\n" unless search[0]
 
-    search = search[0]
-
-    inner = "#{search[0]}<span class='unit'>#{search[1]}</span>"
-    "* <span class='amount'>#{convert_fractions(inner)}</span> #{search[2]}\n"
+    unit = search[1] ? "<span class='unit'>#{search[1]}</span>" : ''
+    "* <span class='amount'>#{convert_fractions(search[0])}#{unit}</span><span class='divider'></span><span class='ingredient'>#{search[2]}</span>\n"
   end
 
   def convert_recipe_to_html
     html = CustomMarkdown.convert_links_in_place(recipe.dup)
 
     html.gsub!(/^\* (.*?\n)/) do |*|
-      wrap_units(Regexp.last_match(1))
+      consruct_recipe_line(Regexp.last_match(1))
     end
 
     markdown_renderer.render(html)

@@ -1,5 +1,4 @@
 <% field ||= :image %>
-
 <div class="image-options s-bottom_margin">
   <%= element[field] ?  element[field] : "none"%>
   <%= f.hidden_field field, value: element[field] || '', class: 'image-filename' %>

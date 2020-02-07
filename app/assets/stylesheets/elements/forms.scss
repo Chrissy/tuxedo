@@ -1,7 +1,24 @@
 @import "../elements/base";
 
 .form-content {
-  input,
+  .primary {
+    width: 440px;
+    float: left;
+    font-size: 17.5px;
+    padding: 20px 25px;
+    margin-bottom: 40px;
+    line-height: 135%;
+    color: #555;
+    background-color: #f1f1f1;
+  }
+
+  .secondary {
+    padding: 20px 0;
+    width: 440px;
+    float: left;
+  }
+
+  input[type="text"],
   textarea,
   .textfield {
     width: 100%;
@@ -13,6 +30,7 @@
     line-height: 124%;
     border: 1px solid #555;
     padding: 6px 10px;
+    margin-bottom: 16px;
   }
 
   textarea {
@@ -49,6 +67,11 @@
     min-width: 120px;
     font-size: 16px;
     margin-top: 7px;
+  }
+
+  input[type="submit"] {
+    max-width: 300px;
+    display: inline-block;
   }
 
   button {
