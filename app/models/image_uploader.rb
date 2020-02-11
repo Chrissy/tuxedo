@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 require 'aws-sdk'
 require 'json'
 require 'mini_magick'
 
 class ImageUploader
   def initialize(image)
-    credentials = get_credentials()
+    credentials = get_credentials
     @path = image
     @s3 = Aws::S3::Client.new(region: 'us-east-2', credentials: credentials)
     @baseImage = MiniMagick::Image.open(self.class.bucket + image)
   end
 
-  def get_credentials()
-    return Aws::Credentials.new(ENV['S3_KEY'], ENV['S3_SECRET'])
+  def get_credentials
+    Aws::Credentials.new(ENV['S3_KEY'], ENV['S3_SECRET'])
   end
 
   def source_image
@@ -24,11 +26,13 @@ class ImageUploader
 
   def self.all_sizes
     {
-      "largeCover" => "1500x861",
-      "mediumCover" => "500x287",
-      "thumb" => "100x100",
-      "pinterest" => "476x666",
-      "list" => "600x400"
+      'largeCover' => '1500x861',
+      'mediumCover' => '500x287',
+      'medium' => '200x200',
+      'medium2x' => '400x400',
+      'thumb' => '100x100',
+      'pinterest' => '476x666',
+      'list' => '600x400'
     }
   end
 
@@ -37,10 +41,10 @@ class ImageUploader
   end
 
   def self.bucket
-    "https://s3.us-east-2.amazonaws.com/chrissy-tuxedo-no2/"
+    'https://s3.us-east-2.amazonaws.com/chrissy-tuxedo-no2/'
   end
 
-  def upload()
+  def upload
     self.class.all_sizes.values.each do |size|
       putImageWithSize(size)
     end
@@ -48,8 +52,8 @@ class ImageUploader
 
   def resize_image(size)
     MiniMagick::Image.open(@baseImage.tempfile.path).combine_options do |i|
-      i.resize(size + "^")
-      i.gravity("Center")
+      i.resize(size + '^')
+      i.gravity('Center')
       i.extent(size)
     end
   end

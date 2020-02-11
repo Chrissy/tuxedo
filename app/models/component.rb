@@ -91,6 +91,10 @@ class Component < ActiveRecord::Base
     'components/subtext'
   end
 
+  def classic_recipes(count)
+    list_elements.slice(0, count)
+  end
+
   def count_for_display
     "#{list_elements.count} cocktails"
   end

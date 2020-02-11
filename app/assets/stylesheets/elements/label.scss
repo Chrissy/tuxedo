@@ -6,11 +6,17 @@
   text-transform: uppercase;
   display: flex;
   align-items: center;
+
+  &--bottom-border {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #000;
+  }
 }
 
-.label:after {
+.label:not(.label--bottom-border):after {
   content: "";
   height: 1px;
   background: currentColor;
   flex: 1;
+  margin-left: 6px;
 }

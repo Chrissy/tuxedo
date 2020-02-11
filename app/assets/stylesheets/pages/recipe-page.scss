@@ -57,7 +57,8 @@ $image-offset: 30px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 0 20px ($space-between-description-and-header + $description-cutout) 0px;
+    padding: 0 20px
+      ($space-between-description-and-header + $description-cutout) 0px;
   }
 
   &__primary-image {
@@ -123,7 +124,8 @@ $image-offset: 30px;
     line-height: 0.75;
     display: inline-block;
     padding: 0 12px 0 0;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+      1px 1px 0 #000;
   }
 
   &__primary-sidebar {
@@ -135,33 +137,13 @@ $image-offset: 30px;
     padding-bottom: 20px;
     min-height: 100%;
   }
-}
 
-.primary {
-  width: 610px;
-  float: left;
-  font-size: 17.5px;
-  padding: 20px 25px;
-  margin-bottom: 40px;
-  line-height: 135%;
-  color: $description-text-color;
-  background-color: $description-background-color;
-
-  p {
-    max-width: 550px;
-  }
-
-  p:first-of-type {
-    margin-top: 0;
-  }
-
-  html:not(.win) & p:first-of-type:first-letter {
-    font-size: 51px;
-    float: left;
-    line-height: 0;
-    margin-top: 27px;
-    margin-right: 4px;
-    font-weight: 900;
+  &__footer {
+    @extend .centered-content-box-large;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 40px;
+    margin-top: 40px;
   }
 }
 
@@ -191,7 +173,6 @@ $image-offset: 30px;
 }
 
 @media (max-width: 650px) {
-
   .primary,
   .content {
     width: 100%;
