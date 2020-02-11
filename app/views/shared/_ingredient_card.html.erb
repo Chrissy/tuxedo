@@ -1,9 +1,16 @@
 <div class="ingredient-card">
   <div class="label label--bottom-border ingredient-card__label">Ingredient:&nbsp;<%= ingredient.name %></div>
-  <div class="ingredient-card__image" style="background: #000;"></div>
+  <img 
+   class="ingredient-card__image"
+   src="<%= image_url(ingredient, :medium)%>" 
+   srcset="
+     <%= image_url(ingredient, :medium)%> 1x, 
+     <%= image_url(ingredient, :medium2x)%> 2x
+   "
+ />
   <% while ingredient.description.present? do %>
     <div class="ingredient-card__description">
-      A complex aged rum or a blend of complex rums will shine here. We used a blend of Smith and Cross and Plantation light rum, which yielded a transfixing combination
+      <%= ingredient.description %>
     </div>
   <% end %>
   <div class="ingredient-card__recipes">
@@ -15,11 +22,3 @@
     <% end %>
   </div>
 </div>
-<!-- <img 
-  #   class="ingredient-card__image"
-  #   src="<%= image_url(ingredient, :medium)%>" 
-  #   srcset="
-  #     <%= image_url(ingredient, :medium)%> 1x, 
-  #     <%= image_url(ingredient, :medium2x)%> 2x
-  #   "
-  # /> -->
