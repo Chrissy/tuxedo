@@ -17,12 +17,21 @@
     padding-bottom: 0;
   }
 
-  &__image {
+  &__left {
     grid-area: image;
+    min-height: 200px;
+  }
+
+  &__description > p:first-of-type {
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  &__image {
+    display: block;
     object-fit: cover;
     height: 100%;
     width: 100%;
-    min-height: 220px;
   }
 
   &__recipes {

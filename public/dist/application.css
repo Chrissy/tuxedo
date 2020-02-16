@@ -830,12 +830,17 @@ body {
     display: flex;
     align-items: flex-start;
     padding-bottom: 0; }
-  .ingredient-card__image {
+  .ingredient-card__left {
     grid-area: image;
+    min-height: 200px; }
+  .ingredient-card__description > p:first-of-type {
+    padding-top: 0;
+    margin-top: 0; }
+  .ingredient-card__image {
+    display: block;
     object-fit: cover;
     height: 100%;
-    width: 100%;
-    min-height: 220px; }
+    width: 100%; }
   .ingredient-card__recipes {
     margin-bottom: -6px; }
     .ingredient-card__recipes a:not(:hover) {

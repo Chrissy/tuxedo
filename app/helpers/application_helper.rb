@@ -78,7 +78,7 @@ module ApplicationHelper
     'https://d34nm4jmyicdxh.cloudfront.net/' + image_path(size_hash, element.image_with_backup)
   end
 
-  def header_image(element, class_name)
+  def header_image(element, class_name = "")
     image_tag(
       image_url(element, :large),
       srcset: [image_url(element, :large) + ' 1x', image_url(element, :large2x) + ' 2x'].join(', '),

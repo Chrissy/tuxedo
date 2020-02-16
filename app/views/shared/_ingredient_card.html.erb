@@ -1,9 +1,11 @@
 <div class="ingredient-card">
-  <div class="label label--bottom-border ingredient-card__label">Ingredient:&nbsp;<%= ingredient.name %></div>
-  <%= ingredient_card_image(ingredient, "ingredient-card__image") %>
-  <% while ingredient.description.present? do %>
+  <div class="label label--bottom-border ingredient-card__label">Ingredient:&nbsp;<a href="<%= ingredient.url %>"><%= ingredient.name %></a></div>
+  <a href="<%= ingredient.url %>" class="ingredient-card__left">
+    <%= ingredient_card_image(ingredient, "ingredient-card__image") %>
+  </a>
+  <% if ingredient.description.present? %>
     <div class="ingredient-card__description">
-      <%= ingredient.description %>
+      <%= ingredient.description_to_html %>
     </div>
   <% end %>
   <div class="ingredient-card__recipes">
