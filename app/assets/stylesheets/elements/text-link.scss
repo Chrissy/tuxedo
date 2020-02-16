@@ -1,0 +1,17 @@
+.text-link {
+  text-decoration: none;
+
+  &__name {
+    font-size: 18px;
+    font-family: "bookmania";
+    font-weight: 700;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  &__tag {
+    font-size: 0.75em;
+    margin-left: 0.1em;
+  }
+}

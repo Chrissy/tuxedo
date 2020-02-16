@@ -15,6 +15,7 @@
 
 .label:not(.label--bottom-border):after {
   content: "";
+
   height: 1px;
   background: currentColor;
   flex: 1;

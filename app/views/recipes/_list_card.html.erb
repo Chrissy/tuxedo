@@ -1,0 +1,8 @@
+<div class="list-card">
+  <div class="label label--bottom-border list-card__label">Similar to:&nbsp;<a href="<%= recipe.url%>"><%= recipe.name %></a></div>
+  <div class="list-card__elements">
+    <% recipe.recommends(6).each do |recipe| %>
+      <%= render 'text_link', recipe: recipe, classname: "list-card__text-link" %>
+    <% end %>
+  </div>
+</div>

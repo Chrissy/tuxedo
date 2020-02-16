@@ -1,0 +1,10 @@
+.tag {
+  width: 1em;
+  height: 1em;
+
+  &--collins-glass {
+    height: 1.2em;
+    width: 0.75em;
+    transform: translateY(-1px);
+  }
+}

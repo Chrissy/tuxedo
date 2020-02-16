@@ -53,6 +53,7 @@ class Recipe < ActiveRecord::Base
 
   def delete_and_save_tags
     if tags_as_text.present? && saved_changes.keys.include?('tags_as_text')
+      tags.delete_all
       tag_list.add(tags_as_text.split(',').map(&:strip).map(&:downcase))
     end
   end
@@ -120,12 +121,25 @@ class Recipe < ActiveRecord::Base
     where("lower(name) LIKE '#{letter}%' AND published = 't'")
   end
 
+  def get_recommends(component, count = 3)
+    other_recipes = (component.list_elements.keep_if(&:published?) - [self])
+    other_recipes.sort_by! { |recipe| (components & recipe.components).length }
+    other_recipes.reverse!.first(count)
+  end
+
   def recommends(count)
     return [] unless components
 
-    other_recipes = (components.first.list_elements.keep_if(&:published?) - [self])
-    other_recipes.sort_by! { |recipe| (components & recipe.components).length }
-    other_recipes.reverse!.first(count)
+    recommends = []
+
+    components.each do |component|
+      recommends.concat(get_recommends(component, 6))
+      break unless recommends.length < count
+    end
+
+    return [] if recommends.empty?
+
+    recommends.uniq.first(count)
   end
 
   def tagline

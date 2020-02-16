@@ -1,0 +1,29 @@
+.list-card {
+  border: 1px solid #000;
+  font-family: "mr-eaves";
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-card__label {
+  height: 26px;
+  align-items: flex-start;
+  font-size: 11px;
+}
+
+.list-card__elements {
+  display: grid;
+  grid-template-columns: repeat(2, calc(50% - 4px));
+  grid-template-rows: repeat(3, auto-fill);
+  grid-row-gap: 10px;
+  grid-column-gap: 8px;
+  margin-top: 12px;
+  flex: 1;
+}
+
+.list-card__text-link {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}

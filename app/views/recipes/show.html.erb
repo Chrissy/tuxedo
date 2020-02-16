@@ -20,7 +20,7 @@
           </h2>
           <div class="recipe__tag-icons">
             <% @recipe.tags.each do |tag| %>
-              <%= render 'shared/svg', id: "tag-" + tag.name.gsub(' ', '-'), className: "recipe__tag-icon" %>
+              <%= render 'tag', tag: tag, classname: "recipe__tag-icon" %>
             <% end %>
           </div>
           <%= display_number_with_fallback(@recipe, "recipe__display-number") %>
@@ -40,7 +40,7 @@
   </div>
   <div class="recipe__footer">
     <%= render 'shared/ingredient_card', ingredient: @recipe.components[0] %>
-    <%= render 'recommends', recipe: @recipe %>
+    <%= render 'list_card', recipe: @recipe %>
   </div>
   <%= render 'footer', :recipe => @recipe %>
 <% end %>

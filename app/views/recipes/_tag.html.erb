@@ -1,0 +1,3 @@
+<% classname ||= '' %>
+<% slug = tag.name.gsub(' ', '-') %>
+<%= render 'shared/svg', id: "tag-" + slug, className: "tag tag--#{slug} #{classname}" %>

@@ -1,0 +1,11 @@
+<% classname ||= '' %>
+<% tag = recipe.tags.find{ |tag| ['cocktail glass','collins glass','rocks glass','tiki glass','toddy glass'].include?(tag.name) } %>
+<a class="text-link <%= classname %>" href="<%= recipe.url %>">
+  <div class="text-link__name">
+    <%= recipe.name %>&nbsp;
+    <% if tag %>
+      <%= render 'tag', tag: tag, classname: 'text-link__tag' %>
+    <% end %>
+  </div>
+  <div class="text-link__components"><%= recipe.components[0..2].map(&:nickname).join(", ") %></div>
+</a>

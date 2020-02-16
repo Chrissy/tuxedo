@@ -5,6 +5,7 @@
   font-family: "mr-eaves";
   padding: 16px;
   display: grid;
+  font-size: 17px;
   grid-template-areas: "image label" "image description" "image recipes";
   grid-template-columns: 200px auto;
   grid-template-rows: 26px 1fr auto;
@@ -15,6 +16,7 @@
     display: flex;
     align-items: flex-start;
     padding-bottom: 0;
+    font-size: 11px;
   }
 
   &__left {
@@ -36,6 +38,7 @@
 
   &__recipes {
     margin-bottom: -6px;
+    font-size: 16px;
 
     a:not(:hover) {
       text-decoration: none;
