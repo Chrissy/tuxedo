@@ -1,29 +1,29 @@
 import Autocomplete from "./autocomplete";
 
 const tags = [
-  'classic',
-  'original',
-  'stirred',
-  'shaken',
-  'built in glass',
-  'up',
-  'rocks',
-  'large cube',
-  'crushed ice',
-  'cracked ice',
-  'cocktail glass',
-  'collins glass',
-  'rocks glass',
-  'tiki glass',
-  'toddy glass',
-  'summer',
-  'winter',
-  'fall',
-  'spring',
+  "classic",
+  "original",
+  "stirred",
+  "shaken",
+  "built in glass",
+  "up",
+  "rocks",
+  "large cube",
+  "crushed ice",
+  "cracked ice",
+  "cocktail glass",
+  "collins glass",
+  "rocks glass",
+  "tiki glass",
+  "toddy glass",
+  "summer",
+  "winter",
+  "fall",
+  "spring"
 ];
 
 export default class TagSelect {
-  constructor(input) {    
+  constructor(input) {
     this.input = input;
     this.autocomplete = new Autocomplete({
       input: this.input,
@@ -32,7 +32,7 @@ export default class TagSelect {
       delimiter: ",",
       showResultsOnFocus: true,
       allowSubmitOnTab: true,
-      limit: 100,
+      limit: 100
     });
   }
 
@@ -40,19 +40,16 @@ export default class TagSelect {
     return `/search?query=${inputValue}`;
   }
 
-  onSelect = (result) => {
-    const {value} = this.input;
+  onSelect = result => {
+    const { value } = this.input;
     const lastDelimiterIndex = value.lastIndexOf(",");
-    const beforeText = (lastDelimiterIndex !== -1) ? value.slice(0, lastDelimiterIndex + 2) : '';
-    this.input.value = beforeText + `${result.label}, `
-    this.input.focus({preventScroll: true});
-  }
+    const beforeText =
+      lastDelimiterIndex !== -1 ? value.slice(0, lastDelimiterIndex + 2) : "";
+    this.input.value = beforeText + `${result.label}, `;
+    window.setTimeout(() => this.input.focus({ preventScroll: true }), 1);
+  };
 
-  onReturnWithNoSelection = (inputValue) => {
+  onReturnWithNoSelection = inputValue => {
     window.location = this.getFullTextSearchUrl(inputValue);
-  }
-
-  onSelect(line) {
-    window.location = line.getAttribute("href")
-  }
+  };
 }

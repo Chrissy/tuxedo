@@ -23,7 +23,11 @@ export default class Autocomplete {
     /* result limit */
     limit,
     /* allow submit on tab as well as enter (useful for in-text mentions) */
+<<<<<<< HEAD
     allowSubmitOnTab,
+=======
+    allowSubmitOnTab
+>>>>>>> allow autocomplete to be closed again and fix bug with mutiselect in tag select
   }) {
     Object.assign(this, {
       input,
@@ -34,8 +38,12 @@ export default class Autocomplete {
       symbol,
       limit,
       showResultsOnFocus,
+<<<<<<< HEAD
       allowSubmitOnTab,
       onFooterClick,
+=======
+      allowSubmitOnTab
+>>>>>>> allow autocomplete to be closed again and fix bug with mutiselect in tag select
     });
     this.onSelect = this.handleSelect(onSelect);
     this.resultsContainer = document.createElement("div");
@@ -69,13 +77,17 @@ export default class Autocomplete {
       distance: 100,
       maxPatternLength: 32,
       minMatchCharLength: 0,
+<<<<<<< HEAD
       keys: ["label"],
+=======
+      keys: ["label"]
+>>>>>>> allow autocomplete to be closed again and fix bug with mutiselect in tag select
     };
 
     this.autocomplete = new Fuse(data, options);
   }
 
-  handleSelect = (selectFunc) => (result, target) => {
+  handleSelect = selectFunc => (result, target) => {
     selectFunc(result, target);
     this.reset();
   };
@@ -108,7 +120,11 @@ export default class Autocomplete {
             this.renderLine(currentValue, index === this.arrowIndex, index)
           );
         }, "")}
+<<<<<<< HEAD
         ${this.footer ? this.getFooter() : ""}
+=======
+        ${this.footer ? this.footer(this.inputValue) : ""}
+>>>>>>> allow autocomplete to be closed again and fix bug with mutiselect in tag select
       </div>`
         : "");
 
@@ -181,7 +197,11 @@ export default class Autocomplete {
 
   search() {
     const results = this.autocomplete.search(this.inputValue, {
+<<<<<<< HEAD
       limit: this.limit || 10,
+=======
+      limit: this.limit || 10
+>>>>>>> allow autocomplete to be closed again and fix bug with mutiselect in tag select
     });
     this.results =
       this.showResultsOnFocus && !results.length
