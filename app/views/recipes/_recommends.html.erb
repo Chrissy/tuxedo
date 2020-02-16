@@ -1,7 +1,11 @@
 <div class="recommends">
-  <div class="recommends-label">
-    <h5 class="recommends-label-text">Try a similar cocktail:</h5>
-    <div class="recommends-divider"></div>
+  <div class="label label--border-below recommends__label">Similar to: <%= recipe.name %></div>
+  <div class="recommends__recipes">
+    <% recipe.recommends(6).each do |recipe| %>
+      <a class="recommends__recipe" href="<%= recipe.url %>%">
+        <div class="recommends__recipe-name"><%= recipe.name %></div>
+        <div class="recommends__recipe-ingredients"><%= recipe.components[0..2].map(&:name).join(", ") %></div>
+      </a>
+    <% end %>
   </div>
-  <%= render "lists/list_with_images", :list_elements => recommends %>
 </div>

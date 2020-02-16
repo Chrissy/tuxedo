@@ -90,38 +90,11 @@
   padding: 10px;
 }
 
-.recommends {
-  @include pie-clearfix;
-  padding-bottom: 100px;
-  .list-elements {
-    width: 101%;
-  }
-}
-.recommends-label {
-  position: relative;
-  margin-bottom: 20px;
-}
-.recommends-label-text {
-  font-size: 18px;
-  font-weight: normal;
-  display: block;
-  margin: 0 auto;
-  width: 200px;
-  color: #444;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-  background: $background-color;
-}
-.recommends-divider {
-  @extend %horizontal_stripes;
-  width: 100%;
-  height: 1px;
-  position: relative;
-  top: -14px;
-}
-
-$horizontal-stripes: linear-gradient(90deg, transparent 50%, rgba(50, 50, 50, 0.6) 50%);
+$horizontal-stripes: linear-gradient(
+  90deg,
+  transparent 50%,
+  rgba(50, 50, 50, 0.6) 50%
+);
 %horizontal_stripes {
   background: $horizontal-stripes;
   background-size: 4px 100%;

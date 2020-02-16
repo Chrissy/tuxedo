@@ -1,13 +1,6 @@
 <div class="ingredient-card">
   <div class="label label--bottom-border ingredient-card__label">Ingredient:&nbsp;<%= ingredient.name %></div>
-  <img 
-   class="ingredient-card__image"
-   src="<%= image_url(ingredient, :medium)%>" 
-   srcset="
-     <%= image_url(ingredient, :medium)%> 1x, 
-     <%= image_url(ingredient, :medium2x)%> 2x
-   "
- />
+  <%= ingredient_card_image(ingredient, "ingredient-card__image") %>
   <% while ingredient.description.present? do %>
     <div class="ingredient-card__description">
       <%= ingredient.description %>

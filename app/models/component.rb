@@ -2,7 +2,6 @@
 
 require 'recipe.rb'
 require 'subcomponent.rb'
-require 'image_uploader.rb'
 
 class Component < ActiveRecord::Base
   include AlgoliaSearch
@@ -17,7 +16,7 @@ class Component < ActiveRecord::Base
   serialize :recipe_ids, Array
   has_many :pseudonyms, as: :pseudonymable, dependent: :destroy
   has_many :subcomponents, as: :subcomponent, dependent: :destroy
-  after_save :create_images, :delete_and_save_subcomponents, :create_pseudonyms_if_changed, :delete_and_save_tags
+  after_save :delete_and_save_subcomponents, :create_pseudonyms_if_changed, :delete_and_save_tags
 
   alias list_elements_from_markdown list_elements
 
@@ -57,12 +56,6 @@ class Component < ActiveRecord::Base
 
   def edit_url
     "/ingredients/edit/#{id}"
-  end
-
-  def create_images
-    if image.present? && saved_changes.keys.include?('image')
-      ImageUploader.new(image).upload
-    end
   end
 
   def backup_image_url

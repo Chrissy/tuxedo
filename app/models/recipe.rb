@@ -4,7 +4,6 @@ require 'redcarpet'
 require 'redcarpet/render_strip'
 require 'component.rb'
 require 'custom_markdown.rb'
-require 'image_uploader.rb'
 
 class Recipe < ActiveRecord::Base
   include AlgoliaSearch
@@ -16,7 +15,7 @@ class Recipe < ActiveRecord::Base
   serialize :recommends, Array
 
   acts_as_markdown_list :recipe
-  after_save :create_images, :delete_and_save_tags
+  after_save :delete_and_save_tags
 
   search_index = ENV['RAILS_ENV'] == 'development' ? 'primary_development' : 'primary'
 
@@ -64,12 +63,6 @@ class Recipe < ActiveRecord::Base
 
   def recipe_as_plain_text
     components.map(&:name).join(', ')
-  end
-
-  def create_images
-    if image.present? && saved_changes.keys.include?('image')
-      ImageUploader.new(image).upload
-    end
   end
 
   def backup_image_url
@@ -127,12 +120,12 @@ class Recipe < ActiveRecord::Base
     where("lower(name) LIKE '#{letter}%' AND published = 't'")
   end
 
-  def recommends
-    return unless components
+  def recommends(count)
+    return [] unless components
 
     other_recipes = (components.first.list_elements.keep_if(&:published?) - [self])
     other_recipes.sort_by! { |recipe| (components & recipe.components).length }
-    other_recipes.reverse!.first(3)
+    other_recipes.reverse!.first(count)
   end
 
   def tagline
@@ -171,7 +164,9 @@ class Recipe < ActiveRecord::Base
     regex = /([0-9]*\.?[0-9]*)(oz|tsp|tbsp|Tbsp|dash|dashes|lb|lbs|cup|cups)(.*?)$/
     search = md.match(regex).to_a.drop(1) # first is complete match
 
-    return "* <span class='amount'></span><span class='ingredient'>#{md}</span>\n" unless search[0]
+    unless search[0]
+      return "* <span class='amount'></span><span class='ingredient'>#{md}</span>\n"
+    end
 
     unit = search[1] ? "<span class='unit'>#{search[1]}</span>" : ''
     "* <span class='amount'>#{convert_fractions(search[0])}#{unit}</span><span class='divider'></span><span class='ingredient'>#{search[2]}</span>\n"

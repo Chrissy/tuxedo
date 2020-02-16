@@ -2,7 +2,8 @@ $element-width: 306px;
 $image-height: 195px;
 $image-resize: 10%;
 
-.sawhorse, .list-element {
+.sawhorse,
+.list-element {
   float: left;
   width: $element-width;
   min-height: 268px;
@@ -45,8 +46,12 @@ $image-resize: 10%;
     position: relative;
     a {
       color: #666;
-      &:after { content: ", "; }
-      &:last-child:after { content: ""; }
+      &:after {
+        content: ", ";
+      }
+      &:last-child:after {
+        content: "";
+      }
     }
     &:after {
       @extend %horizontal_stripes;
@@ -70,7 +75,9 @@ $image-resize: 10%;
     text-align: center;
     display: none;
   }
-  a { color: #444; }
+  a {
+    color: #444;
+  }
 }
 
 .list_element_small {
@@ -102,7 +109,9 @@ $image-resize: 10%;
   }
   .display-number {
     font-size: 36px;
-    .no { left: 10px; }
+    .no {
+      left: 10px;
+    }
   }
   .list-element-number {
     display: block;
@@ -110,7 +119,9 @@ $image-resize: 10%;
   }
 }
 
-.sawhorse { display: none; }
+.sawhorse {
+  display: none;
+}
 
 .list-element .saveur-meme-link {
   img {
@@ -120,40 +131,61 @@ $image-resize: 10%;
 }
 
 @media (min-width: 1275px) {
-  .content.list, .content.component { width: 1254px; }
-  .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall) {
-    &:nth-of-type(20n+1), &:nth-of-type(20n+6), &:nth-of-type(20n+12), &:nth-of-type(20n+17) {
+  .content.list,
+  .content.component {
+    width: 1254px;
+  }
+  .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall) {
+    &:nth-of-type(20n + 1),
+    &:nth-of-type(20n + 6),
+    &:nth-of-type(20n + 12),
+    &:nth-of-type(20n + 17) {
       @include expanded-list-element;
-      & + span + li + span + li + span + li + span { display: block; }
+      & + span + li + span + li + span + li + span {
+        display: block;
+      }
     }
   }
 }
 
 @media (max-width: 1275px) and (min-width: 950px) {
-  .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall) {
-    &:nth-of-type(21n+1), &:nth-of-type(21n+5), &:nth-of-type(21n+9), &:nth-of-type(21n+13), &:nth-of-type(21n+19) {
+  .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall) {
+    &:nth-of-type(21n + 1),
+    &:nth-of-type(21n + 5),
+    &:nth-of-type(21n + 9),
+    &:nth-of-type(21n + 13),
+    &:nth-of-type(21n + 19) {
       @include expanded-list-element;
-      & + span + li + span + li + span { display: block; }
+      & + span + li + span + li + span {
+        display: block;
+      }
     }
   }
 }
 
 @media (max-width: 950px) and (min-width: 650px) {
-  .content.list, .content.component, .recommends { width: 628px; }
-  .list-element:not(:nth-last-of-type(-n+2)):not(.never-make-me-tall) {
-    &:nth-of-type(4n+1) {
+  .content.list,
+  .content.component {
+    width: 628px;
+  }
+  .list-element:not(:nth-last-of-type(-n + 2)):not(.never-make-me-tall) {
+    &:nth-of-type(4n + 1) {
       @include expanded-list-element;
-      & + span + li + span { display: block; }
+      & + span + li + span {
+        display: block;
+      }
     }
   }
 }
 
 @media (max-width: 650px) {
-  .content.list, .content.component, .recommends {
+  .content.list,
+  .content.component {
     width: 90%;
-    max-width: 500px
+    max-width: 500px;
   }
-  .list-element, .list-element .list-image-wrapper {
+  .list-element,
+  .list-element .list-image-wrapper {
     width: 100%;
     height: auto;
   }

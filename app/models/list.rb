@@ -3,7 +3,6 @@
 require 'recipe.rb'
 require 'component.rb'
 require 'custom_markdown.rb'
-require 'image_uploader.rb'
 
 class List < ActiveRecord::Base
   include AlgoliaSearch
@@ -13,7 +12,6 @@ class List < ActiveRecord::Base
   friendly_id :custom_name, use: :slugged
 
   acts_as_markdown_list :content_as_markdown
-  after_save :create_images
 
   search_index = ENV['RAILS_ENV'] == 'development' ? 'primary_development' : 'primary'
 
@@ -75,12 +73,6 @@ class List < ActiveRecord::Base
 
   def backup_image_url
     'shaker.jpg'
-  end
-
-  def create_images
-    if image.present? && saved_changes.keys.include?('image')
-      ImageUploader.new(image).upload
-    end
   end
 
   def image_with_backup

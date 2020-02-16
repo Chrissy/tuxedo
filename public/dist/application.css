@@ -1,5 +1,4 @@
-.centered-content-box, .content,
-.recommends, .edit_panel, .home-content {
+.centered-content-box, .content, .edit_panel, .home-content {
   width: 940px;
   margin: 0 auto;
   position: relative; }
@@ -63,8 +62,7 @@ body {
   display: table;
   clear: both; }
 
-.centered-content-box, .content,
-.recommends, .edit_panel, .home-content {
+.centered-content-box, .content, .edit_panel, .home-content {
   width: 940px;
   margin: 0 auto;
   position: relative; }
@@ -156,8 +154,7 @@ h3 {
   width: 100%;
   height: 100%; }
 
-.centered-content-box, .content,
-.recommends, .edit_panel, .home-content {
+.centered-content-box, .content, .edit_panel, .home-content {
   width: 940px;
   margin: 0 auto;
   position: relative; }
@@ -181,8 +178,7 @@ h3 {
 .list-element h3 .swash-cap.letter-z, .recipe__header-title .swash-cap.letter-z {
   margin-right: -0.14em; }
 
-.centered-content-box, .content,
-.recommends, .edit_panel, .home-content {
+.centered-content-box, .content, .edit_panel, .home-content {
   width: 940px;
   margin: 0 auto;
   position: relative; }
@@ -320,43 +316,11 @@ body {
   margin: 0;
   padding: 10px; }
 
-.recommends {
-  padding-bottom: 100px; }
-  .recommends:after {
-    content: "";
-    display: table;
-    clear: both; }
-  .recommends .list-elements {
-    width: 101%; }
-
-.recommends-label {
-  position: relative;
-  margin-bottom: 20px; }
-
-.recommends-label-text {
-  font-size: 18px;
-  font-weight: normal;
-  display: block;
-  margin: 0 auto;
-  width: 200px;
-  color: #444;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-  background: #f0f0f0; }
-
-.recommends-divider {
-  width: 100%;
-  height: 1px;
-  position: relative;
-  top: -14px; }
-
-.recommends-divider, .list-element .subtext:after {
+.list-element .subtext:after {
   background: linear-gradient(90deg, transparent 50%, rgba(50, 50, 50, 0.6) 50%);
   background-size: 4px 100%; }
 
-.centered-content-box, .content,
-.recommends, .edit_panel, .home-content {
+.centered-content-box, .content, .edit_panel, .home-content {
   width: 940px;
   margin: 0 auto;
   position: relative; }
@@ -551,8 +515,7 @@ body {
     top: 75px;
     background-color: rgba(250, 250, 250, 0.8); } }
 
-.centered-content-box, .content,
-.recommends, .edit_panel, .home-content {
+.centered-content-box, .content, .edit_panel, .home-content {
   width: 940px;
   margin: 0 auto;
   position: relative; }
@@ -667,8 +630,7 @@ body {
 .index-menu-item.alphabet {
   padding: .25em; }
 
-.centered-content-box, .content,
-.recommends, .edit_panel, .home-content {
+.centered-content-box, .content, .edit_panel, .home-content {
   width: 940px;
   margin: 0 auto;
   position: relative; }
@@ -732,12 +694,10 @@ body {
   display: table;
   clear: both; }
 
-.content,
-.recommends {
+.content {
   min-height: 200px;
   padding-bottom: 50px; }
-  .content:after,
-  .recommends:after {
+  .content:after {
     content: "";
     display: table;
     clear: both; }
@@ -872,7 +832,10 @@ body {
     padding-bottom: 0; }
   .ingredient-card__image {
     grid-area: image;
-    min-height: 200px; }
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    min-height: 220px; }
   .ingredient-card__recipes {
     margin-bottom: -6px; }
     .ingredient-card__recipes a:not(:hover) {
@@ -881,8 +844,7 @@ body {
     display: block;
     margin-bottom: 4px; }
 
-.centered-content-box, .content,
-.recommends, .edit_panel, .home-content {
+.centered-content-box, .content, .edit_panel, .home-content {
   width: 940px;
   margin: 0 auto;
   position: relative; }
@@ -1333,7 +1295,8 @@ body {
 .s-right_margin {
   margin-right: 1em; }
 
-.sawhorse, .list-element {
+.sawhorse,
+.list-element {
   float: left;
   width: 306px;
   min-height: 268px;
@@ -1416,77 +1379,81 @@ body {
   top: 16px; }
 
 @media (min-width: 1275px) {
-  .content.list, .content.component {
+  .content.list,
+  .content.component {
     width: 1254px; }
-  .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+1), .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+6), .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+12), .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+17) {
+  .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 1), .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 6), .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 12), .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 17) {
     height: 266px; }
-    .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+1) .list-image-wrapper, .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+6) .list-image-wrapper, .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+12) .list-image-wrapper, .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+17) .list-image-wrapper {
+    .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 1) .list-image-wrapper, .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 6) .list-image-wrapper, .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 12) .list-image-wrapper, .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 17) .list-image-wrapper {
       height: 462px;
       width: 100%; }
-    .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+1) img, .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+6) img, .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+12) img, .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+17) img {
+    .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 1) img, .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 6) img, .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 12) img, .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 17) img {
       height: 100%;
       width: auto;
       top: 0;
       left: -190px; }
-    .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+1) .display-number, .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+6) .display-number, .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+12) .display-number, .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+17) .display-number {
+    .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 1) .display-number, .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 6) .display-number, .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 12) .display-number, .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 17) .display-number {
       font-size: 36px; }
-      .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+1) .display-number .no, .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+6) .display-number .no, .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+12) .display-number .no, .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+17) .display-number .no {
+      .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 1) .display-number .no, .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 6) .display-number .no, .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 12) .display-number .no, .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 17) .display-number .no {
         left: 10px; }
-    .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+1) .list-element-number, .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+6) .list-element-number, .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+12) .list-element-number, .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+17) .list-element-number {
+    .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 1) .list-element-number, .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 6) .list-element-number, .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 12) .list-element-number, .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 17) .list-element-number {
       display: block;
       top: 208px; }
-    .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+1) + span + li + span + li + span + li + span, .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+6) + span + li + span + li + span + li + span, .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+12) + span + li + span + li + span + li + span, .list-element:not(:nth-last-of-type(-n+4)):not(.never-make-me-tall):nth-of-type(20n+17) + span + li + span + li + span + li + span {
+    .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 1) + span + li + span + li + span + li + span, .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 6) + span + li + span + li + span + li + span, .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 12) + span + li + span + li + span + li + span, .list-element:not(:nth-last-of-type(-n + 4)):not(.never-make-me-tall):nth-of-type(20n + 17) + span + li + span + li + span + li + span {
       display: block; } }
 
 @media (max-width: 1275px) and (min-width: 950px) {
-  .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+1), .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+5), .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+9), .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+13), .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+19) {
+  .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 1), .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 5), .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 9), .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 13), .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 19) {
     height: 266px; }
-    .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+1) .list-image-wrapper, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+5) .list-image-wrapper, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+9) .list-image-wrapper, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+13) .list-image-wrapper, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+19) .list-image-wrapper {
+    .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 1) .list-image-wrapper, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 5) .list-image-wrapper, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 9) .list-image-wrapper, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 13) .list-image-wrapper, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 19) .list-image-wrapper {
       height: 462px;
       width: 100%; }
-    .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+1) img, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+5) img, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+9) img, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+13) img, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+19) img {
+    .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 1) img, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 5) img, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 9) img, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 13) img, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 19) img {
       height: 100%;
       width: auto;
       top: 0;
       left: -190px; }
-    .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+1) .display-number, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+5) .display-number, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+9) .display-number, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+13) .display-number, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+19) .display-number {
+    .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 1) .display-number, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 5) .display-number, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 9) .display-number, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 13) .display-number, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 19) .display-number {
       font-size: 36px; }
-      .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+1) .display-number .no, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+5) .display-number .no, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+9) .display-number .no, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+13) .display-number .no, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+19) .display-number .no {
+      .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 1) .display-number .no, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 5) .display-number .no, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 9) .display-number .no, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 13) .display-number .no, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 19) .display-number .no {
         left: 10px; }
-    .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+1) .list-element-number, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+5) .list-element-number, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+9) .list-element-number, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+13) .list-element-number, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+19) .list-element-number {
+    .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 1) .list-element-number, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 5) .list-element-number, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 9) .list-element-number, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 13) .list-element-number, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 19) .list-element-number {
       display: block;
       top: 208px; }
-    .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+1) + span + li + span + li + span, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+5) + span + li + span + li + span, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+9) + span + li + span + li + span, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+13) + span + li + span + li + span, .list-element:not(:nth-last-of-type(-n+3)):not(.never-make-me-tall):nth-of-type(21n+19) + span + li + span + li + span {
+    .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 1) + span + li + span + li + span, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 5) + span + li + span + li + span, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 9) + span + li + span + li + span, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 13) + span + li + span + li + span, .list-element:not(:nth-last-of-type(-n + 3)):not(.never-make-me-tall):nth-of-type(21n + 19) + span + li + span + li + span {
       display: block; } }
 
 @media (max-width: 950px) and (min-width: 650px) {
-  .content.list, .content.component, .recommends {
+  .content.list,
+  .content.component {
     width: 628px; }
-  .list-element:not(:nth-last-of-type(-n+2)):not(.never-make-me-tall):nth-of-type(4n+1) {
+  .list-element:not(:nth-last-of-type(-n + 2)):not(.never-make-me-tall):nth-of-type(4n + 1) {
     height: 266px; }
-    .list-element:not(:nth-last-of-type(-n+2)):not(.never-make-me-tall):nth-of-type(4n+1) .list-image-wrapper {
+    .list-element:not(:nth-last-of-type(-n + 2)):not(.never-make-me-tall):nth-of-type(4n + 1) .list-image-wrapper {
       height: 462px;
       width: 100%; }
-    .list-element:not(:nth-last-of-type(-n+2)):not(.never-make-me-tall):nth-of-type(4n+1) img {
+    .list-element:not(:nth-last-of-type(-n + 2)):not(.never-make-me-tall):nth-of-type(4n + 1) img {
       height: 100%;
       width: auto;
       top: 0;
       left: -190px; }
-    .list-element:not(:nth-last-of-type(-n+2)):not(.never-make-me-tall):nth-of-type(4n+1) .display-number {
+    .list-element:not(:nth-last-of-type(-n + 2)):not(.never-make-me-tall):nth-of-type(4n + 1) .display-number {
       font-size: 36px; }
-      .list-element:not(:nth-last-of-type(-n+2)):not(.never-make-me-tall):nth-of-type(4n+1) .display-number .no {
+      .list-element:not(:nth-last-of-type(-n + 2)):not(.never-make-me-tall):nth-of-type(4n + 1) .display-number .no {
         left: 10px; }
-    .list-element:not(:nth-last-of-type(-n+2)):not(.never-make-me-tall):nth-of-type(4n+1) .list-element-number {
+    .list-element:not(:nth-last-of-type(-n + 2)):not(.never-make-me-tall):nth-of-type(4n + 1) .list-element-number {
       display: block;
       top: 208px; }
-    .list-element:not(:nth-last-of-type(-n+2)):not(.never-make-me-tall):nth-of-type(4n+1) + span + li + span {
+    .list-element:not(:nth-last-of-type(-n + 2)):not(.never-make-me-tall):nth-of-type(4n + 1) + span + li + span {
       display: block; } }
 
 @media (max-width: 650px) {
-  .content.list, .content.component, .recommends {
+  .content.list,
+  .content.component {
     width: 90%;
     max-width: 500px; }
-  .list-element, .list-element .list-image-wrapper {
+  .list-element,
+  .list-element .list-image-wrapper {
     width: 100%;
     height: auto; }
   .list-element .saveur-meme-link {
@@ -1709,8 +1676,7 @@ body {
     width: 100%; }
 
 /* legacy */
-.centered-content-box, .content,
-.recommends, .edit_panel, .home-content {
+.centered-content-box, .content, .edit_panel, .home-content {
   width: 940px;
   margin: 0 auto;
   position: relative; }
@@ -1766,7 +1732,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 0 20px 172px 0px; }
+    padding: 0 20px 176px 0px; }
   .recipe__primary-image {
     height: 570px;
     width: 554px;
@@ -1779,8 +1745,8 @@ body {
     position: absolute; }
   .recipe__cutout {
     background-color: transparent;
-    width: 42%;
-    height: 146px;
+    width: 40%;
+    height: 150px;
     float: right;
     box-sizing: content-box;
     padding-left: 24px; }
@@ -1794,7 +1760,7 @@ body {
     margin-right: 6px;
     height: 22px; }
   .recipe__primary {
-    margin-top: -146px;
+    margin-top: -150px;
     position: relative;
     z-index: 1;
     display: flex; }

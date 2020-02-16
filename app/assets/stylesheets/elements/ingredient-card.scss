@@ -19,7 +19,10 @@
 
   &__image {
     grid-area: image;
-    min-height: 200px;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    min-height: 220px;
   }
 
   &__recipes {

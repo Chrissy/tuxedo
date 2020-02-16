@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'image_uploader.rb'
+require 'base64'
 
 module ApplicationHelper
   def delete_link(object)
@@ -41,16 +41,47 @@ module ApplicationHelper
     "<span class='swash-cap letter-#{letter.downcase}'>#{letter.upcase}</span>#{text[1..-1]}".html_safe
   end
 
-  def image_url(element, size, res = nil)
-    url = ImageUploader.bucket + ImageUploader.sizes(size.to_s) + element.image_with_backup
-    url = url + ' ' + res if res
-    url
+  def image_sizes(size)
+    {
+      'large2x' => { width: 1200, height: 1200 },
+      'large' => { width: 600, height: 600 },
+      'medium2x' => { width: 400, height: 400 },
+      'medium' => { width: 200, height: 200 },
+      'small2x' => { width: 200, height: 200 },
+      'small' => { width: 100, height: 100 },
+      'pinterest' => { width: 476, height: 666 }
+    }[size.to_s]
+  end
+
+  def image_resize(size)
+    {
+      resize: {
+        width: size[:width],
+        height: size[:height],
+        fit: 'cover'
+      }
+    }
+  end
+
+  def image_path(size, image)
+    Base64.strict_encode64(
+      JSON.generate(
+        bucket: 'chrissy-tuxedo-no2',
+        key: image,
+        edits: image_resize(size)
+      )
+    )
+  end
+
+  def image_url(element, size)
+    size_hash = image_sizes(size)
+    'https://d34nm4jmyicdxh.cloudfront.net/' + image_path(size_hash, element.image_with_backup)
   end
 
   def header_image(element, class_name)
     image_tag(
-      image_url(element, :mediumCover),
-      srcset: [image_url(element, :mediumCover), image_url(element, :largeCover, '2x')].join(', '),
+      image_url(element, :large),
+      srcset: [image_url(element, :large) + ' 1x', image_url(element, :large2x) + ' 2x'].join(', '),
       class: class_name,
       alt: "#{element.name} cocktail photo",
       itemprop: 'image',
@@ -62,12 +93,22 @@ module ApplicationHelper
 
   def list_image(element)
     image_tag(
-      image_url(element, :list),
+      image_url(element, :small),
       alt: "#{element.name} cocktail photo",
       itemprop: 'image',
       "data-pin-media": pinnable_image_url(element),
       "data-pin-url": pin_url(element),
       "data-pin-description": element.name
+    )
+  end
+
+  def ingredient_card_image(element, class_name)
+    image_tag(
+      image_url(element, :medium),
+      srcset: [image_url(element, :medium) + ' 1x', image_url(element, :medium2x) + ' 2x'].join(', '),
+      class: class_name,
+      alt: "#{element.name} cocktail photo",
+      itemprop: 'image'
     )
   end
 
@@ -85,7 +126,7 @@ module ApplicationHelper
   end
 
   def landscape_social_image_url(element)
-    image_url(element, :list)
+    image_url(element, :small)
   end
 
   def index_header_image

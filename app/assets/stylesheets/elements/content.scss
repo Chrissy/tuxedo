@@ -1,7 +1,6 @@
 @import "../elements/base";
 
-.content,
-.recommends {
+.content {
   @include pie-clearfix;
   @extend .centered-content-box;
   min-height: 200px;

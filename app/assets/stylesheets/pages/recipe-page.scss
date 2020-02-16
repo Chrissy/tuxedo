@@ -1,7 +1,7 @@
 @import "../utilities/colors";
 @import "../elements/helpers";
 
-$description-cutout: 146px;
+$description-cutout: 150px;
 $space-between-description-and-header: 26px;
 $image-width: 554px;
 $image-offset: 30px;
@@ -77,7 +77,7 @@ $image-offset: 30px;
 
   &__cutout {
     background-color: transparent;
-    width: 42%;
+    width: 40%;
     height: $description-cutout;
     float: right;
     box-sizing: content-box;
