@@ -175,10 +175,10 @@ class Recipe < ActiveRecord::Base
   end
 
   def consruct_recipe_line(md)
-    regex = /([0-9]*\.?[0-9]*)(oz|tsp|tbsp|Tbsp|dash|dashes|lb|lbs|cup|cups)(.*?)$/
+    regex = /([0-9]*\.?[0-9]*)(oz|tsp|tbsp|Tbsp|dash|dashes|lb|lbs|cup|cups)?(.*?)$/
     search = md.match(regex).to_a.drop(1) # first is complete match
 
-    unless search[0]
+    if !search[0] || search[0].empty? || search[0].blank?
       return "* <span class='amount'></span><span class='ingredient'>#{md}</span>\n"
     end
 

@@ -32,6 +32,7 @@ export default class TagSelect {
       delimiter: ",",
       showResultsOnFocus: true,
       allowSubmitOnTab: true,
+      keepOpenUntilBlur: true,
       limit: 100
     });
   }
@@ -46,7 +47,6 @@ export default class TagSelect {
     const beforeText =
       lastDelimiterIndex !== -1 ? value.slice(0, lastDelimiterIndex + 2) : "";
     this.input.value = beforeText + `${result.label}, `;
-    window.setTimeout(() => this.input.focus({ preventScroll: true }), 1);
   };
 
   onReturnWithNoSelection = inputValue => {

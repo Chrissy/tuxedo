@@ -33,7 +33,7 @@ $image-offset: 30px;
     @extend %swash;
     font-size: 44px;
     line-height: 60px;
-    margin: 0 0 6px 0;
+    margin: 0;
 
     a {
       color: $text-color-dark;
@@ -46,7 +46,7 @@ $image-offset: 30px;
     font-weight: 400;
     font-size: 24px;
     line-height: 1;
-    margin: 0 0 6px 0;
+    margin: 0 0 8px 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -92,9 +92,8 @@ $image-offset: 30px;
   }
 
   &__tag-icon {
-    width: 22px;
     margin-right: 6px;
-    height: 22px;
+    font-size: 1.25em;
   }
 
   &__primary {

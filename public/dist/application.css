@@ -711,9 +711,17 @@ body {
   width: 1em;
   height: 1em; }
   .tag--collins-glass {
-    height: 1.2em;
+    height: 1.15em;
     width: 0.75em;
     transform: translateY(-1px); }
+  .tag--up {
+    height: 0.82em; }
+  .tag--shaken {
+    transform: translateY(-1px);
+    width: 0.875em; }
+  .tag--tiki-glass {
+    height: 1.15em;
+    width: 0.875em; }
 
 .card {
   display: grid;
@@ -791,6 +799,12 @@ body {
   .text-link__tag {
     font-size: 0.75em;
     margin-left: 0.1em; }
+  .text-link .tag--tiki-glass {
+    height: 1.25em;
+    width: 0.75em; }
+  .text-link .tag--collins-glass {
+    height: 1.25em;
+    width: 0.75em; }
 
 .card {
   display: grid;
@@ -1532,14 +1546,16 @@ body {
     padding-bottom: 0; }
     .recipe__recipe ol li {
       display: flex;
-      align-items: center; }
+      line-height: 1; }
       .recipe__recipe ol li:before {
         content: counter(li);
         counter-increment: li;
-        font-size: 28px;
+        font-size: 24px;
         font-family: "bookmania";
         font-weight: 700;
-        padding: 0 10px 4px 0; }
+        padding: 0 10px 0 0;
+        transform: translateY(2px);
+        line-height: 1; }
   
   .recipe__recipe p {
     font-size: 14px;
@@ -1560,7 +1576,7 @@ body {
   .recipe__recipe ol li:last-child {
     border-bottom-width: 0; }
   .recipe__recipe li {
-    margin: 8px 0 10px 0;
+    margin: 8px 0 14px 0;
     display: flex;
     position: relative; }
   .recipe__recipe .amount {
@@ -1769,7 +1785,7 @@ body {
   .recipe__header-title {
     font-size: 44px;
     line-height: 60px;
-    margin: 0 0 6px 0; }
+    margin: 0; }
     .recipe__header-title a {
       color: #24222a;
       text-decoration: none; }
@@ -1778,7 +1794,7 @@ body {
     font-weight: 400;
     font-size: 24px;
     line-height: 1;
-    margin: 0 0 6px 0;
+    margin: 0 0 8px 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; }
   .recipe__header-content {
@@ -1811,9 +1827,8 @@ body {
     align-items: center;
     color: #353535; }
   .recipe__tag-icon {
-    width: 22px;
     margin-right: 6px;
-    height: 22px; }
+    font-size: 1.25em; }
   .recipe__primary {
     margin-top: -150px;
     position: relative;

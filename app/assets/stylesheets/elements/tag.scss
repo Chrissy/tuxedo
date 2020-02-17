@@ -3,8 +3,22 @@
   height: 1em;
 
   &--collins-glass {
-    height: 1.2em;
+    height: 1.15em;
     width: 0.75em;
     transform: translateY(-1px);
+  }
+
+  &--up {
+    height: 0.82em;
+  }
+
+  &--shaken {
+    transform: translateY(-1px);
+    width: 0.875em;
+  }
+
+  &--tiki-glass {
+    height: 1.15em;
+    width: 0.875em;
   }
 }
