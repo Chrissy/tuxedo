@@ -927,6 +927,7 @@ body {
 
 .tooltip {
   background: #fff;
+  pointer-events: none;
   border-radius: 4px;
   border: 1px solid #000;
   font-family: "mr-eaves";

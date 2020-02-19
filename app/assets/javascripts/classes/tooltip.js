@@ -35,8 +35,7 @@ export default class Tooltip {
   }
 
   onMouseLeave(event) {
-    if (!this.tooltipOpen || (event && event.relatedTarget.closest(".tooltip")))
-      return;
+    if (!this.tooltipOpen) return;
     this.popper.destroy();
     this.wrapper.style.display = "none";
     this.target.removeEventListener("mouseleave", this.onMouseLeave);
