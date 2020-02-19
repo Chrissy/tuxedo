@@ -1,6 +1,6 @@
 <% classname ||= '' %>
 <% tag = recipe.tags.find{ |tag| ['cocktail glass','collins glass','rocks glass','tiki glass','toddy glass'].include?(tag.name) } %>
-<a class="text-link <%= classname %>" href="<%= recipe.url %>">
+<a class="text-link <%= classname %>" href="<%= recipe.url %>" tooltip="<%= recipe_tooltip(recipe) %>">
   <div class="text-link__name">
     <%= recipe.name %>&nbsp;
     <% if tag %>

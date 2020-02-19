@@ -877,7 +877,8 @@ body {
     display: block;
     object-fit: cover;
     height: 100%;
-    width: 100%; }
+    max-width: 100%;
+    min-width: 100%; }
   .ingredient-card__recipes {
     margin-bottom: -6px;
     font-size: 16px; }
@@ -912,6 +913,47 @@ body {
   justify-content: center;
   display: flex;
   flex-direction: column; }
+
+@keyframes tooltip-fade-in {
+  0% {
+    transform: translateY(20px);
+    opacity: 0; }
+  50% {
+    transform: translateY(10px);
+    opacity: 0.2; }
+  100% {
+    transform: translateY(0px);
+    opacity: 1; } }
+
+.tooltip {
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #000;
+  font-family: "mr-eaves";
+  width: 230px;
+  padding-bottom: 8px;
+  animation: 0.2s tooltip-fade-in ease-in; }
+  .tooltip__tip {
+    width: 19px;
+    height: 12px;
+    position: absolute;
+    top: calc(100% - 4px);
+    left: 50%;
+    transform: translateX(-100%); }
+  .tooltip__title, .tooltip__description {
+    padding: 8px 8px 2px 8px; }
+  .tooltip__description {
+    margin-top: 0;
+    padding-top: 0; }
+  .tooltip__image {
+    width: 100%;
+    min-height: 150px;
+    background-color: #000; }
+  .tooltip__title {
+    font-family: "bookmania";
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 2px; }
 
 .centered-content-box, .content, .edit_panel, .home-content {
   width: 940px;

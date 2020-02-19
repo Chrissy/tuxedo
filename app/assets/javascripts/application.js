@@ -1,20 +1,13 @@
-import $ from 'jquery';
-import Search from './classes/search.js';
-import Image from './classes/image.js';
+import Search from "./classes/search.js";
+import Tooltip from "./classes/tooltip.js";
 
-$(() => {
-  const search = new Search('[data-role="search"]');
+document.addEventListener("DOMContentLoaded", () => {
+  new Search('[data-role="search"]');
 
-  $("[data-lazy-load]").each(function () {
-    let img = new Image($(this));
-    img.upscale();
+  document.querySelectorAll("[tooltip]").forEach(element => {
+    new Tooltip({
+      target: element,
+      html: element.getAttribute("tooltip")
+    });
   });
-
-  $("div[href]").on("click", function () {
-    window.location = $(this).attr("href");
-  });
-
-  const toggleSocialPrompt = () => $(".social-prompt").toggleClass("active");
-  window.setTimeout(toggleSocialPrompt, 1000);
-  window.setTimeout(toggleSocialPrompt, 4000);
 });

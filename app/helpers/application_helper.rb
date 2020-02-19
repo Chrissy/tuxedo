@@ -45,8 +45,8 @@ module ApplicationHelper
     {
       'large2x' => { width: 1200, height: 1200 },
       'large' => { width: 600, height: 600 },
-      'medium2x' => { width: 400, height: 400 },
-      'medium' => { width: 200, height: 200 },
+      'medium2x' => { width: 600, height: 400 },
+      'medium' => { width: 300, height: 200 },
       'small2x' => { width: 200, height: 200 },
       'small' => { width: 100, height: 100 },
       'pinterest' => { width: 476, height: 666 }
@@ -78,7 +78,7 @@ module ApplicationHelper
     'https://d34nm4jmyicdxh.cloudfront.net/' + image_path(size_hash, element.image_with_backup)
   end
 
-  def header_image(element, class_name = "")
+  def header_image(element, class_name = '')
     image_tag(
       image_url(element, :large),
       srcset: [image_url(element, :large) + ' 1x', image_url(element, :large2x) + ' 2x'].join(', '),
@@ -135,6 +135,17 @@ module ApplicationHelper
 
   def pin_url(element)
     request.protocol + request.host_with_port + element.url
+  end
+
+  def recipe_tooltip(recipe)
+    "<div class='tooltip'>
+      #{ingredient_card_image(recipe, 'tooltip__image')}
+      <div class='tooltip__title'>#{recipe.name}</div>
+      #{if recipe.subtitle.present?
+          "<div class='tooltip__description'>#{recipe.subtitle}</div>"
+        end}
+      <svg class='tooltip__tip'><use href='dist/sprite.svg#tooltip-tip-white'></use></svg>
+    </div>"
   end
 
   def list_id

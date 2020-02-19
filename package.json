@@ -37,6 +37,7 @@
     "webpack-cli": "^3.3.10"
   },
   "devDependencies": {
-    "svg-sprite-generator": "0.0.7"
+    "svg-sprite-generator": "0.0.7",
+    "throttle-debounce": "^2.1.0"
   }
 }
