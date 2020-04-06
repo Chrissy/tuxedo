@@ -1,3 +1,5 @@
+<% show_edit_button = @recipe.present? || @list.present? || @component.present? %>
+
 <% cache(global_header_cache_key) do %>
   <div class="global-header">
     <a href="/" class="global-header__logo">
@@ -10,7 +12,9 @@
       </div>
       <div class="global-header__user-links authenticate">
         <a href="/admin" class="subtle_button">Admin</a>
-        <a class="subtle_button" href="<%= edit_url() %>">Edit</a>
+        <% if show_edit_button %>
+          <a class="subtle_button" href="<%= edit_url() %>">Edit</a>
+        <% end %>
       </div>
     </div>
   </div>

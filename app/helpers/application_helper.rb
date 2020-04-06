@@ -114,7 +114,7 @@ module ApplicationHelper
 
   def index_image(element)
     image_tag(
-      image_url(element, :thumb),
+      image_url(element, :small),
       class: 'element-image small',
       alt: "#{element.name} cocktail photo",
       itemprop: 'image'
