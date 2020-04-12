@@ -152,6 +152,10 @@ export default class Search {
         this.closeFullTextSearch();
       }
     });
+
+    if (window.heap) {
+      window.heap.track("Search", { value });
+    }
   }
 
   closeFullTextSearch() {
