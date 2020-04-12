@@ -25,7 +25,6 @@ module ListsHelper
   end
 
   def elements_for_list(list)
-    elements = list.elements
-    list.home? ? elements[1..elements.count] : list.elements
+    list.elements
   end
 end

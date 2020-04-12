@@ -1,12 +1,23 @@
 <% cache(cache_key(@list, "show")) do %>
-  <div class="header list<%= " home" if @list.home? %>">
-    <%= render "shared/header", :element => @list.header_element %>
+  <div class="list <%= "list--home" if @list.home? %>">
+    <% elements_for_list(@list).try(:each_with_index) do |element, index| %>
+      <div class='list-element' itemprop="itemListElement" itemscope itemtype="http://schema.org/Recipe">
+        <%= link_to element.url, class: "list-element__image-link" do %>
+          <%= list_image(element) %>
+        <% end %>
+        <div class="list-element__details">
+          <h3 class="list-element__name"itemprop="name">
+            <% if element.try(:number).present? %>
+              <span class="list-element__number">No. <%= element.number %>:</span>
+            <% end %>
+            <%= link_to element.name, element.url %>
+          </h3>
+          <div class="list-element__subtext">
+            <%= render element.subtext, :element => element if element.subtext.present? %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <div class="content list<%= " home" if @list.home? %>">
-    <div class="primary">
-      <%= render "list_with_images", :list_elements => elements_for_list(@list) %>
-    </div>
-  </div>
-
   <%= render 'footer', :list => @list %>
 <% end %>

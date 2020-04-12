@@ -43,8 +43,10 @@ module ApplicationHelper
 
   def image_sizes(size)
     {
-      'large2x' => { width: 1200, height: 1200 },
-      'large' => { width: 600, height: 600 },
+      'xlarge2x' => { width: 1200, height: 1200 },
+      'xlarge' => { width: 600, height: 600 },
+      'large2x' => { width: 920, height: 920 },
+      'large' => { width: 460, height: 460 },
       'medium2x' => { width: 600, height: 400 },
       'medium' => { width: 300, height: 200 },
       'small2x' => { width: 200, height: 200 },
@@ -80,8 +82,8 @@ module ApplicationHelper
 
   def header_image(element, class_name = '')
     image_tag(
-      image_url(element, :large),
-      srcset: [image_url(element, :large) + ' 1x', image_url(element, :large2x) + ' 2x'].join(', '),
+      image_url(element, :xlarge),
+      srcset: [image_url(element, :xlarge) + ' 1x', image_url(element, :xlarge2x) + ' 2x'].join(', '),
       class: class_name,
       alt: "#{element.name} cocktail photo",
       itemprop: 'image',
@@ -93,9 +95,11 @@ module ApplicationHelper
 
   def list_image(element)
     image_tag(
-      image_url(element, :small),
+      image_url(element, :large),
+      srcset: [image_url(element, :large) + ' 1x', image_url(element, :large2x) + ' 2x'].join(', '),
       alt: "#{element.name} cocktail photo",
       itemprop: 'image',
+      class: 'list-element__img',
       "data-pin-media": pinnable_image_url(element),
       "data-pin-url": pin_url(element),
       "data-pin-description": element.name
