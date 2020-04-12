@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'recipe.rb'
 require 'subcomponent.rb'
 require 'image_uploader.rb'
 
 class Component < ActiveRecord::Base
-  searchkick
+  include AlgoliaSearch
   acts_as_taggable
   extend FriendlyId
   extend ActsAsMarkdownList::ActsAsMethods
@@ -17,12 +19,12 @@ class Component < ActiveRecord::Base
   has_many :subcomponents, as: :subcomponent, dependent: :destroy
   after_save :create_images, :delete_and_save_subcomponents, :create_pseudonyms_if_changed, :delete_and_save_tags
 
-  alias_method :list_elements_from_markdown, :list_elements
+  alias list_elements_from_markdown list_elements
 
-  def search_data
-    {
-      name: name,
-    }
+  search_index = ENV['RAILS_ENV'] == 'development' ? 'primary_development' : 'primary'
+
+  algoliasearch index_name: search_index, id: :algolia_id do
+    attributes :name, :description_as_plain_text, :image_with_backup, :count_for_display, :url
   end
 
   def url
@@ -46,11 +48,11 @@ class Component < ActiveRecord::Base
   end
 
   def custom_name
-    name + " cocktail recipes"
+    name + ' cocktail recipes'
   end
 
   def type_for_display
-    "ingredient"
+    'ingredient'
   end
 
   def edit_url
@@ -58,11 +60,13 @@ class Component < ActiveRecord::Base
   end
 
   def create_images
-    ImageUploader.new(image).upload if image.present? && saved_changes.keys.include?("image")
+    if image.present? && saved_changes.keys.include?('image')
+      ImageUploader.new(image).upload
+    end
   end
 
   def backup_image_url
-    "shaker.jpg"
+    'shaker.jpg'
   end
 
   def published?
@@ -84,7 +88,7 @@ class Component < ActiveRecord::Base
   end
 
   def subtext
-    "components/subtext"
+    'components/subtext'
   end
 
   def count_for_display
@@ -100,15 +104,17 @@ class Component < ActiveRecord::Base
   end
 
   def pseudonyms_as_array
-    pseudonyms_as_markdown.split(",").map(&:strip).map(&:downcase)
+    pseudonyms_as_markdown.split(',').map(&:strip).map(&:downcase)
   end
 
   def create_pseudonyms_if_changed
-    create_pseudonyms if pseudonyms_as_markdown && saved_changes.keys.include?("pseudonyms_as_markdown")
+    if pseudonyms_as_markdown && saved_changes.keys.include?('pseudonyms_as_markdown')
+      create_pseudonyms
+    end
   end
 
   def delete_and_save_subcomponents
-    if description.present? && saved_changes.keys.include?("description")
+    if description.present? && saved_changes.keys.include?('description')
       subcomponents.delete_all
       CustomMarkdown.subcomponents_from_markdown(self, description)
     end
@@ -137,13 +143,13 @@ class Component < ActiveRecord::Base
   def create_pseudonyms
     pseudonyms.delete_all
     pseudonyms_as_array.each do |name|
-      Pseudonym.create({pseudonymable: self, name: name})
+      Pseudonym.create(pseudonymable: self, name: name)
     end
   end
 
   def delete_and_save_tags
-    if tags_as_text.present? && saved_changes.keys.include?("tags_as_text")
-      tag_list.add(tags_as_text.split(",").map(&:strip).map(&:downcase))
+    if tags_as_text.present? && saved_changes.keys.include?('tags_as_text')
+      tag_list.add(tags_as_text.split(',').map(&:strip).map(&:downcase))
     end
   end
 
@@ -152,7 +158,7 @@ class Component < ActiveRecord::Base
   end
 
   def default_list_markdown
-    name.present? ? ":[#{name} 100]" : ""
+    name.present? ? ":[#{name} 100]" : ''
   end
 
   def link
@@ -160,10 +166,14 @@ class Component < ActiveRecord::Base
   end
 
   def self.all_for_display
-    order("lower(name)")
+    order('lower(name)')
   end
 
   def self.get_by_letter(letter)
     where("lower(name) LIKE '#{letter}%'")
+  end
+
+  def algolia_id
+    "component_#{id}"
   end
 end

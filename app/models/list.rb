@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'recipe.rb'
 require 'component.rb'
 require 'custom_markdown.rb'
 require 'image_uploader.rb'
 
 class List < ActiveRecord::Base
-  searchkick
+  include AlgoliaSearch
   extend FriendlyId
   extend ActsAsMarkdownList::ActsAsMethods
 
@@ -13,10 +15,10 @@ class List < ActiveRecord::Base
   acts_as_markdown_list :content_as_markdown
   after_save :create_images
 
-  def search_data
-    {
-      name: name,
-    }
+  search_index = ENV['RAILS_ENV'] == 'development' ? 'primary_development' : 'primary'
+
+  algoliasearch index_name: search_index, id: :algolia_id do
+    attributes :name, :image_with_backup, :count_for_display, :url
   end
 
   def elements
@@ -28,11 +30,11 @@ class List < ActiveRecord::Base
   end
 
   def custom_name
-    name + " cocktail recipes"
+    name + ' cocktail recipes'
   end
 
   def type_for_display
-    "list"
+    'list'
   end
 
   def edit_url
@@ -44,7 +46,7 @@ class List < ActiveRecord::Base
   end
 
   def self.all_for_display
-    where("component IS NULL", order: "lower(name)")
+    where('component IS NULL', order: 'lower(name)')
   end
 
   def self.get_by_letter(letter)
@@ -53,14 +55,14 @@ class List < ActiveRecord::Base
 
   def tagline
     if home?
-      "Tuxedo No.2"
+      'Tuxedo No.2'
     else
       "#{name} | Tuxedo No.2"
     end
   end
 
   def subtext
-    "components/subtext"
+    'components/subtext'
   end
 
   def count_for_display
@@ -72,11 +74,13 @@ class List < ActiveRecord::Base
   end
 
   def backup_image_url
-    "shaker.jpg"
+    'shaker.jpg'
   end
 
   def create_images
-    ImageUploader.new(image).upload if image.present? && saved_changes.keys.include?("image")
+    if image.present? && saved_changes.keys.include?('image')
+      ImageUploader.new(image).upload
+    end
   end
 
   def image_with_backup
@@ -90,10 +94,14 @@ class List < ActiveRecord::Base
   end
 
   def home?
-    name == "Home" || name == "home"
+    name == 'Home' || name == 'home'
   end
 
   def header_element
     home? ? elements.first : self
+  end
+
+  def algolia_id
+    "list_#{id}"
   end
 end

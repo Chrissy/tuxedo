@@ -11,17 +11,21 @@
     border-radius: 50%;
     min-width: 50px;
     min-height: 50px;
+
+    &.for-search {
+      margin-left: 16px;
+    }
   }
 
   .index-element-text {
-    flex-grow: 1;
-    margin-right: .5em;
+    flex: 1;
+    margin-right: 0.5em;
   }
 
   .index-element-name {
     font-size: 1.25em;
     border-bottom: 1px dotted #aaa;
-    padding-bottom: .3em;
+    padding-bottom: 0.3em;
     display: block;
     line-height: 1;
     font-weight: bold;
@@ -31,17 +35,24 @@
   }
 
   &.for-search {
-    width: 100%;
     max-width: 800px;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 16px 10px;
   }
 
   .subtext {
-    padding: .5em 0 0 0;
+    padding: 0.5em 0 0 0;
     margin: 0;
     font-weight: normal;
-    font-size: .875em;
+    font-size: 0.875em;
     min-height: 3em;
-    a:not(:last-child):after { content: ", "}
+    word-break: break-word;
+
+    a:not(:last-child):after {
+      content: ", ";
+    }
   }
 
   .subtext.search em {
@@ -54,15 +65,23 @@
     border-radius: 3px;
   }
 
-  .list-element-number { display: none; }
+  .list-element-number {
+    display: none;
+  }
 }
 
-.admin-controls { margin-top: .25em; }
+.admin-controls {
+  margin-top: 0.25em;
+}
 
 @media (max-width: 900px) {
-  .index-element { width: 46%; }
+  .index-element {
+    width: 46%;
+  }
 }
 
 @media (max-width: 600px) {
-  .index-element { width: 98%; }
+  .index-element {
+    width: 98%;
+  }
 }

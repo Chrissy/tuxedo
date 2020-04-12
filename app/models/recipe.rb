@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 require 'redcarpet'
 require 'redcarpet/render_strip'
 require 'component.rb'
 require 'custom_markdown.rb'
 require 'image_uploader.rb'
 
-
 class Recipe < ActiveRecord::Base
-  searchkick highlight: [:description_as_plain_text, :recipe_as_plain_text]
+  include AlgoliaSearch
   acts_as_taggable
   extend FriendlyId
   extend ActsAsMarkdownList::ActsAsMethods
@@ -17,12 +18,10 @@ class Recipe < ActiveRecord::Base
   acts_as_markdown_list :recipe
   after_save :create_images, :delete_and_save_tags
 
-  def search_data
-    {
-      name: name,
-      description: description_as_plain_text,
-      recipe: recipe_as_plain_text
-    }
+  search_index = ENV['RAILS_ENV'] == 'development' ? 'primary_development' : 'primary'
+
+  algoliasearch index_name: search_index, id: :algolia_id do
+    attributes :name, :description_as_plain_text, :recipe_as_plain_text, :image_with_backup, :url
   end
 
   def markdown_renderer
@@ -54,21 +53,23 @@ class Recipe < ActiveRecord::Base
   end
 
   def delete_and_save_tags
-    if tags_as_text.present? && saved_changes.keys.include?("tags_as_text")
-      tag_list.add(tags_as_text.split(",").map(&:strip).map(&:downcase))
+    if tags_as_text.present? && saved_changes.keys.include?('tags_as_text')
+      tag_list.add(tags_as_text.split(',').map(&:strip).map(&:downcase))
     end
   end
 
   def recipe_as_plain_text
-    components.map(&:name).join(", ")
+    components.map(&:name).join(', ')
   end
 
   def create_images
-    ImageUploader.new(image).upload if image.present? && saved_changes.keys.include?("image")
+    if image.present? && saved_changes.keys.include?('image')
+      ImageUploader.new(image).upload
+    end
   end
 
   def backup_image_url
-    "shaker.jpg"
+    'shaker.jpg'
   end
 
   def image_with_backup
@@ -84,11 +85,11 @@ class Recipe < ActiveRecord::Base
   end
 
   def custom_name
-    name + " cocktail recipe"
+    name + ' cocktail recipe'
   end
 
   def type_for_display
-    "recipe"
+    'recipe'
   end
 
   def edit_url
@@ -96,7 +97,7 @@ class Recipe < ActiveRecord::Base
   end
 
   def delete_url
-    ""
+    ''
   end
 
   def make_my_number_last!
@@ -104,18 +105,18 @@ class Recipe < ActiveRecord::Base
   end
 
   def number
-    Recipe.where(:published => true).order('created_at ASC').find_index(self)
+    Recipe.where(published: true).order('created_at ASC').find_index(self)
   end
 
   def self.compile_numbers_based_on_home
     time = Time.now
-    List.find(1).elements.keep_if{|x|x.is_a?(Recipe)}.reverse.each_with_index do |recipe, x|
+    List.find(1).elements.keep_if { |x| x.is_a?(Recipe) }.reverse.each_with_index do |recipe, x|
       recipe.update_attribute(:created_at, time + x)
     end
   end
 
   def self.all_for_display
-    where(published: true).order("lower(name)")
+    where(published: true).order('lower(name)')
   end
 
   def self.get_by_letter(letter)
@@ -126,7 +127,7 @@ class Recipe < ActiveRecord::Base
     return unless components
 
     other_recipes = (components.first.list_elements.keep_if(&:published?) - [self])
-    other_recipes.sort_by!{ |recipe| (components & recipe.components).length }
+    other_recipes.sort_by! { |recipe| (components & recipe.components).length }
     other_recipes.reverse!.first(3)
   end
 
@@ -135,7 +136,7 @@ class Recipe < ActiveRecord::Base
   end
 
   def subtext
-    "recipes/subtext"
+    'recipes/subtext'
   end
 
   def link
@@ -143,28 +144,28 @@ class Recipe < ActiveRecord::Base
   end
 
   def convert_fractions(str)
-   str.gsub(/\d+.(\d+)/) do |match|
-     case match
-     when "2.75" then '2¾'
-     when "2.5" then '2½'
-     when "2.25" then '2¼'
-     when "1.75" then '1¾'
-     when "1.5" then '1½'
-     when "1.25" then '1¼'
-     when "0.75" then '¾'
-     when "0.6" then '⅔'
-     when "0.3" then '⅓'
-     when "0.5" then '½'
-     when "0.25" then '¼'
-     when "0.125" then '⅛'
-     else match
-     end
-   end.html_safe
+    str.gsub(/\d+.(\d+)/) do |match|
+      case match
+      when '2.75' then '2¾'
+      when '2.5' then '2½'
+      when '2.25' then '2¼'
+      when '1.75' then '1¾'
+      when '1.5' then '1½'
+      when '1.25' then '1¼'
+      when '0.75' then '¾'
+      when '0.6' then '⅔'
+      when '0.3' then '⅓'
+      when '0.5' then '½'
+      when '0.25' then '¼'
+      when '0.125' then '⅛'
+      else match
+      end
+    end.html_safe
   end
 
   def wrap_units(md)
     md.gsub(/([0-9])(oz|tsp|tbsp|Tbsp|dash|dashes|lb|lbs|cup|cups)(\b)/) do |*|
-      "#{$1}<span class='unit'>#{$2}</span>#{$3}"
+      "#{Regexp.last_match(1)}<span class='unit'>#{Regexp.last_match(2)}</span>#{Regexp.last_match(3)}"
     end
   end
 
@@ -172,12 +173,16 @@ class Recipe < ActiveRecord::Base
     html = CustomMarkdown.convert_links_in_place(recipe.dup)
 
     html.gsub!(/\* ([0-9].*?|fill) +/) do |*|
-      modified_md = wrap_units($1)
+      modified_md = wrap_units(Regexp.last_match(1))
       "* <span class='amount'>#{convert_fractions(modified_md)}</span> "
     end
     html.gsub!(/\# ?([A-Z].*?)/) do |*|
-      "# " << ApplicationController.helpers.swash($1)
+      "#  #{ApplicationController.helpers.swash(Regexp.last_match(1))}"
     end
     markdown_renderer.render(html)
+  end
+
+  def algolia_id
+    "recipe_#{id}"
   end
 end

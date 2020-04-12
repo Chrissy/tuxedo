@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -26,18 +28,18 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'redcarpet'
+gem 'acts-as-taggable-on'
+gem 'aws-sdk'
 gem 'devise'
+gem 'dotenv-rails', groups: %i[development test]
+gem 'faraday_middleware-aws-sigv4'
 gem 'friendly_id'
 gem 'mini_magick'
-gem 'aws-sdk'
 gem 'rails_12factor', group: :production
-gem "sentry-raven"
-gem 'faraday_middleware-aws-sigv4'
-gem 'dotenv-rails', groups: [:development, :test]
-gem 'acts-as-taggable-on'
+gem 'redcarpet'
+gem 'sentry-raven'
 
-ruby "2.5.3"
+ruby '2.5.3'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
@@ -48,4 +50,4 @@ ruby "2.5.3"
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
-gem 'searchkick'
+gem 'algoliasearch-rails'

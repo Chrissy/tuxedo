@@ -1,22 +1,24 @@
-@import 'elements/base.scss';
-@import 'elements/typography.scss';
-@import 'elements/elements.scss';
-@import 'elements/forms.scss';
-@import 'elements/helpers.scss';
-@import 'elements/element-image.scss';
-@import 'elements/index-element.scss';
-@import 'elements/index-letter-label.scss';
-@import 'elements/index-menu.scss';
-@import 'elements/content.scss';
-@import 'elements/breadcrumbs.scss';
-@import 'utilities/spacing.scss';
+@import "elements/base.scss";
+@import "elements/typography.scss";
+@import "elements/elements.scss";
+@import "elements/forms.scss";
+@import "elements/helpers.scss";
+@import "elements/element-image.scss";
+@import "elements/index-element.scss";
+@import "elements/index-letter-label.scss";
+@import "elements/index-menu.scss";
+@import "elements/content.scss";
+@import "elements/breadcrumbs.scss";
+@import "elements/modal.scss";
 
-@import 'widgets/list.scss';
-@import 'widgets/recipe.scss';
-@import 'widgets/global-header.scss';
-@import 'widgets/search.scss';
+@import "utilities/spacing.scss";
 
-@import 'pages/admin-page.scss';
-@import 'pages/list-page.scss';
-@import 'pages/recipe-page.scss';
-@import 'pages/search-page.scss';
+@import "widgets/list.scss";
+@import "widgets/recipe.scss";
+@import "widgets/global-header.scss";
+@import "widgets/search.scss";
+
+@import "pages/admin-page.scss";
+@import "pages/list-page.scss";
+@import "pages/recipe-page.scss";
+@import "pages/search-page.scss";
