@@ -1,0 +1,98 @@
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes expand-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal {
+  position: fixed;
+  display: flex;
+  overflow: scroll;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(205, 205, 205, 0.95);
+  z-index: 999;
+  animation: 0.2s fade-in forwards;
+}
+
+.modal__contents {
+  max-width: 720px;
+  width: 60vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 60px 0;
+  background-color: #fafafa;
+  border-radius: 10px;
+  padding: 20px;
+  animation: 0.2s expand-in forwards;
+
+  @media only screen and (max-width: 760px) {
+    padding: 0;
+    margin: 50px 10px;
+    width: calc(100vw - 20px);
+  }
+}
+
+.modal__title {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 6px 10px;
+  color: #444;
+  line-height: 1.1;
+
+  @media only screen and (max-width: 760px) {
+    font-size: 24px;
+    margin-top: 20px;
+    word-break: break-word;
+  }
+}
+
+.modal__loading-spinner {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50vh;
+  transform: translateY(-50%);
+}
+
+.modal__close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.algolia-logo {
+  transform: scale(0.6) translateX(-100%);
+  filter: grayscale(1);
+  left: 50%;
+  margin-top: 60px;
+  position: relative;
+}

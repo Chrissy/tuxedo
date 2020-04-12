@@ -1,21 +1,22 @@
+# frozen_string_literal: true
+
 require 'image_uploader.rb'
 
 module ApplicationHelper
-
   def delete_link(object)
-    url_for controller: object.class.to_s.pluralize.downcase, action: "delete", id: object.id
+    url_for controller: object.class.to_s.pluralize.downcase, action: 'delete', id: object.id
   end
 
   def new_link(object)
-    url_for controller: object.class.to_s.pluralize.downcase, action: "new", id: object.id
+    url_for controller: object.class.to_s.pluralize.downcase, action: 'new', id: object.id
   end
 
   def publish_status(element)
-    "| ✓" if element.published? && element.is_a?(Recipe)
+    '| ✓' if element.published? && element.is_a?(Recipe)
   end
 
   def links
-    List.find_by_name("Links") || List.new
+    List.find_by_name('Links') || List.new
   end
 
   def all_elements_for_autocomplete
@@ -27,12 +28,8 @@ module ApplicationHelper
       .concat(Subcomponent.all_for_display)
   end
 
-  def text_search(query)
-    Searchkick.search query, models: [Recipe, Component, List], fields: ["name^10", :description], highlight: {fields: {description: {fragment_size: 100}, recipe: {fragment_size: 50}}}
-  end
-
   def no_index
-   @recipe && !@recipe.published?
+    @recipe && !@recipe.published?
   end
 
   def all_elements_for_search
@@ -45,38 +42,41 @@ module ApplicationHelper
   end
 
   def image_url(element, size)
-    return ImageUploader.bucket + ImageUploader.sizes(size.to_s) + element.image_with_backup
+    ImageUploader.bucket + ImageUploader.sizes(size.to_s) + element.image_with_backup
   end
 
   def header_image(element)
     image_tag(
       image_url(element, :mediumCover),
-      class: "header-image",
+      class: 'header-image',
       alt: "#{element.name} cocktail photo",
-      :"data-lazy-load"=> image_url(element, :largeCover),
-      :itemprop => "image",
-      :"data-dont-compress" => element.try(:dont_compress_image),
-      :"data-pin-media" => pinnable_image_url(element),
-      :"data-pin-url" => pin_url(element),
-      :"data-pin-description" => element.name)
+      "data-lazy-load": image_url(element, :largeCover),
+      itemprop: 'image',
+      "data-dont-compress": element.try(:dont_compress_image),
+      "data-pin-media": pinnable_image_url(element),
+      "data-pin-url": pin_url(element),
+      "data-pin-description": element.name
+    )
   end
 
   def list_image(element)
     image_tag(
       image_url(element, :list),
       alt: "#{element.name} cocktail photo",
-      :itemprop => "image",
-      :"data-pin-media" => pinnable_image_url(element),
-      :"data-pin-url" => pin_url(element),
-      :"data-pin-description" => element.name)
+      itemprop: 'image',
+      "data-pin-media": pinnable_image_url(element),
+      "data-pin-url": pin_url(element),
+      "data-pin-description": element.name
+    )
   end
 
   def index_image(element)
     image_tag(
       image_url(element, :thumb),
-      class: "element-image small",
+      class: 'element-image small',
       alt: "#{element.name} cocktail photo",
-      itemprop: "image")
+      itemprop: 'image'
+    )
   end
 
   def pinnable_image_url(element)
@@ -88,7 +88,7 @@ module ApplicationHelper
   end
 
   def index_header_image
-    image_tag 'index-image.png', class: "header-image", alt: "cocktail index image"
+    image_tag 'index-image.png', class: 'header-image', alt: 'cocktail index image'
   end
 
   def pin_url(element)
@@ -101,7 +101,7 @@ module ApplicationHelper
 
   def display_number_with_fallback(element)
     if element.try(:number)
-      render "shared/display_number", :number => element.number + 1
+      render 'shared/display_number', number: element.number + 1
     else
       "<div class='decoration'></div>".html_safe
     end
@@ -113,17 +113,17 @@ module ApplicationHelper
   end
 
   def global_header_cache_key
-    cache_key(links, "global-header")
+    cache_key(links, 'global-header')
   end
 
   def meta_cache_key
     layout_object = @layout_object.present? ? @layout_object : List.find(1)
-    cache_key(layout_object, "meta")
+    cache_key(layout_object, 'meta')
   end
 
   def index_key_from_set(elements)
     if elements.empty?
-      "empty"
+      'empty'
     else
       elements.max_by(&:updated_at).updated_at.try(:utc).try(:to_s, :number)
     end
@@ -146,7 +146,7 @@ module ApplicationHelper
   end
 
   def meta_title
-    "Tuxedo No.2 | A Cocktail Companion"
+    'Tuxedo No.2 | A Cocktail Companion'
   end
 
   def meta_description
@@ -158,7 +158,7 @@ module ApplicationHelper
   end
 
   def default_description
-    "Your drinking guide with cocktail recipes by spirit, ingredient, and season"
+    'Your drinking guide with cocktail recipes by spirit, ingredient, and season'
   end
 
   def meta_image
@@ -171,16 +171,18 @@ module ApplicationHelper
 
   def similar_recipes_link(recipe)
     first_component = recipe.components.first
-    link_to "other #{first_component.nickname} drinks".titleize, first_component.url if first_component
+    if first_component
+      link_to "other #{first_component.nickname} drinks".titleize, first_component.url
+    end
   end
 
   def all_recipes_link
-    everything_link = List.find_by_name("Everything").try(:url) || "/"
-    link_to "All Cocktails", everything_link
+    everything_link = List.find_by_name('Everything').try(:url) || '/'
+    link_to 'All Cocktails', everything_link
   end
 
   def clear_image_button(element)
-    link_to '(clear)', "#", :class => 'clear_image' if element.image.present?
+    link_to '(clear)', '#', class: 'clear_image' if element.image.present?
   end
 
   def index_item_class_name(element)
