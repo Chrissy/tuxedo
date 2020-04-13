@@ -34,12 +34,16 @@ body {
 .site-container {
   position: relative;
   min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &.noscroll {
     max-height: 100vh;
     overflow: hidden;
   }
 }
+
 .hidden {
   display: none;
 }

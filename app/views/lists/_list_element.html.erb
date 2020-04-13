@@ -1,0 +1,21 @@
+<% first ||= false %>
+<% second ||= false %>
+<% display_number ||= false %>
+
+<div class='list-element <%= 'list-element--first' if first %> <%= 'list-element--second' if second %>' itemprop="itemListElement" itemscope itemtype="http://schema.org/Recipe">
+  <%= link_to element.url, class: "list-element__image-link" do %>
+    <%= display_number_with_fallback(element, "list-element__display-number") if display_number %>
+    <%= first ? header_image(element, "list-element__image--hero", true) : list_image(element, "list-element__image") %>
+  <% end %>
+  <div class="list-element__details">
+    <h3 class="list-element__name"itemprop="name">
+      <% if element.try(:number).present? %>
+        <span class="list-element__number">No. <%= element.number %>:</span>
+      <% end %>
+      <%= link_to element.name, element.url %>
+    </h3>
+    <div class="list-element__subtext">
+      <%= render element.subtext, :element => element if element.subtext.present? %>
+    </div>
+  </div>
+</div>

@@ -43,6 +43,8 @@ module ApplicationHelper
 
   def image_sizes(size)
     {
+      'xxlarge2x' => { width: 1500, height: 1500 },
+      'xxlarge' => { width: 750, height: 750 },
       'xlarge2x' => { width: 1200, height: 1200 },
       'xlarge' => { width: 600, height: 600 },
       'large2x' => { width: 920, height: 920 },
@@ -80,10 +82,13 @@ module ApplicationHelper
     'https://d34nm4jmyicdxh.cloudfront.net/' + image_path(size_hash, element.image_with_backup)
   end
 
-  def header_image(element, class_name = '')
+  def header_image(element, class_name = '', hero = false)
     image_tag(
-      image_url(element, :xlarge),
-      srcset: [image_url(element, :xlarge) + ' 1x', image_url(element, :xlarge2x) + ' 2x'].join(', '),
+      image_url(element, hero ? :xxlarge : :xlarge),
+      srcset: [
+        image_url(element, hero ? :xxlarge : :xlarge) + ' 1x',
+        image_url(element, hero ? :xxlarge2x : :xlarge2x) + ' 2x'
+      ].join(', '),
       class: class_name,
       alt: "#{element.name} cocktail photo",
       itemprop: 'image',
@@ -93,7 +98,7 @@ module ApplicationHelper
     )
   end
 
-  def list_image(element)
+  def list_image(element, _class_name = '')
     image_tag(
       image_url(element, :large),
       srcset: [image_url(element, :large) + ' 1x', image_url(element, :large2x) + ' 2x'].join(', '),

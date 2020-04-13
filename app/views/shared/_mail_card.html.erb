@@ -1,5 +1,7 @@
-<div class="card" style="margin-top: 140px;">
-  <div class="label card__label">The Tasty Mail</div>
+<% border_version ||= false %>
+
+<div class="card mail <%= border_version ? 'card--border-version' : '' %>">
+  <div class="label card__label <%= border_version ? 'card__label--border-version' : '' %>">The Tasty Mail</div>
   <img 
     class="card__image"
     width="110px" 
@@ -10,7 +12,7 @@
       /images/mail-illustration-2x.png 2x"
   />
   <div class="card__content">
-    <p class="card__text">
+    <p class="card__text <%= border_version ? 'card__text--border-version' : '' %>">
       The Tuxedo No.2 <strong>email list</strong> sends a yummy cocktail to your inbox every friday. No spam. No junk. Just tasty.
     </p>
     <div class="card__actions">

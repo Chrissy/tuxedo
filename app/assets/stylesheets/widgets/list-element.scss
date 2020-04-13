@@ -17,11 +17,23 @@
   }
 }
 
+.list-element__display-number {
+  position: absolute;
+  top: 110px;
+  transform: translateX(-50%);
+}
+
 .list-element__name {
   line-height: 110%;
   font-weight: normal;
   font-size: inherit;
   margin: 0;
+}
+
+.list-element__image--hero {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .list-element__number {

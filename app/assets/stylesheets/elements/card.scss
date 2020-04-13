@@ -1,20 +1,38 @@
 .card {
   display: grid;
-  grid-template-areas: "head head""one two";
+  grid-template-areas: "head head" "image content";
   grid-template-rows: 30px 1fr;
   grid-template-columns: auto 1fr;
   grid-column-gap: 16px;
   margin-bottom: 10px;
   font-family: "mr-eaves";
+
+  &--border-version {
+    grid-template-areas: "head head" "content image";
+    grid-template-rows: 60px 1fr;
+    margin-bottom: 0;
+    border: 1px solid currentColor;
+    padding: 0 16px 16px 16px;
+  }
 }
 
 .card__label {
   grid-area: head;
   width: 100%;
   margin-bottom: 16px;
+
+  &--border-version {
+    border-bottom: 1px solid currentColor;
+    font-size: 11px;
+
+    &:after {
+      display: none;
+    }
+  }
 }
 
 .card__content {
+  grid-area: content;
   height: 100%;
   display: flex;
   flex: 1;
@@ -26,6 +44,10 @@
   font-size: 15px;
   line-height: 1.1;
   margin: 0 0 16px 0;
+
+  &--border-version {
+    font-size: 16px;
+  }
 }
 
 .card__actions {
