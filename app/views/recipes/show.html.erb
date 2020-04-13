@@ -39,7 +39,7 @@
     </div>
   </div>
   <div class="recipe__footer">
-    <%= render 'shared/ingredient_card', ingredient: @recipe.components[0] %>
+    <%= render 'shared/ingredient_card', ingredient: @featured_ingredient %>
     <%= render 'list_card', recipe: @recipe %>
   </div>
   <%= render 'footer', :recipe => @recipe %>

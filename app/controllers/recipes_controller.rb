@@ -9,6 +9,8 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.friendly.find(params[:id])
+    first_component = @recipe.components[0]
+    @featured_ingredient = first_component.class == Subcomponent ? first_component.component : first_component
     @layout_object = @recipe
   end
 

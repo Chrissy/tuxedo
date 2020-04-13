@@ -1,5 +1,5 @@
 <%= 
   element.components[0..2].map{ |component|
-    link_to component.nickname, component.url
+    component.nickname
   }.join(", ").html_safe
 %>

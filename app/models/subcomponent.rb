@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'recipe.rb'
 
 class Subcomponent < ActiveRecord::Base
-  belongs_to :component, :foreign_key => true
+  belongs_to :component, foreign_key: true
 
   def search_data
     {
-      name: name,
+      name: name
     }
   end
 
@@ -19,9 +21,9 @@ class Subcomponent < ActiveRecord::Base
 
   def list_elements
     shares_subcomponent = Relationship.where(
-      child_type: "Subcomponent", 
-      relatable_type: "Recipe", 
-      child_id: self.id
+      child_type: 'Subcomponent',
+      relatable_type: 'Recipe',
+      child_id: id
     ).map(&:relatable)
     shares_subcomponent.concat(component.list_elements)
     shares_subcomponent
@@ -31,8 +33,18 @@ class Subcomponent < ActiveRecord::Base
     list_as_markdown || default_list_markdown
   end
 
+  def image_with_backup
+    if list_elements.last.try(:image).try(:present?)
+      list_elements.last.image
+    elsif component.list_elements.last.try(:image).try(:present?)
+      component.list_elements.last.image
+    else
+      component.backup_image_url
+    end
+  end
+
   def default_list_markdown
-    name.present? ? ":[#{name} 100]" : ""
+    name.present? ? ":[#{name} 100]" : ''
   end
 
   def nickname
@@ -44,7 +56,7 @@ class Subcomponent < ActiveRecord::Base
   end
 
   def self.all_for_display
-    order("lower(name)")
+    order('lower(name)')
   end
 
   def self.get_by_letter(letter)
