@@ -10,6 +10,7 @@ $compact-search-width: 300px - 20px;
   align-items: center;
   height: 56px;
   padding: 0 18px;
+  z-index: 1;
 
   &__logo {
     display: block;
@@ -42,7 +43,7 @@ $compact-search-width: 300px - 20px;
 
   &__search-input {
     margin-bottom: 0;
-    background-color: $gray-2;
+    background-color: hsla(0, 0, 55, 0.3);
     font-size: 16px;
     position: relative;
     opacity: 0.7;
@@ -56,13 +57,19 @@ $compact-search-width: 300px - 20px;
     &:focus {
       outline: 0;
       border: 1px solid #000;
+      background-color: $gray-2;
     }
   }
 
-  &__user-links {
-    position: absolute;
-    left: 101%;
-    width: 120px;
+  &__links {
+    margin-right: 14px;
+  }
+
+  &__link {
+    text-decoration: none;
+    font-family: "mr-eaves";
+    margin-left: 6px;
+    color: $gray-3;
   }
 
   .autocomplete-container {

@@ -43,8 +43,8 @@ module ApplicationHelper
 
   def image_sizes(size)
     {
-      'xxlarge2x' => { width: 1500, height: 1500 },
-      'xxlarge' => { width: 750, height: 750 },
+      'xxlarge2x' => { width: 1540, height: 1300 },
+      'xxlarge' => { width: 770, height: 650 },
       'xlarge2x' => { width: 1200, height: 1200 },
       'xlarge' => { width: 600, height: 600 },
       'large2x' => { width: 920, height: 920 },

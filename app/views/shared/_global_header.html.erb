@@ -6,15 +6,15 @@
       <%= render 'shared/svg', id: "logo" %>
     </a>
     <div class="global-header__secondary-content">
+      <div class="authenticate global-header__links">
+        <a class="global-header__link" href="/admin">Admin</a>
+        <% if show_edit_button %>
+          <a class="global-header__link" href="<%= edit_url() %>">Edit</a>
+        <% end %>
+      </div>
       <div class="global-header__search-wrapper">
         <input type="text" class="global-header__search-input" data-role="search"/>
         <%= render 'shared/svg', id: "search", className: "global-header__search-icon" %>
-      </div>
-      <div class="global-header__user-links authenticate">
-        <a href="/admin" class="subtle_button">Admin</a>
-        <% if show_edit_button %>
-          <a class="subtle_button" href="<%= edit_url() %>">Edit</a>
-        <% end %>
       </div>
     </div>
   </div>
