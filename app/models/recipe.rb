@@ -82,6 +82,10 @@ class Recipe < ActiveRecord::Base
     "/#{slug}"
   end
 
+  def classic?
+    tag_list.include?('classic')
+  end
+
   def custom_name
     name + ' cocktail recipe'
   end

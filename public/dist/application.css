@@ -764,6 +764,8 @@ body {
   margin: 0 0 16px 0; }
   .card__text--border-version {
     font-size: 16px; }
+  .card__text--list {
+    margin: 0; }
 
 .card__actions {
   display: flex;
@@ -783,6 +785,24 @@ body {
   font-size: 10px;
   text-decoration: none;
   letter-spacing: 0.075em; }
+
+.card__list-subtext .subtext {
+  margin: 0;
+  font-weight: 200;
+  font-size: 15px; }
+
+.card__list-name {
+  font-size: 15px;
+  display: block;
+  font-family: "Bookmania";
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-bottom: 2px;
+  font-variant-numeric: oldstyle-nums;
+  text-decoration: none; }
+
+.card__list-name__secondary {
+  font-weight: 200; }
 
 .label {
   font-family: "mr-eaves";
@@ -861,6 +881,8 @@ body {
   margin: 0 0 16px 0; }
   .card__text--border-version {
     font-size: 16px; }
+  .card__text--list {
+    margin: 0; }
 
 .card__actions {
   display: flex;
@@ -880,6 +902,24 @@ body {
   font-size: 10px;
   text-decoration: none;
   letter-spacing: 0.075em; }
+
+.card__list-subtext .subtext {
+  margin: 0;
+  font-weight: 200;
+  font-size: 15px; }
+
+.card__list-name {
+  font-size: 15px;
+  display: block;
+  font-family: "Bookmania";
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-bottom: 2px;
+  font-variant-numeric: oldstyle-nums;
+  text-decoration: none; }
+
+.card__list-name__secondary {
+  font-weight: 200; }
 
 .ingredient-card {
   border: 1px solid #000;
@@ -1436,6 +1476,10 @@ body {
   .list .special-nav,
   .list .card {
     grid-row-end: span 2; }
+  .list .card--list {
+    grid-row-end: span 3;
+    padding: 0 16px 24px 16px;
+    grid-template-rows: 60px 1fr; }
 
 .special-nav {
   display: flex;

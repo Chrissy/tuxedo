@@ -85,7 +85,7 @@ class Component < ActiveRecord::Base
   end
 
   def classic_recipes(count)
-    list_elements.slice(0, count)
+    list_elements.sort_by { |a| a.classic? ? 0 : 1 }.slice(0, count)
   end
 
   def count_for_display

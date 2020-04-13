@@ -24,6 +24,12 @@
   .card {
     grid-row-end: span 2;
   }
+
+  .card--list {
+    grid-row-end: span 3;
+    padding: 0 16px 24px 16px;
+    grid-template-rows: 60px 1fr;
+  }
 }
 
 .special-nav {

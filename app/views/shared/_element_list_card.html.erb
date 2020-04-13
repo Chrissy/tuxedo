@@ -1,0 +1,19 @@
+<% border_version ||= true %>
+<% list_name ||= '' %>
+
+<div class="card card--list <%= border_version ? 'card--border-version' : '' %>">
+  <div class="label card__label <%= border_version ? 'card__label--border-version' : '' %>"><%= list_name %></div>
+  <div class="card__content">
+    <% elements.each do |element| %>
+      <div class="card__text card__text--list <%= border_version ? 'card__text--border-version' : '' %>">
+        <a class="card__list-name" href="<%= element.url %>%">
+          <%= element.name %>
+          <span class="card__list-name__secondary"> • <%= element.count_for_display %></span>
+        </a>
+        <div class="card__list-subtext">
+          <%= render element.subtext, element: element, use_links: true if element.subtext.present? %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
