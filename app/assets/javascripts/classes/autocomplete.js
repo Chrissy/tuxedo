@@ -265,7 +265,7 @@ export default class Autocomplete {
         }
 
         if (this.onFooterClick && (isFooter || isFooter === "")) {
-          //event.preventDefault();
+          event.preventDefault();
           this.onFooterClick(this.inputValue);
           this.reset();
         }

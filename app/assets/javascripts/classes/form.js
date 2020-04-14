@@ -39,7 +39,7 @@ export default class Form {
       new Autocomplete({
         input: this.form,
         options: data.map((option) => ({ label: option })),
-        onSelect: this.onSelect(flag),
+        onSelect: this.onSelect(symbol),
         delimiter: flag,
         symbol,
         limit: 8,
@@ -48,10 +48,9 @@ export default class Form {
     );
   }
 
-  onSelect = (flag) => (result) => {
+  onSelect = (symbol) => (result) => {
     const { form } = this;
     const { value } = form;
-    const symbol = flag.toString().slice(-2, -1);
     const replacementText = `${symbol}[${result.label}]`;
     const textUntilFlag = this.textUntilFlag(value, symbol);
     form.value = textUntilFlag + replacementText + this.textAfterCursor(value);
