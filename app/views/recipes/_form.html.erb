@@ -9,7 +9,7 @@
   </div>
   <div class="form_block secondary">
     <%= f.text_area :description, :value => default_text(:description), :placeholder => "description", :class => "autocomplete components lists recipes" %>
-    <%= render "shared/image_options", :element => @recipe, :f => f %>
+    <%= render "shared/image_options", :element => @recipe, :f => f, :field => :image %>
     <%= render "shared/image_options", :element => @recipe, :f => f, :field => :image2 %>
     <%= render "shared/image_options", :element => @recipe, :f => f, :field => :image3 %>
     <label>publish?</label>
