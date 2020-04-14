@@ -1,7 +1,8 @@
 <% field ||= :image %>
 
 <div class="image-options s-bottom_margin">
-  <%= f.hidden_field field, value: element[:field] || '', class: 'image-filename' %>
+  <%= element[field] ?  element[field] : "none"%>
+  <%= f.hidden_field field, value: element[field] || '', class: 'image-filename' %>
   <input class="upload-cover-photo" type="file" placeholder="upload a cover photo">
   <%= clear_image_button(element) %>
 </div>
