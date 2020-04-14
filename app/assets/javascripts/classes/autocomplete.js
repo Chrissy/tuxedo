@@ -15,8 +15,9 @@ export default class Autocomplete {
     /* fires when the footer is clicked. used for "see more" pattern */
     onFooterClick,
     /* used for in-text mentions and comma delimited lists */
-
     delimiter,
+    /* used if the delimiter is a regex */
+    symbol,
     /* show some random results automatically */
     showResultsOnFocus,
     /* result limit */
@@ -30,6 +31,7 @@ export default class Autocomplete {
       footer,
       onReturnWithNoSelection,
       delimiter,
+      symbol,
       limit,
       showResultsOnFocus,
       allowSubmitOnTab,
@@ -37,13 +39,18 @@ export default class Autocomplete {
     });
     this.onSelect = this.handleSelect(onSelect);
     this.resultsContainer = document.createElement("div");
-    const wrapper = document.createElement("div");
-    wrapper.setAttribute("class", "autocomplete-wrapper");
+    let wrapper = this.input.closest(".autocomplete-wrapper");
+
+    if (!wrapper) {
+      wrapper = document.createElement("div");
+      wrapper.setAttribute("class", "autocomplete-wrapper");
+      this.input.parentElement.insertBefore(wrapper, this.input);
+    }
+
     this.resultsContainer.setAttribute(
       "class",
       "autocomplete-results-container"
     );
-    this.input.parentElement.insertBefore(wrapper, this.input);
     wrapper.appendChild(this.resultsContainer);
     wrapper.appendChild(this.input);
     this.arrowIndex = null;
@@ -126,6 +133,16 @@ export default class Autocomplete {
     }
   }
 
+  lastIndexOf(string, search) {
+    if (search.constructor === RegExp) {
+      const str = search.toString().slice(1, -1);
+      const regex = new RegExp(`${str}(?!.*${str})`);
+      return string.search(regex);
+    } else {
+      return string.lastIndexOf(search);
+    }
+  }
+
   sliceFromLastTerminatingCharacter(string) {
     /* 
     a terminating character creates context. we use that context to 
@@ -136,9 +153,9 @@ export default class Autocomplete {
     */
 
     var lastIndex = Math.max(
-      string.lastIndexOf("]"),
-      string.lastIndexOf("\n"),
-      string.lastIndexOf(this.delimiter)
+      this.lastIndexOf(string, "]"),
+      this.lastIndexOf(string, /\s/),
+      this.lastIndexOf(string, this.delimiter)
     );
     if (lastIndex === -1) return string;
     return string.slice(lastIndex).trim();
@@ -149,7 +166,11 @@ export default class Autocomplete {
     const fromTerminatingChar = this.sliceFromLastTerminatingCharacter(
       untilCursor
     );
-    const delimiterPosition = fromTerminatingChar.lastIndexOf(this.delimiter);
+
+    const delimiterPosition = this.lastIndexOf(
+      fromTerminatingChar,
+      this.symbol || this.delimiter
+    );
     if (delimiterPosition === -1) return "";
     return fromTerminatingChar.slice(delimiterPosition + 1);
   }
@@ -158,7 +179,7 @@ export default class Autocomplete {
     return this.options.slice(0, this.limit);
   }
 
-  search(value) {
+  search() {
     const results = this.autocomplete.search(this.inputValue, {
       limit: this.limit || 10,
     });
@@ -180,7 +201,7 @@ export default class Autocomplete {
       if (!this.isOpen) this.isOpen = true;
       const { value } = event.target;
       this.inputValue = this.getInputValue(value);
-      this.search(this.inputValue);
+      this.search();
       this.render();
     });
 
@@ -225,10 +246,26 @@ export default class Autocomplete {
       if (!this.isOpen) return;
 
       if (event.relatedTarget) {
+        const listElementId = event.relatedTarget.getAttribute(
+          "data-list-element"
+        );
+
         const isFooter = event.relatedTarget.getAttribute("data-footer-target");
 
+        if (listElementId || listElementId === 0) {
+          if (event.relatedTarget.getAttribute("data-footer-target") === "#") {
+            event.preventDefault();
+          }
+
+          this.onSelect(
+            this.results[parseInt(listElementId)],
+            event.relatedTarget
+          );
+          this.reset();
+        }
+
         if (this.onFooterClick && (isFooter || isFooter === "")) {
-          event.preventDefault();
+          //event.preventDefault();
           this.onFooterClick(this.inputValue);
           this.reset();
         }
