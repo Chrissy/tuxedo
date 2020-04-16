@@ -80,6 +80,20 @@ class Component < ActiveRecord::Base
     "#{name.titleize} Cocktail Recipes | Tuxedo No.2"
   end
 
+  def common_pairings(_count = 3)
+    pairings = []
+    all_elements = parent_elements.flat_map(&:components).reject { |e| e.id == id }
+    all_elements.each do |element|
+      next if pairings.any? { |e| e[:component].id == element.id }
+
+      pairings << {
+        count: all_elements.count { |e| e.id == element.id },
+        component: element
+      }
+    end
+    pairings.sort_by { |pair| pair[:count] }.reverse.slice(0, count)
+  end
+
   def subtext
     'components/subtext'
   end
