@@ -739,70 +739,118 @@ body {
     margin-bottom: 0;
     border: 1px solid currentColor;
     padding: 0 16px 16px 16px; }
-
-.card__label {
-  grid-area: head;
-  width: 100%;
-  margin-bottom: 16px; }
-  .card__label--border-version {
-    border-bottom: 1px solid currentColor;
-    font-size: 11px; }
-    .card__label--border-version:after {
-      display: none; }
-
-.card__content {
-  grid-area: content;
-  height: 100%;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-between; }
-
-.card__text {
-  font-size: 15px;
-  line-height: 1.1;
-  margin: 0 0 16px 0; }
-  .card__text--border-version {
-    font-size: 16px; }
-  .card__text--list {
-    margin: 0; }
-
-.card__actions {
-  display: flex;
-  align-items: center; }
-
-.card__action-subtext {
-  color: #656565;
-  font-size: 13px;
-  margin-left: 6px; }
-
-.card__action {
-  padding: 4px 16px;
-  border: 1px solid currentColor;
-  display: inline-block;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 10px;
-  text-decoration: none;
-  letter-spacing: 0.075em; }
-
-.card__list-subtext .subtext {
-  margin: 0;
-  font-weight: 200;
-  font-size: 15px; }
-
-.card__list-name {
-  font-size: 15px;
-  display: block;
-  font-family: "Bookmania";
-  font-weight: 700;
-  text-transform: capitalize;
-  margin-bottom: 2px;
-  font-variant-numeric: oldstyle-nums;
-  text-decoration: none; }
-
-.card__list-name__secondary {
-  font-weight: 200; }
+  .card--list {
+    padding: 0 16px 24px 16px;
+    display: flex;
+    flex-direction: column; }
+  .card--ingredient .card__label {
+    margin-bottom: 0.5em; }
+  .card__label {
+    grid-area: head;
+    width: 100%;
+    margin-bottom: 16px;
+    min-height: 40px; }
+    .card__label--border-version {
+      border-bottom: 1px solid currentColor;
+      font-size: 11px; }
+      .card__label--border-version:after {
+        display: none; }
+  .card__content {
+    grid-area: content;
+    height: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between; }
+  .card__text {
+    font-size: 15px;
+    line-height: 1.1;
+    margin: 0 0 16px 0; }
+    .card__text--border-version {
+      font-size: 16px; }
+    .card__text--list {
+      margin: 0; }
+  .card__actions {
+    display: flex;
+    align-items: center; }
+  .card__action {
+    padding: 4px 16px;
+    border: 1px solid currentColor;
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 10px;
+    text-decoration: none;
+    letter-spacing: 0.075em; }
+  .card__action-subtext {
+    color: #656565;
+    font-size: 13px;
+    margin-left: 6px; }
+  .card__list-subtext .subtext {
+    margin: 0;
+    font-weight: 200;
+    font-size: 15px; }
+  .card__list-name {
+    font-size: 15px;
+    display: block;
+    font-family: "Bookmania";
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 2px;
+    font-variant-numeric: oldstyle-nums;
+    text-decoration: none; }
+  .card__list-name__secondary {
+    font-weight: 200; }
+  .card__description {
+    font-size: 17px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    max-height: 54px;
+    min-height: 54px;
+    margin: 0.5em 0; }
+  .card__section {
+    margin: 0.5em 0;
+    display: flex;
+    flex-direction: column; }
+  .card__list-item {
+    margin: 0.15em 0;
+    text-decoration: none; }
+    .card__list-item--with-bar {
+      display: flex;
+      align-items: center; }
+  .card__section-label {
+    margin-bottom: 0.85em; }
+  .card__list-item-bar {
+    width: 32%;
+    height: 100%;
+    background: #000;
+    height: 9px;
+    margin-right: 0.33em; }
+  .card__list-item-bar-name {
+    font-weight: bold;
+    margin-right: 0.33em;
+    font-size: 0.95em;
+    text-transform: capitalize; }
+  .card__list-item-bar-value {
+    font-size: 0.875em;
+    margin-top: 0.1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+  .card__action-chevron {
+    width: 8px;
+    height: 8px;
+    position: relative;
+    top: 1px; }
+  .card__wide-action {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #000;
+    justify-content: space-between;
+    margin-top: 0.5em; }
 
 .label {
   font-family: "mr-eaves";
@@ -856,70 +904,118 @@ body {
     margin-bottom: 0;
     border: 1px solid currentColor;
     padding: 0 16px 16px 16px; }
-
-.card__label {
-  grid-area: head;
-  width: 100%;
-  margin-bottom: 16px; }
-  .card__label--border-version {
-    border-bottom: 1px solid currentColor;
-    font-size: 11px; }
-    .card__label--border-version:after {
-      display: none; }
-
-.card__content {
-  grid-area: content;
-  height: 100%;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-between; }
-
-.card__text {
-  font-size: 15px;
-  line-height: 1.1;
-  margin: 0 0 16px 0; }
-  .card__text--border-version {
-    font-size: 16px; }
-  .card__text--list {
-    margin: 0; }
-
-.card__actions {
-  display: flex;
-  align-items: center; }
-
-.card__action-subtext {
-  color: #656565;
-  font-size: 13px;
-  margin-left: 6px; }
-
-.card__action {
-  padding: 4px 16px;
-  border: 1px solid currentColor;
-  display: inline-block;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 10px;
-  text-decoration: none;
-  letter-spacing: 0.075em; }
-
-.card__list-subtext .subtext {
-  margin: 0;
-  font-weight: 200;
-  font-size: 15px; }
-
-.card__list-name {
-  font-size: 15px;
-  display: block;
-  font-family: "Bookmania";
-  font-weight: 700;
-  text-transform: capitalize;
-  margin-bottom: 2px;
-  font-variant-numeric: oldstyle-nums;
-  text-decoration: none; }
-
-.card__list-name__secondary {
-  font-weight: 200; }
+  .card--list {
+    padding: 0 16px 24px 16px;
+    display: flex;
+    flex-direction: column; }
+  .card--ingredient .card__label {
+    margin-bottom: 0.5em; }
+  .card__label {
+    grid-area: head;
+    width: 100%;
+    margin-bottom: 16px;
+    min-height: 40px; }
+    .card__label--border-version {
+      border-bottom: 1px solid currentColor;
+      font-size: 11px; }
+      .card__label--border-version:after {
+        display: none; }
+  .card__content {
+    grid-area: content;
+    height: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between; }
+  .card__text {
+    font-size: 15px;
+    line-height: 1.1;
+    margin: 0 0 16px 0; }
+    .card__text--border-version {
+      font-size: 16px; }
+    .card__text--list {
+      margin: 0; }
+  .card__actions {
+    display: flex;
+    align-items: center; }
+  .card__action {
+    padding: 4px 16px;
+    border: 1px solid currentColor;
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 10px;
+    text-decoration: none;
+    letter-spacing: 0.075em; }
+  .card__action-subtext {
+    color: #656565;
+    font-size: 13px;
+    margin-left: 6px; }
+  .card__list-subtext .subtext {
+    margin: 0;
+    font-weight: 200;
+    font-size: 15px; }
+  .card__list-name {
+    font-size: 15px;
+    display: block;
+    font-family: "Bookmania";
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 2px;
+    font-variant-numeric: oldstyle-nums;
+    text-decoration: none; }
+  .card__list-name__secondary {
+    font-weight: 200; }
+  .card__description {
+    font-size: 17px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    max-height: 54px;
+    min-height: 54px;
+    margin: 0.5em 0; }
+  .card__section {
+    margin: 0.5em 0;
+    display: flex;
+    flex-direction: column; }
+  .card__list-item {
+    margin: 0.15em 0;
+    text-decoration: none; }
+    .card__list-item--with-bar {
+      display: flex;
+      align-items: center; }
+  .card__section-label {
+    margin-bottom: 0.85em; }
+  .card__list-item-bar {
+    width: 32%;
+    height: 100%;
+    background: #000;
+    height: 9px;
+    margin-right: 0.33em; }
+  .card__list-item-bar-name {
+    font-weight: bold;
+    margin-right: 0.33em;
+    font-size: 0.95em;
+    text-transform: capitalize; }
+  .card__list-item-bar-value {
+    font-size: 0.875em;
+    margin-top: 0.1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+  .card__action-chevron {
+    width: 8px;
+    height: 8px;
+    position: relative;
+    top: 1px; }
+  .card__wide-action {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #000;
+    justify-content: space-between;
+    margin-top: 0.5em; }
 
 .ingredient-card {
   border: 1px solid #000;
@@ -1200,7 +1296,7 @@ body {
       padding: 24px; }
   .list-element__display-number {
     position: absolute;
-    top: 110px;
+    top: 130px;
     transform: translateX(-50%);
     z-index: 1; }
   .list-element__name {
@@ -1463,23 +1559,23 @@ body {
   grid-gap: 18px;
   padding: 0 18px 18px 18px;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-auto-rows: 100px;
+  grid-auto-rows: 39px;
   max-width: 1150px; }
   .list .list-element {
-    grid-row-end: span 4; }
+    grid-row-end: span 8; }
     .list .list-element--first {
-      grid-row-end: span 5;
+      grid-row-end: span 10;
       grid-column-end: span 2; }
     .list .list-element--second {
-      grid-row-end: span 5;
+      grid-row-end: span 10;
       padding-top: 50px; }
   .list .special-nav,
   .list .card {
-    grid-row-end: span 2; }
+    grid-row-end: span 4; }
   .list .card--list {
-    grid-row-end: span 3;
-    padding: 0 16px 24px 16px;
-    grid-template-rows: 60px 1fr; }
+    grid-row-end: span 6; }
+  .list .card--ingredient {
+    grid-row-end: span 7; }
 
 .special-nav {
   display: flex;

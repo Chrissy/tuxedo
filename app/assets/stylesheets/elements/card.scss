@@ -14,85 +14,166 @@
     border: 1px solid currentColor;
     padding: 0 16px 16px 16px;
   }
-}
-
-.card__label {
-  grid-area: head;
-  width: 100%;
-  margin-bottom: 16px;
-
-  &--border-version {
-    border-bottom: 1px solid currentColor;
-    font-size: 11px;
-
-    &:after {
-      display: none;
-    }
-  }
-}
-
-.card__content {
-  grid-area: content;
-  height: 100%;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.card__text {
-  font-size: 15px;
-  line-height: 1.1;
-  margin: 0 0 16px 0;
-
-  &--border-version {
-    font-size: 16px;
-  }
 
   &--list {
-    margin: 0;
+    padding: 0 16px 24px 16px;
+    display: flex;
+    flex-direction: column;
   }
-}
 
-.card__actions {
-  display: flex;
-  align-items: center;
-}
+  &--ingredient &__label {
+    margin-bottom: 0.5em;
+  }
 
-.card__action-subtext {
-  color: #656565;
-  font-size: 13px;
-  margin-left: 6px;
-}
+  &__label {
+    grid-area: head;
+    width: 100%;
+    margin-bottom: 16px;
+    min-height: 40px;
 
-.card__action {
-  padding: 4px 16px;
-  border: 1px solid currentColor;
-  display: inline-block;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 10px;
-  text-decoration: none;
-  letter-spacing: 0.075em;
-}
+    &--border-version {
+      border-bottom: 1px solid currentColor;
+      font-size: 11px;
 
-.card__list-subtext .subtext {
-  margin: 0;
-  font-weight: 200;
-  font-size: 15px;
-}
+      &:after {
+        display: none;
+      }
+    }
+  }
 
-.card__list-name {
-  font-size: 15px;
-  display: block;
-  font-family: "Bookmania";
-  font-weight: 700;
-  text-transform: capitalize;
-  margin-bottom: 2px;
-  font-variant-numeric: oldstyle-nums;
-  text-decoration: none;
-}
+  &__content {
+    grid-area: content;
+    height: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
-.card__list-name__secondary {
-  font-weight: 200;
+  &__text {
+    font-size: 15px;
+    line-height: 1.1;
+    margin: 0 0 16px 0;
+
+    &--border-version {
+      font-size: 16px;
+    }
+
+    &--list {
+      margin: 0;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+  }
+
+  &__action {
+    padding: 4px 16px;
+    border: 1px solid currentColor;
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 10px;
+    text-decoration: none;
+    letter-spacing: 0.075em;
+  }
+
+  &__action-subtext {
+    color: #656565;
+    font-size: 13px;
+    margin-left: 6px;
+  }
+
+  &__list-subtext .subtext {
+    margin: 0;
+    font-weight: 200;
+    font-size: 15px;
+  }
+
+  &__list-name {
+    font-size: 15px;
+    display: block;
+    font-family: "Bookmania";
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 2px;
+    font-variant-numeric: oldstyle-nums;
+    text-decoration: none;
+  }
+
+  &__list-name__secondary {
+    font-weight: 200;
+  }
+
+  &__description {
+    font-size: 17px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    max-height: 54px;
+    min-height: 54px;
+    margin: 0.5em 0;
+  }
+
+  &__section {
+    margin: 0.5em 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__list-item {
+    margin: 0.15em 0;
+    text-decoration: none;
+
+    &--with-bar {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__section-label {
+    margin-bottom: 0.85em;
+  }
+
+  &__list-item-bar {
+    width: 32%;
+    height: 100%;
+    background: #000;
+    height: 9px;
+    margin-right: 0.33em;
+  }
+
+  &__list-item-bar-name {
+    font-weight: bold;
+    margin-right: 0.33em;
+    font-size: 0.95em;
+    text-transform: capitalize;
+  }
+
+  &__list-item-bar-value {
+    font-size: 0.875em;
+    margin-top: 0.1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__action-chevron {
+    width: 8px;
+    height: 8px;
+    position: relative;
+    top: 1px;
+  }
+
+  &__wide-action {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #000;
+    justify-content: space-between;
+    margin-top: 0.5em;
+  }
 }

@@ -80,18 +80,34 @@ class Component < ActiveRecord::Base
     "#{name.titleize} Cocktail Recipes | Tuxedo No.2"
   end
 
-  def common_pairings(_count = 3)
+  def associated_component_ids
+    ids = parent_elements.map(&:id)
+    Relationship.where(child_type: 'Component', relatable_type: 'Recipe', relatable_id: ids).map(&:child_id)
+  end
+
+  def pairings
     pairings = []
-    all_elements = parent_elements.flat_map(&:components).reject { |e| e.id == id }
-    all_elements.each do |element|
-      next if pairings.any? { |e| e[:component].id == element.id }
+    associations = associated_component_ids
+
+    associations.each do |association_id|
+      next if pairings.any? { |e| e[:id] == association_id } || association_id == id
 
       pairings << {
-        count: all_elements.count { |e| e.id == element.id },
-        component: element
+        count: associations.count { |e| e == association_id },
+        id: association_id
       }
     end
-    pairings.sort_by { |pair| pair[:count] }.reverse.slice(0, count)
+
+    pairings
+  end
+
+  def common_pairings(count = 3)
+    pairings.sort_by { |pair| pair[:count] }.reverse.slice(0, count).map do |pair|
+      {
+        component: Component.find_by_id(pair[:id]),
+        count: pair[:count]
+      }
+    end
   end
 
   def subtext
@@ -126,7 +142,8 @@ class Component < ActiveRecord::Base
 
   def delete_and_save_subcomponents
     if description.present? && saved_changes.keys.include?('description')
-      subcomponents.delete_all
+      # not sure if we can clean up here since
+      # subcomponents.delete_all
       CustomMarkdown.subcomponents_from_markdown(self, description)
     end
   end
