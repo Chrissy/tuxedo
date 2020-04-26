@@ -1,16 +1,20 @@
-<% classics = @component.classic_recipes(6) %>
+<% classics = @component.classic_recipes(5) %>
 <% latest = @component.latest_recipes(3) %>
+<% featured = @component.featured_recipes(3) %>
 
 <% cache(cache_key(@component, "show")) do %>
   <div class="component">
     <div class="component__sidebar">
-      <div class="card component__varieties">
+      <div class="card card--list component__varieties">
         <div class="label card__label">Varieties</div>
-        <% @component.subcomponents.reverse.each do |subcomponent| %>
-          <div><%= subcomponent.name %></div>
+        <% @component.subcomponents.reverse.each_with_index do |subcomponent, index| %>
+          <a class="component__variety" href="#<%= slugify(subcomponent.name) %>%">
+            <span class="component__variety-number"><%= index + 1 %></span>
+            <span class="component__variety-name"><%= subcomponent.name %>
+          </a>
         <% end %>
       </div>
-      <div class="card component__substitutes">
+      <div class="card card--list component__substitutes">
         <div class="label card__label">Substitutions</div>
         <%= @component.substitutes_as_html %>
       </div>
@@ -21,10 +25,21 @@
     </div>
     <div class="component__content">
       <div class="component__header">
+        <div class="component__header-images component__header-images--<%= featured.count %>">
+          <% featured.each_with_index do |recipe, index| %>
+            <a href="<%= recipe.url %>" class="component__primary-image-link component__primary-image-link--<%= index + 1 %>">
+              <% if (index == 0) %>
+                  <%= header_image(recipe, "component__primary-image") %>
+              <% else %>
+                <%= list_image(recipe, "component__primary-image component__primary-image--#{index + 1}") %>
+              <% end %>
+            </a>
+          <% end %>
+        </div>
         <div class="component__header-content">
           <h1 class="component__header-title" itemprop="name">
             <a href="<%= @component.url %>">
-              <%= swash(@component.name) %>
+              <%= @component.name %>
             </a>
             <%= render 'shared/pseudonyms' if @component.try(:pseudonyms_as_markdown).present? %>
           </h1>
@@ -32,7 +47,6 @@
             <%= @component.subtitle %>
           </h2>
         </div>
-        <%= header_image(@component, "component__primary-image component__primary-image-1") %>
       </div>
       <div class="component__primary">
         <div class="component__description">

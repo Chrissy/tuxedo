@@ -9,17 +9,16 @@
   width: 100%;
   max-width: 1150px; }
 
-.recipe__header-title:first-letter, .component__header-title:first-letter,
-.recipe__header-title .swash-cap,
-.component__header-title .swash-cap {
+.recipe__header-title:first-letter,
+.recipe__header-title .swash-cap {
   font-feature-settings: "swsh";
   -moz-font-feature-settings: "swsh";
   -webkit-font-feature-settings: "swsh"; }
 
-.recipe__header-title .swash-cap.letter-t, .component__header-title .swash-cap.letter-t {
+.recipe__header-title .swash-cap.letter-t {
   margin-right: -0.13em; }
 
-.recipe__header-title .swash-cap.letter-z, .component__header-title .swash-cap.letter-z {
+.recipe__header-title .swash-cap.letter-z {
   margin-right: -0.14em; }
 
 /* legacy */
@@ -76,17 +75,16 @@ body {
   width: 100%;
   max-width: 1150px; }
 
-.recipe__header-title:first-letter, .component__header-title:first-letter,
-.recipe__header-title .swash-cap,
-.component__header-title .swash-cap {
+.recipe__header-title:first-letter,
+.recipe__header-title .swash-cap {
   font-feature-settings: "swsh";
   -moz-font-feature-settings: "swsh";
   -webkit-font-feature-settings: "swsh"; }
 
-.recipe__header-title .swash-cap.letter-t, .component__header-title .swash-cap.letter-t {
+.recipe__header-title .swash-cap.letter-t {
   margin-right: -0.13em; }
 
-.recipe__header-title .swash-cap.letter-z, .component__header-title .swash-cap.letter-z {
+.recipe__header-title .swash-cap.letter-z {
   margin-right: -0.14em; }
 
 html,
@@ -168,17 +166,16 @@ h3 {
   width: 100%;
   max-width: 1150px; }
 
-.recipe__header-title:first-letter, .component__header-title:first-letter,
-.recipe__header-title .swash-cap,
-.component__header-title .swash-cap {
+.recipe__header-title:first-letter,
+.recipe__header-title .swash-cap {
   font-feature-settings: "swsh";
   -moz-font-feature-settings: "swsh";
   -webkit-font-feature-settings: "swsh"; }
 
-.recipe__header-title .swash-cap.letter-t, .component__header-title .swash-cap.letter-t {
+.recipe__header-title .swash-cap.letter-t {
   margin-right: -0.13em; }
 
-.recipe__header-title .swash-cap.letter-z, .component__header-title .swash-cap.letter-z {
+.recipe__header-title .swash-cap.letter-z {
   margin-right: -0.14em; }
 
 .centered-content-box, .content, .edit_panel {
@@ -192,17 +189,16 @@ h3 {
   width: 100%;
   max-width: 1150px; }
 
-.recipe__header-title:first-letter, .component__header-title:first-letter,
-.recipe__header-title .swash-cap,
-.component__header-title .swash-cap {
+.recipe__header-title:first-letter,
+.recipe__header-title .swash-cap {
   font-feature-settings: "swsh";
   -moz-font-feature-settings: "swsh";
   -webkit-font-feature-settings: "swsh"; }
 
-.recipe__header-title .swash-cap.letter-t, .component__header-title .swash-cap.letter-t {
+.recipe__header-title .swash-cap.letter-t {
   margin-right: -0.13em; }
 
-.recipe__header-title .swash-cap.letter-z, .component__header-title .swash-cap.letter-z {
+.recipe__header-title .swash-cap.letter-z {
   margin-right: -0.14em; }
 
 /* legacy */
@@ -334,17 +330,16 @@ body {
   width: 100%;
   max-width: 1150px; }
 
-.recipe__header-title:first-letter, .component__header-title:first-letter,
-.recipe__header-title .swash-cap,
-.component__header-title .swash-cap {
+.recipe__header-title:first-letter,
+.recipe__header-title .swash-cap {
   font-feature-settings: "swsh";
   -moz-font-feature-settings: "swsh";
   -webkit-font-feature-settings: "swsh"; }
 
-.recipe__header-title .swash-cap.letter-t, .component__header-title .swash-cap.letter-t {
+.recipe__header-title .swash-cap.letter-t {
   margin-right: -0.13em; }
 
-.recipe__header-title .swash-cap.letter-z, .component__header-title .swash-cap.letter-z {
+.recipe__header-title .swash-cap.letter-z {
   margin-right: -0.14em; }
 
 /* legacy */
@@ -534,17 +529,16 @@ body {
   width: 100%;
   max-width: 1150px; }
 
-.recipe__header-title:first-letter, .component__header-title:first-letter,
-.recipe__header-title .swash-cap,
-.component__header-title .swash-cap {
+.recipe__header-title:first-letter,
+.recipe__header-title .swash-cap {
   font-feature-settings: "swsh";
   -moz-font-feature-settings: "swsh";
   -webkit-font-feature-settings: "swsh"; }
 
-.recipe__header-title .swash-cap.letter-t, .component__header-title .swash-cap.letter-t {
+.recipe__header-title .swash-cap.letter-t {
   margin-right: -0.13em; }
 
-.recipe__header-title .swash-cap.letter-z, .component__header-title .swash-cap.letter-z {
+.recipe__header-title .swash-cap.letter-z {
   margin-right: -0.14em; }
 
 .element-image {
@@ -649,17 +643,16 @@ body {
   width: 100%;
   max-width: 1150px; }
 
-.recipe__header-title:first-letter, .component__header-title:first-letter,
-.recipe__header-title .swash-cap,
-.component__header-title .swash-cap {
+.recipe__header-title:first-letter,
+.recipe__header-title .swash-cap {
   font-feature-settings: "swsh";
   -moz-font-feature-settings: "swsh";
   -webkit-font-feature-settings: "swsh"; }
 
-.recipe__header-title .swash-cap.letter-t, .component__header-title .swash-cap.letter-t {
+.recipe__header-title .swash-cap.letter-t {
   margin-right: -0.13em; }
 
-.recipe__header-title .swash-cap.letter-z, .component__header-title .swash-cap.letter-z {
+.recipe__header-title .swash-cap.letter-z {
   margin-right: -0.14em; }
 
 /* legacy */
@@ -1142,17 +1135,16 @@ body {
   width: 100%;
   max-width: 1150px; }
 
-.recipe__header-title:first-letter, .component__header-title:first-letter,
-.recipe__header-title .swash-cap,
-.component__header-title .swash-cap {
+.recipe__header-title:first-letter,
+.recipe__header-title .swash-cap {
   font-feature-settings: "swsh";
   -moz-font-feature-settings: "swsh";
   -webkit-font-feature-settings: "swsh"; }
 
-.recipe__header-title .swash-cap.letter-t, .component__header-title .swash-cap.letter-t {
+.recipe__header-title .swash-cap.letter-t {
   margin-right: -0.13em; }
 
-.recipe__header-title .swash-cap.letter-z, .component__header-title .swash-cap.letter-z {
+.recipe__header-title .swash-cap.letter-z {
   margin-right: -0.14em; }
 
 /* legacy */
@@ -1609,17 +1601,16 @@ body {
   width: 100%;
   max-width: 1150px; }
 
-.recipe__header-title:first-letter, .component__header-title:first-letter,
-.recipe__header-title .swash-cap,
-.component__header-title .swash-cap {
+.recipe__header-title:first-letter,
+.recipe__header-title .swash-cap {
   font-feature-settings: "swsh";
   -moz-font-feature-settings: "swsh";
   -webkit-font-feature-settings: "swsh"; }
 
-.recipe__header-title .swash-cap.letter-t, .component__header-title .swash-cap.letter-t {
+.recipe__header-title .swash-cap.letter-t {
   margin-right: -0.13em; }
 
-.recipe__header-title .swash-cap.letter-z, .component__header-title .swash-cap.letter-z {
+.recipe__header-title .swash-cap.letter-z {
   margin-right: -0.14em; }
 
 .recipe {
@@ -1733,34 +1724,59 @@ body {
   width: 100%;
   max-width: 1150px; }
 
-.recipe__header-title:first-letter, .component__header-title:first-letter,
-.recipe__header-title .swash-cap,
-.component__header-title .swash-cap {
+.recipe__header-title:first-letter,
+.recipe__header-title .swash-cap {
   font-feature-settings: "swsh";
   -moz-font-feature-settings: "swsh";
   -webkit-font-feature-settings: "swsh"; }
 
-.recipe__header-title .swash-cap.letter-t, .component__header-title .swash-cap.letter-t {
+.recipe__header-title .swash-cap.letter-t {
   margin-right: -0.13em; }
 
-.recipe__header-title .swash-cap.letter-z, .component__header-title .swash-cap.letter-z {
+.recipe__header-title .swash-cap.letter-z {
   margin-right: -0.14em; }
 
 .component {
   display: flex; }
   .component__sidebar {
-    width: 290px;
-    padding-right: 20px;
-    margin-top: 110px; }
+    width: calc(33% + 40px);
+    padding-right: 40px;
+    margin-top: 80px; }
     .component__sidebar .card {
-      margin-top: 140px; }
+      margin-top: 60px;
+      font-size: 17px; }
+  .component__varieties {
+    margin-top: 80px;
+    font-size: 18px; }
+    .component__varieties .card__label {
+      margin-bottom: 20px; }
+  .component__variety {
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 20px auto;
+    align-items: center;
+    text-decoration: none;
+    grid-column-gap: 14px; }
+  .component__variety-number {
+    border-right: 1px solid #777;
+    width: 100%;
+    height: 12px;
+    align-items: center;
+    justify-content: flex-end;
+    display: flex;
+    padding-right: 14px;
+    font-size: 16px; }
+  .component__variety-name {
+    text-transform: capitalize; }
+  .component__substitutes p {
+    padding: 0;
+    margin: 0; }
   .component__content {
     flex: 1; }
   .component__header {
-    display: flex;
     color: #24222a; }
   .component__header-title {
-    font-size: 44px;
+    font-size: 46px;
     line-height: 60px;
     margin: 0; }
     .component__header-title a {
@@ -1780,21 +1796,33 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 0 24px 176px 0px; }
+    margin-top: -104px;
+    width: 56%;
+    z-index: 1;
+    padding: 0 24px 56px 0px; }
+  .component__header-images {
+    display: grid;
+    grid-template-columns: 53.5% auto;
+    grid-auto-rows: 52px;
+    grid-gap: 18px;
+    width: 100%; }
+  .component__primary-image-link--1 {
+    grid-row-end: span 6; }
+  .component__primary-image-link--2, .component__primary-image-link--3 {
+    grid-row-end: span 4; }
   .component__primary-image {
-    height: 570px;
-    width: 554px;
-    margin-right: -30px;
-    object-fit: cover; }
+    object-fit: cover;
+    width: 100%;
+    height: 100%; }
   .component__cutout {
     background-color: transparent;
     width: 40%;
-    height: 150px;
+    height: 50px;
     float: right;
     box-sizing: content-box;
     padding-left: 24px; }
   .component__primary {
-    margin-top: -150px;
+    margin-top: -50px;
     position: relative;
     z-index: 1;
     display: flex; }
@@ -1810,12 +1838,12 @@ body {
   .component__description::first-letter {
     color: #000;
     font-family: "mr-eaves";
-    font-size: 86px;
+    font-size: 56px;
     font-weight: 800;
     float: left;
     line-height: 0.75;
     display: inline-block;
-    padding: 0 12px 0 0;
+    padding: 0 8px 0 0;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; }
 
 .search-results {

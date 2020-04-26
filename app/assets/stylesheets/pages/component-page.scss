@@ -1,22 +1,61 @@
 @import "../utilities/colors";
 @import "../elements/helpers";
 
-$description-cutout: 150px;
-$space-between-description-and-header: 26px;
-$image-width: 554px;
-$image-offset: 30px;
+$description-cutout: 50px;
+$space-between-description-and-header: 6px;
 
 .component {
   @extend .centered-content-box-large;
   display: flex;
 
   &__sidebar {
-    width: 290px;
-    padding-right: 20px;
-    margin-top: 110px;
+    width: calc(33% + 40px);
+    padding-right: 40px;
+    margin-top: 80px;
 
     .card {
-      margin-top: 140px;
+      margin-top: 60px;
+      font-size: 17px;
+    }
+  }
+
+  &__varieties {
+    margin-top: 80px;
+    font-size: 18px;
+
+    .card__label {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__variety {
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 20px auto;
+    align-items: center;
+    text-decoration: none;
+    grid-column-gap: 14px;
+  }
+
+  &__variety-number {
+    border-right: 1px solid #777;
+    width: 100%;
+    height: 12px;
+    align-items: center;
+    justify-content: flex-end;
+    display: flex;
+    padding-right: 14px;
+    font-size: 16px;
+  }
+
+  &__variety-name {
+    text-transform: capitalize;
+  }
+
+  &__substitutes {
+    p {
+      padding: 0;
+      margin: 0;
     }
   }
 
@@ -25,13 +64,11 @@ $image-offset: 30px;
   }
 
   &__header {
-    display: flex;
     color: $text-color-dark;
   }
 
   &__header-title {
-    @extend %swash;
-    font-size: 44px;
+    font-size: 46px;
     line-height: 60px;
     margin: 0;
 
@@ -57,15 +94,36 @@ $image-offset: 30px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    margin-top: -104px;
+    width: 56%;
+    z-index: 1;
     padding: 0 24px
       ($space-between-description-and-header + $description-cutout) 0px;
   }
 
+  &__header-images {
+    display: grid;
+    grid-template-columns: 53.5% auto;
+    grid-auto-rows: 52px;
+    grid-gap: 18px;
+    width: 100%;
+  }
+
+  &__primary-image-link {
+    &--1 {
+      grid-row-end: span 6;
+    }
+
+    &--2,
+    &--3 {
+      grid-row-end: span 4;
+    }
+  }
+
   &__primary-image {
-    height: 570px;
-    width: $image-width;
-    margin-right: -$image-offset;
     object-fit: cover;
+    width: 100%;
+    height: 100%;
   }
 
   &__cutout {
@@ -98,12 +156,12 @@ $image-offset: 30px;
   &__description::first-letter {
     color: #000;
     font-family: "mr-eaves";
-    font-size: 86px;
+    font-size: 56px;
     font-weight: 800;
     float: left;
     line-height: 0.75;
     display: inline-block;
-    padding: 0 12px 0 0;
+    padding: 0 8px 0 0;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
       1px 1px 0 #000;
   }
