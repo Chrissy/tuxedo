@@ -6,7 +6,7 @@ $space-between-description-and-header: 26px;
 $image-width: 554px;
 $image-offset: 30px;
 
-.recipe {
+.component {
   @extend .centered-content-box-large;
   display: flex;
 
@@ -18,10 +18,6 @@ $image-offset: 30px;
     .card {
       margin-top: 140px;
     }
-  }
-
-  &__recipe {
-    @extend %recipe;
   }
 
   &__content {
@@ -72,13 +68,6 @@ $image-offset: 30px;
     object-fit: cover;
   }
 
-  &__display-number {
-    top: 16%;
-    right: 0px;
-    transform: translate(50%, 50%);
-    position: absolute;
-  }
-
   &__cutout {
     background-color: transparent;
     width: 40%;
@@ -86,18 +75,6 @@ $image-offset: 30px;
     float: right;
     box-sizing: content-box;
     padding-left: 24px;
-  }
-
-  &__tag-icons {
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    color: $text-color;
-  }
-
-  &__tag-icon {
-    margin-right: 6px;
-    font-size: 1.25em;
   }
 
   &__primary {
@@ -129,24 +106,5 @@ $image-offset: 30px;
     padding: 0 12px 0 0;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
       1px 1px 0 #000;
-  }
-
-  &__primary-sidebar {
-    width: 260px;
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding-bottom: 20px;
-    min-height: 100%;
-  }
-
-  &__footer {
-    @extend .centered-content-box-large;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 20px;
-    margin-bottom: 40px;
-    margin-top: 40px;
   }
 }

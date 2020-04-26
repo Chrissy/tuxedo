@@ -4,20 +4,44 @@
 <% cache(cache_key(@component, "show")) do %>
   <div class="component">
     <div class="component__sidebar">
-      <div class="label">Varieties</div>
-      <% @component.subcomponents.reverse.each do |subcomponent| %>
-        <div><%= subcomponent.name %></div>
-      <% end %>
-      <div class="label">Substitutions</div>
-      <%= @component.substitutes_as_html %>
-      <div class="label">Classics</div>
-      <%= render partial: 'shared/index_item', collection: classics, as: :element if classics %>
+      <div class="card component__varieties">
+        <div class="label card__label">Varieties</div>
+        <% @component.subcomponents.reverse.each do |subcomponent| %>
+          <div><%= subcomponent.name %></div>
+        <% end %>
+      </div>
+      <div class="card component__substitutes">
+        <div class="label card__label">Substitutions</div>
+        <%= @component.substitutes_as_html %>
+      </div>
+      <div class="card card--list component__classics">
+        <div class="label card__label">Classics</div>
+        <%= render partial: 'shared/index_item', collection: classics, as: :element if classics %>
+      </div>
     </div>
-    <div class="component__primary">
-      <h1><%= @component.name %></h1>
-      <p><%= @component.description_to_html %></p>
-      <div class="label">Recent Additions</div>
-      <%= render partial: 'lists/list_element', collection: latest, as: :element if latest %>
+    <div class="component__content">
+      <div class="component__header">
+        <div class="component__header-content">
+          <h1 class="component__header-title" itemprop="name">
+            <a href="<%= @component.url %>">
+              <%= swash(@component.name) %>
+            </a>
+            <%= render 'shared/pseudonyms' if @component.try(:pseudonyms_as_markdown).present? %>
+          </h1>
+          <h2 class="component__header-subtitle">
+            <%= @component.subtitle %>
+          </h2>
+        </div>
+        <%= header_image(@component, "component__primary-image component__primary-image-1") %>
+      </div>
+      <div class="component__primary">
+        <div class="component__description">
+          <div class="component__cutout"></div>
+          <div><%= @component.description_to_html %></div>
+          <div class="label">Recent Additions</div>
+          <%= render partial: 'lists/list_element', collection: latest, as: :element if latest %>
+        </div>
+      </div>
     </div>
   </div>
   <%= render 'footer', :component => @component %>

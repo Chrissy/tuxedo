@@ -13,7 +13,6 @@
             <a href="<%= @recipe.url %>">
               <%= swash(@recipe.name) %>
             </a>
-            <%= render 'shared/pseudonyms' if @recipe.try(:pseudonyms_as_markdown).present? %>
           </h1>
           <h2 class="recipe__header-subtitle">
             <%= @recipe.subtitle %>

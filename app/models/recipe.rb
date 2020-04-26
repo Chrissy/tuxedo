@@ -86,6 +86,10 @@ class Recipe < ActiveRecord::Base
     tag_list.include?('classic')
   end
 
+  def original?
+    tag_list.include?('original')
+  end
+
   def custom_name
     name + ' cocktail recipe'
   end

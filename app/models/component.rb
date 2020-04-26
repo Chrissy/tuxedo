@@ -130,6 +130,25 @@ class Component < ActiveRecord::Base
     all_elements.sort_by(&:created_at).reverse.slice(0, count)
   end
 
+  def original_recipes(count = 3)
+    all_elements.sort_by { |a| a.original? ? 0 : 1 }.slice(0, count).sort_by(&:created_at).reverse
+  end
+
+  def featured_recipes(count = 3)
+    classics = classic_recipes(2)
+    latest = latest_recipes(2)
+    originals = latest_recipes(2)
+    featured = [
+      classics[0],
+      latest[0],
+      originals[0],
+      classics[1],
+      latest[1],
+      originals[1]
+    ].uniq - [nil]
+    featured.slice(0, count)
+  end
+
   def count_for_display
     "#{list_elements.count} cocktails"
   end
