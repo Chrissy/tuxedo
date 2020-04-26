@@ -16,7 +16,7 @@ class Subcomponent < ActiveRecord::Base
   end
 
   def url
-    component.url
+    "#{component.url}##{ApplicationHelper.slugify(name)}"
   end
 
   def list_elements
@@ -45,6 +45,10 @@ class Subcomponent < ActiveRecord::Base
 
   def default_list_markdown
     name.present? ? ":[#{name} 100]" : ''
+  end
+
+  def subcomponent?
+    true
   end
 
   def nickname

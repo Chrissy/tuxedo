@@ -418,6 +418,8 @@ body {
   min-height: 300px; }
   .form-content textarea#recipe {
     min-height: 415px; }
+  .form-content textarea.mini {
+    min-height: 3.5em; }
 
 .form-content .edit_panel .form_block {
   width: 440px;

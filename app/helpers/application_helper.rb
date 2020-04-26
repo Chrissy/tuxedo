@@ -36,6 +36,14 @@ module ApplicationHelper
     text_search(params[:query]).with_highlights
   end
 
+  def slugify(string)
+    string.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+  end
+
+  def self.slugify(string)
+    string.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+  end
+
   def base_spirits
     [
       Component.find_by_name('gin'),

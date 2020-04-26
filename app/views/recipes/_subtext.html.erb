@@ -1,5 +1,4 @@
 <% use_links ||= false %>
-<% puts "++++++++", element.name %>
 <%= 
   element.components[0..2].map{ |component|
     use_links ? link_to(component.nickname, component.url) : component.nickname

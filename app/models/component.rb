@@ -90,7 +90,9 @@ class Component < ActiveRecord::Base
     associations = associated_component_ids
 
     associations.each do |association_id|
-      next if pairings.any? { |e| e[:id] == association_id } || association_id == id
+      if pairings.any? { |e| e[:id] == association_id } || association_id == id
+        next
+      end
 
       pairings << {
         count: associations.count { |e| e == association_id },
@@ -114,8 +116,18 @@ class Component < ActiveRecord::Base
     'components/subtext'
   end
 
-  def classic_recipes(count)
-    list_elements.sort_by { |a| a.classic? ? 0 : 1 }.slice(0, count)
+  def all_elements
+    all = []
+    subcomponents.each { |subcomponent| all.concat(subcomponent.list_elements) }
+    all.concat(list_elements)
+  end
+
+  def classic_recipes(count = 3)
+    all_elements.sort_by { |a| a.classic? ? 0 : 1 }.slice(0, count).sort_by(&:created_at).reverse
+  end
+
+  def latest_recipes(count = 3)
+    all_elements.sort_by(&:created_at).reverse.slice(0, count)
   end
 
   def count_for_display
@@ -142,8 +154,6 @@ class Component < ActiveRecord::Base
 
   def delete_and_save_subcomponents
     if description.present? && saved_changes.keys.include?('description')
-      # not sure if we can clean up here since
-      # subcomponents.delete_all
       CustomMarkdown.subcomponents_from_markdown(self, description)
     end
   end
@@ -163,9 +173,17 @@ class Component < ActiveRecord::Base
     markdown_renderer.render(converted_description).html_safe
   end
 
+  def substitutes_as_html
+    markdown_renderer.render(substitutes_as_markdown).html_safe
+  end
+
   def description_as_plain_text
     converted_description = CustomMarkdown.remove_custom_links(description)
     plaintext_renderer.render(converted_description)
+  end
+
+  def subcomponent?
+    false
   end
 
   def create_pseudonyms

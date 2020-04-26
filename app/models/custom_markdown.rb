@@ -18,13 +18,17 @@ class CustomMarkdown
     newMd = md.gsub(/(\=|\:\:|\:|\#)\[(.*?)\]/) do |*|
       element = model_for_symbol(Regexp.last_match(1)).where('lower(name) = ?', Regexp.last_match(2).downcase).first
       # for in-recipe subcomponents (:)
-      if !element && Regexp.last_match(1) == ':'
-        element = Subcomponent.where('lower(name) = ?', Regexp.last_match(2).downcase).first
+      if Regexp.last_match(1) == ':'
+        subcomponent = Subcomponent.where('lower(name) = ?', Regexp.last_match(2).downcase).first
+        element = subcomponent if subcomponent.present?
       end
 
       # for in-component subcomponents (::)
       if element && element.class.to_s == 'Subcomponent' && Regexp.last_match(1) == '::'
-        "<h2><a href='#{element.url}'>#{Regexp.last_match(2)}</a></h2>"
+        match = Regexp.last_match(2)
+        count = Subcomponent.find_by_name(match).try(:list_elements).try(:count) || 0
+        slug = ApplicationHelper.slugify(match)
+        "<h2 id='#{slug}'>#{match} • <a href='#{element.url}?type=#{slug}'>#{count} recipes</a></h2>"
       elsif element
         "<a href='#{element.url}'>#{Regexp.last_match(2)}</a>"
       else
@@ -61,7 +65,12 @@ class CustomMarkdown
       if attempted_expansion
         elements.concat(attempted_expansion)
       else
-        elements << [model_for_symbol(Regexp.last_match(1)).to_s, Regexp.last_match(2)]
+        arr = [model_for_symbol(Regexp.last_match(1)).to_s, Regexp.last_match(2)]
+        if Regexp.last_match(1) == ':'
+          subcomponent = Subcomponent.where('lower(name) = ?', Regexp.last_match(2).downcase).first
+          arr[0] = 'Subcomponent' if subcomponent.present?
+        end
+        elements << arr
       end
     end
     elements.uniq - ['', nil]

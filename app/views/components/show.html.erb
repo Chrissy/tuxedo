@@ -1,12 +1,24 @@
+<% classics = @component.classic_recipes(6) %>
+<% latest = @component.latest_recipes(3) %>
+
 <% cache(cache_key(@component, "show")) do %>
-  <div class="header component">
-    <%= render "shared/header", :element => @component %>
-  </div>
-  <div class="content component">
-    <div class="primary">
-      <%= render "/lists/list_with_images", :list_elements => @component.list_elements %>
+  <div class="component">
+    <div class="component__sidebar">
+      <div class="label">Varieties</div>
+      <% @component.subcomponents.reverse.each do |subcomponent| %>
+        <div><%= subcomponent.name %></div>
+      <% end %>
+      <div class="label">Substitutions</div>
+      <%= @component.substitutes_as_html %>
+      <div class="label">Classics</div>
+      <%= render partial: 'shared/index_item', collection: classics, as: :element if classics %>
+    </div>
+    <div class="component__primary">
+      <h1><%= @component.name %></h1>
+      <p><%= @component.description_to_html %></p>
+      <div class="label">Recent Additions</div>
+      <%= render partial: 'lists/list_element', collection: latest, as: :element if latest %>
     </div>
   </div>
-
   <%= render 'footer', :component => @component %>
 <% end %>
