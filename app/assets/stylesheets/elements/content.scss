@@ -2,13 +2,14 @@
 
 .content {
   @include pie-clearfix;
-  @extend .centered-content-box;
+  @extend .centered-content-box-large;
   min-height: 200px;
   padding-bottom: 50px;
 }
 
-.content.grid {
+.grid {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
-  grid-gap: 1em;
+  grid-template-columns: 0.33fr 0.33fr 0.33fr;
+  grid-column-gap: 4em;
+  grid-row-gap: 1em;
 }

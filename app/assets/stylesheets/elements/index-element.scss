@@ -11,10 +11,6 @@ $image-size: 42px;
     .index-element__image {
       margin-right: 16px;
     }
-
-    .index-element__name {
-      border-bottom: none;
-    }
   }
 
   &__image {
@@ -40,18 +36,22 @@ $image-size: 42px;
 
   &__text {
     flex: 1;
-    margin-right: 0.5em;
+    margin-right: 1em;
     text-transform: capitalize;
   }
 
   &__name {
-    font-family: bookmania;
+    font-family: "bookmania";
     text-decoration: none;
-    border-bottom: 1px dotted #aaa;
     padding-bottom: 0.3em;
     display: block;
     line-height: 1;
     font-weight: 800;
+  }
+
+  &__subtext {
+    font-family: "mr-eaves";
+    font-size: 18px;
   }
 
   &.for-search {

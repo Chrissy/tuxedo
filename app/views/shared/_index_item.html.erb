@@ -18,11 +18,13 @@ index_element_classes = "#{'index-element--for-search ' if for_search}#{'index-e
       </div>
     <% else %>
       <% if search_result.present? && !search_result.blank? %>
-        <h4 class="subtext search">
+        <div class="index-element__subtext search">
           <%= search_result.html_safe %>
-        </h4>
+        </div>
       <% else %>
-        <%= render element.subtext, :element => element if element.subtext.present? %>
+        <div class="index-element__subtext">
+          <%= render element.subtext, :element => element if element.subtext.present? %>
+        </div>
       <% end %>
     <% end %>
   </div>

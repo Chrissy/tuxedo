@@ -1,9 +1,7 @@
-<% puts "$$$$$$$$", element.name, element.url, element.class %>
+<% use_links ||= false %>
 
-<h4 class="subtext">
-  <%= 
-    element.classic_recipes(3).map{ |recipe|
-      link_to(recipe.name, recipe.url)
-    }.join(", ").html_safe 
-  %>
-</h4>
+<%= 
+  element.classic_recipes(3).map{ |recipe|
+    use_links ? link_to(recipe.name, recipe.url) : recipe.name
+  }.join(", ").html_safe 
+%>

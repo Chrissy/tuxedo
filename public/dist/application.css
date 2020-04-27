@@ -1,9 +1,9 @@
-.centered-content-box, .content, .edit_panel {
+.centered-content-box, .edit_panel {
   width: 940px;
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -64,12 +64,12 @@ body {
   display: table;
   clear: both; }
 
-.centered-content-box, .content, .edit_panel {
+.centered-content-box, .edit_panel {
   width: 940px;
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -155,12 +155,12 @@ h3 {
   width: 100%;
   height: 100%; }
 
-.centered-content-box, .content, .edit_panel {
+.centered-content-box, .edit_panel {
   width: 940px;
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -178,12 +178,12 @@ h3 {
 .recipe__header-title .swash-cap.letter-z {
   margin-right: -0.14em; }
 
-.centered-content-box, .content, .edit_panel {
+.centered-content-box, .edit_panel {
   width: 940px;
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -319,12 +319,12 @@ body {
   margin: 0;
   padding: 10px; }
 
-.centered-content-box, .content, .edit_panel {
+.centered-content-box, .edit_panel {
   width: 940px;
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -518,12 +518,12 @@ body {
     top: 75px;
     background-color: rgba(250, 250, 250, 0.8); } }
 
-.centered-content-box, .content, .edit_panel {
+.centered-content-box, .edit_panel {
   width: 940px;
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -549,8 +549,6 @@ body {
     flex-direction: row-reverse; }
     .index-element--image-first .index-element__image {
       margin-right: 16px; }
-    .index-element--image-first .index-element__name {
-      border-bottom: none; }
   .index-element__image {
     width: 42px;
     height: 42px;
@@ -568,16 +566,18 @@ body {
     object-fit: cover; }
   .index-element__text {
     flex: 1;
-    margin-right: 0.5em;
+    margin-right: 1em;
     text-transform: capitalize; }
   .index-element__name {
-    font-family: bookmania;
+    font-family: "bookmania";
     text-decoration: none;
-    border-bottom: 1px dotted #aaa;
     padding-bottom: 0.3em;
     display: block;
     line-height: 1;
     font-weight: 800; }
+  .index-element__subtext {
+    font-family: "mr-eaves";
+    font-size: 18px; }
   .index-element.for-search {
     max-width: 800px;
     width: 100%;
@@ -618,12 +618,12 @@ body {
 .index-menu-item.alphabet {
   padding: .25em; }
 
-.centered-content-box, .content, .edit_panel {
+.centered-content-box, .edit_panel {
   width: 940px;
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -692,10 +692,11 @@ body {
     display: table;
     clear: both; }
 
-.content.grid {
+.grid {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
-  grid-gap: 1em; }
+  grid-template-columns: 0.33fr 0.33fr 0.33fr;
+  grid-column-gap: 4em;
+  grid-row-gap: 1em; }
 
 .tag {
   width: 1em;
@@ -1110,12 +1111,12 @@ body {
     line-height: 1;
     margin-bottom: 2px; }
 
-.centered-content-box, .content, .edit_panel {
+.centered-content-box, .edit_panel {
   width: 940px;
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -1577,12 +1578,12 @@ body {
   font-family: "mr-eaves"; }
 
 /* legacy */
-.centered-content-box, .content, .edit_panel {
+.centered-content-box, .edit_panel {
   width: 940px;
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -1700,12 +1701,12 @@ body {
     margin-top: 40px; }
 
 /* legacy */
-.centered-content-box, .content, .edit_panel {
+.centered-content-box, .edit_panel {
   width: 940px;
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
