@@ -852,13 +852,22 @@ body {
   .label--bottom-border {
     padding-bottom: 8px;
     border-bottom: 1px solid #000; }
-
-.label:not(.label--bottom-border):after {
-  content: "";
-  height: 1px;
-  background: currentColor;
-  flex: 1;
-  margin-left: 6px; }
+  .label:not(.label--bottom-border):after, .label--center:before {
+    content: "";
+    height: 1px;
+    background: currentColor;
+    flex: 1;
+    margin-left: 6px; }
+  .label--center:not(.label--bottom-border) {
+    width: calc(100% - 11px); }
+    .label--center:not(.label--bottom-border):before, .label--center:not(.label--bottom-border):after {
+      flex: 1; }
+    .label--center:not(.label--bottom-border):before {
+      margin-left: 0;
+      margin-right: 16px; }
+    .label--center:not(.label--bottom-border):after {
+      margin-left: 16px;
+      margin-right: 0; }
 
 .text-link {
   text-decoration: none; }
@@ -1724,148 +1733,180 @@ body {
 .recipe__header-title .swash-cap.letter-z {
   margin-right: -0.14em; }
 
-.component {
+.component__primary {
   display: flex; }
-  .component__sidebar {
-    width: calc(33% + 40px);
-    padding-right: 40px;
-    margin-top: 130px; }
-    .component__sidebar .card {
-      margin-top: 40px;
-      font-size: 17px; }
-  .component__varieties {
-    margin-top: 80px;
-    font-size: 18px; }
-    .component__varieties .card__label {
-      margin-bottom: 20px; }
-  .component__variety {
-    margin-bottom: 10px;
-    display: grid;
-    grid-template-columns: 20px auto;
-    align-items: center;
-    text-decoration: none;
-    grid-column-gap: 14px; }
-  .component__variety-number {
-    border-right: 1px solid #777;
-    width: 100%;
-    height: 12px;
-    align-items: center;
-    justify-content: flex-end;
-    display: flex;
-    padding-right: 14px;
-    font-size: 16px; }
-  .component__variety-name {
-    text-transform: capitalize; }
-  .component__substitutes p {
-    padding: 0;
-    margin: 0; }
-  .component__index-element {
-    margin-bottom: 1.5em; }
-  .component__content {
-    flex: 1; }
-  .component__header {
-    color: #24222a; }
-  .component__header-title {
-    font-size: 46px;
-    line-height: 60px;
-    margin: 0; }
-    .component__header-title a {
-      color: #24222a;
-      text-decoration: none; }
-  .component__header-subtitle {
-    font-family: "mr-eaves";
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 1;
-    margin: 0 0 8px 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; }
-  .component__header-content {
-    flex: 1;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    margin-top: -104px;
-    width: 56%;
-    z-index: 1;
-    padding: 0 24px 56px 0px; }
-  .component__header-images {
-    display: grid;
-    grid-template-columns: 53.5% auto;
-    grid-auto-rows: 52px;
-    grid-gap: 18px;
-    width: 100%; }
-  .component__list-item--1 {
-    grid-row-end: span 6; }
-  .component__list-item--2, .component__list-item--3 {
-    grid-row-end: span 4; }
-  .component__list-item .list-element__details {
-    opacity: 0;
-    transition: 0.2s opacity; }
-  .component__list-item:hover .list-element__details {
-    opacity: 1; }
-  .component__cutout {
-    background-color: transparent;
-    width: 40%;
-    height: 50px;
-    float: right;
-    box-sizing: content-box;
-    padding-left: 24px; }
-  .component__primary {
-    margin-top: -50px;
-    position: relative;
-    z-index: 1;
-    display: flex; }
-  .component__description {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 15px;
-    line-height: 1.5;
-    color: #353535;
-    font-weight: 300;
-    max-width: 580px;
-    flex: 1; }
-    .component__description .subcomponent {
-      text-transform: capitalize;
-      font-size: 19px;
-      font-variant-numeric: oldstyle-nums; }
-      .component__description .subcomponent a {
-        font-weight: 500; }
-    .component__description .recommended-bottles {
-      font-family: mr-eaves;
-      text-transform: capitalize;
-      font-size: 18px;
-      border: 1px solid #000;
-      display: inline-block;
-      padding: 0.4em 1em 0.33em;
-      margin: 0.33em 0 1em;
-      position: relative;
-      font-weight: 600; }
-      .component__description .recommended-bottles:before {
-        content: "Bottles";
-        text-transform: uppercase;
-        background: #f0f0f0;
-        padding: 0.33em 0.5em;
-        position: absolute;
-        top: 0;
-        left: 0;
-        font-weight: bold;
-        letter-spacing: 0.075em;
-        font-size: 9px;
-        transform: translate(20px, -50%); }
-    .component__description em {
-      font-weight: normal;
-      font-style: normal; }
-  .component__description::first-letter {
-    color: #000;
-    font-family: "mr-eaves";
-    font-size: 56px;
-    font-weight: 800;
-    float: left;
-    line-height: 0.75;
+
+.component__sidebar {
+  width: calc(33% + 40px);
+  padding-right: 40px;
+  margin-top: 130px; }
+  .component__sidebar .card {
+    margin-top: 40px;
+    font-size: 17px; }
+
+.component__varieties {
+  margin-top: 80px;
+  font-size: 18px; }
+  .component__varieties .card__label {
+    margin-bottom: 20px; }
+
+.component__variety {
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 20px auto;
+  align-items: center;
+  text-decoration: none;
+  grid-column-gap: 14px; }
+
+.component__variety-number {
+  border-right: 1px solid #777;
+  width: 100%;
+  height: 12px;
+  align-items: center;
+  justify-content: flex-end;
+  display: flex;
+  padding-right: 14px;
+  font-size: 16px; }
+
+.component__variety-name {
+  text-transform: capitalize; }
+
+.component__substitutes p {
+  padding: 0;
+  margin: 0; }
+
+.component__index-element {
+  margin-bottom: 1.5em; }
+
+.component__content {
+  flex: 1; }
+
+.component__header {
+  color: #24222a; }
+
+.component__header-title {
+  font-size: 46px;
+  line-height: 60px;
+  margin: 0; }
+  .component__header-title a {
+    color: #24222a;
+    text-decoration: none; }
+
+.component__header-subtitle {
+  font-family: "mr-eaves";
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1;
+  margin: 0 0 8px 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.component__header-content {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-top: -104px;
+  width: 56%;
+  z-index: 1;
+  padding: 0 24px 56px 0px; }
+
+.component__header-images {
+  display: grid;
+  grid-template-columns: 53.5% auto;
+  grid-auto-rows: 52px;
+  grid-gap: 18px;
+  width: 100%; }
+
+.component__list-item--1 {
+  grid-row-end: span 6; }
+
+.component__list-item--2, .component__list-item--3 {
+  grid-row-end: span 4; }
+
+.component__list-item .list-element__details {
+  opacity: 0;
+  transition: 0.2s opacity; }
+
+.component__list-item:hover .list-element__details {
+  opacity: 1; }
+
+.component__cutout {
+  background-color: transparent;
+  width: 40%;
+  height: 50px;
+  float: right;
+  box-sizing: content-box;
+  padding-left: 24px; }
+
+.component__primary {
+  margin-top: -50px;
+  position: relative;
+  z-index: 1;
+  display: flex; }
+
+.component__description {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #353535;
+  font-weight: 300;
+  max-width: 580px;
+  flex: 1; }
+  .component__description .subcomponent {
+    text-transform: capitalize;
+    font-size: 19px;
+    font-variant-numeric: oldstyle-nums; }
+    .component__description .subcomponent a {
+      font-weight: 500; }
+  .component__description .recommended-bottles {
+    font-family: mr-eaves;
+    text-transform: capitalize;
+    font-size: 18px;
+    border: 1px solid #000;
     display: inline-block;
-    padding: 0 6px 0 0; }
+    padding: 0.4em 1em 0.33em;
+    margin: 0.33em 0 1em;
+    position: relative;
+    font-weight: 600; }
+    .component__description .recommended-bottles:before {
+      content: "Bottles";
+      text-transform: uppercase;
+      background: #f0f0f0;
+      padding: 0.33em 0.5em;
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-weight: bold;
+      letter-spacing: 0.075em;
+      font-size: 9px;
+      transform: translate(20px, -50%); }
+  .component__description em {
+    font-weight: normal;
+    font-style: normal; }
+
+.component__description::first-letter {
+  color: #000;
+  font-family: "mr-eaves";
+  font-size: 56px;
+  font-weight: 800;
+  float: left;
+  line-height: 0.75;
+  display: inline-block;
+  padding: 0 6px 0 0; }
+
+.component__recent-additions {
+  display: grid;
+  grid-template-columns: 0.33fr 0.33fr 0.33fr;
+  grid-gap: 20px;
+  height: 340px;
+  margin-bottom: 6em; }
+
+.component__recent-additions-label {
+  margin-top: 6em;
+  margin-bottom: 3em; }
 
 .search-results {
   display: flex;

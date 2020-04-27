@@ -11,13 +11,32 @@
     padding-bottom: 8px;
     border-bottom: 1px solid #000;
   }
-}
 
-.label:not(.label--bottom-border):after {
-  content: "";
+  &:not(.label--bottom-border):after,
+  &--center:before {
+    content: "";
+    height: 1px;
+    background: currentColor;
+    flex: 1;
+    margin-left: 6px;
+  }
 
-  height: 1px;
-  background: currentColor;
-  flex: 1;
-  margin-left: 6px;
+  &--center:not(.label--bottom-border) {
+    width: calc(100% - 11px);
+
+    &:before,
+    &:after {
+      flex: 1;
+    }
+
+    &:before {
+      margin-left: 0;
+      margin-right: 16px;
+    }
+
+    &:after {
+      margin-left: 16px;
+      margin-right: 0;
+    }
+  }
 }

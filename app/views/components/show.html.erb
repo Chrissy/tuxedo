@@ -4,54 +4,59 @@
 
 <% cache(cache_key(@component, "show")) do %>
   <div class="component">
-    <div class="component__sidebar">
-      <div class="card card--list component__varieties">
-        <div class="label card__label">Varieties</div>
-        <% @component.subcomponents.reverse.each_with_index do |subcomponent, index| %>
-          <a class="component__variety" href="#<%= slugify(subcomponent.name) %>%">
-            <span class="component__variety-number"><%= index + 1 %></span>
-            <span class="component__variety-name"><%= subcomponent.name %>
-          </a>
-        <% end %>
-      </div>
-      <div class="card card--list component__substitutes">
-        <div class="label card__label">Substitutions</div>
-        <%= @component.substitutes_as_html %>
-      </div>
-      <div class="card card--list component__classics">
-        <div class="label card__label">Classics</div>
-        <% classics.each do |classic| %>
-          <%= render 'shared/index_item', element: classic, image_first: true, class_name: "component__index-element" %>
-        <% end %>
-      </div>
-      <%= render 'shared/mail_card' %>
-    </div>
-    <div class="component__content">
-      <div class="component__header">
-        <div class="component__header-images component__header-images--<%= featured.count %>">
-          <% featured.each_with_index do |recipe, index| %>
-            <%= render '/lists/list_element', element: recipe, class_name: "component__list-item component__list-item--#{index + 1}" %>
+    <div class="component__primary">
+      <div class="component__sidebar">
+        <div class="card card--list component__varieties">
+          <div class="label card__label">Varieties</div>
+          <% @component.subcomponents.reverse.each_with_index do |subcomponent, index| %>
+            <a class="component__variety" href="#<%= slugify(subcomponent.name) %>%">
+              <span class="component__variety-number"><%= index + 1 %></span>
+              <span class="component__variety-name"><%= subcomponent.name %>
+            </a>
           <% end %>
         </div>
-        <div class="component__header-content">
-          <h1 class="component__header-title" itemprop="name">
-            <a href="<%= @component.url %>">
-              <%= @component.name %>
-            </a>
-            <%= render 'shared/pseudonyms' if @component.try(:pseudonyms_as_markdown).present? %>
-          </h1>
-          <h2 class="component__header-subtitle">
-            <%= @component.subtitle %>
-          </h2>
+        <div class="card card--list component__substitutes">
+          <div class="label card__label">Substitutions</div>
+          <%= @component.substitutes_as_html %>
+        </div>
+        <div class="card card--list component__classics">
+          <div class="label card__label">Classics</div>
+          <% classics.each do |classic| %>
+            <%= render 'shared/index_item', element: classic, image_first: true, class_name: "component__index-element" %>
+          <% end %>
+        </div>
+        <%= render 'shared/mail_card' %>
+      </div>
+      <div class="component__content">
+        <div class="component__header">
+          <div class="component__header-images component__header-images--<%= featured.count %>">
+            <% featured.each_with_index do |recipe, index| %>
+              <%= render '/lists/list_element', element: recipe, class_name: "component__list-item component__list-item--#{index + 1}" %>
+            <% end %>
+          </div>
+          <div class="component__header-content">
+            <h1 class="component__header-title" itemprop="name">
+              <a href="<%= @component.url %>">
+                <%= @component.name %>
+              </a>
+              <%= render 'shared/pseudonyms' if @component.try(:pseudonyms_as_markdown).present? %>
+            </h1>
+            <h2 class="component__header-subtitle">
+              <%= @component.subtitle %>
+            </h2>
+          </div>
+        </div>
+        <div class="component__primary">
+          <div class="component__description">
+            <div class="component__cutout"></div>
+            <div><%= @component.description_to_html %></div>
+          </div>
         </div>
       </div>
-      <div class="component__primary">
-        <div class="component__description">
-          <div class="component__cutout"></div>
-          <div><%= @component.description_to_html %></div>
-          <div class="label">Recent Additions</div>
-          <%= render partial: 'lists/list_element', collection: latest, as: :element if latest %>
-        </div>
+    </div>
+    <div class="label label--center component__recent-additions-label">Recent Additions</div>
+    <div class="component__recent-additions">
+        <%= render partial: 'lists/list_element', collection: latest, as: :element if latest %>
       </div>
     </div>
   </div>

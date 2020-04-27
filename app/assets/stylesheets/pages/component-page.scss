@@ -6,7 +6,10 @@ $space-between-description-and-header: 6px;
 
 .component {
   @extend .centered-content-box-large;
-  display: flex;
+
+  &__primary {
+    display: flex;
+  }
 
   &__sidebar {
     width: calc(33% + 40px);
@@ -210,5 +213,18 @@ $space-between-description-and-header: 6px;
     line-height: 0.75;
     display: inline-block;
     padding: 0 6px 0 0;
+  }
+
+  &__recent-additions {
+    display: grid;
+    grid-template-columns: 0.33fr 0.33fr 0.33fr;
+    grid-gap: 20px;
+    height: 340px;
+    margin-bottom: 6em;
+  }
+
+  &__recent-additions-label {
+    margin-top: 6em;
+    margin-bottom: 3em;
   }
 }
