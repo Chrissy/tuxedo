@@ -28,7 +28,7 @@ class CustomMarkdown
         match = Regexp.last_match(2)
         count = Subcomponent.find_by_name(match).try(:list_elements).try(:count) || 0
         slug = ApplicationHelper.slugify(match)
-        "<h2 id='#{slug}'>#{match} • <a href='#{element.url}?type=#{slug}'>#{count} recipes</a></h2>"
+        "<h2 id='#{slug}' class='subcomponent'>#{match} • <a href='#{element.url}?type=#{slug}'>#{count} recipes</a></h2>"
       elsif element
         "<a href='#{element.url}'>#{Regexp.last_match(2)}</a>"
       else
@@ -42,7 +42,7 @@ class CustomMarkdown
     return '' unless md.present?
 
     newMd = md.gsub(/(\&)\[(.*?)\]/) do |*|
-      "<div class='recommended-bottles'>#{Regexp.last_match(2)}</div>"
+      "<div class='recommended-bottles'>#{Regexp.last_match(2).gsub(/(\$+)/, '<em>\1</em>')}</div>"
     end
     newMd
   end

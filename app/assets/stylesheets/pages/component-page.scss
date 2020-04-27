@@ -11,10 +11,10 @@ $space-between-description-and-header: 6px;
   &__sidebar {
     width: calc(33% + 40px);
     padding-right: 40px;
-    margin-top: 80px;
+    margin-top: 130px;
 
     .card {
-      margin-top: 60px;
+      margin-top: 40px;
       font-size: 17px;
     }
   }
@@ -158,6 +158,47 @@ $space-between-description-and-header: 6px;
     font-weight: 300;
     max-width: 580px;
     flex: 1;
+
+    .subcomponent {
+      text-transform: capitalize;
+      font-size: 19px;
+      font-variant-numeric: oldstyle-nums;
+
+      a {
+        font-weight: 500;
+      }
+    }
+
+    .recommended-bottles {
+      font-family: mr-eaves;
+      text-transform: capitalize;
+      font-size: 18px;
+      border: 1px solid #000;
+      display: inline-block;
+      padding: 0.4em 1em 0.33em;
+      margin: 0.33em 0 1em;
+      position: relative;
+      font-weight: 600;
+
+      &:before {
+        content: "Bottles";
+        text-transform: uppercase;
+        background: #f0f0f0;
+        padding: 0.33em 0.5em;
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-weight: bold;
+        letter-spacing: 0.075em;
+        font-size: 9px;
+        transform: translate(20px, -50%);
+      }
+    }
+
+    em {
+      font-weight: normal;
+      font-style: normal;
+    }
   }
 
   &__description::first-letter {

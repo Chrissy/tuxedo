@@ -717,7 +717,7 @@ body {
 .card {
   display: grid;
   grid-template-areas: "head head" "image content";
-  grid-template-rows: 30px 1fr;
+  grid-template-rows: 50px 1fr;
   grid-template-columns: auto 1fr;
   grid-column-gap: 16px;
   margin-bottom: 10px;
@@ -882,7 +882,7 @@ body {
 .card {
   display: grid;
   grid-template-areas: "head head" "image content";
-  grid-template-rows: 30px 1fr;
+  grid-template-rows: 50px 1fr;
   grid-template-columns: auto 1fr;
   grid-column-gap: 16px;
   margin-bottom: 10px;
@@ -1729,9 +1729,9 @@ body {
   .component__sidebar {
     width: calc(33% + 40px);
     padding-right: 40px;
-    margin-top: 80px; }
+    margin-top: 130px; }
     .component__sidebar .card {
-      margin-top: 60px;
+      margin-top: 40px;
       font-size: 17px; }
   .component__varieties {
     margin-top: 80px;
@@ -1826,6 +1826,37 @@ body {
     font-weight: 300;
     max-width: 580px;
     flex: 1; }
+    .component__description .subcomponent {
+      text-transform: capitalize;
+      font-size: 19px;
+      font-variant-numeric: oldstyle-nums; }
+      .component__description .subcomponent a {
+        font-weight: 500; }
+    .component__description .recommended-bottles {
+      font-family: mr-eaves;
+      text-transform: capitalize;
+      font-size: 18px;
+      border: 1px solid #000;
+      display: inline-block;
+      padding: 0.4em 1em 0.33em;
+      margin: 0.33em 0 1em;
+      position: relative;
+      font-weight: 600; }
+      .component__description .recommended-bottles:before {
+        content: "Bottles";
+        text-transform: uppercase;
+        background: #f0f0f0;
+        padding: 0.33em 0.5em;
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-weight: bold;
+        letter-spacing: 0.075em;
+        font-size: 9px;
+        transform: translate(20px, -50%); }
+    .component__description em {
+      font-weight: normal;
+      font-style: normal; }
   .component__description::first-letter {
     color: #000;
     font-family: "mr-eaves";
