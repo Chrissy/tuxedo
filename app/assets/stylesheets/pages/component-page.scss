@@ -145,13 +145,6 @@ $space-between-description-and-header: 6px;
     padding-left: 24px;
   }
 
-  &__primary {
-    margin-top: -$description-cutout - 0px;
-    position: relative;
-    z-index: 1;
-    display: flex;
-  }
-
   &__description {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

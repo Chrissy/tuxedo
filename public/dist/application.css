@@ -2186,12 +2186,6 @@ body {
   box-sizing: content-box;
   padding-left: 24px; }
 
-.component__primary {
-  margin-top: -50px;
-  position: relative;
-  z-index: 1;
-  display: flex; }
-
 .component__description {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
