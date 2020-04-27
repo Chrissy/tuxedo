@@ -227,4 +227,59 @@ $space-between-description-and-header: 6px;
     margin-top: 6em;
     margin-bottom: 3em;
   }
+
+  &__all {
+    display: grid;
+    grid-template-columns: 0.36fr auto;
+    grid-column-gap: 40px;
+    margin-bottom: 6em;
+
+    .index-element__subtext {
+      font-size: 16px;
+    }
+  }
+
+  &__all-sidebar {
+    .card {
+      padding: 0;
+      margin-bottom: 3em;
+    }
+  }
+
+  &__all-recipes-label {
+    margin-bottom: 2em;
+  }
+
+  &__all-sidebar-filter-label {
+    margin-bottom: 1em;
+  }
+
+  &__filter {
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 0;
+    text-transform: capitalize;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #000;
+    }
+
+    &--selected {
+      font-weight: 600;
+    }
+  }
+
+  &__radio-button,
+  &__checkbox {
+    height: 12px;
+    width: 18px;
+    margin-right: 6px;
+  }
+
+  &__filter-control {
+    display: flex;
+    align-items: center;
+  }
 }

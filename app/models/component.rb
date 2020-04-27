@@ -81,7 +81,7 @@ class Component < ActiveRecord::Base
   end
 
   def associated_component_ids
-    ids = parent_elements.map(&:id)
+    ids = all_elements.map(&:id)
     Relationship.where(child_type: 'Component', relatable_type: 'Recipe', relatable_id: ids).map(&:child_id)
   end
 

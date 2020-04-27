@@ -46,12 +46,13 @@ $image-size: 42px;
     padding-bottom: 0.3em;
     display: block;
     line-height: 1;
+    font-size: 17px;
     font-weight: 800;
   }
 
   &__subtext {
     font-family: "mr-eaves";
-    font-size: 18px;
+    font-size: 17px;
   }
 
   &.for-search {

@@ -574,10 +574,11 @@ body {
     padding-bottom: 0.3em;
     display: block;
     line-height: 1;
+    font-size: 17px;
     font-weight: 800; }
   .index-element__subtext {
     font-family: "mr-eaves";
-    font-size: 18px; }
+    font-size: 17px; }
   .index-element.for-search {
     max-width: 800px;
     width: 100%;
@@ -697,6 +698,8 @@ body {
   grid-template-columns: 0.33fr 0.33fr 0.33fr;
   grid-column-gap: 4em;
   grid-row-gap: 1em; }
+  .grid--half-gap {
+    grid-column-gap: 2em; }
 
 .tag {
   width: 1em;
@@ -1907,6 +1910,45 @@ body {
 .component__recent-additions-label {
   margin-top: 6em;
   margin-bottom: 3em; }
+
+.component__all {
+  display: grid;
+  grid-template-columns: 0.36fr auto;
+  grid-column-gap: 40px;
+  margin-bottom: 6em; }
+  .component__all .index-element__subtext {
+    font-size: 16px; }
+
+.component__all-sidebar .card {
+  padding: 0;
+  margin-bottom: 3em; }
+
+.component__all-recipes-label {
+  margin-bottom: 2em; }
+
+.component__all-sidebar-filter-label {
+  margin-bottom: 1em; }
+
+.component__filter {
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 0;
+  text-transform: capitalize; }
+  .component__filter:not(:last-child) {
+    border-bottom: 1px solid #000; }
+  .component__filter--selected {
+    font-weight: 600; }
+
+.component__radio-button, .component__checkbox {
+  height: 12px;
+  width: 18px;
+  margin-right: 6px; }
+
+.component__filter-control {
+  display: flex;
+  align-items: center; }
 
 .search-results {
   display: flex;

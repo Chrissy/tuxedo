@@ -12,4 +12,8 @@
   grid-template-columns: 0.33fr 0.33fr 0.33fr;
   grid-column-gap: 4em;
   grid-row-gap: 1em;
+
+  &--half-gap {
+    grid-column-gap: 2em;
+  }
 }
