@@ -54,9 +54,12 @@
         </div>
       </div>
     </div>
-    <div class="label label--center component__recent-additions-label">Recent Additions</div>
-    <div class="component__recent-additions">
-        <%= render partial: 'lists/list_element', collection: latest, as: :element if latest %>
+    <div>
+      <div class="label label--center component__recent-additions-label">Recent Additions</div>
+      <div class="component__recent-additions">
+          <%= render partial: 'lists/list_element', collection: latest, as: :element if latest %>
+      </div>
+      <a class="component__recent-additions-show-more button">Show More</a>
     </div>
     <div class="component__all">
       <div class="component__all-sidebar">

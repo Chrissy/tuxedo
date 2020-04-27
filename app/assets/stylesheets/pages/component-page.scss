@@ -220,12 +220,17 @@ $space-between-description-and-header: 6px;
     grid-template-columns: 0.33fr 0.33fr 0.33fr;
     grid-gap: 20px;
     height: 340px;
-    margin-bottom: 6em;
+    margin-bottom: 1em;
   }
 
   &__recent-additions-label {
     margin-top: 6em;
     margin-bottom: 3em;
+  }
+
+  &__recent-additions-show-more {
+    margin: 0 0 8em 50%;
+    transform: translateX(-50%);
   }
 
   &__all {
