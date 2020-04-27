@@ -20,20 +20,16 @@
       </div>
       <div class="card card--list component__classics">
         <div class="label card__label">Classics</div>
-        <%= render partial: 'shared/index_item', collection: classics, as: :element if classics %>
+        <% classics.each do |classic| %>
+          <%= render 'shared/index_item', element: classic, image_first: true, class_name: "component__index-element" %>
+        <% end %>
       </div>
     </div>
     <div class="component__content">
       <div class="component__header">
         <div class="component__header-images component__header-images--<%= featured.count %>">
           <% featured.each_with_index do |recipe, index| %>
-            <a href="<%= recipe.url %>" class="component__primary-image-link component__primary-image-link--<%= index + 1 %>">
-              <% if (index == 0) %>
-                  <%= header_image(recipe, "component__primary-image") %>
-              <% else %>
-                <%= list_image(recipe, "component__primary-image component__primary-image--#{index + 1}") %>
-              <% end %>
-            </a>
+            <%= render '/lists/list_element', element: recipe, class_name: "component__list-item component__list-item--#{index + 1}" %>
           <% end %>
         </div>
         <div class="component__header-content">

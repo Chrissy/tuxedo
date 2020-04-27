@@ -142,7 +142,8 @@ module ApplicationHelper
   def index_image(element)
     image_tag(
       image_url(element, :small),
-      class: 'element-image small',
+      srcset: [image_url(element, :small) + ' 1x', image_url(element, :small2x) + ' 2x'].join(', '),
+      class: 'index-element__img',
       alt: "#{element.name} cocktail photo",
       itemprop: 'image'
     )
@@ -263,9 +264,5 @@ module ApplicationHelper
 
   def clear_image_button(element)
     link_to '(clear)', '#', class: 'clear_image' if element.image.present?
-  end
-
-  def index_item_class_name(element)
-    "#{element.class.to_s.downcase}_admin_element"
   end
 end

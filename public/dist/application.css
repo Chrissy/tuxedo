@@ -541,63 +541,49 @@ body {
 .recipe__header-title .swash-cap.letter-z {
   margin-right: -0.14em; }
 
-.element-image {
-  display: block; }
-  .element-image.small {
-    width: 50px;
-    height: 50px; }
-
 .index-element {
   display: flex;
-  width: 30%;
-  margin: 0 1.515%;
-  margin-bottom: 2em; }
-  .index-element .index-element-image {
-    width: 50px;
-    height: 50px;
+  align-items: center;
+  margin-bottom: 1em; }
+  .index-element--image-first {
+    flex-direction: row-reverse; }
+    .index-element--image-first .index-element__image {
+      margin-right: 16px; }
+    .index-element--image-first .index-element__name {
+      border-bottom: none; }
+  .index-element__image {
+    width: 42px;
+    height: 42px;
     overflow: hidden;
     border-radius: 50%;
-    min-width: 50px;
-    min-height: 50px; }
-    .index-element .index-element-image.for-search {
+    min-width: 42px;
+    min-height: 42px;
+    margin-top: -2px;
+    display: block; }
+    .index-element__image.for-search {
       margin-left: 16px; }
-  .index-element .index-element-text {
+  .index-element__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+  .index-element__text {
     flex: 1;
-    margin-right: 0.5em; }
-  .index-element .index-element-name {
-    font-size: 1.25em;
+    margin-right: 0.5em;
+    text-transform: capitalize; }
+  .index-element__name {
+    font-family: bookmania;
+    text-decoration: none;
     border-bottom: 1px dotted #aaa;
     padding-bottom: 0.3em;
     display: block;
     line-height: 1;
-    font-weight: bold; }
-    .index-element .index-element-name:first-letter {
-      text-transform: uppercase; }
+    font-weight: 800; }
   .index-element.for-search {
     max-width: 800px;
     width: 100%;
     min-width: 0;
     margin: 0;
     padding: 16px 10px; }
-  .index-element .subtext {
-    padding: 0.5em 0 0 0;
-    margin: 0;
-    font-weight: normal;
-    font-size: 0.875em;
-    min-height: 3em;
-    word-break: break-word; }
-    .index-element .subtext a:not(:last-child):after {
-      content: ", "; }
-  .index-element .subtext.search em {
-    display: inline-block;
-    background: rgba(77, 77, 77, 0.15);
-    padding: 0.33em 0.25em;
-    font-style: normal;
-    font-weight: bold;
-    line-height: 0.75;
-    border-radius: 3px; }
-  .index-element .list-element-number {
-    display: none; }
 
 .admin-controls {
   margin-top: 0.25em; }
@@ -707,9 +693,9 @@ body {
     clear: both; }
 
 .content.grid {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 2em; }
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-gap: 1em; }
 
 .tag {
   width: 1em;
@@ -1291,7 +1277,8 @@ body {
     text-decoration: none;
     bottom: 0;
     width: 100%;
-    padding: 16px; }
+    padding: 16px;
+    text-transform: capitalize; }
     .list-element__details a {
       text-decoration: none; }
     .list-element__details--featured {
@@ -1771,6 +1758,8 @@ body {
   .component__substitutes p {
     padding: 0;
     margin: 0; }
+  .component__index-element {
+    margin-bottom: 1.5em; }
   .component__content {
     flex: 1; }
   .component__header {
@@ -1806,14 +1795,15 @@ body {
     grid-auto-rows: 52px;
     grid-gap: 18px;
     width: 100%; }
-  .component__primary-image-link--1 {
+  .component__list-item--1 {
     grid-row-end: span 6; }
-  .component__primary-image-link--2, .component__primary-image-link--3 {
+  .component__list-item--2, .component__list-item--3 {
     grid-row-end: span 4; }
-  .component__primary-image {
-    object-fit: cover;
-    width: 100%;
-    height: 100%; }
+  .component__list-item .list-element__details {
+    opacity: 0;
+    transition: 0.2s opacity; }
+  .component__list-item:hover .list-element__details {
+    opacity: 1; }
   .component__cutout {
     background-color: transparent;
     width: 40%;
@@ -1843,8 +1833,7 @@ body {
     float: left;
     line-height: 0.75;
     display: inline-block;
-    padding: 0 8px 0 0;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; }
+    padding: 0 6px 0 0; }
 
 .search-results {
   display: flex;

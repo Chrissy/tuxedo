@@ -97,8 +97,8 @@ export default class Search {
           <div class="index-element-name">${result.name}</div>
           ${this.renderSubtext(result)}
         </div>
-        <div class="index-element-image for-search">
-          <img class="element-image small" src="https://s3.us-east-2.amazonaws.com/chrissy-tuxedo-no2/100x100${
+        <div class="index-element__image index-element__image--for-search">
+          <img class="index-element__img" src="https://s3.us-east-2.amazonaws.com/chrissy-tuxedo-no2/100x100${
             result.image_with_backup
           }"/>
         </div>

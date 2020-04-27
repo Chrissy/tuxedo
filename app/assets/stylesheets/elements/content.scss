@@ -8,7 +8,7 @@
 }
 
 .content.grid {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 2em;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-gap: 1em;
 }
