@@ -65,8 +65,8 @@ module ApplicationHelper
       'xxlarge' => { width: 770, height: 650 },
       'xlarge2x' => { width: 1200, height: 1200 },
       'xlarge' => { width: 600, height: 600 },
-      'large2x' => { width: 1020, height: 920 },
-      'large' => { width: 510, height: 460 },
+      'large2x' => { width: 1120, height: 820 },
+      'large' => { width: 560, height: 410 },
       'medium2x' => { width: 600, height: 400 },
       'medium' => { width: 300, height: 200 },
       'small2x' => { width: 200, height: 200 },
@@ -95,9 +95,9 @@ module ApplicationHelper
     )
   end
 
-  def image_url(element, size)
+  def image_url(element, size, method = :image_with_backup)
     size_hash = image_sizes(size)
-    'https://d34nm4jmyicdxh.cloudfront.net/' + image_path(size_hash, element.image_with_backup)
+    'https://d34nm4jmyicdxh.cloudfront.net/' + image_path(size_hash, element.send(method))
   end
 
   def header_image(element, class_name = '', hero = false)
@@ -116,23 +116,23 @@ module ApplicationHelper
     )
   end
 
-  def list_image(element, class_name = '')
+  def list_image(element, class_name = '', method = :image_with_backup)
     image_tag(
-      image_url(element, :large),
-      srcset: [image_url(element, :large) + ' 1x', image_url(element, :large2x) + ' 2x'].join(', '),
+      image_url(element, :large, method),
+      srcset: [image_url(element, :large, method) + ' 1x', image_url(element, :large2x, method) + ' 2x'].join(', '),
       alt: "#{element.name} cocktail photo",
       itemprop: 'image',
       class: class_name || 'list-element__img',
-      "data-pin-media": pinnable_image_url(element),
+      "data-pin-media": pinnable_image_url(element, method),
       "data-pin-url": pin_url(element),
       "data-pin-description": element.name
     )
   end
 
-  def ingredient_card_image(element, class_name)
+  def ingredient_card_image(element, class_name, method = :image_with_backup)
     image_tag(
-      image_url(element, :medium),
-      srcset: [image_url(element, :medium) + ' 1x', image_url(element, :medium2x) + ' 2x'].join(', '),
+      image_url(element, :medium, method),
+      srcset: [image_url(element, :medium, method) + ' 1x', image_url(element, :medium2x, method) + ' 2x'].join(', '),
       class: class_name,
       alt: "#{element.name} cocktail photo",
       itemprop: 'image'
@@ -149,8 +149,8 @@ module ApplicationHelper
     )
   end
 
-  def pinnable_image_url(element)
-    image_url(element, :pinterest)
+  def pinnable_image_url(element, method = :image_with_backup)
+    image_url(element, :pinterest, method)
   end
 
   def landscape_social_image_url(element)

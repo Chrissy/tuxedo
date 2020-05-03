@@ -22,6 +22,7 @@ $image-offset: 30px;
 
   &__recipe {
     @extend %recipe;
+    padding-right: 10px;
   }
 
   &__content {
@@ -70,6 +71,17 @@ $image-offset: 30px;
     width: $image-width;
     margin-right: -$image-offset;
     object-fit: cover;
+
+    &--1--count-2 {
+      width: 470px;
+      height: 590px;
+    }
+
+    &--2 {
+      height: 270px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
   }
 
   &__display-number {
@@ -81,7 +93,7 @@ $image-offset: 30px;
 
   &__cutout {
     background-color: transparent;
-    width: 42%;
+    width: 30%;
     height: $description-cutout;
     float: right;
     box-sizing: content-box;
