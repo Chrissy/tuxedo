@@ -81,7 +81,7 @@ $image-offset: 30px;
 
   &__cutout {
     background-color: transparent;
-    width: 40%;
+    width: 42%;
     height: $description-cutout;
     float: right;
     box-sizing: content-box;
@@ -142,7 +142,9 @@ $image-offset: 30px;
   }
 
   &__footer {
-    @extend .centered-content-box-large;
+    position: relative;
+    width: 100%;
+    max-width: 1150px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 20px;

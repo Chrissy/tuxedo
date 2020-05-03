@@ -1,6 +1,5 @@
 <% border_version ||= true %>
 <% list_name ||= '' %>
-
 <div class="card card--list <%= border_version ? 'card--border-version' : '' %>">
   <div class="label card__label <%= border_version ? 'card__label--border-version' : '' %>"><%= list_name %></div>
   <div class="card__content">
@@ -11,7 +10,7 @@
           <span class="card__list-name__secondary"> • <%= element.count_for_display %></span>
         </a>
         <div class="card__list-subtext">
-          <%= render element.subtext, element: element, use_links: true if element.subtext.present? %>
+          <%= render element.subtext, element: element if element.subtext.present? %>
         </div>
       </div>
     <% end %>

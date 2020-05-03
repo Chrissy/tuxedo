@@ -2,13 +2,11 @@
 <% second ||= false %>
 <% display_number ||= false %>
 <% class_name ||= '' %>
-
 <a href="<%= element.url %>" class='list-element <%= 'list-element--first' if first %> <%= 'list-element--second' if second %> <%= class_name %>' itemprop="itemListElement" itemscope itemtype="http://schema.org/Recipe">
   <div class="list-element__image-link <%= 'list-element__image-link--hero' if first %>">
     <%= display_number_with_fallback(element, "list-element__display-number") if display_number %>
     <%= first ? header_image(element, "list-element__img", true) : list_image(element, "list-element__img") %>
   </div>
-    
   <% if first && element.class == Recipe %>
     <div class="list-element__details list-element__details--featured">
       <h1 class="list-element__name list-element__name--featured" itemprop="name">
@@ -18,12 +16,12 @@
         <%= element.subtitle %>
       </h2>
       <div class="list-element__tag-icons">
-          <% element.tags.each do |tag| %>
-            <%= render 'recipes/tag', tag: tag, classname: "list-element__tag-icon" %>
-          <% end %>
+        <% element.tags.each do |tag| %>
+          <%= render 'recipes/tag', tag: tag, classname: "list-element__tag-icon" %>
+        <% end %>
       </div>
       <div class="list-element__subtext list-element__subtext--featured">
-        <%= render element.subtext, element: element, use_links: true if element.subtext.present? %>
+        <%= render element.subtext, element: element if element.subtext.present? %>
       </div>
     </div>
   <% else %>

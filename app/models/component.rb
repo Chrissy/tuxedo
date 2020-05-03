@@ -70,7 +70,9 @@ class Component < ActiveRecord::Base
     if image.present?
       image
     elsif list_elements.last.try(:image).try(:present?)
-      list_elements.last.image
+      list_elements.first.image
+    elsif all_elements.last.try(:image).try(:present?)
+      all_elements.first.image
     else
       backup_image_url
     end

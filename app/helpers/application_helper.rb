@@ -165,11 +165,11 @@ module ApplicationHelper
     request.protocol + request.host_with_port + element.url
   end
 
-  def recipe_tooltip(recipe)
+  def tooltip(element)
     "<div class='tooltip'>
-      #{ingredient_card_image(recipe, 'tooltip__image')}
-      <div class='tooltip__title'>#{recipe.name}</div>
-      #{if recipe.subtitle.present?
+      #{ingredient_card_image(element, 'tooltip__image')}
+      <div class='tooltip__title'>#{element.name}</div>
+      #{if element.try(:subtitle).present?
           "<div class='tooltip__description'>#{recipe.subtitle}</div>"
         end}
       <svg class='tooltip__tip'><use href='dist/sprite.svg#tooltip-tip-white'></use></svg>

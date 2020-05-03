@@ -3,7 +3,7 @@
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -69,7 +69,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -160,7 +160,7 @@ h3 {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -183,7 +183,7 @@ h3 {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -335,7 +335,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -534,7 +534,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -635,7 +635,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -733,7 +733,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -756,7 +756,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -1073,7 +1073,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -1096,7 +1096,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -1471,7 +1471,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -1938,7 +1938,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -2003,7 +2003,7 @@ body {
     position: absolute; }
   .recipe__cutout {
     background-color: transparent;
-    width: 40%;
+    width: 42%;
     height: 150px;
     float: right;
     box-sizing: content-box;
@@ -2049,6 +2049,9 @@ body {
     padding-bottom: 20px;
     min-height: 100%; }
   .recipe__footer {
+    position: relative;
+    width: 100%;
+    max-width: 1150px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 20px;
@@ -2061,7 +2064,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .recipe__footer, .component {
+.centered-content-box-large, .content, .global-header, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;

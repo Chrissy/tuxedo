@@ -4,10 +4,18 @@ search_result ||= false
 image_first ||= false
 for_search ||= false
 class_name ||= ''
+with_tooltip ||= true
 index_element_classes = "#{'index-element--for-search ' if for_search}#{'index-element--image-first ' if image_first}#{class_name}"
 %>
-
-<div class="index-element <%= index_element_classes %>" itemprop="itemListElement" itemscope itemtype="http://schema.org/Recipe">
+<div 
+  class="index-element <%= index_element_classes %>" 
+  itemprop="itemListElement" 
+  itemscope 
+  itemtype="http://schema.org/Recipe" 
+  <% if with_tooltip %>
+    tooltip="<%= tooltip(element) %>"
+  <% end %>
+>
   <div class="index-element__text">
     <%= link_to element.name, element.url, :class => "index-element__name", :itemprop => "name" %>
     <% if user_signed_in? && show_admin_controls %>
