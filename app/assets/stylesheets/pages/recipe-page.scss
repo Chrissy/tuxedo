@@ -21,6 +21,7 @@ $image-offset: 30px;
   }
 
   &__recipe {
+    @extend %recipe;
     padding-right: 10px;
   }
 
@@ -88,6 +89,11 @@ $image-offset: 30px;
     right: 0px;
     transform: translate(50%, 50%);
     position: absolute;
+
+    &--count-2,
+    &--count-3 {
+      top: 48%;
+    }
   }
 
   &__cutout {

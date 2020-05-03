@@ -27,7 +27,7 @@
               <%= render 'tag', tag: tag, classname: "recipe__tag-icon" %>
             <% end %>
           </div>
-          <%= display_number_with_fallback(@recipe, "recipe__display-number") %>
+          <%= display_number_with_fallback(@recipe, "recipe__display-number recipe__display-number--count-#{image_count}") %>
         </div>
         <%= header_image(@recipe, "recipe__primary-image recipe__primary-image--1 recipe__primary-image--1--count-#{image_count}") %>
       </div>
