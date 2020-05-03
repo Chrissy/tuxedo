@@ -18,25 +18,31 @@
 .tooltip {
   background: #fff;
   pointer-events: none;
-  border-radius: 4px;
+  border-radius: 0.25em;
   border: 1px solid #000;
   font-family: "mr-eaves";
   width: 230px;
   padding-bottom: 8px;
   animation: 0.2s tooltip-fade-in ease-in;
 
+  &--text {
+    width: auto;
+    font-size: 0.8em;
+    max-width: 200px;
+  }
+
   &__tip {
-    width: 19px;
-    height: 12px;
+    width: 1.2em;
+    height: 0.75em;
     position: absolute;
-    top: calc(100% - 4px);
+    top: calc(100% - 0.25em);
     left: 50%;
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 
   &__title,
   &__description {
-    padding: 8px 8px 2px 8px;
+    padding: 0.5em 0.5em 0.125em 0.5em;
   }
 
   &__description {
@@ -54,6 +60,11 @@
     font-family: "bookmania";
     font-weight: 700;
     line-height: 1;
-    margin-bottom: 2px;
+    margin-bottom: 0.125em;
+
+    &--center {
+      text-align: center;
+      margin-bottom: -0.25em;
+    }
   }
 }

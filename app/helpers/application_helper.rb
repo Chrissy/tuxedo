@@ -176,6 +176,13 @@ module ApplicationHelper
     </div>"
   end
 
+  def text_tooltip(text)
+    "<div class='tooltip tooltip--text'>
+      <div class='tooltip__title tooltip__title--center'>#{text}</div>
+      <svg class='tooltip__tip'><use href='dist/sprite.svg#tooltip-tip-white'></use></svg>
+    </div>"
+  end
+
   def list_id
     @list.id if defined? @list
   end
