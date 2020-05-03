@@ -2,7 +2,7 @@
   <div class="label label--bottom-border list-card__label">Similar to:&nbsp;<a href="<%= recipe.url%>"><%= recipe.name %></a></div>
   <div class="list-card__elements">
     <% recipe.recommends(6).each do |recipe| %>
-      <%= render '/shared/index_item', image_first: true, element: recipe, classname: "list-card__text-link" %>
+      <%= render '/shared/index_item', image_first: true, element: recipe, class_name: "list-card__index-item" %>
     <% end %>
   </div>
 </div>
