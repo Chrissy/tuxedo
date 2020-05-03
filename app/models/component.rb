@@ -193,7 +193,7 @@ class Component < ActiveRecord::Base
   end
 
   def substitutes_as_html
-    markdown_renderer.render(substitutes_as_markdown).html_safe
+    substitutes_as_markdown ? markdown_renderer.render(substitutes_as_markdown).html_safe : nil
   end
 
   def description_as_plain_text

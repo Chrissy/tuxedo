@@ -104,8 +104,7 @@ $space-between-description-and-header: 6px;
     margin-top: -104px;
     width: 56%;
     z-index: 1;
-    padding: 0 24px
-      ($space-between-description-and-header + $description-cutout) 0px;
+    padding: 0 24px 6px 0px;
   }
 
   &__header-images {
