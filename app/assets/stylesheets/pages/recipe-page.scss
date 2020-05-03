@@ -72,7 +72,8 @@ $image-offset: 30px;
     margin-right: -$image-offset;
     object-fit: cover;
 
-    &--1--count-2 {
+    &--1--count-2,
+    &--1--count-3 {
       width: 470px;
       height: 590px;
     }
