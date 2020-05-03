@@ -1705,81 +1705,6 @@ body {
     font-size: 1.25em;
     color: #fff; }
 
-.recipe__recipe {
-  font-family: "mr-eaves";
-  font-size: 18px; }
-  .recipe__recipe ul,
-  .recipe__recipe ol,
-  .recipe__recipe p {
-    padding: 0;
-    margin: 0; }
-  
-  .recipe__recipe ol {
-    counter-reset: li;
-    padding-bottom: 0; }
-    .recipe__recipe ol li {
-      display: flex;
-      line-height: 1; }
-      .recipe__recipe ol li:before {
-        content: counter(li);
-        counter-increment: li;
-        font-size: 24px;
-        font-family: "bookmania";
-        font-weight: 700;
-        padding: 0 10px 0 0;
-        transform: translateY(2px);
-        line-height: 1; }
-  
-  .recipe__recipe p {
-    font-size: 14px;
-    line-height: 140%; }
-  .recipe__recipe h1,
-  .recipe__recipe h2,
-  .recipe__recipe h3 {
-    font-family: "bookmania";
-    font-size: 20px;
-    margin: 0;
-    font-weight: 900;
-    padding: 0; }
-  .recipe__recipe ul,
-  .recipe__recipe ol {
-    padding-bottom: 0;
-    margin-bottom: 40px; }
-  .recipe__recipe ul li:last-child,
-  .recipe__recipe ol li:last-child {
-    border-bottom-width: 0; }
-  .recipe__recipe li {
-    margin: 8px 0 14px 0;
-    display: flex;
-    position: relative; }
-  .recipe__recipe .amount {
-    display: inline-flex;
-    min-width: 40px;
-    margin-left: -20px;
-    font-weight: 500;
-    max-height: 1.25em;
-    margin-right: 8px;
-    position: relative;
-    justify-content: flex-end;
-    align-items: baseline;
-    font-variant-numeric: tabular-nums; }
-  .recipe__recipe .divider {
-    height: 13px;
-    width: 1px;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: block;
-    top: 6px;
-    position: relative; }
-  .recipe__recipe .unit {
-    font-weight: normal;
-    font-size: 11px;
-    margin-left: 1px; }
-  .recipe__recipe .ingredient {
-    flex: 1;
-    padding-left: 10px;
-    display: block;
-    text-align: left; }
-
 /* legacy */
 .global-header {
   display: flex;
@@ -2018,11 +1943,13 @@ body {
     position: absolute; }
   .recipe__cutout {
     background-color: transparent;
-    width: 30%;
+    width: 42%;
     height: 150px;
     float: right;
     box-sizing: content-box;
     padding-left: 24px; }
+    .recipe__cutout--count-2, .recipe__cutout--count-3 {
+      width: 30%; }
   .recipe__tag-icons {
     margin-top: 8px;
     display: flex;

@@ -21,7 +21,6 @@ $image-offset: 30px;
   }
 
   &__recipe {
-    @extend %recipe;
     padding-right: 10px;
   }
 
@@ -93,11 +92,16 @@ $image-offset: 30px;
 
   &__cutout {
     background-color: transparent;
-    width: 30%;
+    width: 42%;
     height: $description-cutout;
     float: right;
     box-sizing: content-box;
     padding-left: 24px;
+
+    &--count-2,
+    &--count-3 {
+      width: 30%;
+    }
   }
 
   &__tag-icons {
