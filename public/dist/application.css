@@ -2133,7 +2133,11 @@ body {
 .component__header-title {
   font-size: 46px;
   line-height: 60px;
-  margin: 0; }
+  margin: 0;
+  text-transform: capitalize; }
+  .component__header-title--center {
+    text-align: center;
+    margin: 60px 0 20px; }
   .component__header-title a {
     color: #24222a;
     text-decoration: none; }
@@ -2241,8 +2245,10 @@ body {
   display: grid;
   grid-template-columns: 0.33fr 0.33fr 0.33fr;
   grid-gap: 20px;
-  height: 340px;
+  min-height: 340px;
   margin-bottom: 1em; }
+  .component__recent-additions--extra-margin {
+    margin-bottom: 60px; }
 
 .component__recent-additions-label {
   margin-top: 6em;

@@ -78,6 +78,12 @@ $space-between-description-and-header: 6px;
     font-size: 46px;
     line-height: 60px;
     margin: 0;
+    text-transform: capitalize;
+
+    &--center {
+      text-align: center;
+      margin: 60px 0 20px;
+    }
 
     a {
       color: $text-color-dark;
@@ -211,8 +217,12 @@ $space-between-description-and-header: 6px;
     display: grid;
     grid-template-columns: 0.33fr 0.33fr 0.33fr;
     grid-gap: 20px;
-    height: 340px;
+    min-height: 340px;
     margin-bottom: 1em;
+
+    &--extra-margin {
+      margin-bottom: 60px;
+    }
   }
 
   &__recent-additions-label {
