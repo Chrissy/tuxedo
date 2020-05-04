@@ -170,7 +170,7 @@ module ApplicationHelper
       #{ingredient_card_image(element, 'tooltip__image')}
       <div class='tooltip__title'>#{element.name}</div>
       #{if element.try(:subtitle).present?
-          "<div class='tooltip__description'>#{recipe.subtitle}</div>"
+          "<div class='tooltip__description'>#{element.subtitle}</div>"
         end}
       <svg class='tooltip__tip'><use href='dist/sprite.svg#tooltip-tip-white'></use></svg>
     </div>"

@@ -2,6 +2,7 @@
 @import "../elements/helpers";
 
 $description-cutout: 150px;
+$three-count-extra: 216px;
 $space-between-description-and-header: 26px;
 $image-width: 554px;
 $image-offset: 30px;
@@ -51,6 +52,7 @@ $image-offset: 30px;
     font-weight: 400;
     font-size: 24px;
     line-height: 1;
+    width: 90%;
     margin: 0 0 8px 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -64,24 +66,52 @@ $image-offset: 30px;
     justify-content: flex-end;
     padding: 0 24px
       ($space-between-description-and-header + $description-cutout) 0px;
+
+    &--count-3 {
+      padding-bottom: $space-between-description-and-header +
+        $description-cutout + $three-count-extra;
+    }
+  }
+
+  &__header-images {
+    width: $image-width;
+    margin-right: -$image-offset;
+
+    &--count-2 {
+      width: 470px;
+    }
+
+    &--count-3 {
+      width: 436px;
+    }
   }
 
   &__primary-image {
     height: 570px;
-    width: $image-width;
-    margin-right: -$image-offset;
+    width: 100%;
     object-fit: cover;
 
-    &--1--count-2,
-    &--1--count-3 {
-      width: 470px;
+    &--1--count-2 {
       height: 590px;
+    }
+
+    &--1--count-3 {
+      height: 490px;
+      margin-bottom: 16px;
     }
 
     &--2 {
       height: 270px;
       width: 100%;
       margin-bottom: 20px;
+    }
+
+    &--2--count-3 {
+      height: 300px;
+    }
+
+    &--3 {
+      height: 310px;
     }
   }
 
@@ -91,9 +121,12 @@ $image-offset: 30px;
     transform: translate(50%, 50%);
     position: absolute;
 
-    &--count-2,
-    &--count-3 {
+    &--count-2 {
       top: 48%;
+    }
+
+    &--count-3 {
+      top: 38%;
     }
   }
 
@@ -107,7 +140,11 @@ $image-offset: 30px;
 
     &--count-2,
     &--count-3 {
-      width: 30%;
+      width: 28%;
+    }
+
+    &--count-3 {
+      height: $description-cutout + $three-count-extra;
     }
   }
 
@@ -128,6 +165,10 @@ $image-offset: 30px;
     position: relative;
     z-index: 1;
     display: flex;
+
+    &--count-3 {
+      margin-top: -$description-cutout - $three-count-extra;
+    }
   }
 
   &__description {

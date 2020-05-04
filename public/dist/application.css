@@ -1682,7 +1682,8 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
-    object-fit: cover; }
+    object-fit: cover;
+    min-height: 360px; }
   .list-element__subtitle {
     font-size: 20px;
     font-weight: normal;
@@ -1989,6 +1990,7 @@ body {
     font-weight: 400;
     font-size: 24px;
     line-height: 1;
+    width: 90%;
     margin: 0 0 8px 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; }
@@ -1999,25 +2001,41 @@ body {
     flex-direction: column;
     justify-content: flex-end;
     padding: 0 24px 176px 0px; }
+    .recipe__header-content--count-3 {
+      padding-bottom: 392px; }
+  .recipe__header-images {
+    width: 554px;
+    margin-right: -30px; }
+    .recipe__header-images--count-2 {
+      width: 470px; }
+    .recipe__header-images--count-3 {
+      width: 436px; }
   .recipe__primary-image {
     height: 570px;
-    width: 554px;
-    margin-right: -30px;
+    width: 100%;
     object-fit: cover; }
-    .recipe__primary-image--1--count-2, .recipe__primary-image--1--count-3 {
-      width: 470px;
+    .recipe__primary-image--1--count-2 {
       height: 590px; }
+    .recipe__primary-image--1--count-3 {
+      height: 490px;
+      margin-bottom: 16px; }
     .recipe__primary-image--2 {
       height: 270px;
       width: 100%;
       margin-bottom: 20px; }
+    .recipe__primary-image--2--count-3 {
+      height: 300px; }
+    .recipe__primary-image--3 {
+      height: 310px; }
   .recipe__display-number {
     top: 16%;
     right: 0px;
     transform: translate(50%, 50%);
     position: absolute; }
-    .recipe__display-number--count-2, .recipe__display-number--count-3 {
+    .recipe__display-number--count-2 {
       top: 48%; }
+    .recipe__display-number--count-3 {
+      top: 38%; }
   .recipe__cutout {
     background-color: transparent;
     width: 42%;
@@ -2026,7 +2044,9 @@ body {
     box-sizing: content-box;
     padding-left: 24px; }
     .recipe__cutout--count-2, .recipe__cutout--count-3 {
-      width: 30%; }
+      width: 28%; }
+    .recipe__cutout--count-3 {
+      height: 366px; }
   .recipe__tag-icons {
     margin-top: 8px;
     display: flex;
@@ -2040,6 +2060,8 @@ body {
     position: relative;
     z-index: 1;
     display: flex; }
+    .recipe__primary--count-3 {
+      margin-top: -366px; }
   .recipe__description {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -2203,6 +2225,9 @@ body {
 
 .component__list-item:hover .list-element__details {
   opacity: 1; }
+
+.component__list-item img {
+  min-height: 0; }
 
 .component__cutout {
   background-color: transparent;

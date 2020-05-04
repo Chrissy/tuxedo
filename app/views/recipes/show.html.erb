@@ -1,4 +1,4 @@
-<% images = [@recipe.image_with_backup, @recipe.image2, @recipe.image3] - [""] %>
+<% images = [@recipe.image_with_backup, @recipe.image2, @recipe.image3] - ["", nil] %>
 <% image_count = images.count %>
 <% cache(cache_key(@recipe, "show")) do %>
   <div itemscope itemtype="http://schema.org/Recipe" class="recipe">
@@ -10,9 +10,9 @@
     </div>
     <div class="recipe__content">
       <div class="recipe__header">
-        <div class="recipe__header-content" href="<%= @recipe.url %>">
+        <div class="recipe__header-content recipe__header-content--count-<%= image_count %>" href="<%= @recipe.url %>">
           <% if image_count >= 2 %>
-            <%= list_image(@recipe, "recipe__primary-image recipe__primary-image--2", :image2) %>
+            <%= list_image(@recipe, "recipe__primary-image recipe__primary-image--2 recipe__primary-image--2--count-#{image_count}", :image2) %>
           <% end %>
           <h1 class="recipe__header-title" itemprop="name">
             <a href="<%= @recipe.url %>">
@@ -29,9 +29,14 @@
           </div>
           <%= display_number_with_fallback(@recipe, "recipe__display-number recipe__display-number--count-#{image_count}") %>
         </div>
-        <%= header_image(@recipe, "recipe__primary-image recipe__primary-image--1 recipe__primary-image--1--count-#{image_count}") %>
+        <div class="recipe__header-images recipe__header-images--count-<%= image_count %>">
+          <%= header_image(@recipe, "recipe__primary-image recipe__primary-image--1 recipe__primary-image--1--count-#{image_count}") %>
+          <% if image_count >= 3 %>
+            <%= list_image(@recipe, "recipe__primary-image recipe__primary-image--3", :image3) %>
+          <% end %>
+        </div>
       </div>
-      <div class="recipe__primary" itemprop="description">
+      <div class="recipe__primary recipe__primary--count-<%= image_count%>" itemprop="description">
         <div class="recipe__description">
           <div class="recipe__cutout recipe__cutout--count-<%= image_count %>"></div>
           <div><%= @recipe.description_to_html %></div>

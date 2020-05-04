@@ -139,6 +139,10 @@ $space-between-description-and-header: 6px;
     &:hover .list-element__details {
       opacity: 1;
     }
+
+    img {
+      min-height: 0;
+    }
   }
 
   &__cutout {
