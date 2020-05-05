@@ -277,8 +277,18 @@ $space-between-description-and-header: 6px;
       border-bottom: 1px solid #000;
     }
 
-    &--selected {
+    &.selected {
       font-weight: 600;
+
+      .component__radio-button--selected,
+      .component__checkbox--selected {
+        display: inherit;
+      }
+
+      .component__radio-button--unselected,
+      .component__checkbox--unselected {
+        display: none;
+      }
     }
   }
 
@@ -287,6 +297,14 @@ $space-between-description-and-header: 6px;
     height: 12px;
     width: 18px;
     margin-right: 6px;
+
+    &--selected {
+      display: none;
+    }
+
+    &--unselected {
+      display: inherit;
+    }
   }
 
   &__filter-control {

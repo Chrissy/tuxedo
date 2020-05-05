@@ -1,17 +1,16 @@
 import { createPopper } from "@popperjs/core";
-import { debounce } from "throttle-debounce";
 
 export default class Tooltip {
   constructor({
     /* the target to watch for events from */
     target,
     /* a string of html to dump into the tooltip */
-    html
+    html,
   }) {
     Object.assign(this, {
       target,
       html,
-      tooltipOpen: false
+      tooltipOpen: false,
     });
 
     this.wrapper = document.createElement("div");
@@ -27,7 +26,7 @@ export default class Tooltip {
     this.wrapper.innerHTML = this.html;
     this.popper = createPopper(this.target, this.wrapper, {
       placement: "top",
-      modifiers: [{ name: "offset", options: { offset: [0, 10] } }]
+      modifiers: [{ name: "offset", options: { offset: [0, 10] } }],
     });
     this.wrapper.style.display = "block";
     this.target.removeEventListener("mouseenter", this.onMouseEnter);
@@ -45,13 +44,13 @@ export default class Tooltip {
   }
 
   listenForMouseEnter() {
-    this.target.addEventListener("mouseenter", event =>
+    this.target.addEventListener("mouseenter", (event) =>
       this.onMouseEnter(event)
     );
   }
 
   listenForMouseLeave() {
-    this.target.addEventListener("mouseleave", event =>
+    this.target.addEventListener("mouseleave", (event) =>
       this.onMouseLeave(event)
     );
   }

@@ -2332,13 +2332,23 @@ body {
   text-transform: capitalize; }
   .component__filter:not(:last-child) {
     border-bottom: 1px solid #000; }
-  .component__filter--selected {
+  .component__filter.selected {
     font-weight: 600; }
+    .component__filter.selected .component__radio-button--selected,
+    .component__filter.selected .component__checkbox--selected {
+      display: inherit; }
+    .component__filter.selected .component__radio-button--unselected,
+    .component__filter.selected .component__checkbox--unselected {
+      display: none; }
 
 .component__radio-button, .component__checkbox {
   height: 12px;
   width: 18px;
   margin-right: 6px; }
+  .component__radio-button--selected, .component__checkbox--selected {
+    display: none; }
+  .component__radio-button--unselected, .component__checkbox--unselected {
+    display: inherit; }
 
 .component__filter-control {
   display: flex;
