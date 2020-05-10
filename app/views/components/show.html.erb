@@ -37,99 +37,90 @@
             <h2 class="component__header-subtitle">
               <%= @component.subtitle %>
             </h2>
+            <%= render 'varieties_card', version: 'mobile' unless @component.subcomponents.count <= 0 %>
+          </div>
+        </div>
+        <div class="component__content">
+          <div class="component__description">
+            <div class="component__cutout"></div>
+            <div><%= @component.description_to_html %></div>
           </div>
         </div>
         <div class="component__sidebar">
-          <% if @component.subcomponents.count > 0 %>
-            <div class="card card--list component__varieties">
-              <div class="label card__label">Varieties</div>
-              <% @component.subcomponents.reverse.each_with_index do |subcomponent, index| %>
-                <a class="component__variety" href="#<%= slugify(subcomponent.name) %>%">
-                  <span class="component__variety-number"><%= index + 1 %></span>
-                  <span class="component__variety-name"><%= subcomponent.name %>
-                  </a>
-                <% end %>
-              </div>
-            <% end %>
-            <% if substitutes.present? %>
-              <div class="card card--list component__substitutes">
-                <div class="label card__label">Substitutions</div>
-                <%=  substitutes %>
-              </div>
-            <% end %>
-            <div class="card card--list component__classics">
-              <div class="label card__label">Classics</div>
-              <% classics.each do |classic| %>
-                <%= render 'shared/index_item', element: classic, image_first: true, class_name: "component__index-element" %>
-              <% end %>
+          <%= render 'varieties_card', version: 'desktop' unless @component.subcomponents.count <= 0 %>
+          <% if substitutes.present? %>
+            <div class="card card--list component__substitutes">
+              <div class="label card__label">Substitutions</div>
+              <%=  substitutes %>
             </div>
-            <%= render 'shared/mail_card' %>
+          <% end %>
+          <div class="card card--list component__classics">
+            <div class="label card__label">Classics</div>
+            <% classics.each do |classic| %>
+              <%= render 'shared/index_item', element: classic, image_first: true, class_name: "component__index-element" %>
+            <% end %>
           </div>
-          <div class="component__content">
-            <div class="component__description">
-              <div class="component__cutout"></div>
-              <div><%= @component.description_to_html %></div>
-            </div>
-          </div>
+          <%= render 'shared/mail_card' %>
         </div>
-        <div>
-          <div class="label label--center component__recent-additions-label">Recent Additions</div>
-          <div class="component__recent-additions">
-            <%= render partial: 'lists/list_element', collection: latest, as: :element if latest %>
-          </div>
-          <a class="component__recent-additions-show-more button">Show More</a>
+      </div>
+      <div>
+        <div class="label label--center component__recent-additions-label">Recent Additions</div>
+        <div class="component__recent-additions">
+          <%= render partial: 'lists/list_element', collection: latest, as: :element if latest %>
         </div>
-      <% end %>
-      <% if @component.all_elements.count > 6 %>
-        <div class="component__all" data-filterable-table>
-          <div class="component__all-sidebar">
-            <div class="card card--list">
-              <div class="label component__all-sidebar-filter-label">Varieties</div>
-              <a href="#" class="component__filter component__filter selected component__filter--radio" data-filter-by="default">
+        <a class="component__recent-additions-show-more button">Show More</a>
+      </div>
+    <% end %>
+    <% if @component.all_elements.count > 6 %>
+      <div class="component__all" data-filterable-table>
+        <div class="component__all-sidebar">
+          <div class="card card--list">
+            <div class="label component__all-sidebar-filter-label">Varieties</div>
+            <a href="#" class="component__filter component__filter selected component__filter--radio" data-filter-by="default">
+              <span class="component__filter-control">
+                <%= render 'shared/svg', id: "radio-selected", className: "component__radio-button component__radio-button--selected" %>
+                <%= render 'shared/svg', id: "radio-unselected", className: "component__radio-button component__radio-button--unselected" %>
+                All
+              </span>
+              <span><%= @component.all_elements.count %></span>
+            </a>
+            <% @component.subcomponents.reverse.each do |subcomponent| %>
+              <a href="#" class="component__filter component__filter--radio" data-filter-by="<%= subcomponent.name %>">
                 <span class="component__filter-control">
-                  <%= render 'shared/svg', id: "radio-selected", className: "component__radio-button component__radio-button--selected" %>
                   <%= render 'shared/svg', id: "radio-unselected", className: "component__radio-button component__radio-button--unselected" %>
-                  All
+                  <%= render 'shared/svg', id: "radio-selected", className: "component__radio-button component__radio-button--selected" %>
+                  <%= subcomponent.name %>
                 </span>
-                <span><%= @component.all_elements.count %></span>
+                <span><%= subcomponent.list_elements.count %></span>
               </a>
-              <% @component.subcomponents.reverse.each do |subcomponent| %>
-                <a href="#" class="component__filter component__filter--radio" data-filter-by="<%= subcomponent.name %>">
-                  <span class="component__filter-control">
-                    <%= render 'shared/svg', id: "radio-unselected", className: "component__radio-button component__radio-button--unselected" %>
-                    <%= render 'shared/svg', id: "radio-selected", className: "component__radio-button component__radio-button--selected" %>
-                    <%= subcomponent.name %>
-                  </span>
-                  <span><%= subcomponent.list_elements.count %></span>
-                </a>
-              <% end %>
-            </div>
-            <div class="card card--list">
-              <div class="label component__all-sidebar-filter-label">Combinations</div>
-              <% @component.common_pairings(5).each do |pairing| %>
-                <a href="#" class="component__filter component__filter--radio" data-filter-by-many="<%= pairing[:component].name %>">
-                  <span class="component__filter-control">
-                    <%= render 'shared/svg', id: "checkbox-unselected", className: "component__checkbox component__checkbox--unselected" %>
-                    <%= render 'shared/svg', id: "checkbox-selected", className: "component__checkbox component__checkbox--selected" %>
-                    <%= pairing[:component].name %>
-                  </span>
-                  <span><%= pairing[:count] %></span>
-                </a>
-              <% end %>
-            </div>
+            <% end %>
           </div>
-          <div class="component__all-recipes">
-            <div class="label label--center component__all-recipes-label">All Recipes</div>
-            <div class="grid grid--half-gap">
-              <% @component.all_elements.uniq.sort_by(&:name).each do |recipe| %>
-                <div data-ingredients="<%= recipe.components.map(&:name).join(',') %>">
-                  <%= render 'shared/index_item', element: recipe, class_name: "component__index-element", index_for_filtering: true %>
-                </div>
-              <% end %>
-            </div>
+          <div class="card card--list">
+            <div class="label component__all-sidebar-filter-label">Combinations</div>
+            <% @component.common_pairings(5).each do |pairing| %>
+              <a href="#" class="component__filter component__filter--radio" data-filter-by-many="<%= pairing[:component].name %>">
+                <span class="component__filter-control">
+                  <%= render 'shared/svg', id: "checkbox-unselected", className: "component__checkbox component__checkbox--unselected" %>
+                  <%= render 'shared/svg', id: "checkbox-selected", className: "component__checkbox component__checkbox--selected" %>
+                  <%= pairing[:component].name %>
+                </span>
+                <span><%= pairing[:count] %></span>
+              </a>
+            <% end %>
           </div>
         </div>
-      <% end %>
-    </div>
-    <%= render 'footer', :component => @component %>
-  <% end %>
+        <div class="component__all-recipes">
+          <div class="label label--center component__all-recipes-label">All Recipes</div>
+          <div class="grid grid--half-gap">
+            <% @component.all_elements.uniq.sort_by(&:name).each do |recipe| %>
+              <div data-ingredients="<%= recipe.components.map(&:name).join(',') %>">
+                <%= render 'shared/index_item', element: recipe, class_name: "component__index-element", index_for_filtering: true %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= render 'footer', :component => @component %>
+<% end %>

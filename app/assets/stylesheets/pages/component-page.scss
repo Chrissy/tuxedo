@@ -47,8 +47,20 @@ $breakpoint: 900px;
     margin-top: 80px;
     font-size: 18px;
 
+    @media (max-width: $breakpoint) {
+      display: none;
+    }
+
     .card__label {
       margin-bottom: 20px;
+    }
+
+    &--mobile {
+      display: none;
+
+      @media (max-width: $breakpoint) {
+        display: block;
+      }
     }
   }
 

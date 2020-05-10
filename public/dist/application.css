@@ -2160,8 +2160,16 @@ body {
 .component__varieties {
   margin-top: 80px;
   font-size: 18px; }
+  @media (max-width: 900px) {
+    .component__varieties {
+      display: none; } }
   .component__varieties .card__label {
     margin-bottom: 20px; }
+  .component__varieties--mobile {
+    display: none; }
+    @media (max-width: 900px) {
+      .component__varieties--mobile {
+        display: block; } }
 
 .component__variety {
   margin-bottom: 10px;
