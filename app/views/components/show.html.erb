@@ -72,7 +72,20 @@
       </div>
     <% end %>
     <% if @component.all_elements.count > 6 %>
-      <div class="component__all" data-filterable-table>
+      <div class="component__all component__all--mobile" data-filterable-table>
+        <div class="component__all-mobile-menu">
+          <div class="component__all-mobile-menu-tabs">
+            <a href="#" class="component__filter component__filter selected component__filter--radio" data-filter-by="default">
+              <span class="component__filter-control">All</span>
+            </a>
+            <% @component.subcomponents.sort_by{ |c| c.list_elements.count }.reverse[0..2].each do |subcomponent| %>
+              <a href="#" class="component__filter component__filter--radio" data-filter-by="<%= subcomponent.name %>">
+                <span class="component__filter-control"><%= subcomponent.name %></span>
+              </a>
+            <% end %>
+          </div>
+          <div class="button component__all-filter-button">Filter</div>
+        </div>
         <div class="component__all-sidebar">
           <div class="card card--list">
             <div class="label component__all-sidebar-filter-label">Varieties</div>

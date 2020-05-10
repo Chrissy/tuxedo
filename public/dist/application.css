@@ -2384,12 +2384,40 @@ body {
   .component__all .index-element__subtext {
     font-size: 16px; }
 
+@media (max-width: 900px) {
+  .component__all-sidebar {
+    display: none; } }
+
 .component__all-sidebar .card {
   padding: 0;
   margin-bottom: 3em; }
 
+.component__all-filter-button {
+  padding: 4px 10px;
+  margin: 10px 0; }
+
+.component__all-mobile-menu-tabs {
+  display: flex;
+  overflow: scroll;
+  flex: 1;
+  margin-right: 16px; }
+
+.component__all-mobile-menu {
+  display: none;
+  font-family: "mr-eaves";
+  font-size: 17px;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+  margin-bottom: 40px; }
+  @media (max-width: 900px) {
+    .component__all-mobile-menu {
+      display: flex; } }
+
 .component__all-recipes-label {
   margin-bottom: 2em; }
+  @media (max-width: 900px) {
+    .component__all-recipes-label {
+      display: none; } }
 
 .component__all-sidebar-filter-label {
   margin-bottom: 1em; }
@@ -2401,8 +2429,15 @@ body {
   align-items: center;
   padding: 0.5em 0;
   text-transform: capitalize; }
+  @media (max-width: 900px) {
+    .component__filter {
+      white-space: nowrap;
+      margin-right: 10px; } }
   .component__filter:not(:last-child) {
     border-bottom: 1px solid #000; }
+    @media (max-width: 900px) {
+      .component__filter:not(:last-child) {
+        border-bottom: none; } }
   .component__filter.selected {
     font-weight: 600; }
     .component__filter.selected .component__radio-button--selected,
@@ -2411,6 +2446,9 @@ body {
     .component__filter.selected .component__radio-button--unselected,
     .component__filter.selected .component__checkbox--unselected {
       display: none; }
+    @media (max-width: 900px) {
+      .component__filter.selected {
+        border-bottom: 3px solid #000; } }
 
 .component__radio-button, .component__checkbox {
   height: 12px;

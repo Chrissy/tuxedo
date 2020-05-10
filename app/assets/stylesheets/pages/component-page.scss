@@ -334,14 +334,47 @@ $breakpoint: 900px;
   }
 
   &__all-sidebar {
+    @media (max-width: $breakpoint) {
+      display: none;
+    }
+
     .card {
       padding: 0;
       margin-bottom: 3em;
     }
   }
 
+  &__all-filter-button {
+    padding: 4px 10px;
+    margin: 10px 0;
+  }
+
+  &__all-mobile-menu-tabs {
+    display: flex;
+    overflow: scroll;
+    flex: 1;
+    margin-right: 16px;
+  }
+
+  &__all-mobile-menu {
+    display: none;
+    font-family: "mr-eaves";
+    font-size: 17px;
+    justify-content: space-between;
+    border-bottom: 1px solid #000;
+    margin-bottom: 40px;
+
+    @media (max-width: $breakpoint) {
+      display: flex;
+    }
+  }
+
   &__all-recipes-label {
     margin-bottom: 2em;
+
+    @media (max-width: $breakpoint) {
+      display: none;
+    }
   }
 
   &__all-sidebar-filter-label {
@@ -356,8 +389,17 @@ $breakpoint: 900px;
     padding: 0.5em 0;
     text-transform: capitalize;
 
+    @media (max-width: $breakpoint) {
+      white-space: nowrap;
+      margin-right: 10px;
+    }
+
     &:not(:last-child) {
       border-bottom: 1px solid #000;
+
+      @media (max-width: $breakpoint) {
+        border-bottom: none;
+      }
     }
 
     &.selected {
@@ -371,6 +413,10 @@ $breakpoint: 900px;
       .component__radio-button--unselected,
       .component__checkbox--unselected {
         display: none;
+      }
+
+      @media (max-width: $breakpoint) {
+        border-bottom: 3px solid #000;
       }
     }
   }
