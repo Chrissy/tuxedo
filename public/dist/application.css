@@ -2155,7 +2155,8 @@ body {
     font-size: 17px; }
     @media (max-width: 900px) {
       .component__sidebar .card {
-        margin-top: 20px; } }
+        padding: 20px 16px;
+        margin: 0; } }
 
 .component__varieties {
   margin-top: 80px;
@@ -2166,7 +2167,8 @@ body {
   .component__varieties .card__label {
     margin-bottom: 20px; }
   .component__varieties--mobile {
-    display: none; }
+    display: none;
+    margin-top: 20px; }
     @media (max-width: 900px) {
       .component__varieties--mobile {
         display: block; } }
@@ -2202,6 +2204,9 @@ body {
 .component__content {
   flex: 1;
   grid-area: content; }
+  @media (max-width: 900px) {
+    .component__content {
+      margin: 0 16px; } }
 
 .component__header {
   grid-area: header;
@@ -2324,9 +2329,13 @@ body {
       letter-spacing: 0.075em;
       font-size: 9px;
       transform: translate(20px, -50%); }
-  .component__description em {
-    font-weight: normal;
-    font-style: normal; }
+    .component__description .recommended-bottles em {
+      font-weight: normal;
+      font-style: normal; }
+    @media (max-width: 900px) {
+      .component__description .recommended-bottles {
+        font-size: 15px;
+        margin-top: 0.5em; } }
 
 .component__description::first-letter {
   color: #000;
@@ -2346,13 +2355,17 @@ body {
   margin-bottom: 1em; }
   @media (max-width: 700px) {
     .component__recent-additions {
-      grid-template-columns: 1fr; } }
+      grid-template-columns: 1fr;
+      margin: 0 16px 20px 16px; } }
   .component__recent-additions--extra-margin {
     margin-bottom: 60px; }
 
 .component__recent-additions-label {
   margin-top: 6em;
   margin-bottom: 3em; }
+  @media (max-width: 700px) {
+    .component__recent-additions-label {
+      padding: 20px 16px 0 16px; } }
 
 .component__recent-additions-show-more {
   margin: 0 0 8em 50%;
@@ -2366,7 +2379,8 @@ body {
   margin-bottom: 6em; }
   @media (max-width: 900px) {
     .component__all {
-      display: block; } }
+      display: block;
+      margin: 0 16px; } }
   .component__all .index-element__subtext {
     font-size: 16px; }
 

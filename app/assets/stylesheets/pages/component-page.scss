@@ -38,7 +38,8 @@ $breakpoint: 900px;
       font-size: 17px;
 
       @media (max-width: $breakpoint) {
-        margin-top: 20px;
+        padding: 20px 16px;
+        margin: 0;
       }
     }
   }
@@ -57,6 +58,7 @@ $breakpoint: 900px;
 
     &--mobile {
       display: none;
+      margin-top: 20px;
 
       @media (max-width: $breakpoint) {
         display: block;
@@ -102,6 +104,10 @@ $breakpoint: 900px;
   &__content {
     flex: 1;
     grid-area: content;
+
+    @media (max-width: $breakpoint) {
+      margin: 0 16px;
+    }
   }
 
   &__header {
@@ -255,11 +261,16 @@ $breakpoint: 900px;
         font-size: 9px;
         transform: translate(20px, -50%);
       }
-    }
 
-    em {
-      font-weight: normal;
-      font-style: normal;
+      em {
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @media (max-width: $breakpoint) {
+        font-size: 15px;
+        margin-top: 0.5em;
+      }
     }
   }
 
@@ -283,6 +294,7 @@ $breakpoint: 900px;
 
     @media (max-width: 700px) {
       grid-template-columns: 1fr;
+      margin: 0 16px 20px 16px;
     }
 
     &--extra-margin {
@@ -293,6 +305,10 @@ $breakpoint: 900px;
   &__recent-additions-label {
     margin-top: 6em;
     margin-bottom: 3em;
+
+    @media (max-width: 700px) {
+      padding: 20px 16px 0 16px;
+    }
   }
 
   &__recent-additions-show-more {
@@ -309,6 +325,7 @@ $breakpoint: 900px;
 
     @media (max-width: $breakpoint) {
       display: block;
+      margin: 0 16px;
     }
 
     .index-element__subtext {
