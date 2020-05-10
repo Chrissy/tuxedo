@@ -2,7 +2,15 @@
 <% second ||= false %>
 <% display_number ||= false %>
 <% class_name ||= '' %>
-<a href="<%= element.url %>" class='list-element <%= 'list-element--first' if first %> <%= 'list-element--second' if second %> <%= class_name %>' itemprop="itemListElement" itemscope itemtype="http://schema.org/Recipe">
+<% carousel_index ||= false %>
+<a 
+  href="<%= element.url %>" 
+  class='list-element <%= 'list-element--first' if first %> <%= 'list-element--second' if second %> <%= class_name %>' 
+  itemprop="itemListElement" 
+  itemscope 
+  itemtype="http://schema.org/Recipe"
+  <%= "data-carousel-index=#{carousel_index}" unless !carousel_index %>
+>
   <div class="list-element__image-link <%= 'list-element__image-link--hero' if first %>">
     <%= display_number_with_fallback(element, "list-element__display-number") if display_number %>
     <%= first ? header_image(element, "list-element__img", true) : list_image(element, "list-element__img") %>

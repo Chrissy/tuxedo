@@ -1,0 +1,12 @@
+.carousel {
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 20px;
+
+  img {
+    width: 100vw;
+    display: block;
+    height: 55vh;
+    object-fit: cover;
+  }
+}

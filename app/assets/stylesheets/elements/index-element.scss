@@ -67,15 +67,3 @@ $image-size: 42px;
 .admin-controls {
   margin-top: 0.25em;
 }
-
-@media (max-width: 900px) {
-  .index-element {
-    width: 46%;
-  }
-}
-
-@media (max-width: 600px) {
-  .index-element {
-    width: 98%;
-  }
-}
