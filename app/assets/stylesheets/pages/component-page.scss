@@ -9,27 +9,37 @@ $breakpoint: 900px;
   @extend .centered-content-box-large;
 
   &__primary {
-    display: flex;
+    display: grid;
+    grid-template-areas:
+      "sidebar header"
+      "sidebar content";
+    grid-template-columns: 0.33fr 0.66fr;
+    grid-column-gap: 40px;
 
     @media (max-width: $breakpoint) {
+      display: flex;
       flex-direction: column;
       width: 100%;
     }
   }
 
   &__sidebar {
-    width: calc(33% + 40px);
-    padding-right: 40px;
     margin-top: 130px;
     margin-bottom: 40px;
+    grid-area: sidebar;
 
     @media (max-width: $breakpoint) {
       width: 100%;
+      margin: 0;
     }
 
     .card {
       margin-top: 40px;
       font-size: 17px;
+
+      @media (max-width: $breakpoint) {
+        margin-top: 20px;
+      }
     }
   }
 
@@ -79,9 +89,11 @@ $breakpoint: 900px;
 
   &__content {
     flex: 1;
+    grid-area: content;
   }
 
   &__header {
+    grid-area: header;
     color: $text-color-dark;
   }
 
@@ -90,6 +102,10 @@ $breakpoint: 900px;
     line-height: 60px;
     margin: 0;
     text-transform: capitalize;
+
+    @media (max-width: $breakpoint) {
+      margin: 0 16px;
+    }
 
     &--center {
       text-align: center;
@@ -110,6 +126,10 @@ $breakpoint: 900px;
     margin: 0 0 8px 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    @media (max-width: $breakpoint) {
+      margin: 0 16px;
+    }
   }
 
   &__header-content {
@@ -249,11 +269,7 @@ $breakpoint: 900px;
     min-height: 340px;
     margin-bottom: 1em;
 
-    @media (max-width: 1100px) {
-      grid-template-columns: 0.66fr 0.66fr;
-    }
-
-    @media (max-width: $breakpoint) {
+    @media (max-width: 700px) {
       grid-template-columns: 1fr;
     }
 

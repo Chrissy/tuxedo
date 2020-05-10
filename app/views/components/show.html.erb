@@ -16,6 +16,29 @@
       </div>
     <% else %>
       <div class="component__primary">
+        <div class="component__header">
+          <div class="component__header-images component__header-images--<%= featured.count %>">
+            <% featured.each_with_index do |recipe, index| %>
+              <%= 
+                    render '/lists/list_element', 
+                    element: recipe, 
+                    class_name: "component__list-item component__list-item--#{index + 1}", 
+                    carousel_index: index 
+                  %>
+            <% end %>
+          </div>
+          <div class="component__header-content">
+            <h1 class="component__header-title" itemprop="name">
+              <a href="<%= @component.url %>">
+                <%= @component.name %>
+              </a>
+              <%= render 'shared/pseudonyms' if @component.try(:pseudonyms_as_markdown).present? %>
+            </h1>
+            <h2 class="component__header-subtitle">
+              <%= @component.subtitle %>
+            </h2>
+          </div>
+        </div>
         <div class="component__sidebar">
           <% if @component.subcomponents.count > 0 %>
             <div class="card card--list component__varieties">
@@ -43,34 +66,9 @@
             <%= render 'shared/mail_card' %>
           </div>
           <div class="component__content">
-            <div class="component__header">
-              <div class="component__header-images component__header-images--<%= featured.count %>">
-                <% featured.each_with_index do |recipe, index| %>
-                  <%= 
-                    render '/lists/list_element', 
-                    element: recipe, 
-                    class_name: "component__list-item component__list-item--#{index + 1}", 
-                    carousel_index: index 
-                  %>
-                <% end %>
-              </div>
-              <div class="component__header-content">
-                <h1 class="component__header-title" itemprop="name">
-                  <a href="<%= @component.url %>">
-                    <%= @component.name %>
-                  </a>
-                  <%= render 'shared/pseudonyms' if @component.try(:pseudonyms_as_markdown).present? %>
-                </h1>
-                <h2 class="component__header-subtitle">
-                  <%= @component.subtitle %>
-                </h2>
-              </div>
-            </div>
-            <div class="component__primary">
-              <div class="component__description">
-                <div class="component__cutout"></div>
-                <div><%= @component.description_to_html %></div>
-              </div>
+            <div class="component__description">
+              <div class="component__cutout"></div>
+              <div><%= @component.description_to_html %></div>
             </div>
           </div>
         </div>
