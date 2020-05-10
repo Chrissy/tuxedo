@@ -1430,6 +1430,11 @@ body {
     display: block;
     height: 55vh;
     object-fit: cover; }
+  .carousel .component__list-item .list-element__details {
+    opacity: 0.8;
+    bottom: auto;
+    top: 0;
+    text-align: right; }
 
 @keyframes tooltip-fade-in {
   0% {
