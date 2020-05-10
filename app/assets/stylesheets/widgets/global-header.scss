@@ -29,11 +29,9 @@ $breakpoint: 900px;
 
   &__search-wrapper {
     position: relative;
-    width: $search-width;
-
-    @media (max-width: $breakpoint) {
-      width: $mobile-search-width;
-    }
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
   }
 
   &__search-icon {
@@ -67,6 +65,11 @@ $breakpoint: 900px;
 
     @media (max-width: $breakpoint) {
       width: $mobile-search-width;
+
+      &:focus {
+        width: 100%;
+        z-index: 10;
+      }
     }
   }
 
@@ -128,5 +131,22 @@ $breakpoint: 900px;
   .autocomplete-container {
     left: 12px;
     width: calc(100% - 24px);
+  }
+
+  &--search-focus {
+    .global-header__logo {
+      display: none;
+    }
+
+    .global-header__secondary-content {
+      flex: 1;
+      justify-content: flex-end;
+    }
+
+    .global-header__search-input,
+    .global-header__search-wrapper,
+    .autocomplete-wrapper {
+      width: 100%;
+    }
   }
 }

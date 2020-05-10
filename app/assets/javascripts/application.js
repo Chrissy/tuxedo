@@ -24,6 +24,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  const searchInput = document.querySelector(".global-header__search-input");
+  const header = document.querySelector(".global-header");
+
+  searchInput.addEventListener("focus", () => {
+    header.classList.add("global-header--search-focus");
+
+    searchInput.addEventListener("blur", () => {
+      header.classList.remove("global-header--search-focus");
+    });
+  });
+
   const imagesForCarousel = document.querySelectorAll("[data-carousel-index]");
   if (imagesForCarousel.length) new Carousel([...imagesForCarousel]);
 });

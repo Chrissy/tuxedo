@@ -237,16 +237,19 @@ export default class Autocomplete {
       }
     });
 
-    if (this.showResultsOnFocus) {
-      this.input.addEventListener("focus", (event) => {
+    this.input.addEventListener("focus", (event) => {
+      this.wrapper.classList.add("focused");
+
+      if (this.showResultsOnFocus) {
         this.results = this.getDefaultOptions();
         this.isOpen = true;
         this.render();
-      });
-    }
+      }
+    });
 
     this.input.addEventListener("blur", (event) => {
       if (!this.isOpen) return;
+      this.wrapper.classList.remove("focused");
 
       if (event.relatedTarget && !this.keepOpenUntilBlur) {
         const listElementId = event.relatedTarget.getAttribute(
