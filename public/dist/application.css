@@ -1810,6 +1810,9 @@ body {
   .global-header__search-wrapper {
     position: relative;
     width: 300px; }
+    @media (max-width: 900px) {
+      .global-header__search-wrapper {
+        width: 120px; } }
   .global-header__search-icon {
     width: 14px;
     height: 14px;
@@ -1834,13 +1837,49 @@ body {
       outline: 0;
       border: 1px solid #000;
       background-color: #ccc; }
+    @media (max-width: 900px) {
+      .global-header__search-input {
+        width: 120px; } }
   .global-header__links {
-    margin-right: 14px; }
+    margin-right: 14px;
+    display: flex;
+    align-items: center; }
+    @media (max-width: 900px) {
+      .global-header__links {
+        flex-direction: column;
+        position: absolute;
+        width: 100vw;
+        left: 0;
+        top: 100%;
+        background: #f0f0f0;
+        padding: 0 1.5em 1.25em 1em; }
+        .global-header__links.hidden {
+          display: none; } }
   .global-header__link {
     text-decoration: none;
     font-family: "mr-eaves";
-    margin-left: 6px;
+    margin-left: 10px;
     color: #555; }
+    .global-header__link:hover {
+      border-bottom: 3px solid #000;
+      padding-bottom: 2px; }
+    @media (max-width: 900px) {
+      .global-header__link {
+        font-size: 20px;
+        padding: 16px 0 0px 0;
+        width: 100%; } }
+  .global-header__mobile-hamburger-menu {
+    width: 20px;
+    height: 20px;
+    border-radius: 8px;
+    display: none;
+    margin-left: 12px; }
+    @media (max-width: 900px) {
+      .global-header__mobile-hamburger-menu {
+        display: block; } }
+  .global-header__mobile-hamburger-icon {
+    height: 100%;
+    width: auto; }
   .global-header .autocomplete-container {
     left: 12px;
     width: calc(100% - 24px); }

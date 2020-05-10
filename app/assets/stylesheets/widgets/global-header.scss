@@ -1,7 +1,8 @@
 @import "../utilities/colors.scss";
 
 $search-width: 300px;
-$compact-search-width: 300px - 20px;
+$mobile-search-width: 120px;
+$breakpoint: 900px;
 
 .global-header {
   @extend .centered-content-box-large;
@@ -29,6 +30,10 @@ $compact-search-width: 300px - 20px;
   &__search-wrapper {
     position: relative;
     width: $search-width;
+
+    @media (max-width: $breakpoint) {
+      width: $mobile-search-width;
+    }
   }
 
   &__search-icon {
@@ -59,17 +64,65 @@ $compact-search-width: 300px - 20px;
       border: 1px solid #000;
       background-color: $gray-2;
     }
+
+    @media (max-width: $breakpoint) {
+      width: $mobile-search-width;
+    }
   }
 
   &__links {
     margin-right: 14px;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: $breakpoint) {
+      flex-direction: column;
+      position: absolute;
+      width: 100vw;
+      left: 0;
+      top: 100%;
+      background: #f0f0f0;
+      padding: 0 1.5em 1.25em 1em;
+
+      &.hidden {
+        display: none;
+      }
+    }
   }
 
   &__link {
     text-decoration: none;
     font-family: "mr-eaves";
-    margin-left: 6px;
+    margin-left: 10px;
     color: $gray-3;
+
+    &:hover {
+      border-bottom: 3px solid #000;
+      padding-bottom: 2px;
+    }
+
+    @media (max-width: $breakpoint) {
+      font-size: 20px;
+      padding: 16px 0 0px 0;
+      width: 100%;
+    }
+  }
+
+  &__mobile-hamburger-menu {
+    width: 20px;
+    height: 20px;
+    border-radius: 8px;
+    display: none;
+    margin-left: 12px;
+
+    @media (max-width: $breakpoint) {
+      display: block;
+    }
+  }
+
+  &__mobile-hamburger-icon {
+    height: 100%;
+    width: auto;
   }
 
   .autocomplete-container {
