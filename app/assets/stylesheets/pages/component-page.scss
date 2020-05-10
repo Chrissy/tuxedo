@@ -325,7 +325,7 @@ $breakpoint: 900px;
 
     @media (max-width: $breakpoint) {
       display: block;
-      margin: 0 16px;
+      margin: 0 16px 2em 16px;
     }
 
     .index-element__subtext {
@@ -334,8 +334,14 @@ $breakpoint: 900px;
   }
 
   &__all-sidebar {
+    &.hidden {
+      display: block;
+    }
+
     @media (max-width: $breakpoint) {
-      display: none;
+      &.hidden {
+        display: none;
+      }
     }
 
     .card {
@@ -354,19 +360,6 @@ $breakpoint: 900px;
     overflow: scroll;
     flex: 1;
     margin-right: 16px;
-  }
-
-  &__all-mobile-menu {
-    display: none;
-    font-family: "mr-eaves";
-    font-size: 17px;
-    justify-content: space-between;
-    border-bottom: 1px solid #000;
-    margin-bottom: 40px;
-
-    @media (max-width: $breakpoint) {
-      display: flex;
-    }
   }
 
   &__all-recipes-label {
@@ -414,10 +407,23 @@ $breakpoint: 900px;
       .component__checkbox--unselected {
         display: none;
       }
+    }
+  }
 
-      @media (max-width: $breakpoint) {
-        border-bottom: 3px solid #000;
-      }
+  &__all-mobile-menu {
+    display: none;
+    font-family: "mr-eaves";
+    font-size: 17px;
+    justify-content: space-between;
+    border-bottom: 1px solid #000;
+    margin-bottom: 40px;
+
+    @media (max-width: $breakpoint) {
+      display: flex;
+    }
+
+    &__filter.selected {
+      border-bottom: 3px solid #000;
     }
   }
 

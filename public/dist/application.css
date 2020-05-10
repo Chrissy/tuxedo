@@ -2380,12 +2380,15 @@ body {
   @media (max-width: 900px) {
     .component__all {
       display: block;
-      margin: 0 16px; } }
+      margin: 0 16px 2em 16px; } }
   .component__all .index-element__subtext {
     font-size: 16px; }
 
+.component__all-sidebar.hidden {
+  display: block; }
+
 @media (max-width: 900px) {
-  .component__all-sidebar {
+  .component__all-sidebar.hidden {
     display: none; } }
 
 .component__all-sidebar .card {
@@ -2401,17 +2404,6 @@ body {
   overflow: scroll;
   flex: 1;
   margin-right: 16px; }
-
-.component__all-mobile-menu {
-  display: none;
-  font-family: "mr-eaves";
-  font-size: 17px;
-  justify-content: space-between;
-  border-bottom: 1px solid #000;
-  margin-bottom: 40px; }
-  @media (max-width: 900px) {
-    .component__all-mobile-menu {
-      display: flex; } }
 
 .component__all-recipes-label {
   margin-bottom: 2em; }
@@ -2446,9 +2438,19 @@ body {
     .component__filter.selected .component__radio-button--unselected,
     .component__filter.selected .component__checkbox--unselected {
       display: none; }
-    @media (max-width: 900px) {
-      .component__filter.selected {
-        border-bottom: 3px solid #000; } }
+
+.component__all-mobile-menu {
+  display: none;
+  font-family: "mr-eaves";
+  font-size: 17px;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+  margin-bottom: 40px; }
+  @media (max-width: 900px) {
+    .component__all-mobile-menu {
+      display: flex; } }
+  .component__all-mobile-menu__filter.selected {
+    border-bottom: 3px solid #000; }
 
 .component__radio-button, .component__checkbox {
   height: 12px;

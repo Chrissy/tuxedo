@@ -15,10 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.querySelectorAll("[data-toggle-target]").forEach((element) => {
-    const query = element.getAttribute("data-toggle-target");
-    document
-      .querySelectorAll(query)
-      .forEach((c) => c.classList.toggle("hidden"));
+    element.addEventListener("click", () => {
+      const query = element.getAttribute("data-toggle-target");
+      document
+        .querySelectorAll(query)
+        .forEach((c) => c.classList.toggle("hidden"));
+      element.classList.toggle("active");
+    });
   });
 
   const imagesForCarousel = document.querySelectorAll("[data-carousel-index]");
