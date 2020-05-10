@@ -241,7 +241,8 @@ $space-between-description-and-header: 6px;
 
   &__all {
     display: grid;
-    grid-template-columns: 0.36fr auto;
+    grid-template-columns: 24% auto;
+    min-width: 180px;
     grid-column-gap: 40px;
     margin-bottom: 6em;
 

@@ -82,10 +82,10 @@
           <div class="component__all-sidebar">
             <div class="card card--list">
               <div class="label component__all-sidebar-filter-label">Varieties</div>
-              <a href="#" class="component__filter component__filter selected component__filter--radio" data-can-filter-by-type="all">
+              <a href="#" class="component__filter component__filter selected component__filter--radio" data-filter-by="default">
                 <span class="component__filter-control">
                   <%= render 'shared/svg', id: "radio-selected", className: "component__radio-button component__radio-button--selected" %>
-                  <%= render 'shared/svg', id: "radio-selected", className: "component__radio-button component__radio-button--unselected" %>
+                  <%= render 'shared/svg', id: "radio-unselected", className: "component__radio-button component__radio-button--unselected" %>
                   All
                 </span>
                 <span><%= @component.all_elements.count %></span>

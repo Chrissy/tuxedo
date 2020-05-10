@@ -2307,7 +2307,8 @@ body {
 
 .component__all {
   display: grid;
-  grid-template-columns: 0.36fr auto;
+  grid-template-columns: 24% auto;
+  min-width: 180px;
   grid-column-gap: 40px;
   margin-bottom: 6em; }
   .component__all .index-element__subtext {

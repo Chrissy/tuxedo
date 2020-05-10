@@ -65,13 +65,24 @@ export default class Tooltip {
 
   filter() {
     const masterFilterList = this.filterActions
-      .filter((el) => el.classList.contains("selected"))
+      .filter((el) => {
+        return (
+          el.classList.contains("selected") &&
+          el.getAttribute("data-filter-by") !== "default"
+        );
+      })
       .reduce((a, r) => [...a, ...this.getFilterOptions(r)], []);
 
     this.showAllElements();
 
+    if (
+      !masterFilterList.length ||
+      (!masterFilterList.length === 1 && masterFilterList.includes("default"))
+    )
+      return;
+
     const toHide = this.filterableElements.filter((element) => {
-      return !masterFilterList.some((s) => element.filterOn.includes(s));
+      return !masterFilterList.every((s) => element.filterOn.includes(s));
     });
 
     this.hideElements(toHide.map((el) => el.node));
