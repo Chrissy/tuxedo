@@ -69,8 +69,8 @@ export default class Tooltip {
 
         //fast momentum
         if (deltaTime < 1000) {
-          if (deltaX < (threshold / 2) * -1) return this.moveForward();
-          if (deltaX > threshold / 2) return this.moveBackward();
+          if (deltaX < (threshold / 4) * -1) return this.moveForward();
+          if (deltaX > threshold / 4) return this.moveBackward();
         }
 
         //slow momentum

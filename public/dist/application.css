@@ -1429,7 +1429,7 @@ body {
   .carousel .slider {
     display: flex;
     position: relative;
-    transition: 0.2s transform; }
+    transition: 0.2s transform cubic-bezier(0.33, 1, 0.68, 1); }
   .carousel img {
     width: 100vw;
     display: block;
