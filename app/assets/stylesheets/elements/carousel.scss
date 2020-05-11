@@ -3,11 +3,33 @@
   display: flex;
   margin-bottom: 20px;
   background: #000;
+  position: relative;
 
-  .slider {
+  &__slider {
     display: flex;
     position: relative;
     transition: 0.2s transform cubic-bezier(0.33, 1, 0.68, 1);
+  }
+
+  &__dots {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    bottom: 10px;
+    position: absolute;
+  }
+
+  &__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 6px;
+    margin: 0px 3px;
+    background-color: #f0f0f0;
+    opacity: 70%;
+
+    &--selected {
+      opacity: 1;
+    }
   }
 
   img {

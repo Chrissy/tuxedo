@@ -12,6 +12,7 @@ export default class Tooltip {
       primaryImage: null,
       wrapper: null,
       slider: null,
+      dots: null,
       currentIndex: 0,
     });
 
@@ -24,6 +25,7 @@ export default class Tooltip {
     this.currentIndex += 1;
     const transform = this.currentIndex * window.innerWidth;
     this.slider.style.transform = `translateX(-${transform}px)`;
+    this.updateDots();
   }
 
   moveBackward() {
@@ -31,11 +33,19 @@ export default class Tooltip {
     this.currentIndex -= 1;
     const transform = this.currentIndex * window.innerWidth;
     this.slider.style.transform = `translateX(-${transform}px)`;
+    this.updateDots();
   }
 
   cancelMove() {
     const transform = this.currentIndex * window.innerWidth;
     this.slider.style.transform = `translateX(-${transform}px)`;
+    this.updateDots();
+  }
+
+  updateDots() {
+    const dots = this.dots.children;
+    [...dots].forEach((dot) => dot.classList.remove("carousel__dot--selected"));
+    dots[this.currentIndex].classList.add("carousel__dot--selected");
   }
 
   initCarousel(images) {
@@ -43,15 +53,20 @@ export default class Tooltip {
     this.wrapper = document.createElement("div");
     this.wrapper.classList.add("carousel");
     this.slider = document.createElement("div");
-    this.slider.classList.add("slider");
+    this.slider.classList.add("carousel__slider");
+    this.dots = document.createElement("div");
+    this.dots.classList.add("carousel__dots");
+
     this.primaryImage.after(this.wrapper);
     this.wrapper.appendChild(this.slider);
+    this.wrapper.appendChild(this.dots);
+
     this.images.forEach((image, index) => {
       this.slider.appendChild(image);
       const dotNode = document.createElement("div");
       dotNode.classList.add("carousel__dot");
       if (index === 0) dotNode.classList.add("carousel__dot--selected");
-      this.wrapper.appendChild(dotNode);
+      this.dots.appendChild(dotNode);
     });
 
     const hammer = new Hammer(this.wrapper);

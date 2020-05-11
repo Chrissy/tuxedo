@@ -1425,11 +1425,27 @@ body {
   overflow: hidden;
   display: flex;
   margin-bottom: 20px;
-  background: #000; }
-  .carousel .slider {
+  background: #000;
+  position: relative; }
+  .carousel__slider {
     display: flex;
     position: relative;
     transition: 0.2s transform cubic-bezier(0.33, 1, 0.68, 1); }
+  .carousel__dots {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    bottom: 10px;
+    position: absolute; }
+  .carousel__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 6px;
+    margin: 0px 3px;
+    background-color: #f0f0f0;
+    opacity: 70%; }
+    .carousel__dot--selected {
+      opacity: 1; }
   .carousel img {
     width: 100vw;
     display: block;
