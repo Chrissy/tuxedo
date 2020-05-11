@@ -1,4 +1,5 @@
 @import "card";
+$breakpoint: 900px;
 
 .ingredient-card {
   border: 1px solid #000;
@@ -11,6 +12,11 @@
   grid-template-rows: 26px 1fr auto;
   grid-row-gap: 12px;
   grid-column-gap: 12px;
+
+  @media (max-width: $breakpoint) {
+    display: flex;
+    flex-direction: column;
+  }
 
   &__label {
     display: flex;
