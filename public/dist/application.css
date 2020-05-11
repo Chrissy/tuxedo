@@ -1424,7 +1424,8 @@ body {
 .carousel {
   overflow: hidden;
   display: flex;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  background: #000; }
   .carousel .slider {
     display: flex;
     position: relative;

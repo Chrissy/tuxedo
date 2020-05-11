@@ -20,15 +20,20 @@ export default class Tooltip {
   }
 
   moveForward() {
-    if (this.currentIndex + 1 === this.images.length) return;
+    if (this.currentIndex + 1 === this.images.length) return this.cancelMove();
     this.currentIndex += 1;
     const transform = this.currentIndex * window.innerWidth;
     this.slider.style.transform = `translateX(-${transform}px)`;
   }
 
   moveBackward() {
-    if (this.currentIndex === 0) return;
+    if (this.currentIndex === 0) return this.cancelMove();
     this.currentIndex -= 1;
+    const transform = this.currentIndex * window.innerWidth;
+    this.slider.style.transform = `translateX(-${transform}px)`;
+  }
+
+  cancelMove() {
     const transform = this.currentIndex * window.innerWidth;
     this.slider.style.transform = `translateX(-${transform}px)`;
   }
@@ -49,12 +54,31 @@ export default class Tooltip {
       this.wrapper.appendChild(dotNode);
     });
 
-    var hammer = new Hammer(this.wrapper);
+    const hammer = new Hammer(this.wrapper);
+
+    hammer.on("pan", (ev) => {
+      const transform = this.currentIndex * window.innerWidth;
+      this.slider.style.transform = `translateX(-${transform - ev.deltaX}px)`;
+    });
+
     hammer.on(
-      "swipe",
+      "panend",
       function (ev) {
-        if (ev.direction === 2) this.moveForward();
-        if (ev.direction === 4) this.moveBackward();
+        const { deltaTime, deltaX, direction } = ev;
+        const threshold = window.innerWidth / 2;
+
+        //fast momentum
+        if (deltaTime < 1000) {
+          if (deltaX < (threshold / 2) * -1) return this.moveForward();
+          if (deltaX > threshold / 2) return this.moveBackward();
+        }
+
+        //slow momentum
+        if (deltaX < threshold * -1) return this.moveForward();
+        if (deltaX > threshold * 1) return this.moveBackward();
+
+        //otherwise, return
+        this.cancelMove();
       }.bind(this)
     );
   }
