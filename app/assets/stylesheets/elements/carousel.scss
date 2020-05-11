@@ -3,6 +3,12 @@
   display: flex;
   margin-bottom: 20px;
 
+  .slider {
+    display: flex;
+    position: relative;
+    transition: 0.2s transform;
+  }
+
   img {
     width: 100vw;
     display: block;

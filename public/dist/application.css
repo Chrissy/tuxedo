@@ -1425,6 +1425,10 @@ body {
   overflow: hidden;
   display: flex;
   margin-bottom: 20px; }
+  .carousel .slider {
+    display: flex;
+    position: relative;
+    transition: 0.2s transform; }
   .carousel img {
     width: 100vw;
     display: block;
