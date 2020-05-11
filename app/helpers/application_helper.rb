@@ -112,13 +112,13 @@ module ApplicationHelper
       itemprop: 'image',
       "data-pin-media": pinnable_image_url(element),
       "data-pin-url": pin_url(element),
-      "data-pin-description": element.name
+      "data-pin-description": element.name,
+      "data-carousel-index": 1
     )
   end
 
-  def list_image(element, class_name = '', method = :image_with_backup)
-    image_tag(
-      image_url(element, :large, method),
+  def list_image(element, class_name = '', method = :image_with_backup, carousel_index = nil)
+    options = {
       srcset: [image_url(element, :large, method) + ' 1x', image_url(element, :large2x, method) + ' 2x'].join(', '),
       alt: "#{element.name} cocktail photo",
       itemprop: 'image',
@@ -126,6 +126,13 @@ module ApplicationHelper
       "data-pin-media": pinnable_image_url(element, method),
       "data-pin-url": pin_url(element),
       "data-pin-description": element.name
+    }
+
+    options['data-carousel-index'] = carousel_index if carousel_index
+
+    image_tag(
+      image_url(element, :large, method),
+      options
     )
   end
 

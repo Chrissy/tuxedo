@@ -2049,10 +2049,20 @@ body {
 
 .recipe {
   display: flex; }
+  .recipe__primary {
+    display: grid;
+    grid-template-areas: "sidebar header" "sidebar content";
+    grid-template-columns: 270px auto;
+    grid-column-gap: 20px;
+    width: 100%; }
+    @media (max-width: 900px) {
+      .recipe__primary {
+        display: flex;
+        flex-direction: column;
+        width: 100%; } }
   .recipe__sidebar {
-    width: 290px;
-    padding-right: 20px;
-    margin-top: 110px; }
+    margin-top: 110px;
+    grid-area: sidebar; }
     .recipe__sidebar .card {
       margin-top: 140px; }
   .recipe__recipe {
@@ -2061,7 +2071,8 @@ body {
     flex: 1; }
   .recipe__header {
     display: flex;
-    color: #24222a; }
+    color: #24222a;
+    grid-area: header; }
   .recipe__header-title {
     font-size: 44px;
     line-height: 60px;
@@ -2139,12 +2150,13 @@ body {
   .recipe__tag-icon {
     margin-right: 6px;
     font-size: 1.25em; }
-  .recipe__primary {
+  .recipe__content {
     margin-top: -150px;
     position: relative;
     z-index: 1;
-    display: flex; }
-    .recipe__primary--count-3 {
+    display: flex;
+    grid-area: content; }
+    .recipe__content--count-3 {
       margin-top: -366px; }
   .recipe__description {
     -webkit-font-smoothing: antialiased;

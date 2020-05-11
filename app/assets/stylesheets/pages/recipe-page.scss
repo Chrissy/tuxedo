@@ -11,10 +11,25 @@ $image-offset: 30px;
   @extend .centered-content-box-large;
   display: flex;
 
+  &__primary {
+    display: grid;
+    grid-template-areas:
+      "sidebar header"
+      "sidebar content";
+    grid-template-columns: 270px auto;
+    grid-column-gap: 20px;
+    width: 100%;
+
+    @media (max-width: $breakpoint) {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
   &__sidebar {
-    width: 290px;
-    padding-right: 20px;
     margin-top: 110px;
+    grid-area: sidebar;
 
     .card {
       margin-top: 140px;
@@ -33,6 +48,7 @@ $image-offset: 30px;
   &__header {
     display: flex;
     color: $text-color-dark;
+    grid-area: header;
   }
 
   &__header-title {
@@ -160,11 +176,12 @@ $image-offset: 30px;
     font-size: 1.25em;
   }
 
-  &__primary {
+  &__content {
     margin-top: -$description-cutout - 0px;
     position: relative;
     z-index: 1;
     display: flex;
+    grid-area: content;
 
     &--count-3 {
       margin-top: -$description-cutout - $three-count-extra;

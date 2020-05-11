@@ -2,17 +2,11 @@
 <% image_count = images.count %>
 <% cache(cache_key(@recipe, "show")) do %>
   <div itemscope itemtype="http://schema.org/Recipe" class="recipe">
-    <div class="recipe__sidebar">
-      <div class="recipe__recipe">
-        <%= @recipe.recipe_as_html %>
-      </div>
-      <%= render 'shared/mail_card' %>
-    </div>
-    <div class="recipe__content">
+    <div class="recipe__primary">
       <div class="recipe__header">
         <div class="recipe__header-content recipe__header-content--count-<%= image_count %>" href="<%= @recipe.url %>">
           <% if image_count >= 2 %>
-            <%= list_image(@recipe, "recipe__primary-image recipe__primary-image--2 recipe__primary-image--2--count-#{image_count}", :image2) %>
+            <%= list_image(@recipe, "recipe__primary-image recipe__primary-image--2 recipe__primary-image--2--count-#{image_count}", :image2, 1) %>
           <% end %>
           <h1 class="recipe__header-title" itemprop="name">
             <a href="<%= @recipe.url %>">
@@ -32,11 +26,17 @@
         <div class="recipe__header-images recipe__header-images--count-<%= image_count %>">
           <%= header_image(@recipe, "recipe__primary-image recipe__primary-image--1 recipe__primary-image--1--count-#{image_count}") %>
           <% if image_count >= 3 %>
-            <%= list_image(@recipe, "recipe__primary-image recipe__primary-image--3", :image3) %>
+            <%= list_image(@recipe, "recipe__primary-image recipe__primary-image--3", :image3, 2) %>
           <% end %>
         </div>
       </div>
-      <div class="recipe__primary recipe__primary--count-<%= image_count%>" itemprop="description">
+      <div class="recipe__sidebar">
+        <div class="recipe__recipe">
+          <%= @recipe.recipe_as_html %>
+        </div>
+        <%= render 'shared/mail_card' %>
+      </div>
+      <div class="recipe__content recipe__primary--count-<%= image_count%>" itemprop="description">
         <div class="recipe__description">
           <div class="recipe__cutout recipe__cutout--count-<%= image_count %>"></div>
           <div><%= @recipe.description_to_html %></div>
