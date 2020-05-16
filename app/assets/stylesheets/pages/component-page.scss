@@ -1,9 +1,9 @@
 @import "../utilities/colors";
 @import "../elements/helpers";
+@import "../utilities/breakpoints.scss";
 
 $description-cutout: 50px;
 $space-between-description-and-header: 6px;
-$breakpoint: 900px;
 
 .component {
   @extend .centered-content-box-large;
@@ -16,7 +16,7 @@ $breakpoint: 900px;
     grid-template-columns: 0.33fr 0.66fr;
     grid-column-gap: 40px;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -28,7 +28,7 @@ $breakpoint: 900px;
     margin-bottom: 40px;
     grid-area: sidebar;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       width: 100%;
       margin: 0;
     }
@@ -37,7 +37,7 @@ $breakpoint: 900px;
       margin-top: 40px;
       font-size: 17px;
 
-      @media (max-width: $breakpoint) {
+      @media (max-width: $mobile) {
         padding: 20px 16px;
         margin: 0;
       }
@@ -48,7 +48,7 @@ $breakpoint: 900px;
     margin-top: 80px;
     font-size: 18px;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       display: none;
     }
 
@@ -60,7 +60,7 @@ $breakpoint: 900px;
       display: none;
       margin-top: 20px;
 
-      @media (max-width: $breakpoint) {
+      @media (max-width: $mobile) {
         display: block;
       }
     }
@@ -105,7 +105,7 @@ $breakpoint: 900px;
     flex: 1;
     grid-area: content;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       margin: 0 16px;
     }
   }
@@ -121,7 +121,7 @@ $breakpoint: 900px;
     margin: 0;
     text-transform: capitalize;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       margin: 0 16px;
     }
 
@@ -145,7 +145,7 @@ $breakpoint: 900px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       margin: 0 16px;
     }
   }
@@ -161,7 +161,7 @@ $breakpoint: 900px;
     z-index: 1;
     padding: 0 24px 6px 0px;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       margin-top: 0;
       padding: 0;
       width: 100%;
@@ -175,7 +175,7 @@ $breakpoint: 900px;
     grid-gap: 18px;
     width: 100%;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       display: block;
     }
   }
@@ -212,7 +212,7 @@ $breakpoint: 900px;
     box-sizing: content-box;
     padding-left: 24px;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       display: none;
     }
   }
@@ -267,7 +267,7 @@ $breakpoint: 900px;
         font-style: normal;
       }
 
-      @media (max-width: $breakpoint) {
+      @media (max-width: $mobile) {
         font-size: 15px;
         margin-top: 0.5em;
       }
@@ -323,7 +323,7 @@ $breakpoint: 900px;
     grid-column-gap: 40px;
     margin-bottom: 6em;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       display: block;
       margin: 0 16px 2em 16px;
     }
@@ -338,7 +338,7 @@ $breakpoint: 900px;
       display: block;
     }
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       &.hidden {
         display: none;
       }
@@ -365,7 +365,7 @@ $breakpoint: 900px;
   &__all-recipes-label {
     margin-bottom: 2em;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       display: none;
     }
   }
@@ -382,7 +382,7 @@ $breakpoint: 900px;
     padding: 0.5em 0;
     text-transform: capitalize;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       white-space: nowrap;
       margin-right: 10px;
     }
@@ -390,7 +390,7 @@ $breakpoint: 900px;
     &:not(:last-child) {
       border-bottom: 1px solid #000;
 
-      @media (max-width: $breakpoint) {
+      @media (max-width: $mobile) {
         border-bottom: none;
       }
     }
@@ -418,7 +418,7 @@ $breakpoint: 900px;
     border-bottom: 1px solid #000;
     margin-bottom: 40px;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       display: flex;
     }
 

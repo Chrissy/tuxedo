@@ -1,7 +1,7 @@
 <% border_version ||= false %>
-
-<div class="card instagram <%= border_version ? 'card--border-version' : '' %>">
-  <div class="label card__label <%= border_version ? 'card__label--border-version' : '' %>">Let's be far away friends</div>
+<% border_version_on_mobile ||= false %>
+<div class="card instagram <%= border_version ? 'card--border-version' : '' %> <%= border_version_on_mobile ? 'card--border-version-on-mobile' : '' %>">
+  <div class="label card__label <%= border_version ? 'card__label--border-version' : '' %> <%= border_version_on_mobile ? 'card__label--border-version-on-mobile' : '' %>">Let's be far away friends</div>
   <img 
     class="card__image"
     width="100px" 
@@ -12,7 +12,7 @@
       /images/instagram-illustration-2x.png 2x"
   />
   <div class="card__content">
-    <p class="card__text <%= border_version ? 'card__text--border-version' : '' %>">
+    <p class="card__text <%= border_version ? 'card__text--border-version' : '' %> <%= border_version_on_mobile ? 'card__text--border-version-on-mobile' : '' %>">
       <strong>Instagram</strong> is a great way to get updates on new cocktails and keep up with everyone’s favorite redheads
     </p>
     <div class="card__actions">

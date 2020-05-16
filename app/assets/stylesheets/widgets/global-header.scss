@@ -1,8 +1,8 @@
 @import "../utilities/colors.scss";
+@import "../utilities/breakpoints.scss";
 
 $search-width: 300px;
 $mobile-search-width: 120px;
-$breakpoint: 900px;
 
 .global-header {
   @extend .centered-content-box-large;
@@ -63,7 +63,7 @@ $breakpoint: 900px;
       background-color: $gray-2;
     }
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       width: $mobile-search-width;
 
       &:focus {
@@ -78,7 +78,7 @@ $breakpoint: 900px;
     display: flex;
     align-items: center;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       flex-direction: column;
       position: absolute;
       width: 100vw;
@@ -104,7 +104,7 @@ $breakpoint: 900px;
       padding-bottom: 2px;
     }
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       font-size: 20px;
       padding: 16px 0 0px 0;
       width: 100%;
@@ -118,7 +118,7 @@ $breakpoint: 900px;
     display: none;
     margin-left: 12px;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       display: block;
     }
   }

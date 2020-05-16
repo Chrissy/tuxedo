@@ -49,6 +49,7 @@
   </div>
   <div class="recipe__footer">
     <%= render 'shared/ingredient_card', ingredient: @featured_ingredient %>
+    <%= render 'shared/instagram_card', border_version_on_mobile: true %>
     <%= render 'list_card', recipe: @recipe %>
   </div>
   <%= render 'footer', :recipe => @recipe %>

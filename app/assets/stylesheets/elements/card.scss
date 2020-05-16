@@ -1,4 +1,5 @@
 @import "./elements.scss";
+@import "../utilities/breakpoints.scss";
 
 .card {
   display: grid;
@@ -15,6 +16,17 @@
     margin-bottom: 0;
     border: 1px solid currentColor;
     padding: 0 16px 16px 16px;
+  }
+
+  &--border-version-on-mobile {
+    /* this is more or less a duplicate of border-version, but in a MQ */
+    @media (max-width: $mobile) {
+      grid-template-areas: "head head" "content image";
+      grid-template-rows: 60px 1fr;
+      margin-bottom: 0;
+      border: 1px solid currentColor;
+      padding: 0 16px 16px 16px;
+    }
   }
 
   &--list {
@@ -41,6 +53,18 @@
         display: none;
       }
     }
+
+    &--border-version-on-mobile {
+      /* this is more or less a duplicate of border-version, but in a MQ */
+      @media (max-width: $mobile) {
+        border-bottom: 1px solid currentColor;
+        font-size: 11px;
+
+        &:after {
+          display: none;
+        }
+      }
+    }
   }
 
   &__content {
@@ -59,6 +83,13 @@
 
     &--border-version {
       font-size: 16px;
+    }
+
+    &--border-version-on-mobile {
+      /* this is more or less a duplicate of border-version, but in a MQ */
+      @media (max-width: $mobile) {
+        font-size: 16px;
+      }
     }
 
     &--list {

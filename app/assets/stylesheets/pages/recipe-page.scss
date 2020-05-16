@@ -1,4 +1,5 @@
 @import "../utilities/colors";
+@import "../utilities/breakpoints.scss";
 @import "../elements/helpers";
 
 $description-cutout: 150px;
@@ -6,7 +7,6 @@ $three-count-extra: 216px;
 $space-between-description-and-header: 26px;
 $image-width: 554px;
 $image-offset: 30px;
-$breakpoint: 900px;
 
 .recipe {
   @extend .centered-content-box-large;
@@ -21,7 +21,7 @@ $breakpoint: 900px;
     grid-column-gap: 20px;
     width: 100%;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -32,12 +32,16 @@ $breakpoint: 900px;
     margin-top: 110px;
     grid-area: sidebar;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       margin: 60px 16px 20px 16px;
     }
 
     .card {
       margin-top: 140px;
+
+      @media (max-width: $mobile) {
+        margin-top: 0;
+      }
     }
   }
 
@@ -67,7 +71,7 @@ $breakpoint: 900px;
       text-decoration: none;
     }
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       margin: 0 16px;
     }
   }
@@ -82,7 +86,7 @@ $breakpoint: 900px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       margin: 0 16px 8px 16px;
     }
   }
@@ -101,7 +105,7 @@ $breakpoint: 900px;
         $description-cutout + $three-count-extra;
     }
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       padding: 0;
     }
   }
@@ -118,7 +122,7 @@ $breakpoint: 900px;
       width: 436px;
     }
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       display: none;
     }
   }
@@ -151,7 +155,7 @@ $breakpoint: 900px;
       height: 310px;
     }
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       margin-bottom: 0;
       height: 100%;
       width: 100vw;
@@ -172,7 +176,7 @@ $breakpoint: 900px;
       top: 38%;
     }
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       display: none;
     }
   }
@@ -194,7 +198,7 @@ $breakpoint: 900px;
       height: $description-cutout + $three-count-extra;
     }
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       display: none;
     }
   }
@@ -205,7 +209,7 @@ $breakpoint: 900px;
     align-items: center;
     color: $text-color;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       margin: 8px 16px 0 16px;
     }
   }
@@ -226,7 +230,7 @@ $breakpoint: 900px;
       margin-top: -$description-cutout - $three-count-extra;
     }
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       margin: 16px 20px;
       display: block;
     }
@@ -265,11 +269,15 @@ $breakpoint: 900px;
     padding-bottom: 20px;
     min-height: 100%;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       display: block;
       width: 100%;
       min-height: 0;
       margin: 0;
+
+      .card {
+        display: none;
+      }
     }
   }
 
@@ -282,9 +290,30 @@ $breakpoint: 900px;
     grid-column-gap: 20px;
     margin-bottom: 40px;
     margin-top: 40px;
+    padding: 0 16px 16px 16px;
 
-    @media (max-width: $breakpoint) {
+    @media (max-width: $mobile) {
       grid-template-columns: 1fr;
+      grid-row-gap: 24px;
+      grid-template-areas: "list-card" "instagram-card" "ingredient-card";
+      margin-top: 0;
+    }
+
+    .ingredient-card {
+      grid-area: ingredient-card;
+    }
+
+    .instagram {
+      display: none;
+      grid-area: instagram-card;
+
+      @media (max-width: $mobile) {
+        display: inherit;
+      }
+    }
+
+    .list-card {
+      grid-area: list-card;
     }
   }
 }

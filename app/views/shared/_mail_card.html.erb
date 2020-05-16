@@ -1,6 +1,6 @@
 <% border_version ||= false %>
-
-<div class="card mail <%= border_version ? 'card--border-version' : '' %>">
+<% border_version_on_mobile ||= false %>
+<div class="card mail <%= border_version ? 'card--border-version' : '' %>  <%= border_version_on_mobile ? 'card--border-version-on-mobile' : '' %>">
   <div class="label card__label <%= border_version ? 'card__label--border-version' : '' %>">The Tasty Mail</div>
   <img 
     class="card__image"

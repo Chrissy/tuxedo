@@ -1,5 +1,5 @@
 @import "card";
-$breakpoint: 900px;
+@import "../utilities/breakpoints.scss";
 
 .ingredient-card {
   border: 1px solid #000;
@@ -13,7 +13,7 @@ $breakpoint: 900px;
   grid-row-gap: 12px;
   grid-column-gap: 12px;
 
-  @media (max-width: $breakpoint) {
+  @media (max-width: $mobile) {
     display: flex;
     flex-direction: column;
   }
@@ -41,6 +41,10 @@ $breakpoint: 900px;
     height: 100%;
     max-width: 100%;
     min-width: 100%;
+
+    @media (max-width: $mobile) {
+      margin-bottom: 16px;
+    }
   }
 
   &__recipes {
