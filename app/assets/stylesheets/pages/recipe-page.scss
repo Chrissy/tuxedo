@@ -179,6 +179,29 @@ $image-offset: 30px;
     @media (max-width: $mobile) {
       display: none;
     }
+
+    &--mobile {
+      display: none;
+      position: relative;
+      padding: 0;
+      margin: 0;
+      top: 0;
+      transform: none;
+      background: none;
+      width: auto;
+      height: auto;
+      display: flex;
+      margin-right: 8px;
+
+      &:before,
+      &:after {
+        content: none;
+      }
+
+      @media (max-width: $mobile) {
+        display: flex;
+      }
+    }
   }
 
   &__cutout {

@@ -1408,6 +1408,9 @@ body {
   .ingredient-card__description > p:first-of-type {
     padding-top: 0;
     margin-top: 0; }
+  @media (max-width: 900px) {
+    .ingredient-card__description {
+      margin-bottom: 20px; } }
   .ingredient-card__image {
     display: block;
     object-fit: cover;
@@ -2248,6 +2251,23 @@ body {
     @media (max-width: 900px) {
       .recipe__display-number {
         display: none; } }
+    .recipe__display-number--mobile {
+      display: none;
+      position: relative;
+      padding: 0;
+      margin: 0;
+      top: 0;
+      transform: none;
+      background: none;
+      width: auto;
+      height: auto;
+      display: flex;
+      margin-right: 8px; }
+      .recipe__display-number--mobile:before, .recipe__display-number--mobile:after {
+        content: none; }
+      @media (max-width: 900px) {
+        .recipe__display-number--mobile {
+          display: flex; } }
   .recipe__cutout {
     background-color: transparent;
     width: 42%;

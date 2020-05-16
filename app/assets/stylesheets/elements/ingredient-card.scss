@@ -30,9 +30,15 @@
     min-height: 200px;
   }
 
-  &__description > p:first-of-type {
-    padding-top: 0;
-    margin-top: 0;
+  &__description {
+    & > p:first-of-type {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    @media (max-width: $mobile) {
+      margin-bottom: 20px;
+    }
   }
 
   &__image {

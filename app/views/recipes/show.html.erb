@@ -17,6 +17,7 @@
             <%= @recipe.subtitle %>
           </h2>
           <div class="recipe__tag-icons">
+            <%= display_number_with_fallback(@recipe, "recipe__display-number recipe__display-number--mobile") %>
             <% @recipe.tags.each do |tag| %>
               <%= render 'tag', tag: tag, classname: "recipe__tag-icon" %>
             <% end %>
