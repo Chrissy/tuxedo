@@ -1,6 +1,12 @@
 <% border_version ||= false %>
 <% border_version_on_mobile ||= false %>
-<div class="card instagram <%= border_version ? 'card--border-version' : '' %> <%= border_version_on_mobile ? 'card--border-version-on-mobile' : '' %>">
+<% relocate_to ||= false %>
+<div 
+  class="card instagram <%= border_version ? 'card--border-version' : '' %> <%= border_version_on_mobile ? 'card--border-version-on-mobile' : '' %>"
+  <% if relocate_to %>
+    data-relocate-to="<%= relocate_to %>"
+  <% end %>
+  >
   <div class="label card__label <%= border_version ? 'card__label--border-version' : '' %> <%= border_version_on_mobile ? 'card__label--border-version-on-mobile' : '' %>">Let's be far away friends</div>
   <img 
     class="card__image"

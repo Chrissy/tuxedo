@@ -2,6 +2,7 @@ import Search from "./classes/search.js";
 import Filter from "./classes/filter.js";
 import Tooltip from "./classes/tooltip.js";
 import Carousel from "./classes/carousel.js";
+import MobileRelocater from "./classes/mobileRelocater.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   new Search('[data-role="search"]');
@@ -37,4 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const imagesForCarousel = document.querySelectorAll("[data-carousel-index]");
   if (imagesForCarousel.length) new Carousel([...imagesForCarousel]);
+
+  const toMoveOnMobile = document.querySelectorAll("[data-relocate-to]");
+  [...toMoveOnMobile].forEach((toMove) => new MobileRelocater(toMove));
 });

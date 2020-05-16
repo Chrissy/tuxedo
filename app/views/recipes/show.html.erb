@@ -35,12 +35,12 @@
         <div class="recipe__recipe">
           <%= @recipe.recipe_as_html %>
         </div>
-        <%= render 'shared/mail_card' %>
+        <%= render 'shared/mail_card', relocate_to: '[data-to-relocate] p:nth-of-type(2), [data-to-relocate] p:first-of-type', border_version_on_mobile: true %>
       </div>
       <div class="recipe__content recipe__primary--count-<%= image_count%>" itemprop="description">
         <div class="recipe__description">
           <div class="recipe__cutout recipe__cutout--count-<%= image_count %>"></div>
-          <div><%= @recipe.description_to_html %></div>
+          <div data-to-relocate><%= @recipe.description_to_html %></div>
         </div>
         <div class="recipe__primary-sidebar">
           <%= render 'shared/instagram_card' %>
