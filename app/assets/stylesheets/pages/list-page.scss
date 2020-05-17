@@ -1,3 +1,5 @@
+@import "../utilities/breakpoints.scss";
+
 .list {
   display: grid;
   grid-gap: 18px;
@@ -6,17 +8,31 @@
   grid-auto-rows: 39px;
   max-width: 1150px;
 
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr;
+  }
+
   .list-element {
     grid-row-end: span 8;
 
     &--first {
       grid-row-end: span 10;
       grid-column-end: span 2;
+
+      @media (max-width: 1200px) {
+        grid-column-end: span 1;
+      }
     }
 
     &--second {
       grid-row-end: span 10;
       padding-top: 50px;
+    }
+
+    &__display-number {
+      @media (max-width: $mobile) {
+        display: none;
+      }
     }
   }
 

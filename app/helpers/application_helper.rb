@@ -100,9 +100,8 @@ module ApplicationHelper
     'https://d34nm4jmyicdxh.cloudfront.net/' + image_path(size_hash, element.send(method))
   end
 
-  def header_image(element, class_name = '', hero = false)
-    image_tag(
-      image_url(element, hero ? :xxlarge : :xlarge),
+  def header_image(element, class_name = '', hero = false, carousel = false)
+    options = {
       srcset: [
         image_url(element, hero ? :xxlarge : :xlarge) + ' 1x',
         image_url(element, hero ? :xxlarge2x : :xlarge2x) + ' 2x'
@@ -112,8 +111,14 @@ module ApplicationHelper
       itemprop: 'image',
       "data-pin-media": pinnable_image_url(element),
       "data-pin-url": pin_url(element),
-      "data-pin-description": element.name,
-      "data-carousel-index": 1
+      "data-pin-description": element.name
+    }
+
+    options['data-carousel-index'] = 1 if carousel
+
+    image_tag(
+      image_url(element, hero ? :xxlarge : :xlarge),
+      options
     )
   end
 
