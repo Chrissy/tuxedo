@@ -14,10 +14,24 @@ export default class Tooltip {
       slider: null,
       dots: null,
       currentIndex: 0,
+      carouselInitialized: null,
+      imageLocations: images.map((i) => ({
+        element: i.previousElementSibling || i.parentElement,
+        type: i.previousElementSibling ? "sibling" : "parent",
+      })),
     });
 
+    this.set();
+    window.addEventListener("resize", this.set.bind(this));
+  }
+
+  set() {
     const mediaQuery = window.matchMedia(`(max-width: ${BREAKPOINT}px)`);
-    if (mediaQuery.matches) this.initCarousel(images);
+    if (mediaQuery.matches && !this.carouselInitialized) {
+      return this.initCarousel(this.images);
+    } else if (!mediaQuery.matches && this.carouselInitialized === true) {
+      return this.tearDownCarousel();
+    }
   }
 
   moveForward() {
@@ -69,14 +83,16 @@ export default class Tooltip {
       this.dots.appendChild(dotNode);
     });
 
-    const hammer = new Hammer(this.wrapper);
+    this.carouselInitialized = true;
 
-    hammer.on("pan", (ev) => {
+    this.hammer = new Hammer(this.wrapper);
+
+    this.hammer.on("pan", (ev) => {
       const transform = this.currentIndex * window.innerWidth;
       this.slider.style.transform = `translateX(-${transform - ev.deltaX}px)`;
     });
 
-    hammer.on(
+    this.hammer.on(
       "panend",
       function (ev) {
         const { deltaTime, deltaX, direction } = ev;
@@ -96,5 +112,19 @@ export default class Tooltip {
         this.cancelMove();
       }.bind(this)
     );
+  }
+
+  tearDownCarousel() {
+    this.primaryImage = null;
+    this.wrapper.remove();
+    this.slider.remove();
+    this.dots.remove();
+    this.hammer.off("pan");
+    this.hammer.off("panend");
+
+    this.images.forEach((image, index) => {
+      const { type, element } = this.imageLocations[index];
+      return type === "sibling" ? element.after(image) : element.prepend(image);
+    });
   }
 }

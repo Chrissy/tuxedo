@@ -7,8 +7,10 @@ export default class MobileRelocater {
     /* the dom node to relocate */
     toRelocate
   ) {
-    const originalPreviousNode =
-      toRelocate.previousElementSibling || toRelocate.parentElement;
+    const originalPreviousNode = {
+      type: toRelocate.previousElementSibling ? "sibling" : "parent",
+      element: toRelocate.previousElementSibling || toRelocate.parentElement,
+    };
 
     const relocateAfter = toRelocate
       .getAttribute("data-relocate-to")
@@ -30,7 +32,7 @@ export default class MobileRelocater {
   set() {
     const mediaQuery = window.matchMedia(`(max-width: ${BREAKPOINT}px)`);
     if (mediaQuery.matches && this.mode !== "mobile") return this.setMobile();
-    if (this.mode !== "desktop") return this.setDesktop();
+    if (this.mode === "mobile") return this.setDesktop();
   }
 
   setMobile() {
@@ -39,7 +41,10 @@ export default class MobileRelocater {
   }
 
   setDesktop() {
-    this.originalPreviousNode.after(this.toRelocate);
     this.mode = "desktop";
+    const { type, element } = this.originalPreviousNode;
+    return type === "sibling"
+      ? element.after(this.toRelocate)
+      : element.prepend(this.toRelocate);
   }
 }
