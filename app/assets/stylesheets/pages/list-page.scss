@@ -12,14 +12,21 @@
     grid-template-columns: 1fr;
   }
 
+  @media (max-width: $mobile) {
+    padding: 0 0 18px 0;
+  }
+
   .list-element {
     grid-row-end: span 8;
+    margin: 0;
 
     &--first {
       grid-row-end: span 10;
       grid-column-end: span 2;
+      margin: inherit 0;
 
-      @media (max-width: 1200px) {
+      @media (max-width: $mobile) {
+        grid-row-end: span 9;
         grid-column-end: span 1;
       }
     }
@@ -27,6 +34,11 @@
     &--second {
       grid-row-end: span 10;
       padding-top: 50px;
+
+      @media (max-width: $mobile) {
+        padding-top: 0px;
+        grid-row-end: span 8;
+      }
     }
 
     &__display-number {
@@ -45,6 +57,12 @@
     grid-row-end: span 6;
   }
 
+  .card {
+    @media (max-width: $mobile) {
+      margin: 0 16px;
+    }
+  }
+
   .card--ingredient {
     grid-row-end: span 7;
   }
@@ -53,6 +71,10 @@
 .special-nav {
   display: flex;
   flex-direction: column;
+
+  @media (max-width: $mobile) {
+    display: none;
+  }
 }
 
 .special-nav__item {

@@ -153,6 +153,11 @@
   &__list-item {
     margin: 0.15em 0;
     text-decoration: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    max-width: calc(100vw - 66px);
 
     &--with-bar {
       display: flex;

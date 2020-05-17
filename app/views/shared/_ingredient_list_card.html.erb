@@ -1,26 +1,22 @@
 <% border_version ||= true %>
 <% pairings = ingredient.common_pairings(3) %>
 <% pairings_sum = pairings.map{ |pair| pair[:count] }.reduce(:+) %>
-
 <div class="card card--list card--ingredient <%= border_version ? 'card--border-version' : '' %>">
   <div class="label card__label <%= border_version ? 'card__label--border-version' : '' %>"><%= ingredient.name %></div>
-  
   <% if ingredient.description.present? %>
     <div class="card__description">
       <%= ingredient.description %>
     </div>
   <% end %>
-
   <div class="card__section">
     <div class="card__section-label label">Classics</div>
     <% ingredient.classic_recipes(3).each do |recipe| %>
       <a class="card__list-item" href="<%= recipe.url %>">
         <strong><%= recipe.name %></strong>
-        <%= recipe.components[0..2].map(&:name).join(", ") %>
+        <%= recipe.components[0..2].map(&:name).join(", ") %>, and something else
       </a>
     <% end %>
   </div>
-
   <div class="card__section">
     <div class="card__section-label label">Common Pairings</div>
     <% pairings.each do |pair| %>
@@ -31,10 +27,8 @@
       </a>
     <% end %>
   </div>
-
   <div class="card__wide-action">
     <span>View <%= ingredient.name %> recipes, classic pairings, and more</span>
     <%= render 'shared/svg', id: "chevron-right", className: "card__action-chevron" %>
   </div>
 </div>
-
