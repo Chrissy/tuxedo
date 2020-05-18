@@ -1,8 +1,9 @@
 @import "../elements/helpers";
+@import "../utilities/font-stacks.scss";
 
 html,
 body {
-  font-family: "bookmania";
+  font-family: $serif;
 }
 h1,
 h2,
@@ -18,21 +19,41 @@ h3 {
   font-family: georgia, sans-serif;
 }
 
-@mixin font-face($family, $filename, $font-weight: normal, $font-style: normal) {
+@mixin font-face(
+  $family,
+  $filename,
+  $font-weight: normal,
+  $font-style: normal
+) {
   @font-face {
     font-family: "#{$family}";
     src: url("/webfonts/#{$filename}.eot?#iefix") format("embedded-opentype"),
-      url("/webfonts/#{$filename}.woff") format("woff"), url("/webfonts/#{$filename}.ttf") format("truetype");
+      url("/webfonts/#{$filename}.woff") format("woff"),
+      url("/webfonts/#{$filename}.ttf") format("truetype");
     font-weight: $font-weight;
     font-style: $font-style;
   }
 }
 
 @include font-face("bookmania", "bookmania-regular");
-@include font-face("bookmania", "bookmania-regular-italic", $font-style: italic);
+@include font-face(
+  "bookmania",
+  "bookmania-regular-italic",
+  $font-style: italic
+);
 @include font-face("bookmania", "bookmania-semibold", $font-weight: bold);
-@include font-face("bookmania", "bookmania-semibold-italic", $font-weight: bold, $font-style: italic);
+@include font-face(
+  "bookmania",
+  "bookmania-semibold-italic",
+  $font-weight: bold,
+  $font-style: italic
+);
 @include font-face("bookmania", "bookmania-bold", $font-weight: 900);
-@include font-face("bookmania", "bookmania-bold-italic", $font-style: italic, $font-weight: 900);
+@include font-face(
+  "bookmania",
+  "bookmania-bold-italic",
+  $font-style: italic,
+  $font-weight: 900
+);
 @include font-face("mr-eaves", "mreavesmodot-book-webfont");
 @include font-face("mr-eaves", "mreavesmodot-bold-webfont", $font-weight: bold);

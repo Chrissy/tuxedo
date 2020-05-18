@@ -1,6 +1,7 @@
 @import "../utilities/colors";
 @import "../elements/helpers";
 @import "../utilities/breakpoints.scss";
+@import "../utilities/font-stacks.scss";
 
 $description-cutout: 50px;
 $space-between-description-and-header: 6px;
@@ -92,6 +93,7 @@ $space-between-description-and-header: 6px;
 
   &__substitutes {
     p {
+      font-family: $sans-serif;
       padding: 0;
       margin: 0;
     }
@@ -137,7 +139,7 @@ $space-between-description-and-header: 6px;
   }
 
   &__header-subtitle {
-    font-family: "mr-eaves";
+    font-family: $sans-serif;
     font-weight: 400;
     font-size: 24px;
     line-height: 1;
@@ -276,7 +278,7 @@ $space-between-description-and-header: 6px;
 
   &__description::first-letter {
     color: #000;
-    font-family: "mr-eaves";
+    font-family: $sans-serif;
     font-size: 56px;
     font-weight: 800;
     float: left;
@@ -418,7 +420,7 @@ $space-between-description-and-header: 6px;
 
   &__all-mobile-menu {
     display: none;
-    font-family: "mr-eaves";
+    font-family: $sans-serif;
     font-size: 17px;
     justify-content: space-between;
     border-bottom: 1px solid #000;

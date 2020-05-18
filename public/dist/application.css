@@ -84,7 +84,7 @@ body {
 
 html,
 body {
-  font-family: "bookmania"; }
+  font-family: "bookmania", Georgia, serif; }
 
 h1,
 h2,
@@ -250,9 +250,11 @@ body {
   position: relative;
   border-bottom: 1px solid #333;
   top: -5px; }
+  .win .no {
+    top: -2px; }
 
 .display-number {
-  font-family: "bookmania";
+  font-family: "bookmania", Georgia, serif;
   text-decoration: none;
   font-weight: 800;
   background: #fff;
@@ -271,8 +273,7 @@ body {
     .display-number.large .no {
       left: 10px; }
   .win .display-number {
-    line-height: 150%;
-    top: 16px; }
+    padding-top: 0; }
 
 .authenticate {
   display: none; }
@@ -304,7 +305,7 @@ body {
   font-size: 10px;
   text-decoration: none;
   letter-spacing: 0.075em;
-  font-family: "mr-eaves"; }
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
 
 .site-footer {
   clear: both;
@@ -565,7 +566,7 @@ body {
     margin-right: 1em;
     text-transform: capitalize; }
   .index-element__name {
-    font-family: "bookmania";
+    font-family: "bookmania", Georgia, serif;
     text-decoration: none;
     padding-bottom: 0.3em;
     display: block;
@@ -573,7 +574,7 @@ body {
     font-size: 1.1em;
     font-weight: 800; }
   .index-element__subtext {
-    font-family: "mr-eaves";
+    font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 1.1em; }
   .index-element.for-search {
     max-width: 800px;
@@ -806,9 +807,11 @@ body {
   position: relative;
   border-bottom: 1px solid #333;
   top: -5px; }
+  .win .no {
+    top: -2px; }
 
 .display-number {
-  font-family: "bookmania";
+  font-family: "bookmania", Georgia, serif;
   text-decoration: none;
   font-weight: 800;
   background: #fff;
@@ -827,8 +830,7 @@ body {
     .display-number.large .no {
       left: 10px; }
   .win .display-number {
-    line-height: 150%;
-    top: 16px; }
+    padding-top: 0; }
 
 .authenticate {
   display: none; }
@@ -860,7 +862,7 @@ body {
   font-size: 10px;
   text-decoration: none;
   letter-spacing: 0.075em;
-  font-family: "mr-eaves"; }
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
 
 .site-footer {
   clear: both;
@@ -883,7 +885,7 @@ body {
   grid-template-columns: auto 1fr;
   grid-column-gap: 16px;
   margin-bottom: 10px;
-  font-family: "mr-eaves"; }
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
   .card--border-version {
     grid-template-areas: "head head" "content image";
     grid-template-rows: 60px 1fr;
@@ -925,23 +927,23 @@ body {
             display: none; } }
   .card__content {
     grid-area: content;
-    height: 100%;
     display: flex;
     flex: 1;
     flex-direction: column;
     justify-content: space-between; }
-  .card__text {
-    font-size: 15px;
+  .card__text:not(.eee) {
+    font-size: 16px;
     line-height: 1.1;
-    margin: 0 0 16px 0; }
-    .card__text--border-version {
+    margin: 0 0 16px 0;
+    font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+    .card__text:not(.eee)--border-version {
       font-size: 16px; }
-    .card__text--border-version-on-mobile {
+    .card__text:not(.eee)--border-version-on-mobile {
       /* this is more or less a duplicate of border-version, but in a MQ */ }
       @media (max-width: 900px) {
-        .card__text--border-version-on-mobile {
+        .card__text:not(.eee)--border-version-on-mobile {
           font-size: 16px; } }
-    .card__text--list {
+    .card__text:not(.eee)--list {
       margin: 0; }
   .card__actions {
     display: flex;
@@ -957,7 +959,7 @@ body {
   .card__list-name {
     font-size: 15px;
     display: block;
-    font-family: "Bookmania";
+    font-family: "bookmania", Georgia, serif;
     font-weight: 700;
     text-transform: capitalize;
     margin-bottom: 2px;
@@ -1024,7 +1026,7 @@ body {
 .label, .recipe__recipe h1,
 .recipe__recipe h2,
 .recipe__recipe h3 {
-  font-family: "mr-eaves";
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: bold;
   letter-spacing: 0.075em;
   font-size: 10px;
@@ -1062,7 +1064,7 @@ body {
   text-decoration: none; }
   .text-link__name {
     font-size: 18px;
-    font-family: "bookmania";
+    font-family: "bookmania", Georgia, serif;
     font-weight: 700;
     line-height: 1;
     display: flex;
@@ -1177,9 +1179,11 @@ body {
   position: relative;
   border-bottom: 1px solid #333;
   top: -5px; }
+  .win .no {
+    top: -2px; }
 
 .display-number {
-  font-family: "bookmania";
+  font-family: "bookmania", Georgia, serif;
   text-decoration: none;
   font-weight: 800;
   background: #fff;
@@ -1198,8 +1202,7 @@ body {
     .display-number.large .no {
       left: 10px; }
   .win .display-number {
-    line-height: 150%;
-    top: 16px; }
+    padding-top: 0; }
 
 .authenticate {
   display: none; }
@@ -1231,7 +1234,7 @@ body {
   font-size: 10px;
   text-decoration: none;
   letter-spacing: 0.075em;
-  font-family: "mr-eaves"; }
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
 
 .site-footer {
   clear: both;
@@ -1254,7 +1257,7 @@ body {
   grid-template-columns: auto 1fr;
   grid-column-gap: 16px;
   margin-bottom: 10px;
-  font-family: "mr-eaves"; }
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
   .card--border-version {
     grid-template-areas: "head head" "content image";
     grid-template-rows: 60px 1fr;
@@ -1296,23 +1299,23 @@ body {
             display: none; } }
   .card__content {
     grid-area: content;
-    height: 100%;
     display: flex;
     flex: 1;
     flex-direction: column;
     justify-content: space-between; }
-  .card__text {
-    font-size: 15px;
+  .card__text:not(.eee) {
+    font-size: 16px;
     line-height: 1.1;
-    margin: 0 0 16px 0; }
-    .card__text--border-version {
+    margin: 0 0 16px 0;
+    font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+    .card__text:not(.eee)--border-version {
       font-size: 16px; }
-    .card__text--border-version-on-mobile {
+    .card__text:not(.eee)--border-version-on-mobile {
       /* this is more or less a duplicate of border-version, but in a MQ */ }
       @media (max-width: 900px) {
-        .card__text--border-version-on-mobile {
+        .card__text:not(.eee)--border-version-on-mobile {
           font-size: 16px; } }
-    .card__text--list {
+    .card__text:not(.eee)--list {
       margin: 0; }
   .card__actions {
     display: flex;
@@ -1328,7 +1331,7 @@ body {
   .card__list-name {
     font-size: 15px;
     display: block;
-    font-family: "Bookmania";
+    font-family: "bookmania", Georgia, serif;
     font-weight: 700;
     text-transform: capitalize;
     margin-bottom: 2px;
@@ -1394,7 +1397,7 @@ body {
 
 .ingredient-card {
   border: 1px solid #000;
-  font-family: "mr-eaves";
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   padding: 16px;
   display: grid;
   font-size: 17px;
@@ -1441,7 +1444,7 @@ body {
 
 .list-card {
   border: 1px solid #000;
-  font-family: "mr-eaves";
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   padding: 16px;
   display: flex;
   flex-direction: column; }
@@ -1521,7 +1524,7 @@ body {
   pointer-events: none;
   border-radius: 0.25em;
   border: 1px solid #000;
-  font-family: "mr-eaves";
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   width: 230px;
   padding-bottom: 8px;
   animation: 0.2s tooltip-fade-in ease-in; }
@@ -1546,7 +1549,7 @@ body {
     min-height: 150px;
     background-color: #000; }
   .tooltip__title {
-    font-family: "bookmania";
+    font-family: "bookmania", Georgia, serif;
     font-weight: 700;
     line-height: 1;
     margin-bottom: 0.125em; }
@@ -1711,7 +1714,7 @@ body {
   .list-element__details {
     position: absolute;
     color: #fff;
-    font-family: "mr-eaves";
+    font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 18px;
     text-decoration: none;
     bottom: 0;
@@ -1734,7 +1737,7 @@ body {
     margin: 0; }
     .list-element__name--featured {
       font-size: 32px;
-      font-family: "bookmania";
+      font-family: "bookmania", Georgia, serif;
       font-weight: bold; }
       .list-element__name--featured:first-letter {
         font-feature-settings: "swsh"; }
@@ -1791,7 +1794,7 @@ body {
 .label, .recipe__recipe h1,
 .recipe__recipe h2,
 .recipe__recipe h3 {
-  font-family: "mr-eaves";
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: bold;
   letter-spacing: 0.075em;
   font-size: 10px;
@@ -1826,7 +1829,7 @@ body {
       margin-right: 0; }
 
 .recipe__recipe {
-  font-family: "mr-eaves";
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 18px; }
   .recipe__recipe ul,
   .recipe__recipe ol,
@@ -1839,12 +1842,13 @@ body {
     padding-bottom: 0; }
     .recipe__recipe ol li {
       display: flex;
-      line-height: 1; }
+      line-height: 1;
+      font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
       .recipe__recipe ol li:before {
         content: counter(li);
         counter-increment: li;
         font-size: 24px;
-        font-family: "bookmania";
+        font-family: "bookmania", Georgia, serif;
         font-weight: 700;
         padding: 0 10px 0 0;
         transform: translateY(2px);
@@ -1869,7 +1873,7 @@ body {
       .recipe__recipe h1,
       .recipe__recipe h2,
       .recipe__recipe h3 {
-        font-family: "bookmania";
+        font-family: "bookmania", Georgia, serif;
         font-size: 20px;
         margin: 0;
         font-weight: 900;
@@ -1893,6 +1897,11 @@ body {
     margin: 8px 0 14px 0;
     display: flex;
     position: relative; }
+  .recipe__recipe .amount,
+  .recipe__recipe .divider,
+  .recipe__recipe .unit,
+  .recipe__recipe .ingredient {
+    font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
   .recipe__recipe .amount {
     display: inline-flex;
     min-width: 40px;
@@ -1907,6 +1916,7 @@ body {
     @media (max-width: 1300px) {
       .recipe__recipe .amount {
         margin-left: -10px; } }
+  
   .recipe__recipe .divider {
     height: 13px;
     width: 1px;
@@ -1914,10 +1924,12 @@ body {
     display: block;
     top: 6px;
     position: relative; }
+  
   .recipe__recipe .unit {
     font-weight: normal;
     font-size: 11px;
     margin-left: 1px; }
+  
   .recipe__recipe .ingredient {
     flex: 1;
     padding-left: 10px;
@@ -1994,7 +2006,7 @@ body {
           display: none; } }
   .global-header__link {
     text-decoration: none;
-    font-family: "mr-eaves";
+    font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     margin-left: 10px;
     color: #555; }
     .global-header__link:hover {
@@ -2033,7 +2045,7 @@ body {
 /* legacy */
 .autocomplete-wrapper {
   position: relative;
-  font-family: "mr-eaves"; }
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
 
 .autocomplete-results-container {
   position: absolute;
@@ -2159,7 +2171,7 @@ body {
   text-decoration: none;
   font-size: 18px;
   margin-bottom: 2px;
-  font-family: "mr-eaves"; }
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
 
 /* legacy */
 .centered-content-box, .edit_panel {
@@ -2223,8 +2235,8 @@ body {
     grid-area: header; }
   .recipe__header-title {
     font-size: 44px;
-    line-height: 60px;
-    margin: 0; }
+    line-height: 50px;
+    margin: 0 0 8px 0; }
     .recipe__header-title a {
       color: #24222a;
       text-decoration: none; }
@@ -2234,7 +2246,7 @@ body {
         font-size: 32px;
         line-height: 40px; } }
   .recipe__header-subtitle {
-    font-family: "mr-eaves";
+    font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 400;
     font-size: 24px;
     line-height: 1;
@@ -2363,7 +2375,8 @@ body {
         margin: 0 16px;
         display: block; } }
     .recipe__content .card {
-      margin: 20px 0; }
+      margin: 20px 0;
+      min-height: 0; }
   .recipe__description {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -2375,7 +2388,7 @@ body {
     flex: 1; }
   .recipe__description::first-letter {
     color: #000;
-    font-family: "mr-eaves";
+    font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 86px;
     font-weight: 800;
     float: left;
@@ -2427,6 +2440,9 @@ body {
       @media (max-width: 900px) {
         .recipe__footer .instagram {
           display: inherit; } }
+    .recipe__footer .ingredient-card,
+    .recipe__footer .list-card {
+      min-height: 0; }
     .recipe__footer .list-card {
       grid-area: list-card; }
 
@@ -2518,6 +2534,7 @@ body {
   text-transform: capitalize; }
 
 .component__substitutes p {
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   padding: 0;
   margin: 0; }
 
@@ -2551,7 +2568,7 @@ body {
     text-decoration: none; }
 
 .component__header-subtitle {
-  font-family: "mr-eaves";
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: 400;
   font-size: 24px;
   line-height: 1;
@@ -2662,7 +2679,7 @@ body {
 
 .component__description::first-letter {
   color: #000;
-  font-family: "mr-eaves";
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 56px;
   font-weight: 800;
   float: left;
@@ -2768,7 +2785,7 @@ body {
 
 .component__all-mobile-menu {
   display: none;
-  font-family: "mr-eaves";
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 17px;
   justify-content: space-between;
   border-bottom: 1px solid #000;

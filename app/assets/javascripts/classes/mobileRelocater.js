@@ -1,5 +1,3 @@
-import Hammer from "hammerjs";
-
 const BREAKPOINT = 900;
 
 export default class MobileRelocater {
@@ -12,7 +10,7 @@ export default class MobileRelocater {
       element: toRelocate.previousElementSibling || toRelocate.parentElement,
     };
 
-    const relocateAfter = toRelocate
+    const relocateBefore = toRelocate
       .getAttribute("data-relocate-to")
       .split(",")
       .map((query) => document.querySelector(query))
@@ -20,7 +18,7 @@ export default class MobileRelocater {
 
     Object.assign(this, {
       toRelocate,
-      relocateAfter,
+      relocateBefore,
       originalPreviousNode,
       mode: null,
     });
@@ -32,11 +30,14 @@ export default class MobileRelocater {
   set() {
     const mediaQuery = window.matchMedia(`(max-width: ${BREAKPOINT}px)`);
     if (mediaQuery.matches && this.mode !== "mobile") return this.setMobile();
-    if (this.mode === "mobile") return this.setDesktop();
+    if (!mediaQuery.matches && this.mode === "mobile") return this.setDesktop();
   }
 
   setMobile() {
-    this.relocateAfter.after(this.toRelocate);
+    this.relocateBefore.parentNode.insertBefore(
+      this.toRelocate,
+      this.relocateBefore
+    );
     this.mode = "mobile";
   }
 
@@ -44,7 +45,7 @@ export default class MobileRelocater {
     this.mode = "desktop";
     const { type, element } = this.originalPreviousNode;
     return type === "sibling"
-      ? element.after(this.toRelocate)
+      ? element.parentNode.insertBefore(this.toRelocate, element)
       : element.prepend(this.toRelocate);
   }
 }

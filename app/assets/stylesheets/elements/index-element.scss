@@ -1,3 +1,5 @@
+@import "../utilities/font-stacks.scss";
+
 $image-size: 42px;
 
 .index-element {
@@ -41,7 +43,7 @@ $image-size: 42px;
   }
 
   &__name {
-    font-family: "bookmania";
+    font-family: $serif;
     text-decoration: none;
     padding-bottom: 0.3em;
     display: block;
@@ -51,7 +53,7 @@ $image-size: 42px;
   }
 
   &__subtext {
-    font-family: "mr-eaves";
+    font-family: $sans-serif;
     font-size: 1.1em;
   }
 

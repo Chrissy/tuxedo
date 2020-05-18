@@ -1,8 +1,9 @@
 @import "../utilities/colors.scss";
+@import "../utilities/font-stacks.scss";
 
 .autocomplete-wrapper {
   position: relative;
-  font-family: "mr-eaves";
+  font-family: $sans-serif;
 }
 
 .autocomplete-results-container {

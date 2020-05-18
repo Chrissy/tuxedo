@@ -1,4 +1,5 @@
 @import "../utilities/breakpoints.scss";
+@import "../utilities/font-stacks.scss";
 
 .list {
   display: grid;
@@ -85,5 +86,5 @@
   text-decoration: none;
   font-size: 18px;
   margin-bottom: 2px;
-  font-family: "mr-eaves";
+  font-family: $sans-serif;
 }

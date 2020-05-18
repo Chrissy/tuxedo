@@ -35,7 +35,7 @@
         <div class="recipe__recipe">
           <%= @recipe.recipe_as_html %>
         </div>
-        <%= render 'shared/mail_card', relocate_to: '[data-to-relocate] p:nth-of-type(2), [data-to-relocate] p:first-of-type', border_version_on_mobile: true %>
+        <%= render 'shared/mail_card', relocate_to: '[data-to-relocate] p:nth-of-type(3), [data-to-relocate] p:nth-of-type(2)', border_version_on_mobile: true %>
       </div>
       <div class="recipe__content recipe__primary--count-<%= image_count%>" itemprop="description">
         <div class="recipe__description">

@@ -1,8 +1,9 @@
 @import "../utilities/breakpoints.scss";
+@import "../utilities/font-stacks.scss";
 
 .list-card {
   border: 1px solid #000;
-  font-family: "mr-eaves";
+  font-family: $sans-serif;
   padding: 16px;
   display: flex;
   flex-direction: column;

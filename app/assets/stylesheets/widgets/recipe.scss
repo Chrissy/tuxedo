@@ -1,12 +1,13 @@
 @import "../elements/label";
 @import "../utilities/breakpoints.scss";
+@import "../utilities/font-stacks.scss";
 
 $components-border-color: #e1e1e1;
 $components-text-color: #666;
 $components-bg-color: white;
 
 %recipe {
-  font-family: "mr-eaves";
+  font-family: $sans-serif;
   font-size: 18px;
 
   ul,
@@ -23,12 +24,13 @@ $components-bg-color: white;
     li {
       display: flex;
       line-height: 1;
+      font-family: $sans-serif;
 
       &:before {
         content: counter(li);
         counter-increment: li;
         font-size: 24px;
-        font-family: "bookmania";
+        font-family: $serif;
         font-weight: 700;
         padding: 0 10px 0 0;
         transform: translateY(2px);
@@ -60,7 +62,7 @@ $components-bg-color: white;
     }
 
     @media (min-width: $mobile) {
-      font-family: "bookmania";
+      font-family: $serif;
       font-size: 20px;
       margin: 0;
       font-weight: 900;
@@ -90,6 +92,13 @@ $components-bg-color: white;
     margin: 8px 0 14px 0;
     display: flex;
     position: relative;
+  }
+
+  .amount,
+  .divider,
+  .unit,
+  .ingredient {
+    font-family: $sans-serif;
   }
 
   .amount {

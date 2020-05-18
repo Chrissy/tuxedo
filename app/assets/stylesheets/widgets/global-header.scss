@@ -1,5 +1,6 @@
 @import "../utilities/colors.scss";
 @import "../utilities/breakpoints.scss";
+@import "../utilities/font-stacks.scss";
 
 $search-width: 300px;
 $mobile-search-width: 120px;
@@ -95,7 +96,7 @@ $mobile-search-width: 120px;
 
   &__link {
     text-decoration: none;
-    font-family: "mr-eaves";
+    font-family: $sans-serif;
     margin-left: 10px;
     color: $gray-3;
 

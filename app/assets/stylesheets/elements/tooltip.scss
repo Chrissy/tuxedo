@@ -1,3 +1,5 @@
+@import "../utilities/font-stacks.scss";
+
 @keyframes tooltip-fade-in {
   0% {
     transform: translateY(20px);
@@ -20,7 +22,7 @@
   pointer-events: none;
   border-radius: 0.25em;
   border: 1px solid #000;
-  font-family: "mr-eaves";
+  font-family: $sans-serif;
   width: 230px;
   padding-bottom: 8px;
   animation: 0.2s tooltip-fade-in ease-in;
@@ -57,7 +59,7 @@
   }
 
   &__title {
-    font-family: "bookmania";
+    font-family: $serif;
     font-weight: 700;
     line-height: 1;
     margin-bottom: 0.125em;

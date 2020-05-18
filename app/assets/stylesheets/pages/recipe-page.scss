@@ -1,5 +1,6 @@
 @import "../utilities/colors";
 @import "../utilities/breakpoints.scss";
+@import "../utilities/font-stacks.scss";
 @import "../elements/helpers";
 
 $description-cutout: 150px;
@@ -68,8 +69,8 @@ $image-offset: 30px;
   &__header-title {
     @extend %swash;
     font-size: 44px;
-    line-height: 60px;
-    margin: 0;
+    line-height: 50px;
+    margin: 0 0 8px 0;
 
     a {
       color: $text-color-dark;
@@ -84,7 +85,7 @@ $image-offset: 30px;
   }
 
   &__header-subtitle {
-    font-family: "mr-eaves";
+    font-family: $sans-serif;
     font-weight: 400;
     font-size: 24px;
     line-height: 1;
@@ -277,6 +278,7 @@ $image-offset: 30px;
 
     .card {
       margin: 20px 0;
+      min-height: 0;
     }
   }
 
@@ -293,7 +295,7 @@ $image-offset: 30px;
 
   &__description::first-letter {
     color: #000;
-    font-family: "mr-eaves";
+    font-family: $sans-serif;
     font-size: 86px;
     font-weight: 800;
     float: left;
@@ -359,6 +361,11 @@ $image-offset: 30px;
       @media (max-width: $mobile) {
         display: inherit;
       }
+    }
+
+    .ingredient-card,
+    .list-card {
+      min-height: 0;
     }
 
     .list-card {

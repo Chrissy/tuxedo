@@ -1,4 +1,5 @@
 @import "../utilities/breakpoints.scss";
+@import "../utilities/font-stacks.scss";
 
 .list-element {
   position: relative;
@@ -6,7 +7,7 @@
   &__details {
     position: absolute;
     color: #fff;
-    font-family: "mr-eaves";
+    font-family: $sans-serif;
     font-size: 18px;
     text-decoration: none;
     bottom: 0;
@@ -38,7 +39,7 @@
 
     &--featured {
       font-size: 32px;
-      font-family: "bookmania";
+      font-family: $serif;
       font-weight: bold;
 
       &:first-letter {

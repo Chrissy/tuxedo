@@ -1,9 +1,11 @@
+@import "../utilities/font-stacks.scss";
+
 .text-link {
   text-decoration: none;
 
   &__name {
     font-size: 18px;
-    font-family: "bookmania";
+    font-family: $serif;
     font-weight: 700;
     line-height: 1;
     display: flex;

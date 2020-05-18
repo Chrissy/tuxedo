@@ -1,5 +1,6 @@
 @import "./elements.scss";
 @import "../utilities/breakpoints.scss";
+@import "../utilities/font-stacks.scss";
 
 .card {
   display: grid;
@@ -8,7 +9,7 @@
   grid-template-columns: auto 1fr;
   grid-column-gap: 16px;
   margin-bottom: 10px;
-  font-family: "mr-eaves";
+  font-family: $sans-serif;
 
   &--border-version {
     grid-template-areas: "head head" "content image";
@@ -69,17 +70,17 @@
 
   &__content {
     grid-area: content;
-    height: 100%;
     display: flex;
     flex: 1;
     flex-direction: column;
     justify-content: space-between;
   }
 
-  &__text {
-    font-size: 15px;
+  &__text:not(.eee) {
+    font-size: 16px;
     line-height: 1.1;
     margin: 0 0 16px 0;
+    font-family: $sans-serif;
 
     &--border-version {
       font-size: 16px;
@@ -121,7 +122,7 @@
   &__list-name {
     font-size: 15px;
     display: block;
-    font-family: "Bookmania";
+    font-family: $serif;
     font-weight: 700;
     text-transform: capitalize;
     margin-bottom: 2px;
