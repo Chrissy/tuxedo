@@ -16,6 +16,10 @@ class Subcomponent < ActiveRecord::Base
   end
 
   def url
+    component.url
+  end
+
+  def url_with_hash
     "#{component.url}##{ApplicationHelper.slugify(name)}"
   end
 
