@@ -26,6 +26,6 @@ module ListsHelper
   end
 
   def elements_for_list(list)
-    list.elements.reject { |element| element.class.to_s == 'List' }[0..20]
+    list.elements.reject { |element| element.class.to_s == 'List' }
   end
 end
