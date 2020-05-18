@@ -59,6 +59,7 @@ export default class Autocomplete {
     this.arrowIndex = null;
     this.results = [];
     this.isOpen = false;
+    this.wrapper = wrapper;
 
     this.build_autocomplete(options);
     this.listenForSelect();
@@ -80,7 +81,11 @@ export default class Autocomplete {
 
   handleSelect = (selectFunc) => (result, target) => {
     selectFunc(result, target);
-    this.reset();
+    if (this.keepOpenUntilBlur) {
+      this.input.focus();
+    } else {
+      this.reset();
+    }
   };
 
   renderLine(result, active, index) {
@@ -251,7 +256,7 @@ export default class Autocomplete {
       if (!this.isOpen) return;
       this.wrapper.classList.remove("focused");
 
-      if (event.relatedTarget && !this.keepOpenUntilBlur) {
+      if (event.relatedTarget) {
         const listElementId = event.relatedTarget.getAttribute(
           "data-list-element"
         );
@@ -267,7 +272,6 @@ export default class Autocomplete {
             this.results[parseInt(listElementId)],
             event.relatedTarget
           );
-          this.reset();
         }
 
         if (this.onFooterClick && (isFooter || isFooter === "")) {

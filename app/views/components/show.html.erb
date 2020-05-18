@@ -17,7 +17,7 @@
     <% else %>
       <div class="component__primary">
         <div class="component__header">
-          <div class="component__header-images component__header-images--<%= featured.count %>">
+          <div class="component__header-images component__header-images--<%= featured.count %>" data-carousel-location>
             <% featured.each_with_index do |recipe, index| %>
               <%= 
                     render '/lists/list_element', 

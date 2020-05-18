@@ -63,7 +63,7 @@ export default class Tooltip {
   }
 
   initCarousel(images) {
-    this.primaryImage = images[0];
+    this.carouselLocation = document.querySelector("[data-carousel-location]");
     this.wrapper = document.createElement("div");
     this.wrapper.classList.add("carousel");
     this.slider = document.createElement("div");
@@ -71,12 +71,15 @@ export default class Tooltip {
     this.dots = document.createElement("div");
     this.dots.classList.add("carousel__dots");
 
-    this.primaryImage.after(this.wrapper);
+    this.carouselLocation.prepend(this.wrapper);
     this.wrapper.appendChild(this.slider);
     this.wrapper.appendChild(this.dots);
 
     this.images.forEach((image, index) => {
       this.slider.appendChild(image);
+
+      if (this.images.length <= 1) return;
+
       const dotNode = document.createElement("div");
       dotNode.classList.add("carousel__dot");
       if (index === 0) dotNode.classList.add("carousel__dot--selected");
@@ -115,7 +118,7 @@ export default class Tooltip {
   }
 
   tearDownCarousel() {
-    this.primaryImage = null;
+    this.carouselLocation = null;
     this.wrapper.remove();
     this.slider.remove();
     this.dots.remove();

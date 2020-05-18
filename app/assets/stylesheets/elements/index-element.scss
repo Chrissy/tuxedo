@@ -63,6 +63,14 @@ $image-size: 42px;
     min-width: 0;
     margin: 0;
     padding: 1em 0.66em;
+    text-decoration: none;
+    border-bottom: 1px solid #dedede;
+
+    .index-element__subtext {
+      font-family: $serif;
+      font-size: 0.8em;
+      line-height: 1.4;
+    }
   }
 }
 

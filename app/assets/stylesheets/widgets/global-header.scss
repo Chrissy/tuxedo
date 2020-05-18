@@ -135,19 +135,21 @@ $mobile-search-width: 120px;
   }
 
   &--search-focus {
-    .global-header__logo {
-      display: none;
-    }
+    @media (max-width: $mobile) {
+      .global-header__logo {
+        display: none;
+      }
 
-    .global-header__secondary-content {
-      flex: 1;
-      justify-content: flex-end;
-    }
+      .global-header__secondary-content {
+        flex: 1;
+        justify-content: flex-end;
+      }
 
-    .global-header__search-input,
-    .global-header__search-wrapper,
-    .autocomplete-wrapper {
-      width: 100%;
+      .global-header__search-input,
+      .global-header__search-wrapper,
+      .autocomplete-wrapper {
+        width: 100%;
+      }
     }
   }
 }

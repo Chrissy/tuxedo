@@ -45,7 +45,9 @@
 
     &__display-number {
       @media (max-width: $small) {
-        display: none;
+        position: absolute;
+        top: 20px;
+        right: -20px;
       }
     }
   }

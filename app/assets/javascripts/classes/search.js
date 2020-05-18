@@ -93,9 +93,11 @@ export default class Search {
   renderSearchItem(result) {
     return `
       <a href="${result.url}" class="index-element for-search">
-        <div class="index-element-text">
-          <div class="index-element-name">${result.name}</div>
-          ${this.renderSubtext(result)}
+        <div class="index-element__text">
+          <div class="index-element__name">${result.name}</div>
+          <div class="index-element__subtext">${this.renderSubtext(
+            result
+          )}</div>
         </div>
         <div class="index-element__image index-element__image--for-search">
           <img class="index-element__img" src="https://s3.us-east-2.amazonaws.com/chrissy-tuxedo-no2/100x100${
