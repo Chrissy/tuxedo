@@ -3,7 +3,7 @@
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .component {
+.centered-content-box-large, .content, .global-header, .about, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -64,7 +64,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .component {
+.centered-content-box-large, .content, .global-header, .about, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -155,7 +155,7 @@ h3 {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .component {
+.centered-content-box-large, .content, .global-header, .about, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -178,7 +178,7 @@ h3 {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .component {
+.centered-content-box-large, .content, .global-header, .about, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -326,7 +326,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .component {
+.centered-content-box-large, .content, .global-header, .about, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -520,7 +520,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .component {
+.centered-content-box-large, .content, .global-header, .about, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -590,7 +590,7 @@ body {
   width: 100%;
   font-size: 4em;
   padding: 0;
-  margin: 0 0 0 1%; }
+  margin: 0; }
 
 .index-menu {
   width: 100%;
@@ -613,7 +613,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .component {
+.centered-content-box-large, .content, .global-header, .about, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -671,11 +671,11 @@ body {
 
 .content {
   min-height: 200px;
-  padding-bottom: 50px; }
-  .content:after {
-    content: "";
-    display: table;
-    clear: both; }
+  padding-bottom: 50px;
+  flex: 1; }
+  @media (max-width: 1300px) {
+    .content.index {
+      padding: 0 16px 50px 16px; } }
 
 .grid {
   display: grid;
@@ -712,7 +712,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .component {
+.centered-content-box-large, .content, .global-header, .about, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -735,7 +735,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .component {
+.centered-content-box-large, .content, .global-header, .about, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -934,7 +934,7 @@ body {
   .card__text:not(.eee) {
     font-size: 16px;
     line-height: 1.1;
-    margin: 0 0 16px 0;
+    margin: 0 0 18px 0;
     font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
     .card__text:not(.eee)--border-version {
       font-size: 16px; }
@@ -1084,7 +1084,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .component {
+.centered-content-box-large, .content, .global-header, .about, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -1107,7 +1107,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .component {
+.centered-content-box-large, .content, .global-header, .about, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -1306,7 +1306,7 @@ body {
   .card__text:not(.eee) {
     font-size: 16px;
     line-height: 1.1;
-    margin: 0 0 16px 0;
+    margin: 0 0 18px 0;
     font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
     .card__text:not(.eee)--border-version {
       font-size: 16px; }
@@ -1562,7 +1562,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .component {
+.centered-content-box-large, .content, .global-header, .about, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -2111,6 +2111,37 @@ body {
   position: relative;
   top: -4px; }
 
+.about {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  grid-column-gap: 24px;
+  font-size: 16px;
+  padding-top: 36px; }
+  @media (max-width: 1300px) {
+    .about {
+      padding: 36px 16px; } }
+  @media (max-width: 900px) {
+    .about {
+      grid-template-columns: 1fr;
+      grid-row-gap: 16px;
+      padding-top: 0; } }
+  .about__image {
+    width: 100%;
+    height: auto; }
+  .about__header {
+    font-size: 46px;
+    line-height: 1;
+    margin-bottom: 16px; }
+    .about__header--first {
+      margin-top: 0;
+      padding-top: 0; }
+    @media (max-width: 900px) {
+      .about__header {
+        font-size: 36px; } }
+  .about__list li {
+    list-style-type: initial;
+    margin-left: 16px; }
+
 .list {
   display: grid;
   grid-gap: 18px;
@@ -2179,7 +2210,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .component {
+.centered-content-box-large, .content, .global-header, .about, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -2452,7 +2483,7 @@ body {
   margin: 0 auto;
   position: relative; }
 
-.centered-content-box-large, .content, .global-header, .recipe, .component {
+.centered-content-box-large, .content, .global-header, .about, .recipe, .component {
   margin: 0 auto;
   position: relative;
   width: 100%;

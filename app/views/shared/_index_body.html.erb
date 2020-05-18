@@ -1,4 +1,4 @@
-<div class="content" itemtype="http://schema.org/ItemList">
+<div class="index content" itemtype="http://schema.org/ItemList">
   <% elements.group_by { |element| element.name[0].upcase }.each do |letter, elements| %>
     <h1 itemprop="name" class="index-letter-label"><%= link_to letter, {:controller => controller, :action => :letter_index, :letter => letter.downcase} %></h1>
     <div class="grid">
