@@ -157,7 +157,7 @@
     overflow: hidden;
     white-space: nowrap;
     display: block;
-    max-width: calc(100vw - 66px);
+    flex: 1;
 
     &--with-bar {
       display: flex;

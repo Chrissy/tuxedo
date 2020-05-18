@@ -21,7 +21,12 @@ $image-offset: 30px;
     grid-column-gap: 20px;
     width: 100%;
 
+    @media (max-width: $large) {
+      padding: 16px;
+    }
+
     @media (max-width: $mobile) {
+      padding: 0;
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -100,6 +105,7 @@ $image-offset: 30px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    min-width: 300px;
     padding: 0 24px
       ($space-between-description-and-header + $description-cutout) 0px;
 
@@ -118,15 +124,15 @@ $image-offset: 30px;
   }
 
   &__header-images {
-    width: $image-width;
+    max-width: $image-width;
     margin-right: -$image-offset;
 
     &--count-2 {
-      width: 470px;
+      max-width: 470px;
     }
 
     &--count-3 {
-      width: 436px;
+      max-width: 436px;
     }
 
     @media (max-width: $mobile) {
@@ -227,6 +233,11 @@ $image-offset: 30px;
       height: $description-cutout + $three-count-extra;
     }
 
+    @media (max-width: $large) {
+      width: 48%;
+      height: 140px;
+    }
+
     @media (max-width: $mobile) {
       display: none;
     }
@@ -301,6 +312,10 @@ $image-offset: 30px;
     justify-content: flex-end;
     padding-bottom: 20px;
     min-height: 100%;
+
+    @media (max-width: $large) {
+      display: none;
+    }
 
     @media (max-width: $mobile) {
       display: block;

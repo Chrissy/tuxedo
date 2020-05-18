@@ -37,7 +37,7 @@ $space-between-description-and-header: 6px;
       margin-top: 40px;
       font-size: 17px;
 
-      @media (max-width: $mobile) {
+      @media (max-width: $large) {
         padding: 20px 16px;
         margin: 0;
       }
@@ -292,9 +292,12 @@ $space-between-description-and-header: 6px;
     min-height: 340px;
     margin-bottom: 1em;
 
-    @media (max-width: 700px) {
-      grid-template-columns: 1fr;
+    @media (max-width: $large) {
       margin: 0 16px 20px 16px;
+    }
+
+    @media (max-width: $small) {
+      grid-template-columns: 1fr;
     }
 
     &--extra-margin {
@@ -306,7 +309,7 @@ $space-between-description-and-header: 6px;
     margin-top: 6em;
     margin-bottom: 3em;
 
-    @media (max-width: 700px) {
+    @media (max-width: $large) {
       padding: 20px 16px 0 16px;
     }
   }
@@ -323,9 +326,12 @@ $space-between-description-and-header: 6px;
     grid-column-gap: 40px;
     margin-bottom: 6em;
 
+    @media (max-width: $large) {
+      margin: 0 16px 2em 16px;
+    }
+
     @media (max-width: $mobile) {
       display: block;
-      margin: 0 16px 2em 16px;
     }
 
     .index-element__subtext {

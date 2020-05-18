@@ -104,7 +104,7 @@ $components-bg-color: white;
     align-items: baseline;
     font-variant-numeric: tabular-nums;
 
-    @media (max-width: $mobile) {
+    @media (max-width: $large) {
       margin-left: -10px;
     }
   }

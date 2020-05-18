@@ -8,11 +8,12 @@
   grid-auto-rows: 39px;
   max-width: 1150px;
 
-  @media (max-width: 1200px) {
-    grid-template-columns: 1fr;
+  @media (max-width: $mobile) {
+    grid-template-columns: 0.5fr 0.5fr;
   }
 
-  @media (max-width: $mobile) {
+  @media (max-width: $small) {
+    grid-template-columns: 1fr;
     padding: 0 0 18px 0;
   }
 
@@ -42,7 +43,7 @@
     }
 
     &__display-number {
-      @media (max-width: $mobile) {
+      @media (max-width: $small) {
         display: none;
       }
     }
@@ -58,12 +59,15 @@
   }
 
   .card {
-    @media (max-width: $mobile) {
+    min-width: 0;
+
+    @media (max-width: $small) {
       margin: 0 16px;
     }
   }
 
   .card--ingredient {
+    min-width: 0;
     grid-row-end: span 7;
   }
 }
@@ -72,7 +76,7 @@
   display: flex;
   flex-direction: column;
 
-  @media (max-width: $mobile) {
+  @media (max-width: $small) {
     display: none;
   }
 }
