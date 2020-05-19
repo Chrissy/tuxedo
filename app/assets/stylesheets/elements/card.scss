@@ -113,10 +113,16 @@
     margin-left: 6px;
   }
 
-  &__list-subtext .subtext {
-    margin: 0;
-    font-weight: 200;
-    font-size: 15px;
+  &__list-subtext {
+    .subtext {
+      margin: 0;
+      font-weight: 200;
+      font-size: 15px;
+    }
+
+    a {
+      text-decoration: none;
+    }
   }
 
   &__list-name {

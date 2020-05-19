@@ -962,6 +962,8 @@ body {
     margin: 0;
     font-weight: 200;
     font-size: 15px; }
+  .card__list-subtext a {
+    text-decoration: none; }
   .card__list-name {
     font-size: 15px;
     display: block;
@@ -1334,6 +1336,8 @@ body {
     margin: 0;
     font-weight: 200;
     font-size: 15px; }
+  .card__list-subtext a {
+    text-decoration: none; }
   .card__list-name {
     font-size: 15px;
     display: block;

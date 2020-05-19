@@ -11,9 +11,9 @@
   <div class="card__section">
     <div class="card__section-label label">Classics</div>
     <% ingredient.classic_recipes(3).each do |recipe| %>
-      <a class="card__list-item" href="<%= recipe.url %>">
+      <a class="card__list-item" href="<%= recipe.url %>" tooltip="<%= tooltip(recipe) %>">
         <strong><%= recipe.name %></strong>
-        <%= recipe.components[0..2].map(&:name).join(", ") %>, and something else
+        <%= recipe.components[0..2].map(&:name).join(", ") %>
       </a>
     <% end %>
   </div>

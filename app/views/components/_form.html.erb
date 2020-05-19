@@ -7,7 +7,7 @@
     <%= f.text_field :pseudonyms_as_markdown, :value => default_text(:pseudonyms_as_markdown), :placeholder => "other names for this ingedient" %>
   </div>
   <div class="form_block secondary">
-    <%= f.text_area :description, :value => default_text(:description), :placeholder => "description" %>
+    <%= f.text_area :description, :value => default_text(:description), :placeholder => "description", :class => "autocomplete components recipes" %>
     <%= f.submit(submit_text()) %>
     <%= link_to "delete", action: "delete" if @component.id %>
   </div>

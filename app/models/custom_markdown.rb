@@ -1,7 +1,38 @@
 # frozen_string_literal: true
 
+require 'base64'
+
 class CustomMarkdown
   include ActiveModel::Model
+
+  def self.image_path(image, width, height)
+    Base64.strict_encode64(
+      JSON.generate(
+        bucket: 'chrissy-tuxedo-no2',
+        key: image,
+        edits: {
+          resize: {
+            width: width,
+            height: height,
+            fit: 'cover'
+          }
+        }
+      )
+    )
+  end
+
+  def self.tooltip(element)
+    image1 = 'https://d34nm4jmyicdxh.cloudfront.net/' + image_path(element.image_with_backup, 300, 200)
+    image2 = 'https://d34nm4jmyicdxh.cloudfront.net/' + image_path(element.image_with_backup, 600, 400)
+    subtitle = element.try(:subtitle).present? ? "<div class='tooltip__description'>#{element.subtitle}</div>" : ''
+
+    "<div class='tooltip'>"\
+      "<img class='tooltip__image' src='#{image1}' srcset='#{image1} 1x, #{image2} 2x'/>"\
+      "<div class='tooltip__title'>#{element.name}</div>"\
+      "#{subtitle}"\
+      "<svg class='tooltip__tip'><use href='/dist/sprite.svg#tooltip-tip-white'></use></svg>"\
+    '</div>'
+  end
 
   def self.model_for_symbol(symbol)
     {
@@ -29,8 +60,10 @@ class CustomMarkdown
         count = Subcomponent.find_by_name(match).try(:list_elements).try(:count) || 0
         slug = ApplicationHelper.slugify(match)
         "<h2 id='#{slug}' class='subcomponent'>#{match} • <a href='#{element.url}?type=#{slug}'>#{count} recipes</a></h2>"
+      elsif element && element.class.to_s == 'Recipe'
+        "<a href=\"#{element.url}\" tooltip=\"#{CGI.escapeHTML(tooltip(element))}\">#{Regexp.last_match(2)}</a>"
       elsif element
-        "<a href='#{element.url}'>#{Regexp.last_match(2)}</a>"
+        "<a href=\"#{element.url}\">#{Regexp.last_match(2)}</a>"
       else
         Regexp.last_match(2)
       end
