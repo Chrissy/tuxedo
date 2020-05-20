@@ -20,7 +20,9 @@ class List < ActiveRecord::Base
   end
 
   def elements
-    list_elements
+    list_elements.reject do |element|
+      element.class.to_s == 'List'
+    end
   end
 
   def url

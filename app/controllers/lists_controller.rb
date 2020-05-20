@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+PAGINATION_INTERVAL = 46
+
 class ListsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[not_found show home get about index letter_index]
   layout 'application'
@@ -7,12 +9,25 @@ class ListsController < ApplicationController
   def show
     @list ||= List.friendly.find(params[:id])
     @layout_object = @list
+    @list_elements = @list.elements.reject { |element| element.class.to_s == 'List' }
   end
 
   def home
     @list ||= List.find(1)
     @layout_object = @list
+    @pagination_end = PAGINATION_INTERVAL - 1
+    @list_elements = @list.elements[0...PAGINATION_INTERVAL]
     render 'show'
+  end
+
+  def more
+    @page = params[:page].to_i
+    @list ||= List.find(1)
+    @layout_object = @list
+    @pagination_start = PAGINATION_INTERVAL * @page
+    @pagination_end = @pagination_start + PAGINATION_INTERVAL - 1
+    @list_elements = @list.elements[@pagination_start..@pagination_end]
+    render 'more', layout: false
   end
 
   def edit

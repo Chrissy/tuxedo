@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Tuxno2::Application.routes.draw do
   devise_for :users
 
@@ -8,7 +10,6 @@ Tuxno2::Application.routes.draw do
   get 'index/:letter' => 'indeces#letter_index'
   get 'index' => 'indeces#index'
   get 'image-upload-token' => 'application#token'
-
 
   get 'ingredients/all' => 'components#all'
   get 'ingredients/new' => 'components#new'
@@ -27,6 +28,7 @@ Tuxno2::Application.routes.draw do
   post 'list/update/:id' => 'lists#update'
   post 'list/create' => 'lists#create'
   get 'list/delete/:id' => 'lists#delete'
+  get 'list/more/:page' => 'lists#more'
   get 'lists/:letter' => 'lists#letter_index'
   get 'lists' => 'lists#index'
   get 'list/:id' => 'lists#show'

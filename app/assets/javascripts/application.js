@@ -2,6 +2,7 @@ import Search from "./classes/search.js";
 import Filter from "./classes/filter.js";
 import Tooltip from "./classes/tooltip.js";
 import Carousel from "./classes/carousel.js";
+import LazyLoader from "./classes/lazyLoader.js";
 import MobileRelocater from "./classes/mobileRelocater.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -41,4 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const toMoveOnMobile = document.querySelectorAll("[data-relocate-to]");
   [...toMoveOnMobile].forEach((toMove) => new MobileRelocater(toMove));
+
+  const lookForLazyLoaders = () => {
+    const lazyScroll = document.querySelector("[data-lazy-load-on-scroll]");
+    const lazyClick = document.querySelector("[data-lazy-load-on-click]");
+    if (lazyScroll) new LazyLoader(lazyScroll, "onScroll", lookForLazyLoaders);
+    if (lazyClick) new LazyLoader(lazyClick, "onClick", lookForLazyLoaders);
+  };
+
+  lookForLazyLoaders();
 });

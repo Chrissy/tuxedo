@@ -3,6 +3,7 @@
 <% display_number ||= false %>
 <% class_name ||= '' %>
 <% carousel_index ||= false %>
+<% lazy_load ||= false %>
 <a 
   href="<%= element.url %>" 
   class='list-element <%= 'list-element--first' if first %> <%= 'list-element--second' if second %> <%= class_name %>' 
@@ -10,6 +11,7 @@
   itemscope 
   itemtype="http://schema.org/Recipe"
   <%= "data-carousel-index=#{carousel_index}" unless !carousel_index %>
+  <%= "data-lazy-load-on-scroll=#{lazy_load}" unless !lazy_load %>
 >
   <div class="list-element__image-link <%= 'list-element__image-link--hero' if first %>">
     <%= display_number_with_fallback(element, "list-element__display-number") if display_number %>

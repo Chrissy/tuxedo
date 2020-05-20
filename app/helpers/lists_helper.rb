@@ -24,8 +24,4 @@ module ListsHelper
   def name_for_display(element)
     element.class.to_s.pluralize
   end
-
-  def elements_for_list(list)
-    list.elements.reject { |element| element.class.to_s == 'List' }
-  end
 end
