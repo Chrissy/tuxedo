@@ -90,6 +90,13 @@
   text-decoration: none;
   letter-spacing: 0.075em;
   font-family: $sans-serif;
+  cursor: pointer;
+
+  &.loading,
+  &.lazyloader--loading {
+    opacity: 0.6;
+    cursor: initial;
+  }
 }
 
 .site-footer {

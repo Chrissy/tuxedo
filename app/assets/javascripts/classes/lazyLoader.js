@@ -8,19 +8,30 @@ export default class LazyLoader {
       element,
       type,
       cb,
+      loading: false,
     });
 
-    window.onscroll = debounce(100, this.checkForLazyLoad.bind(this));
+    if (type === "onScroll") {
+      window.onscroll = debounce(100, this.checkForLazyLoad.bind(this));
+    } else if (type === "onClick") {
+      element.addEventListener("click", this.fetchNewContent.bind(this));
+    }
   }
 
   fetchNewContent() {
+    if (this.loading) return;
+
     const url =
       this.element.getAttribute("data-lazy-load-on-scroll") ||
       this.element.getAttribute("data-lazy-load-on-click");
+    this.element.classList.add("lazyloader--loading");
+    this.loading = true;
     fetch(url)
       .then((res) => res.text())
       .then((text) => {
         this.appendContent(text);
+        this.element.classList.remove("lazyloader--loading");
+        this.loading = false;
       });
   }
 

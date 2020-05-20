@@ -121,15 +121,15 @@ class Component < ActiveRecord::Base
   def all_elements
     all = []
     subcomponents.each { |subcomponent| all.concat(subcomponent.list_elements) }
-    all.concat(list_elements)
+    all.concat(list_elements).uniq
   end
 
   def classic_recipes(count = 3)
     all_elements.sort_by { |a| a.classic? ? 0 : 1 }.uniq.slice(0, count).sort_by(&:created_at).reverse
   end
 
-  def latest_recipes(count = 3)
-    all_elements.sort_by(&:created_at).reverse.slice(0, count)
+  def latest_recipes(count = 3, start = 0)
+    all_elements.sort_by(&:created_at).reverse.slice(start, count)
   end
 
   def original_recipes(count = 3)

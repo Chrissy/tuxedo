@@ -305,7 +305,11 @@ body {
   font-size: 10px;
   text-decoration: none;
   letter-spacing: 0.075em;
-  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  cursor: pointer; }
+  .button.loading, .loading.card__action, .button.lazyloader--loading, .lazyloader--loading.card__action {
+    opacity: 0.6;
+    cursor: initial; }
 
 .site-footer {
   clear: both;
@@ -868,7 +872,11 @@ body {
   font-size: 10px;
   text-decoration: none;
   letter-spacing: 0.075em;
-  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  cursor: pointer; }
+  .button.loading, .loading.card__action, .button.lazyloader--loading, .lazyloader--loading.card__action {
+    opacity: 0.6;
+    cursor: initial; }
 
 .site-footer {
   clear: both;
@@ -1242,7 +1250,11 @@ body {
   font-size: 10px;
   text-decoration: none;
   letter-spacing: 0.075em;
-  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  cursor: pointer; }
+  .button.loading, .loading.card__action, .button.lazyloader--loading, .lazyloader--loading.card__action {
+    opacity: 0.6;
+    cursor: initial; }
 
 .site-footer {
   clear: both;

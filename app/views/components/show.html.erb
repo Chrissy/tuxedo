@@ -63,13 +63,12 @@
           <%= render 'shared/mail_card' %>
         </div>
       </div>
-      <div>
-        <div class="label label--center component__recent-additions-label">Recent Additions</div>
-        <div class="component__recent-additions">
-          <%= render partial: 'lists/list_element', collection: latest, as: :element if latest %>
+      <% if latest %>
+        <div>
+          <div class="label label--center component__recent-additions-label">Recent Additions</div>
+          <%= render 'recents', elements: latest, page: 0, component: @component %>
         </div>
-        <a class="component__recent-additions-show-more button">Show More</a>
-      </div>
+      <% end %>
     <% end %>
     <% if @component.all_elements.count > 6 %>
       <div class="component__all" data-filterable-table>
