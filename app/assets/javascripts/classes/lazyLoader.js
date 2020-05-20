@@ -1,6 +1,6 @@
 import { debounce } from "throttle-debounce";
 
-const BUFFER = 300;
+const BUFFER = 600;
 
 export default class LazyLoader {
   constructor(element, type, cb) {
@@ -35,7 +35,7 @@ export default class LazyLoader {
     var rect = this.element.getBoundingClientRect();
     var elemTop = rect.top;
     var elemBottom = rect.bottom;
-    return elemTop < window.innerHeight && elemBottom >= 0;
+    return elemTop - BUFFER < window.innerHeight && elemBottom >= 0;
   }
 
   checkForLazyLoad() {

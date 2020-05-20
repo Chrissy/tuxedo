@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-PAGINATION_INTERVAL = 46
+PAGINATION_INTERVAL = 47
 
 class ListsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[not_found show home get about index letter_index]
@@ -24,8 +24,9 @@ class ListsController < ApplicationController
     @page = params[:page].to_i
     @list ||= List.find(1)
     @layout_object = @list
-    @pagination_start = PAGINATION_INTERVAL * @page
+    @pagination_start = PAGINATION_INTERVAL * @page + 1
     @pagination_end = @pagination_start + PAGINATION_INTERVAL - 1
+    @last_page = @pagination_end >= @list.elements.count
     @list_elements = @list.elements[@pagination_start..@pagination_end]
     render 'more', layout: false
   end

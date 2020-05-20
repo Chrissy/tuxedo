@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const lookForLazyLoaders = () => {
     const lazyScroll = document.querySelector("[data-lazy-load-on-scroll]");
     const lazyClick = document.querySelector("[data-lazy-load-on-click]");
+
     if (lazyScroll) new LazyLoader(lazyScroll, "onScroll", lookForLazyLoaders);
     if (lazyClick) new LazyLoader(lazyClick, "onClick", lookForLazyLoaders);
   };

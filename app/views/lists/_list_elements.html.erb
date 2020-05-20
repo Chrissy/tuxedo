@@ -1,6 +1,7 @@
 <% start_index ||= nil %>
 <% page ||= nil %>
 <% pagination_end ||= nil %>
+<% last_page ||= false %>
 <% elements.try(:each_with_index) do |element, index| %>
   <% index = start_index ? start_index + index : index %>
   <% if index == 0 %>
@@ -24,5 +25,5 @@
   <% if index == 11 %>
     <%= render 'shared/mail_card.html.erb', border_version: true %>
   <% end %>
-  <%= render 'list_element', element: element, first: index == 0, second: index == 1, display_number: index == 0, lazy_load: index === pagination_end ? "/list/more/#{page + 1}" : nil %>
+  <%= render 'list_element', element: element, first: index == 0, second: index == 1, display_number: index == 0, lazy_load: index === pagination_end && !last_page ? "/list/more/#{page + 1}" : nil %>
 <% end %>
