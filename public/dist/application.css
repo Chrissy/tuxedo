@@ -945,19 +945,19 @@ body {
     flex: 1;
     flex-direction: column;
     justify-content: space-between; }
-  .card__text:not(.eee) {
+  .card__text {
     font-size: 16px;
     line-height: 1.1;
     margin: 0 0 18px 0;
     font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
-    .card__text:not(.eee)--border-version {
+    .card__text--border-version {
       font-size: 16px; }
-    .card__text:not(.eee)--border-version-on-mobile {
+    .card__text--border-version-on-mobile {
       /* this is more or less a duplicate of border-version, but in a MQ */ }
       @media (max-width: 900px) {
-        .card__text:not(.eee)--border-version-on-mobile {
+        .card__text--border-version-on-mobile {
           font-size: 16px; } }
-    .card__text:not(.eee)--list {
+    .card__text--list {
       margin: 0; }
   .card__actions {
     display: flex;
@@ -1323,19 +1323,19 @@ body {
     flex: 1;
     flex-direction: column;
     justify-content: space-between; }
-  .card__text:not(.eee) {
+  .card__text {
     font-size: 16px;
     line-height: 1.1;
     margin: 0 0 18px 0;
     font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
-    .card__text:not(.eee)--border-version {
+    .card__text--border-version {
       font-size: 16px; }
-    .card__text:not(.eee)--border-version-on-mobile {
+    .card__text--border-version-on-mobile {
       /* this is more or less a duplicate of border-version, but in a MQ */ }
       @media (max-width: 900px) {
-        .card__text:not(.eee)--border-version-on-mobile {
+        .card__text--border-version-on-mobile {
           font-size: 16px; } }
-    .card__text:not(.eee)--list {
+    .card__text--list {
       margin: 0; }
   .card__actions {
     display: flex;
