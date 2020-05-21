@@ -129,6 +129,12 @@ class Recipe < ActiveRecord::Base
     where("lower(name) LIKE '#{letter}%' AND published = 't'")
   end
 
+  # this is for manual use only, very slow
+  def self.rebuild_all
+    Recipe.all.map(&:delete_and_save_relationships)
+    Recipe.all.map(&:touch)
+  end
+
   def get_recommends(component, count = 3)
     other_recipes = (component.list_elements.keep_if(&:published?) - [self])
     other_recipes.sort_by! { |recipe| (components & recipe.components).length }

@@ -124,6 +124,17 @@ class Component < ActiveRecord::Base
     all.concat(list_elements).uniq
   end
 
+  def all_elements_greedy
+    all = []
+
+    subcomponents.each do |subcomponent|
+      to_add = Component.find_by_name(subcomponent.name).try(:list_elements)
+      all.concat(to_add || [])
+    end
+
+    all.concat(all_elements).uniq
+  end
+
   def classic_recipes(count = 3)
     all_elements.sort_by { |a| a.classic? ? 0 : 1 }.uniq.slice(0, count).sort_by(&:created_at).reverse
   end
@@ -175,7 +186,13 @@ class Component < ActiveRecord::Base
 
   def delete_and_save_subcomponents
     if description.present? && saved_changes.keys.include?('description')
-      CustomMarkdown.subcomponents_from_markdown(self, description)
+      old_subs = subcomponents
+      new_subs = CustomMarkdown.subcomponents_from_markdown(self, description)
+      orphaned_subs = old_subs - new_subs
+      orphaned_subs.map(&:delete)
+
+      all_elements_greedy.map(&:delete_and_save_relationships)
+      all_elements_greedy.map(&:touch)
     end
   end
 
@@ -233,7 +250,10 @@ class Component < ActiveRecord::Base
   end
 
   def self.all_for_display
-    order('lower(name)')
+    results = []
+    results.concat(Subcomponent.all)
+    results.concat(Component.all)
+    results.uniq(&:name).sort_by(&:name)
   end
 
   def self.get_by_letter(letter)

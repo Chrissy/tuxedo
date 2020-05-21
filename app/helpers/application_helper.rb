@@ -25,7 +25,6 @@ module ApplicationHelper
       .concat(Recipe.all_for_display)
       .concat(List.all_for_display)
       .concat(Component.all_for_display)
-      .concat(Subcomponent.all_for_display)
   end
 
   def no_index

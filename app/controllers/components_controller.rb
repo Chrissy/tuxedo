@@ -42,7 +42,7 @@ class ComponentsController < ApplicationController
   end
 
   def all
-    @components = Component.all.map(&:name).concat(Subcomponent.all.map(&:name))
+    @components = Subcomponent.all.map(&:name).concat(Component.all.map(&:name)).uniq
     respond_to do |format|
       format.json {}
     end
