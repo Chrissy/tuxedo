@@ -10,7 +10,7 @@
     "styles": "node-sass app/assets/stylesheets/application.scss public/dist/application.css",
     "develop": "npx webpack --config webpack.config.js --watch && npx node-sass app/assets/stylesheets/application.scss public/dist/application.css -w",
     "build": "npm run scripts && npm run styles && npm run sprite",
-    "sprite": "svgo ./public/svg && npx svg-sprite-generate -d ./public/svg -o ./public/dist/sprite.svg"
+    "sprite": "npx svg-sprite-generate -d ./public/svg -o ./public/dist/sprite.svg"
   },
   "license": "ISC",
   "dependencies": {
