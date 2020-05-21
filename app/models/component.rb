@@ -192,6 +192,7 @@ class Component < ActiveRecord::Base
       orphaned_subs.map(&:delete)
 
       all_elements_greedy.map(&:delete_and_save_relationships)
+      all_elements_greedy.map(&:convert_recipe_to_html)
       all_elements_greedy.map(&:touch)
     end
   end
