@@ -135,4 +135,7 @@
     <% end %>
   </div>
   <%= render 'footer', :component => @component %>
+  <% if user_signed_in? %>
+    <a class="global-header__link authenticate" data-edit-link href="<%= @component.edit_url %>">Edit</a>
+  <% end %>
 <% end %>
