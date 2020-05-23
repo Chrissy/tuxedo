@@ -185,6 +185,10 @@ class Component < ActiveRecord::Base
   end
 
   def delete_and_save_subcomponents
+    # note: this does not fully resolve instances where a subcomponent is added
+    # and then removed. in this rare case, you will need to also manually run
+    # Recipe.rebuild_all to reassociate a standard component with its recipes
+
     if description.present? && saved_changes.keys.include?('description')
       old_subs = subcomponents
       new_subs = CustomMarkdown.subcomponents_from_markdown(self, description)
@@ -192,7 +196,7 @@ class Component < ActiveRecord::Base
       orphaned_subs.map(&:delete)
 
       all_elements_greedy.map(&:delete_and_save_relationships)
-      all_elements_greedy.map(&:convert_recipe_to_html)
+      all_elements_greedy.map(&:convert_recipe_to_html_and_store)
       all_elements_greedy.map(&:touch)
     end
   end
