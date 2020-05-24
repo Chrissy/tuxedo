@@ -1819,14 +1819,14 @@ body {
     object-fit: cover;
     min-height: 360px; }
   .list-element__subtitle {
-    font-size: 20px;
+    font-size: 19px;
     font-weight: normal;
     margin: 4px 0 0 0;
     max-width: 300px;
     line-height: 1;
     -webkit-font-smoothing: antialiased; }
   .list-element__subtext--featured {
-    font-size: 20px;
+    font-size: 19px;
     -webkit-font-smoothing: antialiased; }
   .list-element__tag-icons {
     margin-top: 10px;
