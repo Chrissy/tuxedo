@@ -1,6 +1,6 @@
 <% use_links ||= false %>
 <%= 
-  element.components[0..2].map{ |component|
+  element.components[0..2].select{|s| !!s }.map{ |component|
     use_links ? link_to(component.nickname, component.url) : component.nickname
   }.join(", ").html_safe
 %>

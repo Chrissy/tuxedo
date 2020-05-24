@@ -7,7 +7,6 @@ import MobileRelocater from "./classes/mobileRelocater.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   new Search('[data-role="search"]');
-  new Filter("[data-filterable-table]");
 
   document.querySelectorAll("[tooltip]").forEach((element) => {
     new Tooltip({
@@ -36,6 +35,20 @@ document.addEventListener("DOMContentLoaded", () => {
       header.classList.remove("global-header--search-focus");
     });
   });
+
+  if (document.querySelector("[data-filterable-table]")) {
+    const filter = new Filter();
+
+    document.querySelectorAll("[data-table-link]").forEach((element) => {
+      const params = [element.getAttribute("data-table-link")];
+
+      element.addEventListener("click", () => {
+        const url = window.location.pathname + `?filter=${params}`;
+        history.pushState({}, "", url);
+        filter.applyQueryFilters();
+      });
+    });
+  }
 
   const imagesForCarousel = document.querySelectorAll("[data-carousel-index]");
   if (imagesForCarousel.length) new Carousel([...imagesForCarousel]);

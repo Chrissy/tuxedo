@@ -59,7 +59,7 @@ class CustomMarkdown
         match = Regexp.last_match(2)
         count = Subcomponent.find_by_name(match).try(:list_elements).try(:count) || 0
         slug = ApplicationHelper.slugify(match)
-        "<h2 id='#{slug}' class='subcomponent'>#{match} • <a href='#{element.url}?type=#{slug}'>#{count} recipes</a></h2>"
+        "<h2 id='#{slug}' class='subcomponent'>#{match} • <a href='#table' data-table-link='#{ERB::Util.u(match)}'>#{count} recipes</a></h2>"
       elsif element && element.class.to_s == 'Recipe'
         "<a href=\"#{element.url}\" tooltip=\"#{CGI.escapeHTML(tooltip(element))}\">#{Regexp.last_match(2)}</a>"
       elsif element

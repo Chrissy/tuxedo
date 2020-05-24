@@ -31,7 +31,7 @@
         <% end %>
       </div>
       <div class="list-element__subtext list-element__subtext--featured">
-        <%= render element.subtext, element: element if element.subtext.present? %>
+        <%= render element.subtext, element: element if element.try(:subtext).present? %>
       </div>
     </div>
   <% else %>
@@ -43,7 +43,7 @@
         <%= element.name %>
       </h3>
       <div class="list-element__subtext">
-        <%= render element.subtext, :element => element if element.subtext.present? %>
+        <%= render element.subtext, :element => element if element.try(:subtext).present? %>
       </div>
     </div>
   <% end %>

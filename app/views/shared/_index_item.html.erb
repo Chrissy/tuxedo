@@ -31,7 +31,7 @@ index_element_classes = "#{'index-element--for-search ' if for_search}#{'index-e
         </div>
       <% else %>
         <div class="index-element__subtext">
-          <%= render element.subtext, :element => element if element.subtext.present? %>
+          <%= render element.subtext, use_links: true, element: element if element.try(:subtext).present? %>
         </div>
       <% end %>
     <% end %>

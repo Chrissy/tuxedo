@@ -1,12 +1,8 @@
-export default class Tooltip {
-  constructor({
-    /* the table to apply filtering to */
-    parentNode,
-  }) {
-    Object.assign(this, {
-      parentNode,
-    });
+import qs from "query-string";
+import uniq from "lodash.uniq";
 
+export default class Filter {
+  constructor() {
     this.filterableElements = [
       ...document.querySelectorAll("[data-ingredients]"),
     ].map((el) => {
@@ -19,6 +15,8 @@ export default class Tooltip {
     this.filterActions = [
       ...document.querySelectorAll("[data-filter-by], [data-filter-by-many]"),
     ];
+
+    this.applyQueryFilters();
 
     this.filterActions.forEach((action) => {
       action.addEventListener("click", (event) => {
@@ -63,6 +61,51 @@ export default class Tooltip {
     return list.split(",");
   }
 
+  applyQueryFilters() {
+    const { filter } = qs.parse(window.location.search, {
+      arrayFormat: "comma",
+    });
+
+    if (filter) {
+      if (Array.isArray(filter)) {
+        this.applyFilters(filter);
+      } else if (typeof filter === "string") {
+        this.applyFilters([filter]);
+      }
+    }
+  }
+
+  applyFilters(values) {
+    this.unSelectFilterByActions();
+
+    values
+      .filter((v) => !!v)
+      .forEach((value) => {
+        let actions = this.filterActions.filter((el) => {
+          return (
+            el.getAttribute("data-filter-by-many") === value ||
+            el.getAttribute("data-filter-by") === value
+          );
+        });
+
+        if (actions.length) {
+          actions.forEach((a) => this.toggleAction(a));
+        }
+      });
+
+    this.filter();
+  }
+
+  setFilterQueryParams(filter) {
+    const string = qs.stringify(
+      { filter: uniq(filter) },
+      { arrayFormat: "comma" }
+    );
+
+    const url = window.location.pathname + "?" + string;
+    history.pushState({}, "", url);
+  }
+
   filter() {
     const masterFilterList = this.filterActions
       .filter((el) => {
@@ -86,5 +129,14 @@ export default class Tooltip {
     });
 
     this.hideElements(toHide.map((el) => el.node));
+    this.setFilterQueryParams(masterFilterList);
+
+    if (!document.querySelector("[data-filter-by].selected")) {
+      const els = this.filterActions.filter(
+        (f) => f.getAttribute("data-filter-by") === "default"
+      );
+
+      els.forEach((el) => this.toggleAction(el));
+    }
   }
 }
