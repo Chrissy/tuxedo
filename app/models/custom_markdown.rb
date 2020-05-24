@@ -128,10 +128,13 @@ class CustomMarkdown
 
   def self.subcomponents_from_markdown(instance, md)
     elements = []
+    index = 0
     md.scan(/\:\:\[(.*?)\]/) do
       element =
         Subcomponent.find_by_name(Regexp.last_match(1)) ||
         Subcomponent.create(name: Regexp.last_match(1), component_id: instance.id)
+      element.update_attribute(:index, index)
+      index += 1
       elements << element
     end
     elements.uniq - ['', nil]
