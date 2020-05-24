@@ -26,9 +26,7 @@
         <%= element.subtitle %>
       </h2>
       <div class="list-element__tag-icons">
-        <% element.tags.each do |tag| %>
-          <%= render 'recipes/tag', tag: tag, classname: "list-element__tag-icon" %>
-        <% end %>
+        <%= render 'recipes/tags', tags: element.tags, class_name: "list-element__tag-icon" %>
       </div>
       <div class="list-element__subtext list-element__subtext--featured">
         <%= render element.subtext, element: element if element.try(:subtext).present? %>

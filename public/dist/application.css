@@ -702,20 +702,47 @@ body {
       grid-template-columns: 100fr; } }
 
 .tag {
-  width: 1em;
+  width: 0.8em;
   height: 1em; }
   .tag--collins-glass {
-    height: 1.15em;
+    height: 1.05em;
     width: 0.75em;
-    transform: translateY(-1px); }
+    margin-left: 1px; }
   .tag--up {
-    height: 0.82em; }
+    height: 0.75em;
+    margin-right: 2px;
+    margin-left: 1px; }
+  .tag--rocks {
+    width: 1em;
+    margin-left: 1px; }
+  .tag--crushed-ice {
+    width: 1em; }
+  .tag--cracked-ice {
+    width: 1em;
+    height: 1.1em;
+    transform: translateY(-1px); }
   .tag--shaken {
-    transform: translateY(-1px);
-    width: 0.875em; }
+    transform: translateY(-1.5px);
+    width: 0.875em;
+    height: 0.95em; }
+  .tag--stirred {
+    height: 1em;
+    transform: translateY(-1px); }
   .tag--tiki-glass {
     height: 1.15em;
     width: 0.875em; }
+  .tag--rocks-glass {
+    width: 0.875em;
+    height: 0.85em;
+    margin-left: 2px; }
+  .tag--cocktail-glass {
+    width: 0.9em;
+    margin-left: 2px; }
+  .tag--built-in-glass {
+    transform: translateY(-1px); }
+  .tag--toddy-glass {
+    height: 0.875em;
+    margin-left: 1px; }
 
 .centered-content-box, .edit_panel {
   width: 940px;

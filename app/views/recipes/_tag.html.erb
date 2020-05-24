@@ -1,5 +1,5 @@
 <% classname ||= '' %>
-<% slug = tag.name.gsub(' ', '-') %>
-<span tooltip="<%= text_tooltip(tag.name) %>" style="line-height: 0;">
+<% slug = tag.gsub(' ', '-') %>
+<span tooltip="<%= text_tooltip(tag) %>" style="line-height: 0;">
   <%= render 'shared/svg', id: "tag-" + slug, className: "tag tag--#{slug} #{classname}" %>
 </span>
