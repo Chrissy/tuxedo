@@ -136,7 +136,7 @@ class Component < ActiveRecord::Base
   end
 
   def classic_recipes(count = 3)
-    all_elements.sort_by { |a| a.classic? ? 0 : 1 }.uniq.slice(0, count).sort_by(&:created_at).reverse
+    all_elements.sort_by(&:created_at).reverse.select(&:classic?).uniq.slice(0, count).reverse
   end
 
   def latest_recipes(count = 3, start = 0)
@@ -144,7 +144,7 @@ class Component < ActiveRecord::Base
   end
 
   def original_recipes(count = 3)
-    all_elements.sort_by { |a| a.original? ? 0 : 1 }.slice(0, count).sort_by(&:created_at).reverse
+    all_elements.sort_by(&:created_at).reverse.select(&:original?).slice(0, count).reverse
   end
 
   def featured_recipes(count = 3)
