@@ -10,13 +10,13 @@ class ComponentsController < ApplicationController
   end
 
   def recents
-    PAGINATION_INTERVAL = 6
+    pagination_interval = 6
     @component = Component.find(params[:id])
     @page = 1
-    @pagination_start = @page == 1 ? 3 : PAGINATION_INTERVAL * @page + 1
-    @pagination_end = @pagination_start + PAGINATION_INTERVAL - 1
+    @pagination_start = @page == 1 ? 3 : pagination_interval * @page + 1
+    @pagination_end = @pagination_start + pagination_interval - 1
     @last_page = @pagination_end >= @component.all_elements.count
-    @latest = @component.latest_recipes(PAGINATION_INTERVAL, @pagination_start)
+    @latest = @component.latest_recipes(pagination_interval, @pagination_start)
     render 'recents', layout: false
   end
 
