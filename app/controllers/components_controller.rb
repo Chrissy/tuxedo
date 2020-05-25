@@ -3,7 +3,7 @@
 PAGINATION_INTERVAL = 6
 
 class ComponentsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[show index letter_index]
+  skip_before_action :authenticate_user!, only: %i[show index letter_index recents]
   layout 'application'
 
   def show
