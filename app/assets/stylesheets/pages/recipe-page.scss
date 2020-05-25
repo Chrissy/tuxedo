@@ -19,6 +19,7 @@ $image-offset: 30px;
       "sidebar header"
       "sidebar content";
     grid-template-columns: 270px auto;
+    grid-template-rows: auto 1fr;
     grid-column-gap: 20px;
     width: 100%;
 
@@ -298,8 +299,8 @@ $image-offset: 30px;
   &__description {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: 15px;
-    line-height: 1.5;
+    font-size: 16px;
+    line-height: 1.4;
     color: $text-color;
     font-weight: 300;
     max-width: 580px;
