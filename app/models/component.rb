@@ -67,9 +67,7 @@ class Component < ActiveRecord::Base
   end
 
   def image_with_backup
-    if image.present?
-      image
-    elsif list_elements.last.try(:image).try(:present?)
+    if list_elements.last.try(:image).try(:present?)
       list_elements.first.image
     elsif all_elements.last.try(:image).try(:present?)
       all_elements.first.image
