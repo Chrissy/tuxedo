@@ -1,6 +1,6 @@
 <% use_links ||= false %>
 <%= 
-  element.classic_recipes(3).map{ |recipe|
+  element.featured_recipes(3).map{ |recipe|
     use_links ? link_to(recipe.name, recipe.url) : recipe.name
   }.join(", ").html_safe 
 %>

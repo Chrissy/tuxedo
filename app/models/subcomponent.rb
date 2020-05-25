@@ -55,6 +55,37 @@ class Subcomponent < ActiveRecord::Base
     true
   end
 
+  def subtext
+    'components/subtext'
+  end
+
+  def classic_recipes(count = 3)
+    list_elements.sort_by(&:created_at).reverse.sort_by { |a| a.classic? ? 0 : 1 }.uniq[0..count - 1]
+  end
+
+  def latest_recipes(count = 3, start = 0)
+    list_elements.sort_by(&:created_at).reverse[start..(start + count - 1)]
+  end
+
+  def original_recipes(count = 3)
+    list_elements.sort_by(&:created_at).reverse.sort_by { |a| a.original? ? 0 : 1 }[0..count - 1]
+  end
+
+  def featured_recipes(count = 3)
+    classics = classic_recipes(2)
+    latest = latest_recipes(2)
+    originals = latest_recipes(2)
+    featured = [
+      classics[0],
+      latest[0],
+      originals[0],
+      classics[1],
+      latest[1],
+      originals[1]
+    ].uniq - [nil]
+    featured.slice(0, count)
+  end
+
   def nickname
     name
   end
