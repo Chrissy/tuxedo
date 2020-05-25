@@ -2515,6 +2515,14 @@ body {
         margin: 0; }
         .recipe__primary-sidebar .card {
           display: none; } }
+  .recipe__adapted-from-card[data-relocate-to] {
+    padding: 0; }
+    @media (min-width: 900px) {
+      .recipe__adapted-from-card[data-relocate-to] {
+        margin-top: 120px; } }
+    .recipe__adapted-from-card[data-relocate-to] .card__label {
+      min-height: 10px;
+      margin-bottom: 0; }
   .recipe__footer {
     position: relative;
     width: 100%;

@@ -345,6 +345,19 @@ $image-offset: 30px;
     }
   }
 
+  &__adapted-from-card[data-relocate-to] {
+    padding: 0;
+
+    @media (min-width: $mobile) {
+      margin-top: 120px;
+    }
+
+    .card__label {
+      min-height: 10px;
+      margin-bottom: 0;
+    }
+  }
+
   &__footer {
     position: relative;
     width: 100%;

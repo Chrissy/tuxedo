@@ -78,6 +78,10 @@ class Recipe < ActiveRecord::Base
     Relationship.find_parents_by_type(self, List)
   end
 
+  def adapted_from_for_display
+    markdown_renderer.render(adapted_from).html_safe
+  end
+
   def url
     "/#{slug}"
   end
