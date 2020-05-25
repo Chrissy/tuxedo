@@ -94,7 +94,7 @@
                 <%= render 'shared/svg', id: "radio-unselected", className: "component__radio-button component__radio-button--unselected" %>
                 All
               </span>
-              <span><%= @component.all_elements.count %></span>
+              <span class="component__filter-count"><%= @component.all_elements.count %></span>
             </a>
             <% @component.subcomponents.reverse.each do |subcomponent| %>
               <a href="#" class="component__filter component__filter--radio" data-filter-by="<%= subcomponent.name %>">
@@ -103,7 +103,7 @@
                   <%= render 'shared/svg', id: "radio-selected", className: "component__radio-button component__radio-button--selected" %>
                   <%= subcomponent.name %>
                 </span>
-                <span><%= subcomponent.list_elements.count %></span>
+                <span class="component__filter-count"><%= subcomponent.list_elements.count %></span>
               </a>
             <% end %>
           </div>
@@ -116,7 +116,7 @@
                   <%= render 'shared/svg', id: "checkbox-selected", className: "component__checkbox component__checkbox--selected" %>
                   <%= pairing[:component].name %>
                 </span>
-                <span><%= pairing[:count] %></span>
+                <span class="component__filter-count"><%= pairing[:count] %></span>
               </a>
             <% end %>
           </div>

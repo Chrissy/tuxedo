@@ -106,6 +106,22 @@ export default class Filter {
     history.pushState({}, "", url);
   }
 
+  setCounters() {
+    this.filterActions.forEach((element) => {
+      if (element.getAttribute("data-filter-by")) return;
+
+      const filterOn = element.getAttribute("data-filter-by-many");
+      const count = this.filterableElements.filter(
+        (e) =>
+          !e.node.classList.contains("hidden") &&
+          (e.filterOn.includes(filterOn) || filterOn === "default")
+      ).length;
+
+      const toUpdate = element.querySelector(".component__filter-count");
+      if (toUpdate) toUpdate.innerHTML = count;
+    });
+  }
+
   filter() {
     const masterFilterList = this.filterActions
       .filter((el) => {
@@ -121,8 +137,10 @@ export default class Filter {
     if (
       !masterFilterList.length ||
       (!masterFilterList.length === 1 && masterFilterList.includes("default"))
-    )
+    ) {
+      this.setCounters();
       return;
+    }
 
     const toHide = this.filterableElements.filter((element) => {
       return !masterFilterList.every((s) => element.filterOn.includes(s));
@@ -130,6 +148,8 @@ export default class Filter {
 
     this.hideElements(toHide.map((el) => el.node));
     this.setFilterQueryParams(masterFilterList);
+
+    this.setCounters();
 
     if (!document.querySelector("[data-filter-by].selected")) {
       const els = this.filterActions.filter(
