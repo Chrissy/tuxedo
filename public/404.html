@@ -1,33 +1,61 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <style>
-  body {
-    background-color: #eee;
-    color: #333;
-  }
-  .yummy-cocktail {
-    margin: 100px auto 10px auto;
-    width: 300px;
-    display: block;
-    height: auto;
-    position: relative;
-    left: 10px;
-  }
-  h1 {
-    text-align: center;
-    font-family: georgia;
-    font-size: 32px;
-    margin: 10px auto;
-    position: relative;
-  }
-  h1 a { color: #8B5300; text-decoration: none; }
-  </style>
-</head>
+  <head>
+    <title>We're sorry, but something went wrong (500)</title>
+    <style>
+      @font-face {
+        font-family: "bookmania";
+        src: url("/webfonts/bookmania-semibold.eot?#iefix")
+            format("embedded-opentype"),
+          url("/webfonts/bookmania-semibold.woff") format("woff"),
+          url("/webfonts/bookmania-semibold.ttf") format("truetype");
+        font-weight: bold;
+        font-style: normal;
+      }
+      body {
+        background-color: #eee;
+        color: #333;
+        max-width: 900px;
+        margin: 0 auto;
+        font-family: "bookmania", georgia;
+        display: flex;
+        min-height: 100vh;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .yummy-cocktail {
+        margin: 100px auto 10px auto;
+        width: 300px;
+        display: block;
+        height: auto;
+        position: relative;
+        left: 10px;
+      }
+      h1 {
+        text-align: center;
+        font-size: 32px;
+        margin: 10px auto;
+        position: relative;
+        line-height: 1.5;
+      }
+      h1 a {
+        color: inherit;
+      }
+      .big-404 {
+        font-family: "bookmania", georgia;
+        font-size: 200px;
+        text-align: center;
+        line-height: 1;
+      }
+    </style>
+  </head>
 
-<body>
-  <img class="yummy-cocktail" src="yummy-cocktail.png"/>
-  <h1>By jove! You've missed the washroom! Why not <a href="/">try again?</a></h1>
-</body>
+  <body>
+    <div class="big-404">404</div>
+    <h1>
+      The restroom is down the hall and to your left. Looking for something
+      else? You can always <a href="/">try again.</a>
+    </h1>
+  </body>
 </html>
