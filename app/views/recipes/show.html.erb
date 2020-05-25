@@ -35,7 +35,7 @@
         </div>
         <%= render 'shared/mail_card', relocate_to: '[data-to-relocate] p:nth-of-type(3), [data-to-relocate] p:nth-of-type(2)', border_version_on_mobile: true %>
         <% if @recipe.adapted_from.present? %>
-          <div class="card card--list recipe__adapted-from-card" data-relocate-to=".mail.card">
+          <div class="card card--list recipe__adapted-from-card">
             <div class="label card__label">Adapted From</div>
             <div class="card__content">
               <%= @recipe.adapted_from_for_display %>

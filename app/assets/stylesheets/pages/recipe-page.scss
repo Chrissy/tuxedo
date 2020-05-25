@@ -345,7 +345,7 @@ $image-offset: 30px;
     }
   }
 
-  &__adapted-from-card[data-relocate-to] {
+  &__adapted-from-card[class] {
     padding: 0;
 
     @media (min-width: $mobile) {
