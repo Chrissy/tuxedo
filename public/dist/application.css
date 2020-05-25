@@ -2053,6 +2053,8 @@ body {
         padding: 0 1.5em 1.25em 1em; }
         .global-header__links.hidden {
           display: none; } }
+    body.lists .global-header__links {
+      display: none; }
   .global-header__link {
     text-decoration: none;
     font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";

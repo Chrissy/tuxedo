@@ -14,7 +14,7 @@
       <meta name="robots" content="noindex">
     <% end %>
   </head>
-  <body data-no-turbolink itemscope itemtype="http://schema.org/Product">
+  <body data-no-turbolink itemscope itemtype="http://schema.org/Product" class="<%= slugify(controller_name) %>">
     <div class="site-container">
       <%= render 'shared/global_header' %>
       <%= yield %>

@@ -92,6 +92,10 @@ $mobile-search-width: 120px;
         display: none;
       }
     }
+
+    body.lists & {
+      display: none;
+    }
   }
 
   &__link {
