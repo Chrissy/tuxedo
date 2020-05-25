@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-PAGINATION_INTERVAL = 6
-
 class ComponentsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index letter_index recents]
   layout 'application'
@@ -12,8 +10,9 @@ class ComponentsController < ApplicationController
   end
 
   def recents
+    PAGINATION_INTERVAL = 6
     @component = Component.find(params[:id])
-    @page = params[:page].to_i
+    @page = 1
     @pagination_start = @page == 1 ? 3 : PAGINATION_INTERVAL * @page + 1
     @pagination_end = @pagination_start + PAGINATION_INTERVAL - 1
     @last_page = @pagination_end >= @component.all_elements.count
