@@ -12,7 +12,7 @@ class ComponentsController < ApplicationController
   def recents
     pagination_interval = 6
     @component = Component.find(params[:id])
-    @page = 1
+    @page = params[:page]
     @pagination_start = @page == 1 ? 3 : pagination_interval * @page + 1
     @pagination_end = @pagination_start + pagination_interval - 1
     @last_page = @pagination_end >= @component.all_elements.count
