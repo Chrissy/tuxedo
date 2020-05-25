@@ -13,11 +13,11 @@ Tuxno2::Application.routes.draw do
 
   get 'ingredients/all' => 'components#all'
   get 'ingredients/new' => 'components#new'
+  get 'ingredients/:id/recents/:page' => 'components#recents'
   get 'ingredients/edit/:id' => 'components#edit'
   post 'ingredients/update/:id' => 'components#update'
   post 'ingredients/create' => 'components#create'
   get 'ingredients/delete/:id' => 'components#delete'
-  get 'ingredients/:id/recents/:page' => 'components#recents'
   get 'ingredients/:id' => 'components#show'
   get 'ingredients-index/:letter' => 'components#letter_index'
   get 'ingredients' => 'components#index'
