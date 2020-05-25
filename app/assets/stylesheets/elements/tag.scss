@@ -29,6 +29,13 @@
     transform: translateY(-1px);
   }
 
+  &--served-hot {
+    width: 0.9em;
+    height: 1em;
+    margin-left: 3px;
+    transform: translateY(-1px);
+  }
+
   &--shaken {
     transform: translateY(-1.5px);
     width: 0.875em;

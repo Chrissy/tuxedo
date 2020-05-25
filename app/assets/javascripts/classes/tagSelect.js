@@ -11,6 +11,7 @@ const tags = [
   "large cube",
   "crushed ice",
   "cracked ice",
+  "served hot",
   "cocktail glass",
   "collins glass",
   "rocks glass",
@@ -19,7 +20,7 @@ const tags = [
   "summer",
   "winter",
   "fall",
-  "spring"
+  "spring",
 ];
 
 export default class TagSelect {
@@ -27,13 +28,13 @@ export default class TagSelect {
     this.input = input;
     this.autocomplete = new Autocomplete({
       input: this.input,
-      options: tags.map(option => ({ label: option })),
+      options: tags.map((option) => ({ label: option })),
       onSelect: this.onSelect,
       delimiter: ",",
       showResultsOnFocus: true,
       allowSubmitOnTab: true,
       keepOpenUntilBlur: true,
-      limit: 100
+      limit: 100,
     });
   }
 
@@ -41,7 +42,7 @@ export default class TagSelect {
     return `/search?query=${inputValue}`;
   }
 
-  onSelect = result => {
+  onSelect = (result) => {
     const { value } = this.input;
     const lastDelimiterIndex = value.lastIndexOf(",");
     const beforeText =
@@ -49,7 +50,7 @@ export default class TagSelect {
     this.input.value = beforeText + `${result.label}, `;
   };
 
-  onReturnWithNoSelection = inputValue => {
+  onReturnWithNoSelection = (inputValue) => {
     window.location = this.getFullTextSearchUrl(inputValue);
   };
 }

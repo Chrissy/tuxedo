@@ -722,6 +722,11 @@ body {
     width: 1em;
     height: 1.1em;
     transform: translateY(-1px); }
+  .tag--served-hot {
+    width: 0.9em;
+    height: 1em;
+    margin-left: 3px;
+    transform: translateY(-1px); }
   .tag--shaken {
     transform: translateY(-1.5px);
     width: 0.875em;
