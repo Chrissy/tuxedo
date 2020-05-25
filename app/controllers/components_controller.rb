@@ -14,7 +14,7 @@ class ComponentsController < ApplicationController
   def recents
     @component = Component.find(params[:id])
     @page = params[:page].to_i
-    @pagination_start = PAGINATION_INTERVAL * @page + 1
+    @pagination_start = @page == 1 ? 3 : PAGINATION_INTERVAL * @page + 1
     @pagination_end = @pagination_start + PAGINATION_INTERVAL - 1
     @last_page = @pagination_end >= @component.all_elements.count
     @latest = @component.latest_recipes(PAGINATION_INTERVAL, @pagination_start)
