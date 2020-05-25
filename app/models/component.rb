@@ -140,7 +140,7 @@ class Component < ActiveRecord::Base
   end
 
   def latest_recipes(count = 3, start = 0)
-    all_elements.sort_by(&:created_at).reverse[start..start + count]
+    all_elements.sort_by(&:created_at).reverse[start..(start + count - 1)]
   end
 
   def original_recipes(count = 3)
