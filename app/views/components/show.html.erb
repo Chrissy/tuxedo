@@ -106,6 +106,16 @@
                 <span class="component__filter-count"><%= subcomponent.list_elements.count %></span>
               </a>
             <% end %>
+            <% if @component.list_elements.present? %>
+              <a href="#" class="component__filter component__filter component__filter--radio" data-filter-by="<%= @component.name %>">
+                <span class="component__filter-control">
+                  <%= render 'shared/svg', id: "radio-unselected", className: "component__radio-button component__radio-button--unselected" %>
+                  <%= render 'shared/svg', id: "radio-selected", className: "component__radio-button component__radio-button--selected" %>
+                  Other
+                </span>
+                <span class="component__filter-count"><%= @component.list_elements.count %></span>
+              </a>
+            <% end %>
           </div>
           <div class="card card--list">
             <div class="label component__all-sidebar-filter-label">Combinations</div>

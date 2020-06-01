@@ -139,6 +139,7 @@ export default class Filter {
       (!masterFilterList.length === 1 && masterFilterList.includes("default"))
     ) {
       this.setCounters();
+      history.pushState({}, "", window.location.pathname);
       return;
     }
 
