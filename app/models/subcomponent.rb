@@ -29,7 +29,8 @@ class Subcomponent < ActiveRecord::Base
       relatable_type: 'Recipe',
       child_id: id
     ).map(&:relatable)
-    shares_subcomponent.concat(component.list_elements)
+    # not sure why this is in here but might need it for something ¯\_(ツ)_/¯
+    # shares_subcomponent.concat(component.list_elements)
     shares_subcomponent
   end
 
