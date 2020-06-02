@@ -414,7 +414,8 @@ body {
   line-height: 124%;
   border: 1px solid #555;
   padding: 6px 10px;
-  margin-bottom: 16px; }
+  margin-bottom: 16px;
+  font-family: "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
 
 .form-content textarea {
   min-height: 300px; }
