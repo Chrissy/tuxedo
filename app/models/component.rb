@@ -148,7 +148,7 @@ class Component < ActiveRecord::Base
   def featured_recipes(count = 3)
     classics = classic_recipes(2)
     latest = latest_recipes(2)
-    originals = latest_recipes(2)
+    originals = original_recipes(2)
     featured = [
       classics[0],
       latest[0],
