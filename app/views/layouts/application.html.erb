@@ -13,9 +13,11 @@
     <% if no_index %>
       <meta name="robots" content="noindex">
     <% end %>
+    <%= render "shared/gtm_head" %>
   </head>
   <body data-no-turbolink itemscope itemtype="http://schema.org/Product">
     <div class="site-container">
+      <%= render "shared/gtm_body" %>
       <%= render 'shared/global_header' %>
       <%= yield %>
       <%= render "shared/analytics" %>
