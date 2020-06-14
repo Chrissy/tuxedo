@@ -2663,8 +2663,8 @@ body {
 
 .component__header-title {
   font-size: 46px;
-  line-height: 60px;
-  margin: 0;
+  line-height: 48px;
+  margin: 0 0 10px 0;
   text-transform: capitalize; }
   @media (max-width: 900px) {
     .component__header-title {
@@ -2709,7 +2709,8 @@ body {
   grid-template-columns: 53.5% auto;
   grid-auto-rows: 52px;
   grid-gap: 18px;
-  width: 100%; }
+  width: 100%;
+  min-height: 528px; }
   @media (max-width: 900px) {
     .component__header-images {
       display: block; } }

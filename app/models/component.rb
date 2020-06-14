@@ -146,16 +146,19 @@ class Component < ActiveRecord::Base
   end
 
   def featured_recipes(count = 3)
-    classics = classic_recipes(2)
-    latest = latest_recipes(2)
-    originals = original_recipes(2)
+    classics = classic_recipes(3)
+    latest = latest_recipes(3)
+    originals = original_recipes(3)
     featured = [
       classics[0],
       latest[0],
       originals[0],
       classics[1],
       latest[1],
-      originals[1]
+      originals[1],
+      classics[2],
+      latest[2],
+      originals[2]
     ].uniq - [nil]
     featured.slice(0, count)
   end

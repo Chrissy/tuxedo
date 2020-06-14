@@ -119,8 +119,8 @@ $space-between-description-and-header: 6px;
 
   &__header-title {
     font-size: 46px;
-    line-height: 60px;
-    margin: 0;
+    line-height: 48px;
+    margin: 0 0 10px 0;
     text-transform: capitalize;
 
     @media (max-width: $mobile) {
@@ -176,6 +176,7 @@ $space-between-description-and-header: 6px;
     grid-auto-rows: 52px;
     grid-gap: 18px;
     width: 100%;
+    min-height: 528px;
 
     @media (max-width: $mobile) {
       display: block;
