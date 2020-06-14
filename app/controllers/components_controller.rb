@@ -53,11 +53,11 @@ class ComponentsController < ApplicationController
   end
 
   def index
-    @elements = Component.all_for_display.sort_by{ |c| c.name.downcase }
+    @elements = Component.all_for_display.sort_by { |c| c.name.downcase }
   end
 
   def letter_index
-    @elements = Component.get_by_letter(params[:letter]).sort_by{ |c| c.name.downcase }
+    @elements = Component.get_by_letter(params[:letter]).sort_by { |c| c.name.downcase }
   end
 
   private
@@ -69,6 +69,7 @@ class ComponentsController < ApplicationController
       :nick,
       :pseudonyms_as_markdown,
       :never_make_me_tall,
+      :skip_subcomponent_search,
       :list_as_markdown,
       :tags_as_text,
       :description,

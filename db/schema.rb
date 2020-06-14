@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_013656) do
+ActiveRecord::Schema.define(version: 2020_06_14_224018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_05_24_013656) do
     t.string "tags_as_text"
     t.text "subtitle"
     t.text "substitutes_as_markdown"
+    t.boolean "skip_subcomponent_search"
   end
 
   create_table "delayed_jobs", id: :serial, force: :cascade do |t|

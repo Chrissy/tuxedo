@@ -5,6 +5,8 @@
     <%= f.text_field :nick, :value => default_text(:nick), :placeholder => "nickname" %>
     <%= f.text_area :substitutes_as_markdown, :value => default_text(:substitutes_as_markdown), :placeholder => "list of substitutes (markdown enabled)", :class => "mini" %>
     <%= f.text_field :pseudonyms_as_markdown, :value => default_text(:pseudonyms_as_markdown), :placeholder => "other names for this ingedient" %>
+    <label>Don't show subcomponents in search</label>
+    <%= f.check_box :skip_subcomponent_search %>
   </div>
   <div class="form_block secondary">
     <%= f.text_area :description, :value => default_text(:description), :placeholder => "description", :class => "autocomplete components recipes" %>

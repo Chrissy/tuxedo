@@ -72,6 +72,10 @@ class Subcomponent < ActiveRecord::Base
     list_elements.sort_by(&:created_at).reverse.sort_by { |a| a.original? ? 0 : 1 }[0..count - 1]
   end
 
+  def skip_subcomponent_search
+    component.skip_subcomponent_search
+  end
+
   def featured_recipes(count = 3)
     classics = classic_recipes(2)
     latest = latest_recipes(2)

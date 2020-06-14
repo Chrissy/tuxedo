@@ -259,7 +259,7 @@ class Component < ActiveRecord::Base
     results = []
     results.concat(Subcomponent.all)
     results.concat(Component.all)
-    results.uniq(&:name).sort_by(&:name)
+    results.uniq(&:name).reject{ |c| c.is_a?(Subcomponent) && c.skip_subcomponent_search }.sort_by(&:name)
   end
 
   def self.get_by_letter(letter)
