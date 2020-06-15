@@ -212,7 +212,9 @@ class Component < ActiveRecord::Base
 
   def description_to_html
     converted_description = CustomMarkdown.convert_recommended_bottles_in_place(
-      CustomMarkdown.convert_links_in_place(description)
+      CustomMarkdown.convert_subcomponent_recipes_in_place(
+        CustomMarkdown.convert_links_in_place(description)
+      )
     )
     markdown_renderer.render(converted_description).html_safe
   end
@@ -259,7 +261,7 @@ class Component < ActiveRecord::Base
     results = []
     results.concat(Subcomponent.all)
     results.concat(Component.all)
-    results.uniq(&:name).reject{ |c| c.is_a?(Subcomponent) && c.skip_subcomponent_search }.sort_by(&:name)
+    results.uniq(&:name).reject { |c| c.is_a?(Subcomponent) && c.skip_subcomponent_search }.sort_by(&:name)
   end
 
   def self.get_by_letter(letter)

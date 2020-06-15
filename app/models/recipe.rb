@@ -172,43 +172,11 @@ class Recipe < ActiveRecord::Base
     "<a href='#{url}' class='recipe'>#{name}</a>"
   end
 
-  def convert_fractions(str)
-    str.gsub(/\d+.(\d+)/) do |match|
-      case match
-      when '2.75' then '2¾'
-      when '2.5' then '2½'
-      when '2.25' then '2¼'
-      when '1.75' then '1¾'
-      when '1.5' then '1½'
-      when '1.25' then '1¼'
-      when '0.75' then '¾'
-      when '0.6' then '⅔'
-      when '0.3' then '⅓'
-      when '0.5' then '½'
-      when '0.25' then '¼'
-      when '0.125' then '⅛'
-      else match
-      end
-    end.html_safe
-  end
-
-  def consruct_recipe_line(md)
-    regex = /([0-9]*\.?[0-9]*)(oz|tsp|tbsp|Tbsp|dash|dashes|lb|lbs|cup|cups)?(.*?)$/
-    search = md.match(regex).to_a.drop(1) # first is complete match
-
-    if !search[0] || search[0].empty? || search[0].blank?
-      return "* <span class='amount'></span><span class='ingredient'>#{md}</span>\n"
-    end
-
-    unit = search[1] ? "<span class='unit'>#{search[1]}</span>" : ''
-    "* <span class='amount'>#{convert_fractions(search[0])}#{unit}</span><span class='divider'></span><span class='ingredient'>#{search[2]}</span>\n"
-  end
-
   def convert_recipe_to_html
     html = CustomMarkdown.convert_links_in_place(recipe.dup)
 
     html.gsub!(/^\* (.*?\n)/) do |*|
-      consruct_recipe_line(Regexp.last_match(1))
+      CustomMarkdown.consruct_recipe_line(Regexp.last_match(1))
     end
 
     markdown_renderer.render(html)

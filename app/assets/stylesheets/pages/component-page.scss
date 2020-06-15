@@ -2,6 +2,7 @@
 @import "../elements/helpers";
 @import "../utilities/breakpoints.scss";
 @import "../utilities/font-stacks.scss";
+@import "../widgets/recipe.scss";
 
 $description-cutout: 50px;
 $space-between-description-and-header: 6px;
@@ -240,7 +241,12 @@ $space-between-description-and-header: 6px;
       }
     }
 
-    .recommended-bottles {
+    .subcomponent-recipe {
+      @extend %recipe;
+    }
+
+    .recommended-bottles,
+    .subcomponent-recipe {
       font-family: mr-eaves;
       text-transform: capitalize;
       font-size: 18px;
@@ -251,7 +257,8 @@ $space-between-description-and-header: 6px;
       position: relative;
       font-weight: 600;
 
-      &:before {
+      &:before,
+      &__label {
         content: "Bottles";
         text-transform: uppercase;
         background: #f0f0f0;
@@ -273,6 +280,28 @@ $space-between-description-and-header: 6px;
       @media (max-width: $mobile) {
         font-size: 15px;
         margin-top: 0.5em;
+      }
+    }
+
+    .subcomponent-recipe {
+      font-size: 0.875em;
+      padding: 18px 26px 20px 20px;
+      max-width: 490px;
+
+      &:before {
+        content: none;
+      }
+
+      .amount {
+        margin-left: -10px;
+      }
+
+      ul {
+        margin-bottom: 20px;
+      }
+
+      li {
+        margin: 4px 0 8px 0;
       }
     }
   }

@@ -46,7 +46,7 @@ class CustomMarkdown
   def self.convert_links_in_place(md)
     return '' unless md.present?
 
-    newMd = md.gsub(/(\=|\:\:|\:|\#)\[(.*?)\]/) do |*|
+    md.gsub(/(\=|\:\:|\:|\#)\[(.*?)\]/) do |*|
       element = model_for_symbol(Regexp.last_match(1)).where('lower(name) = ?', Regexp.last_match(2).downcase).first
       # for in-recipe subcomponents (:)
       if Regexp.last_match(1) == ':'
@@ -68,25 +68,71 @@ class CustomMarkdown
         Regexp.last_match(2)
       end
     end
-    newMd
   end
 
   def self.convert_recommended_bottles_in_place(md)
     return '' unless md.present?
 
-    newMd = md.gsub(/(\&)\[(.*?)\]/) do |*|
+    md.gsub(/(\&)\[(.*?)\]/) do |*|
       "<div class='recommended-bottles'>#{Regexp.last_match(2).gsub(/(\$+)/, '<em>\1</em>')}</div>"
     end
-    newMd
+  end
+
+  def self.convert_subcomponent_recipe(md)
+    md.gsub!(/^\* (.*?\n)/) do |*|
+      CustomMarkdown.consruct_recipe_line(Regexp.last_match(1))
+    end
+  end
+
+  def self.convert_subcomponent_recipes_in_place(md)
+    return '' unless md.present?
+
+    md.gsub(/(\$)\[(.*?)\](.*?)(\$)\[end\]/m) do |*|
+      "<div class='recipe subcomponent-recipe'>"\
+        "<div class='subcomponent-recipe__label'>#{Regexp.last_match(2)}</div>"\
+        "#{convert_subcomponent_recipe(Regexp.last_match(3))}"\
+      '</div>'
+    end
   end
 
   def self.remove_custom_links(md)
     return '' unless md.present?
 
-    newMd = md.gsub(/(\=|\:|\:\:|\#|\&)\[(.*?)\]/) do |*|
+    md.gsub(/(\=|\:|\:\:|\#|\&)\[(.*?)\]/) do |*|
       Regexp.last_match(2)
     end
-    newMd
+  end
+
+  def self.convert_fractions(str)
+    str.gsub(/\d+.(\d+)/) do |match|
+      case match
+      when '2.75' then '2¾'
+      when '2.5' then '2½'
+      when '2.25' then '2¼'
+      when '1.75' then '1¾'
+      when '1.5' then '1½'
+      when '1.25' then '1¼'
+      when '0.75' then '¾'
+      when '0.6' then '⅔'
+      when '0.3' then '⅓'
+      when '0.5' then '½'
+      when '0.25' then '¼'
+      when '0.125' then '⅛'
+      else match
+      end
+    end.html_safe
+  end
+
+  def self.consruct_recipe_line(md)
+    regex = /([0-9]*\.?[0-9]*)(oz|tsp|tbsp|Tbsp|dash|dashes|lb|lbs|cup|cups)?(.*?)$/
+    search = md.match(regex).to_a.drop(1) # first is complete match
+
+    if !search[0] || search[0].empty? || search[0].blank?
+      return "* <span class='amount'></span><span class='ingredient'>#{md}</span>\n"
+    end
+
+    unit = search[1] ? "<span class='unit'>#{search[1]}</span>" : ''
+    "* <span class='amount'>#{convert_fractions(search[0])}#{unit}</span><span class='divider'></span><span class='ingredient'>#{search[2]}</span>\n"
   end
 
   def self.links_to_code_array(md)

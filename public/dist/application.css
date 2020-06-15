@@ -1074,9 +1074,11 @@ body {
     justify-content: space-between;
     margin-top: 0.5em; }
 
-.label, .recipe__recipe h1,
+.label, .recipe__recipe h1, .component__description .subcomponent-recipe h1,
 .recipe__recipe h2,
-.recipe__recipe h3 {
+.component__description .subcomponent-recipe h2,
+.recipe__recipe h3,
+.component__description .subcomponent-recipe h3 {
   font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: bold;
   letter-spacing: 0.075em;
@@ -1085,16 +1087,20 @@ body {
   display: flex;
   align-items: center; }
   @media (max-width: 900px) {
-    .label, .recipe__recipe h1,
+    .label, .recipe__recipe h1, .component__description .subcomponent-recipe h1,
     .recipe__recipe h2,
-    .recipe__recipe h3 {
+    .component__description .subcomponent-recipe h2,
+    .recipe__recipe h3,
+    .component__description .subcomponent-recipe h3 {
       font-size: 11px; } }
   .label--bottom-border {
     padding-bottom: 14px;
     border-bottom: 1px solid #000; }
-  .label:not(.label--bottom-border):after, .recipe__recipe h1:not(.label--bottom-border):after,
+  .label:not(.label--bottom-border):after, .recipe__recipe h1:not(.label--bottom-border):after, .component__description .subcomponent-recipe h1:not(.label--bottom-border):after,
   .recipe__recipe h2:not(.label--bottom-border):after,
-  .recipe__recipe h3:not(.label--bottom-border):after, .label--center:before {
+  .component__description .subcomponent-recipe h2:not(.label--bottom-border):after,
+  .recipe__recipe h3:not(.label--bottom-border):after,
+  .component__description .subcomponent-recipe h3:not(.label--bottom-border):after, .label--center:before {
     content: "";
     height: 1px;
     background: currentColor;
@@ -1849,9 +1855,11 @@ body {
     font-size: 1.25em;
     color: #fff; }
 
-.label, .recipe__recipe h1,
+.label, .recipe__recipe h1, .component__description .subcomponent-recipe h1,
 .recipe__recipe h2,
-.recipe__recipe h3 {
+.component__description .subcomponent-recipe h2,
+.recipe__recipe h3,
+.component__description .subcomponent-recipe h3 {
   font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: bold;
   letter-spacing: 0.075em;
@@ -1860,16 +1868,20 @@ body {
   display: flex;
   align-items: center; }
   @media (max-width: 900px) {
-    .label, .recipe__recipe h1,
+    .label, .recipe__recipe h1, .component__description .subcomponent-recipe h1,
     .recipe__recipe h2,
-    .recipe__recipe h3 {
+    .component__description .subcomponent-recipe h2,
+    .recipe__recipe h3,
+    .component__description .subcomponent-recipe h3 {
       font-size: 11px; } }
   .label--bottom-border {
     padding-bottom: 14px;
     border-bottom: 1px solid #000; }
-  .label:not(.label--bottom-border):after, .recipe__recipe h1:not(.label--bottom-border):after,
+  .label:not(.label--bottom-border):after, .recipe__recipe h1:not(.label--bottom-border):after, .component__description .subcomponent-recipe h1:not(.label--bottom-border):after,
   .recipe__recipe h2:not(.label--bottom-border):after,
-  .recipe__recipe h3:not(.label--bottom-border):after, .label--center:before {
+  .component__description .subcomponent-recipe h2:not(.label--bottom-border):after,
+  .recipe__recipe h3:not(.label--bottom-border):after,
+  .component__description .subcomponent-recipe h3:not(.label--bottom-border):after, .label--center:before {
     content: "";
     height: 1px;
     background: currentColor;
@@ -1886,23 +1898,26 @@ body {
       margin-left: 16px;
       margin-right: 0; }
 
-.recipe__recipe {
+.recipe__recipe, .component__description .subcomponent-recipe {
   font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 18px; }
-  .recipe__recipe ul,
+  .recipe__recipe ul, .component__description .subcomponent-recipe ul,
   .recipe__recipe ol,
-  .recipe__recipe p {
+  .component__description .subcomponent-recipe ol,
+  .recipe__recipe p,
+  .component__description .subcomponent-recipe p {
     padding: 0;
     margin: 0; }
   
-  .recipe__recipe ol {
+  .recipe__recipe ol,
+  .component__description .subcomponent-recipe ol {
     counter-reset: li;
     padding-bottom: 0; }
-    .recipe__recipe ol li {
+    .recipe__recipe ol li, .component__description .subcomponent-recipe ol li {
       display: flex;
       line-height: 1;
       font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
-      .recipe__recipe ol li:before {
+      .recipe__recipe ol li:before, .component__description .subcomponent-recipe ol li:before {
         content: counter(li);
         counter-increment: li;
         font-size: 24px;
@@ -1912,25 +1927,32 @@ body {
         transform: translateY(2px);
         line-height: 1; }
       @media (max-width: 900px) {
-        .recipe__recipe ol li:before {
+        .recipe__recipe ol li:before, .component__description .subcomponent-recipe ol li:before {
           font-size: 18px;
           margin-top: -1px; } }
   
-  .recipe__recipe p {
+  .recipe__recipe p,
+  .component__description .subcomponent-recipe p {
     font-size: 14px;
     line-height: 140%; }
-  .recipe__recipe h1,
+  .recipe__recipe h1, .component__description .subcomponent-recipe h1,
   .recipe__recipe h2,
-  .recipe__recipe h3 {
+  .component__description .subcomponent-recipe h2,
+  .recipe__recipe h3,
+  .component__description .subcomponent-recipe h3 {
     margin-bottom: 16px; }
-    .recipe__recipe h1:first-child,
+    .recipe__recipe h1:first-child, .component__description .subcomponent-recipe h1:first-child,
     .recipe__recipe h2:first-child,
-    .recipe__recipe h3:first-child {
+    .component__description .subcomponent-recipe h2:first-child,
+    .recipe__recipe h3:first-child,
+    .component__description .subcomponent-recipe h3:first-child {
       margin-top: 0; }
     @media (min-width: 900px) {
-      .recipe__recipe h1,
+      .recipe__recipe h1, .component__description .subcomponent-recipe h1,
       .recipe__recipe h2,
-      .recipe__recipe h3 {
+      .component__description .subcomponent-recipe h2,
+      .recipe__recipe h3,
+      .component__description .subcomponent-recipe h3 {
         font-family: "bookmania", Georgia, serif;
         font-size: 20px;
         margin: 0;
@@ -1938,29 +1960,38 @@ body {
         padding: 0;
         text-transform: none;
         letter-spacing: inherit; }
-        .recipe__recipe h1:not(.thisisfakeforscoping):after, .recipe__recipe h1:not(.thisisfakeforscoping):after,
+        .recipe__recipe h1:not(.thisisfakeforscoping):after, .component__description .subcomponent-recipe h1:not(.thisisfakeforscoping):after, .recipe__recipe h1:not(.thisisfakeforscoping):after, .component__description .subcomponent-recipe h1:not(.thisisfakeforscoping):after,
         .recipe__recipe h2:not(.thisisfakeforscoping):after,
+        .component__description .subcomponent-recipe h2:not(.thisisfakeforscoping):after,
         .recipe__recipe h2:not(.thisisfakeforscoping):after,
+        .component__description .subcomponent-recipe h2:not(.thisisfakeforscoping):after,
         .recipe__recipe h3:not(.thisisfakeforscoping):after,
-        .recipe__recipe h3:not(.thisisfakeforscoping):after {
+        .component__description .subcomponent-recipe h3:not(.thisisfakeforscoping):after,
+        .recipe__recipe h3:not(.thisisfakeforscoping):after,
+        .component__description .subcomponent-recipe h3:not(.thisisfakeforscoping):after {
           content: none; } }
-  .recipe__recipe ul,
-  .recipe__recipe ol {
+  .recipe__recipe ul, .component__description .subcomponent-recipe ul,
+  .recipe__recipe ol,
+  .component__description .subcomponent-recipe ol {
     padding-bottom: 0;
     margin-bottom: 40px; }
-  .recipe__recipe ul li:last-child,
-  .recipe__recipe ol li:last-child {
+  .recipe__recipe ul li:last-child, .component__description .subcomponent-recipe ul li:last-child,
+  .recipe__recipe ol li:last-child,
+  .component__description .subcomponent-recipe ol li:last-child {
     border-bottom-width: 0; }
-  .recipe__recipe li {
+  .recipe__recipe li, .component__description .subcomponent-recipe li {
     margin: 8px 0 14px 0;
     display: flex;
     position: relative; }
-  .recipe__recipe .amount,
+  .recipe__recipe .amount, .component__description .subcomponent-recipe .amount,
   .recipe__recipe .divider,
+  .component__description .subcomponent-recipe .divider,
   .recipe__recipe .unit,
-  .recipe__recipe .ingredient {
+  .component__description .subcomponent-recipe .unit,
+  .recipe__recipe .ingredient,
+  .component__description .subcomponent-recipe .ingredient {
     font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
-  .recipe__recipe .amount {
+  .recipe__recipe .amount, .component__description .subcomponent-recipe .amount {
     display: inline-flex;
     min-width: 40px;
     margin-left: -20px;
@@ -1972,10 +2003,11 @@ body {
     align-items: baseline;
     font-variant-numeric: tabular-nums; }
     @media (max-width: 1300px) {
-      .recipe__recipe .amount {
+      .recipe__recipe .amount, .component__description .subcomponent-recipe .amount {
         margin-left: -10px; } }
   
-  .recipe__recipe .divider {
+  .recipe__recipe .divider,
+  .component__description .subcomponent-recipe .divider {
     height: 13px;
     width: 1px;
     background-color: rgba(0, 0, 0, 0.5);
@@ -1983,12 +2015,15 @@ body {
     top: 6px;
     position: relative; }
   
-  .recipe__recipe .unit {
+  .recipe__recipe .unit,
+  .component__description .subcomponent-recipe .unit {
     font-weight: normal;
     font-size: 11px;
-    margin-left: 1px; }
+    margin-left: 1px;
+    font-variant-caps: all-small-caps; }
   
-  .recipe__recipe .ingredient {
+  .recipe__recipe .ingredient,
+  .component__description .subcomponent-recipe .ingredient {
     flex: 1;
     padding-left: 10px;
     display: block;
@@ -2579,6 +2614,180 @@ body {
 .recipe__header-title .swash-cap.letter-z {
   margin-right: -0.14em; }
 
+.label, .recipe__recipe h1, .component__description .subcomponent-recipe h1,
+.recipe__recipe h2,
+.component__description .subcomponent-recipe h2,
+.recipe__recipe h3,
+.component__description .subcomponent-recipe h3 {
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: bold;
+  letter-spacing: 0.075em;
+  font-size: 10px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center; }
+  @media (max-width: 900px) {
+    .label, .recipe__recipe h1, .component__description .subcomponent-recipe h1,
+    .recipe__recipe h2,
+    .component__description .subcomponent-recipe h2,
+    .recipe__recipe h3,
+    .component__description .subcomponent-recipe h3 {
+      font-size: 11px; } }
+  .label--bottom-border {
+    padding-bottom: 14px;
+    border-bottom: 1px solid #000; }
+  .label:not(.label--bottom-border):after, .recipe__recipe h1:not(.label--bottom-border):after, .component__description .subcomponent-recipe h1:not(.label--bottom-border):after,
+  .recipe__recipe h2:not(.label--bottom-border):after,
+  .component__description .subcomponent-recipe h2:not(.label--bottom-border):after,
+  .recipe__recipe h3:not(.label--bottom-border):after,
+  .component__description .subcomponent-recipe h3:not(.label--bottom-border):after, .label--center:before {
+    content: "";
+    height: 1px;
+    background: currentColor;
+    flex: 1;
+    margin-left: 6px; }
+  .label--center:not(.label--bottom-border) {
+    width: calc(100% - 11px); }
+    .label--center:not(.label--bottom-border):before, .label--center:not(.label--bottom-border):after {
+      flex: 1; }
+    .label--center:not(.label--bottom-border):before {
+      margin-left: 0;
+      margin-right: 16px; }
+    .label--center:not(.label--bottom-border):after {
+      margin-left: 16px;
+      margin-right: 0; }
+
+.recipe__recipe, .component__description .subcomponent-recipe {
+  font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 18px; }
+  .recipe__recipe ul, .component__description .subcomponent-recipe ul,
+  .recipe__recipe ol,
+  .component__description .subcomponent-recipe ol,
+  .recipe__recipe p,
+  .component__description .subcomponent-recipe p {
+    padding: 0;
+    margin: 0; }
+  
+  .recipe__recipe ol,
+  .component__description .subcomponent-recipe ol {
+    counter-reset: li;
+    padding-bottom: 0; }
+    .recipe__recipe ol li, .component__description .subcomponent-recipe ol li {
+      display: flex;
+      line-height: 1;
+      font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+      .recipe__recipe ol li:before, .component__description .subcomponent-recipe ol li:before {
+        content: counter(li);
+        counter-increment: li;
+        font-size: 24px;
+        font-family: "bookmania", Georgia, serif;
+        font-weight: 700;
+        padding: 0 10px 0 0;
+        transform: translateY(2px);
+        line-height: 1; }
+      @media (max-width: 900px) {
+        .recipe__recipe ol li:before, .component__description .subcomponent-recipe ol li:before {
+          font-size: 18px;
+          margin-top: -1px; } }
+  
+  .recipe__recipe p,
+  .component__description .subcomponent-recipe p {
+    font-size: 14px;
+    line-height: 140%; }
+  .recipe__recipe h1, .component__description .subcomponent-recipe h1,
+  .recipe__recipe h2,
+  .component__description .subcomponent-recipe h2,
+  .recipe__recipe h3,
+  .component__description .subcomponent-recipe h3 {
+    margin-bottom: 16px; }
+    .recipe__recipe h1:first-child, .component__description .subcomponent-recipe h1:first-child,
+    .recipe__recipe h2:first-child,
+    .component__description .subcomponent-recipe h2:first-child,
+    .recipe__recipe h3:first-child,
+    .component__description .subcomponent-recipe h3:first-child {
+      margin-top: 0; }
+    @media (min-width: 900px) {
+      .recipe__recipe h1, .component__description .subcomponent-recipe h1,
+      .recipe__recipe h2,
+      .component__description .subcomponent-recipe h2,
+      .recipe__recipe h3,
+      .component__description .subcomponent-recipe h3 {
+        font-family: "bookmania", Georgia, serif;
+        font-size: 20px;
+        margin: 0;
+        font-weight: 900;
+        padding: 0;
+        text-transform: none;
+        letter-spacing: inherit; }
+        .recipe__recipe h1:not(.thisisfakeforscoping):after, .component__description .subcomponent-recipe h1:not(.thisisfakeforscoping):after, .recipe__recipe h1:not(.thisisfakeforscoping):after, .component__description .subcomponent-recipe h1:not(.thisisfakeforscoping):after,
+        .recipe__recipe h2:not(.thisisfakeforscoping):after,
+        .component__description .subcomponent-recipe h2:not(.thisisfakeforscoping):after,
+        .recipe__recipe h2:not(.thisisfakeforscoping):after,
+        .component__description .subcomponent-recipe h2:not(.thisisfakeforscoping):after,
+        .recipe__recipe h3:not(.thisisfakeforscoping):after,
+        .component__description .subcomponent-recipe h3:not(.thisisfakeforscoping):after,
+        .recipe__recipe h3:not(.thisisfakeforscoping):after,
+        .component__description .subcomponent-recipe h3:not(.thisisfakeforscoping):after {
+          content: none; } }
+  .recipe__recipe ul, .component__description .subcomponent-recipe ul,
+  .recipe__recipe ol,
+  .component__description .subcomponent-recipe ol {
+    padding-bottom: 0;
+    margin-bottom: 40px; }
+  .recipe__recipe ul li:last-child, .component__description .subcomponent-recipe ul li:last-child,
+  .recipe__recipe ol li:last-child,
+  .component__description .subcomponent-recipe ol li:last-child {
+    border-bottom-width: 0; }
+  .recipe__recipe li, .component__description .subcomponent-recipe li {
+    margin: 8px 0 14px 0;
+    display: flex;
+    position: relative; }
+  .recipe__recipe .amount, .component__description .subcomponent-recipe .amount,
+  .recipe__recipe .divider,
+  .component__description .subcomponent-recipe .divider,
+  .recipe__recipe .unit,
+  .component__description .subcomponent-recipe .unit,
+  .recipe__recipe .ingredient,
+  .component__description .subcomponent-recipe .ingredient {
+    font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+  .recipe__recipe .amount, .component__description .subcomponent-recipe .amount {
+    display: inline-flex;
+    min-width: 40px;
+    margin-left: -20px;
+    font-weight: 600;
+    max-height: 1.25em;
+    margin-right: 8px;
+    position: relative;
+    justify-content: flex-end;
+    align-items: baseline;
+    font-variant-numeric: tabular-nums; }
+    @media (max-width: 1300px) {
+      .recipe__recipe .amount, .component__description .subcomponent-recipe .amount {
+        margin-left: -10px; } }
+  
+  .recipe__recipe .divider,
+  .component__description .subcomponent-recipe .divider {
+    height: 13px;
+    width: 1px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: block;
+    top: 6px;
+    position: relative; }
+  
+  .recipe__recipe .unit,
+  .component__description .subcomponent-recipe .unit {
+    font-weight: normal;
+    font-size: 11px;
+    margin-left: 1px;
+    font-variant-caps: all-small-caps; }
+  
+  .recipe__recipe .ingredient,
+  .component__description .subcomponent-recipe .ingredient {
+    flex: 1;
+    padding-left: 10px;
+    display: block;
+    text-align: left; }
+
 .component__primary {
   display: grid;
   grid-template-areas: "sidebar header" "sidebar content";
@@ -2757,7 +2966,8 @@ body {
     font-variant-numeric: oldstyle-nums; }
     .component__description .subcomponent a {
       font-weight: 500; }
-  .component__description .recommended-bottles {
+  .component__description .recommended-bottles,
+  .component__description .subcomponent-recipe {
     font-family: mr-eaves;
     text-transform: capitalize;
     font-size: 18px;
@@ -2767,7 +2977,9 @@ body {
     margin: 0.33em 0 1em;
     position: relative;
     font-weight: 600; }
-    .component__description .recommended-bottles:before {
+    .component__description .recommended-bottles:before, .component__description .recommended-bottles__label,
+    .component__description .subcomponent-recipe:before,
+    .component__description .subcomponent-recipe__label {
       content: "Bottles";
       text-transform: uppercase;
       background: #f0f0f0;
@@ -2779,13 +2991,27 @@ body {
       letter-spacing: 0.075em;
       font-size: 9px;
       transform: translate(20px, -50%); }
-    .component__description .recommended-bottles em {
+    .component__description .recommended-bottles em,
+    .component__description .subcomponent-recipe em {
       font-weight: normal;
       font-style: normal; }
     @media (max-width: 900px) {
-      .component__description .recommended-bottles {
+      .component__description .recommended-bottles,
+      .component__description .subcomponent-recipe {
         font-size: 15px;
         margin-top: 0.5em; } }
+  .component__description .subcomponent-recipe {
+    font-size: 0.875em;
+    padding: 18px 26px 20px 20px;
+    max-width: 490px; }
+    .component__description .subcomponent-recipe:before {
+      content: none; }
+    .component__description .subcomponent-recipe .amount {
+      margin-left: -10px; }
+    .component__description .subcomponent-recipe ul {
+      margin-bottom: 20px; }
+    .component__description .subcomponent-recipe li {
+      margin: 4px 0 8px 0; }
 
 .component__description::first-letter {
   color: #000;
