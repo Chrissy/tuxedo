@@ -288,6 +288,7 @@ $space-between-description-and-header: 6px;
       padding: 14px 22px 16px 16px;
       max-width: 490px;
       font-size: 1em;
+      text-transform: none;
 
       &:before {
         content: none;
@@ -303,6 +304,10 @@ $space-between-description-and-header: 6px;
 
       li {
         margin: 2px 0 4px 0;
+      }
+
+      p {
+        font-size: 15px;
       }
     }
   }

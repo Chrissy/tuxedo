@@ -3004,7 +3004,8 @@ body {
     font-size: 0.875em;
     padding: 14px 22px 16px 16px;
     max-width: 490px;
-    font-size: 1em; }
+    font-size: 1em;
+    text-transform: none; }
     .component__description .subcomponent-recipe:before {
       content: none; }
     .component__description .subcomponent-recipe .amount {
@@ -3013,6 +3014,8 @@ body {
       margin-bottom: 12px; }
     .component__description .subcomponent-recipe li {
       margin: 2px 0 4px 0; }
+    .component__description .subcomponent-recipe p {
+      font-size: 15px; }
 
 .component__description::first-letter {
   color: #000;
