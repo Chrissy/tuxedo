@@ -3008,7 +3008,7 @@ body {
     .component__description .subcomponent-recipe:before {
       content: none; }
     .component__description .subcomponent-recipe .amount {
-      margin-left: -10px; }
+      margin-left: -16px; }
     .component__description .subcomponent-recipe ul {
       margin-bottom: 12px; }
     .component__description .subcomponent-recipe li {
