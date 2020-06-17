@@ -4,7 +4,7 @@
 @import "../utilities/font-stacks.scss";
 @import "../widgets/recipe.scss";
 
-$description-cutout: 50px;
+$description-cutout: 30px;
 $space-between-description-and-header: 6px;
 
 .component {
@@ -159,7 +159,7 @@ $space-between-description-and-header: 6px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    margin-top: -104px;
+    margin-top: -150px;
     width: 56%;
     z-index: 1;
     padding: 0 24px 6px 0px;
@@ -189,7 +189,10 @@ $space-between-description-and-header: 6px;
       grid-row-end: span 6;
     }
 
-    &--2,
+    &--2 {
+      grid-row-end: span 5;
+    }
+
     &--3 {
       grid-row-end: span 4;
     }

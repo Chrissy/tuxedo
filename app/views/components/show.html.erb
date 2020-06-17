@@ -71,51 +71,55 @@
     <% end %>
     <% if @component.all_elements.count > 6 %>
       <div id="table" class="component__all" data-filterable-table>
-        <div class="component__all-mobile-menu">
-          <div class="component__all-mobile-menu-tabs">
-            <a href="#" class="component__all-mobile-menu__filter component__filter component__filter selected component__filter--radio" data-filter-by="default">
-              <span class="component__filter-control">All</span>
-            </a>
-            <% @component.subcomponents.sort_by{ |c| c.list_elements.count }.reverse[0..2].each do |subcomponent| %>
-              <a href="#" class="component__all-mobile-menu__filter component__filter component__filter--radio" data-filter-by="<%= subcomponent.name %>">
-                <span class="component__filter-control"><%= subcomponent.name %></span>
+        <% if @component.subcomponents.count > 0 %>
+          <div class="component__all-mobile-menu">
+            <div class="component__all-mobile-menu-tabs">
+              <a href="#" class="component__all-mobile-menu__filter component__filter component__filter selected component__filter--radio" data-filter-by="default">
+                <span class="component__filter-control">All</span>
               </a>
-            <% end %>
+              <% @component.subcomponents.sort_by{ |c| c.list_elements.count }.reverse[0..2].each do |subcomponent| %>
+                <a href="#" class="component__all-mobile-menu__filter component__filter component__filter--radio" data-filter-by="<%= subcomponent.name %>">
+                  <span class="component__filter-control"><%= subcomponent.name %></span>
+                </a>
+              <% end %>
+            </div>
+            <div class="button component__all-filter-button" data-toggle-target="[data-target-toggleable='filters']">Filter</div>
           </div>
-          <div class="button component__all-filter-button" data-toggle-target="[data-target-toggleable='filters']">Filter</div>
-        </div>
+        <% end %>
         <div class="component__all-sidebar hidden" data-target-toggleable='filters'>
-          <div class="card card--list">
-            <div class="label component__all-sidebar-filter-label">Varieties</div>
-            <a href="#" class="component__filter component__filter selected component__filter--radio" data-filter-by="default">
-              <span class="component__filter-control">
-                <%= render 'shared/svg', id: "radio-selected", className: "component__radio-button component__radio-button--selected" %>
-                <%= render 'shared/svg', id: "radio-unselected", className: "component__radio-button component__radio-button--unselected" %>
-                All
-              </span>
-              <span class="component__filter-count"><%= @component.all_elements.count %></span>
-            </a>
-            <% @component.subcomponents.reverse.each do |subcomponent| %>
-              <a href="#" class="component__filter component__filter--radio" data-filter-by="<%= subcomponent.name %>">
+          <% if @component.subcomponents.count > 0 %>
+            <div class="card card--list">
+              <div class="label component__all-sidebar-filter-label">Varieties</div>
+              <a href="#" class="component__filter component__filter selected component__filter--radio" data-filter-by="default">
                 <span class="component__filter-control">
-                  <%= render 'shared/svg', id: "radio-unselected", className: "component__radio-button component__radio-button--unselected" %>
                   <%= render 'shared/svg', id: "radio-selected", className: "component__radio-button component__radio-button--selected" %>
-                  <%= subcomponent.name %>
-                </span>
-                <span class="component__filter-count"><%= subcomponent.list_elements.count %></span>
-              </a>
-            <% end %>
-            <% if @component.list_elements.present? %>
-              <a href="#" class="component__filter component__filter component__filter--radio" data-filter-by="<%= @component.name %>">
-                <span class="component__filter-control">
                   <%= render 'shared/svg', id: "radio-unselected", className: "component__radio-button component__radio-button--unselected" %>
-                  <%= render 'shared/svg', id: "radio-selected", className: "component__radio-button component__radio-button--selected" %>
-                  Other
+                  All
                 </span>
-                <span class="component__filter-count"><%= @component.list_elements.count %></span>
+                <span class="component__filter-count"><%= @component.all_elements.count %></span>
               </a>
-            <% end %>
-          </div>
+              <% @component.subcomponents.sort_by{ |c| c.list_elements.count }.reverse.each do |subcomponent| %>
+                <a href="#" class="component__filter component__filter--radio" data-filter-by="<%= subcomponent.name %>">
+                  <span class="component__filter-control">
+                    <%= render 'shared/svg', id: "radio-unselected", className: "component__radio-button component__radio-button--unselected" %>
+                    <%= render 'shared/svg', id: "radio-selected", className: "component__radio-button component__radio-button--selected" %>
+                    <%= subcomponent.name %>
+                  </span>
+                  <span class="component__filter-count"><%= subcomponent.list_elements.count %></span>
+                </a>
+              <% end %>
+              <% if @component.list_elements.present? %>
+                <a href="#" class="component__filter component__filter component__filter--radio" data-filter-by="<%= @component.name %>">
+                  <span class="component__filter-control">
+                    <%= render 'shared/svg', id: "radio-unselected", className: "component__radio-button component__radio-button--unselected" %>
+                    <%= render 'shared/svg', id: "radio-selected", className: "component__radio-button component__radio-button--selected" %>
+                    Other
+                  </span>
+                  <span class="component__filter-count"><%= @component.list_elements.count %></span>
+                </a>
+              <% end %>
+            </div>
+          <% end %>
           <div class="card card--list">
             <div class="label component__all-sidebar-filter-label">Combinations</div>
             <% @component.common_pairings(5).each do |pairing| %>

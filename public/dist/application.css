@@ -2903,7 +2903,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  margin-top: -104px;
+  margin-top: -150px;
   width: 56%;
   z-index: 1;
   padding: 0 24px 6px 0px; }
@@ -2927,7 +2927,10 @@ body {
 .component__list-item--1 {
   grid-row-end: span 6; }
 
-.component__list-item--2, .component__list-item--3 {
+.component__list-item--2 {
+  grid-row-end: span 5; }
+
+.component__list-item--3 {
   grid-row-end: span 4; }
 
 .component__list-item .list-element__details {
@@ -2943,7 +2946,7 @@ body {
 .component__cutout {
   background-color: transparent;
   width: 40%;
-  height: 50px;
+  height: 30px;
   float: right;
   box-sizing: content-box;
   padding-left: 24px; }
