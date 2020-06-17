@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_06_14_224018) do
     t.string "pseudonyms_as_markdown", limit: 255
     t.boolean "never_make_me_tall"
     t.text "list_as_markdown"
-    t.string "tags_as_text"
+    t.text "tags_as_text"
     t.text "subtitle"
     t.text "substitutes_as_markdown"
     t.boolean "skip_subcomponent_search"
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2020_06_14_224018) do
     t.boolean "never_make_me_tall"
     t.integer "rating"
     t.text "adapted_from"
-    t.string "tags_as_text"
+    t.text "tags_as_text"
     t.text "image2"
     t.text "image3"
     t.text "subtitle"

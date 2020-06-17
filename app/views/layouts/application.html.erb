@@ -13,12 +13,13 @@
     <% if no_index %>
       <meta name="robots" content="noindex">
     <% end %>
+    <%= render "shared/gtm_head" %>
   </head>
   <body data-no-turbolink itemscope itemtype="http://schema.org/Product" class="<%= slugify(controller_name) %>">
+    <%= render "shared/gtm_body" %>
     <div class="site-container">
       <%= render 'shared/global_header' %>
       <%= yield %>
-      <%= render "shared/analytics" %>
     </div>
   </body>
 </html>
