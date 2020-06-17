@@ -144,7 +144,7 @@ $space-between-description-and-header: 6px;
     font-weight: 400;
     font-size: 24px;
     line-height: 1;
-    margin: 0 0 8px 0;
+    margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
@@ -159,7 +159,8 @@ $space-between-description-and-header: 6px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    margin-top: -150px;
+    margin-top: -130px;
+    margin-bottom: -50px;
     width: 56%;
     z-index: 1;
     padding: 0 24px 6px 0px;
@@ -174,8 +175,8 @@ $space-between-description-and-header: 6px;
   &__header-images {
     display: grid;
     grid-template-columns: 53.5% auto;
-    grid-auto-rows: 52px;
-    grid-gap: 18px;
+    grid-auto-rows: 12px;
+    grid-gap: 20px;
     width: 100%;
     min-height: 528px;
 
@@ -186,15 +187,12 @@ $space-between-description-and-header: 6px;
 
   &__list-item {
     &--1 {
-      grid-row-end: span 6;
+      grid-row-end: span 13;
     }
 
-    &--2 {
-      grid-row-end: span 5;
-    }
-
+    &--2,
     &--3 {
-      grid-row-end: span 4;
+      grid-row-end: span 9;
     }
 
     .list-element__details {

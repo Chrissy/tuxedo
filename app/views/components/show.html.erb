@@ -31,7 +31,6 @@
               <a href="<%= @component.url %>">
                 <%= @component.name %>
               </a>
-              <%= render 'shared/pseudonyms' if @component.try(:pseudonyms_as_markdown).present? %>
             </h1>
             <h2 class="component__header-subtitle">
               <%= @component.subtitle %>
