@@ -2922,7 +2922,8 @@ body {
   min-height: 528px; }
   @media (max-width: 900px) {
     .component__header-images {
-      display: block; } }
+      display: block;
+      min-height: 0; } }
 
 .component__list-item--1 {
   grid-row-end: span 13; }
@@ -2960,6 +2961,9 @@ body {
   font-weight: 300;
   max-width: 580px;
   flex: 1; }
+  @media (max-width: 900px) {
+    .component__description {
+      font-size: 17px; } }
   .component__description .subcomponent {
     text-transform: capitalize;
     font-size: 19px;

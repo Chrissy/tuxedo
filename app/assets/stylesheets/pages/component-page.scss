@@ -181,6 +181,7 @@ $space-between-description-and-header: 6px;
 
     @media (max-width: $mobile) {
       display: block;
+      min-height: 0;
     }
   }
 
@@ -230,6 +231,10 @@ $space-between-description-and-header: 6px;
     font-weight: 300;
     max-width: 580px;
     flex: 1;
+
+    @media (max-width: $mobile) {
+      font-size: 17px;
+    }
 
     .subcomponent {
       text-transform: capitalize;

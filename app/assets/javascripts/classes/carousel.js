@@ -91,6 +91,8 @@ export default class Tooltip {
     this.hammer = new Hammer(this.wrapper);
 
     this.hammer.on("pan", (ev) => {
+      if (!(ev.direction === 2 || ev.direction === 4)) return;
+      if (ev.angle > -150 && ev.angle < -100) return;
       const transform = this.currentIndex * window.innerWidth;
       this.slider.style.transform = `translateX(-${transform - ev.deltaX}px)`;
     });
@@ -107,9 +109,11 @@ export default class Tooltip {
           if (deltaX > threshold / 4) return this.moveBackward();
         }
 
-        //slow momentum
-        if (deltaX < threshold * -1) return this.moveForward();
-        if (deltaX > threshold * 1) return this.moveBackward();
+        if (deltaTime > 1000) {
+          //slow momentum
+          if (deltaX < threshold * -1) return this.moveForward();
+          if (deltaX > threshold * 1) return this.moveBackward();
+        }
 
         //otherwise, return
         this.cancelMove();
