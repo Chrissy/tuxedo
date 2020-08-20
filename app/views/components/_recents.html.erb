@@ -1,9 +1,8 @@
 <% page ||= nil %>
-<% last_page ||= false %>
 <div class="component__recent-additions">
   <%= render partial: 'lists/list_element', collection: elements, as: :element %>
 </div>
-<% if !last_page %>
+<% if !@last_page %>
   <a 
     class="component__recent-additions-show-more button"
     data-lazy-load-on-click="/ingredients/<%= component.id %>/recents/<%= page + 1 %>"

@@ -15,7 +15,7 @@ class ComponentsController < ApplicationController
     @page = params[:page].to_i
     @pagination_start = @page == 1 ? 3 : pagination_interval * @page + 1
     @pagination_end = @pagination_start + pagination_interval - 1
-    @last_page = @pagination_end >= @component.all_elements.count
+    @last_page = @pagination_end + pagination_interval >= @component.all_elements.count
     @latest = @component.latest_recipes(pagination_interval, @pagination_start)
     render 'recents', layout: false
   end

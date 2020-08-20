@@ -26,7 +26,7 @@ class ListsController < ApplicationController
     @layout_object = @list
     @pagination_start = PAGINATION_INTERVAL * @page + 1
     @pagination_end = @pagination_start + PAGINATION_INTERVAL - 1
-    @last_page = @pagination_end >= @list.elements.count
+    @last_page = @pagination_end + PAGINATION_INTERVAL >= @list.elements.count
     @list_elements = @list.elements[@pagination_start..@pagination_end]
     render 'more', layout: false
   end
