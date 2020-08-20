@@ -305,6 +305,7 @@ $image-offset: 30px;
     font-weight: 300;
     max-width: 580px;
     flex: 1;
+    hyphens: auto;
   }
 
   &__description::first-letter {

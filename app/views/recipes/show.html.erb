@@ -10,7 +10,7 @@
           <% end %>
           <h1 class="recipe__header-title" itemprop="name">
             <a href="<%= @recipe.url %>">
-              <%= @recipe.name %>
+              <%= @recipe.name === "Chrysanthemum" ? "Chrysanthe&shy;mum".html_safe : @recipe.name %>
             </a>
           </h1>
           <h2 class="recipe__header-subtitle">

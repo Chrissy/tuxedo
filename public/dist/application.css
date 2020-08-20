@@ -2521,7 +2521,8 @@ body {
     color: #353535;
     font-weight: 300;
     max-width: 580px;
-    flex: 1; }
+    flex: 1;
+    hyphens: auto; }
   .recipe__description::first-letter {
     color: #000;
     font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
