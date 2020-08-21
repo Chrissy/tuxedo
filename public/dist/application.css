@@ -2398,6 +2398,8 @@ body {
     padding: 0 24px 176px 0px; }
     .recipe__header-content--count-3 {
       padding-bottom: 392px; }
+    .recipe__header-content--count-2 {
+      max-width: 420px; }
     @media (max-width: 900px) {
       .recipe__header-content {
         padding: 0; } }
@@ -2405,7 +2407,8 @@ body {
       margin-bottom: 14px; }
   .recipe__header-images {
     max-width: 554px;
-    margin-right: -30px; }
+    margin-right: -30px;
+    width: 100%; }
     .recipe__header-images--count-2 {
       max-width: 470px; }
     .recipe__header-images--count-3 {

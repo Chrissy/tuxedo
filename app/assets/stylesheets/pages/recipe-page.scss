@@ -116,6 +116,10 @@ $image-offset: 30px;
         $description-cutout + $three-count-extra;
     }
 
+    &--count-2 {
+      max-width: 420px;
+    }
+
     @media (max-width: $mobile) {
       padding: 0;
     }
@@ -128,6 +132,7 @@ $image-offset: 30px;
   &__header-images {
     max-width: $image-width;
     margin-right: -$image-offset;
+    width: 100%;
 
     &--count-2 {
       max-width: 470px;

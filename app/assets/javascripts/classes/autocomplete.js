@@ -94,6 +94,7 @@ export default class Autocomplete {
       data-list-element=${index}
       class="autocomplete-line ${active ? "active" : ""}"
       href="${result.href ? result.href : "#"}"
+      tabindex=${index}
     >
       ${result.label}
     </a>

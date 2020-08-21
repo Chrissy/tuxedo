@@ -173,7 +173,7 @@ export default class Search {
 
   getFooter = () => {
     return `
-      <span class="autocomplete-line full-text-search" >
+      <span class="autocomplete-line full-text-search" tabindex="-1" data-footer-target>
         See More Results »
       </span>
     `;
