@@ -10,6 +10,7 @@
   </div>
   <div class="form_block secondary">
     <%= f.text_area :description, :value => default_text(:description), :placeholder => "description", :class => "autocomplete components recipes" %>
+    <%= render "shared/image_options", :element => @component, :f => f, :field => :illustration %>
     <%= f.submit(submit_text()) %>
     <%= link_to "delete", action: "delete" if @component.id %>
   </div>

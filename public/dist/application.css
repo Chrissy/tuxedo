@@ -2956,6 +2956,18 @@ body {
     .component__cutout {
       display: none; } }
 
+.component__illustration {
+  mix-blend-mode: multiply;
+  width: 275px;
+  height: 275px;
+  float: right;
+  shape-outside: circle(56% at 128px 185px);
+  object-fit: contain;
+  margin: 2em -9em 0 0;
+  padding-top: 1.5em;
+  box-sizing: content-box;
+  clear: right; }
+
 .component__description {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -2964,7 +2976,8 @@ body {
   color: #353535;
   font-weight: 300;
   max-width: 580px;
-  flex: 1; }
+  flex: 1;
+  position: relative; }
   @media (max-width: 900px) {
     .component__description {
       font-size: 17px; } }
@@ -3025,15 +3038,24 @@ body {
     .component__description .subcomponent-recipe p {
       font-size: 15px; }
 
-.component__description::first-letter {
+.component__description-spacer,
+.component__description .first-letter {
   color: #000;
   font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 56px;
   font-weight: 800;
-  float: left;
   line-height: 0.75;
   display: inline-block;
   padding: 0 6px 0 0; }
+
+.component__description-spacer {
+  float: left;
+  opacity: 0; }
+
+.component__description .first-letter {
+  position: absolute;
+  top: 0;
+  left: 0; }
 
 .component__recent-additions {
   display: grid;

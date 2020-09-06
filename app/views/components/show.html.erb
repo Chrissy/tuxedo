@@ -2,6 +2,8 @@
 <% latest = @component.latest_recipes(3) %>
 <% featured = @component.featured_recipes(3) %>
 <% substitutes = @component.substitutes_as_html %>
+<% description = @component.description_to_html %>
+
 <% cache(cache_key(@component, "show")) do %>
   <div class="component">
     <% if !@component.description.present? %>
@@ -41,7 +43,11 @@
         <div class="component__content">
           <div class="component__description">
             <div class="component__cutout"></div>
-            <div><%= @component.description_to_html %></div>
+            <div class="component__description-spacer">R</div>
+            <% if @component.illustration.present? %>
+              <%= illustration_image(@component, 'component__illustration') %>
+            <% end %>
+            <div><%= description %></div>
           </div>
         </div>
         <div class="component__sidebar">

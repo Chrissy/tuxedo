@@ -213,7 +213,7 @@ class Component < ActiveRecord::Base
   def description_to_html
     converted_description = CustomMarkdown.convert_recommended_bottles_in_place(
       CustomMarkdown.convert_subcomponent_recipes_in_place(
-        CustomMarkdown.convert_links_in_place(description)
+        CustomMarkdown.convert_links_in_place("<span class='first-letter'>#{description[0]}</span>#{description[1..-1]}")
       )
     )
     markdown_renderer.render(converted_description).html_safe

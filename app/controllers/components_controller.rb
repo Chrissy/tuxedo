@@ -65,7 +65,7 @@ class ComponentsController < ApplicationController
   def component_params
     params.require(:component).permit(
       :name,
-      :image,
+      :illustration,
       :nick,
       :pseudonyms_as_markdown,
       :never_make_me_tall,

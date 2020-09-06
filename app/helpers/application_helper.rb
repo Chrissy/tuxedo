@@ -70,7 +70,9 @@ module ApplicationHelper
       'medium' => { width: 300, height: 200 },
       'small2x' => { width: 200, height: 200 },
       'small' => { width: 100, height: 100 },
-      'pinterest' => { width: 476, height: 666 }
+      'pinterest' => { width: 476, height: 666 },
+      'illustration' => { width: 275, height: 275 },
+      'illustration2x' => { width: 550, height: 550 }
     }[size.to_s]
   end
 
@@ -146,6 +148,16 @@ module ApplicationHelper
       srcset: [image_url(element, :medium, method) + ' 1x', image_url(element, :medium2x, method) + ' 2x'].join(', '),
       class: class_name,
       alt: "#{element.name} cocktail photo",
+      itemprop: 'image'
+    )
+  end
+
+  def illustration_image(element, class_name)
+    image_tag(
+      image_url(element, :illustration, :illustration),
+      srcset: [image_url(element, :illustration2x, :illustration) + ' 1x', image_url(element, :illustration2x, :illustration) + ' 2x'].join(', '),
+      class: class_name,
+      alt: "#{element.name} botanical drawing",
       itemprop: 'image'
     )
   end
