@@ -2,6 +2,13 @@
 <% pairings = ingredient.common_pairings(3) %>
 <% pairings_sum = pairings.map{ |pair| pair[:count] }.reduce(:+) %>
 <div class="card card--list card--ingredient <%= border_version ? 'card--border-version' : '' %>">
+  <% if ingredient.illustration.present? %>
+    <div class="card__section card__section--illustration">
+      <a href="<%= ingredient.url%>">
+        <%= illustration_image(ingredient, 'card__illustration') %>
+      </a>
+    </div>
+  <% end %>
   <div class="label card__label <%= border_version ? 'card__label--border-version' : '' %>"><%= ingredient.name %></div>
   <% if ingredient.description.present? %>
     <div class="card__description">
@@ -14,16 +21,6 @@
       <a class="card__list-item" href="<%= recipe.url %>" tooltip="<%= tooltip(recipe) %>">
         <strong><%= recipe.name %></strong>
         <%= recipe.components[0..2].map(&:name).join(", ") %>
-      </a>
-    <% end %>
-  </div>
-  <div class="card__section">
-    <div class="card__section-label label">Common Pairings</div>
-    <% pairings.each do |pair| %>
-      <a class="card__list-item card__list-item--with-bar" href="<%= ingredient.url + "?pairing=#{pair[:component].name}" %>">
-        <div class="card__list-item-bar" style="width: <%= (pair[:count].to_f / pairings_sum) * 100 %>%;"></div>
-        <div class="card__list-item-bar-name"><%= pair[:component].name %></div>
-        <div class="card__list-item-bar-value"><%= pair[:count] %></div>
       </a>
     <% end %>
   </div>

@@ -1,4 +1,5 @@
 @import "../utilities/font-stacks.scss";
+@import "../utilities//colors.scss";
 
 @keyframes tooltip-fade-in {
   0% {
@@ -63,10 +64,25 @@
     font-weight: 700;
     line-height: 1;
     margin-bottom: 0.125em;
+    text-transform: capitalize;
+    font-size: 1.2em;
 
     &--center {
       text-align: center;
       margin-bottom: -0.25em;
+    }
+  }
+
+  &--component,
+  &--subcomponent {
+    background: $gray-1;
+
+    .tooltip__image {
+      background: #fff;
+      border-bottom: 1px solid #000;
+      max-height: 160px;
+      object-fit: contain;
+      border-radius: 4px 4px 0 0;
     }
   }
 }

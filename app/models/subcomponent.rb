@@ -48,6 +48,14 @@ class Subcomponent < ActiveRecord::Base
     end
   end
 
+  def illustration
+    component.illustration
+  end
+
+  def subtitle
+    component.subtitle
+  end
+
   def default_list_markdown
     name.present? ? ":[#{name} 100]" : ''
   end

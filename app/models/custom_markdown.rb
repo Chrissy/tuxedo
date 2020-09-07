@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'base64'
 
 class CustomMarkdown
@@ -21,14 +19,33 @@ class CustomMarkdown
     )
   end
 
-  def self.tooltip(element)
-    image1 = 'https://d34nm4jmyicdxh.cloudfront.net/' + image_path(element.image_with_backup, 300, 200)
-    image2 = 'https://d34nm4jmyicdxh.cloudfront.net/' + image_path(element.image_with_backup, 600, 400)
-    subtitle = element.try(:subtitle).present? ? "<div class='tooltip__description'>#{element.subtitle}</div>" : ''
+  def self.get_image_for_tooltip(element)
 
-    "<div class='tooltip'>"\
-      "<img class='tooltip__image' src='#{image1}' srcset='#{image1} 1x, #{image2} 2x'/>"\
-      "<div class='tooltip__title'>#{element.name}</div>"\
+    if (element.class == Recipe)
+      return [
+        'https://d34nm4jmyicdxh.cloudfront.net/' + image_path(element.image_with_backup, 300, 200),
+        'https://d34nm4jmyicdxh.cloudfront.net/' + image_path(element.image_with_backup, 600, 400)
+      ]
+    elsif ((element.class == Component || element.class == Subcomponent) && element.illustration.present?)
+      return [
+        'https://d34nm4jmyicdxh.cloudfront.net/' + image_path(element.illustration, 300, 300),
+        'https://d34nm4jmyicdxh.cloudfront.net/' + image_path(element.illustration, 600, 600)
+      ]
+    else
+      return nil
+    end
+  end
+
+  def self.tooltip(element)
+    return nil if (element.class == Component && !element.illustration.present?) 
+    subtitle = element.try(:subtitle).present? ? "<div class='tooltip__description'>#{element.subtitle}</div>" : ''
+    images = get_image_for_tooltip(element)
+    name = element.class == Subcomponent ? element.component.name : element.name
+    return nil if !images.present?
+
+    "<div class='tooltip tooltip--#{element.class.to_s.downcase}'>"\
+      "<img class='tooltip__image' src='#{images[0]}' srcset='#{images[0]} 1x, #{images[1]} 2x'/>"\
+      "<div class='tooltip__title'>#{name}</div>"\
       "#{subtitle}"\
       "<svg class='tooltip__tip'><use href='/dist/sprite.svg#tooltip-tip-white'></use></svg>"\
     '</div>'
@@ -55,13 +72,19 @@ class CustomMarkdown
       end
 
       # for in-component subcomponents (::)
-      if element && element.class.to_s == 'Subcomponent' && Regexp.last_match(1) == '::'
+      if element.present? && element.class.to_s == 'Subcomponent' && Regexp.last_match(1) == '::'
         match = Regexp.last_match(2)
         count = Subcomponent.find_by_name(match).try(:list_elements).try(:count) || 0
         slug = ApplicationHelper.slugify(match)
         "<h2 id='#{slug}' class='subcomponent'>#{match} • <a href='#table' data-table-link='#{ERB::Util.u(match)}'>#{count} recipes »</a></h2>"
-      elsif element && element.class.to_s == 'Recipe'
-        "<a href=\"#{element.url}\" tooltip=\"#{CGI.escapeHTML(tooltip(element))}\">#{Regexp.last_match(2)}</a>"
+      elsif element && (element.class == Recipe || element.class == Component || element.class == Subcomponent)
+
+        tt = tooltip(element)
+        if (tt.present?)
+          "<a href=\"#{element.url}\" tooltip=\"#{CGI.escapeHTML(tt)}\">#{Regexp.last_match(2)}</a>"
+        else
+          "<a href=\"#{element.url}\">#{Regexp.last_match(2)}</a>"
+        end
       elsif element
         "<a href=\"#{element.url}\">#{Regexp.last_match(2)}</a>"
       else

@@ -45,10 +45,10 @@ module ApplicationHelper
 
   def base_spirits
     [
-      Component.find_by_name('gin'),
-      Component.find_by_name('rye'),
+      Component.find_by_name('rum'),
       Component.find_by_name('cognac'),
-      Component.find_by_name('dark rum'),
+      Component.find_by_name('rye'),
+      Component.find_by_name('gin'),
       Component.find_by_name('reposado tequila')
     ]
   end
