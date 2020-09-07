@@ -1037,7 +1037,8 @@ body {
     object-fit: contain;
     max-height: 220px;
     margin: 0 -1em;
-    border-bottom: 1px solid #000; }
+    border-bottom: 1px solid #000;
+    background: #fff; }
   .card__illustration {
     width: 100%;
     object-fit: contain;
@@ -1418,7 +1419,8 @@ body {
     object-fit: contain;
     max-height: 220px;
     margin: 0 -1em;
-    border-bottom: 1px solid #000; }
+    border-bottom: 1px solid #000;
+    background: #fff; }
   .card__illustration {
     width: 100%;
     object-fit: contain;
@@ -1490,6 +1492,12 @@ body {
     @media (max-width: 900px) {
       .ingredient-card__image {
         margin-bottom: 16px; } }
+    .ingredient-card__image--illustration {
+      background: #fff;
+      margin: calc(-1em + 1px) 0 calc(-1em + 1px) calc(-1em + 1px);
+      object-fit: contain;
+      max-width: calc(100% + 0.25em);
+      border-right: 1px solid #000; }
   .ingredient-card__recipes {
     margin-bottom: -6px;
     font-size: 16px; }

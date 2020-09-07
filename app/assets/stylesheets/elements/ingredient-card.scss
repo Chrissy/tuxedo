@@ -53,6 +53,14 @@
     @media (max-width: $mobile) {
       margin-bottom: 16px;
     }
+
+    &--illustration {
+      background: #fff;
+      margin: calc(-1em + 1px) 0 calc(-1em + 1px) calc(-1em + 1px);
+      object-fit: contain;
+      max-width: calc(100% + 0.25em);
+      border-right: 1px solid #000;
+    }
   }
 
   &__recipes {
