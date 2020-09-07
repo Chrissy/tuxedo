@@ -14,7 +14,7 @@
     </div>
   <% end %>
   <% if index == 3 %>
-    <%= render 'shared/element_list_card.html.erb', list_name: "Base Spirits", elements: base_spirits %>
+    <%= render 'shared/element_list_card.html.erb', list_name: "Base Spirits", elements: base_spirits[0..4] %>
   <% end %>
   <% if index == 6 %>
     <%= render 'shared/instagram_card.html.erb', border_version: true %>

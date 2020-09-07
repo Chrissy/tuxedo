@@ -963,7 +963,8 @@ body {
     min-height: 40px; }
     .card__label--border-version {
       border-bottom: 1px solid currentColor;
-      font-size: 11px; }
+      font-size: 11px;
+      text-decoration: none; }
       .card__label--border-version:after {
         display: none; }
     .card__label--border-version-on-mobile {
@@ -1066,7 +1067,8 @@ body {
     align-items: center;
     border-top: 1px solid #000;
     justify-content: space-between;
-    margin-top: 0.5em; }
+    margin-top: 0.5em;
+    text-decoration: none; }
 
 .label, .recipe__recipe h1, .component__description .subcomponent-recipe h1,
 .recipe__recipe h2,
@@ -1342,7 +1344,8 @@ body {
     min-height: 40px; }
     .card__label--border-version {
       border-bottom: 1px solid currentColor;
-      font-size: 11px; }
+      font-size: 11px;
+      text-decoration: none; }
       .card__label--border-version:after {
         display: none; }
     .card__label--border-version-on-mobile {
@@ -1445,7 +1448,8 @@ body {
     align-items: center;
     border-top: 1px solid #000;
     justify-content: space-between;
-    margin-top: 0.5em; }
+    margin-top: 0.5em;
+    text-decoration: none; }
 
 .ingredient-card {
   border: 1px solid #000;
@@ -1466,7 +1470,8 @@ body {
     display: flex;
     align-items: flex-start;
     padding-bottom: 0;
-    font-size: 11px; }
+    font-size: 11px;
+    text-decoration: none; }
   .ingredient-card__left {
     grid-area: image;
     min-height: 200px; }

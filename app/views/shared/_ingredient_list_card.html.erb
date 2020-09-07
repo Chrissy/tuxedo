@@ -9,7 +9,9 @@
       </a>
     </div>
   <% end %>
-  <div class="label card__label <%= border_version ? 'card__label--border-version' : '' %>"><%= ingredient.name %></div>
+  <a class="label card__label <%= border_version ? 'card__label--border-version' : '' %>" href="<%= ingredient.url%>">
+    <%= ingredient.name %>
+  </a>
   <% if ingredient.description.present? %>
     <div class="card__description">
       <%= ingredient.description %>
@@ -24,8 +26,8 @@
       </a>
     <% end %>
   </div>
-  <div class="card__wide-action">
+  <a class="card__wide-action" href="<%= ingredient.url%>">
     <span>View <%= ingredient.name %> recipes, classic pairings, and more</span>
     <%= render 'shared/svg', id: "chevron-right", className: "card__action-chevron" %>
-  </div>
+  </a>
 </div>

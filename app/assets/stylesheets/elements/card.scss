@@ -49,6 +49,7 @@
     &--border-version {
       border-bottom: 1px solid currentColor;
       font-size: 11px;
+      text-decoration: none;
 
       &:after {
         display: none;
@@ -205,5 +206,6 @@
     border-top: 1px solid #000;
     justify-content: space-between;
     margin-top: 0.5em;
+    text-decoration: none;
   }
 }
