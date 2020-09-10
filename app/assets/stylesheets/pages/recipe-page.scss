@@ -41,6 +41,10 @@ $image-offset: 30px;
 
     @media (max-width: $mobile) {
       margin: 40px 16px 0px 16px;
+
+      .card {
+        display: none;
+      }
     }
 
     .card {
@@ -108,12 +112,10 @@ $image-offset: 30px;
     flex-direction: column;
     justify-content: flex-end;
     min-width: 300px;
-    padding: 0 24px
-      ($space-between-description-and-header + $description-cutout) 0px;
+    padding: 0 24px ($space-between-description-and-header + $description-cutout) 0px;
 
     &--count-3 {
-      padding-bottom: $space-between-description-and-header +
-        $description-cutout + $three-count-extra;
+      padding-bottom: $space-between-description-and-header + $description-cutout + $three-count-extra;
     }
 
     &--count-2 {
@@ -322,8 +324,7 @@ $image-offset: 30px;
     line-height: 0.75;
     display: inline-block;
     padding: 0 12px 0 0;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-      1px 1px 0 #000;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   }
 
   &__primary-sidebar {
@@ -344,10 +345,6 @@ $image-offset: 30px;
       width: 100%;
       min-height: 0;
       margin: 0;
-
-      .card {
-        display: none;
-      }
     }
   }
 
@@ -404,5 +401,9 @@ $image-offset: 30px;
     .list-card {
       grid-area: list-card;
     }
+  }
+
+  .card.instagram .card__image {
+    max-width: 129px;
   }
 }

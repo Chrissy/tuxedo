@@ -4,7 +4,7 @@
 
 .card {
   display: grid;
-  grid-template-areas: "head head" "image content";
+  grid-template-areas: "head head" "content image";
   grid-template-rows: 50px 1fr;
   grid-template-columns: auto 1fr;
   grid-column-gap: 16px;
@@ -112,6 +112,7 @@
     color: #656565;
     font-size: 13px;
     margin-left: 6px;
+    white-space: pre;
   }
 
   &__list-subtext {
@@ -164,7 +165,6 @@
     max-height: 220px;
     margin: 0 -1em;
     border-bottom: 1px solid #000;
-    background: #fff;
   }
 
   &__illustration {
@@ -209,4 +209,14 @@
     margin-top: 0.5em;
     text-decoration: none;
   }
+}
+
+.card.instagram .card__image {
+  width: 146px;
+  margin: 0 -13px;
+}
+
+.card.mail .card__image {
+  margin: -13px 0 -13px -10px;
+  max-width: 98px;
 }

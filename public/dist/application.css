@@ -929,7 +929,7 @@ body {
 
 .card {
   display: grid;
-  grid-template-areas: "head head" "image content";
+  grid-template-areas: "head head" "content image";
   grid-template-rows: 50px 1fr;
   grid-template-columns: auto 1fr;
   grid-column-gap: 16px;
@@ -1001,7 +1001,8 @@ body {
   .card__action-subtext {
     color: #656565;
     font-size: 13px;
-    margin-left: 6px; }
+    margin-left: 6px;
+    white-space: pre; }
   .card__list-subtext .subtext {
     margin: 0;
     font-weight: 200;
@@ -1037,8 +1038,7 @@ body {
     object-fit: contain;
     max-height: 220px;
     margin: 0 -1em;
-    border-bottom: 1px solid #000;
-    background: #fff; }
+    border-bottom: 1px solid #000; }
   .card__illustration {
     width: 100%;
     object-fit: contain;
@@ -1070,6 +1070,14 @@ body {
     justify-content: space-between;
     margin-top: 0.5em;
     text-decoration: none; }
+
+.card.instagram .card__image {
+  width: 146px;
+  margin: 0 -13px; }
+
+.card.mail .card__image {
+  margin: -13px 0 -13px -10px;
+  max-width: 98px; }
 
 .label, .recipe__recipe h1, .component__description .subcomponent-recipe h1,
 .recipe__recipe h2,
@@ -1311,7 +1319,7 @@ body {
 
 .card {
   display: grid;
-  grid-template-areas: "head head" "image content";
+  grid-template-areas: "head head" "content image";
   grid-template-rows: 50px 1fr;
   grid-template-columns: auto 1fr;
   grid-column-gap: 16px;
@@ -1383,7 +1391,8 @@ body {
   .card__action-subtext {
     color: #656565;
     font-size: 13px;
-    margin-left: 6px; }
+    margin-left: 6px;
+    white-space: pre; }
   .card__list-subtext .subtext {
     margin: 0;
     font-weight: 200;
@@ -1419,8 +1428,7 @@ body {
     object-fit: contain;
     max-height: 220px;
     margin: 0 -1em;
-    border-bottom: 1px solid #000;
-    background: #fff; }
+    border-bottom: 1px solid #000; }
   .card__illustration {
     width: 100%;
     object-fit: contain;
@@ -1452,6 +1460,14 @@ body {
     justify-content: space-between;
     margin-top: 0.5em;
     text-decoration: none; }
+
+.card.instagram .card__image {
+  width: 146px;
+  margin: 0 -13px; }
+
+.card.mail .card__image {
+  margin: -13px 0 -13px -10px;
+  max-width: 98px; }
 
 .ingredient-card {
   border: 1px solid #000;
@@ -2361,7 +2377,9 @@ body {
     grid-area: sidebar; }
     @media (max-width: 900px) {
       .recipe__sidebar {
-        margin: 40px 16px 0px 16px; } }
+        margin: 40px 16px 0px 16px; }
+        .recipe__sidebar .card {
+          display: none; } }
     .recipe__sidebar .card {
       margin-top: 140px; }
       @media (max-width: 900px) {
@@ -2564,9 +2582,7 @@ body {
         display: block;
         width: 100%;
         min-height: 0;
-        margin: 0; }
-        .recipe__primary-sidebar .card {
-          display: none; } }
+        margin: 0; } }
   .recipe__adapted-from-card[class] {
     padding: 0; }
     @media (min-width: 900px) {
@@ -2605,6 +2621,8 @@ body {
       min-height: 0; }
     .recipe__footer .list-card {
       grid-area: list-card; }
+  .recipe .card.instagram .card__image {
+    max-width: 129px; }
 
 /* legacy */
 .centered-content-box, .edit_panel {

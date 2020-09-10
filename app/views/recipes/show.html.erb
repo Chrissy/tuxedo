@@ -33,7 +33,7 @@
         <div class="recipe__recipe">
           <%= @recipe.recipe_as_html %>
         </div>
-        <%= render 'shared/mail_card', relocate_to: '[data-to-relocate] p:nth-of-type(3), [data-to-relocate] p:nth-of-type(2)', border_version_on_mobile: true %>
+        <%= render 'shared/instagram_card' %>
         <% if @recipe.adapted_from.present? %>
           <div class="card card--list recipe__adapted-from-card">
             <div class="label card__label">Adapted From</div>
@@ -49,7 +49,7 @@
           <div data-to-relocate><%= @recipe.description_to_html %></div>
         </div>
         <div class="recipe__primary-sidebar">
-          <%= render 'shared/instagram_card' %>
+          <%= render 'shared/mail_card', relocate_to: '[data-to-relocate] p:nth-of-type(3), [data-to-relocate] p:nth-of-type(2)', border_version_on_mobile: true %>
         </div>
       </div>
     </div>
