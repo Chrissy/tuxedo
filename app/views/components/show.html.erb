@@ -45,7 +45,9 @@
             <div class="component__cutout"></div>
             <div class="component__description-spacer">R</div>
             <% if @component.illustration.present? %>
-              <%= illustration_image(@component, 'component__illustration') %>
+              <div class="component__illustration-container">
+                <%= illustration_image(@component, 'component__illustration') %>
+              </div>
             <% end %>
             <div><%= description %></div>
           </div>

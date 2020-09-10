@@ -45,14 +45,25 @@ module ApplicationHelper
 
   def base_spirits
     [
-      Component.find_by_name('rum'),
-      Component.find_by_name('lemon'),
-      Component.find_by_name('peychaud\'s bitters'),
-      Component.find_by_name('orange'),
-      Component.find_by_name('orange bitters'),
-      Component.find_by_name('lime'),
-      Component.find_by_name('angostura bitters')
-    ]
+      'peychaud\'s bitters',
+      'lemon',
+      'vermouth',
+      'allspice dram',
+      'cherry',
+      'aperol',
+      'chartreuse',
+      'orange bitters',
+      'lime',
+      'campari',
+      'benedictine',
+      'amaro',
+      'angostura bitters',
+      'grapefruit',
+      'orange',
+      'syrup',
+      'falernum',
+      'fernet',
+    ].map{ |s| Component.find_by_name(s) }
   end
 
   def swash(text)
