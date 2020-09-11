@@ -151,6 +151,10 @@
     max-height: 54px;
     min-height: 54px;
     margin: 0.5em 0;
+
+    p:first-of-type {
+      margin: 0;
+    }
   }
 
   &__section {
