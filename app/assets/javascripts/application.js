@@ -50,6 +50,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const instagram_count = document.querySelector("[data-instagram-count]");
+  if (instagram_count) {
+    const count = fetch("https://www.instagram.com/tuxedono2/?__a=1")
+      .then((blob) => blob.json())
+      .then((json) => {
+        try {
+          const {
+            graphql: {
+              user: {
+                edge_followed_by: { count },
+              },
+            },
+          } = json;
+          instagram_count.innerHTML = `${count.toLocaleString(
+            "en-US"
+          )} followers`;
+        } catch (error) {
+          console.error(
+            `couldn't fetch instagram data. errored out with: ${JSON.stringify(
+              error.message
+            )}`
+          );
+        }
+      });
+  }
+
   const imagesForCarousel = document.querySelectorAll("[data-carousel-index]");
   if (imagesForCarousel.length) new Carousel([...imagesForCarousel]);
 
