@@ -49,7 +49,12 @@
                 <%= illustration_image(@component, 'component__illustration') %>
               </div>
             <% end %>
-            <div><%= description %></div>
+            <div data-to-relocate>
+              <%= description %>
+              <div data-relocate-to="[data-to-relocate] p:nth-of-type(2)">
+                <%= illustration_image(@component, 'component__illustration component__illustration--mobile') %>
+              </div>
+            </div>
           </div>
         </div>
         <div class="component__sidebar">
