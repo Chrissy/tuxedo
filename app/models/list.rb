@@ -5,19 +5,13 @@ require 'component.rb'
 require 'custom_markdown.rb'
 
 class List < ActiveRecord::Base
-  include AlgoliaSearch
   extend FriendlyId
+  include AlgoliaSearch
   extend ActsAsMarkdownList::ActsAsMethods
 
   friendly_id :custom_name, use: :slugged
 
   acts_as_markdown_list :content_as_markdown
-
-  search_index = ENV['RAILS_ENV'] == 'development' ? 'primary_development' : 'primary'
-
-  algoliasearch index_name: search_index, id: :algolia_id do
-    attributes :name, :image_with_backup, :count_for_display, :url
-  end
 
   def elements
     list_elements.reject do |element|
@@ -93,9 +87,5 @@ class List < ActiveRecord::Base
 
   def header_element
     home? ? elements.first : self
-  end
-
-  def algolia_id
-    "list_#{id}"
   end
 end
