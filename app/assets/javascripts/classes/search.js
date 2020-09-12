@@ -110,14 +110,16 @@ export default class Search {
 
   getSearchQuery(query) {
     const params = { hitsPerPage: 20 };
+    const indexName =
+      process.env.NODE_ENV === "development"
+        ? "primary_development"
+        : "primary";
 
     return [
       {
-        indexName:
-          process.env.NODE_ENV === "development"
-            ? "primary_development"
-            : "primary",
+        indexName,
         query,
+        filters: "NOT has_subcomponent_precedence:true",
         params,
         attributesToSnippet: [
           "description_as_plain_text:20",

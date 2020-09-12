@@ -3,7 +3,14 @@
 require 'recipe.rb'
 
 class Subcomponent < ActiveRecord::Base
+  include AlgoliaSearch
   belongs_to :component, foreign_key: true
+
+  search_index = ENV['RAILS_ENV'] == 'development' ? 'primary_development' : 'primary'
+
+  algoliasearch index_name: search_index, id: :algolia_id do
+    attributes :name, :image_with_backup, :count_for_display, :url
+  end
 
   def search_data
     {
@@ -32,6 +39,10 @@ class Subcomponent < ActiveRecord::Base
     # not sure why this is in here but might need it for something ¯\_(ツ)_/¯
     # shares_subcomponent.concat(component.list_elements)
     shares_subcomponent
+  end
+
+  def count_for_display
+    "#{list_elements.count} cocktails"
   end
 
   def list_for_textarea_with_default
@@ -113,5 +124,9 @@ class Subcomponent < ActiveRecord::Base
 
   def self.get_by_letter(letter)
     where("lower(name) LIKE '#{letter}%'")
+  end
+
+  def algolia_id
+    "subcomponent_#{id}"
   end
 end

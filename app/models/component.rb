@@ -23,7 +23,7 @@ class Component < ActiveRecord::Base
   search_index = ENV['RAILS_ENV'] == 'development' ? 'primary_development' : 'primary'
 
   algoliasearch index_name: search_index, id: :algolia_id do
-    attributes :name, :description_as_plain_text, :image_with_backup, :count_for_display, :url
+    attributes :name, :description_as_plain_text, :image_with_backup, :count_for_display, :url, :has_subcomponent_precedence
   end
 
   def url
@@ -165,6 +165,10 @@ class Component < ActiveRecord::Base
 
   def count_for_display
     "#{list_elements.count} cocktails"
+  end
+
+  def has_subcomponent_precedence
+    Subcomponent.find_by_name(name).present?
   end
 
   def nickname
