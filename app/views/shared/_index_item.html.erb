@@ -9,7 +9,8 @@ index_element_classes = "#{'index-element--for-search ' if for_search}#{'index-e
 %>
 <div 
   class="index-element <%= index_element_classes %>" 
-  itemprop="itemListElement" 
+  itemprop="itemListElement"
+  role="listitem" 
   itemscope 
   itemtype="http://schema.org/Recipe" 
   <% if with_tooltip %>

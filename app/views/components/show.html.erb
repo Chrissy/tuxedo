@@ -7,7 +7,7 @@
 <% cache(cache_key(@component, "show")) do %>
   <div class="component">
     <% if !@component.description.present? %>
-      <h1 class="component__header-title component__header-title--center" itemprop="name">
+      <h1 class="component__header-title component__header-title--center" itemprop="name" role="heading">
         <a href="<%= @component.url %>">
           <%= @component.name %>
         </a>
@@ -84,25 +84,25 @@
     <% if @component.all_elements.count > 6 %>
       <div id="table" class="component__all" data-filterable-table>
         <% if @component.subcomponents.count > 0 %>
-          <div class="component__all-mobile-menu">
-            <div class="component__all-mobile-menu-tabs">
-              <a href="#" class="component__all-mobile-menu__filter component__filter component__filter selected component__filter--radio" data-filter-by="default">
+          <div class="component__all-mobile-menu" role="menu">
+            <div class="component__all-mobile-menu-tabs" role="tabs">
+              <a href="#" class="component__all-mobile-menu__filter component__filter component__filter selected component__filter--radio" data-filter-by="default" role="tab">
                 <span class="component__filter-control">All</span>
               </a>
               <% @component.subcomponents.sort_by{ |c| c.list_elements.count }.reverse[0..2].each do |subcomponent| %>
-                <a href="#" class="component__all-mobile-menu__filter component__filter component__filter--radio" data-filter-by="<%= subcomponent.name %>">
+                <a href="#" class="component__all-mobile-menu__filter component__filter component__filter--radio" data-filter-by="<%= subcomponent.name %>" role="tab">
                   <span class="component__filter-control"><%= subcomponent.name %></span>
                 </a>
               <% end %>
             </div>
-            <div class="button component__all-filter-button" data-toggle-target="[data-target-toggleable='filters']">Filter</div>
+            <div class="button component__all-filter-button" data-toggle-target="[data-target-toggleable='filters']" role="button">Filter</div>
           </div>
         <% end %>
-        <div class="component__all-sidebar hidden" data-target-toggleable='filters'>
+        <div class="component__all-sidebar hidden" data-target-toggleable='filters' role="menu">
           <% if @component.subcomponents.count > 0 %>
             <div class="card card--list">
               <div class="label component__all-sidebar-filter-label">Varieties</div>
-              <a href="#" class="component__filter component__filter selected component__filter--radio" data-filter-by="default">
+              <a href="#" class="component__filter component__filter selected component__filter--radio" data-filter-by="default" role="menuitem">
                 <span class="component__filter-control">
                   <%= render 'shared/svg', id: "radio-selected", className: "component__radio-button component__radio-button--selected" %>
                   <%= render 'shared/svg', id: "radio-unselected", className: "component__radio-button component__radio-button--unselected" %>
@@ -112,7 +112,7 @@
               </a>
               <% @component.subcomponents.sort_by{ |c| c.list_elements.count }.reverse.each do |subcomponent| %>
                 <a href="#" class="component__filter component__filter--radio" data-filter-by="<%= subcomponent.name %>">
-                  <span class="component__filter-control">
+                  <span class="component__filter-control" role="menuitem">
                     <%= render 'shared/svg', id: "radio-unselected", className: "component__radio-button component__radio-button--unselected" %>
                     <%= render 'shared/svg', id: "radio-selected", className: "component__radio-button component__radio-button--selected" %>
                     <%= subcomponent.name %>
@@ -121,7 +121,7 @@
                 </a>
               <% end %>
               <% if @component.list_elements.present? %>
-                <a href="#" class="component__filter component__filter component__filter--radio" data-filter-by="<%= @component.name %>">
+                <a href="#" class="component__filter component__filter component__filter--radio" data-filter-by="<%= @component.name %>" role="menuitem">
                   <span class="component__filter-control">
                     <%= render 'shared/svg', id: "radio-unselected", className: "component__radio-button component__radio-button--unselected" %>
                     <%= render 'shared/svg', id: "radio-selected", className: "component__radio-button component__radio-button--selected" %>
@@ -136,7 +136,7 @@
             <div class="label component__all-sidebar-filter-label">Combinations</div>
             <% @component.common_pairings(5).each do |pairing| %>
               <a href="#" class="component__filter component__filter--radio" data-filter-by-many="<%= pairing[:component].name %>">
-                <span class="component__filter-control">
+                <span class="component__filter-control" role="menuitem">
                   <%= render 'shared/svg', id: "checkbox-unselected", className: "component__checkbox component__checkbox--unselected" %>
                   <%= render 'shared/svg', id: "checkbox-selected", className: "component__checkbox component__checkbox--selected" %>
                   <%= pairing[:component].name %>
@@ -146,11 +146,11 @@
             <% end %>
           </div>
         </div>
-        <div class="component__all-recipes">
+        <div class="component__all-recipes" role="list">
           <div class="label label--center component__all-recipes-label">All Recipes</div>
           <div class="grid grid--half-gap">
             <% @component.all_elements.uniq.sort_by(&:name).each do |recipe| %>
-              <div data-ingredients="<%= recipe.components.map(&:name).join(',') %>">
+              <div data-ingredients="<%= recipe.components.map(&:name).join(',') %>" role="listitem">
                 <%= render 'shared/index_item', element: recipe, class_name: "component__index-element", index_for_filtering: true %>
               </div>
             <% end %>

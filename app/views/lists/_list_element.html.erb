@@ -8,6 +8,7 @@
   href="<%= element.url %>" 
   class='list-element <%= 'list-element--first' if first %> <%= 'list-element--second' if second %> <%= class_name %>' 
   itemprop="itemListElement" 
+  role="listitem"
   itemscope 
   itemtype="http://schema.org/Recipe"
   <%= "data-carousel-index=#{carousel_index}" unless !carousel_index %>
@@ -19,7 +20,7 @@
   </div>
   <% if first && element.class == Recipe %>
     <div class="list-element__details list-element__details--featured">
-      <h1 class="list-element__name list-element__name--featured" itemprop="name">
+      <h1 class="list-element__name list-element__name--featured" itemprop="name" role="heading">
         <%= element.name %>
       </h1>
       <h2 class="list-element__subtitle">
@@ -34,7 +35,7 @@
     </div>
   <% else %>
     <div class="list-element__details">
-      <h3 class="list-element__name" itemprop="name">
+      <h3 class="list-element__name" itemprop="name" role="heading">
         <% if element.try(:number).present? %>
           <span class="list-element__number">No. <%= element.number %>:</span>
         <% end %>

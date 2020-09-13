@@ -123,6 +123,7 @@ module ApplicationHelper
       class: class_name,
       alt: "#{element.name} cocktail photo",
       itemprop: 'image',
+      role: 'img',
       "data-pin-media": pinnable_image_url(element),
       "data-pin-url": pin_url(element),
       "data-pin-description": element.name
@@ -141,6 +142,7 @@ module ApplicationHelper
       srcset: [image_url(element, :large, method) + ' 1x', image_url(element, :large2x, method) + ' 2x'].join(', '),
       alt: "#{element.name} cocktail photo",
       itemprop: 'image',
+      role: 'img',
       class: class_name || 'list-element__img',
       "data-pin-media": pinnable_image_url(element, method),
       "data-pin-url": pin_url(element),
@@ -161,7 +163,8 @@ module ApplicationHelper
       srcset: [image_url(element, :medium, method) + ' 1x', image_url(element, :medium2x, method) + ' 2x'].join(', '),
       class: class_name,
       alt: "#{element.name} cocktail photo",
-      itemprop: 'image'
+      itemprop: 'image',
+      role: 'img'
     )
   end
 
@@ -171,7 +174,8 @@ module ApplicationHelper
       srcset: [image_url(element, :illustration2x, :illustration) + ' 1x', image_url(element, :illustration2x, :illustration) + ' 2x'].join(', '),
       class: class_name,
       alt: "#{element.name} botanical drawing",
-      itemprop: 'image'
+      itemprop: 'image',
+      role: 'img'
     )
   end
 
@@ -181,7 +185,8 @@ module ApplicationHelper
       srcset: [image_url(element, :small) + ' 1x', image_url(element, :small2x) + ' 2x'].join(', '),
       class: 'index-element__img',
       alt: "#{element.name} cocktail photo",
-      itemprop: 'image'
+      itemprop: 'image',
+      role: 'img'
     )
   end
 

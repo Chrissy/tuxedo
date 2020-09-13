@@ -9,7 +9,7 @@ module Tooltip
   end
 
   def tooltip(element)
-    "<div class='tooltip'>
+    "<div class='tooltip' role='tooltip'>
       #{ingredient_card_image(element, 'tooltip__image')}
       <div class='tooltip__title'>#{element.name}</div>
       #{if element.try(:subtitle).present?
