@@ -15,8 +15,9 @@ class Component < ActiveRecord::Base
 
   serialize :recipe_ids, Array
   has_many :pseudonyms, as: :pseudonymable, dependent: :destroy
-  has_many :subcomponents, as: :subcomponent, dependent: :destroy
+  has_many :subcomponents, as: :subcomponent
   after_save :delete_and_save_subcomponents, :create_pseudonyms_if_changed, :delete_and_save_tags
+  after_destroy :delete_subcomponents
 
   alias list_elements_from_markdown list_elements
 
@@ -40,6 +41,10 @@ class Component < ActiveRecord::Base
 
   def subcomponents
     Subcomponent.where(component_id: id)
+  end
+
+  def delete_subcomponents
+    subcomponents.delete_all
   end
 
   def parent_elements
