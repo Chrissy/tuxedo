@@ -1858,7 +1858,10 @@ body {
     @media (min-width: 1150px) {
       .list-element__image-link--hero {
         width: calc(100% + ((100vw - 1113px) / 2));
-        max-width: 860px; } }
+        max-width: 868px; } }
+    @media (min-width: 1330px) {
+      .list-element__image-link--hero {
+        width: 100%; } }
     @media (max-width: 900px) {
       .list-element__image-link--hero {
         width: 100%;
