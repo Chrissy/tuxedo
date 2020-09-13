@@ -168,7 +168,11 @@ class Component < ActiveRecord::Base
   end
 
   def has_subcomponent_precedence
-    Subcomponent.find_by_name(name).present?
+    overriding_subcomponent.present?
+  end
+
+  def overriding_subcomponent
+    Subcomponent.find_by_name(name)
   end
 
   def nickname

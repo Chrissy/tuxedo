@@ -6,6 +6,7 @@ class ComponentsController < ApplicationController
 
   def show
     @component = Component.friendly.find(params[:id])
+    redirect_to @component.overriding_subcomponent.url if @component.has_subcomponent_precedence
     @layout_object = @component
   end
 
