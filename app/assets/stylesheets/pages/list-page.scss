@@ -5,9 +5,9 @@
   display: grid;
   grid-gap: 18px;
   padding: 0 18px 18px 18px;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 39px;
-  max-width: 1150px;
+  max-width: 1286px;
 
   @media (max-width: $mobile) {
     grid-template-columns: 0.5fr 0.5fr;
@@ -30,6 +30,10 @@
       @media (max-width: $mobile) {
         grid-row-end: span 9;
         grid-column-end: span 1;
+      }
+
+      @media (min-height: 725px) and (min-width: $large) {
+        grid-row-end: span 11;
       }
     }
 

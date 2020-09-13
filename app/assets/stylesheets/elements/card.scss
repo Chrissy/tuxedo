@@ -218,6 +218,10 @@
 .card.instagram .card__image {
   width: 146px;
   margin: 0 -13px;
+
+  @media (min-width: $mobile) and (max-width: $medium) {
+    width: 106px;
+  }
 }
 
 .card.mail .card__image {
