@@ -9,6 +9,12 @@
   grid-auto-rows: 39px;
   max-width: 1286px;
 
+  &--tag {
+    @media (max-width: $mobile) {
+      grid-auto-rows: unset;
+    }
+  }
+
   @media (max-width: $mobile) {
     grid-template-columns: 0.5fr 0.5fr;
   }
@@ -53,13 +59,10 @@
       flex-direction: column;
       justify-content: flex-end;
       grid-row-end: span 6;
-    }
 
-    &__display-number {
-      @media (max-width: $small) {
-        position: absolute;
-        top: 20px;
-        right: -20px;
+      @media (max-width: $mobile) {
+        display: block;
+        padding: 0 16px;
       }
     }
   }
@@ -87,7 +90,9 @@
   }
 
   &--tag {
-    margin-top: 60px;
+    @media (min-width: $mobile) {
+      margin-top: 60px;
+    }
 
     .special-nav {
       display: none;

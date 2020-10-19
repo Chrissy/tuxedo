@@ -1836,6 +1836,10 @@ body {
       text-decoration: none; }
     .list-element__details--featured {
       padding: 24px; }
+    @media (max-width: 900px) {
+      .list-element__details--tag {
+        top: 0;
+        text-align: right; } }
   .list-element__display-number {
     position: absolute;
     top: 130px;
@@ -1843,6 +1847,12 @@ body {
     z-index: 1; }
     .list-element__display-number--tag {
       left: 100%; }
+      @media (max-width: 1100px) {
+        .list-element__display-number--tag {
+          top: 80px; } }
+      @media (max-width: 900px) {
+        .list-element__display-number--tag {
+          display: none; } }
   .list-element__name {
     line-height: 110%;
     font-weight: normal;
@@ -1856,7 +1866,7 @@ body {
         font-feature-settings: "swsh"; }
     .list-element__name--tag {
       font-weight: 800;
-      font-size: 36px; }
+      font-size: 32px; }
   .list-element__number {
     font-weight: bold;
     -webkit-font-smoothing: antialiased; }
@@ -1881,6 +1891,11 @@ body {
         width: 100%;
         height: 100%;
         top: 0; } }
+  .list-element__image-link--hero-tag {
+    width: 100%; }
+    @media (min-width: 1150px) {
+      .list-element__image-link--hero-tag {
+        width: 100%; } }
   .list-element__img {
     display: block;
     position: relative;
@@ -2313,6 +2328,9 @@ body {
   grid-auto-rows: 39px;
   max-width: 1286px; }
   @media (max-width: 900px) {
+    .list--tag {
+      grid-auto-rows: unset; } }
+  @media (max-width: 900px) {
     .list {
       grid-template-columns: 0.5fr 0.5fr; } }
   @media (max-width: 700px) {
@@ -2345,11 +2363,10 @@ body {
       flex-direction: column;
       justify-content: flex-end;
       grid-row-end: span 6; }
-    @media (max-width: 700px) {
-      .list .list-element__display-number {
-        position: absolute;
-        top: 20px;
-        right: -20px; } }
+      @media (max-width: 900px) {
+        .list .list-element--tag-info {
+          display: block;
+          padding: 0 16px; } }
   .list .special-nav,
   .list .card {
     grid-row-end: span 4; }
@@ -2363,10 +2380,11 @@ body {
   .list .card--ingredient {
     min-width: 0;
     grid-row-end: span 9; }
-  .list--tag {
-    margin-top: 60px; }
-    .list--tag .special-nav {
-      display: none; }
+  @media (min-width: 900px) {
+    .list--tag {
+      margin-top: 60px; } }
+  .list--tag .special-nav {
+    display: none; }
 
 .special-nav {
   display: flex;

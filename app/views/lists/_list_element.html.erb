@@ -16,7 +16,7 @@
   <%= "data-carousel-index=#{carousel_index}" unless !carousel_index %>
   <%= "data-lazy-load-on-scroll=#{lazy_load}" unless !lazy_load %>
 >
-  <div class="list-element__image-link <%= 'list-element__image-link--hero' if first %>">
+  <div class="list-element__image-link <%= 'list-element__image-link--hero' if first %> <%= 'list-element__image-link--hero-tag' if first && tag %>">
     <%= display_number_with_fallback(element, "list-element__display-number") if display_number && !tag %>
     <% if tag && first %>
       <div class="display-number list-element__display-number list-element__display-number--tag">
@@ -41,7 +41,7 @@
       </div>
     </div>
   <% else %>
-    <div class="list-element__details">
+    <div class="list-element__details <%= 'list-element__details--tag' if tag %>">
       <h3 class="list-element__name" itemprop="name" role="heading">
         <% if element.try(:number).present? %>
           <span class="list-element__number">No. <%= element.number %>:</span>
