@@ -4,9 +4,11 @@
 <% class_name ||= '' %>
 <% carousel_index ||= false %>
 <% lazy_load ||= false %>
+<% tag ||= false %>
+
 <a 
   href="<%= element.url %>" 
-  class='list-element <%= 'list-element--first' if first %> <%= 'list-element--second' if second %> <%= class_name %>' 
+  class='list-element <%= 'list-element--first' if first && !tag %> <%= 'list-element--first-tag' if first && tag %> <%= 'list-element--second' if second && !tag %> <%= class_name %>' 
   itemprop="itemListElement" 
   role="listitem"
   itemscope 
@@ -15,10 +17,15 @@
   <%= "data-lazy-load-on-scroll=#{lazy_load}" unless !lazy_load %>
 >
   <div class="list-element__image-link <%= 'list-element__image-link--hero' if first %>">
-    <%= display_number_with_fallback(element, "list-element__display-number") if display_number %>
+    <%= display_number_with_fallback(element, "list-element__display-number") if display_number && !tag %>
+    <% if tag && first %>
+      <div class="display-number list-element__display-number list-element__display-number--tag">
+        <%= render '/shared/svg', id: "tag-" + tag.gsub(' ', '-'), className: 'display-number__tag-icon'%>
+      </div>
+    <% end %>
     <%= first ? header_image(element, "list-element__img", true) : list_image(element, "list-element__img") %>
   </div>
-  <% if first && element.class == Recipe %>
+  <% if first && !tag && element.class == Recipe %>
     <div class="list-element__details list-element__details--featured">
       <h1 class="list-element__name list-element__name--featured" itemprop="name" role="heading">
         <%= element.name %>

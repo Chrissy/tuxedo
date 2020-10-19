@@ -34,6 +34,7 @@ Tuxno2::Application.routes.draw do
   get 'lists' => 'lists#index'
   get 'list/:id' => 'lists#show'
 
+  get 'tags/:tag' => 'recipes#tag'
   get 'new' => 'recipes#new'
   get 'all' => 'recipes#all'
   get 'search' => 'recipes#search'

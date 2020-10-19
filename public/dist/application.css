@@ -275,6 +275,9 @@ body {
       left: 10px; }
   .win .display-number {
     padding-top: 0; }
+  .display-number__tag-icon {
+    width: 32px;
+    height: 32px; }
 
 .authenticate {
   display: none; }
@@ -876,6 +879,9 @@ body {
       left: 10px; }
   .win .display-number {
     padding-top: 0; }
+  .display-number__tag-icon {
+    width: 32px;
+    height: 32px; }
 
 .authenticate {
   display: none; }
@@ -1271,6 +1277,9 @@ body {
       left: 10px; }
   .win .display-number {
     padding-top: 0; }
+  .display-number__tag-icon {
+    width: 32px;
+    height: 32px; }
 
 .authenticate {
   display: none; }
@@ -1832,6 +1841,8 @@ body {
     top: 130px;
     transform: translateX(-50%);
     z-index: 1; }
+    .list-element__display-number--tag {
+      left: 100%; }
   .list-element__name {
     line-height: 110%;
     font-weight: normal;
@@ -1843,6 +1854,9 @@ body {
       font-weight: bold; }
       .list-element__name--featured:first-letter {
         font-feature-settings: "swsh"; }
+    .list-element__name--tag {
+      font-weight: 800;
+      font-size: 36px; }
   .list-element__number {
     font-weight: bold;
     -webkit-font-smoothing: antialiased; }
@@ -1881,9 +1895,18 @@ body {
     max-width: 300px;
     line-height: 1;
     -webkit-font-smoothing: antialiased; }
+    .list-element__subtitle--tag {
+      font-family: "mr-eaves", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      margin-bottom: 0.5em;
+      margin-top: 0.25em;
+      font-size: 24px;
+      text-transform: capitalize; }
   .list-element__subtext--featured {
     font-size: 19px;
     -webkit-font-smoothing: antialiased; }
+  .list-element__subtext--tag {
+    font-size: 15px;
+    line-height: 1.2; }
   .list-element__tag-icons {
     margin-top: 10px;
     margin-bottom: 8px;
@@ -2299,16 +2322,16 @@ body {
   .list .list-element {
     grid-row-end: span 8;
     margin: 0; }
-    .list .list-element--first {
+    .list .list-element--first, .list .list-element--first-tag {
       grid-row-end: span 10;
       grid-column-end: span 2;
       margin: inherit 0; }
       @media (max-width: 900px) {
-        .list .list-element--first {
+        .list .list-element--first, .list .list-element--first-tag {
           grid-row-end: span 9;
           grid-column-end: span 1; } }
       @media (min-height: 725px) and (min-width: 1300px) {
-        .list .list-element--first {
+        .list .list-element--first, .list .list-element--first-tag {
           grid-row-end: span 11; } }
     .list .list-element--second {
       grid-row-end: span 10;
@@ -2317,6 +2340,11 @@ body {
         .list .list-element--second {
           padding-top: 0px;
           grid-row-end: span 8; } }
+    .list .list-element--tag-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      grid-row-end: span 6; }
     @media (max-width: 700px) {
       .list .list-element__display-number {
         position: absolute;
@@ -2335,6 +2363,10 @@ body {
   .list .card--ingredient {
     min-width: 0;
     grid-row-end: span 9; }
+  .list--tag {
+    margin-top: 60px; }
+    .list--tag .special-nav {
+      display: none; }
 
 .special-nav {
   display: flex;

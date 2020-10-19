@@ -3,6 +3,8 @@
 require 'list.rb'
 require 'component.rb'
 
+PAGINATION_INTERVAL = 47
+
 class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show search autocomplete index letter_index]
   layout 'application'
@@ -60,6 +62,12 @@ class RecipesController < ApplicationController
 
   def letter_index
     @elements = Recipe.get_by_letter(params[:letter])
+  end
+
+  def tag
+    @tag = params[:tag]
+    @list_elements = Recipe.tagged_with(@tag)
+    @pagination_end = PAGINATION_INTERVAL - 1
   end
 
   private

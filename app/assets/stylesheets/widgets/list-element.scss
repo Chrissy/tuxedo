@@ -29,6 +29,10 @@
     top: 130px;
     transform: translateX(-50%);
     z-index: 1;
+
+    &--tag {
+      left: 100%;
+    }
   }
 
   &__name {
@@ -45,6 +49,11 @@
       &:first-letter {
         font-feature-settings: "swsh";
       }
+    }
+
+    &--tag {
+      font-weight: 800;
+      font-size: 36px;
     }
   }
 
@@ -97,11 +106,24 @@
     max-width: 300px;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
+
+    &--tag {
+      font-family: $sans-serif;
+      margin-bottom: 0.5em;
+      margin-top: 0.25em;
+      font-size: 24px;
+      text-transform: capitalize;
+    }
   }
 
   &__subtext--featured {
     font-size: 19px;
     -webkit-font-smoothing: antialiased;
+  }
+
+  &__subtext--tag {
+    font-size: 15px;
+    line-height: 1.2;
   }
 
   &__tag-icons {

@@ -22,7 +22,8 @@
     grid-row-end: span 8;
     margin: 0;
 
-    &--first {
+    &--first,
+    &--first-tag {
       grid-row-end: span 10;
       grid-column-end: span 2;
       margin: inherit 0;
@@ -45,6 +46,13 @@
         padding-top: 0px;
         grid-row-end: span 8;
       }
+    }
+
+    &--tag-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      grid-row-end: span 6;
     }
 
     &__display-number {
@@ -76,6 +84,14 @@
   .card--ingredient {
     min-width: 0;
     grid-row-end: span 9;
+  }
+
+  &--tag {
+    margin-top: 60px;
+
+    .special-nav {
+      display: none;
+    }
   }
 }
 

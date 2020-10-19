@@ -51,6 +51,11 @@
   .win & {
     padding-top: 0;
   }
+
+  &__tag-icon {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 .authenticate {
@@ -115,11 +120,7 @@
   padding: 10px;
 }
 
-$horizontal-stripes: linear-gradient(
-  90deg,
-  transparent 50%,
-  rgba(50, 50, 50, 0.6) 50%
-);
+$horizontal-stripes: linear-gradient(90deg, transparent 50%, rgba(50, 50, 50, 0.6) 50%);
 %horizontal_stripes {
   background: $horizontal-stripes;
   background-size: 4px 100%;

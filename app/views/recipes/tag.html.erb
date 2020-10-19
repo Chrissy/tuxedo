@@ -1,0 +1,23 @@
+<% tag_list = {
+"classic" => "Bestowed to cocktails with a wide distribution across many great bars. While modern cocktails may sometimes be classic, most drinks on this list will be older.",
+"original" => "These recipes were developed in-house to explore exciting ideas or underrepresented flavor combinations.",
+"stirred" => "Stirred cocktails are made without a shaker. They may be crafted using a mixing glass and cocktail spoon or a humble pint glass and kitchen spoon. Many stirred cocktails do not contain citrus juice.",
+"shaken" => "Shaken cocktails are made using a cocktail shaker. Many shaken cocktails contain citrus juice such as lemon, lime, orange, or grapefruit.",
+"built in glass" => "The easiest type of cocktail to prepare; this style of recipe is crafted by building all ingredients together in the glass it will be served in.",
+"up" => "This style of drink involves shaking or stirring the ingredients over ice before straining the contents into a glass with no ice.",
+"rocks" => "This style of drink is presented to the drinker over a handful of medium-sized cubes in a glass. A rocks or collins glass is the most popular way to imbibe this type of drink.",
+"large cube" => "Many cocktails taste best over one large cube. This limits the surface area where ice comes into contact with the contents, reducing the rate of dilution.",
+"crushed ice" => "Crushed ice is typically employed in juleps, tiki cocktails, and anything served when it is very hot. The high amount of surface area makes for a frosty drink that is very cold.",
+"cracked ice" => "Cracked ice sits somewhere between rocks ice and crushed ice. It is often made by cracking warmed ice with a long spoon or mallet.",
+"served hot" => "Since a cocktail is traditionally defined by its use of ice, these drinks are not cocktails by definition, but they are often the perfect choice for chilly evenings.",
+"cocktail glass" => "Popular with drinks served up, a cocktail glass includes the popular coupe style as well as a myriad of other small stemmed vessels.",
+"collins glass" => "The Collins glass was developed for the classic cocktail family of the same name. Today, this term often refers to a wide gamut of tall vessels perfect for summer drinks that take ice and a straw.",
+"rocks glass" => "A rocks glass is wide and squat, perfect for its namesake ice cubes. The rocks glass is also a perfect fit for drinks like the old fashioned, which are built in the glass.",
+"tiki glass" => "The tiki glass family varies wildly, from faux-polynesian characters to hurricane glasses. The only rule: make it fun.",
+"toddy glass" => "The toddy glass has a handle and thicker sidewalls perfect for hot drinks. We don’t always use a traditional toddy glass, but use it here as a loose symbol for all glassware designed for hot drinks.",
+} %>
+<% cache(index_cache_key(@list_elements, Recipe)) do %>
+  <div class="list list--tag">
+    <%= render 'lists/list_elements', page: 0, elements: @list_elements, pagination_end: @pagination_end, tag: @tag, tag_description: tag_list[@tag] %>
+  </div>
+<% end %>
