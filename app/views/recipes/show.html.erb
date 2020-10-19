@@ -18,7 +18,7 @@
           </h2>
           <div class="recipe__tag-icons">
             <%= display_number_with_fallback(@recipe, "recipe__display-number recipe__display-number--mobile") %>
-            <%= render 'recipes/tags', tags: @recipe.tags, class_name: "recipe__tag-icon" %>
+            <%= render 'recipes/tags', tags: @recipe.tags, class_name: "recipe__tag-icon", links: true %>
           </div>
           <%= display_number_with_fallback(@recipe, "recipe__display-number recipe__display-number--count-#{image_count}") %>
         </div>

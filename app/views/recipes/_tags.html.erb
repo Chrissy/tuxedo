@@ -1,5 +1,6 @@
 <% class_name ||= "" %>
 <% tags ||= [] %>
+<% links ||= false %>
 <% tag_list = [
   "stirred",
   "shaken",
@@ -17,5 +18,5 @@
   "toddy glass",
 ] %>
 <% (tag_list & tags.map(&:name)).each do |tag| %>
-  <%= render 'recipes/tag', tag: tag, classname: class_name %>
+  <%= render 'recipes/tag', tag: tag, link: links, classname: class_name %>
 <% end %>
