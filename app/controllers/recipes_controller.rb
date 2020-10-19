@@ -6,7 +6,7 @@ require 'component.rb'
 PAGINATION_INTERVAL = 47
 
 class RecipesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[show search autocomplete index letter_index]
+  skip_before_action :authenticate_user!, only: %i[show search autocomplete index letter_index tag]
   layout 'application'
 
   def show
