@@ -20,7 +20,7 @@
 "summer" => "The hottest months are the time for tall glasses, crushed ice, and tiki vibes. Look for cooling flavors like mint, citrus, and bubbly.",
 "fall" => "The trimming of days and the falling of leaves brings out some of the cocktail world's most adventurous flavors. Opt for big spicy bouquets and spirits made from apples and stone fruit.",
 } %>
-<% cache(index_cache_key(@list_elements, Recipe)) do %>
+<% cache(index_cache_key(@list_elements, Recipe) + '-' + @tag.gsub(' ', '-')) do %>
   <div class="list list--tag">
     <%= render 'lists/list_elements', page: 0, elements: @list_elements, pagination_end: @pagination_end, tag: @tag, tag_description: tag_list[@tag] %>
   </div>
