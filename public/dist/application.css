@@ -277,7 +277,8 @@ body {
     padding-top: 0; }
   .display-number__tag-icon {
     width: 32px;
-    height: 32px; }
+    height: 32px;
+    transform: translate(-1px, -2px); }
 
 .authenticate {
   display: none; }
@@ -881,7 +882,8 @@ body {
     padding-top: 0; }
   .display-number__tag-icon {
     width: 32px;
-    height: 32px; }
+    height: 32px;
+    transform: translate(-1px, -2px); }
 
 .authenticate {
   display: none; }
@@ -1279,7 +1281,8 @@ body {
     padding-top: 0; }
   .display-number__tag-icon {
     width: 32px;
-    height: 32px; }
+    height: 32px;
+    transform: translate(-1px, -2px); }
 
 .authenticate {
   display: none; }
