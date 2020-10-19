@@ -22,17 +22,14 @@ Tuxno2::Application.routes.draw do
   get 'ingredients-index/:letter' => 'components#letter_index'
   get 'ingredients' => 'components#index'
 
-  get 'list/new' => 'lists#new'
-  get 'list/all' => 'lists#all'
-  get 'list/get/:id' => 'lists#get'
-  get 'list/edit/:id' => 'lists#edit'
-  post 'list/update/:id' => 'lists#update'
-  post 'list/create' => 'lists#create'
-  get 'list/delete/:id' => 'lists#delete'
-  get 'list/more/:page' => 'lists#more'
-  get 'lists/:letter' => 'lists#letter_index'
-  get 'lists' => 'lists#index'
-  get 'list/:id' => 'lists#show'
+  # redirects for the deprecated list model
+  get '/list/chartreuse-cocktail-recipes', to: redirect('/ingredients/chartreuse-cocktail-recipes')
+  get '/list/holiday-cocktails-cocktail-recipes', to: redirect('/tags/winter')
+  get '/list/tequila-cocktail-recipes-162045e6-2cfb-4e15-b67b-55abc1899bd7', to: redirect('/ingredients/tequila-cocktail-recipes')
+  get '/list/whiskey-cocktails-cocktail-recipes', to: redirect('/ingredients/whiskey-cocktail-recipes')
+  get '/list/fall-cocktails-cocktail-recipes', to: redirect('/tags/fall')
+  get 'list/rum-cocktail-recipes', to: redirect('/ingredients/rum-cocktail-recipes')
+  get 'list/rum-cocktails-cocktail-recipes', to: redirect('/ingredients/rum-cocktail-recipes')
 
   get 'tags/:tag' => 'recipes#tag'
   get 'new' => 'recipes#new'
