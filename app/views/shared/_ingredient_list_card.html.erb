@@ -10,7 +10,7 @@
     </div>
   <% end %>
   <a class="label card__label <%= border_version ? 'card__label--border-version' : '' %>" href="<%= ingredient.url%>">
-    <%= ingredient.name %>
+    Ingredient: <%= ingredient.name %>
   </a>
   <% if ingredient.description.present? %>
     <div class="card__description">
