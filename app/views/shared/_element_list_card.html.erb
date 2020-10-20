@@ -5,7 +5,7 @@
   <div class="card__content">
     <% elements.each do |element| %>
       <div class="card__text card__text--list <%= border_version ? 'card__text--border-version' : '' %>">
-        <a class="card__list-name" href="<%= element.url %>%">
+        <a class="card__list-name" href="<%= element.url %>">
           <%= element.name %>
           <span class="card__list-name__secondary"> • <%= element.count_for_display %></span>
         </a>
