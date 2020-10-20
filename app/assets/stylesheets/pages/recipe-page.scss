@@ -24,7 +24,7 @@ $image-offset: 30px;
     width: 100%;
 
     @media (max-width: $large) {
-      padding: 16px;
+      padding: 0 16px 16px 16px;
     }
 
     @media (max-width: $mobile) {
@@ -246,9 +246,13 @@ $image-offset: 30px;
       width: 48%;
       height: 150px;
 
-      &--count-2,
+      &--count-2 {
+        height: 100px;
+        width: 32%;
+      }
+
       &--count-3 {
-        height: 140px;
+        height: 360px;
         width: 32%;
       }
     }

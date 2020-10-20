@@ -2437,7 +2437,7 @@ body {
     width: 100%; }
     @media (max-width: 1300px) {
       .recipe__primary {
-        padding: 16px; } }
+        padding: 0 16px 16px 16px; } }
     @media (max-width: 900px) {
       .recipe__primary {
         padding: 0;
@@ -2583,8 +2583,11 @@ body {
       .recipe__cutout {
         width: 48%;
         height: 150px; }
-        .recipe__cutout--count-2, .recipe__cutout--count-3 {
-          height: 140px;
+        .recipe__cutout--count-2 {
+          height: 100px;
+          width: 32%; }
+        .recipe__cutout--count-3 {
+          height: 360px;
           width: 32%; } }
     @media (max-width: 1140px) {
       .recipe__cutout--count-2, .recipe__cutout--count-3 {
