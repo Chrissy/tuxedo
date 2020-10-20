@@ -39,6 +39,10 @@ class Component < ActiveRecord::Base
     end
   end
 
+  def has_subcomponents
+    subcomponents.present?
+  end
+
   def subcomponents
     Subcomponent.where(component_id: id)
   end
@@ -169,7 +173,7 @@ class Component < ActiveRecord::Base
   end
 
   def count_for_display
-    "#{list_elements.count} cocktails"
+    "#{has_subcomponents ? all_elements.count : list_elements.count} cocktails"
   end
 
   def has_subcomponent_precedence
