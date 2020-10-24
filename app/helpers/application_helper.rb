@@ -84,6 +84,7 @@ module ApplicationHelper
       'small2x' => { width: 200, height: 200 },
       'small' => { width: 100, height: 100 },
       'pinterest' => { width: 476, height: 666 },
+      'social' => { width: 1200, height: 630 },
       'illustration' => { width: 275, height: 275 },
       'illustration2x' => { width: 550, height: 550 }
     }[size.to_s]
@@ -291,7 +292,7 @@ module ApplicationHelper
   end
 
   def meta_image
-    pinnable_image_url(@layout_object) if @layout_object
+    image_url(@layout_object, :social)
   end
 
   def twitter_image
