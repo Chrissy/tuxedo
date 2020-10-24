@@ -29,9 +29,11 @@
             <% end %>
           </div>
           <div class="component__header-content">
-            <h1 class="component__header-title" itemprop="name">
+            <h1 class="component__header-title">
               <a href="<%= @component.url %>">
-                <%= @component.name %>
+                <span itemprop="name">
+                  <%= @component.name %>
+                </span>
               </a>
             </h1>
             <h2 class="component__header-subtitle">

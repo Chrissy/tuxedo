@@ -8,9 +8,11 @@
           <% if image_count >= 2 %>
             <%= list_image(@recipe, "recipe__primary-image recipe__primary-image--2 recipe__primary-image--2--count-#{image_count}", :image2, 1) %>
           <% end %>
-          <h1 class="recipe__header-title" itemprop="name" role="heading">
+          <h1 class="recipe__header-title" role="heading">
             <a href="<%= @recipe.url %>">
-              <%= @recipe.name === "Chrysanthemum" ? "Chrysanthe&shy;mum".html_safe : @recipe.name %>
+              <span itemprop="name">
+                <%= @recipe.name === "Chrysanthemum" ? "Chrysanthe&shy;mum".html_safe : @recipe.name %>
+              </span>
             </a>
           </h1>
           <h2 class="recipe__header-subtitle" role="heading">
