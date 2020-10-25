@@ -1,6 +1,7 @@
 @import "../utilities/colors.scss";
 @import "../utilities/breakpoints.scss";
 @import "../utilities/font-stacks.scss";
+@import "../elements/helpers.scss";
 
 $search-width: 300px;
 $mobile-search-width: 120px;
@@ -14,9 +15,13 @@ $mobile-search-width: 120px;
   padding: 0 18px;
   z-index: 1;
 
-  body.lists & {
-    max-width: 1286px;
+  div &--home {
     padding-right: 2em;
+    max-width: 1286px;
+
+    .global-header__link {
+      color: #ccc;
+    }
   }
 
   &__logo {

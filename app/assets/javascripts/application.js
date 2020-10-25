@@ -100,4 +100,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const adminButton = document.querySelector("[data-admin-link]");
   if (editButton && adminButton)
     adminButton.insertAdjacentElement("afterend", editButton);
+
+  if (document.querySelector(".list--home")) {
+    document
+      .querySelector(".global-header")
+      .classList.add("global-header--home");
+  }
 });

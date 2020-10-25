@@ -419,7 +419,7 @@ body {
   border: 1px solid #555;
   padding: 6px 10px;
   margin-bottom: 16px;
-  font-family: "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
 
 .form-content textarea {
   min-height: 300px; }
@@ -2112,6 +2112,29 @@ body {
     text-align: left; }
 
 /* legacy */
+.centered-content-box, .edit_panel {
+  width: 940px;
+  margin: 0 auto;
+  position: relative; }
+
+.centered-content-box-large, .content, .global-header, .about, .recipe, .component {
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  max-width: 1150px; }
+
+.recipe__header-title:first-letter,
+.recipe__header-title .swash-cap {
+  font-feature-settings: "swsh";
+  -moz-font-feature-settings: "swsh";
+  -webkit-font-feature-settings: "swsh"; }
+
+.recipe__header-title .swash-cap.letter-t {
+  margin-right: -0.13em; }
+
+.recipe__header-title .swash-cap.letter-z {
+  margin-right: -0.14em; }
+
 .global-header {
   display: flex;
   justify-content: space-between;
@@ -2119,9 +2142,11 @@ body {
   height: 56px;
   padding: 0 18px;
   z-index: 1; }
-  body.lists .global-header {
-    max-width: 1286px;
-    padding-right: 2em; }
+  div .global-header--home {
+    padding-right: 2em;
+    max-width: 1286px; }
+    div .global-header--home .global-header__link {
+      color: #ccc; }
   .global-header__logo {
     display: block;
     width: 120px;
