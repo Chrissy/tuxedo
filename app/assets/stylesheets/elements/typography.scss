@@ -14,8 +14,11 @@ h3 {
   -webkit-font-feature-settings: "kern" 1;
 }
 
-.win p,
-.win li {
+/* bookmania renders very poorly on windows at smaller sizes */
+.win .recipe__description p,
+.win .component__description p,
+.win .index-element__name,
+.win .card__text--list {
   font-family: georgia, sans-serif;
 }
 

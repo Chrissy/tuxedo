@@ -1,14 +1,27 @@
+@import "../utilities/font-stacks.scss";
+
 .index-menu {
   width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  background-color: white;
+  background-color: #efefef;
   text-align: center;
+  font-family: $sans-serif;
 
-  li { display: inline-flex; }
+  li {
+    display: inline-flex;
+  }
+
+  a {
+    text-decoration: none;
+  }
 }
 
-.index-menu-item { padding: .25em .5em; }
+.index-menu-item {
+  padding: 0.25em 0.5em;
+}
 
-.index-menu-item.alphabet { padding: .25em; }
+.index-menu-item.alphabet {
+  padding: 0.25em;
+}

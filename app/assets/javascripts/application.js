@@ -101,9 +101,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (editButton && adminButton)
     adminButton.insertAdjacentElement("afterend", editButton);
 
-  if (document.querySelector(".list--home")) {
+  if (document.querySelector(".list")) {
     document
       .querySelector(".global-header")
-      .classList.add("global-header--home");
+      .classList.add("global-header--list");
   }
+
+  document.body.classList.add("js-ready");
 });

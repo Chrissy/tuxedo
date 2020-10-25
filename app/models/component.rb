@@ -228,6 +228,8 @@ class Component < ActiveRecord::Base
   end
 
   def description_to_html
+    return nil unless description.present?
+
     converted_description = CustomMarkdown.convert_recommended_bottles_in_place(
       CustomMarkdown.convert_subcomponent_recipes_in_place(
         CustomMarkdown.convert_links_in_place("<span class='first-letter'>#{description[0]}</span>#{description[1..-1]}")

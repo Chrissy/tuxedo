@@ -292,7 +292,7 @@ module ApplicationHelper
   end
 
   def meta_image
-    image_url(@layout_object, :social)
+    @layout_object ? image_url(@layout_object, :social) : ""
   end
 
   def twitter_image
