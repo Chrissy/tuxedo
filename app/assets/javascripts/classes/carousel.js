@@ -1,4 +1,5 @@
 import Hammer from "hammerjs";
+import queryString from "query-string";
 
 const BREAKPOINT = 900;
 
@@ -27,7 +28,9 @@ export default class Tooltip {
 
   set() {
     const mediaQuery = window.matchMedia(`(max-width: ${BREAKPOINT}px)`);
-    if (mediaQuery.matches && !this.carouselInitialized) {
+    const qs = queryString.parse(window.location.search);
+    const isMobile = mediaQuery.matches && !qs.desktop;
+    if (isMobile && !this.carouselInitialized) {
       return this.initCarousel(this.images);
     } else if (!mediaQuery.matches && this.carouselInitialized === true) {
       return this.tearDownCarousel();

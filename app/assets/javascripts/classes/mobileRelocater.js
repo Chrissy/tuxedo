@@ -1,3 +1,5 @@
+import queryString from "query-string";
+
 const BREAKPOINT = 900;
 
 export default class MobileRelocater {
@@ -29,8 +31,10 @@ export default class MobileRelocater {
 
   set() {
     const mediaQuery = window.matchMedia(`(max-width: ${BREAKPOINT}px)`);
-    if (mediaQuery.matches && this.mode !== "mobile") return this.setMobile();
-    if (!mediaQuery.matches && this.mode === "mobile") return this.setDesktop();
+    const qs = queryString.parse(window.location.search);
+    const isMobile = mediaQuery.matches && !qs.desktop;
+    if (isMobile && this.mode !== "mobile") return this.setMobile();
+    if (!isMobile && this.mode === "mobile") return this.setDesktop();
   }
 
   setMobile() {

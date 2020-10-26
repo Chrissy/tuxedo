@@ -2,7 +2,7 @@
   "name": "tuxedo",
   "version": "0.0.1",
   "engines": {
-    "node": "6.9.4"
+    "node": "14.x"
   },
   "scripts": {
     "start": "",
@@ -10,7 +10,8 @@
     "styles": "node-sass app/assets/stylesheets/application.scss public/dist/application.css",
     "develop": "npx webpack --config webpack.config.js --watch && npx node-sass app/assets/stylesheets/application.scss public/dist/application.css -w",
     "build": "npm run scripts && npm run styles && npm run sprite",
-    "sprite": "npx svg-sprite-generate -d ./public/svg -o ./public/dist/sprite.svg"
+    "sprite": "npx svg-sprite-generate -d ./public/svg -o ./public/dist/sprite.svg",
+    "snapshots": "percy exec -- node snapshots.js"
   },
   "license": "ISC",
   "dependencies": {
@@ -28,18 +29,20 @@
     "babel-plugin-transform-runtime": "^6.22.0",
     "babel-preset-es2015": "^6.9.0",
     "css-loader": "^3.4.0",
+    "dotenv": "^8.2.0",
     "escape-string-regexp": "^1.0.5",
     "fuse.js": "^3.4.6",
     "hammerjs": "^2.0.8",
     "jquery": "^3.4.1",
     "lodash.uniq": "^4.5.0",
     "node-sass": "^4.13.0",
-    "query-string": "^6.12.1",
+    "query-string": "^6.13.6",
     "style-loader": "^1.1.2",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   },
   "devDependencies": {
+    "@percy/script": "^1.1.0",
     "svg-sprite-generator": "0.0.7",
     "throttle-debounce": "^2.1.0"
   }
