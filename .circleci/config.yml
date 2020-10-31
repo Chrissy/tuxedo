@@ -74,6 +74,7 @@ jobs:
       - run: curl https://chrissy-tuxedo-no2.s3.us-east-2.amazonaws.com/10-31-2020.dump -o latest.dump
       - run: echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
       - run: pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d test latest.dump
+      - run: rails server
       - run: npm run snapshots
 
       # collect reports
