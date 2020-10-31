@@ -4,9 +4,6 @@
 #
 version: 2
 
-orbs:
-  percy: percy/agent@0.1.2
-
 jobs:
   build:
     docker:
@@ -53,6 +50,7 @@ jobs:
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
+      - run: npm install
 
       - run: npm run snapshots
 
