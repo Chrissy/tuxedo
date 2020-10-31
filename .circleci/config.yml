@@ -7,10 +7,6 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/postgres:12.3
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
       - image: circleci/ruby:2.5.3-node-browsers
         environment:
           PGHOST: 127.0.0.1
@@ -19,11 +15,10 @@ jobs:
           PGPASSWORD: password
           PGPASS: password
           RAILS_ENV: test
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
+      - image: circleci/postgres:12.3
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
 
     working_directory: ~/repo
 
@@ -37,6 +32,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
+      - run: echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
       - run:
           name: install dependencies
           command: |
@@ -62,7 +58,6 @@ jobs:
 
       # Snapshot Tests
       - run: curl https://chrissy-tuxedo-no2.s3.us-east-2.amazonaws.com/10-31-2020.dump -o latest.dump
-      - run: echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
       - run: sudo apt-get update && sudo apt-get upgrade
       - run: sudo apt install -y postgresql-client || true
       - run: pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d test latest.dump
