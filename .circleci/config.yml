@@ -13,7 +13,7 @@ jobs:
           PGHOST: 127.0.0.1
           PGUSER: postgres
           RAILS_ENV: test
-      - image: circleci/postgres:9.5-alpine
+      - image: circleci/postgres:12.3
         environment:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: ""
@@ -50,9 +50,6 @@ jobs:
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
-      - run: npm install
-      - run: npm run build
-      - run: npm run snapshots
 
       # run tests!
       - run:
@@ -68,6 +65,16 @@ jobs:
               --out /tmp/test-results/rspec.xml \
               --format progress \
               $TEST_FILES
+
+      # Assets Build
+      - run: npm install
+      - run: npm run build
+
+      # Snapshot Tests
+      - run: wget -nc https://chrissy-tuxedo-no2.s3.us-east-2.amazonaws.com/10-31-2020.dump
+      - run: echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
+      - run: pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d test 10-31-2020.dump
+      - run: npm run snapshots
 
       # collect reports
       - store_test_results:
