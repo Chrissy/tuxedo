@@ -7,7 +7,10 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
+      - image: circleci/postgres:12.3
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
       - image: circleci/ruby:2.5.3-node-browsers
         environment:
           PGHOST: 127.0.0.1
@@ -16,10 +19,6 @@ jobs:
           PGPASSWORD: password
           PGPASS: password
           RAILS_ENV: test
-      - image: circleci/postgres:12.3
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
