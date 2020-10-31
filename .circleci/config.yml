@@ -16,6 +16,7 @@ jobs:
       - image: circleci/postgres:12.3
         environment:
           POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
