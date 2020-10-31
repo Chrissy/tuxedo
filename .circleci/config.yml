@@ -60,6 +60,7 @@ jobs:
       - run: echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
       - run: sudo apt-get update && sudo apt-get upgrade
       - run: sudo apt install -y postgresql-client || true
+      - run: ln -sfn /usr/lib/postgresql/12.4/bin/pg_dump /usr/bin/pg_dump
       - run: pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d test latest.dump
       - run: rails server
       - run: npm run snapshots
