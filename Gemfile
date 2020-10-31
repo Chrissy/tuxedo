@@ -37,6 +37,7 @@ gem 'mini_magick'
 gem 'rails_12factor', group: :production
 gem 'redcarpet'
 gem 'sentry-raven'
+gem 'rspec'
 
 ruby '2.5.3'
 
