@@ -13,7 +13,6 @@ jobs:
           PGHOST: 127.0.0.1
           PGUSER: postgres
           RAILS_ENV: test
-          POSTGRES_PASSWORD: ""
       - image: circleci/postgres:12.3
         environment:
           POSTGRES_USER: postgres
@@ -75,7 +74,7 @@ jobs:
       - run: curl https://chrissy-tuxedo-no2.s3.us-east-2.amazonaws.com/10-31-2020.dump -o latest.dump
       - run: echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
       - run: pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d test latest.dump
-      - run: rails server
+      - run: rails server -e POSTGRES_PASSWORD=password
       - run: npm run snapshots
 
       # collect reports
