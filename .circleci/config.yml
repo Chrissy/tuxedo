@@ -13,9 +13,16 @@ jobs:
           PGHOST: 127.0.0.1
           PGUSER: postgres
           RAILS_ENV: test
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
       - image: circleci/postgres:12.3
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
         environment:
           POSTGRES_USER: postgres
+      #    POSTGRES_PASSWORD: ""
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
