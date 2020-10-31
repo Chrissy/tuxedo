@@ -51,7 +51,7 @@ jobs:
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
       - run: npm install
-
+      - run: npm run build
       - run: npm run snapshots
 
       # run tests!
