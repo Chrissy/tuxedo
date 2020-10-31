@@ -16,6 +16,7 @@ jobs:
         environment:
           POSTGRES_USER: myapp
           POSTGRES_DB: myapp-test
+          POSTGRES_ROLE: circleci
           POSTGRES_PASSWORD: ""
 
       # Specify service dependencies here if necessary
