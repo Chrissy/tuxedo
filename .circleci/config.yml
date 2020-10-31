@@ -55,8 +55,7 @@ jobs:
       - run: bundle exec rake db:schema:load
 
       # run tests!
-      - run:
-      #    name: rails test
+      # - run: rails test
 
       # Assets Build
       - run: npm install
