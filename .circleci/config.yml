@@ -62,8 +62,8 @@ jobs:
       - run: echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
       - run: ls -l /usr/lib/postgresql
       - run: ls -l /usr/
-      - run: ls -l /
-      - run: ls -l /usr/local/lib
+      - run: ls -l /usr/share/
+      - run: ls -l /usr/local/lib/postgresql
       - run: source ~/.bashrc
       - run: pg_restore -V
       - run: pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d test latest.dump
