@@ -29,14 +29,14 @@
             <% end %>
           </div>
           <div class="component__header-content">
-            <h1 class="component__header-title">
+            <h1 class="component__header-title" role="heading">
               <a href="<%= @component.url %>">
                 <span itemprop="name">
                   <%= @component.name %>
                 </span>
               </a>
             </h1>
-            <h2 class="component__header-subtitle">
+            <h2 class="component__header-subtitle" role="heading">
               <%= @component.subtitle %>
             </h2>
             <%= render 'varieties_card', version: 'mobile' unless @component.subcomponents.count <= 0 %>
@@ -45,7 +45,7 @@
         <div class="component__content">
           <div class="component__description">
             <div class="component__cutout"></div>
-            <div class="component__description-spacer"><%= @component.description_as_plain_text[0] %></div>
+            <div class="component__description-spacer" itemprop="description"><%= @component.description_as_plain_text[0] %></div>
             <% if @component.illustration.present? %>
               <div class="component__illustration-container">
                 <%= illustration_image(@component, 'component__illustration') %>
