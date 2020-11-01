@@ -59,7 +59,7 @@ jobs:
       - run: curl https://chrissy-tuxedo-no2.s3.us-east-2.amazonaws.com/10-31-2020.dump -o latest.dump
       - run: sudo apt-get update
       - run: sudo apt install postgresql-client-9.6
-      - run: echo 'export PATH=/usr/lib/postgresql/12.1/bin/:$PATH' >> $BASH_ENV
+      - run: echo 'export PATH=/usr/lib/postgresql/9.6/bin/:$PATH' >> $BASH_ENV
       - run: source ~/.bashrc
       - run: pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d test latest.dump
       - run: rails server
