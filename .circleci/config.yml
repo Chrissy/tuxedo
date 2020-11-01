@@ -67,6 +67,7 @@ jobs:
 
       # Snapshot Tests
       - run: curl https://chrissy-tuxedo-no2.s3.us-east-2.amazonaws.com/10-31-2020.dump -o latest.dump
+      - run: apt list -a postgresql-client
       - run: sudo apt-get update
       - run: sudo apt install postgresql-client
       - run: echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
