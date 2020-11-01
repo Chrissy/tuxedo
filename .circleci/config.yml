@@ -15,7 +15,7 @@ jobs:
           PGPASSWORD: password
           PGPASS: password
           RAILS_ENV: test
-      - image: circleci/postgres:12.3
+      - image: circleci/postgres:12.1-alpine
         environment:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
