@@ -15,16 +15,10 @@ jobs:
           PGPASSWORD: password
           PGPASS: password
           RAILS_ENV: test
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
       - image: circleci/postgres:12.4
         environment:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
 
     working_directory: ~/repo
 
@@ -66,7 +60,7 @@ jobs:
       - run: sudo apt-get update
       - run: sudo apt-get install postgresql-client-9.6
       - run: echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
-      - run: ls -l /usr/lib/postgresql/
+      - run: ls -l /usr/lib/
       - run: source ~/.bashrc
       - run: pg_restore -V
       - run: pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d test latest.dump
