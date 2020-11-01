@@ -15,10 +15,16 @@ jobs:
           PGPASSWORD: password
           PGPASS: password
           RAILS_ENV: test
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
       - image: circleci/postgres:12.4
         environment:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
 
     working_directory: ~/repo
 
