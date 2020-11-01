@@ -60,7 +60,7 @@ jobs:
       - run: sudo apt-get update
       - run: sudo apt-get install postgresql-client-9.6
       - run: echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
-      - run: /usr/lib/postgresql/12.4/bin/
+      - run: ls -l /usr/lib/postgresql/
       - run: source ~/.bashrc
       - run: pg_restore -V
       - run: pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d test latest.dump
