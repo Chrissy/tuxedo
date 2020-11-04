@@ -78,9 +78,9 @@ jobs:
       - run: echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
       - run: source ~/.bashrc
       - run: |
-        dropdb circle_test
-        createdb circle_test
-        pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d circle_test latest.dump
+          dropdb circle_test
+          createdb circle_test
+          pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d circle_test latest.dump
       - run: rails server
       - run: npm run snapshots
 
