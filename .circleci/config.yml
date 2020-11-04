@@ -77,7 +77,9 @@ jobs:
           sudo apt install postgresql-client-12
       - run: echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
       - run: source ~/.bashrc
-      - run: pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d test latest.dump
+      - run: |
+          createdb test
+          pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d test latest.dump
       - run: rails server
       - run: npm run snapshots
 
