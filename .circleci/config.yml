@@ -77,8 +77,10 @@ jobs:
           sudo apt install postgresql-client-12
       - run: echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
       - run: pg_restore --verbose --if-exists --clean --create --no-acl --no-owner -h localhost -U postgres -d circle_test latest.dump
-      - run: bundle exec rails server
-            background: true
+      - run:
+          name: start server
+          command: bundle exec rails server
+          background: true
       - run: npm run snapshots
 
       # collect reports
