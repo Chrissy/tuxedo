@@ -83,7 +83,7 @@ jobs:
           command: bundle exec rails server
           background: true
 
-      - run: dockerize -wait 5000
+      - run: sleep 10
       #- run: dockerize -wait http://localhost:3000 -timeout 1m
 
       - run: npm run snapshots
