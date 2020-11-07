@@ -8,7 +8,7 @@ const URL = "http://0.0.0.0";
 
 const navigateTo = async (path, page) => {
   page.goto(`${URL}:${PORT}${path}`);
-  await page.waitForSelector(".js-ready");
+  //await page.waitForSelector(".js-ready");
   return page;
 };
 
