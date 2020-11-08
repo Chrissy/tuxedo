@@ -89,8 +89,7 @@ jobs:
       - run: sleep 10
       - run: psql -h localhost -p 5432 -d mock_db -c "select name from recipes limit 10;"
       - run: dockerize -wait http://localhost:3000 -timeout 1m
-      - run: echo $PERCY_TOKEN
-      - run: PERCY_TOKEN=$(cat PERCY_TOKEN) npm run snapshots
+      - run: PERCY_TOKEN=$PERCY_TOKEN npm run snapshots
 
       # collect reports
       - store_test_results:

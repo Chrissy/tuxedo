@@ -15,6 +15,7 @@ const navigateTo = async (path, page) => {
 PercyScript.run(async (page, percySnapshot) => {
   await page.setBypassCSP(true);
   //await page.waitForSelector(".js-ready");
+  console.log(process.env.PERCY_TOKEN);
   await percySnapshot("Homepage", { widths: WIDTHS });
 
   await navigateTo("/odd-bedfellows-cocktail-recipe?desktop=true", page);
