@@ -12,6 +12,7 @@ const navigateTo = async (path, page) => {
 };
 
 PercyScript.run(async (page, percySnapshot) => {
+  await navigateTo("/", page);
   await percySnapshot("Homepage", { widths: WIDTHS });
 
   await navigateTo("/odd-bedfellows-cocktail-recipe?desktop=true", page);
