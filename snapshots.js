@@ -7,6 +7,7 @@ const WIDTHS = [...DESKTOP_WIDTHS, ...MOBILE_WIDTHS];
 const URL = "http://localhost";
 
 const navigateTo = async (path, page) => {
+  await page.setBypassCSP(true);
   await page.goto(`${URL}:${PORT}${path}`);
   return page;
 };
