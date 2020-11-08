@@ -6,7 +6,7 @@ import LazyLoader from "./classes/lazyLoader.js";
 import MobileRelocater from "./classes/mobileRelocater.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  new Search('[data-role="search"]');
+  //new Search('[data-role="search"]');
 
   document.querySelectorAll("[tooltip]").forEach((element) => {
     new Tooltip({
