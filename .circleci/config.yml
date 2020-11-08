@@ -77,7 +77,9 @@ jobs:
           sudo apt-get update
           sudo apt install postgresql-client-12
       - run: echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
-      - run: createdb -h localhost -p 5432 mock_db
+      - run: |
+          dropdb mock_db --if-exists
+          createdb -h localhost -p 5432 mock_db
       - run: pg_restore -h localhost -p 5432 --verbose --clean --if-exists --no-acl --no-owner -U postgres -d mock_db latest.dump
       - run:
           name: start server
