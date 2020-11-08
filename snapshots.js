@@ -4,7 +4,7 @@ const PORT = process.env.PORT_NUMBER || 3000;
 const DESKTOP_WIDTHS = [1400, 1200, 1024];
 const MOBILE_WIDTHS = [375, 411];
 const WIDTHS = [...DESKTOP_WIDTHS, ...MOBILE_WIDTHS];
-const URL = "http://0.0.0.0";
+const URL = "http://localhost";
 
 const navigateTo = async (path, page) => {
   await page.goto(`${URL}:${PORT}${path}`);
