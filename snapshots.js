@@ -8,12 +8,14 @@ const URL = "http://0.0.0.0";
 
 const navigateTo = async (path, page) => {
   await page.goto(`${URL}:${PORT}${path}`);
-  //await page.waitForSelector(".js-ready");
+  await page.waitForSelector(".js-ready");
   return page;
 };
 
 PercyScript.run(async (page, percySnapshot) => {
-  //await percySnapshot("Homepage", { widths: WIDTHS });
+  await page.setBypassCSP(true);
+  await page.waitForSelector(".js-ready");
+  await percySnapshot("Homepage", { widths: WIDTHS });
 
   await navigateTo("/odd-bedfellows-cocktail-recipe?desktop=true", page);
 
