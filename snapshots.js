@@ -10,14 +10,6 @@ const navigateTo = async (path, page) => {
   await page.goto(`${URL}:${PORT}${path}`);
   await page.waitForSelector(".js-ready");
   await page.setBypassCSP(true);
-  page.on("pageerror", function (err) {
-    theTempValue = err.toString();
-    console.log("Page error: " + theTempValue);
-  });
-  page.on("error", function (err) {
-    theTempValue = err.toString();
-    console.log("Error: " + theTempValue);
-  });
   return page;
 };
 
@@ -25,8 +17,8 @@ PercyScript.run(async (page, percySnapshot) => {
   await navigateTo("/", page);
   await percySnapshot("Homepage", { widths: WIDTHS });
 
-  let bodyHTML = await page.evaluate(() => document.body.innerHTML);
-  console.log(bodyHTML);
+  let document = await page.evaluate(() => document);
+  console.log(document.head, document.body.classList, document.location.href);
 
   await navigateTo("/odd-bedfellows-cocktail-recipe?desktop=true", page);
 
