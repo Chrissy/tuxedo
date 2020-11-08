@@ -80,7 +80,7 @@ jobs:
       - run: pg_restore --verbose --if-exists --clean --create --no-acl --no-owner -h localhost -U postgres -d circle_test latest.dump
       - run:
           name: start server
-          command: bundle exec rails server
+          command: RAILS_ENV=test bundle exec rails server
           background: true
 
       - run: sleep 10
