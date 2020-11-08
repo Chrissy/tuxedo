@@ -78,7 +78,7 @@ jobs:
           sudo apt install postgresql-client-12
       - run: echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
       - run: createdb -h localhost -p 5432 mock_db
-      - run: pg_restore -h localhost -p 5432 --verbose --if-exists --clean --create --no-acl --no-owner -h localhost -U postgres -d mock_db latest.dump
+      - run: pg_restore -h localhost -p 5432 --verbose --clean --no-acl --no-owner -U postgres -d mock_db latest.dump
       - run:
           name: start server
           command: RAILS_ENV=test bundle exec rails server
