@@ -77,14 +77,15 @@ jobs:
           sudo apt-get update
           sudo apt install postgresql-client-12
       - run: echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
-      - run: pg_restore --verbose --if-exists --clean --create --no-acl --no-owner -h localhost -U postgres -d circle_test latest.dump
+      - run: createdb mock_db
+      - run: pg_restore --verbose --if-exists --clean --create --no-acl --no-owner -h localhost -U postgres -d mock_db latest.dump
       - run:
           name: start server
           command: RAILS_ENV=test bundle exec rails server
           background: true
 
       - run: sleep 10
-      - run: psql -h localhost -p 5432 -d circle_test -c "select name from recipes limit 10;"
+      - run: psql -h localhost -p 5432 -d mock_db -c "select name from recipes limit 10;"
       #- run: dockerize -wait http://localhost:3000 -timeout 1m
 
       - run: npm run snapshots
