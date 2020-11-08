@@ -9,6 +9,7 @@ const URL = "http://localhost";
 const navigateTo = async (path, page) => {
   await page.setBypassCSP(true);
   await page.goto(`${URL}:${PORT}${path}`);
+  await page.waitForSelector(".js-ready");
   page.on("pageerror", function (err) {
     theTempValue = err.toString();
     console.log("Page error: " + theTempValue);

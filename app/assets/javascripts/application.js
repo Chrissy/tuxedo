@@ -90,5 +90,5 @@ document.addEventListener("DOMContentLoaded", () => {
   //     .querySelector(".global-header")
   //     .classList.add("global-header--list");
   // }
-  // document.body.classList.add("js-ready");
+  document.body.classList.add("js-ready");
 });
