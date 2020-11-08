@@ -9,6 +9,8 @@ const URL = "http://localhost";
 const navigateTo = async (path, page) => {
   await page.setBypassCSP(true);
   await page.goto(`${URL}:${PORT}${path}`);
+  let bodyHTML = await page.evaluate(() => document.body.innerHTML);
+  console.log(bodyHTML);
   return page;
 };
 
@@ -17,9 +19,6 @@ PercyScript.run(async (page, percySnapshot) => {
   await percySnapshot("Homepage", { widths: WIDTHS });
 
   await navigateTo("/odd-bedfellows-cocktail-recipe?desktop=true", page);
-
-  let bodyHTML = await page.evaluate(() => document.body.innerHTML);
-  console.log(bodyHTML);
 
   await percySnapshot("Two-up Recipe Desktop", { widths: DESKTOP_WIDTHS });
 
