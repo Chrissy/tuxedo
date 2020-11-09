@@ -18,7 +18,7 @@ PercyScript.run(async (page, percySnapshot) => {
   await percySnapshot("Homepage", { widths: WIDTHS });
 
   let document = await page.evaluate(() => document);
-  console.log(document.head, document.body.classList, document.location.href);
+  console.log(document.head, document.body.className, document.location.href);
 
   await navigateTo("/odd-bedfellows-cocktail-recipe?desktop=true", page);
 
