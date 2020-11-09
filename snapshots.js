@@ -18,7 +18,7 @@ PercyScript.run(async (page, percySnapshot) => {
   await percySnapshot("Homepage", { widths: WIDTHS });
 
   let [head, location] = await page.evaluate(() => [
-    document.head,
+    document.head.innerHTML,
     document.location,
   ]);
   console.log(head, location);
