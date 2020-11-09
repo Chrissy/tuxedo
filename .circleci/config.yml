@@ -28,6 +28,12 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: "Update Node.js and npm"
+          command: |
+            curl -sSL "https://nodejs.org/dist/latest-v14.x/node-v14.15.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v14.15.0-linux-x64/bin/node
+            curl https://www.npmjs.com/install.sh | sudo bash
+
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -61,20 +67,6 @@ jobs:
       # - run: rails test
 
       # Assets Build
-      - run:
-          name: Install node@14.14
-          command: |
-            set +e             
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
-            export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-            nvm install 14
-            nvm alias default 14
-
-            # Each step uses the same `$BASH_ENV`, so need to modify it
-            echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
-            echo "[ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"" >> $BASH_ENV
-
       - run: npm install
       - run: npm run build
 
