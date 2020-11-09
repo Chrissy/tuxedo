@@ -9,29 +9,12 @@ const URL = "http://localhost";
 const navigateTo = async (path, page) => {
   await page.goto(`${URL}:${PORT}${path}`);
   await page.waitForSelector(".js-ready");
-  await page.setBypassCSP(true);
   return page;
 };
 
 PercyScript.run(async (page, percySnapshot) => {
   await navigateTo("/", page);
   await percySnapshot("Homepage", { widths: WIDTHS });
-
-  let [head, location] = await page.evaluate(() => [
-    document.head.innerHTML,
-    document.location,
-  ]);
-
-  try {
-    await page.addScriptTag({
-      content: "console.log('testing 123');",
-    });
-  } catch (err) {
-    // Certain CSP settings prevent Puppeteer from injecting scripts. See:
-    // https://github.com/GoogleChrome/puppeteer/issues/2644
-    console.log(err);
-    return;
-  }
 
   await navigateTo("/odd-bedfellows-cocktail-recipe?desktop=true", page);
 
