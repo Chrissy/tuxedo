@@ -21,7 +21,17 @@ PercyScript.run(async (page, percySnapshot) => {
     document.head.innerHTML,
     document.location,
   ]);
-  console.log(head, location);
+
+  try {
+    await page.addScriptTag({
+      content: "console.log('testing 123');",
+    });
+  } catch (err) {
+    // Certain CSP settings prevent Puppeteer from injecting scripts. See:
+    // https://github.com/GoogleChrome/puppeteer/issues/2644
+    console.log(err);
+    return;
+  }
 
   await navigateTo("/odd-bedfellows-cocktail-recipe?desktop=true", page);
 
