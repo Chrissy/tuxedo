@@ -34,7 +34,17 @@ jobs:
             curl -sSL "https://nodejs.org/dist/latest-v14.x/node-v14.15.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v14.15.0-linux-x64/bin/node
             curl https://www.npmjs.com/install.sh | sudo bash
 
-      # Download and cache dependencies
+      - run:
+          name: "Install postgresql-client"
+          command: |
+            sudo apt-get update
+            sudo apt-get install lsb-release
+            curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+            sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+            sudo apt-get update
+            sudo apt install postgresql-client-12
+            echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
+
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
@@ -66,36 +76,23 @@ jobs:
       # run tests!
       # - run: rails test
 
-      # Assets Build
       - run: npm install
       - run: npm run build
 
-      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
-
-      # Snapshot Tests
-      - run: curl https://chrissy-tuxedo-no2.s3.us-east-2.amazonaws.com/10-31-2020.dump -o latest.dump
-      - run: apt list -a postgresql-client
-      - run: |
-          sudo apt-get update
-          sudo apt-get install lsb-release
-          curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-          sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-          sudo apt-get update
-          sudo apt install postgresql-client-12
-      - run: echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
-      - run: |
+      - run:
+        name: "Restore database copy"
+        command: |
+          curl https://chrissy-tuxedo-no2.s3.us-east-2.amazonaws.com/10-31-2020.dump -o latest.dump
           dropdb mock_db --if-exists -h localhost -p 5432
           createdb -h localhost -p 5432 mock_db
-      - run: pg_restore -h localhost -p 5432 --verbose --clean --if-exists --no-acl --no-owner -U postgres -d mock_db latest.dump
+          pg_restore -h localhost -p 5432 --verbose --clean --if-exists --no-acl --no-owner -U postgres -d mock_db latest.dump
+
       - run:
           name: start server
           command: RAILS_ENV=test bundle exec rails server
           background: true
 
-      - run: sleep 10
-      - run: psql -h localhost -p 5432 -d mock_db -c "select name from recipes limit 10;"
       - run: dockerize -wait http://localhost:3000 -timeout 1m
-      - run: node -v
       - run: PERCY_TOKEN=$PERCY_TOKEN npm run snapshots
 
       # collect reports
