@@ -2152,7 +2152,8 @@ body {
   align-items: center;
   height: 56px;
   padding: 0 18px;
-  z-index: 1; }
+  z-index: 1;
+  background: green; }
   div .global-header--list {
     padding-right: 2em;
     max-width: 1286px; }
