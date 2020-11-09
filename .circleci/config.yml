@@ -80,12 +80,12 @@ jobs:
       - run: npm run build
 
       - run:
-        name: "Restore database copy"
-        command: |
-          curl https://chrissy-tuxedo-no2.s3.us-east-2.amazonaws.com/10-31-2020.dump -o latest.dump
-          dropdb mock_db --if-exists -h localhost -p 5432
-          createdb -h localhost -p 5432 mock_db
-          pg_restore -h localhost -p 5432 --verbose --clean --if-exists --no-acl --no-owner -U postgres -d mock_db latest.dump
+          name: Restore database copy
+          command: |
+            curl https://chrissy-tuxedo-no2.s3.us-east-2.amazonaws.com/10-31-2020.dump -o latest.dump
+            dropdb mock_db --if-exists -h localhost -p 5432
+            createdb -h localhost -p 5432 mock_db
+            pg_restore -h localhost -p 5432 --verbose --clean --if-exists --no-acl --no-owner -U postgres -d mock_db latest.dump
 
       - run:
           name: start server
