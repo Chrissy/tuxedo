@@ -17,7 +17,7 @@ class Recipe < ActiveRecord::Base
   acts_as_markdown_list :recipe
   after_save :delete_and_save_tags
 
-  search_index = ENV['RAILS_ENV'] == 'development' ? 'primary_development' : 'primary'
+  search_index = ENV['RAILS_ENV'] == 'development' || ENV['RAILS_ENV'] == 'test'  ? 'primary_development' : 'primary'
 
   algoliasearch index_name: search_index, id: :algolia_id do
     attributes :name, :description_as_plain_text, :recipe_as_plain_text, :image_with_backup, :url

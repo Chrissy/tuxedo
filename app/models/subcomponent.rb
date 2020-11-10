@@ -6,7 +6,7 @@ class Subcomponent < ActiveRecord::Base
   include AlgoliaSearch
   belongs_to :component, foreign_key: true
 
-  search_index = ENV['RAILS_ENV'] == 'development' ? 'primary_development' : 'primary'
+  search_index = ENV['RAILS_ENV'] == 'development' || ENV['RAILS_ENV'] == 'test'  ? 'primary_development' : 'primary'
 
   algoliasearch index_name: search_index, id: :algolia_id do
     attributes :name, :image_with_backup, :count_for_display, :url

@@ -21,7 +21,7 @@ class Component < ActiveRecord::Base
 
   alias list_elements_from_markdown list_elements
 
-  search_index = ENV['RAILS_ENV'] == 'development' ? 'primary_development' : 'primary'
+  search_index = ENV['RAILS_ENV'] == 'development' || ENV['RAILS_ENV'] == 'test'  ? 'primary_development' : 'primary'
 
   algoliasearch index_name: search_index, id: :algolia_id do
     attributes :name, :description_as_plain_text, :image_with_backup, :count_for_display, :url, :has_subcomponent_precedence
