@@ -89,8 +89,9 @@ $image-offset: 30px;
   &__header-title {
     @extend %swash;
     font-size: 44px;
-    line-height: 50px;
+    line-height: 46px;
     margin: 10px 0 8px 0;
+    width: 94%;
 
     a {
       color: $text-color-dark;

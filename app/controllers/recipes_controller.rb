@@ -66,7 +66,7 @@ class RecipesController < ApplicationController
 
   def tag
     @tag = params[:tag].gsub('-', ' ');
-    @list_elements = Recipe.tagged_with(@tag)
+    @list_elements = Recipe.tagged_with(@tag).sort_by(&:created_at).reverse
     @pagination_end = PAGINATION_INTERVAL - 1
   end
 

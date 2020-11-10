@@ -2686,7 +2686,8 @@ body {
   .recipe__header-title {
     font-size: 44px;
     line-height: 50px;
-    margin: 10px 0 8px 0; }
+    margin: 10px 0 8px 0;
+    width: 90%; }
     .recipe__header-title a {
       color: #24222a;
       text-decoration: none; }
