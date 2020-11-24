@@ -45,9 +45,14 @@ module ApplicationHelper
 
   def base_spirits
     [
-      'peychaud\'s bitters',
+      'gin',
+      'rum',
+      'whisky',
+      'brandy',
+      'tequila',
       'lemon',
       'vermouth',
+      'peychaud\'s bitters',
       'allspice dram',
       'cherry',
       'aperol',
