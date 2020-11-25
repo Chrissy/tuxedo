@@ -41,6 +41,7 @@
     top: calc(100% - 0.25em);
     left: 50%;
     transform: translateX(-50%);
+    color: #fff;
   }
 
   &__title,
@@ -84,9 +85,24 @@
       object-fit: contain;
       border-radius: 4px 4px 0 0;
     }
+
+    .tooltip__tip {
+      color: #f0f0f0;
+    }
   }
 }
 
-[data-popper-placement^="bottom"] .tooltip__tip {
-  display: none;
+[data-popper-placement^="bottom"] {
+  .tooltip__tip {
+    top: calc(-0.5em);
+    transform: translateX(-50%) rotate(180deg);
+    color: #000;
+  }
+
+  .tooltip--component,
+  .tooltip--subcomponent {
+    .tooltip__tip {
+      color: #fff;
+    }
+  }
 }

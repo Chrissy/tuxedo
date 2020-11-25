@@ -1648,7 +1648,8 @@ body {
     position: absolute;
     top: calc(100% - 0.25em);
     left: 50%;
-    transform: translateX(-50%); }
+    transform: translateX(-50%);
+    color: #fff; }
   .tooltip__title, .tooltip__description {
     padding: 0.5em 0.5em 0.125em 0.5em; }
   .tooltip__description {
@@ -1676,9 +1677,17 @@ body {
       max-height: 160px;
       object-fit: contain;
       border-radius: 4px 4px 0 0; }
+    .tooltip--component .tooltip__tip, .tooltip--subcomponent .tooltip__tip {
+      color: #f0f0f0; }
 
 [data-popper-placement^="bottom"] .tooltip__tip {
-  display: none; }
+  top: calc(-0.5em);
+  transform: translateX(-50%) rotate(180deg);
+  color: #000; }
+
+[data-popper-placement^="bottom"] .tooltip--component .tooltip__tip,
+[data-popper-placement^="bottom"] .tooltip--subcomponent .tooltip__tip {
+  color: #fff; }
 
 .centered-content-box, .edit_panel {
   width: 940px;
