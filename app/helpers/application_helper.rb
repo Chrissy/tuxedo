@@ -47,7 +47,7 @@ module ApplicationHelper
     [
       'gin',
       'rum',
-      'whisky',
+      'whiskey',
       'brandy',
       'tequila',
     ].map{ |s| Component.find_by_name(s) }
@@ -59,7 +59,7 @@ module ApplicationHelper
       'rum',
       'fernet',
       'vermouth',
-      'whisky',
+      'whiskey',
       'brandy',
       'peychaud\'s bitters',
       'tequila',
