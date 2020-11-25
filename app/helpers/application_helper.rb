@@ -50,9 +50,20 @@ module ApplicationHelper
       'whisky',
       'brandy',
       'tequila',
-      'lemon',
+    ].map{ |s| Component.find_by_name(s) }
+  end
+
+  def list_ingredients
+    [
+      'gin',
+      'rum',
+      'fernet',
       'vermouth',
+      'whisky',
+      'brandy',
       'peychaud\'s bitters',
+      'tequila',
+      'lemon',
       'allspice dram',
       'cherry',
       'aperol',
@@ -67,7 +78,6 @@ module ApplicationHelper
       'orange',
       'syrup',
       'falernum',
-      'fernet',
     ].map{ |s| Component.find_by_name(s) }
   end
 

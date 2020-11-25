@@ -22,8 +22,8 @@
   <% if index == 6 %>
     <%= render 'shared/instagram_card.html.erb', border_version: true %>
   <% end %>
-  <% if index >= 8 && index % 4 == 0 && index <= (base_spirits.count - 2) * 4 && !tag %>
-    <%= render 'shared/ingredient_list_card.html.erb', list_name: "Base Spirits", ingredient: base_spirits[(index - 8) / 4] %>
+  <% if index >= 8 && index % 4 == 0 && index <= (list_ingredients.count - 2) * 4 && !tag %>
+    <%= render 'shared/ingredient_list_card.html.erb', list_name: "Base Spirits", ingredient: list_ingredients[(index - 8) / 4] %>
   <% end %>
   <% if index == 11 %>
     <%= render 'shared/mail_card.html.erb', border_version: true %>

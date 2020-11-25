@@ -1677,6 +1677,9 @@ body {
       object-fit: contain;
       border-radius: 4px 4px 0 0; }
 
+[data-popper-placement^="bottom"] .tooltip__tip {
+  display: none; }
+
 .centered-content-box, .edit_panel {
   width: 940px;
   margin: 0 auto;

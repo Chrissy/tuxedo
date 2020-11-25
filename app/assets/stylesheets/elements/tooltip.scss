@@ -86,3 +86,7 @@
     }
   }
 }
+
+[data-popper-placement^="bottom"] .tooltip__tip {
+  display: none;
+}
