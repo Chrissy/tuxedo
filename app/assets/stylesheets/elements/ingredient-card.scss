@@ -60,6 +60,13 @@
       object-fit: contain;
       max-width: calc(100% + 0.25em);
       border-right: 1px solid #000;
+
+      @media (max-width: $mobile) {
+        margin: 0;
+        border: 0;
+        margin-bottom: 0.5em;
+        mix-blend-mode: multiply;
+      }
     }
   }
 

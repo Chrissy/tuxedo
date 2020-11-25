@@ -1542,6 +1542,12 @@ body {
       object-fit: contain;
       max-width: calc(100% + 0.25em);
       border-right: 1px solid #000; }
+      @media (max-width: 900px) {
+        .ingredient-card__image--illustration {
+          margin: 0;
+          border: 0;
+          margin-bottom: 0.5em;
+          mix-blend-mode: multiply; } }
   .ingredient-card__recipes {
     margin-bottom: -6px;
     font-size: 16px; }
