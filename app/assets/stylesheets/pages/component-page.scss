@@ -9,6 +9,7 @@ $space-between-description-and-header: 6px;
 
 .component {
   @extend .centered-content-box-large;
+  max-width: 1220px;
 
   &__primary {
     display: grid;
