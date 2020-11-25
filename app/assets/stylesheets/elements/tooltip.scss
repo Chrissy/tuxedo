@@ -90,6 +90,10 @@
       color: #f0f0f0;
     }
   }
+
+  @media (hover: none) {
+    display: none;
+  }
 }
 
 [data-popper-placement^="bottom"] {

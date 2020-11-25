@@ -1685,6 +1685,9 @@ body {
       border-radius: 4px 4px 0 0; }
     .tooltip--component .tooltip__tip, .tooltip--subcomponent .tooltip__tip {
       color: #f0f0f0; }
+  @media (hover: none) {
+    .tooltip {
+      display: none; } }
 
 [data-popper-placement^="bottom"] .tooltip__tip {
   top: calc(-0.5em);
