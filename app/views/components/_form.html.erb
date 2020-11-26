@@ -1,17 +1,16 @@
-<%= form_for @component, url: {action: form_action()}, html: {method: "post"} do |f| %>
+<%= form_for @component, url: {action: form_action()}, html: {method: "post", class: "form-content"} do |f| %>
   <div class="form_block primary">
     <%= f.text_field :name, :value => default_text(:name), :placeholder => "name" %>
-    <%= f.text_area :description, :value => default_text(:description), :placeholder => "description" %>
+    <%= f.text_area :subtitle, :value => default_text(:subtitle), :placeholder => "subtitle", :class => "mini" %>
     <%= f.text_field :nick, :value => default_text(:nick), :placeholder => "nickname" %>
-    <%= f.text_field :tags_as_text, :value => default_text(:tags_as_text), :placeholder => "tags as text" %>
+    <%= f.text_area :substitutes_as_markdown, :value => default_text(:substitutes_as_markdown), :placeholder => "list of substitutes (markdown enabled)", :class => "mini" %>
     <%= f.text_field :pseudonyms_as_markdown, :value => default_text(:pseudonyms_as_markdown), :placeholder => "other names for this ingedient" %>
+    <label>Don't show subcomponents in search</label>
+    <%= f.check_box :skip_subcomponent_search %>
   </div>
   <div class="form_block secondary">
-    <%= f.label "component recipes" %>
-    <%= f.text_area :list_as_markdown, :value => @component.list_for_textarea_with_default, :class => "autocomplete recipes components lists" %>
-    <%= render "shared/image_options", :element => @component, :f => f %><br/>
-    <label>Never make me tall!</label>
-    <%= f.check_box :never_make_me_tall, :value => default_text(:never_make_me_tall) %></br>
+    <%= f.text_area :description, :value => default_text(:description), :placeholder => "description", :class => "autocomplete components recipes" %>
+    <%= render "shared/image_options", :element => @component, :f => f, :field => :illustration %>
     <%= f.submit(submit_text()) %>
     <%= link_to "delete", action: "delete" if @component.id %>
   </div>

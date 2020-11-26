@@ -1,0 +1,74 @@
+.tag {
+  width: 0.8em;
+  height: 1em;
+
+  &--collins-glass {
+    height: 1.05em;
+    width: 0.75em;
+    margin-left: 1px;
+  }
+
+  &--up {
+    height: 0.75em;
+    margin-right: 2px;
+    margin-left: 1px;
+  }
+
+  &--rocks {
+    width: 1em;
+    margin-left: 1px;
+  }
+
+  &--crushed-ice {
+    width: 1em;
+  }
+
+  &--cracked-ice {
+    width: 1em;
+    height: 1.1em;
+    transform: translateY(-1px);
+  }
+
+  &--served-hot {
+    width: 0.9em;
+    height: 1em;
+    margin-left: 3px;
+    transform: translateY(-1px);
+  }
+
+  &--shaken {
+    transform: translateY(-1.5px);
+    width: 0.875em;
+    height: 0.95em;
+  }
+
+  &--stirred {
+    height: 1em;
+    transform: translateY(-1px);
+  }
+
+  &--tiki-glass {
+    height: 1.15em;
+    width: 0.875em;
+  }
+
+  &--rocks-glass {
+    width: 0.875em;
+    height: 0.85em;
+    margin-left: 2px;
+  }
+
+  &--cocktail-glass {
+    width: 0.9em;
+    margin-left: 2px;
+  }
+
+  &--built-in-glass {
+    transform: translateY(-1px);
+  }
+
+  &--toddy-glass {
+    height: 0.875em;
+    margin-left: 1px;
+  }
+}

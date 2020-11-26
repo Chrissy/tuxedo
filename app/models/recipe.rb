@@ -4,7 +4,6 @@ require 'redcarpet'
 require 'redcarpet/render_strip'
 require 'component.rb'
 require 'custom_markdown.rb'
-require 'image_uploader.rb'
 
 class Recipe < ActiveRecord::Base
   include AlgoliaSearch
@@ -16,9 +15,9 @@ class Recipe < ActiveRecord::Base
   serialize :recommends, Array
 
   acts_as_markdown_list :recipe
-  after_save :create_images, :delete_and_save_tags
+  after_save :delete_and_save_tags
 
-  search_index = ENV['RAILS_ENV'] == 'development' ? 'primary_development' : 'primary'
+  search_index = ENV['RAILS_ENV'] == 'development' || ENV['RAILS_ENV'] == 'test'  ? 'primary_development' : 'primary'
 
   algoliasearch index_name: search_index, id: :algolia_id do
     attributes :name, :description_as_plain_text, :recipe_as_plain_text, :image_with_backup, :url
@@ -54,18 +53,17 @@ class Recipe < ActiveRecord::Base
 
   def delete_and_save_tags
     if tags_as_text.present? && saved_changes.keys.include?('tags_as_text')
+      tags.delete_all
       tag_list.add(tags_as_text.split(',').map(&:strip).map(&:downcase))
     end
   end
 
-  def recipe_as_plain_text
-    components.map(&:name).join(', ')
+  def subtitle_with_fallback
+    subtitle.present? ? subtitle : description_as_plain_text.split('. ')[0]
   end
 
-  def create_images
-    if image.present? && saved_changes.keys.include?('image')
-      ImageUploader.new(image).upload
-    end
+  def recipe_as_plain_text
+    components.map(&:name).join(', ')
   end
 
   def backup_image_url
@@ -80,8 +78,20 @@ class Recipe < ActiveRecord::Base
     Relationship.find_parents_by_type(self, List)
   end
 
+  def adapted_from_for_display
+    markdown_renderer.render(adapted_from).html_safe
+  end
+
   def url
     "/#{slug}"
+  end
+
+  def classic?
+    tag_list.include?('classic')
+  end
+
+  def original?
+    tag_list.include?('original')
   end
 
   def custom_name
@@ -123,12 +133,31 @@ class Recipe < ActiveRecord::Base
     where("lower(name) LIKE '#{letter}%' AND published = 't'")
   end
 
-  def recommends
-    return unless components
+  # this is for manual use only, very slow
+  def self.rebuild_all
+    Recipe.all.map(&:delete_and_save_relationships)
+    Recipe.all.map(&:touch)
+  end
 
-    other_recipes = (components.first.list_elements.keep_if(&:published?) - [self])
+  def get_recommends(component, count = 3)
+    other_recipes = (component.list_elements.keep_if(&:published?) - [self])
     other_recipes.sort_by! { |recipe| (components & recipe.components).length }
-    other_recipes.reverse!.first(3)
+    other_recipes.reverse!.first(count)
+  end
+
+  def recommends(count)
+    return [] unless components
+
+    recommends = []
+
+    components.each do |component|
+      recommends.concat(get_recommends(component, 6))
+      break unless recommends.length < count
+    end
+
+    return [] if recommends.empty?
+
+    recommends.uniq.first(count)
   end
 
   def tagline
@@ -143,42 +172,13 @@ class Recipe < ActiveRecord::Base
     "<a href='#{url}' class='recipe'>#{name}</a>"
   end
 
-  def convert_fractions(str)
-    str.gsub(/\d+.(\d+)/) do |match|
-      case match
-      when '2.75' then '2¾'
-      when '2.5' then '2½'
-      when '2.25' then '2¼'
-      when '1.75' then '1¾'
-      when '1.5' then '1½'
-      when '1.25' then '1¼'
-      when '0.75' then '¾'
-      when '0.6' then '⅔'
-      when '0.3' then '⅓'
-      when '0.5' then '½'
-      when '0.25' then '¼'
-      when '0.125' then '⅛'
-      else match
-      end
-    end.html_safe
-  end
-
-  def wrap_units(md)
-    md.gsub(/([0-9])(oz|tsp|tbsp|Tbsp|dash|dashes|lb|lbs|cup|cups)(\b)/) do |*|
-      "#{Regexp.last_match(1)}<span class='unit'>#{Regexp.last_match(2)}</span>#{Regexp.last_match(3)}"
-    end
-  end
-
   def convert_recipe_to_html
     html = CustomMarkdown.convert_links_in_place(recipe.dup)
 
-    html.gsub!(/\* ([0-9].*?|fill) +/) do |*|
-      modified_md = wrap_units(Regexp.last_match(1))
-      "* <span class='amount'>#{convert_fractions(modified_md)}</span> "
+    html.gsub!(/^\* (.*?\n)/) do |*|
+      CustomMarkdown.consruct_recipe_line(Regexp.last_match(1))
     end
-    html.gsub!(/\# ?([A-Z].*?)/) do |*|
-      "#  #{ApplicationController.helpers.swash(Regexp.last_match(1))}"
-    end
+
     markdown_renderer.render(html)
   end
 

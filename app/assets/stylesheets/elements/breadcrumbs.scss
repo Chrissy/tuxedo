@@ -1,10 +1,22 @@
-@import 'base';
+@import "base";
+@import "../utilities/font-stacks.scss";
 
 .breadcrumbs {
-  background: #ccc;
-  color: #999;
+  font-family: $sans-serif;
+  background: #ddd;
+  color: #ccc;
+
+  a {
+    text-decoration: none;
+    color: #333;
+  }
 }
 
-.breadcrumbs-seperator { margin: .25em .75em; }
+.breadcrumbs-seperator {
+  margin: 0.25em 0.75em;
+  color: #333;
+}
 
-.breadcrumbs-crumb { color: black; }
+.breadcrumbs-crumb {
+  color: black;
+}

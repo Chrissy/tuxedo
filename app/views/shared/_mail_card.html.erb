@@ -1,0 +1,28 @@
+<% border_version ||= false %>
+<% border_version_on_mobile ||= false %>
+<% relocate_to ||= false %>
+<div 
+  class="card mail <%= border_version ? 'card--border-version' : '' %>  <%= border_version_on_mobile ? 'card--border-version-on-mobile' : '' %>"
+  <% if relocate_to %>
+    data-relocate-to="<%= relocate_to %>"
+  <% end %>
+>
+  <div class="label card__label <%= border_version ? 'card__label--border-version' : '' %> <%= border_version_on_mobile ? 'card__label--border-version-on-mobile' : '' %>">The Tasty Mail</div>
+  <img 
+    class="card__image"
+    width="110px" 
+    src="/images/mail-illustration-1x.png" 
+    style="margin-left: -10px;"
+    srcset="
+      /images/mail-illustration-1x.png 1x, 
+      /images/mail-illustration-2x.png 2x"
+  />
+  <div class="card__content">
+    <p class="card__text <%= border_version ? 'card__text--border-version' : '' %> <%= border_version_on_mobile ? 'card__text--border-version-on-mobile' : '' %>">
+      The Tuxedo No.2 <strong>email list</strong> sends a yummy cocktail to your inbox every friday. No spam. No junk. Just tasty.
+    </p>
+    <div class="card__actions">
+      <a href="http://eepurl.com/g2sp35" class="card__action">Sign Up</a>
+    </div>
+  </div>
+</div>

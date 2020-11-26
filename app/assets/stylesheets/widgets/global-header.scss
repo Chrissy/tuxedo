@@ -1,186 +1,165 @@
-#logo {
-  @include hires-background(173px, 34px, 0, 0);
-  display: block;
-  text-indent: -99999px;
-  position: absolute;
-  left: 15px;
-  top: -13px;
-  z-index: 2;
-}
+@import "../utilities/colors.scss";
+@import "../utilities/breakpoints.scss";
+@import "../utilities/font-stacks.scss";
+@import "../elements/helpers.scss";
 
-.links {
-  text-transform: uppercase;
-  font-size: 12px;
-  text-align: right;
-  margin-bottom: 6px;
-  a { color: #666; }
-  .link:not(:last-child):after { content: " • "}
-}
+$search-width: 300px;
+$mobile-search-width: 120px;
 
-.global-header { @extend %centered-content-box-large; }
+.global-header {
+  @extend .centered-content-box-large;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 0 18px;
+  z-index: 1;
 
-.header-primary, .header-secondary {
-  position: absolute;
-  z-index: 7;
-}
-
-.header-primary {
-  top: 25px;
-}
-
-.header-secondary {
-  height: 24px;
-  padding: 4px 10px;
-  right: 0;
-  top: 5px;
-}
-
-.header, .header-content {
-  height: 600px;
-}
-
-.header.short, .header.short .header-content {
-  height: 250px;
-}
-
-.header {
-  width: 100%;
-  background: #030a0d;
-  overflow: hidden;
-}
-
-.header-content {
-  @extend %centered-content-box-large;
-  border: 1px solid #222;
-  position: relative;
-  overflow: hidden;
-
-  & > img {
-    height: auto;
-    width: 102%;
-    position: absolute;
-    top: -5px;
-    left: -9999px;
-    right: -9999px;
-    bottom: auto;
-    margin: auto;
+  div &--list {
+    padding-right: 2em;
+    max-width: 1286px;
   }
-}
 
-.user_links {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-}
-
-.social-links {
-  width: 30px;
-  position: absolute;
-  right: -42px;
-  top: 6px;
-}
-
-.social-link {
-  text-indent: -9999%;
-  display: block;
-  width: 25px;
-  height: 25px;
-  opacity: 0.8;
-  margin-bottom: 8px;
-  &:hover { opacity: 1; }
-  &.pinterest { @include hires-background(25px, 25px, 0, -202px); }
-  &.insta { @include hires-background(25px, 25px, 0, -333px); }
-  &.twitter { @include hires-background(25px, 25px, 0, -283px); }
-}
-
-$social-prompt-color: #777;
-$social-prompt-size: 7px;
-.social-prompt {
-  @include transition(0.15s opacity ease-in, 0.15s right ease-in);
-  position: absolute;
-  background: $social-prompt-color;
-  color: white;
-  padding: 3px 10px 1px;
-  font-size: 15px;
-  width: 224px;
-  bottom: 7px;
-  border-radius: 2px;
-  opacity: 0;
-  right: 43px;
-  display: none;
-  &.active { opacity: 1; right: 53px; }
-  &:before {
-    content: "";
-    width: 0;
-    height: 0;
-    border-top: $social-prompt-size solid transparent;
-    border-bottom: $social-prompt-size solid transparent;
-    border-left: $social-prompt-size solid $social-prompt-color;
-    position: absolute;
-    right: $social-prompt-size*-1;
-    top: $social-prompt-size;
+  &__logo {
+    display: block;
+    width: 120px;
+    height: 40px;
+    color: #000;
+    margin-left: -5px;
+    margin-top: 2px;
   }
-  .win & {
-    line-height: 110%;
-    padding-bottom: 8px;
-  }
-}
-html[data-share-alert="3"] .social-prompt{ display: block; }
 
-@media (max-width: 1150px) {
-  .global-header, .header-primary { width: 100%; }
-  .user_links {
-    right: 10px;
-    top: 70px;
+  &__secondary-content {
+    display: flex;
+    align-items: center;
   }
-  .header-content {
-    width: 100%;
-    text-align: center;
-    overflow: hidden;
+
+  &__search-wrapper {
     position: relative;
-    & > img {
-      height: 102%;
-      width: auto;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__search-icon {
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    top: 52%;
+    transform: translateY(-50%);
+    left: 10px;
+    color: #000;
+  }
+
+  &__search-input {
+    margin-bottom: 0;
+    background-color: hsla(0, 0, 55, 0.5);
+    font-size: 16px;
+    position: relative;
+    opacity: 0.7;
+    width: $search-width;
+    border: 0;
+    height: 26px;
+    border-radius: 100px;
+    color: #000;
+    text-indent: 28px;
+
+    &:focus {
+      outline: 0;
+      border: 1px solid #000;
+      background-color: $gray-2;
+    }
+
+    @media (max-width: $mobile) {
+      width: $mobile-search-width;
+
+      &:focus {
+        width: 100%;
+        z-index: 10;
+      }
     }
   }
-  .social-links {
-    width: 30px;
-    position: absolute;
-    right: 10px;
-    top: 145px;
-  }
-}
 
-@media (max-width: 650px) {
-  html .header, html .header-content, html .header.list, html .header.list .header-content {
-    height: 360px;
-    height: 100vh;
-    min-height: 360px;
-    max-height: 560px;
+  &__links {
+    margin-right: 14px;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+      position: absolute;
+      width: 100vw;
+      left: 0;
+      top: 100%;
+      background: #f0f0f0;
+      padding: 0 1.5em 1.25em 1em;
+
+      &.hidden {
+        display: none;
+      }
+    }
+
+    body.lists & {
+      display: none;
+    }
   }
-  #logo {
-    margin: 0 auto;
-    left: 0;
-    position: relative;
+
+  &__link {
+    text-decoration: none;
+    font-family: $sans-serif;
+    margin-left: 10px;
+    color: $gray-3;
+
+    &:hover {
+      border-bottom: 3px solid #000;
+      padding-bottom: 2px;
+    }
+
+    @media (max-width: $mobile) {
+      font-size: 20px;
+      padding: 16px 0 0px 0;
+      width: 100%;
+    }
   }
-  .header-secondary {
-    width: 100%;
-    position: relative;
-    top: 50px;
+
+  &__mobile-hamburger-menu {
+    width: 20px;
+    height: 20px;
+    border-radius: 8px;
+    display: none;
+    margin-left: 12px;
+
+    @media (max-width: $mobile) {
+      display: block;
+    }
   }
-  .links {
-    text-align: center;
-    width: 100%;
-    left: 4px;
-    position: relative;
+
+  &__mobile-hamburger-icon {
+    height: 100%;
+    width: auto;
   }
-  .display-number {
-    font-size: 28px;
-    margin-bottom: 10px;
+
+  .autocomplete-container {
+    left: 12px;
+    width: calc(100% - 24px);
   }
-  .search-wrapper { margin: 0 auto; }
-  html body .header .user_links { display: none; }
-  html body .header .header-title { font-size: 45px; }
-  .global-header { position: absolute; }
-  .links a { color: white; }
+
+  &--search-focus {
+    @media (max-width: $mobile) {
+      .global-header__logo {
+        display: none;
+      }
+
+      .global-header__secondary-content {
+        flex: 1;
+        justify-content: flex-end;
+      }
+
+      .global-header__search-input,
+      .global-header__search-wrapper,
+      .autocomplete-wrapper {
+        width: 100%;
+      }
+    }
+  }
 }

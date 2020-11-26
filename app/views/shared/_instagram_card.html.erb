@@ -1,0 +1,29 @@
+<% border_version ||= false %>
+<% border_version_on_mobile ||= false %>
+<% relocate_to ||= false %>
+<div 
+  class="card instagram <%= border_version ? 'card--border-version' : '' %> <%= border_version_on_mobile ? 'card--border-version-on-mobile' : '' %>"
+  <% if relocate_to %>
+    data-relocate-to="<%= relocate_to %>"
+  <% end %>
+  >
+  <div class="label card__label <%= border_version ? 'card__label--border-version' : '' %> <%= border_version_on_mobile ? 'card__label--border-version-on-mobile' : '' %>">Let's be far away friends</div>
+  <img 
+    class="card__image"
+    width="100px" 
+    src="/images/instagram-illustration-1x.png" 
+    style="margin-left: -10px; margin-bottom: -10px;"
+    srcset="
+      /images/instagram-illustration-1x.png 1x, 
+      /images/instagram-illustration-2x.png 2x"
+  />
+  <div class="card__content">
+    <p class="card__text <%= border_version ? 'card__text--border-version' : '' %> <%= border_version_on_mobile ? 'card__text--border-version-on-mobile' : '' %>">
+      <strong>Instagram</strong> is a great way to get updates on new cocktails and keep up with everyone’s favorite redheads
+    </p>
+    <div class="card__actions">
+      <a href="https://instagram.com/tuxedono2" class="card__action">Follow</a>
+      <span class="card__action-subtext" data-instagram-count></span>
+    </div>
+  </div>
+</div>

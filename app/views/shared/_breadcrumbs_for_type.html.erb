@@ -3,8 +3,8 @@
   <li property="itemListElement" typeof="ListItem">
     <%= link_to root_url, class: "index-menu-item breadcrumbs-crumb", property: "item", typeof: "WebPage" do %>
       <span property="name">Home</span>
-      <meta property="position" content="1">
     <% end %>
+    <meta property="position" content="1">
   </li>
 
   <span class="breadcrumbs-seperator">></span>
@@ -12,7 +12,7 @@
   <li property="itemListElement" typeof="ListItem">
     <%= link_to({controller: element.class.to_s.tableize, action: "index", only_path: false}, {class: "index-menu-item breadcrumbs-crumb", property: "item", typeof: "WebPage"}) do %>
       <span property="name"><%= element.type_for_display.titleize.pluralize %></span>
-      <meta property="position" content="2">
     <% end %>
+    <meta property="position" content="2">
   </li>
 </ul>

@@ -1,0 +1,548 @@
+@import "../utilities/colors";
+@import "../elements/helpers";
+@import "../utilities/breakpoints.scss";
+@import "../utilities/font-stacks.scss";
+@import "../widgets/recipe.scss";
+
+$description-cutout: 30px;
+$space-between-description-and-header: 6px;
+
+.component {
+  @extend .centered-content-box-large;
+  max-width: 1220px;
+
+  &__primary {
+    display: grid;
+    grid-template-areas:
+      "sidebar header"
+      "sidebar content";
+    grid-template-columns: 0.33fr 0.66fr;
+    grid-column-gap: 40px;
+
+    @media (max-width: $mobile) {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  &__sidebar {
+    margin-top: 130px;
+    margin-bottom: 40px;
+    grid-area: sidebar;
+
+    @media (max-width: $mobile) {
+      width: 100%;
+      margin: 0;
+    }
+
+    .card {
+      margin-top: 40px;
+      font-size: 17px;
+
+      @media (max-width: $large) {
+        padding: 20px 16px;
+        margin: 0;
+      }
+    }
+  }
+
+  &__varieties {
+    margin-top: 80px;
+    font-size: 18px;
+
+    @media (max-width: $mobile) {
+      display: none;
+    }
+
+    .card__label {
+      margin-bottom: 20px;
+    }
+
+    &--mobile {
+      display: none;
+      margin-top: 20px;
+
+      @media (max-width: $mobile) {
+        display: block;
+      }
+    }
+  }
+
+  &__variety {
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 20px auto;
+    align-items: center;
+    text-decoration: none;
+    grid-column-gap: 14px;
+  }
+
+  &__variety-number {
+    border-right: 1px solid #777;
+    width: 100%;
+    height: 12px;
+    align-items: center;
+    justify-content: flex-end;
+    display: flex;
+    padding-right: 14px;
+    font-size: 16px;
+  }
+
+  &__variety-name {
+    text-transform: capitalize;
+  }
+
+  &__substitutes {
+    p {
+      font-family: $sans-serif;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  &__index-element {
+    margin-bottom: 1.5em;
+  }
+
+  &__content {
+    flex: 1;
+    grid-area: content;
+
+    @media (max-width: $mobile) {
+      margin: 0 16px;
+    }
+  }
+
+  &__header {
+    grid-area: header;
+    color: $text-color-dark;
+  }
+
+  &__header-title {
+    font-size: 46px;
+    line-height: 48px;
+    margin: 0 0 10px 0;
+    text-transform: capitalize;
+
+    @media (max-width: $mobile) {
+      margin: 0 16px;
+    }
+
+    &--center {
+      text-align: center;
+      margin: 60px 0 20px;
+    }
+
+    a {
+      color: $text-color-dark;
+      text-decoration: none;
+    }
+  }
+
+  &__header-subtitle {
+    font-family: $sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    @media (max-width: $mobile) {
+      margin: 0 16px;
+    }
+  }
+
+  &__header-content {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: -130px;
+    width: 56%;
+    z-index: 1;
+    padding: 0 24px 6px 0px;
+
+    @media (max-width: $mobile) {
+      margin-top: 0;
+      padding: 0;
+      width: 100%;
+    }
+  }
+
+  &__header-images {
+    display: grid;
+    grid-template-columns: 53.5% auto;
+    grid-auto-rows: 12px;
+    grid-gap: 20px;
+    width: 100%;
+    min-height: 528px;
+
+    @media (max-width: $mobile) {
+      display: block;
+      min-height: 0;
+    }
+  }
+
+  &__list-item {
+    &--1 {
+      grid-row-end: span 13;
+    }
+
+    &--2,
+    &--3 {
+      grid-row-end: span 9;
+    }
+
+    .list-element__details {
+      opacity: 0;
+      transition: 0.2s opacity;
+    }
+
+    &:hover .list-element__details {
+      opacity: 1;
+    }
+
+    img {
+      min-height: 0;
+    }
+  }
+
+  &__cutout {
+    background-color: transparent;
+    width: 40%;
+    height: $description-cutout;
+    float: right;
+    box-sizing: content-box;
+    padding-left: 24px;
+
+    @media (max-width: $mobile) {
+      display: none;
+    }
+  }
+
+  &__illustration-container {
+    width: 275px;
+    height: 275px;
+    float: right;
+    shape-outside: circle(58% at 123px 185px);
+    margin: 2em -9em 0 0;
+    padding-top: 1.5em;
+    box-sizing: content-box;
+    clear: right;
+    background: #f0f0f0;
+
+    @media (max-width: $mobile) {
+      display: none;
+    }
+
+    @media (min-width: $mobile) and (max-width: 1100px) {
+      margin-right: -3em;
+    }
+  }
+
+  &__illustration {
+    mix-blend-mode: multiply;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    &--mobile {
+      display: none;
+      max-width: 200px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: $mobile) {
+      display: block;
+    }
+  }
+
+  &__description {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    line-height: 1.4;
+    color: $text-color;
+    font-weight: 300;
+    max-width: 580px;
+    flex: 1;
+    position: relative;
+
+    @media (max-width: $mobile) {
+      font-size: 17px;
+    }
+
+    .subcomponent {
+      text-transform: capitalize;
+      font-size: 19px;
+      font-variant-numeric: oldstyle-nums;
+
+      a {
+        font-weight: 500;
+      }
+    }
+
+    .subcomponent-recipe {
+      @extend %recipe;
+    }
+
+    .recommended-bottles,
+    .subcomponent-recipe {
+      font-family: mr-eaves;
+      text-transform: capitalize;
+      font-size: 18px;
+      border: 1px solid #000;
+      display: inline-block;
+      padding: 0.4em 1em 0.33em;
+      margin: 0.33em 0 1em;
+      position: relative;
+      font-weight: 600;
+
+      &:before,
+      &__label {
+        content: "Bottles";
+        text-transform: uppercase;
+        background: #f0f0f0;
+        padding: 0.33em 0.5em;
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-weight: bold;
+        letter-spacing: 0.075em;
+        font-size: 9px;
+        transform: translate(20px, -50%);
+      }
+
+      em {
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @media (max-width: $mobile) {
+        font-size: 15px;
+        margin-top: 0.5em;
+      }
+    }
+
+    .subcomponent-recipe {
+      font-size: 0.875em;
+      padding: 14px 22px 16px 16px;
+      max-width: 490px;
+      font-size: 1em;
+      text-transform: none;
+
+      &:before {
+        content: none;
+      }
+
+      .amount {
+        margin-left: -16px;
+      }
+
+      ul {
+        margin-bottom: 12px;
+      }
+
+      li {
+        margin: 2px 0 4px 0;
+      }
+
+      p {
+        font-size: 15px;
+      }
+    }
+  }
+
+  &__description-spacer,
+  &__description .first-letter {
+    color: #000;
+    font-family: $sans-serif;
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 0.75;
+    display: inline-block;
+    padding: 0 6px 0 0;
+  }
+
+  &__description-spacer {
+    float: left;
+    opacity: 0;
+  }
+
+  &__description .first-letter {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &__recent-additions {
+    display: grid;
+    grid-template-columns: 0.33fr 0.33fr 0.33fr;
+    grid-gap: 20px;
+    min-height: 340px;
+    margin-bottom: 1em;
+
+    @media (max-width: $large) {
+      margin: 0 16px 20px 16px;
+    }
+
+    @media (max-width: $small) {
+      grid-template-columns: 1fr;
+    }
+
+    &--extra-margin {
+      margin-bottom: 60px;
+    }
+  }
+
+  &__recent-additions-label {
+    margin-top: 6em;
+    margin-bottom: 3em;
+
+    @media (max-width: $large) {
+      padding: 20px 16px 0 16px;
+    }
+  }
+
+  &__recent-additions-show-more {
+    margin: 0 0 8em 50%;
+    transform: translateX(-50%);
+  }
+
+  &__all {
+    display: grid;
+    grid-template-columns: 24% auto;
+    min-width: 180px;
+    grid-column-gap: 40px;
+    margin-bottom: 6em;
+
+    @media (max-width: $large) {
+      margin: 0 16px 2em 16px;
+    }
+
+    @media (max-width: $mobile) {
+      display: block;
+    }
+
+    .index-element__subtext {
+      font-size: 16px;
+    }
+  }
+
+  &__all-sidebar {
+    &.hidden {
+      display: block;
+    }
+
+    @media (max-width: $mobile) {
+      &.hidden {
+        display: none;
+      }
+    }
+
+    .card {
+      padding: 0;
+      margin-bottom: 3em;
+    }
+  }
+
+  &__all-filter-button {
+    padding: 4px 10px;
+    margin: 10px 0;
+  }
+
+  &__all-mobile-menu-tabs {
+    display: flex;
+    overflow: scroll;
+    flex: 1;
+    margin-right: 16px;
+  }
+
+  &__all-recipes-label {
+    margin-bottom: 2em;
+
+    @media (max-width: $mobile) {
+      display: none;
+    }
+  }
+
+  &__all-sidebar-filter-label {
+    margin-bottom: 1em;
+  }
+
+  &__filter {
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 0;
+    text-transform: capitalize;
+
+    @media (max-width: $mobile) {
+      white-space: nowrap;
+      margin-right: 10px;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #000;
+
+      @media (max-width: $mobile) {
+        border-bottom: none;
+      }
+    }
+
+    &.selected {
+      font-weight: 600;
+
+      .component__radio-button--selected,
+      .component__checkbox--selected {
+        display: inherit;
+      }
+
+      .component__radio-button--unselected,
+      .component__checkbox--unselected {
+        display: none;
+      }
+    }
+  }
+
+  &__all-mobile-menu {
+    display: none;
+    font-family: $sans-serif;
+    font-size: 17px;
+    justify-content: space-between;
+    border-bottom: 1px solid #000;
+    margin-bottom: 40px;
+
+    @media (max-width: $mobile) {
+      display: flex;
+    }
+
+    &__filter.selected {
+      border-bottom: 3px solid #000;
+    }
+  }
+
+  &__radio-button,
+  &__checkbox {
+    height: 12px;
+    width: 18px;
+    margin-right: 6px;
+
+    &--selected {
+      display: none;
+    }
+
+    &--unselected {
+      display: inherit;
+    }
+  }
+
+  &__filter-control {
+    display: flex;
+    align-items: center;
+  }
+}

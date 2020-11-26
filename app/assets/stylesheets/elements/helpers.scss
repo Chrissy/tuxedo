@@ -1,48 +1,72 @@
-%centered-content-box {
+.centered-content-box {
   width: 940px;
   margin: 0 auto;
   position: relative;
 }
 
-%centered-content-box-large {
+.centered-content-box-large {
   margin: 0 auto;
   position: relative;
   width: 100%;
-  max-width: 1040px;
+  max-width: 1150px;
 }
 
 %swash {
-  &:first-letter, .swash-cap {
+  &:first-letter,
+  .swash-cap {
     font-feature-settings: "swsh";
-    -moz-font-feature-settings:"swsh";
+    -moz-font-feature-settings: "swsh";
     -webkit-font-feature-settings: "swsh";
   }
-  .swash-cap.letter-t { margin-right: -.13em; }
-  .swash-cap.letter-z { margin-right: -.14em; }
+  .swash-cap.letter-t {
+    margin-right: -0.13em;
+  }
+  .swash-cap.letter-z {
+    margin-right: -0.14em;
+  }
 }
 
 @mixin gradient($startcolor: #555, $endcolor: #333, $direction: "horizontal") {
-    $direction_key_1: left; $direction_key_2: left top; $direction_key_3: right top;
-    @if $direction == "vertical" {
-       $direction_key_1: top; $direction_key_2: left top; $direction_key_3: left bottom;
-    } @else if $direction == "diagonal" {
-      $direction_key_1: bottom right; $direction_key_2: right bottom; $direction_key_3: left top;
-    }
-    background-image: -khtml-gradient(linear, $direction_key_2, $direction_key_3, from($startcolor), to($endcolor)); // Konqueror
-    background-image: -webkit-gradient(linear, $direction_key_2, $direction_key_3, color-stop(0, $startcolor), color-stop(1, $endcolor)); // Safari 4+, Chrome 2+
-    background-image: -moz-linear-gradient($direction_key_1, $startcolor, $endcolor); // FF 3.6+
-    background-image: -ms-linear-gradient($direction_key_1, $startcolor, $endcolor); // IE10
-    background-image: -webkit-linear-gradient($direction_key_1, $startcolor, $endcolor); // Safari 5.1+, Chrome 10+
-    background-image: -o-linear-gradient($direction_key_1, $startcolor, $endcolor); // Opera 11.10
-    background-image: linear-gradient($direction_key_1, $startcolor, $endcolor); // Le standard
-    filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='" + $startcolor + "', endColorstr='" + $endcolor + "', GradientType=1)"; // IE9 and down
+  $direction_key_1: left;
+  $direction_key_2: left top;
+  $direction_key_3: right top;
+  @if $direction == "vertical" {
+    $direction_key_1: top;
+    $direction_key_2: left top;
+    $direction_key_3: left bottom;
+  } @else if $direction == "diagonal" {
+    $direction_key_1: bottom right;
+    $direction_key_2: right bottom;
+    $direction_key_3: left top;
+  }
+  background-image: -khtml-gradient(
+    linear,
+    $direction_key_2,
+    $direction_key_3,
+    from($startcolor),
+    to($endcolor)
+  ); // Konqueror
+  background-image: -webkit-gradient(
+    linear,
+    $direction_key_2,
+    $direction_key_3,
+    color-stop(0, $startcolor),
+    color-stop(1, $endcolor)
+  ); // Safari 4+, Chrome 2+
+  background-image: -moz-linear-gradient($direction_key_1, $startcolor, $endcolor); // FF 3.6+
+  background-image: -ms-linear-gradient($direction_key_1, $startcolor, $endcolor); // IE10
+  background-image: -webkit-linear-gradient($direction_key_1, $startcolor, $endcolor); // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient($direction_key_1, $startcolor, $endcolor); // Opera 11.10
+  background-image: linear-gradient($direction_key_1, $startcolor, $endcolor); // Le standard
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='" + $startcolor + "', endColorstr='" + $endcolor +
+    "', GradientType=1)"; // IE9 and down
 }
 
-@mixin hgradient ($startcolor: #555, $endcolor: #333) {
+@mixin hgradient($startcolor: #555, $endcolor: #333) {
   @include gradient($startcolor, $endcolor, "horizontal");
 }
 
-@mixin vgradient ($startcolor: #555, $endcolor: #333) {
+@mixin vgradient($startcolor: #555, $endcolor: #333) {
   @include gradient($startcolor, $endcolor, "vertical");
 }
 
@@ -55,7 +79,7 @@
 
 @mixin accelerated_transition($props...) {
   @include transition($props...);
-  -webkit-transform: translate3d(0,0,0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 @mixin hires-background($width, $height, $position-x, $position-y) {
@@ -63,7 +87,7 @@
   width: $width;
   position: relative;
   &:before {
-    background-image: url('/dist/site-sprite.png');
+    background-image: url("/dist/site-sprite.png");
     background-position: $position-x $position-y;
     content: "";
     height: $height * 2;

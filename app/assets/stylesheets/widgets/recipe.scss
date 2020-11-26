@@ -1,111 +1,143 @@
+@import "../elements/label";
+@import "../utilities/breakpoints.scss";
+@import "../utilities/font-stacks.scss";
+
 $components-border-color: #e1e1e1;
 $components-text-color: #666;
 $components-bg-color: white;
 
-@mixin natural_component_section($number, $percent) {
-  &:nth-of-type(#{$number}) {
-    &, & ~ p, & ~ ul, & ~ ol {
-      background-color: darken($components-bg-color, $percent);
-      color: darken($components-text-color, $percent*0.7);
-    }
-    & ~ h1, & ~ ul li, & ~ ol li { border-bottom-color: darken($components-border-color, $percent); }
-    & ~ ul li:before { background-color: darken(#ddd, $percent); }
-    &:after { background: darken($components-border-color, $percent); }
-    & + p { padding-top: 10px; }
-  }
-}
-
 %recipe {
-  width: 330px;
-  float: left;
-  background-color: $components-bg-color;
-  color: $components-text-color;
-  margin-bottom: 40px;
-  ul, ol, p {
-    padding: 0 13px 12px 13px;
+  font-family: $sans-serif;
+  font-size: 18px;
+
+  ul,
+  ol,
+  p {
+    padding: 0;
     margin: 0;
-    font-size: 18px;
   }
+
   ol {
     counter-reset: li;
     padding-bottom: 0;
+
     li {
-      clear: both;
-      line-height: 135%;
-      padding-bottom: 13px;
-      margin-left: 32px;
+      display: flex;
+      line-height: 1;
+      font-family: $sans-serif;
+
       &:before {
         content: counter(li);
         counter-increment: li;
-        float: left;
-        font-size: 30px;
-        font-weight: 900;
-        color: white;
-        line-height: 90%;
-        left: 18px;
-        background: none;
-        .win & { line-height: 60%; }
+        font-size: 24px;
+        font-family: $serif;
+        font-weight: 700;
+        padding: 0 10px 0 0;
+        transform: translateY(2px);
+        line-height: 1;
+      }
+
+      @media (max-width: $mobile) {
+        &:before {
+          font-size: 18px;
+          margin-top: -1px;
+        }
       }
     }
   }
+
   p {
     font-size: 14px;
     line-height: 140%;
   }
-  h1 {
-    color: $components-text-color;
-    font-size: 26px;
-    margin: 0;
-    font-weight: 900;
-    padding: 3px 0 0 13px;
-    -webkit-font-feature-settings: "smcp";
-    -moz-font-feature-settings: "smcp" ;
-    @include natural_component_section(2, 9%);
-    @include natural_component_section(3, 15%);
-    @include natural_component_section(4, 20%);
-    @include natural_component_section(5, 25%);
-    &:after {
-      content: "";
-      position: relative;
-      display: block;
-      height: 1px;
-      background: $components-border-color;
-      left: 8px;
-      width: 296px;
-      bottom: 2px;
+
+  h1,
+  h2,
+  h3 {
+    @extend .label;
+    margin-bottom: 16px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    @media (min-width: $mobile) {
+      font-family: $serif;
+      font-size: 20px;
+      margin: 0;
+      font-weight: 900;
+      padding: 0;
+      text-transform: none;
+      letter-spacing: inherit;
+
+      &:not(.thisisfakeforscoping):after,
+      &:not(.thisisfakeforscoping):after {
+        content: none;
+      }
     }
   }
-  ul, ol { padding-bottom: 0; }
-  ul li:last-child, ol li:last-child { border-bottom-width: 0; }
+
+  ul,
+  ol {
+    padding-bottom: 0;
+    margin-bottom: 40px;
+  }
+
+  ul li:last-child,
+  ol li:last-child {
+    border-bottom-width: 0;
+  }
+
   li {
-    border-bottom: 1px solid $components-border-color;
-    padding-bottom: 14px;
-    padding-top: 12px;
-    margin-left: 60px;
-    &:before {
-      content: "";
-      height: 28px;
-      width: 1px;
-      background-color: #ddd;
-      position: absolute;
-      display: block;
-      left: 59px;
+    margin: 8px 0 14px 0;
+    display: flex;
+    position: relative;
+  }
+
+  .amount,
+  .divider,
+  .unit,
+  .ingredient {
+    font-family: $sans-serif;
+  }
+
+  .amount {
+    display: inline-flex;
+    min-width: 40px;
+    margin-left: -20px;
+    font-weight: 600;
+    max-height: 1.25em;
+    margin-right: 8px;
+    position: relative;
+    justify-content: flex-end;
+    align-items: baseline;
+    font-variant-numeric: tabular-nums;
+
+    @media (max-width: $large) {
+      margin-left: -10px;
     }
   }
-  .amount {
-    display: inline-block;
-    min-width: 60px;
-    margin-right: 4px;
-    text-align: right;
-    padding-right: 7px;
-    font-weight: bold;
-    position: absolute;
-    left: 0;
+
+  .divider {
+    height: 13px;
+    width: 1px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: block;
+    top: 6px;
+    position: relative;
   }
+
   .unit {
     font-weight: normal;
-    font-size: 13px;
+    font-size: 11px;
     margin-left: 1px;
-    color: lighten($components-text-color, 20%);
+    font-variant-caps: all-small-caps;
+  }
+
+  .ingredient {
+    flex: 1;
+    padding-left: 10px;
+    display: block;
+    text-align: left;
   }
 }

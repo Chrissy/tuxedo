@@ -1,8 +1,6 @@
 @import "../elements/helpers";
 @import "../utilities/pie-clearfix";
-
-$background-color: #f1f1f1;
-$link-color: #8b5300;
+@import "../utilities/colors";
 
 * {
   box-sizing: border-box;
@@ -15,21 +13,16 @@ li {
   padding: 0;
   margin: 0;
 }
+
 a {
-  text-decoration: none;
-  color: #444;
-}
-p a,
-li a {
-  color: $link-color;
-  &:hover {
-    color: saturate($link-color, 25%);
-  }
+  color: currentColor;
+  text-underline-offset: 2px;
 }
 
 html,
 body {
   height: 100%;
+  color: $text-color-dark;
 }
 
 body {
@@ -41,16 +34,16 @@ body {
 .site-container {
   position: relative;
   min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &.noscroll {
     max-height: 100vh;
     overflow: hidden;
   }
 }
+
 .hidden {
   display: none;
-}
-
-.primary {
-  @include pie-clearfix;
 }

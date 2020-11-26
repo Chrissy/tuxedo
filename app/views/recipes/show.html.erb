@@ -1,18 +1,70 @@
+<% images = [@recipe.image_with_backup, @recipe.image2, @recipe.image3] - ["", nil] %>
+<% image_count = images.count %>
 <% cache(cache_key(@recipe, "show")) do %>
-  <div itemscope itemtype="http://schema.org/Recipe">
-    <div class="header recipe">
-      <%= render "shared/header", :element => @recipe %>
-    </div>
-
-    <div class="content recipe">
-      <div class="aside">
-        <%= @recipe.recipe_as_html %>
+  <div itemscope itemtype="http://schema.org/Recipe" class="recipe">
+    <div class="recipe__primary">
+      <div class="recipe__header">
+        <div class="recipe__header-content recipe__header-content--count-<%= image_count %>" href="<%= @recipe.url %>" data-carousel-location>
+          <% if image_count >= 2 %>
+            <%= list_image(@recipe, "recipe__primary-image recipe__primary-image--2 recipe__primary-image--2--count-#{image_count}", :image2, 1) %>
+          <% end %>
+          <div class="recipe__header-titles-and-icons">
+            <h1 class="recipe__header-title" role="heading">
+              <a href="<%= @recipe.url %>">
+                <span itemprop="name">
+                  <%= @recipe.name === "Chrysanthemum" ? "Chrysanthe&shy;mum".html_safe : @recipe.name %>
+                </span>
+              </a>
+            </h1>
+            <h2 class="recipe__header-subtitle" role="heading">
+              <%= @recipe.subtitle %>
+            </h2>
+            <div class="recipe__tag-icons">
+              <%= display_number_with_fallback(@recipe, "recipe__display-number recipe__display-number--mobile") %>
+              <%= render 'recipes/tags', tags: @recipe.tags, class_name: "recipe__tag-icon", links: true %>
+            </div>
+          </div>
+          <%= display_number_with_fallback(@recipe, "recipe__display-number recipe__display-number--count-#{image_count}") %>
+        </div>
+        <div class="recipe__header-images recipe__header-images--count-<%= image_count %>">
+          <%= header_image(@recipe, "recipe__primary-image recipe__primary-image--1 recipe__primary-image--1--count-#{image_count}", false, true) %>
+          <% if image_count >= 3 %>
+            <%= list_image(@recipe, "recipe__primary-image recipe__primary-image--3", :image3, 2) %>
+          <% end %>
+        </div>
       </div>
-      <div class="primary" itemprop="description">
-        <%= @recipe.description_to_html %>
+      <div class="recipe__sidebar">
+        <div class="recipe__recipe">
+          <%= @recipe.recipe_as_html %>
+        </div>
+        <%= render 'shared/instagram_card' %>
+        <% if @recipe.adapted_from.present? %>
+          <div class="card card--list recipe__adapted-from-card">
+            <div class="label card__label">Adapted From</div>
+            <div class="card__content">
+              <%= @recipe.adapted_from_for_display %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="recipe__content recipe__content--count-<%= image_count%>" itemprop="description">
+        <div class="recipe__description">
+          <div class="recipe__cutout recipe__cutout--count-<%= image_count %>"></div>
+          <div data-to-relocate><%= @recipe.description_to_html %></div>
+        </div>
+        <div class="recipe__primary-sidebar">
+          <%= render 'shared/mail_card', relocate_to: '[data-to-relocate] p:nth-of-type(3), [data-to-relocate] p:nth-of-type(2)', border_version_on_mobile: true %>
+        </div>
       </div>
     </div>
-
-    <%= render 'footer', :recipe => @recipe %>
   </div>
+  <div class="recipe__footer">
+    <%= render 'shared/ingredient_card', ingredient: @featured_ingredient %>
+    <%= render 'shared/instagram_card', border_version_on_mobile: true %>
+    <%= render 'list_card', recipe: @recipe %>
+  </div>
+  <%= render 'footer', :recipe => @recipe %>
+  <% if user_signed_in? %>
+    <a class="global-header__link authenticate" data-edit-link href="<%= @recipe.edit_url %>">Edit</a>
+  <% end %>
 <% end %>

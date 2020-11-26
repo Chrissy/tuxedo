@@ -1,0 +1,16 @@
+$gray-1: #f0f0f0;
+$gray-2: #ccc;
+$gray-3: #555;
+
+$text-color: #353535;
+$text-color-dark: #24222a;
+$text-color-darkest: #000;
+
+$background-color: $gray-1;
+$link-color: #8b5300;
+
+/* legacy */
+
+$description-text-color: #555;
+$description-border-color: darken($description-text-color, 15%);
+$description-background-color: $background-color;

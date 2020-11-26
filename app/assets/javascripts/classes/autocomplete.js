@@ -24,6 +24,8 @@ export default class Autocomplete {
     limit,
     /* allow submit on tab as well as enter (useful for in-text mentions) */
     allowSubmitOnTab,
+    /* keep the menu open when a selection fires */
+    keepOpenUntilBlur,
   }) {
     Object.assign(this, {
       input,
@@ -36,6 +38,7 @@ export default class Autocomplete {
       showResultsOnFocus,
       allowSubmitOnTab,
       onFooterClick,
+      keepOpenUntilBlur,
     });
     this.onSelect = this.handleSelect(onSelect);
     this.resultsContainer = document.createElement("div");
@@ -56,6 +59,7 @@ export default class Autocomplete {
     this.arrowIndex = null;
     this.results = [];
     this.isOpen = false;
+    this.wrapper = wrapper;
 
     this.build_autocomplete(options);
     this.listenForSelect();
@@ -77,7 +81,11 @@ export default class Autocomplete {
 
   handleSelect = (selectFunc) => (result, target) => {
     selectFunc(result, target);
-    this.reset();
+    if (this.keepOpenUntilBlur) {
+      this.input.focus();
+    } else {
+      this.reset();
+    }
   };
 
   renderLine(result, active, index) {
@@ -86,6 +94,7 @@ export default class Autocomplete {
       data-list-element=${index}
       class="autocomplete-line ${active ? "active" : ""}"
       href="${result.href ? result.href : "#"}"
+      tabindex=${index}
     >
       ${result.label}
     </a>
@@ -234,16 +243,19 @@ export default class Autocomplete {
       }
     });
 
-    if (this.showResultsOnFocus) {
-      this.input.addEventListener("focus", (event) => {
+    this.input.addEventListener("focus", (event) => {
+      this.wrapper.classList.add("focused");
+
+      if (this.showResultsOnFocus) {
         this.results = this.getDefaultOptions();
         this.isOpen = true;
         this.render();
-      });
-    }
+      }
+    });
 
     this.input.addEventListener("blur", (event) => {
       if (!this.isOpen) return;
+      this.wrapper.classList.remove("focused");
 
       if (event.relatedTarget) {
         const listElementId = event.relatedTarget.getAttribute(
@@ -261,7 +273,6 @@ export default class Autocomplete {
             this.results[parseInt(listElementId)],
             event.relatedTarget
           );
-          this.reset();
         }
 
         if (this.onFooterClick && (isFooter || isFooter === "")) {

@@ -1,16 +1,21 @@
 <% cache(global_header_cache_key) do %>
   <div class="global-header">
-    <div class="header-primary">
-      <a href="/" id="logo">
-        Tuxedo Number Two: Cocktails, Spiritis, Drinks, Etc.
-      </a>
-    </div>
-    <div class="header-secondary">
-      <%= render 'shared/links' %>
-      <%= render 'shared/social' %>
-      <div class="search-wrapper">
-        <input type="text" class="search" placeholder="search" />
-        <div class="search-icon"></div>
+    <a href="/" class="global-header__logo">
+      <%= render 'shared/svg', id: "logo" %>
+    </a>
+    <div class="global-header__secondary-content">
+      <div class="global-header__links hidden" data-target-toggleable="header-links">
+        <a class="global-header__link" href="/ingredients">Ingredients</a>
+        <a class="global-header__link" href="/recipes">Recipes</a>
+        <a class="global-header__link" href="/about">About</a>
+        <a class="global-header__link authenticate" href="/admin" data-admin-link>Admin</a>
+      </div>
+      <div class="global-header__search-wrapper">
+        <input type="text" class="global-header__search-input" data-role="search"/>
+        <%= render 'shared/svg', id: "search", className: "global-header__search-icon" %>
+      </div>
+      <div class="global-header__mobile-hamburger-menu" data-toggle-target="[data-target-toggleable='header-links']">
+        <%= render 'shared/svg', id: "hamburger", class_name: "global-header__mobile-hamburger-svg" %>
       </div>
     </div>
   </div>

@@ -1,0 +1,45 @@
+<% start_index ||= nil %>
+<% page ||= nil %>
+<% pagination_end ||= nil %>
+<% last_page ||= false %>
+<% tag ||= false %>
+<% tag_description ||= false %>
+
+<% elements.try(:each_with_index) do |element, index| %>
+  <% index = start_index ? start_index + index : index %>
+  <% if index == 0 && !tag %>
+    <div class="special-nav">
+      <a class="special-nav__item" href="/recipes">Recipes</a>
+      <a class="special-nav__item" href="/ingredients">Ingredients</a>
+      <a class="special-nav__item" href="/about">About</a>
+      <a class="special-nav__item" href="/index">Index</a>
+      <a class="special-nav__item" href="https://instagram.com/tuxedono2">Instagram</a>
+    </div>
+  <% end %>
+  <% if index == 3 && !tag %>
+    <%= render 'shared/element_list_card.html.erb', list_name: "Base Spirits", elements: base_spirits[0..4] %>
+  <% end %>
+  <% if index == 6 %>
+    <%= render 'shared/instagram_card.html.erb', border_version: true %>
+  <% end %>
+  <% if index >= 8 && index % 4 == 0 && index <= (list_ingredients.count - 2) * 4 && !tag %>
+    <%= render 'shared/ingredient_list_card.html.erb', list_name: "Base Spirits", ingredient: list_ingredients[(index - 8) / 4] %>
+  <% end %>
+  <% if index == 11 %>
+    <%= render 'shared/mail_card.html.erb', border_version: true %>
+  <% end %>
+  <%= render 'lists/list_element', element: element, first: index == 0, second: index == 1, display_number: index == 0, lazy_load: index === pagination_end && !last_page ? "/list/more/#{page + 1}" : nil, tag: tag %>
+  <% if index == 0 && tag %>
+    <div class="list-element list-element--tag-info">
+      <h1 class="list-element__name list-element__name--featured list-element__name--tag" itemprop="name" role="heading">
+        <%= tag.titlecase %> Cocktails
+      </h1>
+      <h2 class="list-element__subtitle list-element__subtitle--tag">
+        <%= elements.count %> recipes
+      </h2>
+      <div class="list-element__subtext list-element__subtext--tag">
+        <%= tag_description %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

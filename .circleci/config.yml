@@ -2,24 +2,49 @@
 #
 # Check https://circleci.com/docs/2.0/language-ruby/ for more details
 #
-version: 2
+version: 2.1
+
 jobs:
   build:
     docker:
-      # specify the version you desire here
-      - image: circleci/ruby:2.4.1-node-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
+      - image: circleci/ruby:2.5.3-node-browsers
+        auth:
+          username: fivefourths
+          password: $DOCKERHUB_PASSWORD
+        environment:
+          TEST_DATABASE_URL: postgresql://root@localhost/circle_test
+          PGUSER: postgres
+          RAILS_ENV: test
+      - image: circleci/postgres:12.3
+        auth:
+          username: fivefourths
+          password: $DOCKERHUB_PASSWORD
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
 
     working_directory: ~/repo
 
     steps:
       - checkout
 
-      # Download and cache dependencies
+      - run:
+          name: "Update Node.js and npm"
+          command: |
+            curl -sSL "https://nodejs.org/dist/v14.15.0/node-v14.15.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v14.15.0-linux-x64/bin/node
+            curl https://www.npmjs.com/install.sh | sudo bash
+
+      - run:
+          name: "Install postgresql-client"
+          command: |
+            sudo apt-get update
+            sudo apt-get install lsb-release
+            curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+            sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+            sudo apt-get update
+            sudo apt install postgresql-client-12
+            echo 'export PATH=/usr/lib/postgresql/12.3/bin/:$PATH' >> $BASH_ENV
+
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
@@ -29,7 +54,15 @@ jobs:
       - run:
           name: install dependencies
           command: |
+            gem update --system
+            gem install bundler
             bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - run:
+          name: install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.6.1
 
       - save_cache:
           paths:
@@ -41,19 +74,26 @@ jobs:
       - run: bundle exec rake db:schema:load
 
       # run tests!
-      - run:
-          name: run tests
-          command: |
-            mkdir /tmp/test-results
-            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
-              circleci tests split --split-by=timings)"
+      - run: bundle exec rails test
 
-            bundle exec rspec \
-              --format progress \
-              --format RspecJunitFormatter \
-              --out /tmp/test-results/rspec.xml \
-              --format progress \
-              $TEST_FILES
+      - run: npm install
+      - run: npm run build
+
+      - run:
+          name: Restore database copy
+          command: |
+            curl https://chrissy-tuxedo-no2.s3.us-east-2.amazonaws.com/11-25-2020.dump -o latest.dump
+            dropdb mock_db --if-exists -h localhost -p 5432
+            createdb -h localhost -p 5432 mock_db
+            pg_restore -h localhost -p 5432 --verbose --clean --if-exists --no-acl --no-owner -U postgres -d mock_db latest.dump
+
+      - run:
+          name: start server
+          command: RAILS_ENV=test bundle exec rails server
+          background: true
+
+      - run: dockerize -wait http://localhost:3000 -timeout 1m
+      - run: PERCY_TOKEN=$PERCY_TOKEN npm run snapshots
 
       # collect reports
       - store_test_results:

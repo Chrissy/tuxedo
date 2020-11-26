@@ -1,0 +1,19 @@
+<div class="ingredient-card">
+  <div class="label label--bottom-border ingredient-card__label">Featured Ingredient:&nbsp;<a href="<%= ingredient.url %>"><%= ingredient.name %></a></div>
+  <a href="<%= ingredient.url %>" class="ingredient-card__left">
+    <%= ingredient.illustration.present? ? illustration_image(ingredient, "ingredient-card__image ingredient-card__image--illustration") : ingredient_card_image(ingredient, "ingredient-card__image") %>
+  </a>
+  <% if ingredient.description.present? %>
+    <div class="ingredient-card__description">
+      <%= ingredient.subtitle %>
+    </div>
+  <% end %>
+  <div class="ingredient-card__recipes">
+    <% ingredient.classic_recipes(3).each do |recipe| %>
+      <a class="ingredient-card__recipe" href="<%= recipe.url %>">
+        <strong><%= recipe.name %>:</strong>
+        <%= recipe.components[0..2].map(&:name).join(", ") %>
+      </a>
+    <% end %>
+  </div>
+</div>

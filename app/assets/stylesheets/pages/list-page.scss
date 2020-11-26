@@ -1,23 +1,117 @@
-.content.list .primary, .content.component .primary { 
-  padding: 20px 0;
-  width: 101%;
-  margin-bottom: 40px;
+@import "../utilities/breakpoints.scss";
+@import "../utilities/font-stacks.scss";
+
+.list {
+  display: grid;
+  grid-gap: 18px;
+  padding: 0 18px 18px 18px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 39px;
+  max-width: 1286px;
+
+  &--tag {
+    @media (max-width: $mobile) {
+      grid-auto-rows: unset;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    grid-template-columns: 0.5fr 0.5fr;
+  }
+
+  @media (max-width: $small) {
+    grid-template-columns: 1fr;
+    padding: 0 0 18px 0;
+  }
+
+  .list-element {
+    grid-row-end: span 8;
+    margin: 0;
+
+    &--first,
+    &--first-tag {
+      grid-row-end: span 10;
+      grid-column-end: span 2;
+      margin: inherit 0;
+
+      @media (max-width: $mobile) {
+        grid-row-end: span 9;
+        grid-column-end: span 1;
+      }
+
+      @media (min-height: 725px) and (min-width: $large) {
+        grid-row-end: span 11;
+      }
+    }
+
+    &--second {
+      grid-row-end: span 10;
+      padding-top: 50px;
+
+      @media (max-width: $mobile) {
+        padding-top: 0px;
+        grid-row-end: span 8;
+      }
+    }
+
+    &--tag-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      grid-row-end: span 6;
+
+      @media (max-width: $mobile) {
+        display: block;
+        padding: 0 16px;
+      }
+    }
+  }
+
+  .special-nav,
+  .card {
+    grid-row-end: span 4;
+  }
+
+  .card--list {
+    grid-row-end: span 6;
+  }
+
+  .card {
+    min-width: 0;
+
+    @media (max-width: $small) {
+      margin: 0 16px;
+    }
+  }
+
+  .card--ingredient {
+    min-width: 0;
+    grid-row-end: span 9;
+  }
+
+  &--tag {
+    @media (min-width: $mobile) {
+      margin-top: 60px;
+    }
+
+    .special-nav {
+      display: none;
+    }
+  }
 }
 
-.home-content {
-  @extend %centered-content-box;
-  position: relative;
-  top: 80px;
-}
-.list_elements, .list .primary, .component .primary { width: 100%; }
-.error-subhead { font-size: 24px; color: white; }
-.header-title.error-title { line-height: 70%; }
+.special-nav {
+  display: flex;
+  flex-direction: column;
 
-.content.list.about {
-  max-width: 550px;
-  width: 80%;
-  margin: 0 auto;
-  text-align: center;
-  li { margin-bottom: 15px; }
-  img { width: 100%; }
+  @media (max-width: $small) {
+    display: none;
+  }
+}
+
+.special-nav__item {
+  text-decoration: none;
+  font-size: 18px;
+  margin-bottom: 2px;
+  font-family: $sans-serif;
 }

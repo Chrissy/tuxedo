@@ -32,7 +32,6 @@ gem 'acts-as-taggable-on'
 gem 'aws-sdk'
 gem 'devise'
 gem 'dotenv-rails', groups: %i[development test]
-gem 'faraday_middleware-aws-sigv4'
 gem 'friendly_id'
 gem 'mini_magick'
 gem 'rails_12factor', group: :production

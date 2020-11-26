@@ -1,124 +1,74 @@
 @import "../elements/helpers";
 @import "../elements/base";
-
+@import "../utilities/font-stacks.scss";
 
 .subtle_button {
   font-size: 16px;
-  border: 1px solid rgba(100,100,100,0.4);
+  border: 1px solid rgba(100, 100, 100, 0.4);
   padding: 2px 8px 3px;
   border-radius: 3px;
 }
 
 .no {
-  font-size: 10px;
+  font-size: 7px;
   display: inline-block;
   line-height: 100%;
-  padding-bottom: 1px;
+  padding-bottom: 0px;
   letter-spacing: 1px;
   vertical-align: text-top;
   position: relative;
-  top: 3px;
-  left: 8px;
-  margin-left: -25px;
-  -webkit-font-smoothing: subpixel-antialiased;
-  &:after {
-    content: "";
-    width: 12px;
-    height: 1px;
-    display: block;
-    background-color: white;
-    margin-left: 2px;
-    margin-top: 1px;
+  border-bottom: 1px solid #333;
+  top: -5px;
+  margin-right: 1px;
+
+  .win & {
+    top: -2px;
   }
-  .win & { top: 18px; }
-}
-
-.header-content:after {
-  @include vgradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
-  content: "";
-  width: 100%;
-  height: 200px;
-  display: block;
-  bottom: 0;
-  z-index: 5;
-  position: absolute;
-}
-
-.header-title {
-  font-size: 75px;
-  margin: 0;
-  line-height: 130%;
-  margin-bottom: 15px;
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  bottom: 64px;
-  margin-bottom: -50px;
-  z-index: 6;
-  -webkit-font-smoothing: antialiased;
-  &, a { color: white; text-decoration: none; }
-
-  &.small { font-size: 65px; }
-}
-
-.header-sub-title {
-  font-size: 18px;
-  color: white;
-  height: 30px;
-  display: block;
-  font-weight: normal;
-  line-height: 230%;
-}
-
-.header-sub-title-inner {
-  display: inline-block;
-  line-height: 100%;
-  padding: 10px 20px;
-  border-top: 1px solid white;
 }
 
 .display-number {
-  display: block;
-  font-size: 36px;
+  font-family: $serif;
+  text-decoration: none;
+  font-weight: 800;
+  background: #fff;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
   position: relative;
   line-height: 130%;
+  width: 75px;
+  height: 75px;
+  padding-top: 5px;
 
-  &:before, &:after {
-    content: "";
-    display: block;
-    position: absolute;
-    background-color: white;
-    left: 50%;
-  }
-  &:before {
-    transform: rotate(45deg);
-    width: 6px;
-    height: 6px;
-    margin-left: -3px;
-    bottom: -4px;
-  }
-  &:after {
-    width: 34px;
-    height: 2px;
-    margin-left: -17px;
-  }
   &.large {
     font-size: 36px;
-    .no { left: 10px; }
+    .no {
+      left: 10px;
+    }
   }
   .win & {
-    line-height: 150%;
-    top: 16px;
+    padding-top: 0;
+  }
+
+  &__tag-icon {
+    width: 32px;
+    height: 32px;
+    transform: translate(-1px, -2px);
   }
 }
 
 .authenticate {
   display: none;
-  html[logged-in="true"] & { display: block; }
+  html[logged-in="true"] & {
+    display: block;
+  }
 }
 
 .teaser-bg {
-  &, &:after {
+  &,
+  &:after {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -126,7 +76,7 @@
   background-size: cover !important;
   &:after {
     content: "";
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
   }
 }
 
@@ -135,6 +85,25 @@
   margin: 0;
   padding: 0;
   width: 100%;
+}
+
+.button {
+  padding: 4px 16px;
+  border: 1px solid currentColor;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 10px;
+  text-decoration: none;
+  letter-spacing: 0.075em;
+  font-family: $sans-serif;
+  cursor: pointer;
+
+  &.loading,
+  &.lazyloader--loading {
+    opacity: 0.6;
+    cursor: initial;
+  }
 }
 
 .site-footer {
@@ -152,36 +121,7 @@
   padding: 10px;
 }
 
-.recommends {
-  @include pie-clearfix;
-  padding-bottom: 100px;
-  .list-elements { width: 101%; }
-}
-.recommends-label {
-  position: relative;
-  margin-bottom: 20px;
-}
-.recommends-label-text {
-  font-size: 18px;
-  font-weight: normal;
-  display: block;
-  margin: 0 auto;
-  width: 200px;
-  color: #444;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-  background: $background-color;
-}
-.recommends-divider {
-  @extend %horizontal_stripes;
-  width: 100%;
-  height: 1px;
-  position: relative;
-  top: -14px;
-}
-
-$horizontal-stripes: linear-gradient(90deg, transparent 50%, rgba(50,50,50,.6) 50%);
+$horizontal-stripes: linear-gradient(90deg, transparent 50%, rgba(50, 50, 50, 0.6) 50%);
 %horizontal_stripes {
   background: $horizontal-stripes;
   background-size: 4px 100%;

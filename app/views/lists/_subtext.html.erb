@@ -1,6 +1,2 @@
-<%= link_to element.url, class: "list-element-number" do %>
-  <%= display_number_with_fallback(element) %>
-<% end %>
-<h4 class="subtext">
-  <%= link_to element.count_for_display, element.url %>
-</h4>
+<% use_links ||= false %>
+<%= use_links ? link_to(element.count_for_display, element.url) : element.count_for_display %>

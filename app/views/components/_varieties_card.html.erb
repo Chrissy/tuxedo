@@ -1,0 +1,9 @@
+<div class="card card--list component__varieties component__varieties--<%= version %>">
+  <div class="label card__label">Varieties</div>
+  <% @component.subcomponents.sort_by(&:index).each_with_index do |subcomponent, index| %>
+    <a class="component__variety" href="#<%= slugify(subcomponent.name) %>">
+      <span class="component__variety-number"><%= index + 1 %></span>
+      <span class="component__variety-name"><%= subcomponent.name %></span>
+    </a>
+  <% end %>
+</div>

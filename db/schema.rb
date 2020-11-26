@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_061315) do
+ActiveRecord::Schema.define(version: 2020_09_05_222504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,11 @@ ActiveRecord::Schema.define(version: 2019_12_28_061315) do
     t.string "pseudonyms_as_markdown", limit: 255
     t.boolean "never_make_me_tall"
     t.text "list_as_markdown"
-    t.string "tags_as_text"
+    t.text "tags_as_text"
+    t.text "subtitle"
+    t.text "substitutes_as_markdown"
+    t.boolean "skip_subcomponent_search"
+    t.text "illustration"
   end
 
   create_table "delayed_jobs", id: :serial, force: :cascade do |t|
@@ -85,9 +89,10 @@ ActiveRecord::Schema.define(version: 2019_12_28_061315) do
     t.boolean "never_make_me_tall"
     t.integer "rating"
     t.text "adapted_from"
-    t.string "tags_as_text"
+    t.text "tags_as_text"
     t.text "image2"
     t.text "image3"
+    t.text "subtitle"
   end
 
   create_table "relationships", id: :serial, force: :cascade do |t|
@@ -107,6 +112,7 @@ ActiveRecord::Schema.define(version: 2019_12_28_061315) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "index"
     t.index ["component_id"], name: "index_subcomponents_on_component_id"
   end
 

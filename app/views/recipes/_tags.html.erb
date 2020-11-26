@@ -1,0 +1,22 @@
+<% class_name ||= "" %>
+<% tags ||= [] %>
+<% links ||= false %>
+<% tag_list = [
+  "stirred",
+  "shaken",
+  "built in glass",
+  "up",
+  "rocks",
+  "large cube",
+  "crushed ice",
+  "cracked ice",
+  "served hot",
+  "cocktail glass",
+  "collins glass",
+  "rocks glass",
+  "tiki glass",
+  "toddy glass",
+] %>
+<% (tag_list & tags.map(&:name)).each do |tag| %>
+  <%= render 'recipes/tag', tag: tag, link: links, classname: class_name %>
+<% end %>

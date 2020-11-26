@@ -1,0 +1,112 @@
+@import "../utilities/font-stacks.scss";
+@import "../utilities//colors.scss";
+
+@keyframes tooltip-fade-in {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateY(10px);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.tooltip {
+  background: #fff;
+  pointer-events: none;
+  border-radius: 0.25em;
+  border: 1px solid #000;
+  font-family: $sans-serif;
+  width: 230px;
+  padding-bottom: 8px;
+  animation: 0.2s tooltip-fade-in ease-in;
+
+  &--text {
+    width: auto;
+    font-size: 0.8em;
+    max-width: 200px;
+  }
+
+  &__tip {
+    width: 1.2em;
+    height: 0.75em;
+    position: absolute;
+    top: calc(100% - 0.25em);
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+  }
+
+  &__title,
+  &__description {
+    padding: 0.5em 0.5em 0.125em 0.5em;
+  }
+
+  &__description {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  &__image {
+    width: 100%;
+    min-height: 150px;
+    background-color: #000;
+  }
+
+  &__title {
+    font-family: $serif;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.125em;
+    text-transform: capitalize;
+    font-size: 1.2em;
+
+    &--center {
+      text-align: center;
+      margin-bottom: -0.25em;
+    }
+  }
+
+  &--component,
+  &--subcomponent {
+    background: $gray-1;
+
+    .tooltip__image {
+      background: #fff;
+      border-bottom: 1px solid #000;
+      max-height: 160px;
+      object-fit: contain;
+      border-radius: 4px 4px 0 0;
+    }
+
+    .tooltip__tip {
+      color: #f0f0f0;
+    }
+  }
+
+  @media (hover: none) {
+    display: none;
+  }
+}
+
+[data-popper-placement^="bottom"] {
+  .tooltip__tip {
+    top: calc(-0.5em);
+    transform: translateX(-50%) rotate(180deg);
+    color: #000;
+  }
+
+  .tooltip--component,
+  .tooltip--subcomponent {
+    .tooltip__tip {
+      color: #fff;
+    }
+  }
+}

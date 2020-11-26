@@ -1,0 +1,49 @@
+@import "../utilities/breakpoints.scss";
+@import "../utilities/font-stacks.scss";
+
+.label {
+  font-family: $sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.075em;
+  font-size: 10px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: $mobile) {
+    font-size: 11px;
+  }
+
+  &--bottom-border {
+    padding-bottom: 14px;
+    border-bottom: 1px solid #000;
+  }
+
+  &:not(.label--bottom-border):after,
+  &--center:before {
+    content: "";
+    height: 1px;
+    background: currentColor;
+    flex: 1;
+    margin-left: 6px;
+  }
+
+  &--center:not(.label--bottom-border) {
+    width: calc(100% - 11px);
+
+    &:before,
+    &:after {
+      flex: 1;
+    }
+
+    &:before {
+      margin-left: 0;
+      margin-right: 16px;
+    }
+
+    &:after {
+      margin-left: 16px;
+      margin-right: 0;
+    }
+  }
+}

@@ -1,15 +1,8 @@
-<div class="header short">
-  <div class="header-content">
-    <%= index_header_image %>
-    <h1 class="header-title small">Control Panel</h1>
+  <div class="content">
+    <% @elements.each do |type, elements| %>
+      <h1 class="index-letter-label"><%= type %> <%= link_to "create", new_link(elements.first), :class => "admin_create_link" %></h1>
+      <div class="grid">
+        <%= render partial: 'shared/index_item', collection: elements, as: :element, locals: {show_admin_controls: true} if elements %>
+      </div>
+    <% end %>
   </div>
-</div>
-
-<div class="content grid">
-  <% @elements.each do |type, elements| %>
-    <h1 class="index-letter-label"><%= type %> <%= link_to "create", new_link(elements.first), :class => "admin_create_link" %></h1>
-    <%= render partial: 'shared/index_item', collection: elements, as: :element, locals: {show_admin_controls: true} if elements %>
-  <% end %>
-</div>
-
-<%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => "logout-button" %>

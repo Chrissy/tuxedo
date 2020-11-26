@@ -1,0 +1,86 @@
+@import "card";
+@import "../utilities/breakpoints.scss";
+@import "../utilities/font-stacks.scss";
+
+.ingredient-card {
+  border: 1px solid #000;
+  font-family: $sans-serif;
+  padding: 16px;
+  display: grid;
+  font-size: 17px;
+  grid-template-areas: "image label" "image description" "image recipes";
+  grid-template-columns: 200px auto;
+  grid-template-rows: 26px 1fr auto;
+  grid-row-gap: 12px;
+  grid-column-gap: 12px;
+
+  @media (max-width: $mobile) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 0;
+    font-size: 11px;
+    text-decoration: none;
+  }
+
+  &__left {
+    grid-area: image;
+    min-height: 200px;
+  }
+
+  &__description {
+    & > p:first-of-type {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    @media (max-width: $mobile) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__image {
+    display: block;
+    object-fit: cover;
+    height: 100%;
+    max-width: 100%;
+    min-width: 100%;
+
+    @media (max-width: $mobile) {
+      margin-bottom: 16px;
+    }
+
+    &--illustration {
+      background: #fff;
+      margin: calc(-1em + 1px) 0 calc(-1em + 1px) calc(-1em + 1px);
+      object-fit: contain;
+      max-width: calc(100% + 0.25em);
+      border-right: 1px solid #000;
+
+      @media (max-width: $mobile) {
+        margin: 0;
+        border: 0;
+        margin-bottom: 0.5em;
+        mix-blend-mode: multiply;
+      }
+    }
+  }
+
+  &__recipes {
+    margin-bottom: -6px;
+    font-size: 16px;
+
+    a:not(:hover) {
+      text-decoration: none;
+    }
+  }
+
+  &__recipe {
+    display: block;
+    margin-bottom: 4px;
+  }
+}

@@ -1,24 +1,33 @@
 @import "elements/base.scss";
 @import "elements/typography.scss";
+@import "elements/svg.scss";
 @import "elements/elements.scss";
 @import "elements/forms.scss";
 @import "elements/helpers.scss";
-@import "elements/element-image.scss";
 @import "elements/index-element.scss";
 @import "elements/index-letter-label.scss";
 @import "elements/index-menu.scss";
 @import "elements/content.scss";
+@import "elements/tag.scss";
+@import "elements/card.scss";
+@import "elements/label.scss";
+@import "elements/text-link.scss";
+@import "elements/ingredient-card.scss";
+@import "elements/list-card.scss";
+@import "elements/carousel.scss";
+@import "elements/tooltip.scss";
 @import "elements/breadcrumbs.scss";
 @import "elements/modal.scss";
+@import "widgets/list-element.scss";
+@import "widgets/recipe.scss";
+@import "widgets/global-header.scss";
+@import "widgets/autocomplete.scss";
 
 @import "utilities/spacing.scss";
 
-@import "widgets/list.scss";
-@import "widgets/recipe.scss";
-@import "widgets/global-header.scss";
-@import "widgets/search.scss";
-
 @import "pages/admin-page.scss";
+@import "pages/about-page.scss";
 @import "pages/list-page.scss";
 @import "pages/recipe-page.scss";
+@import "pages/component-page.scss";
 @import "pages/search-page.scss";

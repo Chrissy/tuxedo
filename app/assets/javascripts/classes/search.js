@@ -93,12 +93,14 @@ export default class Search {
   renderSearchItem(result) {
     return `
       <a href="${result.url}" class="index-element for-search">
-        <div class="index-element-text">
-          <div class="index-element-name">${result.name}</div>
-          ${this.renderSubtext(result)}
+        <div class="index-element__text">
+          <div class="index-element__name">${result.name}</div>
+          <div class="index-element__subtext">${this.renderSubtext(
+            result
+          )}</div>
         </div>
-        <div class="index-element-image for-search">
-          <img class="element-image small" src="https://s3.us-east-2.amazonaws.com/chrissy-tuxedo-no2/100x100${
+        <div class="index-element__image index-element__image--for-search">
+          <img class="index-element__img" src="https://s3.us-east-2.amazonaws.com/chrissy-tuxedo-no2/100x100${
             result.image_with_backup
           }"/>
         </div>
@@ -108,14 +110,16 @@ export default class Search {
 
   getSearchQuery(query) {
     const params = { hitsPerPage: 20 };
+    const indexName =
+      process.env.NODE_ENV === "development"
+        ? "primary_development"
+        : "primary";
 
     return [
       {
-        indexName:
-          process.env.NODE_ENV === "development"
-            ? "primary_development"
-            : "primary",
+        indexName,
         query,
+        filters: "NOT has_subcomponent_precedence:true",
         params,
         attributesToSnippet: [
           "description_as_plain_text:20",
@@ -171,7 +175,7 @@ export default class Search {
 
   getFooter = () => {
     return `
-      <span class="autocomplete-line full-text-search" >
+      <span class="autocomplete-line full-text-search" tabindex="-1" data-footer-target>
         See More Results »
       </span>
     `;

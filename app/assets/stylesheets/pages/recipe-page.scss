@@ -1,52 +1,445 @@
-$description-text-color: #555;
-$description-border-color: darken($description-text-color, 15%);
-$description-background-color: $background-color;
+@import "../utilities/colors";
+@import "../utilities/breakpoints.scss";
+@import "../utilities/font-stacks.scss";
+@import "../elements/helpers";
+@import "../widgets/recipe";
 
-.aside {
-  @extend %recipe;
-}
+$description-cutout: 146px;
+$three-count-extra: 216px;
+$space-between-description-and-header: 26px;
+$image-width: 554px;
+$image-offset: 30px;
 
-.primary {
-  width: 610px;
-  float: left;
-  font-size: 17.5px;
-  padding: 20px 25px;
-  margin-bottom: 40px;
-  line-height: 135%;
-  color: $description-text-color;
-  background-color: $description-background-color;
-  p { max-width: 550px; }
-  p:first-of-type { margin-top: 0; }
-  html:not(.win) & p:first-of-type:first-letter {
-    font-size: 51px;
-    float: left;
-    line-height: 0;
-    margin-top: 27px;
-    margin-right: 4px;
-    font-weight: 900;
-  }
-}
+.recipe {
+  @extend .centered-content-box-large;
+  display: flex;
 
-@media (max-width: 950px) {
-  .content { width: 100%; }
-  .primary {
-    width: 60%;
-    font-size: 18px;
-  }
-  .aside {
-    width: 40%;
-    ul, ol { font-size: 16px; }
-    h1:after {
-      width: 97%;
-      left: 0;
+  &__primary {
+    display: grid;
+    grid-template-areas:
+      "sidebar header"
+      "sidebar content";
+    grid-template-columns: 270px auto;
+    grid-template-rows: auto 1fr;
+    grid-column-gap: 20px;
+    width: 100%;
+
+    @media (max-width: $large) {
+      padding: 0 16px 16px 16px;
+    }
+
+    @media (max-width: $mobile) {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
     }
   }
-}
 
-@media (max-width: 650px) {
-  .primary, .content { width: 100%; }
-  .aside {
-      width: 96%;
-      margin: 2%;
+  &__sidebar {
+    margin-top: 110px;
+    grid-area: sidebar;
+
+    @media (max-width: $mobile) {
+      margin: 40px 16px 0px 16px;
+
+      .card {
+        display: none;
+      }
+    }
+
+    .card {
+      margin-top: 140px;
+
+      @media (max-width: $mobile) {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &__recipe {
+    @extend %recipe;
+    padding-right: 10px;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__header {
+    display: flex;
+    color: $text-color-dark;
+    grid-area: header;
+  }
+
+  &__header-titles-and-icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    @media (max-width: $large) {
+      min-height: 200px;
+    }
+
+    @media (max-width: $mobile) {
+      min-height: 0;
+    }
+  }
+
+  &__header-title {
+    @extend %swash;
+    font-size: 44px;
+    line-height: 46px;
+    margin: 10px 0 8px 0;
+    width: 94%;
+
+    a {
+      color: $text-color-dark;
+      text-decoration: none;
+    }
+
+    @media (max-width: $mobile) {
+      margin: 0 16px;
+      font-size: 32px;
+      line-height: 40px;
+    }
+  }
+
+  &__header-subtitle {
+    font-family: $sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1;
+    width: 90%;
+    margin: 0 0 8px 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    @media (max-width: $mobile) {
+      margin: 0 16px 8px 16px;
+      font-size: 20px;
+    }
+  }
+
+  &__header-content {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-width: 300px;
+    padding: 0 24px
+      ($space-between-description-and-header + $description-cutout) 0px;
+
+    &--count-3 {
+      padding-bottom: $space-between-description-and-header +
+        $description-cutout + $three-count-extra;
+    }
+
+    &--count-2 {
+      max-width: 420px;
+    }
+
+    @media (max-width: $mobile) {
+      padding: 0;
+    }
+
+    .carousel {
+      margin-bottom: 14px;
+    }
+  }
+
+  &__header-images {
+    max-width: $image-width;
+    margin-right: -$image-offset;
+    width: 100%;
+
+    &--count-2 {
+      max-width: 470px;
+    }
+
+    &--count-3 {
+      max-width: 436px;
+    }
+
+    @media (max-width: $mobile) {
+      display: none;
+    }
+  }
+
+  &__primary-image {
+    height: 570px;
+    width: 100%;
+    object-fit: cover;
+
+    &--1--count-2 {
+      height: 590px;
+    }
+
+    &--1--count-3 {
+      height: 490px;
+      margin-bottom: 16px;
+    }
+
+    &--2 {
+      height: 270px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    &--2--count-3 {
+      height: 300px;
+    }
+
+    &--3 {
+      height: 310px;
+    }
+
+    @media (max-width: $mobile) {
+      margin-bottom: 0;
+      height: 100%;
+      width: 100vw;
+    }
+  }
+
+  &__display-number {
+    top: 16%;
+    right: 0px;
+    transform: translate(50%, 50%);
+    position: absolute;
+
+    &--count-2 {
+      top: 48%;
+    }
+
+    &--count-3 {
+      top: 38%;
+    }
+
+    @media (max-width: $mobile) {
+      display: none;
+    }
+
+    &--mobile {
+      display: none;
+      position: relative;
+      padding: 0;
+      margin: 0;
+      top: 0;
+      transform: none;
+      background: none;
+      width: auto;
+      height: auto;
+      margin-right: 8px;
+
+      &:before,
+      &:after {
+        content: none;
+      }
+
+      @media (max-width: $mobile) {
+        display: flex;
+      }
+    }
+  }
+
+  &__cutout {
+    background-color: transparent;
+    width: 42%;
+    height: $description-cutout;
+    float: right;
+    box-sizing: content-box;
+    padding-left: 24px;
+
+    &--count-1 {
+      height: 156px;
+    }
+
+    &--count-2,
+    &--count-3 {
+      width: 28%;
+    }
+
+    &--count-3 {
+      height: $description-cutout + $three-count-extra;
+    }
+
+    @media (max-width: $large) {
+      width: 48%;
+      height: 156px;
+
+      &--count-2 {
+        height: 100px;
+        width: 32%;
+      }
+
+      &--count-3 {
+        height: 320px;
+        width: 34%;
+      }
+    }
+
+    @media (max-width: 1140px) {
+      &--count-2 {
+        width: 46%;
+      }
+
+      &--count-3 {
+        width: 40%;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      &--count-3 {
+        width: 50%;
+      }
+    }
+
+    @media (max-width: $mobile) {
+      display: none;
+    }
+  }
+
+  &__tag-icons {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    color: $text-color;
+
+    @media (max-width: $mobile) {
+      margin: 8px 16px 0 16px;
+    }
+  }
+
+  &__tag-icon {
+    margin-right: 6px;
+    font-size: 1.25em;
+  }
+
+  &__content {
+    margin-top: -$description-cutout - 0px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    grid-area: content;
+
+    &--count-3 {
+      margin-top: -$description-cutout - $three-count-extra;
+    }
+
+    @media (max-width: $mobile) {
+      margin: 0 16px;
+      display: block;
+    }
+
+    .card {
+      margin: 20px 0;
+      min-height: 0;
+    }
+  }
+
+  &__description {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    line-height: 1.4;
+    color: $text-color;
+    font-weight: 300;
+    max-width: 580px;
+    flex: 1;
+    hyphens: auto;
+  }
+
+  &__description::first-letter {
+    color: #000;
+    font-family: $sans-serif;
+    font-size: 86px;
+    font-weight: 800;
+    float: left;
+    line-height: 0.75;
+    display: inline-block;
+    padding: 0 12px 0 0;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+      1px 1px 0 #000;
+  }
+
+  &__primary-sidebar {
+    width: 260px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+    min-height: 100%;
+
+    @media (max-width: $large) {
+      display: none;
+    }
+
+    @media (max-width: $mobile) {
+      display: block;
+      width: 100%;
+      min-height: 0;
+      margin: 0;
+    }
+  }
+
+  &__adapted-from-card[class] {
+    padding: 0;
+
+    @media (min-width: $mobile) {
+      margin-top: 120px;
+    }
+
+    .card__label {
+      min-height: 10px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__footer {
+    position: relative;
+    width: 100%;
+    max-width: 1150px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "ingredient-card list-card";
+    grid-column-gap: 20px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    padding: 0 16px 16px 16px;
+
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr;
+      grid-row-gap: 24px;
+      grid-template-areas: "list-card" "instagram-card" "ingredient-card";
+      margin-top: 0;
+    }
+
+    .ingredient-card {
+      grid-area: ingredient-card;
+    }
+
+    .instagram {
+      display: none;
+      grid-area: instagram-card;
+
+      @media (max-width: $mobile) {
+        display: inherit;
+      }
+    }
+
+    .ingredient-card,
+    .list-card {
+      min-height: 0;
+    }
+
+    .list-card {
+      grid-area: list-card;
+    }
+  }
+
+  .card.instagram .card__image {
+    max-width: 129px;
   }
 }

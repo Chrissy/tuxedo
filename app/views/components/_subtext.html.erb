@@ -1,6 +1,6 @@
-<%= link_to element.url, class: "list-element-number" do %>
-  <%= display_number_with_fallback(element) %>
-<% end %>
-<h4 class="subtext">
-  <%= link_to element.count_for_display, element.url %>
-</h4>
+<% use_links ||= false %>
+<%= 
+  element.featured_recipes(3).map{ |recipe|
+    use_links ? link_to(recipe.name, recipe.url) : recipe.name
+  }.join(", ").html_safe 
+%>

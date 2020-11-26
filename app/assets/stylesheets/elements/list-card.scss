@@ -1,0 +1,36 @@
+@import "../utilities/breakpoints.scss";
+@import "../utilities/font-stacks.scss";
+
+.list-card {
+  border: 1px solid #000;
+  font-family: $sans-serif;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-card__label {
+  height: 26px;
+  align-items: flex-start;
+  font-size: 11px;
+}
+
+.list-card__elements {
+  display: grid;
+  grid-template-columns: repeat(2, calc(50% - 4px));
+  grid-template-rows: repeat(3, auto-fill);
+  grid-row-gap: 10px;
+  grid-column-gap: 8px;
+  margin-top: 12px;
+  flex: 1;
+
+  @media (max-width: $mobile) {
+    grid-template-columns: 1fr;
+    grid-row-gap: 16px;
+  }
+}
+
+.list-card__index-item {
+  font-size: 0.8em;
+  margin-bottom: 0.25em;
+}
