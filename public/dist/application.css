@@ -1880,6 +1880,10 @@ body {
     top: 130px;
     transform: translateX(-50%);
     z-index: 1; }
+    @media (max-width: 900px) {
+      .list-element__display-number {
+        top: 22px;
+        right: -16px; } }
     .list-element__display-number--tag {
       left: 100%; }
       @media (max-width: 1100px) {
