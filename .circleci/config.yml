@@ -31,7 +31,7 @@ jobs:
       - run:
           name: "Update Node.js and npm"
           command: |
-            curl -sSL "https://nodejs.org/dist/latest-v14.x/node-v14.15.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v14.15.0-linux-x64/bin/node
+            curl -sSL "https://nodejs.org/dist/v14.15.1/node-v14.15.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v14.15.0-linux-x64/bin/node
             curl https://www.npmjs.com/install.sh | sudo bash
 
       - run:
