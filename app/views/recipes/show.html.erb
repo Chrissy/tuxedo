@@ -6,7 +6,7 @@
       <div class="recipe__header">
         <div class="recipe__header-content recipe__header-content--count-<%= image_count %>" href="<%= @recipe.url %>" data-carousel-location>
           <% if image_count >= 2 %>
-            <%= list_image(@recipe, "recipe__primary-image recipe__primary-image--2 recipe__primary-image--2--count-#{image_count}", :image2, 1) %>
+            <%= list_image(@recipe, "recipe__primary-image recipe__primary-image--2 recipe__primary-image--2--count-#{image_count}", :image2, 2) %>
           <% end %>
           <div class="recipe__header-titles-and-icons">
             <h1 class="recipe__header-title" role="heading">
@@ -29,7 +29,7 @@
         <div class="recipe__header-images recipe__header-images--count-<%= image_count %>">
           <%= header_image(@recipe, "recipe__primary-image recipe__primary-image--1 recipe__primary-image--1--count-#{image_count}", false, true) %>
           <% if image_count >= 3 %>
-            <%= list_image(@recipe, "recipe__primary-image recipe__primary-image--3", :image3, 2) %>
+            <%= list_image(@recipe, "recipe__primary-image recipe__primary-image--3", :image3, 3) %>
           <% end %>
         </div>
       </div>
