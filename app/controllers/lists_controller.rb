@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-PAGINATION_INTERVAL = 47
-
 class ListsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[not_found show home get about more index letter_index]
   layout 'application'
+  PAGINATION_INTERVAL = 47
 
   def show
     @list ||= List.friendly.find(params[:id])
