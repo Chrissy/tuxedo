@@ -9,7 +9,12 @@ export default class Tooltip {
     images
   ) {
     Object.assign(this, {
-      images,
+      images: images.sort((a, b) => {
+        return (
+          Number(a.getAttribute("data-carousel-index")) -
+          Number(b.getAttribute("data-carousel-index"))
+        );
+      }),
       primaryImage: null,
       wrapper: null,
       slider: null,
@@ -90,6 +95,8 @@ export default class Tooltip {
     });
 
     this.carouselInitialized = true;
+
+    if (this.images.length === 1) return;
 
     this.hammer = new Hammer(this.wrapper);
 
