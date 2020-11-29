@@ -41,13 +41,13 @@ class ListsController < ApplicationController
   def update
     list = List.find(params[:id])
     list.update_attributes(list_params)
-    redirect_to action: 'show', id: list.id
+    redirect_to '/'
   end
 
   def create
     list = List.create(list_params)
     list.update_attributes(list_params)
-    redirect_to action: 'show', id: list.id
+    redirect_to '/'
   end
 
   def delete
