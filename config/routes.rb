@@ -33,16 +33,16 @@ Tuxno2::Application.routes.draw do
 
   # home page is still a list, so we have to keep this stuff
   get 'list/new' => 'lists#new'
-  get 'list/all' => 'lists#all'
-  get 'list/get/:id' => 'lists#get'
   get 'list/edit/:id' => 'lists#edit'
   post 'list/update/:id' => 'lists#update'
   post 'list/create' => 'lists#create'
   get 'list/delete/:id' => 'lists#delete'
+  get 'list/get/:id', to: redirect('/')
+  get 'list/all', to: redirect('/')
   get 'list/more/:page' => 'lists#more'
-  get 'lists/:letter' => 'lists#letter_index'
-  get 'lists' => 'lists#index'
-  get 'list/:id' => 'lists#show'
+  get 'lists/:letter', to: redirect('/')
+  get 'lists', to: redirect('/')
+  get 'list/:id', to: redirect('/')
 
   get 'tags/:tag' => 'recipes#tag'
   get 'new' => 'recipes#new'

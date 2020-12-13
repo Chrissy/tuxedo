@@ -9,7 +9,7 @@ class IndecesController < ApplicationController
   end
 
   def letter_index
-    @elements = Recipe.get_by_letter(params[:letter]).concat(Component.get_by_letter(params[:letter]))
+    @elements = Recipe.get_by_letter(params[:letter]).to_a.concat(Component.get_by_letter(params[:letter]).to_a)
     render 'index'
   end
 end

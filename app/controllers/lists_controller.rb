@@ -8,7 +8,9 @@ class ListsController < ApplicationController
   def show
     @list ||= List.friendly.find(params[:id])
     @layout_object = @list
-    @list_elements = @list.elements.reject { |element| element.class.to_s == 'List' }
+    @pagination_end = PAGINATION_INTERVAL - 1
+    @list_elements = @list.elements[0...PAGINATION_INTERVAL]
+    render 'show'
   end
 
   def home
@@ -41,13 +43,13 @@ class ListsController < ApplicationController
   def update
     list = List.find(params[:id])
     list.update_attributes(list_params)
-    redirect_to action: 'show', id: list.id
+    redirect_to '/'
   end
 
   def create
     list = List.create(list_params)
     list.update_attributes(list_params)
-    redirect_to action: 'show', id: list.id
+    redirect_to '/'
   end
 
   def delete
