@@ -4,7 +4,7 @@
 .list {
   display: grid;
   grid-gap: 18px;
-  padding: 0 18px 18px 18px;
+  padding: 0 18px 6em 18px;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 39px;
   max-width: 1286px;
@@ -21,7 +21,7 @@
 
   @media (max-width: $small) {
     grid-template-columns: 1fr;
-    padding: 0 0 18px 0;
+    padding: 0 0 6em 0;
   }
 
   .list-element {
