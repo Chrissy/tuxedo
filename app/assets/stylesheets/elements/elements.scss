@@ -1,6 +1,7 @@
 @import "../elements/helpers";
 @import "../elements/base";
 @import "../utilities/font-stacks.scss";
+@import "../utilities/breakpoints.scss";
 
 .subtle_button {
   font-size: 16px;
@@ -125,4 +126,22 @@ $horizontal-stripes: linear-gradient(90deg, transparent 50%, rgba(50, 50, 50, 0.
 %horizontal_stripes {
   background: $horizontal-stripes;
   background-size: 4px 100%;
+}
+
+.loader {
+  left: 50%;
+  transform: translateX(-50%) translateY(50%);
+  position: absolute;
+  bottom: 4em;
+  display: none;
+  width: 30px;
+  height: 30px;
+
+  @media (max-width: $small) {
+    bottom: 6em;
+  }
+
+  .lazyloader-document-loading &:last-child {
+    display: block;
+  }
 }

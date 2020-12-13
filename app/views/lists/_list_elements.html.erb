@@ -7,6 +7,8 @@
 
 <% elements.try(:each_with_index) do |element, index| %>
   <% index = start_index ? start_index + index : index %>
+  <% lazy_load = index === pagination_end && !last_page ? "/list/more/#{page + 1}" : nil %>
+
   <% if index == 0 && !tag %>
     <div class="special-nav">
       <a class="special-nav__item" href="/recipes">Recipes</a>
@@ -28,7 +30,7 @@
   <% if index == 11 %>
     <%= render 'shared/mail_card.html.erb', border_version: true %>
   <% end %>
-  <%= render 'lists/list_element', element: element, first: index == 0, second: index == 1, display_number: index == 0, lazy_load: index === pagination_end && !last_page ? "/list/more/#{page + 1}" : nil, tag: tag %>
+  <%= render 'lists/list_element', element: element, first: index == 0, second: index == 1, display_number: index == 0, lazy_load: lazy_load, tag: tag %>
   <% if index == 0 && tag %>
     <div class="list-element list-element--tag-info">
       <h1 class="list-element__name list-element__name--featured list-element__name--tag" itemprop="name" role="heading">
@@ -42,4 +44,6 @@
       </div>
     </div>
   <% end %>
+
+  <%= render 'components/loader' unless !lazy_load %>
 <% end %>

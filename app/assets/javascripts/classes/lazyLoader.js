@@ -25,12 +25,14 @@ export default class LazyLoader {
       this.element.getAttribute("data-lazy-load-on-scroll") ||
       this.element.getAttribute("data-lazy-load-on-click");
     this.element.classList.add("lazyloader--loading");
+    document.body.classList.add("lazyloader-document-loading");
     this.loading = true;
     fetch(url)
       .then((res) => res.text())
       .then((text) => {
         this.appendContent(text);
         this.element.classList.remove("lazyloader--loading");
+        document.body.classList.remove("lazyloader-document-loading");
         this.loading = false;
       });
   }
