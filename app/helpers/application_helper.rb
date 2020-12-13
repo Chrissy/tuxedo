@@ -246,7 +246,7 @@ module ApplicationHelper
 
   def display_number_with_fallback(element, class_name = '')
     if element.try(:number)
-      render 'shared/display_number', number: element.number + 1, class_name: class_name
+      render 'shared/display_number', number: element.number, class_name: class_name
     else
       ''
     end
