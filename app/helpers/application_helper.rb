@@ -265,7 +265,7 @@ module ApplicationHelper
     end
   end
 
-  def home_cache_key(elements)
+  def home_cache_key(elements, page)
     "home/#{page}-#{index_key_from_set(elements)}"
   end
 
