@@ -1,0 +1,5 @@
+<% cache(cache_key(Recipe.newest_published, "home")) do %>
+  <div class="list list--home">
+    <%= render 'list_elements', page: 0, elements: @list_elements, pagination_end: @pagination_end %>
+  </div>
+<% end %>

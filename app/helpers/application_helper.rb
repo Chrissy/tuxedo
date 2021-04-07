@@ -252,10 +252,6 @@ module ApplicationHelper
     "#{object.class.to_s.pluralize.downcase}/#{view}-#{object.id}-#{updated_at}"
   end
 
-  def global_header_cache_key
-    cache_key(links, 'global-header')
-  end
-
   def meta_cache_key
     layout_object = @layout_object.present? ? @layout_object : Recipe.newest_published
     cache_key(layout_object, 'meta')
@@ -267,6 +263,10 @@ module ApplicationHelper
     else
       elements.max_by(&:updated_at).updated_at.try(:utc).try(:to_s, :number)
     end
+  end
+
+  def home_cache_key(elements)
+    "home/#{page}-#{index_key_from_set(elements)}"
   end
 
   def index_cache_key(elements, model)

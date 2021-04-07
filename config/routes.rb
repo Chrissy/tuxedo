@@ -9,6 +9,7 @@ Tuxno2::Application.routes.draw do
   get 'about' => 'lists#about'
   get 'index/:letter' => 'indeces#letter_index'
   get 'index' => 'indeces#index'
+  get 'index/more/:page' => 'indeces#more'
   get 'image-upload-token' => 'application#token'
 
   get 'ingredients/all' => 'components#all'

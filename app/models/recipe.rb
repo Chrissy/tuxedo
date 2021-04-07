@@ -111,11 +111,11 @@ class Recipe < ActiveRecord::Base
   end
 
   def number
-    Recipe.where(published: true).order('created_at ASC').find_index(self)
+    Recipe.where(published: true).order('created_at ASC').find_index(self) + 1
   end
 
   def self.all_for_home
-    Recipe.where(published: true).order('created_at ASC')
+    Recipe.where(published: true).order('created_at DESC')
   end
 
   def self.all_for_display

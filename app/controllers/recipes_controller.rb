@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'list.rb'
 require 'component.rb'
 
 PAGINATION_INTERVAL = 47

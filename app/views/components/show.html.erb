@@ -13,7 +13,7 @@
         </a>
       </h1>
       <div class="component__recent-additions component__recent-additions--extra-margin">
-        <%= render partial: 'lists/list_element', collection: @component.all_elements.slice(0, 6), as: :element if latest %>
+        <%= render partial: 'indeces/list_element', collection: @component.all_elements.slice(0, 6), as: :element if latest %>
       </div>
     <% else %>
       <div class="component__primary">
@@ -21,7 +21,7 @@
           <div class="component__header-images component__header-images--<%= featured.count %>" data-carousel-location>
             <% featured.each_with_index do |recipe, index| %>
               <%= 
-                    render '/lists/list_element', 
+                    render '/indeces/list_element', 
                     element: recipe, 
                     class_name: "component__list-item component__list-item--#{index + 1}", 
                     carousel_index: index 
