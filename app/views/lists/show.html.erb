@@ -1,7 +1,0 @@
-<% cache(cache_key(@list, "show")) do %>
-  <div class="list <%= "list--home" if @list.home? %>">
-    <%= render 'list_elements', page: 0, elements: @list_elements, pagination_end: @pagination_end %>
-  </div>
-  <%= render 'footer', :list => @list %>
-  <a class="global-header__link authenticate" data-edit-link href="<%= @list.edit_url %>">Edit</a>
-<% end %>

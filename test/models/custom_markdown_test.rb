@@ -7,7 +7,6 @@ class CustomMarkdownTest < Minitest::Test
   def test_model_for_symbol
     assert CustomMarkdown.model_for_symbol(":") == Component
     assert CustomMarkdown.model_for_symbol("=") == Recipe
-    assert CustomMarkdown.model_for_symbol("#") == List
   end
 
   def test_converts_links_in_place

@@ -15,15 +15,10 @@ module ApplicationHelper
     '| ✓' if element.published? && element.is_a?(Recipe)
   end
 
-  def links
-    List.find_by_name('Links') || List.new
-  end
-
   def all_elements_for_autocomplete
     elements = []
     elements
       .concat(Recipe.all_for_display)
-      .concat(List.all_for_display)
       .concat(Component.all_for_display)
   end
 
@@ -262,7 +257,7 @@ module ApplicationHelper
   end
 
   def meta_cache_key
-    layout_object = @layout_object.present? ? @layout_object : List.find(1)
+    layout_object = @layout_object.present? ? @layout_object : Recipe.newest_published
     cache_key(layout_object, 'meta')
   end
 
@@ -319,11 +314,6 @@ module ApplicationHelper
     if first_component
       link_to "other #{first_component.nickname} drinks".titleize, first_component.url
     end
-  end
-
-  def all_recipes_link
-    everything_link = List.find_by_name('Everything').try(:url) || '/'
-    link_to 'All Cocktails', everything_link
   end
 
   def clear_image_button(element)

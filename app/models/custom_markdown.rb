@@ -54,7 +54,6 @@ class CustomMarkdown
   def self.model_for_symbol(symbol)
     {
       ':' => Component,
-      '#' => List,
       '=' => Recipe,
       '::' => Subcomponent
     }[symbol]

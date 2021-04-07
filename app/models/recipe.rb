@@ -74,10 +74,6 @@ class Recipe < ActiveRecord::Base
     image.present? ? image : backup_image_url
   end
 
-  def lists
-    Relationship.find_parents_by_type(self, List)
-  end
-
   def adapted_from_for_display
     markdown_renderer.render(adapted_from).html_safe
   end
@@ -118,15 +114,16 @@ class Recipe < ActiveRecord::Base
     Recipe.where(published: true).order('created_at ASC').find_index(self)
   end
 
-  def self.compile_numbers_based_on_home
-    time = Time.now
-    List.find(1).elements.keep_if { |x| x.is_a?(Recipe) }.reverse.each_with_index do |recipe, x|
-      recipe.update_attribute(:created_at, time + x)
-    end
+  def self.all_for_home
+    Recipe.where(published: true).order('created_at ASC')
   end
 
   def self.all_for_display
     where(published: true).order('lower(name)')
+  end
+
+  def self.newest_published
+    all_for_home.first
   end
 
   def self.get_by_letter(letter)
