@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class IndecesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home, more, about, index letter_index]
+  skip_before_action :authenticate_user!, only: %i[home more about index letter_index]
   layout 'application'
   PAGINATION_INTERVAL = 47
 
