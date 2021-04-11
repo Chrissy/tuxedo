@@ -28,7 +28,7 @@
   <% if index == 11 %>
     <%= render 'shared/mail_card.html.erb', border_version: true %>
   <% end %>
-  <%= render 'list_element', element: element, first: index == 0, second: index == 1, display_number: index == 0, lazy_load: lazy_load, tag: tag %>
+  <%= render 'indeces/list_element', element: element, first: index == 0, second: index == 1, display_number: index == 0, lazy_load: lazy_load, tag: tag %>
   <% if index == 0 && tag %>
     <div class="list-element list-element--tag-info">
       <h1 class="list-element__name list-element__name--featured list-element__name--tag" itemprop="name" role="heading">
