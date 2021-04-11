@@ -55,4 +55,7 @@ PercyScript.run(async (page, percySnapshot) => {
 
   await navigateTo("/recipes", page);
   await percySnapshot("Index", { widths: WIDTHS });
+
+  await navigateTo("/about", page);
+  await percySnapshot("About", { widths: WIDTHS });
 });

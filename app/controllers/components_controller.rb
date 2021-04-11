@@ -50,7 +50,7 @@ class ComponentsController < ApplicationController
 
   def delete
     Component.find(params[:id]).destroy if user_signed_in?
-    redirect_to action: 'admin', controller: 'lists'
+    redirect_to action: 'admin', controller: 'indeces'
   end
 
   def index

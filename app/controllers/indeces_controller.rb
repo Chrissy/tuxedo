@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class IndecesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index letter_index]
+  skip_before_action :authenticate_user!, only: %i[home, more, about, index letter_index]
   layout 'application'
   PAGINATION_INTERVAL = 47
 
@@ -14,6 +14,17 @@ class IndecesController < ApplicationController
     @pagination_end = PAGINATION_INTERVAL - 1
     @list_elements = Recipe.all_for_home[0...PAGINATION_INTERVAL]
     render 'home'
+  end
+
+  def admin
+    @elements = {
+      'Recipes' => Recipe.all.sort_by(&:name),
+      'Components' => Component.all.sort_by(&:name),
+    }
+  end
+
+  def about
+    render 'shared/about'
   end
 
   def more

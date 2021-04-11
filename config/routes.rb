@@ -5,8 +5,8 @@ Tuxno2::Application.routes.draw do
 
   root 'indeces#home'
 
-  get 'admin' => 'lists#admin'
-  get 'about' => 'lists#about'
+  get 'admin' => 'indeces#admin'
+  get 'about' => 'indeces#about'
   get 'index/:letter' => 'indeces#letter_index'
   get 'index' => 'indeces#index'
   get 'index/more/:page' => 'indeces#more'
