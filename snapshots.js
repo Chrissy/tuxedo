@@ -8,7 +8,7 @@ const URL = "http://localhost";
 
 const navigateTo = async (path, page) => {
   await page.goto(`${URL}:${PORT}${path}`);
-  await page.waitForSelector(".js-ready");
+  //await page.waitForSelector(".js-ready");
   return page;
 };
 
@@ -55,4 +55,7 @@ PercyScript.run(async (page, percySnapshot) => {
 
   await navigateTo("/recipes", page);
   await percySnapshot("Index", { widths: WIDTHS });
+
+  await navigateTo("/about", page);
+  await percySnapshot("About", { widths: WIDTHS });
 });

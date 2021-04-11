@@ -22,6 +22,6 @@
 } %>
 <% cache(index_cache_key(@list_elements, Recipe) + '-' + @tag.gsub(' ', '-')) do %>
   <div class="list list--tag">
-    <%= render 'lists/list_elements', page: 0, elements: @list_elements, pagination_end: @pagination_end, tag: @tag, tag_description: tag_list[@tag] %>
+    <%= render 'indeces/list_elements', page: 0, elements: @list_elements, pagination_end: @pagination_end, tag: @tag, tag_description: tag_list[@tag] %>
   </div>
 <% end %>

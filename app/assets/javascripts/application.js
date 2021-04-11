@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const editButton = document.querySelector("[data-edit-link]");
   const adminButton = document.querySelector("[data-admin-link]");
+  
   if (editButton && adminButton)
     adminButton.insertAdjacentElement("afterend", editButton);
 

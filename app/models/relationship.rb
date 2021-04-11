@@ -1,6 +1,5 @@
 require 'recipe.rb'
 require 'component.rb'
-require 'list.rb'
 require 'custom_markdown.rb'
 
 class Relationship < ActiveRecord::Base

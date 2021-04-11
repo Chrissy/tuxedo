@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'list.rb'
 require 'component.rb'
 
 PAGINATION_INTERVAL = 47
@@ -40,7 +39,7 @@ class RecipesController < ApplicationController
 
   def delete
     Recipe.find(params[:id]).destroy if user_signed_in?
-    redirect_to action: 'admin', controller: 'lists'
+    redirect_to action: 'admin', controller: 'indeces'
   end
 
   def all
