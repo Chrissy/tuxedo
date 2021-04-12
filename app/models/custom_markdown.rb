@@ -55,7 +55,8 @@ class CustomMarkdown
     {
       ':' => Component,
       '=' => Recipe,
-      '::' => Subcomponent
+      '::' => Subcomponent,
+      '#' => nil
     }[symbol]
   end
 
@@ -63,7 +64,8 @@ class CustomMarkdown
     return '' unless md.present?
 
     md.gsub(/(\=|\:\:|\:|\#)\[(.*?)\]/) do |*|
-      element = model_for_symbol(Regexp.last_match(1)).where('lower(name) = ?', Regexp.last_match(2).downcase).first
+      model = model_for_symbol(Regexp.last_match(1))
+      element = model ? model.where('lower(name) = ?', Regexp.last_match(2).downcase).first : nil
       # for in-recipe subcomponents (:)
       if Regexp.last_match(1) == ':'
         subcomponent = Subcomponent.where('lower(name) = ?', Regexp.last_match(2).downcase).first
