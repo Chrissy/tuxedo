@@ -111,6 +111,7 @@ class Recipe < ActiveRecord::Base
   end
 
   def number
+    return Recipe.where(published: true).count + 1 if !published
     Recipe.where(published: true).order('created_at ASC').find_index(self) + 1
   end
 
