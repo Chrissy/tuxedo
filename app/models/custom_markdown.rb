@@ -156,7 +156,7 @@ class CustomMarkdown
     end
 
     unit = search[1] ? "<span class='unit'>#{search[1]}</span>" : ''
-    "* <span class='amount'>#{convert_fractions(search[0])}#{unit}</span><span class='divider'>|</span><span class='ingredient'>#{search[2]}</span>\n"
+    "* <span class='amount'>#{convert_fractions(search[0])}#{unit}</span><span class='divider'></span><span class='ingredient'>#{search[2]}</span>\n"
   end
 
   def self.links_to_code_array(md)
