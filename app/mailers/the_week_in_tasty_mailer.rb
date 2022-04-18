@@ -26,7 +26,7 @@ class TheWeekInTastyMailer < ApplicationMailer
     return if (@featured_recipes.count == 0)
 
     @recommends = @featured_recipes[0].recommends(3)
-    sg = SendGrid::API.new(api_key: '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')
+    sg = SendGrid::API.new(api_key: '<<API KEY>>')
 
     if (Rails.env == "production")
       data = JSON.parse('{
