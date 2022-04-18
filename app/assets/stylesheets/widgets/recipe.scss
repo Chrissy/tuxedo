@@ -125,6 +125,8 @@ $components-bg-color: white;
     display: block;
     top: 6px;
     position: relative;
+    /* we use the text divider in emails */
+    text-indent: -9999%;
   }
 
   .unit {

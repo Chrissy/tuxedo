@@ -37,8 +37,9 @@ gem 'mini_magick'
 gem 'rails_12factor', group: :production
 gem 'redcarpet'
 gem 'sentry-raven'
+gem 'sendgrid-ruby'
 
-ruby '2.5.3'
+ruby '2.7.5'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
