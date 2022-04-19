@@ -131,6 +131,10 @@ class Recipe < ActiveRecord::Base
     where("lower(name) LIKE '#{letter}%' AND published = 't'")
   end
 
+  def self.week_in_tasty_recipes
+    Recipe.where("created_at >= ? AND published = 't'", 2.month.ago)
+  end
+
   # this is for manual use only, very slow
   def self.rebuild_all
     Recipe.all.map(&:delete_and_save_relationships)

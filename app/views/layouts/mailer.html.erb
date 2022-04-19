@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>The Week In Tasty</title>
+    <style>
+      body {
+        background: hsla(0, 0%, 94%, 1);
+      }
+
+      .logo {
+        width: 97px;
+        height: 17px;
+        margin-left: -2px;
+        margin-top: 14px;
+      }
+
+      .content {
+        width: 354px;
+        text-align: left;
+      }
+      
+      h1 {
+        font-size: 25px;
+        font-family: Georgia, serif;
+      }
+
+      .page-title {
+        margin-top: 32px;
+        margin-bottom: 4px;
+      }
+
+      .subheader {
+        font-size: 15px;
+        font-weight: 400;
+        margin: 0;
+      }
+
+      .subheader--date {
+        margin-bottom: 40px;
+      }
+
+      .label {
+        margin-top: 20px;
+      }
+
+      .label__recipe {
+        margin-bottom: 10px;
+      }
+
+      .label__instructions {
+        margin-bottom: 10px;
+        margin-top: 40px;
+      }
+
+      .label--text, .recipe h1 {
+        text-transform: uppercase;
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        width: 60px;
+        margin-right: 10px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+
+      .label--text__recipe {
+        width: 38px;
+      }
+
+      .label--text__instructions {
+        width: 78px;
+      }
+
+      .label--line {
+        width: 286px;
+      }
+
+      .label--line--content {
+        height: 1px;
+        background-color: #000;
+        width: 100%;
+      }
+
+      .recipe ul, .recipe ol {
+        padding: 0;
+        margin: 0;
+      }
+
+      .recipe li {
+        height: 28px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+
+      .recipe ul li {
+        list-style-type: none;
+      }
+
+      .recipe li a {
+        text-decoration: underline;
+        color: inherit;
+      }
+
+      .recipe h1 {
+        border-bottom: 1px solid #000;
+        width: 100%;
+        padding-bottom: 5px;
+        margin-top: 26px;
+        margin-bottom: 14px;
+      }
+
+      .recipe .amount {
+        font-size: 13px;
+        font-weight: 700;
+        width: 30px;
+        margin-right: 7px;
+      }
+
+      .recipe ol li::marker {
+        font-size: 24px;
+        font-family: "georgia", serif;
+        width: 30px;
+        margin-right: 10px;
+      }
+
+      .recipe .amount .unit {
+        font-size: 7px;
+      }
+
+      .recipe .ingredient {
+        font-size: 13px;
+      }
+
+      .recipe ol {
+        margin-left: 22px;
+        max-width: 240px;
+      }
+
+      .recipe ol li {
+        font-size: 13px;
+        height: auto;
+      }
+
+      .recipe .divider {
+        font-weight: 300;
+        color: #333;
+        margin-right: 5px;
+        font-weight: 200;
+      }
+
+      /* note: this is a temp hack plz remove */
+      .recipe .divider:after {
+        content: "|"
+      }
+
+      .primary-image {
+        width: 349px;
+        height: auto;
+        margin-top: 10px;
+      }
+
+      .primary-name {
+        font-size: 36px;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .primary-subheader {
+        font-size: 15px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-weight: 300;
+        margin-top: 5px;
+        line-height: 130%;
+        padding-bottom: 10px;
+      }
+      
+
+      .description {
+        font-size: 15px;
+        font-family: "georgia", sans-serif;
+        margin-top: 50px;
+        font-weight: 200;
+        line-height: 140%;
+        margin-bottom: 100px;
+      }
+
+      .description a {
+        color: inherit;
+      }
+
+      .button {
+        display: block;
+        margin-top: 20px;
+        border: 1px solid #000;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        padding: 0.75em;
+        width: 100%;
+        font-weight: 400;
+        font-size: 15px;
+        color: #000;
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      .more {
+        margin-bottom: 30px;
+      }
+
+      .label__more {
+        margin-bottom: 10px;
+      }
+
+      .label--text__more {
+        width: 65px;
+      }
+
+      .more--image {
+        width: 100%;
+        height: 284px;
+      }
+
+      .more-name {
+        font-size: 14px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-weight: 300;
+        margin: 10px 0 0 0;
+      }
+
+      .more-subheader {
+        font-size: 14px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-weight: 300;
+        margin: 2px 0 0 0;
+      }
+
+      .more-name--number {
+        font-weight: 700;
+      }
+
+      .module {
+        color: #000;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+
+      .module a {
+        color: #000;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

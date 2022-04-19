@@ -11,6 +11,7 @@
     "develop": "concurrently \"npx webpack --config webpack.config.js --watch\" \"npx node-sass app/assets/stylesheets/application.scss public/dist/application.css -w\"",
     "build": "npm run scripts && npm run styles && npm run sprite",
     "sprite": "npx svg-sprite-generate -d ./public/svg -o ./public/dist/sprite.svg",
+    "maildev": "npx maildev",
     "snapshots": "percy exec -- node snapshots.js"
   },
   "license": "ISC",
@@ -44,6 +45,10 @@
   },
   "devDependencies": {
     "@percy/script": "^1.1.0",
+    "glob": "^7.2.0",
+    "handlebars": "^4.7.7",
+    "maildev": "^1.1.0",
+    "nodemailer": "^6.7.2",
     "svg-sprite-generator": "0.0.7",
     "throttle-debounce": "^2.1.0"
   }
