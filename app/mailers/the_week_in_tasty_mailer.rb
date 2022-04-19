@@ -19,6 +19,7 @@ class TheWeekInTastyMailer < ApplicationMailer
   default from: 'editors@tuxedono2.com'
 
   def weekly_email
+    # TODO: Uncomment this when ready for prime-time
     #return unless (Date.today.strftime("%A") == "Friday")
 
     @featured_recipes = Recipe.week_in_tasty_recipes
@@ -26,7 +27,7 @@ class TheWeekInTastyMailer < ApplicationMailer
     return if (@featured_recipes.count == 0)
 
     @recommends = @featured_recipes[0].recommends(3)
-    sg = SendGrid::API.new(api_key: '<<API KEY>>')
+    sg = SendGrid::API.new(api_key: ENV['SENDGRID_TOKEN'])
 
     if (Rails.env == "production")
       data = JSON.parse('{

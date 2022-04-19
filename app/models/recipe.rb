@@ -132,7 +132,7 @@ class Recipe < ActiveRecord::Base
   end
 
   def self.week_in_tasty_recipes
-    Recipe.where("created_at >= ? AND published = 't'", 2.month.ago).map(&:updated_at)
+    Recipe.where("created_at >= ? AND published = 't'", 2.month.ago)
   end
 
   # this is for manual use only, very slow
