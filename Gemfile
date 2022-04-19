@@ -39,7 +39,7 @@ gem 'redcarpet'
 gem 'sentry-raven'
 gem 'sendgrid-ruby'
 
-ruby '2.7.5'
+ruby '2.7.6'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
