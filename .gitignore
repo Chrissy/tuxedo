@@ -39,7 +39,6 @@ Thumbs.db
 
 # Library and Local Data #
 ##########################
-lib/*
 components/*
 *.rbc
 *.sassc
