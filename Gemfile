@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.2.3'
+gem 'rails', '7.0.8.1'
 
 # Use postgres as the database for Active Record
 gem 'pg'
@@ -18,20 +18,20 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 4.5.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
+  gem 'sdoc', '>= 2.2.0', require: false
 end
 
 gem 'acts-as-taggable-on'
 gem 'aws-sdk'
-gem 'devise'
-gem 'dotenv-rails', groups: %i[development test]
+gem 'devise', '>= 4.8.0'
+gem 'dotenv-rails', '>= 2.8.0', groups: %i[development test]
 gem 'friendly_id'
 gem 'mini_magick'
 gem 'rails_12factor', group: :production
