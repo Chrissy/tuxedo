@@ -28,7 +28,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'acts-as-taggable-on'
+gem 'acts-as-taggable-on', '>= 12.0.0'
 gem 'aws-sdk'
 gem 'devise'
 gem 'dotenv-rails', groups: %i[development test]
