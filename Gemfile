@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.2.3'
+gem 'rails', '7.1.5.2'
 
 # Use postgres as the database for Active Record
 gem 'pg'
@@ -28,11 +28,11 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'acts-as-taggable-on'
+gem 'acts-as-taggable-on', '>= 10.0.0'
 gem 'aws-sdk'
 gem 'devise'
 gem 'dotenv-rails', groups: %i[development test]
-gem 'friendly_id'
+gem 'friendly_id', '>= 5.5.0'
 gem 'mini_magick'
 gem 'rails_12factor', group: :production
 gem 'redcarpet'
