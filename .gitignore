@@ -24,6 +24,7 @@
 ######################
 *.log
 *.sql
+!db/archive/*.sql
 *.sqlite
 
 # OS generated files #
@@ -59,3 +60,7 @@ rerun.txt
 pickle-email-*.html
 .env
 /public/dist
+/static_dist
+*.dump
+!db/archive/*.dump
+.wrangler/

@@ -12,7 +12,7 @@
       <a class="special-nav__item" href="/recipes">Recipes</a>
       <a class="special-nav__item" href="/ingredients">Ingredients</a>
       <a class="special-nav__item" href="/about">About</a>
-      <a class="special-nav__item" href="/index">Index</a>
+      <a class="special-nav__item" href="/site-index">Index</a>
       <a class="special-nav__item" href="https://instagram.com/tuxedono2">Instagram</a>
     </div>
   <% end %>
@@ -24,9 +24,6 @@
   <% end %>
   <% if index >= 8 && index % 4 == 0 && index <= (list_ingredients.count - 2) * 4 && !tag %>
     <%= render 'shared/ingredient_list_card.html.erb', list_name: "Base Spirits", ingredient: list_ingredients[(index - 8) / 4] %>
-  <% end %>
-  <% if index == 11 %>
-    <%= render 'shared/mail_card.html.erb', border_version: true %>
   <% end %>
   <%= render 'indeces/list_element', element: element, first: index == 0, second: index == 1, display_number: index == 0, lazy_load: lazy_load, tag: tag %>
   <% if index == 0 && tag %>
