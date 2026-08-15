@@ -29,7 +29,7 @@ group :doc do
 end
 
 gem 'acts-as-taggable-on'
-gem 'aws-sdk'
+gem 'aws-sdk', '>= 3.1.0'
 gem 'devise'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'friendly_id'
