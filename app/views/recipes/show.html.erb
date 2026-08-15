@@ -52,9 +52,6 @@
           <div class="recipe__cutout recipe__cutout--count-<%= image_count %>"></div>
           <div data-to-relocate><%= @recipe.description_to_html %></div>
         </div>
-        <div class="recipe__primary-sidebar">
-          <%= render 'shared/mail_card', relocate_to: '[data-to-relocate] p:nth-of-type(3), [data-to-relocate] p:nth-of-type(2)', border_version_on_mobile: true %>
-        </div>
       </div>
     </div>
   </div>

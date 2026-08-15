@@ -2,7 +2,7 @@
   "name": "tuxedo",
   "version": "0.0.1",
   "engines": {
-    "node": "14.x"
+    "node": "12.x"
   },
   "scripts": {
     "start": "",
@@ -51,5 +51,9 @@
     "nodemailer": "^6.7.2",
     "svg-sprite-generator": "0.0.7",
     "throttle-debounce": "^2.1.0"
+  },
+  "volta": {
+    "node": "12.22.12",
+    "npm": "6.14.16"
   }
 }
